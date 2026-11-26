@@ -1,0 +1,170 @@
+m3_run_v1_10_4 item asm.4 LIM 540; script sha256 c73dda0beef23af4d7c3fd8cf1379c5b83a95b320bcfb71418efa4be742abe8d; python 3.14.4
+STAGE-CPU C-HASH start 0.04 s
+C-HASH (10 modules, the kernel files, 30 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.13 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v16_1: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=; 6 layer calls in E2_ma/lp_moment_ma/lp_ma/pos_ma/E2_ball/e2, each with fallback=False, 6 wanted) -> PASS
+PLANT-CALLER (m3_bar_v16_1 with one E2_combine call's plan= removed) -> FIRES
+PLANT-CALLER-FLAG (m3_bar_v16_1 with pos_ma's fallback=False dropped) -> FIRES
+C-SERIES (no *_series( call in 10 modules, the kernel files and this script) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-330.000000000 +/- 2.94e-12] overlaps the layer's [-330.000000000 +/- 2.64e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+C-EXEMPT (BIGRULE_EXEMPT_v1_10_4_N4.json, sha256 1e12ea4fec58c15ce44891ffac87cb512a90bad67dda10545efc8bfb13c7a917, read-only, N 4: [('DT:SM4,1,2:g|0|ser|3|6|c', 4.724), ('DT:SM4,1,2:g|0|ser|3|6|u', 4.795), ('DT:SM4,2,2:g|0|ser|3|6|c', 4.724), ('DT:SM4,2,2:g|0|ser|3|6|u', 4.795)]) -> PASS
+STAGE-CPU asm start 0.15 s
+C-LIST (P2_RUN_LIST_v1_10: 23 entries, 23 distinct keys, K [3], graphs ['DT', 'NBT', 'NIB', 'NIH', 'NIT', 'NTB', 'NTT']; sets A 18, C 3, W 2) -> PASS
+PLANT-LIST (the keys without Gxt,0,0 must not cover the sets) -> FIRES
+C-RULE-OF (RULE_OF names the list's 23 keys exactly; std 10, col 2, colxh 11) -> PASS
+PLANT-RULE-OF (RULE_OF without its first key must not name the list's keys) -> FIRES
+C-PARITY-SET (the entries whose factors pass C-ODD on their own graph: ['IhZh']; marked zero: ['IhZh']; PARITY_ZERO ['IhZh']) -> PASS
+PLANT-ODD (IhZh with S[1][2] + 1e-12: a factor is neither exactly even nor exactly odd: [None, 'even', 'even']) -> FIRES
+PLANT-ODD-H (IhZh with its bond moved to the T row, [xh, T, 1, 8]: a factor is neither exactly even nor exactly odd: ['odd', None, 'even']) -> FIRES
+C-HANDOFF (m3_run_v1_10_4_NTBk1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (NTBk1.4: entries 0..5 complete, 1 units of SM3,2,1 carried) -> PASS
+C-HANDOFF (m3_run_v1_10_4_NTBk2.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (NTBk2.4: entries 6..5 complete, 35 units of SM3,2,1 carried) -> PASS
+C-HANDOFF (m3_run_v1_10_4_NTBk3.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (NTBk3.4: entries 6..7 complete, 1 units of SM3,2,2 carried) -> PASS
+C-HANDOFF (m3_run_v1_10_4_NTBk4.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (NTBk4.4: entries 8..7 complete, 35 units of SM3,2,2 carried) -> PASS
+C-HANDOFF (m3_run_v1_10_4_NTBk5.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (NTBk5.4: entries 8..8 complete) -> PASS
+C-PIECES (the NTB pieces cover all 9 NTB entries, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_v1_10_4_DTk1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (DTk1.4: entries 0..6 complete, 15 units of SM4,1,2 carried) -> PASS
+C-HANDOFF (m3_run_v1_10_4_DTk2.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (DTk2.4: entries 7..6 complete, 46 units of SM4,1,2 carried) -> PASS
+C-HANDOFF (m3_run_v1_10_4_DTk3.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (DTk3.4: entries 7..8 complete) -> PASS
+C-PIECES (the DT pieces cover all 9 DT entries, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_v1_10_4_NITk1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (NITk1.4: entries 0..0 complete) -> PASS
+C-PIECES (the NIT pieces cover all 1 NIT entries, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_v1_10_4_NIBk1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (NIBk1.4: entries 0..0 complete) -> PASS
+C-PIECES (the NIB pieces cover all 1 NIB entries, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_v1_10_4_NIHk1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (NIHk1.4: entries 0..0 complete) -> PASS
+C-PIECES (the NIH pieces cover all 1 NIH entries, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_v1_10_4_NBTk1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (NBTk1.4: entries 0..0 complete) -> PASS
+C-PIECES (the NBT pieces cover all 1 NBT entries, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_v1_10_4_NTTk1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (NTTk1.4: entries 0..-1 complete, 27 units of W2 carried) -> PASS
+C-HANDOFF (m3_run_v1_10_4_NTTk2.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (NTTk2.4: entries 0..0 complete) -> PASS
+C-PIECES (the NTT pieces cover all 1 NTT entries, in order, none left in progress) -> PASS
+C-EXEMPT-SAME (every entry piece ran with the exemption 1e12ea4fec58c15ce44891ffac87cb512a90bad67dda10545efc8bfb13c7a917: ['1e12ea4fec58c15ce44891ffac87cb512a90bad67dda10545efc8bfb13c7a917']) -> PASS
+C-HANDOFF (m3_run_v1_10_4_NTBr1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_10_4_NTBr2.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-RESUME-CHAIN (NTB on SM3,1,0: part 1 cut ['ak', 'm0u', 'm0c'] resumed identical, PLANT-RESUME FIRES; part 2 cut after 11 of 33 units resumed identical) -> PASS
+C-HANDOFF (m3_run_v1_10_4_VNu.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_10_4_VNc.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PREP-STAGES (VN: VNu.4 and VNc.4, of VN and VN, scalars ['nE', 'nE4', 'rE', 'rE_parts'] and ['Pout', 'Pout_p', 'alpha_lo', 'farbase', 'nC6', 'nC8']) -> PASS
+C-HANDOFF (m3_run_v1_10_4_VDu.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_10_4_VDc.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PREP-STAGES (VD: VDu.4 and VDc.4, of VD and VD, scalars ['nE', 'nE4', 'rE', 'rE_parts'] and ['Pout', 'Pout_p', 'alpha_lo', 'farbase', 'nC6', 'nC8']) -> PASS
+C-PREP-TWIN (NTB: m3ref_v1_18_1_P2NTB.4.all_z9sym.out of family P2NTB, N 4, J 300.0: radii, rho'^2 and theta0 against m3ref_v1_10_V3N.4.all_z9sym.out, largest relative difference 0.0e+00 (tol 1e-12)) -> PASS
+PLANT-PREP-TWIN (NTB: the reference's rho'^2 times 1 + 1e-9) -> FIRES
+C-HASH-REF (m3ref_v1_18_1_P2NTB.4.all_z9sym.out, sha256 c60928036e28d0f699d0ed61b0963ea69c15eb2d0a95d501191a51d22c056df5, piece 1 of 1: VERDICT lines ['VERDICT VALID'] (exactly [VERDICT VALID]; a clean CAP-STOP only before the last piece), TRIAL lines exactly [TRIAL z9sym]) -> PASS
+C-REF-KEYS (NTB: the float twin's KEYJSON keys ['SM3,0,0', 'SM3,0,1', 'SM3,0,2', 'SM3,1,0', 'SM3,1,2', 'SM3,2,0', 'SM3,2,1', 'SM3,2,2', 'X3'] equal the family's entries) -> PASS
+C-PREP-TWIN (DT: m3ref_v1_18_1_P2DT.4.all_z9sym.out of family P2DT, N 4, J 300.0: radii, rho'^2 and theta0 against m3ref_v1_10_V3D.4.0-32_z9sym.out, largest relative difference 0.0e+00 (tol 1e-12)) -> PASS
+PLANT-PREP-TWIN (DT: the reference's rho'^2 times 1 + 1e-9) -> FIRES
+C-HASH-REF (m3ref_v1_18_1_P2DT.4.all_z9sym.out, sha256 479de1883eeeed2eb91c256fb773e3570048ca871f77165f783d195f60f10e26, piece 1 of 1: VERDICT lines ['VERDICT VALID'] (exactly [VERDICT VALID]; a clean CAP-STOP only before the last piece), TRIAL lines exactly [TRIAL z9sym]) -> PASS
+C-REF-KEYS (DT: the float twin's KEYJSON keys ['Gxt,0,0', 'SM4,0,0', 'SM4,0,1', 'SM4,0,2', 'SM4,1,2', 'SM4,2,0', 'SM4,2,1', 'SM4,2,2', 'Y4'] equal the family's entries) -> PASS
+C-PREP-TWIN (NIT: m3ref_v1_18_1_P2NIT.4.all_z9sym.out of family P2NIT, N 4, J 300.0: radii, rho'^2 and theta0 against m3ref_v1_10_V3N.4.all_z9sym.out, largest relative difference 0.0e+00 (tol 1e-12)) -> PASS
+PLANT-PREP-TWIN (NIT: the reference's rho'^2 times 1 + 1e-9) -> FIRES
+C-HASH-REF (m3ref_v1_18_1_P2NIT.4.all_z9sym.out, sha256 1e67e9d1f00cf4f3c90dfbbb143eb3763a0931cf397a6df143e22ae872063c12, piece 1 of 1: VERDICT lines ['VERDICT VALID'] (exactly [VERDICT VALID]; a clean CAP-STOP only before the last piece), TRIAL lines exactly [TRIAL z9sym]) -> PASS
+C-REF-KEYS (NIT: the float twin's KEYJSON keys ['IhZ'] equal the family's entries) -> PASS
+C-PREP-TWIN (NIB: m3ref_v1_18_1_P2NIB.4.all_z9sym.out of family P2NIB, N 4, J 300.0: radii, rho'^2 and theta0 against m3ref_v1_10_V3N.4.all_z9sym.out, largest relative difference 0.0e+00 (tol 1e-12)) -> PASS
+PLANT-PREP-TWIN (NIB: the reference's rho'^2 times 1 + 1e-9) -> FIRES
+C-HASH-REF (m3ref_v1_18_1_P2NIB.4.all_z9sym.out, sha256 5c02d698bcaf22c3209bb3e54191a382d7f2d155db20d954b6abe6cc3884bc62, piece 1 of 1: VERDICT lines ['VERDICT VALID'] (exactly [VERDICT VALID]; a clean CAP-STOP only before the last piece), TRIAL lines exactly [TRIAL z9sym]) -> PASS
+C-REF-KEYS (NIB: the float twin's KEYJSON keys ['IhZb'] equal the family's entries) -> PASS
+C-PREP-TWIN (NIH: m3ref_v1_18_1_P2NIH.4.all_z9sym.out of family P2NIH, N 4, J 300.0: radii, rho'^2 and theta0 against m3ref_v1_10_V3N.4.all_z9sym.out, largest relative difference 0.0e+00 (tol 1e-12)) -> PASS
+PLANT-PREP-TWIN (NIH: the reference's rho'^2 times 1 + 1e-9) -> FIRES
+C-HASH-REF (m3ref_v1_18_1_P2NIH.4.all_z9sym.out, sha256 e883ad0cd3120f2f85843669d4e09ea1d5253c2a2bf232a15a9b2dc3dc66fbf4, piece 1 of 1: VERDICT lines ['VERDICT VALID'] (exactly [VERDICT VALID]; a clean CAP-STOP only before the last piece), TRIAL lines exactly [TRIAL z9sym]) -> PASS
+C-REF-KEYS (NIH: the float twin's KEYJSON keys ['IhZh'] equal the family's entries) -> PASS
+C-PREP-TWIN (NBT: m3ref_v1_18_1_P2NBT.4.all_z9sym.out of family P2NBT, N 4, J 300.0: radii, rho'^2 and theta0 against m3ref_v1_10_V3N.4.all_z9sym.out, largest relative difference 0.0e+00 (tol 1e-12)) -> PASS
+PLANT-PREP-TWIN (NBT: the reference's rho'^2 times 1 + 1e-9) -> FIRES
+C-HASH-REF (m3ref_v1_18_1_P2NBT.4.all_z9sym.out, sha256 ddab4a778a6dbbffb85a919e5f9348fc772fa4b922cc6610f37f5e1398a64de2, piece 1 of 1: VERDICT lines ['VERDICT VALID'] (exactly [VERDICT VALID]; a clean CAP-STOP only before the last piece), TRIAL lines exactly [TRIAL z9sym]) -> PASS
+C-REF-KEYS (NBT: the float twin's KEYJSON keys ['W1'] equal the family's entries) -> PASS
+C-PREP-TWIN (NTT: m3ref_v1_18_1_P2NTT.4.all_z9sym.out of family P2NTT, N 4, J 300.0: radii, rho'^2 and theta0 against m3ref_v1_10_V3N.4.all_z9sym.out, largest relative difference 0.0e+00 (tol 1e-12)) -> PASS
+PLANT-PREP-TWIN (NTT: the reference's rho'^2 times 1 + 1e-9) -> FIRES
+C-HASH-REF (m3ref_v1_18_1_P2NTT.4.all_z9sym.out, sha256 07a9379e091f9cd9b839c592c496633e2560b8b2fccc26e74f8c7ccc363c89e9, piece 1 of 1: VERDICT lines ['VERDICT VALID'] (exactly [VERDICT VALID]; a clean CAP-STOP only before the last piece), TRIAL lines exactly [TRIAL z9sym]) -> PASS
+C-REF-KEYS (NTT: the float twin's KEYJSON keys ['W2'] equal the family's entries) -> PASS
+PARITY-ZERO ['IhZh']: written as exact zeros with parity zero (C-ODD and C-ODD-AK in their pieces)
+C-SCOPE (the seven records hold exactly the list's keys of their graphs: NTB 9, DT 9, NIT 1, NIB 1, NIH 1, NBT 1, NTT 1) -> PASS
+PLANT-SCOPE (NTB without one key) -> FIRES
+C-PART-REC (the partition fields of the seven records: every key with RULE_OF's rule, the groups recomputed from the list's encodings, G = len(groups), the float twin's partition, qcap >= 6: NTB True, DT True, NIT True, NIB True, NIH True, NBT True, NTT True) -> PASS
+PLANT-PART-REC (NTB's field with X3's groups 0 and 1 swapped) -> FIRES
+C-REP-B (88 bar parts against m3ref_v1_18_1 z9sym, each on the entry's own partition and against its line, 1.15 x its non-exempt big-rule factors: ratio/line at most 0.870621 (Y4 rem, line 1.150000); smallest ratio 1.000000000 (Y4 far)) -> PASS
+PLANT-REPB (the smallest ratio times 0.5) -> FIRES
+C-REP-AK (88 a_k against m3ref_v1_18_1 z9sym: largest |certified mid - float| / max(1, |float|) 4.62e-13 at IhZ a_3) -> PASS
+PLANT-REPAK (the largest difference plus 1e-6) -> FIRES
+C-ZFLIP (T <-> B: couplings equal and fixed, column factors ['odd', 'even'], bond [(3, 6)] -> [(5, 8)]: True; IhZb a_k ['-0.0215677958252', '-0.0315897010662', '-0.0374616642286', '-0.0399286328237'] against -IhZ a_k ['-0.0215677958252', '-0.0315897010662', '-0.0374616642286', '-0.0399286328237']: overlap [True, True, True, True]) -> PASS
+PLANT-ZFLIP (IhZb against +IhZ: overlap [False, False, False, False]) -> FIRES
+C-FMT (m3_p2_NTB_N4_J300_v1_10_4.json: 9 keys read back exactly from the text by m3_reader_v6_3, the partition field with them; 18283 bytes; sha256 d4db816d688fcaa6d24664e8df394f68bdee791720e93a37312ce403213833af) -> PASS
+C-FMT (m3_p2_DT_N4_J300_v1_10_4.json: 9 keys read back exactly from the text by m3_reader_v6_3, the partition field with them; 16029 bytes; sha256 780a7adb4f508e0d847463684b8c547004453e0ce649af4a75bb12d8e1bae3e7) -> PASS
+C-FMT (m3_p2_NIT_N4_J300_v1_10_4.json: 1 keys read back exactly from the text by m3_reader_v6_3, the partition field with them; 4827 bytes; sha256 e0f1f01d52729b871da92c61997d7e66ff379016b10f311222ba859d6fedd209) -> PASS
+C-FMT (m3_p2_NIB_N4_J300_v1_10_4.json: 1 keys read back exactly from the text by m3_reader_v6_3, the partition field with them; 4830 bytes; sha256 b1ecd3dca3177c4fe41679141c07c7e3176ed6a0576ac5ad592b71e14b944fdf) -> PASS
+C-FMT (m3_p2_NIH_N4_J300_v1_10_4.json: 1 keys read back exactly from the text by m3_reader_v6_3, the partition field with them; 3576 bytes; sha256 f1c54f2f05d0937c96daa6e576093a58842f5c7e2fcf48c0262c56b3326dc66c) -> PASS
+C-FMT (m3_p2_NBT_N4_J300_v1_10_4.json: 1 keys read back exactly from the text by m3_reader_v6_3, the partition field with them; 4829 bytes; sha256 7c44cdf920cc993496f9368144e754e9f92b334a4bd699c90381331aa3bab2d6) -> PASS
+C-FMT (m3_p2_NTT_N4_J300_v1_10_4.json: 1 keys read back exactly from the text by m3_reader_v6_3, the partition field with them; 4834 bytes; sha256 fd196bdb7e6a8ba1bc672a11505a4cae12d50f08e1ba4546d156c39ff400b1d8) -> PASS
+PLANT-FMT (NTB copy without one rnd) -> FIRES
+PLANT-RND (NTB copy with SM3,2,2 rnd = 0; its ak_rad sum 1.6e-05) -> FIRES
+PLANT-READER-PRECERT (m3_reader_v6_3 refuses the mutated NTB copy: precert) -> FIRES
+PLANT-READER-KERNEL (m3_reader_v6_3 refuses the mutated NTB copy: kernel) -> FIRES
+PLANT-READER-PREC (m3_reader_v6_3 refuses the mutated NTB copy: prec) -> FIRES
+PLANT-LAYER-V1_1 (m3_reader_v6_3 refuses the mutated NTB copy: arbeng_ma_v1_1.py) -> FIRES
+PLANT-LAYER-V1_2 (m3_reader_v6_3 refuses the mutated NTB copy: arbeng_ma_v1_2.py) -> FIRES
+PLANT-LAYER-V1_4 (m3_reader_v6_3 refuses the mutated NTB copy: arbeng_ma_v1_4.py) -> FIRES
+PLANT-READER-MOCK (m3_reader_v6_3 refuses the mutated NTB copy: mock_arbeng_v1_4.py) -> FIRES
+PLANT-LAYER-MIX (m3_reader_v6_3 refuses the mutated NTB copy: mix) -> FIRES
+PLANT-VALREC (m3_reader_v6_3 refuses the mutated NTB copy: valrec) -> FIRES
+PLANT-CLAIM (m3_reader_v6_3 refuses the mutated NTB copy: claim) -> FIRES
+PLANT-ARBK (m3_reader_v6_3 refuses the mutated NTB copy: arbk) -> FIRES
+PLANT-ARBB (m3_reader_v6_3 refuses the mutated NTB copy: arbb) -> FIRES
+PLANT-JREF (m3_reader_v6_3 refuses the mutated NTB copy: expected J_REF 150) -> FIRES
+PLANT-N (m3_reader_v6_3 refuses the mutated NTB copy: expected N 3) -> FIRES
+PLANT-KIND (m3_reader_v6_3 refuses the mutated NTB copy: kind) -> FIRES
+PLANT-CLAIM-BALL (m3_reader_v6_3 refuses the mutated NTB copy: claimball) -> FIRES
+PLANT-CLAIM-BALL-MISSING (m3_reader_v6_3 refuses the mutated NTB copy: noclaimball) -> FIRES
+PLANT-PARZERO (m3_reader_v6_3 refuses the NIH copy with IhZh a_1 = 1e-30) -> FIRES
+C-BOUND-RT (m3_reader_v6_3.loads accepts the NTB text under an output that names it and ends VALID) -> PASS
+PLANT-BOUND-VERDICT (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-INVALID (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-TWO (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-SHA (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-NONE (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+C-PREC-ASM (flint ctx.prec 512 before the write) -> PASS
+PLANT-NOWRITE (write_records under a failed gate, an unfired plant and a PRECERT tag: 3 of 3 refused, 0 files opened) -> FIRES
+C-WRITE (m3_p2_DT_N4_J300_v1_10_4.json holds exactly its C-FMT text) -> PASS
+RECORD m3_p2_DT_N4_J300_v1_10_4.json 780a7adb4f508e0d847463684b8c547004453e0ce649af4a75bb12d8e1bae3e7
+C-WRITE (m3_p2_NBT_N4_J300_v1_10_4.json holds exactly its C-FMT text) -> PASS
+RECORD m3_p2_NBT_N4_J300_v1_10_4.json 7c44cdf920cc993496f9368144e754e9f92b334a4bd699c90381331aa3bab2d6
+C-WRITE (m3_p2_NIB_N4_J300_v1_10_4.json holds exactly its C-FMT text) -> PASS
+RECORD m3_p2_NIB_N4_J300_v1_10_4.json b1ecd3dca3177c4fe41679141c07c7e3176ed6a0576ac5ad592b71e14b944fdf
+C-WRITE (m3_p2_NIH_N4_J300_v1_10_4.json holds exactly its C-FMT text) -> PASS
+RECORD m3_p2_NIH_N4_J300_v1_10_4.json f1c54f2f05d0937c96daa6e576093a58842f5c7e2fcf48c0262c56b3326dc66c
+C-WRITE (m3_p2_NIT_N4_J300_v1_10_4.json holds exactly its C-FMT text) -> PASS
+RECORD m3_p2_NIT_N4_J300_v1_10_4.json e0f1f01d52729b871da92c61997d7e66ff379016b10f311222ba859d6fedd209
+C-WRITE (m3_p2_NTB_N4_J300_v1_10_4.json holds exactly its C-FMT text) -> PASS
+RECORD m3_p2_NTB_N4_J300_v1_10_4.json d4db816d688fcaa6d24664e8df394f68bdee791720e93a37312ce403213833af
+C-WRITE (m3_p2_NTT_N4_J300_v1_10_4.json holds exactly its C-FMT text) -> PASS
+RECORD m3_p2_NTT_N4_J300_v1_10_4.json fd196bdb7e6a8ba1bc672a11505a4cae12d50f08e1ba4546d156c39ff400b1d8
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 0.17 s
+VERDICT VALID

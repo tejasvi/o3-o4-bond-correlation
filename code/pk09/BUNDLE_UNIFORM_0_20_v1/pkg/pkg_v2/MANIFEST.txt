@@ -1,0 +1,35 @@
+# RV21_37 package pkg_v2 (UNIF 9.13-9.17), built 2026-10-30T17:04:58Z
+# run: bash code/chain23.sh S "10 3 0.0099 0.62 0.01 0.04 3" "12 4 0.6 1.72 0.03 0.06 3" "14 6 1.7 2.75 0.015 0.035 4" "16 6 2.7 3.0 0.005 0.01 4"
+#      (from the scratch directory; code4/ there = code/ here; the L<=14 quadruple tables are rebuilt into tmp/ if absent)
+# check: python3 code/checkcover.py 1/100 3 out/cover4_S*.ledger  -> out/checkcover_output.txt
+# python 3.14.4; numpy 2.5.3; scipy 1.18.1; python-flint 0.9.0
+# sha256 of every file:
+3ffcd5fb96e15cb082ff774eea3ba99042c789f6c3208ed17c0d4310105da143  ./code/cert2.py
+dece1f93894dfa730364efac2803e7b98a1a95e9e4b38eb42c8b852b7c895cf5  ./code/certgrid.py
+30f636a06b09612d3fefd87654d41cfba9ed2695dce01450eef048b98d5f80a5  ./code/certint4.py
+424a0afca7434fb13127b92c0b1ec7edba212c4639428992c4e19b8a1a12463f  ./code/certlib.py
+ef325623b8a668fb9247ece5d6ffd4ce4cc67fccca89445a1ca64579cebc8e8e  ./code/certlib2.py
+46138ee43a35b1ac74257300d2d9ead94fc038eb2c74187b09265396aaa81e35  ./code/certlib3.py
+5b943e417c6550dbdb4f35512b7dfa6f8564097d58b1c45ea8680279b8bec3e6  ./code/chain23.sh
+87e028c27c014cf2f38cb77362b62e2fcbc009f371fceb4c637dbc14c1512e38  ./code/checkcover.py
+21257f524e012fbc072767c68e09fbc0a809d57d959018df345fd5950699a794  ./code/mkpkg.sh
+fa510385601970c4f999e05006f055ea8a6bdd98b0f5de12fe20be35f60adbbc  ./code/scope40.py
+ed40bf315aabe85f3902c5774afa9c3b5d47cd4df50c1657782e4d888f1aa880  ./code/su2lib.py
+1e45678787bed4ab67122c3ac1b457f75069be343cbf19034b34527ef402774d  ./code/sumledger.awk
+f2e38a5884d6a82cc732654ba4cc3a3ad5c471c198955d76437ff69ab52dbf2b  ./code/test_bd.py
+c7eebc3dd036857e85fde26df8b9bdd9d717042d3cdee66daea3690671f9c37b  ./code/test_tm2.py
+812541ea5ebca270675d439f819e452872ea9bb560915d59fed66e5293e5ab7b  ./code/tm.py
+b7e353a0429df977f3969c2db4ad1669fa2ce5a462592278c4f9620edb43063e  ./code/tm2.py
+808335328b3d90d64f0ec58745ad87294d84a4b68a9bf8522c696e8a061e995d  ./code/versions.py
+64d06595a0baba38cbdeb397ff60162ccbfd5425a3aa42b0e9262372950d0b74  ./out/certint4_S1_1.txt
+c38a95553febd23f6c053c2a3c32e8b346e062c86df722c3bdbf31c6e0fdedec  ./out/certint4_S2_1.txt
+7ec395161eddf263144e2f7f085bc9c5c995e3606b223a05a25ec04a4570fd8e  ./out/certint4_S3_1.txt
+a796612453105af0e847a4eb4c9b8d5b9f2b31e73f03664cbf4ec79cd3b8fa04  ./out/certint4_S3_2.txt
+d62d2fae8375075689a19a4d7f946fb9f2533c7180a666116117f5d1bb588055  ./out/certint4_S4_1.txt
+58e491c7f99b84137d7756fd901b7593436c718e87ea003fc9122bcf1759c3ff  ./out/chain23_S.log
+1c65ef22a50e185188d5509289192a141ff673a2ec86ef5c1f33323b5daddb5f  ./out/checkcover_output.txt
+7d5708ee7b58a3378dbba37e6064174644125abbc131693e5e52e50df3e31b47  ./out/cover4_S1.ledger
+058ed18d6f75c2a32d392eb1ec667b5f9d503c989fc0afaf18deb47f425756fe  ./out/cover4_S2.ledger
+0a63c9886194bafc8b494a0115574124a3750f518791e1b2513ede708abbf540  ./out/cover4_S3.ledger
+d7e2db5b74c49a74492144dd7459848949a74b8100596508dabec7c6a14a6ef5  ./out/cover4_S4.ledger
+a05aec3076f7da0143ba8d7dca75f72f6648cfc9c3a0fe6ced7261b4f14c6b2f  ./out/ledger_summaries.txt

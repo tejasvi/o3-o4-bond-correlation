@@ -1,0 +1,60 @@
+m4_asm_v1 sha256 e085f35d1761ca40dbeda89f4f23058b155418f3b2bd68dcf53d6a370744986e MODE=cert; file pk15/m4_asm_v1.py; python 3.14.4; ctx.prec 256
+C-HASH: 80 pinned files; the kt_cert run manifest's 173 entries, 39 of them pinned here too, equal -> PASS
+C-KTCERT-SRC: kt_cert_v1_8 l.341,342,818,1621,1719,1721,1722,1723,1724 (RHO_M, RHO_E; DELTA; a_m, a_e; LAM_T; kappa_B) equal the lines the reader's constants copy -> PASS
+C-SCAN-PIN: the 8 scan outputs are pinned at kt_cert_v1_8's FIXREFS sha256s (l.273-280) -> PASS
+C-REC: 46 kt_cert and x records: first lines, FORMAT, VERDICT, LAWBASE, RESULT and EXPLICIT exactly -> PASS
+C-X-TIE: 8 x records: producer and sha256 in kt_cert_v1_8's PRODUCERS (l.2169); each g record's HANDOFF-READ x line names the x record and its HANDOFF sha256 -> PASS
+C-LAW300-NEAR: 50 C-NPK, C-NDK and C-TAILM lines, all reading PASS, at least one per record -> PASS
+C-MHAT: M2(b) C-MHAT lines at N = 4 and 3: m1, m2, m3 >= 0 exactly, PASS -> PASS
+C-S9-TRIAL: the S9 records' trial_set is the pinned ts and vacres files at N = 4 and 3 -> PASS
+C-Z-A0: Z_min's constant term is LO_0 = ak_0 - ak_rad_0 of each S9 entry (a0_exact "1" only with a_0 = 1, radius 0): N4 G,0,0 a0_exact 1; N4 G,1,1 a0_exact None; N4 G,3,3 a0_exact None; N3 G,0,0 a0_exact 1; N3 G,1,1 a0_exact None; N3 G,3,3 a0_exact None -> PASS
+C-FAR-W: FAR_CRUDE_v1: every item's weight J-power is at most the record's w (the largest over the kinds using its call) -> PASS
+C-MONO: the Chernoff rates 0.45 a_e/2 and 0.45 kappa_B/2 certainly > 0 -> PASS
+C-MONO-RECORD: the reader's check on the record: C-MONO (C-MONO-FAR4 per far item, C-MONO-GB, Z_min > 0, eps_r(300) < 1), exactly, and C-FMT -> PASS
+C-COPY: the record parsed back: 138 copied keys equal their source tokens by exact string equality -> PASS
+C-LAW300 N=4 t: L(300) 4.4691385320003230e-04, Q [4.4540985209272523e-04, 4.4540985209272528e-04], L/Q_hi - 1 = +0.3377% (expected +0.34%; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW300 N=4 am: L(300) 2.6596473572228277e-04, Q [2.6360354028775112e-04, 2.6360354028775117e-04], L/Q_hi - 1 = +0.8957% (expected +0.89%; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW300 N=4 e1: L(300) 7.1837572096509921e-04, Q [7.1509174343034523e-04, 7.1509174343034534e-04], L/Q_hi - 1 = +0.4592% (expected about +0.4% .. +0.75%; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW300 N=4 e3: L(300) 1.0407340344753290e-03, Q [1.0366097352636429e-03, 1.0366097352636433e-03], L/Q_hi - 1 = +0.3979% (expected about +0.4% .. +0.75%; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW300 N=3 t: L(300) 1.7853819196931171e-04, Q [1.7797719940993128e-04, 1.7797719940993131e-04], L/Q_hi - 1 = +0.3152% (expected +0.32%; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW300 N=3 am: L(300) 1.5622550987961398e-04, Q [1.5364650579083173e-04, 1.5364650579083178e-04], L/Q_hi - 1 = +1.6785% (expected +1.68%; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW300 N=3 e1: L(300) 3.7757606879237658e-04, Q [3.7478794047351934e-04, 3.7478794047351939e-04], L/Q_hi - 1 = +0.7439% (expected about +0.4% .. +0.75%; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW300 N=3 e3: L(300) 4.7145264540449673e-04, Q [4.6939168859097048e-04, 4.6939168859097053e-04], L/Q_hi - 1 = +0.4391% (expected about +0.4% .. +0.75%; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW-SCAN N=4 t: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +0.7629%; allowed -1e-6) -> PASS
+C-LAW-SCAN N=4 am: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +0.7256%; allowed -1e-6) -> PASS
+C-LAW-SCAN N=4 e1: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +0.6630%; allowed -1e-6) -> PASS
+C-LAW-SCAN N=4 e3: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +0.9806%; allowed -1e-6) -> PASS
+C-LAW-SCAN N=3 t: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +0.6546%; allowed -1e-6) -> PASS
+C-LAW-SCAN N=3 am: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +1.2870%; allowed -1e-6) -> PASS
+C-LAW-SCAN N=3 e1: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +0.7623%; allowed -1e-6) -> PASS
+C-LAW-SCAN N=3 e3: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +0.8014%; allowed -1e-6) -> PASS
+C-BUDGET N=4 t (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +0.1418%; J=400 +0.7629%; J=500 +0.8644%; J=600 +0.8376%
+C-BUDGET N=4 am (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +0.6984%; J=400 +0.7256%; J=500 +0.7309%; J=600 +0.7325%
+C-BUDGET N=4 e1 (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +0.3233%; J=400 +0.6630%; J=500 +0.7129%; J=600 +0.7093%
+C-BUDGET N=4 e3 (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +0.1476%; J=400 +0.9806%; J=500 +1.2042%; J=600 +1.1965%
+C-BUDGET N=4 (INFO, FLOAT): A_t + A_am tally 1.989% = largest losses 0.864% + 0.732% and Z_min costs 0.196% + 0.196% (Z of the RESULT: (bound_hi/Q_lo)^2), against the corner budget 2.7%
+C-BUDGET N=3 t (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +0.1781%; J=400 +0.6546%; J=500 +0.7112%; J=600 +0.6781%
+C-BUDGET N=3 am (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +1.5389%; J=400 +1.4232%; J=500 +1.3427%; J=600 +1.2870%
+C-BUDGET N=3 e1 (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +0.5951%; J=400 +0.7943%; J=500 +0.7919%; J=600 +0.7623%
+C-BUDGET N=3 e3 (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +0.1730%; J=400 +0.8014%; J=500 +0.9256%; J=600 +0.8953%
+C-BUDGET N=3 (INFO, FLOAT): A_t + A_am tally 2.525% = largest losses 0.711% + 1.539% and Z_min costs 0.137% + 0.137% (Z of the RESULT: (bound_hi/Q_lo)^2), against the corner budget 3.0%
+PLANT-SWAP -> FIRES (N4 t's and N4 e1's M1 exchanged: C-LAW300 on t or on e1 fails)
+PLANT-MONO-KAPPA -> FIRES (kappa_B := 0: the Chernoff rates fails)
+PLANT-MONO-FAR -> FIRES (C-MONO-FAR4 N4 t oSS: (w + p)/c is above 300)
+PLANT-MOCK -> FIRES (C-REC g.tn4: FORMAT lines are not exactly [FORMAT KT_CERT_RECORD_v1_8 CERTIFIED])
+PLANT-PRECERT -> FIRES (C-REC g.tn4: FORMAT lines are not exactly [FORMAT KT_CERT_RECORD_v1_8 CERTIFIED])
+PLANT-VERDICT -> FIRES (C-REC g.tn4: VERDICT lines are not exactly [VERDICT VALID])
+PLANT-PIN -> FIRES (C-HASH: pk02/out_kt_cert_v1_8_g.tn4.out does not match its pin)
+PLANT-LAWBASE-DUP -> FIRES (C-REC LAWBASE N=4 t: a key twice or a key without its value)
+PLANT-LAWBASE-MISS -> FIRES (C-REC LAWBASE N=4 t: the keys are not the allow-list)
+PLANT-EXPLICIT -> FIRES (C-REC EXPLICIT N=4 t: m1 carries 3 values, not 4)
+PLANT-NEAR -> FIRES (C-LAW300-NEAR C-TAILM N=4 t: 1 lines, not all of that head and reading PASS)
+PLANT-S9-TRIAL -> FIRES (C-S9-TRIAL N=4: trial_set ts is not the pinned ts_N4_J170_D_S_z9sym_v1.json)
+PLANT-ORDER -> FIRES (C-COPY N4_T_M1: the record value is not its LAWBASE token M1)
+PLANT-SCAN -> FIRES (N4 t scan near at J = 500 raised by 2%: C-LAW-SCAN fails)
+PLANT-X-TIE -> FIRES (C-X-TIE x.tn4: the g record's HANDOFF-READ x line does not match the x record's HANDOFF line)
+PLANT-FAR-W -> FIRES (C-FAR-W t oSS: the record w 1 is below the weight J-power 2 (or not an int <= 2))
+PLANT-Z-A0 -> FIRES (C-Z-A0 N=4 G,1,1: a0_exact "1" but a_0 is not 1 with radius 0)
+PLANT-Z-MID -> FIRES (an entry without a0_exact: Z_min's constant term equals the midpoint a_0 fails)
+RECORD M4_KV_v1.txt 4bafdcc1c41cf44f6b618644d7b0fdd404422aa5ffeadcfaadae02183e9eee51
+VERDICT VALID

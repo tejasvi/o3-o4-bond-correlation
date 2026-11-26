@@ -1,0 +1,179 @@
+m3_run_r0b_v1_3 item W2a.4 LIM 540; script sha256 9fceb2477ba8c474ca0c517c94fcc21f9fe4a7b91d11071a4f0d6d076aeec5cf; python 3.14.4
+STAGE-CPU C-HASH start 0.05 s
+C-HASH (10 modules, the kernel files, 19 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.13 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v16_1: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=; 6 layer calls in E2_ma/lp_moment_ma/lp_ma/pos_ma/E2_ball/e2, each with fallback=False, 6 wanted) -> PASS
+PLANT-CALLER (m3_bar_v16_1 with one E2_combine call's plan= removed) -> FIRES
+PLANT-CALLER-FLAG (m3_bar_v16_1 with pos_ma's fallback=False dropped) -> FIRES
+C-SERIES (no *_series( call in 10 modules, the kernel files and this script) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-330.000000000 +/- 2.94e-12] overlaps the layer's [-330.000000000 +/- 2.64e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU smoke W2 start 0.15 s
+C-LIST (ROUTE0B 55dfd958, ROUTE0L0 44d4c44e, D4BULK 2633b1b9: certify + check keys W2 25 + 0, W3e 42 + 7, W3f 4 + 0, D4L0 12 + 0, D4ML0 16 + 0, FA 40 + 0; K 3; failing none) -> PASS
+PLANT-LIST (W2 without its first key) -> FIRES
+C-ENC (the four sample encodings give the conventions' tuples: True; every st beside p: True; pair forms outside the list pairs: none) -> PASS
+PLANT-ENC ([st, 0, 0] refused: True; W2 G,0,1 without [p, 0]: beside_p False) -> FIRES
+C-PARITY-SET (the keys whose factors pass C-ODD on their family graph: {'W2': ['G,0,2', 'G,1,2', 'G,2,3', 'K1,2'], 'W3e': ['M,0,2,00', 'M,1,2,00', 'M,2,3,00'], 'FA': ['1,2', '1,5', '1,8']}; ZERO and the marks equal: True) -> PASS
+PLANT-ODD (W2 G,0,2 with S[1][2] + 1e-12: a factor is neither exactly even nor exactly odd: [None, 'even', 'even']) -> FIRES
+C-ALIAS (identity and mirror aliases recomputed from the factor tuples equal ALIASES: True; not computed: W2 4, W3e 9, W3f 0, D4L0 0, D4ML0 0, FA 0) -> PASS
+PLANT-ALIAS (W2 KE,0 is CE's identity twin; with its bond moved to (2, 5) it must not be) -> FIRES
+C-SYM-MAP (the check keys {'W3e': ['M,1,0,e2', 'M,2,0,e2', 'M,2,1,e2', 'M,3,0,e2', 'M,3,1,e2', 'M,3,2,e2', 'ME1']} mirror their MIRRORS keys exactly, couplings and list pairs mirror-invariant; failing none) -> PASS
+PLANT-SYM-MAP (W3e M,1,0,e2 with S[0][1] + 1e-12: its mirror image must miss M,0,1,e1) -> FIRES
+C-RULE-OF (133 computed keys: std 36, col 63, colh 32, colb 2; RULE_TAB keys 34, all bonded computed keys: True) -> PASS
+PLANT-RULE-OF (W2 Z with [xi, [0, 3]] added: col; Z: std) -> FIRES
+C-AB (W2: vac columns [0, 1] tagged A, A, B: True; (6A - 3)^2 in [20.999999999999996, 21.000000000000004], (12B + 6A - 3)^2 in [44.99999999999999, 45.00000000000001], widths 2.2e-39, 8.1e-39: identities True; A in [1.2637626158259732, 1.2637626158259734], B in [0.17713568646196073, 0.17713568646196076]; 6A - 3 > 0, 12B + 6A - 3 > 0, A > 0, B > 0: (True, True, True, True)) -> PASS
+PLANT-AB (coupling 1 in place of A: refused True) -> FIRES
+PLANT-AB-ROOT-A (the other A root (3 - sqrt 21)/6 with B (sqrt 21 + 3 sqrt 5)/12: both identities hold True; sign tests (False, True, False, True); refused True) -> FIRES
+PLANT-AB-ROOT-B (A right with the other B root -(3 sqrt 5 + sqrt 21)/12: both identities hold True; sign tests (True, False, True, False); refused True) -> FIRES
+C-GRAPH-LIST (W2: the columns ['vac', 'vac'] give V 6 and 9 edges; the list's 8 pairs [(0, 1), (0, 2), (0, 3), (1, 2), (2, 5), (3, 4), (3, 5), (4, 5)], F 14 (the list: 14); the entries use 8 of them) -> PASS
+PLANT-GRAPH-LIST (W2: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-RULE (VD: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 4.5e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (VD: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 6 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 2.9079446291720417, 2.9064250871702875) -> PASS
+C-PREP-REF (VD: m3ref_v1_10_V3D.4.0-32_z9sym.out PREPJSON of family V3D, N 4, J 300.0) -> PASS
+C-PREP-GRAPH (W2: the prep graph has V 6, F 6 and pairs [] (the family graph: F 14); against the family graph, V, N, S_gauge and the 9 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 6 x 6 vertex block of Gam, 6 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo (C-4)) -> PASS
+PLANT-PREP-EDGE (W2: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (W2: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (W2: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (W2: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+C-RULE-SIZE (W2: 8 bonded computed keys, the size choice (col if its largest table <= 12000000 moments, else colh or colb at G <= 3, else colh) equals RULE_TAB; failing none) -> PASS
+PLANT-RULE-SIZE (W2: V,1 moved to col must disagree with its size choice colh) -> FIRES
+PARTITION KE,1 rule col: G 2: {["p", 0], ["xi", [0, 3]]} | {["st", 1, 1], ["p", 1]}
+C-PART-ID (KE,1 rule col: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (KE,1: the groups against the rule col recomputed from the list's encodings: equal) -> PASS
+PLAN KE,1: parity free, rule col, G 2, qcap 8 (pair degree 6), a_k Dn 8 over 13 forms; 24 table requests, the largest 9^13 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) ['g|0|ser|3|4|u 3108105 moments', 'g|0|ser|3|4|c 3108105 moments', 'g|0|barp|0|4|p 10518300 moments']; 0.12 s
+PARTITION KE,2 rule col: G 2: {["p", 0], ["xi", [0, 3]]} | {["st", 2, 1], ["p", 1]}
+C-PART-ID (KE,2 rule col: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (KE,2: the groups against the rule col recomputed from the list's encodings: equal) -> PASS
+PLAN KE,2: parity free, rule col, G 2, qcap 8 (pair degree 6), a_k Dn 8 over 13 forms; 24 table requests, the largest 9^13 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) ['g|0|ser|3|4|u 3108105 moments', 'g|0|ser|3|4|c 3108105 moments', 'g|0|barp|0|4|p 10518300 moments']; 0.12 s
+PARTITION KE,3 rule col: G 2: {["p", 0], ["xi", [0, 3]]} | {["st", 3, 1], ["p", 1]}
+C-PART-ID (KE,3 rule col: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (KE,3: the groups against the rule col recomputed from the list's encodings: equal) -> PASS
+PLAN KE,3: parity free, rule col, G 2, qcap 8 (pair degree 6), a_k Dn 8 over 13 forms; 24 table requests, the largest 9^13 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) ['g|0|ser|3|4|u 3108105 moments', 'g|0|ser|3|4|c 3108105 moments', 'g|0|barp|0|4|p 10518300 moments']; 0.14 s
+PARTITION CE rule col: G 2: {["p", 0], ["xi", [0, 3]]} | {["p", 1]}
+C-PART-ID (CE rule col: the 2 groups hold exactly the entry's 3 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (CE: the groups against the rule col recomputed from the list's encodings: equal) -> PASS
+PLAN CE: parity free, rule col, G 2, qcap 8 (pair degree 5), a_k Dn 7 over 13 forms; 22 table requests, the largest 8^13 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) ['g|0|ser|3|4|u 3108105 moments', 'g|0|ser|3|4|c 3108105 moments', 'g|0|barp|0|4|p 10518300 moments']; 0.08 s
+PARTITION V,1 rule colh: G 3: {["st", 1, 0], ["p", 0]} | {["p", 1]} | {["xi", [2, 5]]}
+C-PART-ID (V,1 rule colh: the 3 groups hold exactly the entry's 4 factors as a multiset, none empty; G 3) -> PASS
+C-PART-RULE (V,1: the groups against the rule colh recomputed from the list's encodings: equal) -> PASS
+PLAN V,1: parity free, rule colh, G 3, qcap 8 (pair degree 6), a_k Dn 8 over 13 forms; 33 table requests, the largest 9^13 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) ['g|0|barp|0|6|p 5245786 moments']; 0.10 s
+PARTITION V,2 rule colh: G 3: {["st", 2, 0], ["p", 0]} | {["p", 1]} | {["xi", [2, 5]]}
+C-PART-ID (V,2 rule colh: the 3 groups hold exactly the entry's 4 factors as a multiset, none empty; G 3) -> PASS
+C-PART-RULE (V,2: the groups against the rule colh recomputed from the list's encodings: equal) -> PASS
+PLAN V,2: parity free, rule colh, G 3, qcap 8 (pair degree 6), a_k Dn 8 over 13 forms; 33 table requests, the largest 9^13 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) ['g|0|barp|0|6|p 5245786 moments']; 0.11 s
+PARTITION V,3 rule colh: G 3: {["st", 3, 0], ["p", 0]} | {["p", 1]} | {["xi", [2, 5]]}
+C-PART-ID (V,3 rule colh: the 3 groups hold exactly the entry's 4 factors as a multiset, none empty; G 3) -> PASS
+C-PART-RULE (V,3: the groups against the rule colh recomputed from the list's encodings: equal) -> PASS
+PLAN V,3: parity free, rule colh, G 3, qcap 8 (pair degree 6), a_k Dn 8 over 13 forms; 33 table requests, the largest 9^13 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) ['g|0|barp|0|6|p 5245786 moments']; 0.12 s
+PARTITION CF rule col: G 2: {["p", 0], ["xi", [2, 5]]} | {["p", 1]}
+C-PART-ID (CF rule col: the 2 groups hold exactly the entry's 3 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (CF: the groups against the rule col recomputed from the list's encodings: equal) -> PASS
+PLAN CF: parity free, rule col, G 2, qcap 8 (pair degree 5), a_k Dn 7 over 13 forms; 22 table requests, the largest 8^13 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) ['g|0|ser|3|4|u 3108105 moments', 'g|0|ser|3|4|c 3108105 moments', 'g|0|barp|0|4|p 10518300 moments']; 0.08 s
+PARTITION G,1,1 rule std: G 2: {["st", 1, 0], ["st", 1, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,1,1 rule std: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,1,1: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN G,1,1: parity free, rule std, G 2, qcap 8 (pair degree 6), a_k Dn 8 over 12 forms; 22 table requests, the largest 9^12 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) ['g|0|barp|0|4|p 2760681 moments']; 1.97 s
+PARTITION G,1,2 rule std: G 2: {["st", 1, 0], ["st", 2, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,1,2 rule std: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,1,2: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN G,1,2: parity zero, rule std, G 2, qcap 8 (pair degree 6), a_k Dn 8 over 12 forms; 1 table requests, the largest 9^12 (a_k); 1.92 s
+PARTITION G,1,3 rule std: G 2: {["st", 1, 0], ["st", 3, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,1,3 rule std: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,1,3: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN G,1,3: parity free, rule std, G 2, qcap 8 (pair degree 6), a_k Dn 8 over 12 forms; 22 table requests, the largest 9^12 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) ['g|0|barp|0|4|p 2760681 moments']; 2.06 s
+PARTITION G,2,2 rule std: G 2: {["st", 2, 0], ["st", 2, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,2,2 rule std: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,2,2: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN G,2,2: parity free, rule std, G 2, qcap 8 (pair degree 6), a_k Dn 8 over 12 forms; 22 table requests, the largest 9^12 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) ['g|0|barp|0|4|p 2760681 moments']; 2.03 s
+PARTITION G,2,3 rule std: G 2: {["st", 2, 0], ["st", 3, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,2,3 rule std: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,2,3: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN G,2,3: parity zero, rule std, G 2, qcap 8 (pair degree 6), a_k Dn 8 over 12 forms; 1 table requests, the largest 9^12 (a_k); 1.99 s
+PARTITION G,3,3 rule std: G 2: {["st", 3, 0], ["st", 3, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,3,3 rule std: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,3,3: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN G,3,3: parity free, rule std, G 2, qcap 8 (pair degree 6), a_k Dn 8 over 12 forms; 22 table requests, the largest 9^12 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) ['g|0|barp|0|4|p 2760681 moments']; 2.12 s
+PARTITION G,0,1 rule std: G 2: {["st", 1, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,0,1 rule std: the 2 groups hold exactly the entry's 3 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,0,1: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN G,0,1: parity free, rule std, G 2, qcap 8 (pair degree 5), a_k Dn 7 over 12 forms; 22 table requests, the largest 8^12 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) none; 0.08 s
+PARTITION G,0,2 rule std: G 2: {["st", 2, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,0,2 rule std: the 2 groups hold exactly the entry's 3 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,0,2: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN G,0,2: parity zero, rule std, G 2, qcap 8 (pair degree 5), a_k Dn 7 over 12 forms; 1 table requests, the largest 8^12 (a_k); 0.03 s
+PARTITION G,0,3 rule std: G 2: {["st", 3, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,0,3 rule std: the 2 groups hold exactly the entry's 3 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,0,3: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN G,0,3: parity free, rule std, G 2, qcap 8 (pair degree 5), a_k Dn 7 over 12 forms; 22 table requests, the largest 8^12 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) none; 0.09 s
+PARTITION K1,1 rule std: G 2: {["p", 0]} | {["st", 1, 1], ["p", 1]}
+C-PART-ID (K1,1 rule std: the 2 groups hold exactly the entry's 3 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (K1,1: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN K1,1: parity free, rule std, G 2, qcap 8 (pair degree 5), a_k Dn 7 over 12 forms; 22 table requests, the largest 8^12 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) none; 0.08 s
+PARTITION K1,2 rule std: G 2: {["p", 0]} | {["st", 2, 1], ["p", 1]}
+C-PART-ID (K1,2 rule std: the 2 groups hold exactly the entry's 3 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (K1,2: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN K1,2: parity zero, rule std, G 2, qcap 8 (pair degree 5), a_k Dn 7 over 12 forms; 1 table requests, the largest 8^12 (a_k); 0.03 s
+PARTITION K1,3 rule std: G 2: {["p", 0]} | {["st", 3, 1], ["p", 1]}
+C-PART-ID (K1,3 rule std: the 2 groups hold exactly the entry's 3 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (K1,3: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN K1,3: parity free, rule std, G 2, qcap 8 (pair degree 5), a_k Dn 7 over 12 forms; 22 table requests, the largest 8^12 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) none; 0.09 s
+PARTITION Z rule std: G 2: {["p", 0]} | {["p", 1]}
+C-PART-ID (Z rule std: the 2 groups hold exactly the entry's 2 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (Z: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+PLAN Z: parity free, rule std, G 2, qcap 8 (pair degree 4), a_k Dn 6 over 12 forms; 20 table requests, the largest 7^12 (a_k); big set []; arb risk (moments x 1.2e-4 s > 300 s, arb) none; 0.05 s
+AK-TABLE-PLAN W2: forms 13 (7 pairs), D 8, qcap 8: 203490 moments, about 4 s
+AK-TABLE-PLAN W2: forms 13 (7 pairs), D 8, qcap 8: 203490 moments, about 4 s
+AK-TABLE-PLAN W2: forms 12 (6 pairs), D 8, qcap 8: 125970 moments, about 2 s
+AK-TABLE-PLAN W2: 3 distinct a_k tables, 532950 moments, about 10 s if each is built once
+GDATA-CPU Z: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 6 caps {1: 8}: 1322 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 6 caps {1: 8}: 0.23 s
+AK-TERMS Z: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 2.43e-09); totals radius / |mid| ['4.55e-15', '8.25e-14', '2.69e-12', '1.13e-10']; every total passes
+UNIT Z ak: 0.24 s
+C-SMOKE-AK (W2 Z: a_k ['1', '1.17195527886', '1.53772459434', '1.89852798104'] against the list's ak_float [1.0, 1.1719552788587524, 1.5377245943411513, 1.8985279810392375]: largest |mid - float| / max(1, |float|) 4.21e-15; 0.28 s) -> PASS
+GDATA-CPU Z (planted): 0.91 s (group series, majorants and F_i)
+AK-TERMS Z (planted): 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 2.43e-09); totals radius / |mid| ['4.55e-15', '8.23e-14', '2.68e-12', '1.13e-10']; every total passes
+UNIT Z (planted) ak: 0.01 s
+PLANT-SMOKE-PATH (Z with its first p factor's q1 times 1 + 1e-6: largest difference 4.28e-07) -> FIRES
+PLANT-PART-DROP (KE,1: its first group without its first factor ['p', 0]) -> FIRES
+PLANT-PART-DUP (KE,1 with its first factor ['p', 0] doubled) -> FIRES
+PLANT-PART-MOVE (KE,1 with ['p', 0] moved from group 0 to group 1: C-PART-ID passes, C-PART-RULE must fail) -> FIRES
+C-GCACHE (W2: 45 groups of 21 entries, 17 distinct factor-tuple lists, each with its own entry under its repr) -> PASS
+PLANT-GCACHE (KE,1 group 0 and a copy with its first factor moved: one column key 0, different factor tuples) -> FIRES
+PLANT-GCACHE-RUN (W2: the gate's test on the cache with two different tuple lists sharing one entry: refused; without one list's entry: refused) -> FIRES
+C-BARPOS-INFO W2: 5 distinct groups of odd-G entries, 100 evaluations of Fbar_0..4 at ['X = 0', 'X = 1', 'X_f = 1 + (f mod 3)', 'X_f = 0 (f even), 2 (f odd)']; certainly negative: none; coefficients with a negative lower end 3266 of 6602 (0.26 s)
+PLANT-BARPOS (X_0 - X_1 flagged at ['X_f = 1 + (f mod 3)', 'X_f = 0 (f even), 2 (f odd)']) -> FIRES
+PLANT-AK-TOTAL (ak_failing at FALLBACK_REL 0.001 on totals of radius 3e-3 |mid|, midpoint 0 and radius 1e-7 |mid|: refused [0, 1], [0, 1] wanted) -> FIRES
+PLANT-AK-ZERO (has0 on [1e-9, 2e-9] must fail and on [-1e-9, 2e-9] pass) -> FIRES
+PLANT-NORM-REL (entry_moment at NORM_REL 0.02 on [0.97, 1.03] sqrt, [0.91, 1.09] p 6, [0.85, 1.15] p 6, [0.94, 1.06] sqrt and a MAFallback: ['ma', 'ma', 'fb', 'fb', 'fb']; ma, ma, fb, fb, fb wanted) -> FIRES
+PLANT-BIGRULE (declared set {kA}: kA on a 10-moment table with [0.97, 1.03] sqrt, [0.85, 1.15] p 6 and a MAFallback, kB on a 1e7-moment table with [0.85, 1.15] p 6: ['ma', 'big', 'fb', 'fb']; ma, big, fb, fb wanted; the big one's inflation 2.356707e-02 against 1.15^(1/6) - 1 = 2.356707e-02) -> FIRES
+PLANT-TABLE-COUNT (layer tables on 3 forms at D 4: 35 moments, and with the pair form capped at 1: 25; table_moments 35 and 25 wanted) -> FIRES
+PLANT-PARTLINE (part_lines on m0u 0.1, a barp 0.2, a c series norm 0.05 and an undefined u series norm: {'rem': 1.32825, 'tail': 1.265, 'ann': 1.38, 'far': 1.15}, {'rem': 1.32825, 'tail': 1.265, 'ann': 1.38, 'far': 1.15} wanted; part_ok refuses rem at its line x (1 + 1e-6) and a part without big-rule factors at 1.16) -> FIRES
+PLANT-PARTLINE-EXEMPT (an exempt factor of inflation 0.34 beside a non-exempt 0.0666: unwidened rem line 1.226590000, widened 1.643630600; a part at the unwidened line x (1 + 1e-6) must fail, the widened line would pass it) -> FIRES
+PLANT-BIGCAP (cap_over at a cap of 0.10 on inflations 0.05, 0.34 and undefined, with k2 exempt and without) -> FIRES
+PLANT-EXEMPT-E (exempt_over with declared e 4.795: e = 1.1 x 4.795 + 1 ulp refused, e = 1.1 x 4.795 passed; e 4.795 against a declared e lowered by 20%, and an undefined e, refused) -> FIRES
+PLANT-NORM-OK (norm_ok on radius 2.1e-2, midpoint 0 and radius 1.9e-2: [False, False, True]; [False, False, True] wanted) -> FIRES
+PLANT-BUDGET (budget_ok must refuse a norm radius 1.05 NORM_REL and rnd 0.11 x bar, and pass 0.95 NORM_REL with rnd 0.09 x bar) -> FIRES
+C-PACK-PLAN (W2: the bound of all 21 computed keys asks the kernel for 415 table requests, distinct within each key; the largest code range (D + 1)^forms is 9^13 = 2.542e+12 (KE,1, a_k), below 9.0e+18; the largest lp-norm D is 36 (<= 64)) -> PASS
+PLANT-PACK-PLAN (a request of D 16 over 16 forms, 17^16 = 4.866e+19, must be refused, and the control D 14 over 16 forms, 15^16 = 6.568e+18, accepted) -> FIRES
+FALLBACKS 0 (MAFallback recomputes in arb, INFO)
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 39.21 s
+VERDICT VALID

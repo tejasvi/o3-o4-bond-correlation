@@ -1,0 +1,183 @@
+kt_lbu_g34_pk06_v1 mode grid LIM 250 K 3 SET grid | python 3.14.4 | python-flint 0.9.0 | prec 256 | sha256 8b7aff007c65f9518ccc7e88c1888883e83b64b3e94e39b99c30e74d16a8dce7
+ARGS grid: K 3, P_3 x P_4, N 4, J1 350 (t in (0, 1/350]), ORBS G14, SIGS 1/4, CONTROLS none, MEMSTOP 6500 MB
+CHECK C-GRAPH-G PASS P_3 x P_4: tau 2415 (expected 2415); Foster 11 (V - 1 = 11); L+ invariant under both reflections True
+CHECK C-ENUM PASS pairs 72, orbits 19, orbits with a middle-row edge 8; reference counts (72, 19, 8)
+CHECK C-ORBIT-DELTA PASS Delta^2 equal over every orbit: True
+ORBIT G01 (h00, h10): size 4, middle-row True, distance 1, Delta -48/115, Delta^2 2304/13225, c2(N=4) 864/13225 (6.533081e-02); members (h00, h10) (h02, h12) (h10, h20) (h12, h22)
+ORBIT G02 (h00, h11): size 4, middle-row True, distance 1, Delta -2/23, Delta^2 4/529, c2(N=4) 3/1058 (2.835539e-03); members (h00, h11) (h02, h11) (h11, h20) (h11, h22)
+ORBIT G03 (h00, h12): size 4, middle-row True, distance 2, Delta -2/115, Delta^2 4/13225, c2(N=4) 3/26450 (1.134216e-04); members (h00, h12) (h02, h10) (h10, h22) (h12, h20)
+ORBIT G04 (h00, h21): size 4, middle-row False, distance 2, Delta -16/161, Delta^2 256/25921, c2(N=4) 96/25921 (3.703561e-03); members (h00, h21) (h01, h20) (h01, h22) (h02, h21)
+ORBIT G05 (h00, h22): size 2, middle-row False, distance 3, Delta -94/2415, Delta^2 8836/5832225, c2(N=4) 2209/3888150 (5.681365e-04); members (h00, h22) (h02, h20)
+ORBIT G06 (h00, v02): size 4, middle-row False, distance 1, Delta 314/2415, Delta^2 98596/5832225, c2(N=4) 24649/3888150 (6.339519e-03); members (h00, v02) (h02, v01) (h20, v12) (h22, v11)
+ORBIT G07 (h00, v03): size 4, middle-row False, distance 2, Delta 136/2415, Delta^2 18496/5832225, c2(N=4) 2312/1944075 (1.189255e-03); members (h00, v03) (h02, v00) (h20, v13) (h22, v10)
+ORBIT G08 (h00, v10): size 4, middle-row False, distance 1, Delta -416/2415, Delta^2 173056/5832225, c2(N=4) 21632/1944075 (1.112714e-02); members (h00, v10) (h02, v13) (h20, v00) (h22, v03)
+ORBIT G09 (h00, v11): size 4, middle-row False, distance 1, Delta 176/2415, Delta^2 30976/5832225, c2(N=4) 3872/1944075 (1.991693e-03); members (h00, v11) (h02, v12) (h20, v01) (h22, v02)
+ORBIT G10 (h00, v12): size 4, middle-row False, distance 2, Delta 146/2415, Delta^2 21316/5832225, c2(N=4) 5329/3888150 (1.370575e-03); members (h00, v12) (h02, v11) (h20, v02) (h22, v01)
+ORBIT G11 (h00, v13): size 4, middle-row False, distance 3, Delta 94/2415, Delta^2 8836/5832225, c2(N=4) 2209/3888150 (5.681365e-04); members (h00, v13) (h02, v10) (h20, v03) (h22, v00)
+ORBIT G12 (h01, h10): size 4, middle-row True, distance 1, Delta -2/23, Delta^2 4/529, c2(N=4) 3/1058 (2.835539e-03); members (h01, h10) (h01, h12) (h10, h21) (h12, h21)
+ORBIT G13 (h01, h11): size 2, middle-row True, distance 1, Delta -10/23, Delta^2 100/529, c2(N=4) 75/1058 (7.088847e-02); members (h01, h11) (h11, h21)
+ORBIT G14 (h01, v00): size 4, middle-row False, distance 1, Delta -30/161, Delta^2 900/25921, c2(N=4) 675/51842 (1.302033e-02); members (h01, v00) (h01, v03) (h21, v10) (h21, v13)
+ORBIT G15 (h01, v10): size 4, middle-row False, distance 2, Delta -16/161, Delta^2 256/25921, c2(N=4) 96/25921 (3.703561e-03); members (h01, v10) (h01, v13) (h21, v00) (h21, v03)
+ORBIT G16 (h01, v11): size 4, middle-row False, distance 1, Delta -18/161, Delta^2 324/25921, c2(N=4) 243/51842 (4.687319e-03); members (h01, v11) (h01, v12) (h21, v01) (h21, v02)
+ORBIT G17 (h10, v02): size 4, middle-row True, distance 1, Delta -8/115, Delta^2 64/13225, c2(N=4) 24/13225 (1.814745e-03); members (h10, v02) (h10, v12) (h12, v01) (h12, v11)
+ORBIT G18 (h10, v03): size 4, middle-row True, distance 2, Delta -2/115, Delta^2 4/13225, c2(N=4) 3/26450 (1.134216e-04); members (h10, v03) (h10, v13) (h12, v00) (h12, v10)
+ORBIT G19 (h11, v00): size 4, middle-row True, distance 1, Delta 2/23, Delta^2 4/529, c2(N=4) 3/1058 (2.835539e-03); members (h11, v00) (h11, v03) (h11, v10) (h11, v13)
+SELECT G14 (h01, v00)
+SERIES series G14 (h01, v00) N=4 K=3: K 3, terms per key {('1', 0): [1, 41, 770, 8682], ('e', 0): [1, 44, 887, 10756], ('f', 1): [1, 44, 887, 10758], ('ef', 1): [1, 47, 1013, 13165]}, cpu 0.00 s
+TABLE series G14 (h01, v00) N=4 K=3 T0: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.38 s
+RSS series G14 (h01, v00) N=4 K=3 T0: peak 51 MB
+CHECK C-GAUSS G14 (h01, v00) N=4 K=3 PASS c2 = 675/51842 = (N-1) Delta^2 / 8: True
+R-SERIES G14 (h01, v00) N=4 K=3: c2 675/51842 (1.302033e-02), c3 1033572901/201569472300 (5.127626e-03), c4 7564771788071/2089952916595320 (3.619590e-03); central value at t = 1/350 1.303501e-02 = 1.001127e+00 c2
+CHECK C-EXACT G14 (h01, v00) N=4 K=3 T0 PASS 10 of 10
+PLANT PLANT-MOM G14 (h01, v00) N=4 K=3 T0 FIRED one moment + 1e-20: 1 of 10 differ
+PLANT PLANT-FALSE-MOM G14 (h01, v00) N=4 K=3 E=0 FIRED A_ef(0) - 2 c2, zero errors: 64 negative cells, min -1.310766e-02
+SERIES sym G14 (h01, v03) N=4: K 2, terms per key {('1', 0): [1, 41, 770], ('e', 0): [1, 44, 887], ('f', 1): [1, 44, 887], ('ef', 1): [1, 47, 1013]}, cpu 0.00 s
+TABLE sym G14 (h01, v03) N=4 T0: n 3, caps {0: 4, 1: 4, 2: 4}, 7280 moments, cpu 0.14 s
+RSS sym G14 (h01, v03) N=4 T0: peak 51 MB
+CHECK C-SYM G14 (h01, v00) N=4 K=3 PASS second member (h01, v03): a_k (k <= 2) equal
+SERIES cert G14 (h01, v00) N=4 K=3: K 3, terms per key {('1', 0): [1, 41, 770, 8682], ('e', 0): [1, 44, 887, 10756], ('f', 1): [1, 44, 887, 10758], ('ef', 1): [1, 47, 1013, 13165]}, cpu 0.00 s
+TABLE cert G14 (h01, v00) N=4 K=3 T0: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.37 s
+RSS cert G14 (h01, v00) N=4 K=3 T0: peak 54 MB
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T1 PASS tilt 7/3200
+MOMDEG cert G14 (h01, v00) N=4 K=3 T1 k=1: 15 terms, cpu 0.40 s, peak RSS 54 MB; next 103 terms, predicted peak 81 MB
+MOMDEG cert G14 (h01, v00) N=4 K=3 T1 k=2: 118 terms, cpu 0.40 s, peak RSS 54 MB; next 532 terms, predicted peak 72 MB
+MOMDEG cert G14 (h01, v00) N=4 K=3 T1 k=3: 650 terms, cpu 0.40 s, peak RSS 54 MB; next 2171 terms, predicted peak 67 MB
+MOMDEG cert G14 (h01, v00) N=4 K=3 T1 k=4: 2821 terms, cpu 0.40 s, peak RSS 54 MB; next 7462 terms, predicted peak 64 MB
+MOMDEG cert G14 (h01, v00) N=4 K=3 T1 k=5: 10283 terms, cpu 0.41 s, peak RSS 54 MB; next 22477 terms, predicted peak 62 MB
+MOMDEG cert G14 (h01, v00) N=4 K=3 T1 k=6: 32760 terms, cpu 0.44 s, peak RSS 57 MB; next 60944 terms, predicted peak 79 MB
+MOMDEG cert G14 (h01, v00) N=4 K=3 T1 k=7: 93704 terms, cpu 0.57 s, peak RSS 75 MB; next 151606 terms, predicted peak 210 MB
+MOMDEG cert G14 (h01, v00) N=4 K=3 T1 k=8: 245310 terms, cpu 1.02 s, peak RSS 126 MB; next 350948 terms, predicted peak 538 MB
+MOMDEG cert G14 (h01, v00) N=4 K=3 T1 k=9: 596258 terms, cpu 2.40 s, peak RSS 225 MB; next 764218 terms, predicted peak 1101 MB
+MOMDEG cert G14 (h01, v00) N=4 K=3 T1 k=10: 1360476 terms, cpu 6.35 s, peak RSS 459 MB; next 1410864 terms, predicted peak 2141 MB
+MOMDEG cert G14 (h01, v00) N=4 K=3 T1 k=11: 2771340 terms, cpu 14.78 s, peak RSS 958 MB; next 1352078 terms, predicted peak 2724 MB
+MOMDEG cert G14 (h01, v00) N=4 K=3 T1 k=12: 4123418 terms, cpu 23.58 s, peak RSS 2030 MB; next 2704156 terms, predicted peak 3975 MB
+TABLE cert G14 (h01, v00) N=4 K=3 T1: n 3, caps {0: 12, 1: 10, 2: 8}, 4123418 moments, cpu 62.39 s
+RSS cert G14 (h01, v00) N=4 K=3 T1: peak 3616 MB
+CHECK C-EXACT cert G14 (h01, v00) N=4 K=3 T1 PASS 10 of 10
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T2 v0 PASS lambda 23184/37393
+TABLE cert G14 (h01, v00) N=4 K=3 T2 v0: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.47 s
+CHECK C-EXACT cert G14 (h01, v00) N=4 K=3 T2 v0 PASS 10 of 10
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T2 v1 PASS lambda 23184/23173
+TABLE cert G14 (h01, v00) N=4 K=3 T2 v1: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.47 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T2 v2 PASS lambda 23184/23173
+TABLE cert G14 (h01, v00) N=4 K=3 T2 v2: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.47 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T2 v3 PASS lambda 23184/37393
+TABLE cert G14 (h01, v00) N=4 K=3 T2 v3: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.47 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T2 v4 PASS lambda 3312/3871
+TABLE cert G14 (h01, v00) N=4 K=3 T2 v4: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.44 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T2 v5 PASS lambda 3312/2251
+TABLE cert G14 (h01, v00) N=4 K=3 T2 v5: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.46 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T2 v6 PASS lambda 3312/2251
+TABLE cert G14 (h01, v00) N=4 K=3 T2 v6: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.47 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T2 v7 PASS lambda 3312/3871
+TABLE cert G14 (h01, v00) N=4 K=3 T2 v7: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.48 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T2 v8 PASS lambda 23184/37393
+TABLE cert G14 (h01, v00) N=4 K=3 T2 v8: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.52 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T2 v9 PASS lambda 23184/23173
+TABLE cert G14 (h01, v00) N=4 K=3 T2 v9: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.50 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T2 v10 PASS lambda 23184/23173
+TABLE cert G14 (h01, v00) N=4 K=3 T2 v10: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.50 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T2 v11 PASS lambda 23184/37393
+TABLE cert G14 (h01, v00) N=4 K=3 T2 v11: n 3, caps {0: 6, 1: 6, 2: 6}, 74256 moments, cpu 0.56 s
+RSS cert G14 (h01, v00) N=4 K=3 T2: peak 3616 MB
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T3 v0 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G14 (h01, v00) N=4 K=3 T3 v0: n 3, caps {0: 4, 1: 2, 2: 0}, 2003 moments, cpu 0.41 s
+CHECK C-EXACT cert G14 (h01, v00) N=4 K=3 T3 v0 PASS 10 of 10
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T3 v1 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G14 (h01, v00) N=4 K=3 T3 v1: n 3, caps {0: 4, 1: 2, 2: 0}, 2003 moments, cpu 0.41 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T3 v2 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G14 (h01, v00) N=4 K=3 T3 v2: n 3, caps {0: 4, 1: 2, 2: 0}, 2003 moments, cpu 0.41 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T3 v3 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G14 (h01, v00) N=4 K=3 T3 v3: n 3, caps {0: 4, 1: 2, 2: 0}, 2003 moments, cpu 0.41 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T3 v4 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G14 (h01, v00) N=4 K=3 T3 v4: n 3, caps {0: 4, 1: 2, 2: 0}, 2003 moments, cpu 0.40 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T3 v5 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G14 (h01, v00) N=4 K=3 T3 v5: n 3, caps {0: 4, 1: 2, 2: 0}, 2003 moments, cpu 0.41 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T3 v6 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G14 (h01, v00) N=4 K=3 T3 v6: n 3, caps {0: 4, 1: 2, 2: 0}, 2003 moments, cpu 0.41 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T3 v7 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G14 (h01, v00) N=4 K=3 T3 v7: n 3, caps {0: 4, 1: 2, 2: 0}, 2003 moments, cpu 0.40 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T3 v8 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G14 (h01, v00) N=4 K=3 T3 v8: n 3, caps {0: 4, 1: 2, 2: 0}, 2003 moments, cpu 0.42 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T3 v9 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G14 (h01, v00) N=4 K=3 T3 v9: n 3, caps {0: 4, 1: 2, 2: 0}, 2003 moments, cpu 0.41 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T3 v10 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G14 (h01, v00) N=4 K=3 T3 v10: n 3, caps {0: 4, 1: 2, 2: 0}, 2003 moments, cpu 0.41 s
+CHECK C-H cert G14 (h01, v00) N=4 K=3 T3 v11 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G14 (h01, v00) N=4 K=3 T3 v11: n 3, caps {0: 4, 1: 2, 2: 0}, 2003 moments, cpu 0.41 s
+BUILD cert G14 (h01, v00) N=4 K=3 done, cpu 75.60 s, peak RSS 3616 MB
+SIGMA cert G14 (h01, v00) N=4 K=3 1/4: radii ['1.573334e-01', '9.898376e-02', '9.898376e-02', '1.573334e-01', '1.137543e-01', '6.152344e-02', '6.152344e-02', '1.137543e-01', '1.573334e-01', '9.898376e-02', '9.898376e-02', '1.573334e-01'], max slope 5.440164e-01, Dbar terms {('1', 0): 67272, ('e', 0): 248700, ('f', 1): 249202, ('ef', 1): 864830}, cpu 27.05 s, peak RSS 3616 MB
+POINT G14 (h01, v00) N=4 K=3 J1 350 sigma 1/4: L 1.289336e-02 mono True neg 0 | 1 rem 5.802117e-06 tail 6.570764e-13 ann 3.121352e-08 far 1.999167e-83 (th 15/16); e rem 8.337270e-06 tail 9.537244e-13 ann 3.635985e-08 far 1.399417e-80 (th 15/16); f rem 9.898338e-06 tail 8.464361e-13 ann 3.757815e-08 far 1.399417e-80 (th 15/16); ef rem 1.446530e-05 tail 1.364229e-12 ann 4.515599e-08 far 9.795917e-78 (th 15/16)
+CHECK C-CELLS G14 (h01, v00) N=4 K=3 PASS per-cell minimum 1.289336e-02, phi_scan 1.289336e-02; negative cells 0
+R-CERT G14 (h01, v00) N=4 K=3 J1 350: certified True; sigma 1/4; L 1.289336e-02; c2 1.302033e-02; L / c2 9.902480e-01; E {'1': '5.833331e-06', 'e': '8.373631e-06', 'f': '9.935917e-06', 'ef': '1.451046e-05'}; terms (rem, tail, ann, far) {'1': ['5.802117e-06', '6.570764e-13', '3.121352e-08', '1.999167e-83'], 'e': ['8.337270e-06', '9.537244e-13', '3.635985e-08', '1.399417e-80'], 'f': ['9.898338e-06', '8.464361e-13', '3.757815e-08', '1.399417e-80'], 'ef': ['1.446530e-05', '1.364229e-12', '4.515599e-08', '9.795917e-78']}
+CELL G14 00 t [0.000000e+00, 4.464286e-05]: Phi_lo 1.289336e-02, Phi_lo / c2 9.902480e-01, series at mid 1.302045e-02, pass True
+CELL G14 01 t [4.464286e-05, 8.928571e-05]: Phi_lo 1.289359e-02, Phi_lo / c2 9.902655e-01, series at mid 1.302067e-02, pass True
+CELL G14 02 t [8.928571e-05, 1.339286e-04]: Phi_lo 1.289381e-02, Phi_lo / c2 9.902831e-01, series at mid 1.302090e-02, pass True
+CELL G14 03 t [1.339286e-04, 1.785714e-04]: Phi_lo 1.289404e-02, Phi_lo / c2 9.903007e-01, series at mid 1.302113e-02, pass True
+CELL G14 04 t [1.785714e-04, 2.232143e-04]: Phi_lo 1.289427e-02, Phi_lo / c2 9.903183e-01, series at mid 1.302136e-02, pass True
+CELL G14 05 t [2.232143e-04, 2.678571e-04]: Phi_lo 1.289450e-02, Phi_lo / c2 9.903358e-01, series at mid 1.302159e-02, pass True
+CELL G14 06 t [2.678571e-04, 3.125000e-04]: Phi_lo 1.289473e-02, Phi_lo / c2 9.903534e-01, series at mid 1.302182e-02, pass True
+CELL G14 07 t [3.125000e-04, 3.571429e-04]: Phi_lo 1.289496e-02, Phi_lo / c2 9.903710e-01, series at mid 1.302205e-02, pass True
+CELL G14 08 t [3.571429e-04, 4.017857e-04]: Phi_lo 1.289519e-02, Phi_lo / c2 9.903886e-01, series at mid 1.302228e-02, pass True
+CELL G14 09 t [4.017857e-04, 4.464286e-04]: Phi_lo 1.289542e-02, Phi_lo / c2 9.904062e-01, series at mid 1.302251e-02, pass True
+CELL G14 10 t [4.464286e-04, 4.910714e-04]: Phi_lo 1.289564e-02, Phi_lo / c2 9.904237e-01, series at mid 1.302274e-02, pass True
+CELL G14 11 t [4.910714e-04, 5.357143e-04]: Phi_lo 1.289587e-02, Phi_lo / c2 9.904413e-01, series at mid 1.302296e-02, pass True
+CELL G14 12 t [5.357143e-04, 5.803571e-04]: Phi_lo 1.289610e-02, Phi_lo / c2 9.904589e-01, series at mid 1.302319e-02, pass True
+CELL G14 13 t [5.803571e-04, 6.250000e-04]: Phi_lo 1.289633e-02, Phi_lo / c2 9.904765e-01, series at mid 1.302342e-02, pass True
+CELL G14 14 t [6.250000e-04, 6.696429e-04]: Phi_lo 1.289656e-02, Phi_lo / c2 9.904941e-01, series at mid 1.302365e-02, pass True
+CELL G14 15 t [6.696429e-04, 7.142857e-04]: Phi_lo 1.289679e-02, Phi_lo / c2 9.905117e-01, series at mid 1.302388e-02, pass True
+CELL G14 16 t [7.142857e-04, 7.589286e-04]: Phi_lo 1.289702e-02, Phi_lo / c2 9.905293e-01, series at mid 1.302411e-02, pass True
+CELL G14 17 t [7.589286e-04, 8.035714e-04]: Phi_lo 1.289725e-02, Phi_lo / c2 9.905468e-01, series at mid 1.302434e-02, pass True
+CELL G14 18 t [8.035714e-04, 8.482143e-04]: Phi_lo 1.289748e-02, Phi_lo / c2 9.905644e-01, series at mid 1.302457e-02, pass True
+CELL G14 19 t [8.482143e-04, 8.928571e-04]: Phi_lo 1.289771e-02, Phi_lo / c2 9.905820e-01, series at mid 1.302480e-02, pass True
+CELL G14 20 t [8.928571e-04, 9.375000e-04]: Phi_lo 1.289793e-02, Phi_lo / c2 9.905996e-01, series at mid 1.302503e-02, pass True
+CELL G14 21 t [9.375000e-04, 9.821429e-04]: Phi_lo 1.289816e-02, Phi_lo / c2 9.906172e-01, series at mid 1.302526e-02, pass True
+CELL G14 22 t [9.821429e-04, 1.026786e-03]: Phi_lo 1.289839e-02, Phi_lo / c2 9.906348e-01, series at mid 1.302549e-02, pass True
+CELL G14 23 t [1.026786e-03, 1.071429e-03]: Phi_lo 1.289862e-02, Phi_lo / c2 9.906524e-01, series at mid 1.302571e-02, pass True
+CELL G14 24 t [1.071429e-03, 1.116071e-03]: Phi_lo 1.289885e-02, Phi_lo / c2 9.906700e-01, series at mid 1.302594e-02, pass True
+CELL G14 25 t [1.116071e-03, 1.160714e-03]: Phi_lo 1.289908e-02, Phi_lo / c2 9.906876e-01, series at mid 1.302617e-02, pass True
+CELL G14 26 t [1.160714e-03, 1.205357e-03]: Phi_lo 1.289931e-02, Phi_lo / c2 9.907052e-01, series at mid 1.302640e-02, pass True
+CELL G14 27 t [1.205357e-03, 1.250000e-03]: Phi_lo 1.289954e-02, Phi_lo / c2 9.907228e-01, series at mid 1.302663e-02, pass True
+CELL G14 28 t [1.250000e-03, 1.294643e-03]: Phi_lo 1.289977e-02, Phi_lo / c2 9.907404e-01, series at mid 1.302686e-02, pass True
+CELL G14 29 t [1.294643e-03, 1.339286e-03]: Phi_lo 1.290000e-02, Phi_lo / c2 9.907580e-01, series at mid 1.302709e-02, pass True
+CELL G14 30 t [1.339286e-03, 1.383929e-03]: Phi_lo 1.290023e-02, Phi_lo / c2 9.907756e-01, series at mid 1.302732e-02, pass True
+CELL G14 31 t [1.383929e-03, 1.428571e-03]: Phi_lo 1.290046e-02, Phi_lo / c2 9.907932e-01, series at mid 1.302755e-02, pass True
+CELL G14 32 t [1.428571e-03, 1.473214e-03]: Phi_lo 1.290068e-02, Phi_lo / c2 9.908108e-01, series at mid 1.302778e-02, pass True
+CELL G14 33 t [1.473214e-03, 1.517857e-03]: Phi_lo 1.290091e-02, Phi_lo / c2 9.908284e-01, series at mid 1.302801e-02, pass True
+CELL G14 34 t [1.517857e-03, 1.562500e-03]: Phi_lo 1.290114e-02, Phi_lo / c2 9.908460e-01, series at mid 1.302824e-02, pass True
+CELL G14 35 t [1.562500e-03, 1.607143e-03]: Phi_lo 1.290137e-02, Phi_lo / c2 9.908637e-01, series at mid 1.302847e-02, pass True
+CELL G14 36 t [1.607143e-03, 1.651786e-03]: Phi_lo 1.290160e-02, Phi_lo / c2 9.908813e-01, series at mid 1.302870e-02, pass True
+CELL G14 37 t [1.651786e-03, 1.696429e-03]: Phi_lo 1.290183e-02, Phi_lo / c2 9.908989e-01, series at mid 1.302893e-02, pass True
+CELL G14 38 t [1.696429e-03, 1.741071e-03]: Phi_lo 1.290206e-02, Phi_lo / c2 9.909165e-01, series at mid 1.302915e-02, pass True
+CELL G14 39 t [1.741071e-03, 1.785714e-03]: Phi_lo 1.290229e-02, Phi_lo / c2 9.909341e-01, series at mid 1.302938e-02, pass True
+CELL G14 40 t [1.785714e-03, 1.830357e-03]: Phi_lo 1.290252e-02, Phi_lo / c2 9.909517e-01, series at mid 1.302961e-02, pass True
+CELL G14 41 t [1.830357e-03, 1.875000e-03]: Phi_lo 1.290275e-02, Phi_lo / c2 9.909693e-01, series at mid 1.302984e-02, pass True
+CELL G14 42 t [1.875000e-03, 1.919643e-03]: Phi_lo 1.290298e-02, Phi_lo / c2 9.909870e-01, series at mid 1.303007e-02, pass True
+CELL G14 43 t [1.919643e-03, 1.964286e-03]: Phi_lo 1.290321e-02, Phi_lo / c2 9.910046e-01, series at mid 1.303030e-02, pass True
+CELL G14 44 t [1.964286e-03, 2.008929e-03]: Phi_lo 1.290344e-02, Phi_lo / c2 9.910222e-01, series at mid 1.303053e-02, pass True
+CELL G14 45 t [2.008929e-03, 2.053571e-03]: Phi_lo 1.290367e-02, Phi_lo / c2 9.910398e-01, series at mid 1.303076e-02, pass True
+CELL G14 46 t [2.053571e-03, 2.098214e-03]: Phi_lo 1.290390e-02, Phi_lo / c2 9.910574e-01, series at mid 1.303099e-02, pass True
+CELL G14 47 t [2.098214e-03, 2.142857e-03]: Phi_lo 1.290413e-02, Phi_lo / c2 9.910751e-01, series at mid 1.303122e-02, pass True
+CELL G14 48 t [2.142857e-03, 2.187500e-03]: Phi_lo 1.290435e-02, Phi_lo / c2 9.910927e-01, series at mid 1.303145e-02, pass True
+CELL G14 49 t [2.187500e-03, 2.232143e-03]: Phi_lo 1.290458e-02, Phi_lo / c2 9.911103e-01, series at mid 1.303168e-02, pass True
+CELL G14 50 t [2.232143e-03, 2.276786e-03]: Phi_lo 1.290481e-02, Phi_lo / c2 9.911279e-01, series at mid 1.303191e-02, pass True
+CELL G14 51 t [2.276786e-03, 2.321429e-03]: Phi_lo 1.290504e-02, Phi_lo / c2 9.911456e-01, series at mid 1.303214e-02, pass True
+CELL G14 52 t [2.321429e-03, 2.366071e-03]: Phi_lo 1.290527e-02, Phi_lo / c2 9.911632e-01, series at mid 1.303237e-02, pass True
+CELL G14 53 t [2.366071e-03, 2.410714e-03]: Phi_lo 1.290550e-02, Phi_lo / c2 9.911808e-01, series at mid 1.303260e-02, pass True
+CELL G14 54 t [2.410714e-03, 2.455357e-03]: Phi_lo 1.290573e-02, Phi_lo / c2 9.911985e-01, series at mid 1.303283e-02, pass True
+CELL G14 55 t [2.455357e-03, 2.500000e-03]: Phi_lo 1.290596e-02, Phi_lo / c2 9.912161e-01, series at mid 1.303306e-02, pass True
+CELL G14 56 t [2.500000e-03, 2.544643e-03]: Phi_lo 1.290619e-02, Phi_lo / c2 9.912337e-01, series at mid 1.303329e-02, pass True
+CELL G14 57 t [2.544643e-03, 2.589286e-03]: Phi_lo 1.290642e-02, Phi_lo / c2 9.912514e-01, series at mid 1.303352e-02, pass True
+CELL G14 58 t [2.589286e-03, 2.633929e-03]: Phi_lo 1.290665e-02, Phi_lo / c2 9.912690e-01, series at mid 1.303375e-02, pass True
+CELL G14 59 t [2.633929e-03, 2.678571e-03]: Phi_lo 1.290688e-02, Phi_lo / c2 9.912866e-01, series at mid 1.303398e-02, pass True
+CELL G14 60 t [2.678571e-03, 2.723214e-03]: Phi_lo 1.290711e-02, Phi_lo / c2 9.913043e-01, series at mid 1.303421e-02, pass True
+CELL G14 61 t [2.723214e-03, 2.767857e-03]: Phi_lo 1.290734e-02, Phi_lo / c2 9.913219e-01, series at mid 1.303444e-02, pass True
+CELL G14 62 t [2.767857e-03, 2.812500e-03]: Phi_lo 1.290757e-02, Phi_lo / c2 9.913395e-01, series at mid 1.303467e-02, pass True
+CELL G14 63 t [2.812500e-03, 2.857143e-03]: Phi_lo 1.290780e-02, Phi_lo / c2 9.913572e-01, series at mid 1.303490e-02, pass True
+PLANT PLANT-FALSE-MOM G14 (h01, v00) N=4 K=3 FIRED A_ef(0) - 2 c2 with the errors at sigma 1/4: 64 negative cells, min -1.314746e-02
+PLANT PLANT-MOM G14 (h01, v00) N=4 K=3 T1 FIRED one T1 moment + 1e-20: 1 of 10 differ
+CPU G14 (h01, v00) N=4 K=3: 103.33 s; peak RSS 3616 MB
+READINGS CERT P_3 x P_4 N=4 K=3 J1 350: G14 certified True L/c2 9.902480e-01
+CHECKS {'C-GRAPH-G': True, 'C-ENUM': True, 'C-ORBIT-DELTA': True, 'C-GAUSS G14 (h01, v00) N=4 K=3': True, 'C-EXACT G14 (h01, v00) N=4 K=3 T0': True, 'C-SYM G14 (h01, v00) N=4 K=3': True, 'C-H cert G14 (h01, v00) N=4 K=3 T1': True, 'C-EXACT cert G14 (h01, v00) N=4 K=3 T1': True, 'C-H cert G14 (h01, v00) N=4 K=3 T2 v0': True, 'C-EXACT cert G14 (h01, v00) N=4 K=3 T2 v0': True, 'C-H cert G14 (h01, v00) N=4 K=3 T2 v1': True, 'C-H cert G14 (h01, v00) N=4 K=3 T2 v2': True, 'C-H cert G14 (h01, v00) N=4 K=3 T2 v3': True, 'C-H cert G14 (h01, v00) N=4 K=3 T2 v4': True, 'C-H cert G14 (h01, v00) N=4 K=3 T2 v5': True, 'C-H cert G14 (h01, v00) N=4 K=3 T2 v6': True, 'C-H cert G14 (h01, v00) N=4 K=3 T2 v7': True, 'C-H cert G14 (h01, v00) N=4 K=3 T2 v8': True, 'C-H cert G14 (h01, v00) N=4 K=3 T2 v9': True, 'C-H cert G14 (h01, v00) N=4 K=3 T2 v10': True, 'C-H cert G14 (h01, v00) N=4 K=3 T2 v11': True, 'C-H cert G14 (h01, v00) N=4 K=3 T3 v0': True, 'C-EXACT cert G14 (h01, v00) N=4 K=3 T3 v0': True, 'C-H cert G14 (h01, v00) N=4 K=3 T3 v1': True, 'C-H cert G14 (h01, v00) N=4 K=3 T3 v2': True, 'C-H cert G14 (h01, v00) N=4 K=3 T3 v3': True, 'C-H cert G14 (h01, v00) N=4 K=3 T3 v4': True, 'C-H cert G14 (h01, v00) N=4 K=3 T3 v5': True, 'C-H cert G14 (h01, v00) N=4 K=3 T3 v6': True, 'C-H cert G14 (h01, v00) N=4 K=3 T3 v7': True, 'C-H cert G14 (h01, v00) N=4 K=3 T3 v8': True, 'C-H cert G14 (h01, v00) N=4 K=3 T3 v9': True, 'C-H cert G14 (h01, v00) N=4 K=3 T3 v10': True, 'C-H cert G14 (h01, v00) N=4 K=3 T3 v11': True, 'C-CELLS G14 (h01, v00) N=4 K=3': True}
+PLANTS {'PLANT-MOM G14 (h01, v00) N=4 K=3 T0': True, 'PLANT-FALSE-MOM G14 (h01, v00) N=4 K=3 E=0': True, 'PLANT-FALSE-MOM G14 (h01, v00) N=4 K=3': True, 'PLANT-MOM G14 (h01, v00) N=4 K=3 T1': True}
+SUMMARY mode grid: status DONE; checks 35/35; plants 4/4; VERDICT VALID; cpu 103.46 s; wall 103.43 s; peak RSS 3616 MB

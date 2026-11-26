@@ -1,0 +1,498 @@
+2,4c2,20
+< """kt_s9h_v1.py (the certified snapshot, frozen at m23's code (89b1c41a; the review 559f9847 closed m20 N-1..N-4) with M2(b), t and the
+< joint inputs still on mocks and A_a, beta_H FLOAT; their certified pins go into a file of a new name. Mock runs,
+< a certified run only with the approval naming that file's sha8) -- pk07.
+---
+> """kt_s9h_v1_2.py (FROZEN, the file for the VERTICAL mode's certified run (S_V first): kt_s9h_v1_1 (7bcc32d2: kt_s9h_v1 +
+> the v1 review points P-4, P-3, P-1; code = m28 a5adef9b) + the C-VERT-ONLY (tested in the mock snapshot m29 00a1c0b3, whose
+> only other change is M2B_MODE). Its vertical inputs (S4-U, S4-TRB, M2(b), M3) are all certified; the S_TB' inputs (t, joint, beta_H's
+> status) stay MOCK or FLOAT and the vertical mode reads none of them, gated. P-2 (the certified t and joint records) goes into a file
+> of a new name. Every run here needs the approval naming this file's sha8) -- pk07.
+>   - v1_2, C-VERT-ONLY: in the vertical mode no S_TB' provider runs (provide_sh1, provide_joint, provide_tin and provide_bh each
+>     record themselves in STB_READS on entry), the module-level C-HASH leaves FILES_STB (SH1's outputs and reference parser, KT-S9B's
+>     FLOAT bars, the TRB_H record and its asm outputs) unopened, and SH1, the joint and the t inputs do not exist; a gate after the
+>     providers and again at the end, with PLANT-VERT-ONLY's three cases (a record of provide_tin having run, t inputs present, one
+>     FILES_STB file opened). The full mode prints the providers that ran as INFO.
+>   - v1_1 P-3, the beta_H provider (provide_bh; the rule 19f74c2b on (a), (b), (d); c_e by pk15's route B): pk08's
+>     S4_TRBH_CERTIFIED_v1 (bb53005c) read with the S4-TRB provider's checks (C-HASH, C-FMT, C-SRC against the U3_P and READING lines of
+>     both asm outputs), C-DIAG (each row's t = 0 term >= its harmonic diagonal: row T is the t bond), C-MHAT (m1..m3 >= 0, so m-hat >= 1)
+>     and C-BH per N: beta_H = max((N-1)/2 - c_e_lo, [D0_HI + sum_k max(Dk_HI, 0) 300^-k + R_CERT(T)] / (1 - delta)^2), delta =
+>     eps_r/sqrt(1 - s^2) at J = 300, J-uniform,
+>     one full-norm bound for both parities and the u-perp case, gated by SH4's validity c_e_hi <= (N-1)/2 - c_N/300 (H-BESSEL's c_N)
+>     and HZ_PLAN_v1_1 l.461's kill line. c_e is the t inputs' ce_lo/ce_hi (FIELDS, read by t_read) when the record has them, else the
+>     harmonic c_t as a FLOAT stand-in. Plants: PLANT-FMT-TRBH, PLANT-HSRC, PLANT-PRECERT-TRBH, PLANT-ROWSWAP, PLANT-MHAT, PLANT-BHVALID.
+>     The beta_H tag reads CERTIFIED only with certified t inputs carrying ce_lo/ce_hi and a certified M2 vacuum tag (eps_r).
+52,54c68,72
+<     and S4-TRB certified; M2(b) on mocks/m2b_mock_v2.kv; t and joint inputs from pk15's MOCK assembly run v1_11. The vertical results
+<     read FLOAT-PASS until M2B_CERT and its TAG pin are filled; the C2-a results also wait for T_REC['certified'],
+<     JOINT_RECS['certified'] and the A_a and beta_H providers.
+---
+>     and S4-TRB certified; M2(b) certified (v1_1 P-1: pk02's M2B_KV_v1 13cc0d9a through m2b_reader_v1, with C-M2B-LOCAL and
+>     C-TRIAL M2B, the record's PIN_TRIAL naming TRIAL_SET's vacres); the t inputs from pk15's MOCK assembly run v1_24 (with ce_lo,
+>     ce_hi), the joint inputs from its MOCK run v1_11. So the vertical results can read CERTIFIED; the C2-a results wait for
+>     T_REC['certified'] and JOINT_RECS['certified'] (P-2), and beta_H's tag for the certified t inputs (A_a has no provider beyond the
+>     t record's Aa_lo).
+129,132c147,150
+<   - F2: Ctx.U is U(t) = LEAD_HI (1 + C1_HI t + C2_HI t^2 + C3_HI t^3) + R_CERT per N, from pk08's S4_U_CERTIFIED_v2 (b1b6b99b, its
+<     CLAIM_F2 form), through provide_s4u. C-POS certifies LEAD_LO, C1_LO, C2_LO, C3_LO > 0, so the HI ends bound U3 from above for
+<     t > 0. The dual kind's derivative is LEAD_HI (C1_HI + 2 C2_HI t + 3 C3_HI t^2); R_CERT is a constant with zero derivative; point
+<     and dual kinds use the same polynomial. KR3 reads N*_QUAD_TW_PART. KR4 and an INFO line bound certified minus float U on every
+---
+>   - F2: Ctx.U is U(t) = LEAD_HI (1 + C1_HI t + C2_HI t^2 + C3_HI t^3) + R_CERT per N, from pk08's S4_U_CERTIFIED_v3 (e870cbe5, its
+>     CLAIM_F2 form; v1_1: v3 replaces v2 b1b6b99b with the same values), through provide_s4u. C-POS
+>     certifies LEAD_LO, C1_LO, C2_LO, C3_LO > 0, so the HI ends bound U3 from above for t > 0. The dual kind's derivative is LEAD_HI
+>     (C1_HI + 2 C2_HI t + 3 C3_HI t^2); R_CERT is a constant with zero derivative; point and dual kinds use the same polynomial. KR3 reads N*_QUAD_TW_PART. KR4 and an INFO line bound certified minus float U on every
+154c172
+<     bracket and tolerance; the record pinned is v2 b1b6b99b.
+---
+>     bracket and tolerance; the record pinned is v2 b1b6b99b (v3 e870cbe5 from v1_1 on).
+297c315
+<     'pk08/S4_U_CERTIFIED_v2.md': 'b1b6b99b', 'pk05/out/s4c_m2ba_n4.out': '2966ea75', 'pk05/out/s4c_m2ba_n3.out': '41f13f4b',
+---
+>     'pk08/S4_U_CERTIFIED_v3.md': 'e870cbe5', 'pk05/out/s4c_m2ba_n4.out': '2966ea75', 'pk05/out/s4c_m2ba_n3.out': '41f13f4b',
+307a326,327
+>     'pk08/S4_TRBH_CERTIFIED_v1.md': 'bb53005c', 'pk08/out/px08_trbhcert_v2_n4_asm.out': 'b70c69b2',   # v1_1 P-3: beta_H
+>     'pk08/out/px08_trbhcert_v2_n3_asm.out': 'f340e8ab',
+308a329,334
+> FILES_STB = frozenset(('pk15/out/out_kt_sh1_v1_n4.out', 'pk15/out/out_kt_sh1_v1_n3.out', 'pk07/sh1_entry_ref_v1.py',
+>                        'pk01/out_kt_s9b_v2_n4.out', 'pk01/out_kt_s9b_v2_n3.out', 'pk08/S4_TRBH_CERTIFIED_v1.md',
+>                        'pk08/out/px08_trbhcert_v2_n4_asm.out', 'pk08/out/px08_trbhcert_v2_n3_asm.out'))
+> #                         v1_2: the S_TB' inputs among FILES (SH1's outputs and reference parser, KT-S9B's FLOAT bars, the TRB_H
+> #                         record and its asm outputs); the vertical mode leaves them unread, C-VERT-ONLY gates it
+> STB_READS = []            # v1_2: the S_TB' providers that ran (each appends its name on entry); C-VERT-ONLY needs it empty
+310,311c336,337
+< S4U = dict(path='pk08/S4_U_CERTIFIED_v2.md', sha256='cd2b32d72a49b37feece322e2018c071281c8e93ae9feb6b6349abe24e8a6aa4',
+<            producer='pk08', fmt='S4U_KV_v1', record='S4_U_CERTIFIED_v2')
+---
+> S4U = dict(path='pk08/S4_U_CERTIFIED_v3.md', sha256='eb98948365fa35498206c9f1b80c6d98d421f69b9dca6c245f3f2d1198112751',
+>            producer='pk08', fmt='S4U_KV_v1', record='S4_U_CERTIFIED_v3')       # v1_1, the review v1 P-4: v3 replaces v2 b1b6b99b
+327a354,358
+> # v1_1: the TRB_H record for beta_H (closed f49e746c) and its asm outputs, by full sha256
+> S4H = dict(path='pk08/S4_TRBH_CERTIFIED_v1.md', sha256='d38cf34ca945a40daad639a0517f62d5c1d837f93515f0be29cbc78f3388cb9d',
+>            producer='pk08', fmt='S4U_KV_v1', record='S4_TRBH_CERTIFIED_v1')
+> S4H_ASM = {4: ('pk08/out/px08_trbhcert_v2_n4_asm.out', 'b70c69b2d69049e8f911601ba3f0c0b1023bdd823a7bf2543106ffae509b0e7e'),
+>            3: ('pk08/out/px08_trbhcert_v2_n3_asm.out', 'f340e8ab89e6230795df46a953b224bda047d4d8edbf5a3f87f45f5ef1ea522b')}
+385,386c416,420
+< _bad = [n for n in sorted(FILES) if sha_file(os.path.join(CODEDIR, n))[:8] != FILES[n]]
+< out('C-HASH %s (%d files)%s' % ('PASS' if not _bad else 'FAIL', len(FILES), (': ' + ', '.join(_bad)) if _bad else ''))
+---
+> STB_UNREAD = FILES_STB if VERT else frozenset()       # v1_2: the vertical mode does not open the S_TB' files
+> _bad = [n for n in sorted(FILES) if n not in STB_UNREAD and sha_file(os.path.join(CODEDIR, n))[:8] != FILES[n]]
+> out('C-HASH %s (%d files%s)%s' % ('PASS' if not _bad else 'FAIL', len(FILES) - len(STB_UNREAD),
+>                                   '; the %d S_TB\' files left unread in the vertical mode' % len(STB_UNREAD) if STB_UNREAD else '',
+>                                   (': ' + ', '.join(_bad)) if _bad else ''))
+1687c1721,1724
+<                  'm2b_local_ok', 'm2b_local_plants')                       # the certified M2(b) branch's local second check
+---
+>                  'm2b_local_ok', 'm2b_local_plants',                       # the certified M2(b) branch's local second check
+>                  's4h_src_check', 's4h_diag_bad', 's4h_rowswap', 'mhat_bad', 'bh_bound', 'provide_bh',   # v1_1 P-3: the beta_H provider
+>                  'm2b_trial_bad',                                          # v1_1 P-1: C-TRIAL on the certified M2(b) record
+>                  'vert_only_bad', 'c_vert_only')                           # v1_2: C-VERT-ONLY
+2475c2512
+< M2B_MODE = 'mock'         # 'mock': pk07's mock record (FLOAT vacscale keys) read by this file's KV port; 'certified': pk02's
+---
+> M2B_MODE = 'certified'    # 'mock': pk07's mock record (FLOAT vacscale keys) read by this file's KV port; 'certified': pk02's
+2478,2479c2515,2520
+< M2B_CERT = None           # dict(record=(path, sha256), asm=(path, sha256), reader=(path, sha256)) once pk02 freezes them
+< M2B_TAG_PIN = None        # ('pk02', the record's sha8) for TAG_PINS['M2 vacuum'] once M2B_CERT is filled and the certified run is approved
+---
+> M2B_CERT = dict(record=('pk02/M2B_KV_v1.txt', '13cc0d9abe16af02865763b44a28cc167c689f83ad0a028644b84c7045c429f5'),
+>                 asm=('pk02/out/out_m2b_asm_v1.out', '518f7a4cf813f52597de3e96a4d9a1a4d8cee2a3bba928fcadfc123730635b15'),
+>                 reader=('pk02/m2b_reader_v1.py', '3580bce7938b924b2e03bdde3d83c387a0c9a1bcb6e1e16bd7ecb5e5561289af'))
+> #                         v1_1 P-1: pk02's certified M2B_KV_v1 on the F-2-fixed pieces (m2b_cert_v1_4, majfix_v1_1), written by
+> #                         m2b_asm_v1 (6acd83d3 = the record's ASM_SHA256; the review 8d465b64 OK TO RUN, the approval); side manifest 797c7a59
+> M2B_TAG_PIN = ('pk02', '13cc0d9a')   # TAG_PINS['M2 vacuum'], set only when every M2(b) check passes and every plant fires
+2506a2548,2559
+> def m2b_trial_bad(rlines):
+>     """C-TRIAL M2B (v1_1 P-1; the C-TRIAL extended to the certified M2(b) record): the record's one PIN_TRIAL line names, for both N,
+>     TRIAL_SET's symmetrized vacres as 'path:full sha256' exactly once, and no other vacres file. Returns the failures."""
+>     pl = [ln for ln in rlines if ln.startswith('PIN_TRIAL')]
+>     if len(pl) != 1 or not pl[0].startswith('PIN_TRIAL = '):
+>         return ['%d PIN_TRIAL lines' % len(pl)]
+>     toks = pl[0][len('PIN_TRIAL = '):].split(' ; ')
+>     want = {N: '%s:%s' % TRIAL_SET[N]['vacres'] for N in (4, 3)}
+>     bad = ['N=%d: %s named %d times' % (N, w, toks.count(w)) for N, w in want.items() if toks.count(w) != 1]
+>     return bad + ['another vacres pin %s' % t for t in toks if 'vacres' in t and t not in want.values()]
+> 
+> 
+2667c2720,2721
+<     evaluation) with PLANT-M2B-SWAP (N4's NP and D5 exchanged must fail it). INFO: LAW v1 against vac_float at J = 300. Sets
+---
+>     evaluation) with PLANT-M2B-SWAP (N4's NP and D5 exchanged must fail it). INFO: LAW v1 against vac_float at J = 300. Certified mode
+>     also runs C-M2B-LOCAL (m2b_local_ok, PLANT-M2B-LOCAL), PLANT-M2B-MOCK and C-TRIAL M2B (m2b_trial_bad, PLANT-M2B-TRIAL). Sets
+2689c2743
+<     bad = []
+---
+>     bad, trial_ok = [], False
+2715a2770,2782
+>         tb = m2b_trial_bad(rlines)
+>         v4 = '%s:%s' % TRIAL_SET[4]['vacres']
+>         w4 = '%s:%s%s' % (TRIAL_SET[4]['vacres'][0], '0' if TRIAL_SET[4]['vacres'][1][0] != '0' else '1', TRIAL_SET[4]['vacres'][1][1:])
+>         tp = any(b.startswith('N=4') for b in m2b_trial_bad([ln.replace(v4, w4) if ln.startswith('PIN_TRIAL') else ln for ln in rlines]))
+>         trial_ok = not tb and tp
+>         out('C-TRIAL M2B (the C-TRIAL, v1_1 P-1): the record\'s PIN_TRIAL names TRIAL_SET\'s vacres %s:%s and %s:%s once each and no '
+>             'other vacres -> %s; PLANT-M2B-TRIAL (N4\'s vacres sha256 changed in a copy) -> %s' % (
+>                 os.path.basename(TRIAL_SET[4]['vacres'][0]), TRIAL_SET[4]['vacres'][1][:8], os.path.basename(TRIAL_SET[3]['vacres'][0]),
+>                 TRIAL_SET[3]['vacres'][1][:8], 'PASS' if not tb else 'FAIL (%s)' % ', '.join(tb), 'FIRES' if tp else 'DOES NOT FIRE'))
+>         if tb:
+>             fails.append('C-TRIAL M2B')
+>         if not tp:
+>             fires.append('PLANT-M2B-TRIAL')
+2798c2865
+<     if M2B_MODE == 'certified' and M2B_TAG_PIN is not None and not (mono[4] or mono[3] or law[4] or law[3]) and pv and sw:
+---
+>     if M2B_MODE == 'certified' and M2B_TAG_PIN is not None and not (mono[4] or mono[3] or law[4] or law[3]) and pv and sw and trial_ok:
+3460a3528
+>     STB_READS.append('provide_sh1')                             # v1_2: C-VERT-ONLY
+3653,3656c3721,3724
+< T_REC = dict(mock=dict(path='pk15/mocks/out/export_p2_t_mock_kt_p2_assembly_v1_11.kv',         # kt_p2_assembly_v1_11 f5352655, MOCK
+<                        sha256='adf0cd35249e73e18cb562131a07a50df5f5b74d76ca47d20c489cd9b373bff6',  # run; EXPORT_P2_T_v1 with Aa_lo, FLOAT_IN
+<                        out=('pk15/mocks/out/out_kt_p2_assembly_v1_11_mock.out',                 # with the assembly's own tokens
+<                             '146733c4cd7fe7fb6e7709ab9325d765e5aa1d6100018835263344d292487b44'),
+---
+> T_REC = dict(mock=dict(path='pk15/mocks/out/export_p2_t_mock_kt_p2_assembly_v1_24.kv',         # kt_p2_assembly_v1_24 ded07b5e, MOCK
+>                        sha256='25f7c6af3264c4741ffbe2330223a3c7aeded71ad2a9bf5401abd097f336f414',  # run; EXPORT_P2_T_v1 with Aa_lo, FLOAT_IN
+>                        out=('pk15/mocks/out/out_kt_p2_assembly_v1_24_mock.out',                 # with the assembly's own tokens, and
+>                             'c5bc08c5ceb4683a5fcb69f6ebea41c51f5a4ab291a4365e65164edecfc38c54'),    # (v1_1 P-3) ce_lo ce_hi, route B
+3678c3746,3747
+<     > 0. A_a is the record's Aa_lo when FIELDS names it, else aa[N] (S9(b)'s FLOAT stand-in, J-constant)."""
+---
+>     > 0. A_a is the record's Aa_lo when FIELDS names it, else aa[N] (S9(b)'s FLOAT stand-in, J-constant). v1_1 P-3: when FIELDS names
+>     ce_lo and ce_hi (pk15's route B), each row's c_e ball (ce_lo <= ce_hi) is kept as 'ce' for provide_bh."""
+3709a3779,3783
+>             if 'ce_lo' in idx and 'ce_hi' in idx:                  # v1_1 P-3: c_e's ball for beta_H (pk15's route B)
+>                 ce = (pt(dec_iv(v[idx['ce_lo']]).a), pt(dec_iv(v[idx['ce_hi']]).b))
+>                 if not ((ce[0] <= ce[1]) is True):
+>                     bad.append('CE N%d_P%04d' % (N, i))
+>                 T[(N, i)]['ce'] = ce
+3720,3721c3794,3795
+<     it has one, else S9(b)'s FLOAT stand-in (SH1; tag _aa_tag); beta_H stays SH1's FLOAT value until P2-10's record has a provider (tag
+<     _bh_tag). The t tag reads CERTIFIED only in certified mode with every check passing and T_TAG_PIN set (TAG_PINS['t inputs'],
+---
+>     it has one, else S9(b)'s FLOAT stand-in (SH1; tag _aa_tag); beta_H starts at SH1's FLOAT value (tag _bh_tag), which provide_bh
+>     (v1_1, P-3) replaces after C-TRIAL. The t tag reads CERTIFIED only in certified mode with every check passing and T_TAG_PIN set (TAG_PINS['t inputs'],
+3722a3797
+>     STB_READS.append('provide_tin')                             # v1_2: C-VERT-ONLY
+3782c3857
+<         t['bH'] = SH1['tin'][N]['bH']                                       # P2-10's beta_H: FLOAT until its record has a provider
+---
+>         t['bH'] = SH1['tin'][N]['bH']                                       # SH1's FLOAT beta_H; provide_bh (v1_1) replaces it
+3806a3882,4145
+> # ------------------------------------------------------------------ the beta_H provider (v1_1)
+> S4H_HEADER = dict(FORMAT=S4H['fmt'], RECORD=S4H['record'], END=S4H['record'], AUTHOR=S4H['producer'], J_MIN='300')
+> S4H_ROWS = ('T', 'M')                    # rule (a): row T is the t bond (kind t, and bb by the flip), row M the h bond
+> S4H_BALLS = ('D0', 'D1', 'D2', 'D3', 'U3P_1_300')
+> S4H_READ = ('R_CERT', 'R_MAIN', 'R_CROSS', 'R_INS', 'TAIL', 'L2P', 'OFF_OMEGA', 'TOL')     # the READING line's values, in order
+> S4H_USED = tuple(S4H_HEADER) + ('CODE',) + tuple('N%d_%s' % (N, k) for N in (4, 3) for k in ('ASM_OUTPUT', 'VERDICT', 'CHECKS',
+>                                                                                             'TOL_RESULT')) + tuple(
+>     'N%d_%s_%s' % (N, r, k) for N in (4, 3) for r in S4H_ROWS for k in tuple(b + e for b in S4H_BALLS for e in ('', '_LO', '_HI')) + S4H_READ)
+> S4H_U3P = r'U3_P N=%d row %s: d_0 (\[[^\]]*\]), d_1 (\[[^\]]*\]), d_2 (\[[^\]]*\]), d_3 (\[[^\]]*\]); U3_p\(1/300\) (\[[^\]]*\])'
+> S4H_READING = (r'READING N=%d row %s \(t = 1/300, every J >= 300\): R_cert <= ([0-9.e+-]+); R_main <= ([0-9.e+-]+), '
+>                r'R_cross <= ([0-9.e+-]+), R_ins <= ([0-9.e+-]+), tail <= ([0-9.e+-]+) \(L2\^\(p\) <= ([0-9.e+-]+)\), '
+>                r'off-Omega <= ([0-9.e+-]+); TOL >= ([0-9.e+-]+)')
+> S4H_HARM = {(4, 'T'): '0.4991', (4, 'M'): '0.6547', (3, 'T'): '0.3327', (3, 'M'): '0.4364'}   # SH4 l.143: the harmonic diagonal
+> #                                         <u, P_L u>/lambda_0^2 = (N-1)/2 - c_e at t = 0 of the t and h bonds (hand numbers, the guard's)
+> 
+> 
+> def s4h_src_check(rec, asm):
+>     """C-SRC TRB_H (v1_1), per N against the sha-pinned asm output asm[N] (its header ITEM=n<N> asm, whose program and code sha8 are the
+>     record's CODE; CHECKS all PASS; its C-TOL line PASS; VERDICT lines exactly ['VERDICT VALID']): per row, N*_<r>_D0..D3 and
+>     N*_<r>_U3P_1_300 equal, as strings, the balls of the row's U3_P line, every *_LO and *_HI is mid -+ rad exactly, and N*_<r>_R_CERT ..
+>     N*_<r>_TOL equal the eight values of the row's READING line; N*_ASM_OUTPUT names that output; N*_VERDICT VALID, N*_CHECKS all PASS and
+>     N*_TOL_RESULT a C-TOL PASS. Returns the failures."""
+>     bad = []
+>     for N in (4, 3):
+>         p = 'N%d_' % N
+>         lines = asm[N].split('\n')
+>         pats = dict(checks=r'CHECKS all PASS', tol=r'C-TOL N=%d \(.*\): PASS; .*' % N,
+>                     head=r'(px08_trbhcert_[a-z0-9_]+) sha256 ([0-9a-f]{64}) ITEM=n%d asm LIM=[0-9]+.*' % N)
+>         for r in S4H_ROWS:
+>             pats['u3p ' + r] = S4H_U3P % (N, r)
+>             pats['reading ' + r] = S4H_READING % (N, r)
+>         hit = {}
+>         for k, pat in pats.items():
+>             ms = [m for m in (re.fullmatch(pat, ln) for ln in lines) if m is not None]
+>             if len(ms) == 1:
+>                 hit[k] = ms[0]
+>             else:
+>                 bad.append('%sasm line %s found %d times' % (p, k, len(ms)))
+>         if not verdict_lines_ok(lines):                                      # T48: exact VERDICT lines
+>             bad.append('%sasm VERDICT lines not exactly VERDICT VALID' % p)
+>         for r in S4H_ROWS:
+>             q = '%s%s_' % (p, r)
+>             if 'u3p ' + r in hit:
+>                 for i, b in enumerate(S4H_BALLS):
+>                     if rec.get(q + b) != hit['u3p ' + r].group(i + 1):
+>                         bad.append(q + b + ' against its U3_P line')
+>             if 'reading ' + r in hit:
+>                 for i, k in enumerate(S4H_READ):
+>                     if rec.get(q + k) != hit['reading ' + r].group(i + 1):
+>                         bad.append(q + k + ' against its READING')
+>             for b in S4H_BALLS:
+>                 try:
+>                     mid, rad = s4u_ball(rec.get(q + b))
+>                     if dec_frac(rec.get(q + b + '_LO')) != mid - rad:
+>                         bad.append(q + b + '_LO')
+>                     if dec_frac(rec.get(q + b + '_HI')) != mid + rad:
+>                         bad.append(q + b + '_HI')
+>                 except ValueError:
+>                     bad.append(q + b + ' unreadable')
+>         if rec.get(p + 'ASM_OUTPUT') != '%s:%s' % (S4H_ASM[N][0], S4H_ASM[N][1][:8]):
+>             bad.append(p + 'ASM_OUTPUT')
+>         if 'head' in hit and rec.get('CODE') != 'pk08/%s.py:%s' % (hit['head'].group(1), hit['head'].group(2)[:8]):
+>             bad.append('CODE against the %sasm header' % p)
+>         if (rec.get(p + 'VERDICT') != 'VALID' or rec.get(p + 'CHECKS') != 'all PASS'
+>                 or not str(rec.get(p + 'TOL_RESULT')).startswith('C-TOL PASS')):
+>             bad.append(p + 'VERDICT, CHECKS or TOL_RESULT')
+>     return bad
+> 
+> 
+> def s4h_diag_bad(rec):
+>     """C-DIAG TRB_H, rule (a)'s guard: a trace is at least its diagonal, so each row's t = 0 term N*_<r>_D0_LO must be >= the
+>     harmonic diagonal S4H_HARM of the bond it is read for (exact decimals). Returns the failures."""
+>     bad = []
+>     for (N, r), h in S4H_HARM.items():
+>         k = 'N%d_%s_D0_LO' % (N, r)
+>         try:
+>             if not dec_frac(rec.get(k)) >= dec_frac(h):
+>                 bad.append('N%d row %s: D0_LO %s < %s' % (N, r, rec.get(k), h))
+>         except ValueError:
+>             bad.append('N%d row %s: D0_LO unreadable' % (N, r))
+>     return bad
+> 
+> 
+> def s4h_rowswap(rec):
+>     """PLANT-ROWSWAP's copy: rows T and M exchanged in every N*_<r>_* key of a parsed record."""
+>     sw, cp = {'_T_': '_M_', '_M_': '_T_'}, {}
+>     for k, v in rec.items():
+>         m = re.fullmatch(r'(N[34])(_[TM]_)(.*)', k)
+>         cp[(m.group(1) + sw[m.group(2)] + m.group(3)) if m else k] = v
+>     return cp
+> 
+> 
+> def mhat_bad(VAC):
+>     """C-MHAT (rule B-1 rests on m-hat >= 1 for every J >= 300): m-hat(t) = 1 + m1 t + m2 t^2 + m3 t^3 (Ctx.mhat), with m1, m2, m3 the
+>     numbers of the pinned vacres C-TRIAL returns, each >= 0 by exact comparison (a bool or a non-number fails), so m-hat >= 1 for t >= 0.
+>     Returns the failures."""
+>     bad = []
+>     for N in (4, 3):
+>         for k in ('m1', 'm2', 'm3'):
+>             v = VAC[N].get(k)
+>             if isinstance(v, bool) or not isinstance(v, (int, float)) or not v >= 0:
+>                 bad.append('N=%d %s = %r' % (N, k, v))
+>     return bad
+> 
+> 
+> def bh_bound(rec, K, N, ce):
+>     """rule (b), B-1..B-3, kind t (row T), J-uniform (B-2): beta_H = max((N-1)/2 - ce_lo, tr x fac), where tr = D0_HI + sum_{k=1..3}
+>     max(Dk_HI, 0) 300^-k + R_CERT bounds TRB_H(T, t) for every t in (0, 1/300] whatever the cubic's shape, and fac = 1/(1 - delta)^2 >=
+>     (lambda_h/lambda_0)^2 (B-1 as corrected: lambda_0 lies in m-hat [1 -+ delta], delta = eps_r/sqrt(1 - s^2),
+>     SPEC_S8_CERT_v1 l.320 and RV13_1 N3; m-hat >= 1 by C-MHAT), eps_r and s by LAW v1 at J = 300 from the M2(b) keys K (their largest
+>     values: both rise with eps, which falls in J, C-VACMONO). The erratum e48d0812: lambda_0 >= (1 - eps_r) m-hat already holds by
+>     Lemma 19.2 (c), s entering only the upper side, so 1/(1 - eps_r)^2 would do; this delta form is kept, sound and negligibly looser.
+>     SH4's validity (B-3): ce_hi <= (N-1)/2 - c_N/300, c_N = 2 + (N-1)(N-3)/8
+>     (H-BESSEL). Ce = (ce_lo, ce_hi), point intervals. Returns the parts, beta_H (bh, a point interval) and the validity
+>     flag."""
+>     q = 'N%d_T_' % N
+>     tr = dec_iv(rec[q + 'D0_HI']) + dec_iv(rec[q + 'R_CERT'])
+>     for k in (1, 2, 3):
+>         if dec_frac(rec[q + 'D%d_HI' % k]) > 0:
+>             tr = tr + dec_iv(rec[q + 'D%d_HI' % k]) / pt(300) ** k
+>     V = vac_law_v1(dict(M2B=K), 300.0, {})
+>     er, sv = pt(V['eps_r'].b), pt(V['s'].b)
+>     if not ((sv < 1) is True):
+>         raise ArithmeticError('beta_H: s(300) is not certainly < 1')
+>     dl = pt((er / iv.sqrt(1 - sv * sv)).b)
+>     if not ((dl < 1) is True):
+>         raise ArithmeticError('beta_H: 1 - delta(300) is not certainly > 0')
+>     fac = 1 / ((1 - dl) * (1 - dl))
+>     term = pt((tr * fac).b)
+>     first = pt((pt(N - 1) / 2 - ce[0]).b)
+>     cN = Fraction(2) + Fraction((N - 1) * (N - 3), 8)
+>     vmax = pt(N - 1) / 2 - pt(cN.numerator) / pt(cN.denominator) / 300
+>     return dict(tr=tr, er=er, sv=sv, dl=dl, fac=fac, term=term, first=first, bh=pmax([first, term]), cN=cN, vmax=vmax,
+>                 valid=(ce[1] <= vmax) is True)
+> 
+> 
+> def provide_bh(KS, TIN, VAC, fails, fires):
+>     """the beta_H provider (v1_1), built like provide_s4trb. It reads pk08's TRB_H record once
+>     (C-HASH on the bytes it parses, with the reference parser and both asm outputs, full sha256), parses it with the port's reader and the
+>     reference parser, and requires C-FMT (identical keys and values, the keys used present, the header as pinned, T48), C-SRC
+>     (s4h_src_check), C-DIAG (s4h_diag_bad, rule (a)'s guard) and C-MHAT (mhat_bad); then per N, C-BH (bh_bound), with SH4's validity
+>     and HZ_PLAN_v1_1 l.461's kill line (beta_H <= 1.5 x its harmonic value) as gates. Plants: PLANT-FMT-TRBH, PLANT-HSRC,
+>     PLANT-PRECERT-TRBH, PLANT-ROWSWAP, PLANT-MHAT, PLANT-BHVALID. c_e is the t inputs' ce_lo/ce_hi over every grid piece of the N when
+>     FIELDS names them (pk15's route B), else the harmonic c_t as a FLOAT stand-in. Every piece's bH becomes its N's J-uniform beta_H
+>     (rule (d): one full-norm bound for both parities and the u-perp case), and TIN['_bh_tag'] reads CERTIFIED only when every check
+>     passes, every plant fires, c_e comes from the record's ce_lo/ce_hi with the t tag certified and the M2 vacuum tag (eps_r) is
+>     certified; TAG_PINS['beta_H'] is set then and only then. Returns {N: beta_H}."""
+>     STB_READS.append('provide_bh')                              # v1_2: C-VERT-ONLY
+>     with open(os.path.join(CODEDIR, S4H['path']), 'rb') as fh:
+>         raw = fh.read()
+>     with open(os.path.join(CODEDIR, S4U_REF[0]), 'rb') as fh:
+>         refb = fh.read()
+>     asmb = {}
+>     for N in (4, 3):
+>         with open(os.path.join(CODEDIR, S4H_ASM[N][0]), 'rb') as fh:
+>             asmb[N] = fh.read()
+>     ok_h = (sha_bytes(raw) == S4H['sha256'], sha_bytes(refb) == S4U_REF[1], all(sha_bytes(asmb[N]) == S4H_ASM[N][1] for N in (4, 3)))
+>     out('C-HASH TRB_H (full sha256 of the bytes read here): record %s %s, reference parser %s %s, the 2 asm outputs %s -> %s' % (
+>         S4H['path'], 'matches' if ok_h[0] else 'DIFFERS', S4U_REF[0], 'matches' if ok_h[1] else 'DIFFERS',
+>         'match' if ok_h[2] else 'DIFFER', 'PASS' if all(ok_h) else 'FAIL'))
+>     if not all(ok_h):
+>         fails.append('C-HASH TRB_H')
+>         raise RuntimeError('beta_H provider: a pinned file differs from its pin; nothing is read from it')
+>     text = raw.decode('utf-8')
+>     asm = {N: asmb[N].decode('utf-8') for N in (4, 3)}
+>     ns = {}
+>     exec(compile(refb.decode('utf-8'), S4U_REF[0], 'exec'), ns)
+>     ref_parse = ns['parse_s4u_kv']
+>     port, ref = s4u_read_port(text), ref_parse(text)
+>     diff = sorted(k for k in set(port) | set(ref) if port.get(k) != ref.get(k))
+>     miss = [k for k in S4H_USED if k not in port]
+>     hdr = [k for k, v in S4H_HEADER.items() if port.get(k) != v]
+>     prec = marked_precert(port)                                         # T48: a PRECERT or STUB record is refused
+>     ok_fmt = not diff and not miss and not hdr and not prec
+>     out('C-FMT TRB_H (format %s): %d keys; the port\'s reader against the reference parser (%s, sha256 %s): %s; the %d keys used present: '
+>         '%s; header keys %s as pinned: %s; marked PRECERT or STUB (T48): %s -> %s' % (
+>             S4H['fmt'], len(port), S4U_REF[0], S4U_REF[1][:8], 'identical' if not diff else 'DIFFER on %s' % ', '.join(diff[:6]),
+>             len(S4H_USED), 'yes' if not miss else 'NO (%s)' % ', '.join(miss[:6]), ', '.join(S4H_HEADER),
+>             'yes' if not hdr else 'NO (%s)' % ', '.join(hdr), prec, 'PASS' if ok_fmt else 'FAIL'))
+>     if not ok_fmt:
+>         fails.append('C-FMT TRB_H')
+>     src_bad = s4h_src_check(port, asm)
+>     out('C-SRC TRB_H: per row T, M the balls N*_<r>_D0..D3 and U3P_1_300 against the U3_P lines (and *_LO, *_HI = mid -+ rad exactly), '
+>         'N*_<r>_R_CERT .. TOL against the READING lines of %s and %s (CHECKS all PASS, C-TOL PASS and VERDICT VALID there, the header\'s '
+>         'program and code sha8 = the record\'s CODE), N*_ASM_OUTPUT, N*_VERDICT, N*_CHECKS, N*_TOL_RESULT -> %s' % (
+>             S4H_ASM[4][0], S4H_ASM[3][0], 'PASS' if not src_bad else 'FAIL (%s)' % ', '.join(src_bad[:6])))
+>     if src_bad:
+>         fails.append('C-SRC TRB_H')
+>     dg_bad = s4h_diag_bad(port)
+>     out('C-DIAG TRB_H (rule (a)\'s guard: a trace is at least its diagonal; row T is the t bond, row M the h bond): %s -> %s' % (
+>         '; '.join('N=%d row %s D0_LO %s >= %s' % (N, r, port.get('N%d_%s_D0_LO' % (N, r)), h) for (N, r), h in S4H_HARM.items()),
+>         'PASS' if not dg_bad else 'FAIL (%s)' % ', '.join(dg_bad)))
+>     if dg_bad:
+>         fails.append('C-DIAG TRB_H')
+>     mh_bad = mhat_bad(VAC)
+>     out('C-MHAT (rule B-1: m-hat >= 1 for t >= 0): m1, m2, m3 of the pinned vacres >= 0 exactly: %s -> %s' % (
+>         '; '.join('N=%d %s' % (N, ', '.join('%s %r' % (k, VAC[N].get(k)) for k in ('m1', 'm2', 'm3'))) for N in (4, 3)),
+>         'PASS' if not mh_bad else 'FAIL (%s)' % ', '.join(mh_bad)))
+>     if mh_bad:
+>         fails.append('C-MHAT')
+>     sw = s4u_swap(text, 'N4_T_D0_HI', 'N4_M_D0_HI')
+>     port_sw = s4u_read_port(sw)
+>     sw_bad = [b for b in s4h_src_check(port_sw, asm) if b in ('N4_T_D0_HI', 'N4_M_D0_HI')]     # the check must catch it
+>     fired_f = sw != text and port_sw != ref and bool(sw_bad)
+>     bumped = s4u_bump(port.get('N4_T_R_CERT', '0'))
+>     fired_s = bumped != port.get('N4_T_R_CERT') and 'N4_T_R_CERT against its READING' in s4h_src_check(dict(port, N4_T_R_CERT=bumped), asm)
+>     pr_rec = marked_precert(dict(port, FORMAT=port.get('FORMAT', '') + '-STUB'))           # T48: one plant for this reader
+>     fired_pr = pr_rec and any('VERDICT' in b for b in s4h_src_check(port, {**asm, 4: precert_copy(asm[4])}))
+>     fired_rs = bool(s4h_diag_bad(s4h_rowswap(port)))
+>     fired_mh = any(b.startswith('N=4 m2') for b in mhat_bad({**VAC, 4: dict(VAC[4], m2=-1e-12)}))
+>     BH, ok_bh, have_ce, fired_v = {}, True, True, True
+>     for N in (4, 3):
+>         rows = [t for k, t in TIN.items() if isinstance(k, tuple) and k[0] == N]
+>         if rows and all('ce' in t for t in rows):
+>             ce = (pmin([t['ce'][0] for t in rows]), pmax([t['ce'][1] for t in rows]))
+>             src = 'the t inputs\' ce_lo/ce_hi over %d pieces' % len(rows)
+>         else:
+>             hc = pt(N - 1) / 2 - pt(N - 1) * (1 / iv.sqrt(5) + 1 / iv.sqrt(21)) / 4
+>             ce, src, have_ce = (pt(hc.a), pt(hc.b)), 'FLOAT stand-in: the harmonic c_t (N - 1)/2 - (N - 1)(5^-1/2 + 21^-1/2)/4', False
+>         B = bh_bound(port, KS[N], N, ce)
+>         fired_v = fired_v and not bh_bound(port, KS[N], N, (ce[0], pt((B['vmax'] + pt('1e-9')).b)))['valid']
+>         harm = pt((pt(N - 1) * (1 / iv.sqrt(5) + 1 / iv.sqrt(21)) / 4).b)
+>         kill = (B['bh'] <= 3 * harm / 2) is True
+>         old = rows[0]['bH'] if rows else None
+>         out('C-BH N=%d (kind t = row T, J-uniform): beta_H = max((N-1)/2 - c_e_lo, [D0_HI + sum_k max(Dk_HI, 0) 300^-k + '
+>             'R_CERT] / (1 - delta)^2) = max(%s, %s x %s) = %s (delta = eps_r/sqrt(1 - s^2) <= %s at J = 300, eps_r <= %s, s <= %s, '
+>             'LAW v1); SH4 validity c_e_hi %s <= (N-1)/2 - c_N/300 = %s (c_N = %s): %s; KILL l.461 beta_H <= 1.5 x the harmonic %s: %s; '
+>             'c_e from %s; the FLOAT value it replaces %s -> %s' % (
+>                 N, nf(B['first'], 7), nf(B['tr'], 7), nf(B['fac'], 12), nf(B['bh'], 7), nf(B['dl'], 4), nf(B['er'], 4), nf(B['sv'], 4),
+>                 nf(ce[1], 7), nf(B['vmax'], 7), B['cN'], B['valid'], nf(harm, 5), kill, src, nf(old) if old is not None else 'none',
+>                 'PASS' if (B['valid'] and kill) else 'FAIL'))
+>         if not (B['valid'] and kill):
+>             fails.append('C-BH N=%d' % N)
+>             ok_bh = False
+>         BH[N] = B['bh']
+>     plants = (('PLANT-FMT-TRBH', fired_f), ('PLANT-HSRC', fired_s), ('PLANT-PRECERT-TRBH', fired_pr), ('PLANT-ROWSWAP', fired_rs),
+>               ('PLANT-MHAT', fired_mh), ('PLANT-BHVALID', fired_v))
+>     out('PLANT-FMT-TRBH (a copy with N4_T_D0_HI and N4_M_D0_HI swapped: the port\'s reading differs from the reference parser\'s and C-SRC '
+>         'on it fails on %s) %s; PLANT-HSRC (N4_T_R_CERT\'s last digit moved) %s; PLANT-PRECERT-TRBH (T48: FORMAT -STUB, and the N4 asm output '
+>         'reading VERDICT VALID-PRECERT) %s; PLANT-ROWSWAP (rows T and M exchanged: C-DIAG must fail) %s; PLANT-MHAT (N4 m2 = -1e-12) %s; '
+>         'PLANT-BHVALID (c_e_hi 1e-9 above the validity bound) %s' % ((', '.join(sw_bad) or 'nothing',) + tuple(
+>             'FIRES' if f else 'DOES NOT FIRE' for _, f in plants)))
+>     for nm, f in plants:
+>         if not f:
+>             fires.append(nm)
+>     for k, t in TIN.items():
+>         if isinstance(k, tuple):
+>             t['bH'] = BH[k[0]]
+>     sha8 = sha_bytes(raw)[:8]
+>     why = [w for w, c in (('c_e is the harmonic FLOAT stand-in', not have_ce), ('the t inputs are not certified',
+>                                                                                 not tag_certified('t inputs', TIN['_tag'])),
+>                           ('eps_r comes from an M2 vacuum tag that is not certified', not tag_certified('M2 vacuum', TAGS['M2 vacuum'])),
+>                           ('a check failed or a plant did not fire', not (ok_fmt and not src_bad and not dg_bad and not mh_bad and ok_bh
+>                                                                           and all(f for _, f in plants)))) if c]
+>     if not why:
+>         TAG_PINS['beta_H'] = (S4H['producer'], sha8)
+>         TIN['_bh_tag'] = 'CERTIFIED %s %s' % TAG_PINS['beta_H']
+>     else:
+>         TIN['_bh_tag'] = 'FLOAT (beta_H from TRB_H %s %s: %s)' % (S4H['producer'], sha8, '; '.join(why))
+>     out('beta_H provider: tag %r (reads certified: %s); every t piece\'s bH set to its N\'s beta_H: N=4 %s, N=3 %s' % (
+>         TIN['_bh_tag'], tag_certified('beta_H', TIN['_bh_tag']), nf(BH[4], 7), nf(BH[3], 7)))
+>     return BH
+> 
+> 
+4297a4637
+>     STB_READS.append('provide_joint')                           # v1_2: C-VERT-ONLY
+4999,5002c5339,5342
+<             T = SH1['tin'][N]
+<             out('C2a.1 N=%d (P2-11): ||B_t|| <= beta_H = %s (FLOAT: 1.1 x the harmonic H-NORM value (N - 1)(5^-1/2 + 21^-1/2)/4; certified '
+<                 'with TRB_H, P2-10), the full-norm bound used for both parities -> %s' % (
+<                     N, nf(T['bH']), verdict_word(c2a_tags(SH1, TIN, JIN, 'flip'), True)))
+---
+>             T = SH1['tin'][N] if TIN is None else TIN[(N, 0)]
+>             out('C2a.1 N=%d (P2-11): ||B_t|| <= beta_H = %s (%s), the full-norm bound used for both parities and the u-perp case (the review '
+>                 '19f74c2b (d)) -> %s' % (
+>                     N, nf(T['bH'], 7), SH1['tag'] if TIN is None else TIN['_bh_tag'], verdict_word(c2a_tags(SH1, TIN, JIN, 'flip'), True)))
+5359a5700,5731
+> # ------------------------------------------------------------------ C-VERT-ONLY (v1_2, the certified vertical mode reads no S_TB' input)
+> def vert_only_bad(reads, unread, sh1, jin, tin):
+>     """C-VERT-ONLY: in the VERTICAL mode no S_TB' provider ran (reads: STB_READS), the module-level C-HASH left every FILES_STB file
+>     unopened (unread: STB_UNREAD), and SH1, the joint inputs and the t inputs do not exist. Returns the failures."""
+>     bad = ['%s ran' % r for r in reads]
+>     bad += ['%s opened' % f for f in sorted(FILES_STB) if f not in unread]
+>     return bad + ['%s present' % n for n, v in (('SH1', sh1), ('joint inputs', jin), ('t inputs', tin)) if v is not None]
+> 
+> 
+> def c_vert_only(sh1, jin, tin, fails, fires, when):
+>     """C-VERT-ONLY (v1_2) and PLANT-VERT-ONLY's three cases (a record of provide_tin having run, t inputs present, one FILES_STB
+>     file opened); in the full mode an INFO line naming the S_TB' providers that ran."""
+>     if not VERT:
+>         out('INFO C-VERT-ONLY %s (full mode): the S_TB\' providers run: %s' % (when, ', '.join(STB_READS) or 'none'))
+>         return
+>     bad = vert_only_bad(STB_READS, STB_UNREAD, sh1, jin, tin)
+>     one = sorted(FILES_STB)[0]
+>     pl = (('provide_tin ran', vert_only_bad(STB_READS + ['provide_tin'], STB_UNREAD, sh1, jin, tin)),
+>           ('t inputs present', vert_only_bad(STB_READS, STB_UNREAD, sh1, jin, {'planted': True})),
+>           ('%s opened' % one, vert_only_bad(STB_READS, STB_UNREAD - {one}, sh1, jin, tin)))
+>     fired = all(len(b) > len(bad) for _, b in pl)
+>     out('C-VERT-ONLY %s (the certified vertical mode reads no S_TB\' input): S_TB\' providers run: %s; the %d FILES_STB files left '
+>         'unopened by C-HASH: %s; SH1, joint and t inputs: %s -> %s; PLANT-VERT-ONLY (%s) -> %s' % (
+>             when, ', '.join(STB_READS) or 'none', len(FILES_STB), 'yes' if FILES_STB <= STB_UNREAD else 'NO',
+>             'none' if (sh1 is None and jin is None and tin is None) else 'PRESENT', 'PASS' if not bad else 'FAIL (%s)' % ', '.join(bad),
+>             '; '.join(lab for lab, _ in pl), 'FIRES' if fired else 'DOES NOT FIRE'))
+>     if bad:
+>         fails.append('C-VERT-ONLY %s' % when)
+>     if not fired:
+>         fires.append('PLANT-VERT-ONLY %s' % when)
+> 
+> 
+5387a5760,5764
+>         if not VERT and TIN is not None:
+>             STAGE[0] = 'beta_H provider (v1_1)'
+>             provide_bh(M2B, TIN, VAC, fails, fires)     # the v1 review P-3: beta_H from the TRB_H record
+>         STAGE[0] = 'C-VERT-ONLY'
+>         c_vert_only(SH1, JIN, TIN, fails, fires, 'after the providers')     # v1_2: no S_TB' read in the vertical mode
+5415a5793,5794
+>         STAGE[0] = 'C-VERT-ONLY end'
+>         c_vert_only(SH1, JIN, TIN, fails, fires, 'at the end')             # v1_2: still none after the item

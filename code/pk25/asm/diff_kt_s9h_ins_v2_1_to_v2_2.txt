@@ -1,0 +1,23 @@
+2c2
+< """kt_s9h_ins_v2_1.py (pk25, code/pk25/asm/; G5 C12 step 1, the rows 4380, 4401, 4407, 4418): the MR_INSERT v4 producer, MODE dry or
+---
+> """kt_s9h_ins_v2_2.py (pk25, code/pk25/asm/; G5 C12 step 1, the rows 4380, 4401, 4407, 4418): the MR_INSERT v4 producer, MODE dry or
+10c10,11
+< (mu tool v1_1). The C6b base template text follows. C6b base: h's bulk amplitudes per piece of R4's grid (S9(b)-h).
+---
+> (mu tool v1_1). v2_2: L7's |h_00| bounds (C8)'s vacuum amplitude, + (2 W + W^2) N_H (the row 4441).
+> The C6b base template text follows. C6b base: h's bulk amplitudes per piece of R4's grid (S9(b)-h).
+28c29
+< Usage: kt_s9h_ins_v2_1.py dry TAG"""
+---
+> Usage: kt_s9h_ins_v2_2.py dry TAG"""
+75c76
+<     print('usage: kt_s9h_ins_v2_1.py dry|cert TAG')
+---
+>     print('usage: kt_s9h_ins_v2_2.py dry|cert TAG')
+2427a2429,2433
+>     # (C8)'s h_00 is the vacuum amplitude <Omega_0, H_xi Omega_0>/lambda_0^2. With Omega_0 = beta u~_0 + w,
+>     # ||w||^2 <= W^2 = 1 - rad, and ||H_xi||/lambda_0^2 <= N_H = Lam + tau~0 kappa^2 for every J >= 300 (positivity below Lam, the lemma's
+>     # Schur step above), |h_00| <= hb_bound(c_0, c_0) + (2 W + W^2) N_H
+>     W2 = (1 - rad).upper()
+>     H00 = (H00 + (2 * W2.sqrt() + W2) * (Lam + BP['tau0'] * BP['kap'] * BP['kap'])).upper()

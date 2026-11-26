@@ -1,0 +1,30 @@
+px08_trbhscan_v2 sha256 ac843025d226bd2dc802fd07b219263a8fe702aeb2e7035b03c57b8a905b97bf ITEM=n3 PART=i LIM=130
+C-HASH PASS (10 sources)
+INPUTS N=3 PART i: PR 12.54375443; U record: PREF2_RE 5.199751e-06, PREF2_RHO4 8.463732e-06 (R_U 1.366348e-05), M3 annulus + far + equator 3.384752e-09, LEAD 1.030239304103, C1..C3 0.742487735 0.537949702 0.438039173; HZ_PLAN harmonic h_T 0.3327, h_M 0.4364; kappa_T 0.166852, Y_T = 0.583426 (X1 + X3) - c; sup_Omega |p_T| <= 111.4875, |p_M| <= 44.1633 (x_min 0.503383)
+C-COPY (chern = twrig6z l.39-46): PASS
+C-SER-F N=3 (24 points of Omega): row T PASS, row M PASS; worst |residual|/(t^4 pbar_4) 9.658e-01; residual(t)/residual(t/2) in [16.08, 18.06]; PLANT-SER-F (p_2 x 1.01): row T FIRED, row M FIRED
+C-PL0 N=3 (M = 32): lead_U 1.030239304103 (C-REPRO-LEAD against N3_LEAD: rel 4.31e-16, PASS); lead_p(T) 0.355417332135, lead_p(M) 0.454218823501; lead_p/lead_U: T 0.344985219182, M 0.440886716020; d_1: T -0.0236740740, M 0.0079475561 [0.0 s]
+C-REPRO-C N=3 (M = 16): <E1> 0.7424877354 (rel 1.56e-12), <E2> 0.5379497016 (rel 3.13e-13): PASS; d_2: T -0.07117127, M -0.06862301 [0.1 s]
+U3_p N=3 row T (d_3 omitted, about 4e-8 d_3): d_0 0.3554173321, c_1 -0.06660923, c_2 -0.200247; U3_p(1/300) 0.3553376278; U3_p - h_T 0.022638; TOL = 0.25 (U3_p - h_T) = 5.6594e-03
+U3_p N=3 row M (d_3 omitted, about 4e-8 d_3): d_0 0.4542188235, c_1 0.01749720, c_2 -0.151079; U3_p(1/300) 0.4542445529; U3_p - h_M 0.017845; TOL = 0.25 (U3_p - h_M) = 4.4611e-03
+PD SCAN N=3 (65 al-points + reflection; feasible = min eig >= 0.02): base min eig Q_t(eps): eps 0.2 1.767e-01, eps 0.35 2.876e-01, eps 0.5 3.300e-01, eps 0.65 3.524e-01 [0.5 s]
+  PD i: eps 0.2: delta <= 0.38; eps 0.35: delta <= 0.56; eps 0.5: delta <= 0.62; eps 0.65: delta <= 0.64
+  PD ii-T: eps 0.2: delta <= 1.12; eps 0.35: delta <= 1.20; eps 0.5: delta <= 1.20; eps 0.65: delta <= 1.20
+  PD ii-M: eps 0.2: delta <= 0.44; eps 0.35: delta <= 0.66; eps 0.5: delta <= 0.72; eps 0.65: delta <= 0.76
+  YOUNG i: delta_p = 0.32 (Phi 2.5349)
+  YOUNG ii-T: delta_p = 0.64 (Phi 1.1929)
+  YOUNG ii-M: delta_p = 0.44 (Phi 0.8248)
+C-DELTA0 N=3 (delta = 0, eps 0.35, M = 4, against the certified M = 64 values): R_E 4.4011e-06 vs PREF2_RE 5.1998e-06 (M4/cert 0.846); rho4 7.0561e-06 vs PREF2_RHO4 8.4637e-06 (M4/cert 0.834); corrections kE 1.181, kR 1.199 [55.7 s]
+  R_cross N=3 row T (plain measure, M = 4) term by term: t^4 p_1 E_3 9.842e-07, t^4 p_2 E_2 1.053e-08, t^5 p_2 E_3 1.176e-08, t^4 p_3 E_1 1.105e-08, t^5 p_3 E_2 2.662e-10, t^6 p_3 E_3 2.974e-10
+  R_cross N=3 row M (plain measure, M = 4) term by term: t^4 p_1 E_3 7.311e-07, t^4 p_2 E_2 2.125e-09, t^5 p_2 E_3 2.374e-09, t^4 p_3 E_1 9.096e-10, t^5 p_3 E_2 2.192e-11, t^6 p_3 E_3 2.449e-11
+OPTION iii N=3 (sup over Omega x U's certified R_E + rho4; Chern 8.8342e-16):
+  option iii row T: R_main 1.5233e-03 (sup |p_T| 111.4875 x R_U 1.3663e-05); remainder 1.5250e-03 (R_cross 1.018e-06, R_ins 1.531e-07, tail^(p) 3.076e-08, off-Omega 5.111e-07); 1.2 x remainder 1.8300e-03 vs TOL 5.6594e-03 = 0.25 (U3_p - h_T) [32.3% of TOL]: FITS
+  option iii row M: R_main 6.0343e-04 (sup |p_M| 44.1633 x R_U 1.3663e-05); remainder 6.0470e-04 (R_cross 7.366e-07, R_ins 2.070e-09, tail^(p) 2.848e-08, off-Omega 5.111e-07); 1.2 x remainder 7.2564e-04 vs TOL 4.4611e-03 = 0.25 (U3_p - h_M) [16.3% of TOL]: FITS
+DELTA CHAIN N=3 option i (M = 4): delta 0.32, eps* 0.65: R_E^(delta) 7.7664e-05 (x kE 9.1757e-05), rho4^(delta) 2.0877e-04 (x kR 2.5042e-04) [55.1 s]
+DELTA CHAIN N=3 option i at delta 0.16: SKIPPED (budget)
+OPTION i N=3 (one tilt Y_M + Y_T; per-group delta):
+  option i row T: R_main 4.0703e-04 (alpha0 R_U 1.3663e-05 + R_E part 1.0549e-04 at delta 0.32 + rho4 part 2.8788e-04 at delta 0.32, eps* 0.65); remainder 4.0875e-04 (R_cross 1.018e-06, R_ins 1.531e-07, tail^(p) 3.076e-08, off-Omega 5.111e-07); 1.2 x remainder 4.9050e-04 vs TOL 5.6594e-03 = 0.25 (U3_p - h_T) [8.7% of TOL]: FITS
+  option i row M: R_main 2.1035e-04 (alpha0 R_U 1.3663e-05 + R_E part 5.2743e-05 at delta 0.32 + rho4 part 1.4394e-04 at delta 0.32, eps* 0.65); remainder 2.1163e-04 (R_cross 7.366e-07, R_ins 2.070e-09, tail^(p) 2.848e-08, off-Omega 5.111e-07); 1.2 x remainder 2.5395e-04 vs TOL 4.4611e-03 = 0.25 (U3_p - h_M) [5.7% of TOL]: FITS
+VERDICT N=3 PART i: option iii FITS, option i FITS; cheapest fitting option at this N: iii
+CHECKS all PASS
+CPU 111.6 s maxrss_kb 312056

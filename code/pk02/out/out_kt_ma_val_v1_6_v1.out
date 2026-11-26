@@ -1,0 +1,22 @@
+kt_ma_val_v1_6 sha256 e182d5039ae4e6abd203ecc53d8e7cd703e5a8793467feaf9ea0a1543fd4d829 PIECE=v1 LIM=540
+kt_cert_v1_5 sha256 bf1995af9ae714e5ba225d2d4ea3c7a8802709ad2dfe55f2163e0452eee0e37b ITEM=tA.e1n4 LIM=540 (RLIMIT_CPU soft 540, hard 545)
+C-HASH PASS (5 engine files, 1 own files, 10 predecessor outputs, 6 inputs)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+C-HASH PASS (kt_cert_v1_5, arbeng_ma_v1_4, arbeng_ma_v1_1, arbeng_ma_stub_v1_1, arbeng_ma_stub_v1)
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-TREE: m 1: 3 terms k 2 (want 2); merged with 3 terms k 3 (want 3; formula 3); m 2: 5 terms k 3 (want 3); merged with 3 terms k 4 (want 4; formula 3); m 3: 9 terms k 4 (want 4); merged with 3 terms k 5 (want 5; formula 4); m 5: 33 terms k 6 (want 6); merged with 3 terms k 7 (want 7; formula 6); m 8: 257 terms k 9 (want 9); merged with 3 terms k 10 (want 10; formula 9); m 12: 4097 terms k 13 (want 13); merged with 3 terms k 14 (want 14; formula 13) -> PASS
+V1 K2 CondTable Dc 10: 7677098 entries, inner zeroed 18 (cpu 66.0 s); C-SHADOW 1.24e+143
+C-TINY V1: 4273190 terms made error-only by the tiny rule; C-UF: largest einsum allowance 3.440e-319, Smax 1.000e+00
+V1 arb CondMomA Dc 10 (cpu 201.1 s)
+V1 (a) table containment: 7677098 M-a entries (0 without an arb entry), 0 arb-only entries; 0 M-a and 0 arb entries fail (no overlap, or a one-sided entry not containing 0); largest M-a relative width 9.05e+156 -> PASS
+PLANT-MA-ROUND: without the rounding term 2 entries miss their arb ball -> FIRES
+INFO count-0 radius (kt_ma_val_v1_4: no longer a plant): 0 entries miss their arb ball; the formula margin 4u (A + B + C), about 8u times the shadow, covers this table's actual errors, so a count-only plant cannot fire on it
+V1 K2 condE: 8008 coefficients, largest count 478 (cpu 5.5 s)
+V1 (b) ED containment: 8008 arb coefficients, 8008 M-a, 0 mismatches -> PASS
+HANDOFF-READ N=4 e1 c: hand_kt_cert_v1_5_c.e1n4.txt sha256 ef9d303afe5ce24b3e31ca1bc64ffa48c2e708c5a36d837e7e437966edd38f15 equals its record (out_kt_cert_v1_5_c.e1n4.out); body checksum and header PASS
+V1 (c) nD (C-RAD-MA): arb 2.437213558e-04 +- 2.7e-152 (rel 1.1e-148) | c hand-off 2.437213558e-04 +- 3.0e-84 (rel 1.2e-80) | M-a 2.437213558e-04 +- 7.3e-15 (rel 3.0e-11) | relative width 3.00e-11 (<= 1e-5) -> PASS
+C-REPRO nD: M-a midpoint 2.437214e-04 against kt_c_v2_3 printed 2.437e-04 (old trial set) -> PASS
+QC C-BUDGET nD (quality control, not a gate): M-a part 7.32e-15 = radius with the M-a radii 7.32e-15 minus without 2.54e-152; relative 3.00e-11
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+ITEM v1 cpu 381.0 s, peak resident memory 7780 MiB
+VERDICT VALID

@@ -1,0 +1,16 @@
+# job145 (pk25): C11 cert c1 against dry x1, written 2026-11-21T13:22:32Z
+CERT mr/v4/MR_CRUDEX.kv sha256 3b967bda89ebe97a8d1fffc9ed4c8564d009e435a23b11b39af5b10c50b43241 lines 5257
+DRY asm/dry_x1/MR_CRUDEX.kv sha256 2c247837cb9263ca22effa890e0cfa75adff6c6a417c4d8bf95d48b49dac3daf lines 5257
+ROWS cert 5241 dry 5241; cmp rc 0 (0 = byte-equal)
+HEADER lines that differ: 1,6,7 (expected 1,6,7: the comment line and the two STATUS lines); STATUS lines CERTIFIED: 2 of 2; diff rc 1
+1c1
+< # MR_CRUDEX (pk25, kt_s9h_crudex_v1 dry): written by kt_s9h_crudex_v1
+---
+> # MR_CRUDEX (pk25, kt_s9h_crudex_v1 cert): written by kt_s9h_crudex_v1
+6,7c6,7
+< STATUS = DRY
+< EXPORT_STATUS = DRY
+---
+> STATUS = CERTIFIED
+> EXPORT_STATUS = CERTIFIED
+COMPARE PASS

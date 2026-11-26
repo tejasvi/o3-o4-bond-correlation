@@ -1,0 +1,94 @@
+kt_sh1_v1 sha256 f225ee367c22b94837b57b3319809bfd86fbfc62ac6be970bca46106b95d0061 ITEM=n3 LIM=300 (RLIMIT_CPU soft 300, hard 305)
+C-HASH PASS (26 pinned files)
+C-CORE PASS (5 blocks: same same same same same)
+C-GRAPH N=3: 4BT V 12 F 20, 4TB V 12 F 20, 4TT V 12 F 20, D V 6 F 12, DB V 6 F 13, DT V 6 F 13, NIH V 9 F 16, NIT V 9 F 16, NTT V 9 F 16 -> PASS
+C-XIT N=3 xi on (0,3) (graph DT): worst 0.00e+00 -> PASS
+C-XIT N=3 xi on (2,5) (graph DB): worst 0.00e+00 -> PASS
+C-XIT N=3 xi on (3,6) (graph NIT): worst 0.00e+00 -> PASS
+C-XIT N=3 xi on (6,9) (graph 4TT): worst 0.00e+00 -> PASS
+C-XIT N=3 xi on (8,11) (graph 4TB): worst 0.00e+00 -> PASS
+MOMENTS N=3 graph 4BT: F 20, D 6, Q-cap 6, 177100 codes at the top degree, 2.4 s (cpu 3.1 s)
+ENTRY N=3 XBT (graph 4BT, Dn 6, Q-degree 6; series 0.0 s, sums 0.0 s): ak=[0.44604506818004713, 0.7735088982473012, 1.0272667420162576]
+MOMENTS N=3 graph 4TB: F 20, D 6, Q-cap 6, 177100 codes at the top degree, 2.4 s (cpu 5.5 s)
+ENTRY N=3 XTB (graph 4TB, Dn 6, Q-degree 6; series 0.1 s, sums 0.0 s): ak=[0.4460450681800476, 0.7735088982473018, 1.027266742016261]
+MOMENTS N=3 graph 4TT: F 20, D 6, Q-cap 6, 177100 codes at the top degree, 2.4 s (cpu 7.9 s)
+ENTRY N=3 XTT (graph 4TT, Dn 6, Q-degree 6; series 0.1 s, sums 0.0 s): ak=[0.44666529460239285, 0.7748759977051207, 1.0295189551125166]
+MOMENTS N=3 graph D: F 12, D 8, Q-cap 6, 69543 codes at the top degree, 0.2 s (cpu 8.1 s)
+ENTRY N=3 Geps (graph D, Dn 8, Q-degree 6; series 0.0 s, sums 0.0 s): ak=[0.01166995190361153, 0.01493151654035353, 0.018532256095505566, 0.023541425414039675]
+MOMENTS N=3 graph DB: F 13, D 7, Q-cap 6, 48672 codes at the top degree, 0.2 s (cpu 8.3 s)
+ENTRY N=3 Gxbb,0,0 (graph DB, Dn 7, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.667284257132025, 0.6101534285043818, 0.6087916527314337, 0.6375531998641886]
+MOMENTS N=3 graph DT: F 13, D 11, Q-cap 6, 802165 codes at the top degree, 6.4 s (cpu 14.7 s)
+ENTRY N=3 G00|DT (graph DT, Dn 6, Q-degree 4; series 0.0 s, sums 0.0 s): ak=[1.0, 0.8230070134373547, 0.7765835242312656, 0.7801522802941093]
+ENTRY N=3 Gxt,0,0 (graph DT, Dn 7, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.667284257132025, 0.6101534285043819, 0.608791652731433, 0.6375531998641814]
+ENTRY N=3 Gxt,0,1 (graph DT, Dn 9, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.22360679774998285, 0.08506365724503973, 0.09752567206199897, 0.14473307997227747]
+ENTRY N=3 Gxt,0,3 (graph DT, Dn 9, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.10910894511796371, 0.864263832837898, 1.0354998812466882, 1.1484045514020378]
+ENTRY N=3 Gxt,1,1 (graph DT, Dn 11, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.22007066163205413, 0.034225706738009676, 0.020437644854760073, 0.08668157374002605]
+ENTRY N=3 Gxt,1,3 (graph DT, Dn 11, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[-2.7288853825902765e-13, 0.530010998813643, 0.5865593360814925, 0.6915753537313923]
+ENTRY N=3 Gxt,3,3 (graph DT, Dn 11, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.449066366894358, 0.559141855029206, 1.6878933667799396, 2.5674043822925983]
+MOMENTS N=3 graph NIH: F 16, D 9, Q-cap 6, 1198252 codes at the top degree, 8.3 s (cpu 23.1 s)
+ENTRY N=3 Ihh,0 (graph NIH, Dn 7, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.5635642195280153, 0.7441659234977944, 0.855522396464462, 0.9688942732563565]
+ENTRY N=3 Ihh,1 (graph NIH, Dn 9, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[1.0988715235030893e-17, -0.014461051094730504, 0.02294068957943146, 0.08679786576365572]
+ENTRY N=3 Ihh,3 (graph NIH, Dn 9, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.019011475427823943, 0.5411830596643301, 0.868772667227996, 1.1111173621308277]
+MOMENTS N=3 graph NIT: F 16, D 9, Q-cap 6, 1198252 codes at the top degree, 7.8 s (cpu 30.9 s)
+ENTRY N=3 Iht,0 (graph NIT, Dn 7, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.6672842571320248, 0.8529855223943694, 0.9577565032858558, 1.063180802914709]
+ENTRY N=3 Iht,1 (graph NIT, Dn 9, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.03262379212492686, 0.0006347712480114787, 0.029897384231388546, 0.09131832479241786]
+ENTRY N=3 Iht,3 (graph NIT, Dn 9, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.004752868856953131, 0.6387571823827893, 1.0090351913033664, 1.2639325703397735]
+MOMENTS N=3 graph NTT: F 16, D 9, Q-cap 6, 1198252 codes at the top degree, 8.0 s (cpu 38.9 s)
+ENTRY N=3 IhTt,0 (graph NTT, Dn 7, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.6672842571320248, 0.8529855223943699, 0.9577565032858536, 1.0631808029146943]
+ENTRY N=3 IhTt,1 (graph NTT, Dn 9, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.22360679774998285, 0.16643663484088167, 0.17101324047186406, 0.22550131523986672]
+ENTRY N=3 IhTt,3 (graph NTT, Dn 9, Q-degree 5; series 0.0 s, sums 0.0 s): ak=[0.10910894511796371, 0.9039697802237965, 1.370768487703371, 1.7038749034279446]
+C-QCAP N=3: largest Q-degree 6 over 21 entries; every moment cap is at least its entries' Q-degree (6 where none exceeds 6) -> PASS
+C-K2 N=3: IhTt,0 a_0..a_2 from moments at D 5 (order-2 cut; exact_ak Dn 7, Q-degree 5) against the entry run: worst 0.00e+00 -> PASS
+C-AKV2 N=3: G00|DT against kt_s9b_v2 G,0,0: worst 0.00e+00 -> PASS
+C-H N=3: Ihh,b against kt_s9b_v2 Ih,b, b in EVEN: worst 0.00e+00 -> PASS
+C-IHT0T N=3: Iht,0 (xi on (3,6)) against IhTt,0 (xi on (0,3)): worst 1.38e-14 -> PASS
+C-IHT1T N=3: IhTt,g a_0, a_1 against mhat * Gxt,0,g, g in EVEN: worst 1.94e-15 -> PASS
+C-PARITY N=3: Gxt,0,0 against Gxbb,0,0: worst 7.22e-15 -> PASS
+C-SYM4 N=3: XTB against XBT (a_0..a_2): worst 3.24e-15 -> PASS
+PLANT-ODD N=3: (Gxt,0,0 + Gxbb,0,0)/2 a_0 = 0.667284 in place of the parity difference -> FIRES
+C-R N=3: R = main_N^2/(main_D main_4) 1.000000000000014 at J = 300 -> PASS
+C-HARM N=3 x_R: 0.14589803375 (exact 0.14589803375) abs err 2.01e-15 -> PASS
+C-HARM N=3 y_R: 0.0435607626104 (exact 0.0435607626104) abs err 1.67e-14 -> PASS
+C-HARM N=3 h_x: 1.15849002573e-16 (exact 0.0) abs err 1.16e-16 -> PASS
+C-HARM N=3 h_0: 0.563564219528 (exact 0.563564219528) rel err 6.75e-17 -> PASS
+C-HARM N=3 a_0: 0.550933633104 (exact 0.550933633104) rel err 8.88e-17 -> PASS
+C-HARM N=3 a_x^2: 0.00729490168752 (exact 0.00729490168752) rel err 3.81e-14 -> PASS
+C-HARM N=3 h_y a_y: 0.00129880864713 (exact 0.00129880864713) rel err 3.43e-13 -> PASS
+C-HARM N=3 t_0: 0.667284257132 (exact 0.667284257132) rel err 1.02e-16 -> PASS
+C-HARM N=3 t_x^2: 0.00106431181261 (exact 0.00106431181261) rel err 4.50e-14 -> PASS
+C-HARM N=3 t_y^2: 2.25897623714e-5 (exact 2.25897623714e-5) rel err 1.81e-12 -> PASS
+C-HARM N=3 t_x a_x: 0.00278640450004 (exact 0.00278640450004) rel err 4.16e-14 -> PASS
+C-HARM N=3 t_y a_y: 0.000324702161782 (exact 0.000324702161783) rel err 1.15e-12 -> PASS
+C-HARM N=3 h_y t_y: 9.03590494856e-5 (exact 9.03590494857e-5) rel err 1.01e-12 -> PASS
+C-HARM N=3 O_t: 0.000310113211173 (exact 0.000310113211173) rel err 3.71e-13 -> PASS
+C-HARM N=3 Va: 0.0116699519036 (exact 0.0116699519036) rel err 1.19e-15 -> PASS
+C-HARM N=3 c_t single trick: 0.667284257132 (exact 0.667284257132) rel err 1.02e-16 -> PASS
+C-HARM N=3 c_t double trick: 0.667284257132 (exact 0.667284257132) rel err 4.35e-16 -> PASS
+INFO C-ODD0 N=3 (t = 0): O_ef = (O_t Va)^{1/2} 0.001902368592 over the odd channel of (t_i, a_{i+2}) 0.001902368592: ratio 1.0 (1 for a rank-one z sector); O_t/t_x^2 0.291374 (0.29137); O_ef/(t_x a_x) 0.682732 (0.6827)
+C-READ N=3: h_x 5.6588421394e-05, a_x 0.085534570798, x_R 0.14599397913 against kt_s9b_v2 READ [5.6588421e-05, 0.085534571, 0.14599398]: worst relative 6.96e-09 -> PASS
+C-RC N=3: kt_rb R_c from its printed |h_x| 6.1494e-05, |a_x| 8.5552e-02, dh_x, da_x and s_x,lo 0.14598451: 2.82663e-03 against its R_c 2.8266e-03: relative 1.12e-05 -> PASS
+INPUT N=3: pk07 export piece N3_P0000 (J 300.00-300.7500, VALID FLOAT-PASS): rho_hi 8.4649028818e-02, vm2_hi 1.1700301605e-02, ro_hi 0.580171
+INFO C-VAX N=3: Va(300) 1.16877655e-02 against vm2_hi 1.17003016e-02: ratio 0.998929
+SH1 N=3 J=300: t-amplitudes (u~_0, u~_x, u~_y) 0.667487953513 0.0326534514521 0.00475976609494; c_t single trick 0.667487953511, double trick 0.667487953475 (difference 3.55e-11); s_x 0.145993979131, s_y 0.0436257192272; h 0.5638156766 5.658842139e-5 0.01903034908; a 0.5512121085 0.0855345708 0.0683575171; O_t 0.000310791063724; Va 0.0116877655149
+READ INPUTS N=3 J=300: Ritz s_x 0.14599398 s_y 0.04362572; s_x,lo 0.14598451 s_xU 0.14600314 s_yU 0.044257 tau 0.033573; c-bar 5.9839e-04 q 5.3232e-03 eps_0 1.230e-08 eps_y 2.430e-05; |Qv_h| 3.5164e-04 |Qv_a| 2.3785e-04 |Qv_t+| = 1 QSI 6.5799e-04; dh_x 2.3431e-06 da_x 5.3588e-06 dt_x 4.5518e-06; rho 0.084649 vm2_hi 1.170030e-02
+READ C7 N=3 J=300: |t_x| 3.265345e-02, dt_x 4.552e-06, A_t 3.264890e-02; O_t 3.107911e-04; O_t/A_t^2 0.29156 (harmonic 0.29137), A_t^2/O_t 3.4298, margin 1 - O_t/A_t^2 0.7084; QSI tolerance for A_t^2 >= 1.05 O_t 2.740e+00 (4165 QSI); C7.3 rho/s_x,lo 0.5798 -> PASS
+PLANT-PAIR N=3: C7 with h_x 5.6588e-05 for t_x: A^2 2.943e-09 against O_t 3.108e-04 -> FIRES
+READ KT-C8 N=3 J=300: X_ta = t_x a_x 2.792999e-03 (t = 0: 2.786405e-03), R_c^ta 5.643e-07, R_c^ta/X_ta 2.021e-04 (kill above 0.5) -> PASS; C8.2: B^ht = J h_x t_x/s_x^2 0.026008 (J -> inf: B_N e^-kappa1 = 0.025913), R_c^ht 1.0808e-03 against 0.25 B_N e^-kappa1 = 6.4781e-03, ratio 0.1668 -> PASS
+PLANT-SIGN N=3: KT-C8 with -t_x for t_x alone: X_ta -2.7930e-03 -> FIRES
+READ C5 N=3 J=300 (h, t): e_y f_y 9.058001e-05, |Qv_e||Qv_f| 2.314e-07; Lemma A_y q_y 0.0597: Y 8.8712e-05 (Y/(e_y f_y) 0.9794); crossover X_lo 1.7710e-06, |v_e+||v_f+| 6.2821e-04, k1 5; block route lower/signal at k = 0..8: 0.9975 0.9947 0.9891 0.9752 0.9499 0.9185 0.8850 0.8484 0.8074; min over k < k1 0.9499 -> PASS
+READ C5 N=3 J=300 (h, a): e_y f_y 1.300867e-03, |Qv_e||Qv_f| 8.364e-08; Lemma A_y q_y 0.0597: Y 1.2894e-03 (Y/(e_y f_y) 0.9912); crossover X_lo 4.6395e-06, |v_e+||v_f+| 2.0841e-03, k1 6; block route lower/signal at k = 0..8: 0.9999 0.9995 0.9982 0.9931 0.9755 0.9357 0.8811 0.8250 0.7683; min over k < k1 0.9357 -> PASS
+READ C5 N=3 J=300 (t, a): e_y f_y 3.253658e-04, |Qv_e||Qv_f| 1.565e-07; Lemma A_y q_y 0.0597: Y 3.1954e-04 (Y/(e_y f_y) 0.9821); crossover X_lo 2.7924e-03, |v_e+||v_f+| 3.6139e-03, k1 1; block route lower/signal at k = 0..8: 0.9999 0.9999 0.9999 0.9998 0.9997 0.9997 0.9996 0.9994 0.9993; min over k < k1 0.9999 -> PASS
+PLANT-SIGNY N=3: block route on (h, a) with -a_y at k = 0: signal -1.2960e-03, lower -1.2961e-03 -> FIRES
+READ C6 N=3 J=300: O_t 3.107911e-04, Va 1.168777e-02 (vm2_hi 1.170030e-02; used 1.170030e-02), O_ef 1.906921e-03, X_lo(t,a) 2.792435e-03, O_ef/X_lo 0.6829, rho/s_x,lo 0.5798; k1_C6 1; Cov_lo(k)/(t_x a_x s_x^k) at k = 0..8: 0.4337 0.6388 0.7807 0.8698 0.9235 0.9552 0.9737 0.9844 0.9906 -> PASS
+PLANT-RHO N=3: rho = s_x,lo: k1_C6 None -> FIRES
+SENS INPUTS N=3 J=300: Ritz s_x 0.14599398 s_y 0.04362572; s_x,lo 0.14598451 s_xU 0.14600314 s_yU 0.044257 tau 0.033573; c-bar 5.9839e-04 q 5.3232e-03 eps_0 1.230e-08 eps_y 2.430e-05; |Qv_h| 3.5164e-04 |Qv_a| 2.3785e-04 |Qv_t+| = 10 QSI 6.5799e-03; dh_x 2.3431e-06 da_x 5.3588e-06 dt_x 3.6075e-05; rho 0.084649 vm2_hi 1.170030e-02
+SENS C7 N=3 J=300: |t_x| 3.265345e-02, dt_x 3.608e-05, A_t 3.261738e-02; O_t 3.107911e-04; O_t/A_t^2 0.29213 (harmonic 0.29137), A_t^2/O_t 3.4232, margin 1 - O_t/A_t^2 0.7079; QSI tolerance for A_t^2 >= 1.05 O_t 2.740e+00 (416 QSI); C7.3 rho/s_x,lo 0.5798 -> PASS
+SENS KT-C8 N=3 J=300: X_ta = t_x a_x 2.792999e-03 (t = 0: 2.786405e-03), R_c^ta 3.261e-06, R_c^ta/X_ta 1.168e-03 (kill above 0.5) -> PASS; C8.2: B^ht = J h_x t_x/s_x^2 0.026008 (J -> inf: B_N e^-kappa1 = 0.025913), R_c^ht 1.1070e-03 against 0.25 B_N e^-kappa1 = 6.4781e-03, ratio 0.1709 -> PASS
+SENS C5 N=3 J=300 (h, t): e_y f_y 9.058001e-05, |Qv_e||Qv_f| 2.314e-06; Lemma A_y q_y 0.0597: Y 7.9868e-05 (Y/(e_y f_y) 0.8817); crossover X_lo 1.7692e-06, |v_e+||v_f+| 6.4045e-04, k1 5; block route lower/signal at k = 0..8: 0.9750 0.9622 0.9534 0.9463 0.9336 0.9111 0.8808 0.8447 0.8033; min over k < k1 0.9336 -> PASS
+SENS C5 N=3 J=300 (h, a): e_y f_y 1.300867e-03, |Qv_e||Qv_f| 8.364e-08; Lemma A_y q_y 0.0597: Y 1.2894e-03 (Y/(e_y f_y) 0.9912); crossover X_lo 4.6395e-06, |v_e+||v_f+| 2.0841e-03, k1 6; block route lower/signal at k = 0..8: 0.9999 0.9995 0.9982 0.9931 0.9755 0.9357 0.8811 0.8250 0.7683; min over k < k1 0.9357 -> PASS
+SENS C5 N=3 J=300 (t, a): e_y f_y 3.253658e-04, |Qv_e||Qv_f| 1.565e-06; Lemma A_y q_y 0.0597: Y 2.9385e-04 (Y/(e_y f_y) 0.9032); crossover X_lo 2.7897e-03, |v_e+||v_f+| 3.6843e-03, k1 1; block route lower/signal at k = 0..8: 0.9995 0.9988 0.9989 0.9988 0.9988 0.9987 0.9986 0.9984 0.9983; min over k < k1 0.9995 -> PASS
+SENS C6 N=3 J=300: O_t 3.107911e-04, Va 1.168777e-02 (vm2_hi 1.170030e-02; used 1.170030e-02), O_ef 1.906921e-03, X_lo(t,a) 2.789738e-03, O_ef/X_lo 0.6835, rho/s_x,lo 0.5798; k1_C6 1; Cov_lo(k)/(t_x a_x s_x^k) at k = 0..8: 0.4332 0.6377 0.7797 0.8689 0.9225 0.9542 0.9727 0.9834 0.9896 -> PASS
+READING N=3 J=300 (float): C5 (h,a) PASS; C5 (h,t) PASS; C5 (t,a) PASS; C6 PASS; C7 PASS; C8 PASS; C8.2 PASS
+SENS N=3 J=300 (|Qv_t+| = 10 QSI, INFO): C5 (h,a) PASS; C5 (h,t) PASS; C5 (t,a) PASS; C6 PASS; C7 PASS; C8 PASS; C8.2 PASS
+ITEM n3 cpu 39.2 s, peak resident memory 500 MiB
+VERDICT VALID

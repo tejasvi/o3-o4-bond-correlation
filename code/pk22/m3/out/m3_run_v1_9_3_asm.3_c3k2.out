@@ -1,0 +1,100 @@
+m3_run_v1_9_3 item asm.3 LIM 540; script sha256 d027f2d49dd545d1101898fab2b10ab5fb83f5829a4a0f034dfdabb586b8e8de; python 3.14.4
+STAGE-CPU C-HASH start 0.04 s
+C-HASH (9 modules, the kernel files, 78 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.13 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v11: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=) -> PASS
+PLANT-CALLER (m3_bar_v11 with one E2_combine call's plan= removed) -> FIRES
+C-SERIES (no *_series( call in 9 modules, the kernel files and this script) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-128.000000000 +/- 1.14e-12] overlaps the layer's [-128.000000000 +/- 1.27e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+C-10P (the trial file of this run, ts_N3_S_z9symxyp_v1.json:51e25c2fb2cfbcd5a98b6a700fec601f583, is the one psixy_exact_d_v2_n3.json names (ts_N3_S_z9symxyp_v1.json:51e25c2fb2cfbcd5a98b6a700fec601f583): the rerun's 10' is c'(t)'s 10') -> PASS
+PLANT-10P (psixy_exact_d_v1_n3.json's trial file, state 10, offered in its place must fail) -> FIRES
+STAGE-CPU asm start 0.15 s
+C-PARITY-SET (the entries whose factors pass C-ODD on their own graph: []; marked zero: []; PARITY_ZERO []) -> PASS
+C-ODD-PLANT-BASE (c3k: [cp, 2, 0] alone on E4D passes C-ODD: one exactly odd factor, the rest exactly even, T <-> B an automorphism of E4D) -> PASS
+PLANT-ODD ([cp, 2, 0] on E4D with S[1][2] + 1e-12: a factor is neither exactly even nor exactly odd: [None]) -> FIRES
+C-HANDOFF (m3_run_v1_9_3_F4Dk1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (F4Dk1.3: entries 0..3 complete) -> PASS
+C-PIECES (the E4D pieces cover all 4 E4D entries, in order, none left in progress) -> PASS
+PIECE-CAPPED F4Nk1.3: a clean CAP-STOP of this script, no hand-off; skipped and kept
+C-HANDOFF (m3_run_v1_9_3_F4Nk2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (F4Nk2.3: entries 0..0 complete, 1 units of IhR,10,0 carried) -> PASS
+C-HANDOFF (m3_run_v1_9_3_F4Nk3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (F4Nk3.3: entries 1..3 complete, 1 units of IhL,10,3 carried) -> PASS
+C-HANDOFF (m3_run_v1_9_3_F4Nk4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (F4Nk4.3: entries 4..4 complete, 1 units of IhR,10,3 carried) -> PASS
+C-HANDOFF (m3_run_v1_9_3_F4Nk5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (F4Nk5.3: entries 5..6 complete) -> PASS
+C-PIECES (the E4N pieces cover all 7 E4N entries, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_v1_9_3_F4Nr1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_F4Nr2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-RESUME-CHAIN (E4N on IhR,10,1: part 1 cut ['ak', 'm0u', 'm0c'] resumed identical, PLANT-RESUME FIRES; part 2 cut after 15 of 48 units resumed identical) -> PASS
+C-HANDOFF (m3_run_v1_9_3_E4Dp1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PREP-CHAIN (E4D: prep pieces none with done false, piece 1 done) -> PASS
+C-HASH-REF (rtwin_c3k_v1_2_E4D.3_z9symxyp.out, sha256 9987a48b71dd7de7b9cde9ab50e51dbe355560aaf58ddd8d56f5d628ca4b8062: VERDICT lines exactly [VERDICT VALID], TRIAL lines exactly [TRIAL z9symxyp]) -> PASS
+C-HANDOFF (m3_run_v1_9_3_E4Np1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PREP-CHAIN (E4N: prep pieces none with done false, piece 1 done) -> PASS
+C-HASH-REF (rtwin_c3k_v1_2_E4N.3_z9symxyp.out, sha256 84f00d0e08d3c46c7d60a030993891112f4b28d03b6a3291260439b641854c48: VERDICT lines exactly [VERDICT VALID], TRIAL lines exactly [TRIAL z9symxyp]) -> PASS
+PARITY-ZERO []: written as exact zeros with parity zero (C-ODD and C-ODD-AK in their pieces)
+C-SCOPE (the c3k records hold exactly the list's keys of their graphs: E4D 4, E4N 7) -> PASS
+PLANT-SCOPE (E4N without one key) -> FIRES
+C-REP-B (44 bar parts against rtwin_c3k_v1_2 (restored prep) z9symxyp: certified/float in [1.000000000 (IhL,10,0 far), 1.000184 (IhL,10,0 rem)]) -> PASS
+PLANT-REPB (the smallest ratio times 0.5) -> FIRES
+C-REP-AK (44 a_k against rtwin_c3k_v1_2 (restored prep) z9symxyp: largest |certified mid - float| / max(1, |float|) 9.81e-12 at IhR,10,1 a_3) -> PASS
+PLANT-REPAK (the largest difference plus 1e-6) -> FIRES
+C-HANDOFF (m3_run_v1_9_3_E4Dp1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+PREP16-INFO E4D: largest D16 E2 relative radius 2.286e-03 at u:nE4_2, 1 over FALLBACK_REL; shadow_max c vertex forms D 16 7.700e-05, u vertex forms D 16 7.739e-05; adopted 36, moved aside 0; pieces 1
+C-FMT (m3_c3kp_E4D_N3_J300_c3kp.json: 4 keys read back exactly from the text by m3_reader_v6_3; 8738 bytes; sha256 9d6d4eae89dbda99141a70548e4fb6ef1c34363dc04f6da3e4a937602e571d81) -> PASS
+C-HANDOFF (m3_run_v1_9_3_E4Np1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+PREP16-INFO E4N: largest D16 E2 relative radius 7.236e-02 at u:nE4_2, 3 over FALLBACK_REL; shadow_max c vertex forms D 16 3.971e-03, u vertex forms D 16 4.009e-03; adopted 0, moved aside 0; pieces 1
+C-FMT (m3_c3kp_E4N_N3_J300_c3kp.json: 7 keys read back exactly from the text by m3_reader_v6_3; 14462 bytes; sha256 dc03daa9e94e68d151b3b9c5dafeea0ce54956ff60815a91ff6e095ebd921090) -> PASS
+PLANT-FMT (H copy without one rnd) -> FIRES
+PLANT-RND (H copy with IhR,10,1 rnd = 0; its ak_rad sum 1.2e-03) -> FIRES
+PLANT-READER-PRECERT (m3_reader_v6_3 refuses the mutated H copy: precert) -> FIRES
+PLANT-READER-KERNEL (m3_reader_v6_3 refuses the mutated H copy: kernel) -> FIRES
+PLANT-READER-PREC (m3_reader_v6_3 refuses the mutated H copy: prec) -> FIRES
+PLANT-LAYER-V1_1 (m3_reader_v6_3 refuses the mutated H copy: arbeng_ma_v1_1.py) -> FIRES
+PLANT-LAYER-V1_2 (m3_reader_v6_3 refuses the mutated H copy: arbeng_ma_v1_2.py) -> FIRES
+PLANT-LAYER-V1_4 (m3_reader_v6_3 refuses the mutated H copy: arbeng_ma_v1_4.py) -> FIRES
+PLANT-READER-MOCK (m3_reader_v6_3 refuses the mutated H copy: mock_arbeng_v1_4.py) -> FIRES
+PLANT-LAYER-MIX (m3_reader_v6_3 refuses the mutated H copy: mix) -> FIRES
+PLANT-VALREC (m3_reader_v6_3 refuses the mutated H copy: valrec) -> FIRES
+PLANT-CLAIM (m3_reader_v6_3 refuses the mutated H copy: claim) -> FIRES
+PLANT-ARBK (m3_reader_v6_3 refuses the mutated H copy: arbk) -> FIRES
+PLANT-ARBB (m3_reader_v6_3 refuses the mutated H copy: arbb) -> FIRES
+PLANT-JREF (m3_reader_v6_3 refuses the mutated H copy: expected J_REF 150) -> FIRES
+PLANT-N (m3_reader_v6_3 refuses the mutated H copy: expected N 4) -> FIRES
+PLANT-KIND (m3_reader_v6_3 refuses the mutated H copy: kind) -> FIRES
+PLANT-PARZERO (m3_reader_v6_3 refuses the mutated H copy: parzero) -> FIRES
+PLANT-CLAIM-BALL (m3_reader_v6_3 refuses the mutated H copy: claimball) -> FIRES
+PLANT-CLAIM-BALL-MISSING (m3_reader_v6_3 refuses the mutated H copy: noclaimball) -> FIRES
+C-BOUND-RT (m3_reader_v6_3.loads accepts the H text under an output that names it and ends VALID) -> PASS
+PLANT-BOUND-VERDICT (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-INVALID (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-TWO (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-SHA (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-NONE (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+C-PREC-ASM (flint ctx.prec 512 before the write) -> PASS
+PLANT-NOWRITE (write_records under a failed gate, an unfired plant and a PRECERT tag: 3 of 3 refused, 0 files opened) -> FIRES
+C-WRITE (m3_c3kp_E4D_N3_J300_c3kp.json holds exactly its C-FMT text) -> PASS
+RECORD m3_c3kp_E4D_N3_J300_c3kp.json 9d6d4eae89dbda99141a70548e4fb6ef1c34363dc04f6da3e4a937602e571d81
+C-WRITE (m3_c3kp_E4N_N3_J300_c3kp.json holds exactly its C-FMT text) -> PASS
+RECORD m3_c3kp_E4N_N3_J300_c3kp.json dc03daa9e94e68d151b3b9c5dafeea0ce54956ff60815a91ff6e095ebd921090
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 0.17 s
+VERDICT VALID

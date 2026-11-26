@@ -1,0 +1,198 @@
+m3_run_v1_9_3 item asm.3 LIM 540; script sha256 2c81e6bc439d8fa8aa0f7cf782c6a3bad3f6fa1ea22610031d1ddde149b240b7; python 3.14.4
+STAGE-CPU C-HASH start 0.04 s
+C-HASH (9 modules, the kernel files, 34 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.12 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v11: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=) -> PASS
+PLANT-CALLER (m3_bar_v11 with one E2_combine call's plan= removed) -> FIRES
+C-SERIES (no *_series( call in 9 modules, the kernel files and this script) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-128.000000000 +/- 1.14e-12] overlaps the layer's [-128.000000000 +/- 1.27e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU asm start 0.13 s
+C-PARITY-SET (the entries whose factors pass C-ODD on their own graph: []; marked zero: []; PARITY_ZERO []) -> PASS
+C-ODD-PLANT-BASE (hl_v1: [cp, 2, 0] alone on L passes C-ODD: one exactly odd factor, the rest exactly even, T <-> B an automorphism of L) -> PASS
+PLANT-ODD ([cp, 2, 0] on L with S[1][2] + 1e-12: a factor is neither exactly even nor exactly odd: [None]) -> FIRES
+C-HANDOFF (m3_run_v1_9_3_Lk1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (Lk1.3: entries 0..0 complete) -> PASS
+C-PIECES (the L pieces cover all 1 L entries, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_v1_9_3_LHk1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (LHk1.3: entries 0..1 complete, 16 units of Mhh,0,0 carried) -> PASS
+C-HANDOFF (m3_run_v1_9_3_LHk2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (LHk2.3: entries 2..1 complete, 19 units of Mhh,0,0 carried) -> PASS
+C-HANDOFF (m3_run_v1_9_3_LHk3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (LHk3.3: entries 2..1 complete, 32 units of Mhh,0,0 carried) -> PASS
+C-HANDOFF (m3_run_v1_9_3_LHk4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (LHk4.3: entries 2..1 complete, 35 units of Mhh,0,0 carried) -> PASS
+C-HANDOFF (m3_run_v1_9_3_LHk5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (LHk5.3: entries 2..2 complete) -> PASS
+C-PIECES (the LH pieces cover all 3 LH entries, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_v1_9_3_LTk1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (LTk1.3: entries 0..0 complete, 16 units of Mtt,0,0 carried) -> PASS
+C-HANDOFF (m3_run_v1_9_3_LTk2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (LTk2.3: entries 1..0 complete, 19 units of Mtt,0,0 carried) -> PASS
+C-HANDOFF (m3_run_v1_9_3_LTk3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (LTk3.3: entries 1..0 complete, 32 units of Mtt,0,0 carried) -> PASS
+C-HANDOFF (m3_run_v1_9_3_LTk4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (LTk4.3: entries 1..0 complete, 35 units of Mtt,0,0 carried) -> PASS
+C-HANDOFF (m3_run_v1_9_3_LTk5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (LTk5.3: entries 1..1 complete) -> PASS
+C-PIECES (the LT pieces cover all 2 LT entries, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_v1_9_3_LHr1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_LHr2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-RESUME-CHAIN (LH on Mh,0,0: part 1 cut ['ak', 'm0u', 'm0c'] resumed identical, PLANT-RESUME FIRES; part 2 cut after 15 of 48 units resumed identical) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp6.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp7.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp8.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp9.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp10.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp11.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp12.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp13.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PREP-CHAIN (L: prep pieces [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with done false, piece 13 done) -> PASS
+C-HASH-REF (rtwin_hl_v1_L.3_z9sym.out, sha256 ab93f3d760ba85746841b5bad9709e5d4fd8478e18824bb3447d93c506ac1510: VERDICT lines exactly [VERDICT VALID], TRIAL lines exactly [TRIAL z9sym]) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp6.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp7.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp8.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp9.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp10.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp11.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp12.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp13.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PREP-CHAIN (LH: prep pieces [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with done false, piece 13 done) -> PASS
+C-GRAPH-LIST (LH: the columns ['vac', 'int', 'int', 'vac'] give V 12, 19 edges and F 19 (the list: [12, 19, 19]); pairs [(0, 1), (0, 2), (1, 2), (4, 7), (9, 10), (9, 11), (10, 11)] equal the list's) -> PASS
+PLANT-GRAPH-LIST (LH: the pair list without its first pair) -> FIRES
+C-PREP-SHARE (LH reads L's prep (pinned): the prep graphs of LH and of S8_ENTRY_LIST_v2's L agree in V, N, S_gauge, edges with tags and pairs: True; float twins rtwin_hl_v1_LH.3_z9sym.out and m3ref_hl_v1_P16L.3.p5_z9sym.out: radii, rho'^2 and theta0 equal: True, prep scalars within 0.0e+00 relative) -> PASS
+PLANT-PREP-SHARE (LH's prep graph with its first edge dropped, against L's) -> FIRES
+C-HASH-REF (rtwin_hl_v1_LH.3_z9sym.out, sha256 b3a2a24a50fda54cbaa5cd86a6eace84852dea6007a6e05e6bf4810c122179f0: VERDICT lines exactly [VERDICT VALID], TRIAL lines exactly [TRIAL z9sym]) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp6.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp7.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp8.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp9.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp10.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp11.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp12.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp13.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PREP-CHAIN (LT: prep pieces [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with done false, piece 13 done) -> PASS
+C-GRAPH-LIST (LT: the columns ['vac', 'int', 'int', 'vac'] give V 12, 19 edges and F 19 (the list: [12, 19, 19]); pairs [(0, 1), (0, 2), (1, 2), (3, 6), (9, 10), (9, 11), (10, 11)] equal the list's) -> PASS
+PLANT-GRAPH-LIST (LT: the pair list without its first pair) -> FIRES
+C-PREP-SHARE (LT reads L's prep (pinned): the prep graphs of LT and of S8_ENTRY_LIST_v2's L agree in V, N, S_gauge, edges with tags and pairs: True; float twins rtwin_hl_v1_LT.3_z9sym.out and m3ref_hl_v1_P16L.3.p5_z9sym.out: radii, rho'^2 and theta0 equal: True, prep scalars within 0.0e+00 relative) -> PASS
+PLANT-PREP-SHARE (LT's prep graph with its first edge dropped, against L's) -> FIRES
+C-HASH-REF (rtwin_hl_v1_LT.3_z9sym.out, sha256 838d442af63ed6857361347c190271ef5a7a52fb5994029ce6bed1f961e9d70f: VERDICT lines exactly [VERDICT VALID], TRIAL lines exactly [TRIAL z9sym]) -> PASS
+PARITY-ZERO []: written as exact zeros with parity zero (C-ODD and C-ODD-AK in their pieces)
+C-SCOPE (the hl records hold exactly the list's keys of their graphs: L 1, LH 3, LT 2) -> PASS
+PLANT-SCOPE (LH without one key) -> FIRES
+C-REP-B (24 bar parts against rtwin_hl_v1 (restored prep) z9sym: certified/float in [1.000000000 (Mhh,0,0 far), 1.047032 (Mh,0,0 rem)]) -> PASS
+PLANT-REPB (the smallest ratio times 0.5) -> FIRES
+C-REP-AK (24 a_k against rtwin_hl_v1 (restored prep) z9sym: largest |certified mid - float| / max(1, |float|) 3.38e-14 at Mt,0,0 a_3) -> PASS
+PLANT-REPAK (the largest difference plus 1e-6) -> FIRES
+C-HANDOFF (m3_run_v1_9_3_Lp1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp6.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp7.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp8.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp9.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp10.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp11.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp12.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp13.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+PREP16-INFO L: largest D16 E2 relative radius 7.616e-01 at u:nE4_2, 4 over FALLBACK_REL; shadow_max c vertex forms D 16 4.947e-03, u vertex forms D 16 5.088e-03; adopted 0, moved aside 0; pieces 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+C-FMT (m3_hl_L_N3_J300_hl.json: 1 keys read back exactly from the text by m3_reader_v6_3; 5432 bytes; sha256 2926e9fe24a6ce8b3b9a7b6021b9c3f5a049b5142b2c52ac23377f5b5e1218e6) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp6.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp7.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp8.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp9.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp10.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp11.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp12.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp13.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+PREP16-INFO LH: largest D16 E2 relative radius 7.616e-01 at u:nE4_2, 4 over FALLBACK_REL; shadow_max c vertex forms D 16 4.947e-03, u vertex forms D 16 5.088e-03; adopted 0, moved aside 0; pieces 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+C-FMT (m3_hl_LH_N3_J300_hl.json: 3 keys read back exactly from the text by m3_reader_v6_3; 9077 bytes; sha256 b7d03024fdda4c5e522b01621ee377b87a6fe5ff02ca5f33d5908531b313742f) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp6.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp7.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp8.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp9.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp10.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp11.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp12.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_Lp13.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+PREP16-INFO LT: largest D16 E2 relative radius 7.616e-01 at u:nE4_2, 4 over FALLBACK_REL; shadow_max c vertex forms D 16 4.947e-03, u vertex forms D 16 5.088e-03; adopted 0, moved aside 0; pieces 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+C-FMT (m3_hl_LT_N3_J300_hl.json: 2 keys read back exactly from the text by m3_reader_v6_3; 7290 bytes; sha256 4137b0548286aae88384cb2a8594704264bcca7dfdca385831b256ce63ce3cb2) -> PASS
+PLANT-FMT (H copy without one rnd) -> FIRES
+PLANT-RND (H copy with Mhh,0,0 rnd = 0; its ak_rad sum 2.2e-07) -> FIRES
+PLANT-READER-PRECERT (m3_reader_v6_3 refuses the mutated H copy: precert) -> FIRES
+PLANT-READER-KERNEL (m3_reader_v6_3 refuses the mutated H copy: kernel) -> FIRES
+PLANT-READER-PREC (m3_reader_v6_3 refuses the mutated H copy: prec) -> FIRES
+PLANT-LAYER-V1_1 (m3_reader_v6_3 refuses the mutated H copy: arbeng_ma_v1_1.py) -> FIRES
+PLANT-LAYER-V1_2 (m3_reader_v6_3 refuses the mutated H copy: arbeng_ma_v1_2.py) -> FIRES
+PLANT-LAYER-V1_4 (m3_reader_v6_3 refuses the mutated H copy: arbeng_ma_v1_4.py) -> FIRES
+PLANT-READER-MOCK (m3_reader_v6_3 refuses the mutated H copy: mock_arbeng_v1_4.py) -> FIRES
+PLANT-LAYER-MIX (m3_reader_v6_3 refuses the mutated H copy: mix) -> FIRES
+PLANT-VALREC (m3_reader_v6_3 refuses the mutated H copy: valrec) -> FIRES
+PLANT-CLAIM (m3_reader_v6_3 refuses the mutated H copy: claim) -> FIRES
+PLANT-ARBK (m3_reader_v6_3 refuses the mutated H copy: arbk) -> FIRES
+PLANT-ARBB (m3_reader_v6_3 refuses the mutated H copy: arbb) -> FIRES
+PLANT-JREF (m3_reader_v6_3 refuses the mutated H copy: expected J_REF 150) -> FIRES
+PLANT-N (m3_reader_v6_3 refuses the mutated H copy: expected N 4) -> FIRES
+PLANT-KIND (m3_reader_v6_3 refuses the mutated H copy: kind) -> FIRES
+PLANT-PARZERO (m3_reader_v6_3 refuses the mutated H copy: parzero) -> FIRES
+PLANT-CLAIM-BALL (m3_reader_v6_3 refuses the mutated H copy: claimball) -> FIRES
+PLANT-CLAIM-BALL-MISSING (m3_reader_v6_3 refuses the mutated H copy: noclaimball) -> FIRES
+C-BOUND-RT (m3_reader_v6_3.loads accepts the H text under an output that names it and ends VALID) -> PASS
+PLANT-BOUND-VERDICT (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-INVALID (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-TWO (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-SHA (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-NONE (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+C-PREC-ASM (flint ctx.prec 512 before the write) -> PASS
+PLANT-NOWRITE (write_records under a failed gate, an unfired plant and a PRECERT tag: 3 of 3 refused, 0 files opened) -> FIRES
+C-WRITE (m3_hl_L_N3_J300_hl.json holds exactly its C-FMT text) -> PASS
+RECORD m3_hl_L_N3_J300_hl.json 2926e9fe24a6ce8b3b9a7b6021b9c3f5a049b5142b2c52ac23377f5b5e1218e6
+C-WRITE (m3_hl_LH_N3_J300_hl.json holds exactly its C-FMT text) -> PASS
+RECORD m3_hl_LH_N3_J300_hl.json b7d03024fdda4c5e522b01621ee377b87a6fe5ff02ca5f33d5908531b313742f
+C-WRITE (m3_hl_LT_N3_J300_hl.json holds exactly its C-FMT text) -> PASS
+RECORD m3_hl_LT_N3_J300_hl.json 4137b0548286aae88384cb2a8594704264bcca7dfdca385831b256ce63ce3cb2
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 0.33 s
+VERDICT VALID

@@ -1,0 +1,12 @@
+2c2
+< # job_cert_m2_TEMPLATE_v1.sh (pk24; MIDROW_M2_PLAN_v1_3 sect. 1, G6 v1_7 sect. 5b and 6): M2's CERTIFIED factored run, to be copied to a numbered
+---
+> # job_cert_m2_TEMPLATE_v2.sh (pk24; template v1 (d54714dd) with check_m2_cols_v2 for P4 v5 (vx_lo, vx_hi refreshed on the last h row); MIDROW_M2_PLAN_v1_3 sect. 1, G6 v1_7 sect. 5b and 6): M2's CERTIFIED factored run, to be copied to a numbered
+5c5
+< # MR_SPECTRAL mr/v4 0e4d8177 and MR_JOINT 80bc8d81 as in M1); tools/check_m2_cols_v1.py (v5 is mr/v4b 54691bc1 and v1_10 is v1_9 98e4e01e outside
+---
+> # MR_SPECTRAL mr/v4 0e4d8177 and MR_JOINT 80bc8d81 as in M1); tools/check_m2_cols_v2.py (v5 is mr/v4b 54691bc1 and v1_10 is v1_9 98e4e01e outside
+28c28
+< run ${TAG}_chk 0.03 $O/tools/check_m2_cols_v1.py $CODEDIR/pk25/mr/v4b/MR_INSERT.kv $R/MR_INSERT.kv $CODEDIR/pk22/midrow/g4/mrc/out/cert/MR_EXACT_CERT_v1_9_C.kv $R/MR_EXACT.kv > $X/${TAG}_chk.console 2>&1
+---
+> run ${TAG}_chk 0.03 $O/tools/check_m2_cols_v2.py $CODEDIR/pk25/mr/v4b/MR_INSERT.kv $R/MR_INSERT.kv $CODEDIR/pk22/midrow/g4/mrc/out/cert/MR_EXACT_CERT_v1_9_C.kv $R/MR_EXACT.kv > $X/${TAG}_chk.console 2>&1

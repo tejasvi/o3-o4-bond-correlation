@@ -1,0 +1,90 @@
+kt_s8hj_v1 sha256 d5daa22628c05a7bcaa8092301eb0c44fe95ee955a6e2ed82f2b803e596d05a9 ITEM=n3 LIM=120
+C-HASH PASS (2 files)
+IMPORT: the cert module in its mock chunk namespace c3_0000_0001 with tag r54 (the first free of r50..r99; a stray, not counted)
+INPUTS: pk15 FLOAT joint export rows 2712 (N3); classes D3 (w 3), D4 and D4M (w 2); d_L 0..2
+C-GRID-J: the joint export and S8's pieces share every J_lo (904 pieces x 3 classes): differing none -> PASS
+C-JOINT-HARM D3: bulk harmonic Cov 3.923498227e-03, export Cov_inf_lo 3.923494303e-03 at J_lo 1.00886e+06 (relative 1.00e-06, tolerance 1e-4) -> PASS
+C-JOINT-HARM D4: bulk harmonic Cov 2.689461550e-03, export Cov_inf_lo 2.689458861e-03 at J_lo 1.00886e+06 (relative 1.00e-06, tolerance 1e-4) -> PASS
+C-JOINT-HARM D4M: bulk harmonic Cov 2.689461550e-03, export Cov_inf_lo 2.689458861e-03 at J_lo 1.00886e+06 (relative 1.00e-06, tolerance 1e-4) -> PASS
+PLANT-JH: D4's vertical at column i + 2: 1.208738070e-03 against 2.689458861e-03 -> FIRES
+CLASSES: 67 near-end joint classes (D3, D4, D4M; d_L 0..2; d_R d_L..6, far, inf; n >= 6)
+PIECE 0 J_lo 300: rn1(l(d)) -1:2.258e-02 0:2.787e-03 1:2.446e-04 2:3.144e-05 3:4.501e-06 4:6.577e-07 5:9.646e-08; |eps_W(l(d))| -1:1.522e-01 0:2.138e-02 1:3.112e-03 2:4.542e-04 3:6.630e-05 4:9.680e-06 5:1.413e-06; R_w rho1^7 2.446e-07
+PIECE 1 J_lo 300.75: rn1(l(d)) -1:2.258e-02 0:2.771e-03 1:2.442e-04 2:3.143e-05 3:4.500e-06 4:6.576e-07 5:9.643e-08; |eps_W(l(d))| -1:1.522e-01 0:2.138e-02 1:3.112e-03 2:4.541e-04 3:6.630e-05 4:9.679e-06 5:1.413e-06; R_w rho1^7 2.446e-07
+PIECE 10 J_lo 307.585: rn1(l(d)) -1:2.258e-02 0:2.639e-03 1:2.404e-04 2:3.128e-05 3:4.490e-06 4:6.563e-07 5:9.625e-08; |eps_W(l(d))| -1:1.522e-01 0:2.137e-02 1:3.111e-03 2:4.541e-04 3:6.629e-05 4:9.678e-06 5:1.413e-06; R_w rho1^7 2.445e-07
+PIECE 40 J_lo 331.51: rn1(l(d)) -1:2.257e-02 0:2.247e-03 1:2.295e-04 2:3.088e-05 3:4.461e-06 4:6.528e-07 5:9.574e-08; |eps_W(l(d))| -1:1.522e-01 0:2.137e-02 1:3.111e-03 2:4.539e-04 3:6.627e-05 4:9.674e-06 5:1.412e-06; R_w rho1^7 2.445e-07
+PIECE 150 J_lo 562.129: rn1(l(d)) -1:2.255e-02 0:9.034e-04 1:1.931e-04 2:2.966e-05 3:4.383e-06 4:6.437e-07 5:9.445e-08; |eps_W(l(d))| -1:1.522e-01 0:2.137e-02 1:3.108e-03 2:4.535e-04 3:6.618e-05 4:9.659e-06 5:1.410e-06; R_w rho1^7 2.441e-07
+PIECE 250 J_lo 1520.46: rn1(l(d)) -1:2.254e-02 0:5.051e-04 1:1.824e-04 2:2.932e-05 3:4.362e-06 4:6.413e-07 5:9.409e-08; |eps_W(l(d))| -1:1.522e-01 0:2.137e-02 1:3.107e-03 2:4.532e-04 3:6.613e-05 4:9.650e-06 5:1.408e-06; R_w rho1^7 2.436e-07
+PIECE 400 J_lo 6763.63: rn1(l(d)) -1:2.254e-02 0:4.577e-04 1:1.811e-04 2:2.927e-05 3:4.358e-06 4:6.406e-07 5:9.398e-08; |eps_W(l(d))| -1:1.523e-01 0:2.137e-02 1:3.107e-03 2:4.531e-04 3:6.611e-05 4:9.646e-06 5:1.407e-06; R_w rho1^7 2.434e-07
+PIECE 600 J_lo 49482.8: rn1(l(d)) -1:2.254e-02 0:4.551e-04 1:1.810e-04 2:2.926e-05 3:4.357e-06 4:6.405e-07 5:9.396e-08; |eps_W(l(d))| -1:1.523e-01 0:2.137e-02 1:3.107e-03 2:4.531e-04 3:6.611e-05 4:9.645e-06 5:1.407e-06; R_w rho1^7 2.434e-07
+PIECE 800 J_lo 362017: rn1(l(d)) -1:2.254e-02 0:4.550e-04 1:1.810e-04 2:2.926e-05 3:4.357e-06 4:6.405e-07 5:9.395e-08; |eps_W(l(d))| -1:1.523e-01 0:2.137e-02 1:3.107e-03 2:4.531e-04 3:6.611e-05 4:9.645e-06 5:1.407e-06; R_w rho1^7 2.433e-07
+PIECE 903 J_lo 1.00886e+06: rn1(l(d)) -1:2.254e-02 0:4.550e-04 1:1.810e-04 2:2.926e-05 3:4.357e-06 4:6.405e-07 5:9.395e-08; |eps_W(l(d))| -1:1.523e-01 0:2.137e-02 1:3.107e-03 2:4.531e-04 3:6.611e-05 4:9.645e-06 5:1.407e-06; R_w rho1^7 2.434e-07
+JCLASS D3 d_L 0 d_R 1: Cov 3.6731e-03, smallest necessary headroom 0.00235 at piece 0 (R_nec 1.563e+00 = a 1.02e-02 + b 1.26e-03 + c 7.72e-01 + d 6.79e-01 + e 1.01e-01; normX 1600, normX_need 0) -> CANNOT PASS
+JCLASS D3 d_L 0 d_R 2: Cov 3.6997e-03, smallest necessary headroom 0.01935 at piece 0 (R_nec 1.912e-01 = a 1.02e-02 + b 1.11e-04 + c 1.12e-01 + d 5.96e-02 + e 8.84e-03; normX 1600, normX_need 0) -> CANNOT PASS
+JCLASS D3 d_L 0 d_R 3: Cov 3.7036e-03, smallest necessary headroom 0.1045 at piece 0 (R_nec 3.545e-02 = a 1.02e-02 + b 1.42e-05 + c 1.64e-02 + d 7.66e-03 + e 1.14e-03; normX 1600, normX_need 0) -> CANNOT PASS
+JCLASS D3 d_L 0 d_R 4: Cov 3.7042e-03, smallest necessary headroom 0.2667 at piece 0 (R_nec 1.389e-02 = a 1.02e-02 + b 2.04e-06 + c 2.40e-03 + d 1.10e-03 + e 1.63e-04; normX 1600, normX_need 0) -> CANNOT PASS
+JCLASS D3 d_L 0 d_R 5: Cov 3.7043e-03, smallest necessary headroom 0.344 at piece 0 (R_nec 1.077e-02 = a 1.02e-02 + b 2.98e-07 + c 3.50e-04 + d 1.60e-04 + e 2.38e-05; normX 1600, normX_need 0) -> CANNOT PASS
+JCLASS D3 d_L 0 d_R 6: Cov 3.7043e-03, smallest necessary headroom 0.3593 at piece 0 (R_nec 1.031e-02 = a 1.02e-02 + b 4.37e-08 + c 5.11e-05 + d 2.35e-05 + e 3.49e-06; normX 1600, normX_need 0) -> CANNOT PASS
+JCLASS D3 d_L 0 d_R far: Cov 3.7043e-03, smallest necessary headroom 0.3593 at piece 0 (R_nec 1.031e-02 = a 1.02e-02 + b 1.11e-07 + c 8.84e-06 + d 5.96e-05 + e 8.84e-06; normX 1600, normX_need 0) -> CANNOT PASS
+JCLASS D3 d_L 0 d_R inf: Cov 3.7043e-03, smallest necessary headroom 0.362 at piece 0 (R_nec 1.023e-02 = a 1.02e-02 + b 0.00e+00 + c 0.00e+00 + d 0.00e+00 + e 0.00e+00; normX 1600, normX_need inf) -> CANNOT PASS
+JCLASS D3 d_L 1 d_R 1: Cov 3.8579e-03, smallest necessary headroom 0.01876 at piece 0 (R_nec 2.056e-01 = a 1.26e-03 + b 1.26e-03 + c 9.53e-02 + d 9.53e-02 + e 1.24e-02; normX 1600, normX_need 0) -> CANNOT PASS
+JCLASS D3 d_L 1 d_R 2: Cov 3.8858e-03, smallest necessary headroom 0.1573 at piece 0 (R_nec 2.471e-02 = a 1.26e-03 + b 1.11e-04 + c 1.39e-02 + d 8.37e-03 + e 1.09e-03; normX 1600, normX_need 39) -> CANNOT PASS
+JCLASS D3 d_L 1 d_R 3: Cov 3.8899e-03, smallest necessary headroom 0.8609 at piece 0 (R_nec 4.518e-03 = a 1.26e-03 + b 1.42e-05 + c 2.03e-03 + d 1.08e-03 + e 1.40e-04; normX 1600, normX_need 330) -> CANNOT PASS
+JCLASS D3 d_L 1 d_R 4: Cov 3.8905e-03, smallest necessary headroom 2.243 at piece 0 (R_nec 1.735e-03 = a 1.26e-03 + b 2.04e-06 + c 2.96e-04 + d 1.54e-04 + e 2.01e-05; normX 1600, normX_need 2.32e+03) -> may pass
+JCLASS D3 d_L 1 d_R 5: Cov 3.8906e-03, smallest necessary headroom 2.921 at piece 0 (R_nec 1.332e-03 = a 1.26e-03 + b 2.98e-07 + c 4.32e-05 + d 2.25e-05 + e 2.93e-06; normX 1600, normX_need 1.59e+04) -> may pass
+JCLASS D3 d_L 1 d_R 6: Cov 3.8906e-03, smallest necessary headroom 3.056 at piece 0 (R_nec 1.273e-03 = a 1.26e-03 + b 4.37e-08 + c 6.30e-06 + d 3.30e-06 + e 4.30e-07; normX 1600, normX_need 1.09e+05) -> may pass
+JCLASS D3 d_L 1 d_R far: Cov 3.8906e-03, smallest necessary headroom 3.055 at piece 0 (R_nec 1.274e-03 = a 1.26e-03 + b 1.11e-07 + c 1.09e-06 + d 8.37e-06 + e 1.09e-06; normX 1600, normX_need 1.04e+05) -> may pass
+JCLASS D3 d_L 1 d_R inf: Cov 3.8906e-03, smallest necessary headroom 3.081 at piece 0 (R_nec 1.263e-03 = a 1.26e-03 + b 0.00e+00 + c 0.00e+00 + d 0.00e+00 + e 0.00e+00; normX 1600, normX_need inf) -> may pass
+JCLASS D3 d_L 2 d_R 2: Cov 3.9138e-03, smallest necessary headroom 1.422 at piece 0 (R_nec 2.753e-03 = a 1.11e-04 + b 1.11e-04 + c 1.22e-03 + d 1.22e-03 + e 9.57e-05; normX 1600, normX_need 1.1e+03) -> CANNOT PASS
+JCLASS D3 d_L 2 d_R 3: Cov 3.9180e-03, smallest necessary headroom 8.306 at piece 0 (R_nec 4.717e-04 = a 1.11e-04 + b 1.42e-05 + c 1.78e-04 + d 1.57e-04 + e 1.23e-05; normX 1600, normX_need 8.47e+03) -> may pass
+JCLASS D3 d_L 2 d_R 4: Cov 3.9186e-03, smallest necessary headroom 24.04 at piece 0 (R_nec 1.630e-04 = a 1.11e-04 + b 2.04e-06 + c 2.59e-05 + d 2.24e-05 + e 1.76e-06; normX 1600, normX_need 5.89e+04) -> may pass
+JCLASS D3 d_L 2 d_R 5: Cov 3.9186e-03, smallest necessary headroom 33.08 at piece 0 (R_nec 1.185e-04 = a 1.11e-04 + b 2.98e-07 + c 3.79e-06 + d 3.28e-06 + e 2.57e-07; normX 1600, normX_need 4.04e+05) -> may pass
+JCLASS D3 d_L 2 d_R 6: Cov 3.9187e-03, smallest necessary headroom 35 at piece 0 (R_nec 1.120e-04 = a 1.11e-04 + b 4.37e-08 + c 5.53e-07 + d 4.80e-07 + e 3.78e-08; normX 1600, normX_need 2.76e+06) -> may pass
+JCLASS D3 d_L 2 d_R far: Cov 3.9187e-03, smallest necessary headroom 34.87 at piece 0 (R_nec 1.124e-04 = a 1.11e-04 + b 1.11e-07 + c 9.57e-08 + d 1.22e-06 + e 9.57e-08; normX 1600, normX_need 2.1e+06) -> may pass
+JCLASS D3 d_L 2 d_R inf: Cov 3.9187e-03, smallest necessary headroom 35.35 at piece 0 (R_nec 1.108e-04 = a 1.11e-04 + b 0.00e+00 + c 0.00e+00 + d 0.00e+00 + e 0.00e+00; normX 1600, normX_need inf) -> may pass
+JCLASS D4 d_L 0 d_R 2: Cov 3.4471e-03, smallest necessary headroom 0.03484 at piece 0 (R_nec 9.893e-02 = a 8.43e-03 + b 9.13e-05 + c 5.62e-02 + d 2.98e-02 + e 4.42e-03; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4 d_L 0 d_R 3: Cov 3.4536e-03, smallest necessary headroom 0.1642 at piece 0 (R_nec 2.104e-02 = a 8.43e-03 + b 1.17e-05 + c 8.20e-03 + d 3.83e-03 + e 5.68e-04; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4 d_L 0 d_R 4: Cov 3.4545e-03, smallest necessary headroom 0.3369 at piece 0 (R_nec 1.025e-02 = a 8.43e-03 + b 1.68e-06 + c 1.20e-03 + d 5.48e-04 + e 8.13e-05; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4 d_L 0 d_R 5: Cov 3.4547e-03, smallest necessary headroom 0.3974 at piece 0 (R_nec 8.693e-03 = a 8.43e-03 + b 2.45e-07 + c 1.75e-04 + d 8.01e-05 + e 1.19e-05; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4 d_L 0 d_R 6: Cov 3.4547e-03, smallest necessary headroom 0.4081 at piece 0 (R_nec 8.465e-03 = a 8.43e-03 + b 3.60e-08 + c 2.55e-05 + d 1.17e-05 + e 1.74e-06; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4 d_L 0 d_R far: Cov 3.4547e-03, smallest necessary headroom 0.4081 at piece 0 (R_nec 8.465e-03 = a 8.43e-03 + b 9.13e-08 + c 4.42e-06 + d 2.98e-05 + e 4.42e-06; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4 d_L 0 d_R inf: Cov 3.4547e-03, smallest necessary headroom 0.41 at piece 0 (R_nec 8.426e-03 = a 8.43e-03 + b 0.00e+00 + c 0.00e+00 + d 0.00e+00 + e 0.00e+00; normX 800, normX_need inf) -> CANNOT PASS
+JCLASS D4 d_L 1 d_R 1: Cov 2.7589e-03, smallest necessary headroom 0.02663 at piece 0 (R_nec 1.036e-01 = a 1.04e-03 + b 1.04e-03 + c 4.77e-02 + d 4.77e-02 + e 6.21e-03; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4 d_L 1 d_R 2: Cov 2.7970e-03, smallest necessary headroom 0.2185 at piece 0 (R_nec 1.280e-02 = a 1.04e-03 + b 9.13e-05 + c 6.94e-03 + d 4.18e-03 + e 5.45e-04; normX 800, normX_need 18.3) -> CANNOT PASS
+JCLASS D4 d_L 1 d_R 3: Cov 2.8027e-03, smallest necessary headroom 1.049 at piece 0 (R_nec 2.672e-03 = a 1.04e-03 + b 1.17e-05 + c 1.01e-03 + d 5.38e-04 + e 7.01e-05; normX 800, normX_need 173) -> CANNOT PASS
+JCLASS D4 d_L 1 d_R 4: Cov 2.8035e-03, smallest necessary headroom 2.196 at piece 0 (R_nec 1.276e-03 = a 1.04e-03 + b 1.68e-06 + c 1.48e-04 + d 7.70e-05 + e 1.00e-05; normX 800, normX_need 1.23e+03) -> may pass
+JCLASS D4 d_L 1 d_R 5: Cov 2.8036e-03, smallest necessary headroom 2.609 at piece 0 (R_nec 1.074e-03 = a 1.04e-03 + b 2.45e-07 + c 2.16e-05 + d 1.12e-05 + e 1.47e-06; normX 800, normX_need 8.44e+03) -> may pass
+JCLASS D4 d_L 1 d_R 6: Cov 2.8036e-03, smallest necessary headroom 2.683 at piece 0 (R_nec 1.045e-03 = a 1.04e-03 + b 3.60e-08 + c 3.15e-06 + d 1.65e-06 + e 2.15e-07; normX 800, normX_need 5.77e+04) -> may pass
+JCLASS D4 d_L 1 d_R far: Cov 2.8036e-03, smallest necessary headroom 2.682 at piece 0 (R_nec 1.045e-03 = a 1.04e-03 + b 9.13e-08 + c 5.45e-07 + d 4.18e-06 + e 5.45e-07; normX 800, normX_need 5.49e+04) -> may pass
+JCLASS D4 d_L 1 d_R inf: Cov 2.8036e-03, smallest necessary headroom 2.696 at piece 0 (R_nec 1.040e-03 = a 1.04e-03 + b 0.00e+00 + c 0.00e+00 + d 0.00e+00 + e 0.00e+00; normX 800, normX_need inf) -> may pass
+JCLASS D4 d_L 2 d_R 2: Cov 2.6999e-03, smallest necessary headroom 1.864 at piece 0 (R_nec 1.448e-03 = a 9.13e-05 + b 9.13e-05 + c 6.09e-04 + d 6.09e-04 + e 4.79e-05; normX 800, normX_need 738) -> CANNOT PASS
+JCLASS D4 d_L 2 d_R 3: Cov 2.7054e-03, smallest necessary headroom 9.791 at piece 0 (R_nec 2.763e-04 = a 9.13e-05 + b 1.17e-05 + c 8.89e-05 + d 7.83e-05 + e 6.15e-06; normX 800, normX_need 5.77e+03) -> may pass
+JCLASS D4 d_L 2 d_R 4: Cov 2.7062e-03, smallest necessary headroom 22.93 at piece 0 (R_nec 1.180e-04 = a 9.13e-05 + b 1.68e-06 + c 1.30e-05 + d 1.12e-05 + e 8.81e-07; normX 800, normX_need 4.02e+04) -> may pass
+JCLASS D4 d_L 2 d_R 5: Cov 2.7063e-03, smallest necessary headroom 28.43 at piece 0 (R_nec 9.518e-05 = a 9.13e-05 + b 2.45e-07 + c 1.89e-06 + d 1.64e-06 + e 1.29e-07; normX 800, normX_need 2.76e+05) -> may pass
+JCLASS D4 d_L 2 d_R 6: Cov 2.7063e-03, smallest necessary headroom 29.47 at piece 0 (R_nec 9.184e-05 = a 9.13e-05 + b 3.60e-08 + c 2.77e-07 + d 2.40e-07 + e 1.89e-08; normX 800, normX_need 1.89e+06) -> may pass
+JCLASS D4 d_L 2 d_R far: Cov 2.7063e-03, smallest necessary headroom 29.4 at piece 0 (R_nec 9.207e-05 = a 9.13e-05 + b 9.13e-08 + c 4.79e-08 + d 6.09e-07 + e 4.79e-08; normX 800, normX_need 1.43e+06) -> may pass
+JCLASS D4 d_L 2 d_R inf: Cov 2.7063e-03, smallest necessary headroom 29.65 at piece 0 (R_nec 9.127e-05 = a 9.13e-05 + b 0.00e+00 + c 0.00e+00 + d 0.00e+00 + e 0.00e+00; normX 800, normX_need inf) -> may pass
+JCLASS D4M d_L 0 d_R 2: Cov 2.4248e-03, smallest necessary headroom 0.02451 at piece 0 (R_nec 9.893e-02 = a 8.43e-03 + b 9.13e-05 + c 5.62e-02 + d 2.98e-02 + e 4.42e-03; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4M d_L 0 d_R 3: Cov 2.4114e-03, smallest necessary headroom 0.1146 at piece 0 (R_nec 2.104e-02 = a 8.43e-03 + b 1.17e-05 + c 8.20e-03 + d 3.83e-03 + e 5.68e-04; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4M d_L 0 d_R 4: Cov 2.4094e-03, smallest necessary headroom 0.235 at piece 0 (R_nec 1.025e-02 = a 8.43e-03 + b 1.68e-06 + c 1.20e-03 + d 5.48e-04 + e 8.13e-05; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4M d_L 0 d_R 5: Cov 2.4091e-03, smallest necessary headroom 0.2771 at piece 0 (R_nec 8.693e-03 = a 8.43e-03 + b 2.45e-07 + c 1.75e-04 + d 8.01e-05 + e 1.19e-05; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4M d_L 0 d_R 6: Cov 2.4091e-03, smallest necessary headroom 0.2846 at piece 0 (R_nec 8.465e-03 = a 8.43e-03 + b 3.60e-08 + c 2.55e-05 + d 1.17e-05 + e 1.74e-06; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4M d_L 0 d_R far: Cov 2.4091e-03, smallest necessary headroom 0.2846 at piece 0 (R_nec 8.465e-03 = a 8.43e-03 + b 9.13e-08 + c 4.42e-06 + d 2.98e-05 + e 4.42e-06; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4M d_L 0 d_R inf: Cov 2.4091e-03, smallest necessary headroom 0.2859 at piece 0 (R_nec 8.426e-03 = a 8.43e-03 + b 0.00e+00 + c 0.00e+00 + d 0.00e+00 + e 0.00e+00; normX 800, normX_need inf) -> CANNOT PASS
+JCLASS D4M d_L 1 d_R 1: Cov 2.7589e-03, smallest necessary headroom 0.02663 at piece 0 (R_nec 1.036e-01 = a 1.04e-03 + b 1.04e-03 + c 4.77e-02 + d 4.77e-02 + e 6.21e-03; normX 800, normX_need 0) -> CANNOT PASS
+JCLASS D4M d_L 1 d_R 2: Cov 2.6626e-03, smallest necessary headroom 0.208 at piece 0 (R_nec 1.280e-02 = a 1.04e-03 + b 9.13e-05 + c 6.94e-03 + d 4.18e-03 + e 5.45e-04; normX 800, normX_need 13.7) -> CANNOT PASS
+JCLASS D4M d_L 1 d_R 3: Cov 2.6483e-03, smallest necessary headroom 0.9911 at piece 0 (R_nec 2.672e-03 = a 1.04e-03 + b 1.17e-05 + c 1.01e-03 + d 5.38e-04 + e 7.01e-05; normX 800, normX_need 135) -> CANNOT PASS
+JCLASS D4M d_L 1 d_R 4: Cov 2.6462e-03, smallest necessary headroom 2.073 at piece 0 (R_nec 1.276e-03 = a 1.04e-03 + b 1.68e-06 + c 1.48e-04 + d 7.70e-05 + e 1.00e-05; normX 800, normX_need 959) -> may pass
+JCLASS D4M d_L 1 d_R 5: Cov 2.6459e-03, smallest necessary headroom 2.462 at piece 0 (R_nec 1.074e-03 = a 1.04e-03 + b 2.45e-07 + c 2.16e-05 + d 1.12e-05 + e 1.47e-06; normX 800, normX_need 6.6e+03) -> may pass
+JCLASS D4M d_L 1 d_R 6: Cov 2.6459e-03, smallest necessary headroom 2.532 at piece 0 (R_nec 1.045e-03 = a 1.04e-03 + b 3.60e-08 + c 3.15e-06 + d 1.65e-06 + e 2.15e-07; normX 800, normX_need 4.51e+04) -> may pass
+JCLASS D4M d_L 1 d_R far: Cov 2.6459e-03, smallest necessary headroom 2.531 at piece 0 (R_nec 1.045e-03 = a 1.04e-03 + b 9.13e-08 + c 5.45e-07 + d 4.18e-06 + e 5.45e-07; normX 800, normX_need 4.29e+04) -> may pass
+JCLASS D4M d_L 1 d_R inf: Cov 2.6459e-03, smallest necessary headroom 2.544 at piece 0 (R_nec 1.040e-03 = a 1.04e-03 + b 0.00e+00 + c 0.00e+00 + d 0.00e+00 + e 0.00e+00; normX 800, normX_need inf) -> may pass
+JCLASS D4M d_L 2 d_R 2: Cov 2.6999e-03, smallest necessary headroom 1.864 at piece 0 (R_nec 1.448e-03 = a 9.13e-05 + b 9.13e-05 + c 6.09e-04 + d 6.09e-04 + e 4.79e-05; normX 800, normX_need 738) -> CANNOT PASS
+JCLASS D4M d_L 2 d_R 3: Cov 2.6855e-03, smallest necessary headroom 9.719 at piece 0 (R_nec 2.763e-04 = a 9.13e-05 + b 1.17e-05 + c 8.89e-05 + d 7.83e-05 + e 6.15e-06; normX 800, normX_need 5.72e+03) -> may pass
+JCLASS D4M d_L 2 d_R 4: Cov 2.6834e-03, smallest necessary headroom 22.74 at piece 0 (R_nec 1.180e-04 = a 9.13e-05 + b 1.68e-06 + c 1.30e-05 + d 1.12e-05 + e 8.81e-07; normX 800, normX_need 3.99e+04) -> may pass
+JCLASS D4M d_L 2 d_R 5: Cov 2.6831e-03, smallest necessary headroom 28.19 at piece 0 (R_nec 9.518e-05 = a 9.13e-05 + b 2.45e-07 + c 1.89e-06 + d 1.64e-06 + e 1.29e-07; normX 800, normX_need 2.73e+05) -> may pass
+JCLASS D4M d_L 2 d_R 6: Cov 2.6830e-03, smallest necessary headroom 29.21 at piece 0 (R_nec 9.184e-05 = a 9.13e-05 + b 3.60e-08 + c 2.77e-07 + d 2.40e-07 + e 1.89e-08; normX 800, normX_need 1.87e+06) -> may pass
+JCLASS D4M d_L 2 d_R far: Cov 2.6830e-03, smallest necessary headroom 29.14 at piece 0 (R_nec 9.207e-05 = a 9.13e-05 + b 9.13e-08 + c 4.79e-08 + d 6.09e-07 + e 4.79e-08; normX 800, normX_need 1.42e+06) -> may pass
+JCLASS D4M d_L 2 d_R inf: Cov 2.6830e-03, smallest necessary headroom 29.4 at piece 0 (R_nec 9.127e-05 = a 9.13e-05 + b 0.00e+00 + c 0.00e+00 + d 0.00e+00 + e 0.00e+00; normX 800, normX_need inf) -> may pass
+READING J (FLOAT screen; a necessary condition with the export's normX and pX): 34 of 67 near-end joint classes cannot pass the rule; the rest may
+ITEM n3 cpu 0.4 s
+VERDICT VALID

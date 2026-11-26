@@ -1,0 +1,52 @@
+m4h_asm_v1 sha256 65e872b027e9117490b7b01d9b29a08aab902de143aa987843fd6def0f694259 MODE=cert; file pk25/m4h/m4h_asm_v1.py; python 3.14.4; ctx.prec 256
+C-HASH: 79 pinned files; the kt_cert run manifest's 173 entries, 11 of them pinned here too, equal -> PASS
+C-KTCERT-SRC: kt_cert_v1_8 l.341,342,818,1621,1719,1721,1722,1723,1724 (RHO_M, RHO_E; DELTA; a_m, a_e; LAM_T; kappa_B) equal the lines the reader's constants copy -> PASS
+C-SCAN-PIN: the 6 scan outputs are pinned at MANIFEST_G5_FLOAT_v1's sha256s, and those of h1, h3 at kt_cert_v1_8_h_1's FIXREFS -> PASS
+C-REC: 42 kt_cert and x records: first lines, FORMAT, VERDICT, LAWBASE, RESULT and EXPLICIT exactly -> PASS
+C-X-TIE: 6 x records: producer and sha256 in kt_cert_v1_8's PRODUCERS (l.2169); each g record's HANDOFF-READ x line names the x record and its HANDOFF sha256 -> PASS
+C-LAW300-NEAR: 48 C-NPK, C-NDK and C-TAILM lines, all reading PASS, at least one per record -> PASS
+C-MHAT: M2(b) C-MHAT lines at N = 4 and 3: m1, m2, m3 >= 0 exactly, PASS -> PASS
+C-S9-TRIAL: the S9 records' trial_set is the pinned ts and vacres files at N = 4 and 3 -> PASS
+C-Z-A0: Z_min's constant term is LO_0 = ak_0 - ak_rad_0 of each S9 entry (a0_exact "1" only with a_0 = 1, radius 0): N4 G,0,0 a0_exact 1; N4 G,1,1 a0_exact None; N4 G,3,3 a0_exact None; N3 G,0,0 a0_exact 1; N3 G,1,1 a0_exact None; N3 G,3,3 a0_exact None -> PASS
+C-FAR-W: FAR_CRUDE_v1: every item's weight J-power is at most the record's w (the largest over the kinds using its call) -> PASS
+C-MONO: the Chernoff rates 0.45 a_e/2 and 0.45 kappa_B/2 certainly > 0 -> PASS
+C-MONO-RECORD: the reader's check on the record: C-MONO (C-MONO-FAR4 per far item, C-MONO-GB, Z_min > 0, eps_r(300) < 1), exactly, and C-FMT -> PASS
+C-COPY: the record parsed back: 116 copied keys equal their source tokens by exact string equality -> PASS
+C-LAW300 N=4 h: L(300) 3.3756455090752727e-04, Q [3.3625179560321789e-04, 3.3625179560321794e-04], L/Q_hi - 1 = +0.3904% (expected n/a for the h-row kinds; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW300 N=4 h1: L(300) 4.5655849149392488e-02, Q [4.5027705187515678e-02, 4.5027705187515685e-02], L/Q_hi - 1 = +1.3950% (expected n/a for the h-row kinds; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW300 N=4 h3: L(300) 5.1148021835579061e-02, Q [5.0819845976785641e-02, 5.0819845976785648e-02], L/Q_hi - 1 = +0.6458% (expected n/a for the h-row kinds; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW300 N=3 h: L(300) 1.4710441688052751e-04, Q [1.4659359759252604e-04, 1.4659359759252607e-04], L/Q_hi - 1 = +0.3485% (expected n/a for the h-row kinds; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW300 N=3 h1: L(300) 3.6093637151451186e-02, Q [3.5745230726524677e-02, 3.5745230726524684e-02], L/Q_hi - 1 = +0.9747% (expected n/a for the h-row kinds; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW300 N=3 h3: L(300) 4.1579821219614162e-02, Q [4.1324900494991733e-02, 4.1324900494991740e-02], L/Q_hi - 1 = +0.6169% (expected n/a for the h-row kinds; allowed -1e-4 .. +3e-2) -> PASS
+C-LAW-SCAN N=4 h: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +0.8048%; allowed -1e-6) -> PASS
+C-LAW-SCAN N=4 h1: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +1.1592%; allowed -1e-6) -> PASS
+C-LAW-SCAN N=4 h3: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +0.6908%; allowed -1e-6) -> PASS
+C-LAW-SCAN N=3 h: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +0.6399%; allowed -1e-6) -> PASS
+C-LAW-SCAN N=3 h1: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +0.8165%; allowed -1e-6) -> PASS
+C-LAW-SCAN N=3 h3: the law numerator at J = 400, 500, 600 against the scan near (lower end over near - 1, smallest +0.5358%; allowed -1e-6) -> PASS
+C-BUDGET N=4 h (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +0.1946%; J=400 +0.8048%; J=500 +0.8987%; J=600 +0.8698%; Z_min cost +0.1960%
+C-BUDGET N=4 h1 (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +1.3951%; J=400 +1.3099%; J=500 +1.2224%; J=600 +1.1592%; Z_min cost +0.0000%
+C-BUDGET N=4 h3 (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +0.5250%; J=400 +0.6908%; J=500 +0.7021%; J=600 +0.7002%; Z_min cost +0.1204%
+C-BUDGET N=3 h (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +0.2115%; J=400 +0.6399%; J=500 +0.6904%; J=600 +0.6669%; Z_min cost +0.1375%
+C-BUDGET N=3 h1 (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +0.9474%; J=400 +0.8940%; J=500 +0.8484%; J=600 +0.8165%; Z_min cost +0.0270%
+C-BUDGET N=3 h3 (INFO, FLOAT): L_k(J) D_k / near_float(J) - 1: J=300 +0.4685%; J=400 +0.5358%; J=500 +0.5384%; J=600 +0.5367%; Z_min cost +0.1479%
+PLANT-SWAP -> DOES NOT FIRE (N4 h's and N4 h1's M1 exchanged: C-LAW300 on h or on h1 passes)
+PLANT-MONO-KAPPA -> FIRES (kappa_B := 0: the Chernoff rates fails)
+PLANT-MONO-FAR -> FIRES (C-MONO-FAR4 N4 h oSS: (w + p)/c is above 300)
+PLANT-MOCK -> FIRES (C-REC g.hn4: FORMAT lines are not exactly [FORMAT KT_CERT_RECORD_v1_9])
+PLANT-PRECERT -> FIRES (C-REC g.hn4: FORMAT lines are not exactly [FORMAT KT_CERT_RECORD_v1_9])
+PLANT-VERDICT -> FIRES (C-REC g.hn4: VERDICT lines are not exactly [VERDICT VALID])
+PLANT-STATUS -> FIRES (C-REC g.h1n4: STATUS lines are not exactly [CERTIFIED, FLOAT-IN none])
+PLANT-PIN -> FIRES (C-HASH: pk02/out_kt_cert_v1_9_g.hn4.out does not match its pin)
+PLANT-LAWBASE-DUP -> FIRES (C-REC LAWBASE N=4 h: a key twice or a key without its value)
+PLANT-LAWBASE-MISS -> FIRES (C-REC LAWBASE N=4 h: the keys are not the allow-list)
+PLANT-EXPLICIT -> FIRES (C-REC EXPLICIT N=4 h1: m1 carries 2 values, not 3)
+PLANT-NEAR -> FIRES (C-LAW300-NEAR C-TAILM N=4 h1: 1 lines, not all of that head and reading PASS)
+PLANT-S9-TRIAL -> FIRES (C-S9-TRIAL N=4: trial_set ts is not the pinned ts_N4_J170_D_S_z9sym_v1.json)
+PLANT-ORDER -> FIRES (C-COPY N4_H_M1: the record value is not its LAWBASE token M1)
+PLANT-SCAN -> FIRES (N4 h scan near at J = 500 raised by 2%: C-LAW-SCAN fails)
+PLANT-X-TIE -> FIRES (C-X-TIE x.h1n4: the g record's HANDOFF-READ x line does not match the x record's HANDOFF line)
+PLANT-FAR-W -> FIRES (C-FAR-W h1 oSS: the record w 1 is below the weight J-power 2 (or not an int <= 2))
+PLANT-Z-A0 -> FIRES (C-Z-A0 N=4 G,1,1: a0_exact "1" but a_0 is not 1 with radius 0)
+PLANT-Z-MID -> FIRES (an entry without a0_exact: Z_min's constant term equals the midpoint a_0 fails)
+VERDICT INVALID (PLANT-SWAP)

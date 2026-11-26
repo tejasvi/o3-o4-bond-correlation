@@ -1,0 +1,170 @@
+kt_p2_assembly_v1_24 sha256 ded07b5ebf32c93f18addbeb9e928238514b29ff8b71f83a5275e59768096414 ITEM=mock LIM=60 (MOCK run; RLIMIT_CPU soft 60, hard 65)
+C-HASH PASS (22 pinned files)
+C-GRID: 904 + 904 pieces from export_kt_s67_cert_v2_2_sweep.kv (FLOAT grid: jlo, jhi only, copied string for string), first [300.0, 300.75], last jhi inf -> PASS
+READER-A MOCK mock_kt_cert_v1_7_g.amn3.out: A_am <= 1.5449935449920004e-04 (VALUE 1.5449950900000003e-04; FLOAT-IN far eps_r Z) -> read
+PLANT-MOCK-A mock_kt_cert_v1_7_g.amn3.out: refused (header) -> FIRES
+READER-A MOCK mock_kt_cert_v1_7_g.amn4.out: A_am <= 2.6580396580370004e-04 (VALUE 2.6580423160000005e-04; FLOAT-IN far eps_r Z) -> read
+PLANT-MOCK-A mock_kt_cert_v1_7_g.amn4.out: refused (header) -> FIRES
+READER-A MOCK mock_kt_cert_v1_7_g.tn3.out: A_t <= 1.8944148944130003e-04 (VALUE 1.8944167890000001e-04; FLOAT-IN far logR gBb eps_r Z) -> read
+PLANT-MOCK-A mock_kt_cert_v1_7_g.tn3.out: refused (header) -> FIRES
+READER-A MOCK mock_kt_cert_v1_7_g.tn4.out: A_t <= 5.1949471949420001e-04 (VALUE 5.1949523900000005e-04; FLOAT-IN far logR gBb eps_r Z) -> read
+PLANT-MOCK-A mock_kt_cert_v1_7_g.tn4.out: refused (header) -> FIRES
+PLANT-A-PRECERT: refused (PRECERT/STUB format) -> FIRES
+PLANT-A-KERNEL: refused (KERNEL) -> FIRES
+PLANT-A-VERDICT2: refused (VERDICT) -> FIRES
+PLANT-A-HILO: refused (interval with hi < lo) -> FIRES
+PLANT-A-TOKENS: refused (FLOAT-IN tokens 'far logR eps_r Z') -> FIRES
+PLANT-A-VALUE: refused (VALUE line missing or below RESULT hi) -> FIRES
+READER-A CERTIFIED out_kt_cert_v1_7_g.amn3.out: A_am <= 1.5449919441815481e-04 (VALUE 1.5449919470000002e-04; FLOAT-IN far eps_r Z); the mock hi 1.5449935449920004e-04, relative 1.04e-06 -> PASS
+PLANT-A-REAL-AS-MOCK out_kt_cert_v1_7_g.amn3.out: refused (header) -> FIRES
+READER-A CERTIFIED out_kt_cert_v1_7_g.amn4.out: A_am <= 2.6580365536484052e-04 (VALUE 2.6580365590000001e-04; FLOAT-IN far eps_r Z); the mock hi 2.6580396580370004e-04, relative 1.17e-06 -> PASS
+PLANT-A-REAL-AS-MOCK out_kt_cert_v1_7_g.amn4.out: refused (header) -> FIRES
+READER-A CERTIFIED out_kt_cert_v1_7_g.tn3.out: A_t <= 1.8944129859260850e-04 (VALUE 1.8944129900000002e-04; FLOAT-IN far logR gBb eps_r Z); the mock hi 1.8944148944130003e-04, relative 1.01e-06 -> PASS
+PLANT-A-REAL-AS-MOCK out_kt_cert_v1_7_g.tn3.out: refused (header) -> FIRES
+READER-A CERTIFIED out_kt_cert_v1_7_g.tn4.out: A_t <= 5.1949419226399434e-04 (VALUE 5.1949419330000004e-04; FLOAT-IN far logR gBb eps_r Z); the mock hi 5.1949471949420001e-04, relative 1.01e-06 -> PASS
+PLANT-A-REAL-AS-MOCK out_kt_cert_v1_7_g.tn4.out: refused (header) -> FIRES
+C-FLOATIN: the four kt_cert_v1_7 records and the assembly own list give the certified-path status CERTIFIED_GIVEN_FLOAT_IN with FLOAT-IN g.amn3: far eps_r Z; g.amn4: far eps_r Z; g.tn3: far logR gBb eps_r Z; g.tn4: far logR gBb eps_r Z; kt_p2_assembly: eps_r s -> PASS
+C-FLOATIN-EMPTY: empty FLOAT-IN lists give CERTIFIED (FLOAT_IN none) -> PASS
+C-FLOATIN-OWN: with the four record lists empty, the assembly own FLOAT inputs still give CERTIFIED_GIVEN_FLOAT_IN (FLOAT_IN kt_p2_assembly: eps_r s) -> PASS
+PLANT-FLOATIN-OWN: refused (FLOAT-IN inputs (kt_p2_assembly: eps_r s), open conditions (none): the export cannot be tagged CERTIFIED) -> FIRES
+C-OPEN: with every FLOAT-IN list empty, the open condition C1 still gives CERTIFIED_GIVEN_OPEN_CONDITIONS -> PASS
+PLANT-OPEN-C1: refused (FLOAT-IN inputs (none), open conditions (C1): the export cannot be tagged CERTIFIED) -> FIRES
+C-C1: a CLAIM line holding the agreed 41-byte |g| string exactly once clears C1 (unit test; no M2B record is pinned yet, so C1 stays open) -> PASS
+PLANT-C1-NOSPACE: refused (the M2B record CLAIM does not state the |g| form exactly once (C1)) -> FIRES
+PLANT-C1-TWICE: refused (the M2B record CLAIM does not state the |g| form exactly once (C1)) -> FIRES
+PLANT-FLOATIN-CERT: refused (FLOAT-IN inputs (g.amn3: far eps_r Z; g.amn4: far eps_r Z; g.tn3: far logR gBb eps_r Z; g.tn4: far logR gBb eps_r Z), open conditions (none): the export cannot be tagged CERTIFIED) -> FIRES
+READER-D MOCK mock_s9b_inputs_v1_1.kv: accepted
+PLANT-MOCK-D mock_s9b_inputs_v1_1.kv: refused (certified FORMAT/TAG) -> FIRES
+PLANT-D-PRECERT: refused (PRECERT/STUB in TAG) -> FIRES
+PLANT-D-DUPKEY: refused (duplicate key RUN_VERDICT) -> FIRES
+PLANT-D-BARE: refused (non-KV line 'VERDICT VALID') -> FIRES
+PLANT-D-END: refused (RECORD/END) -> FIRES
+PLANT-D-KERNEL: refused (KERNEL) -> FIRES
+PLANT-KEYCASE: refused (non-KV line 'N4_mhat = 1.001422568625e+00') -> FIRES
+INFO HBAD' N=4: Hbad' = tau~0(40.0) kappa_max^2 <= 3.5136163007071162e-12 (kt_rb's Hbad, mock x1.03: 3.2960000000000005e-08); NH' = Lam + Hbad' <= 4.0000000000003517e+01; J-uniform given kappa
+INFO HBAD' N=3: Hbad' = tau~0(40.0) kappa_max^2 <= 2.7406992506403057e-14 (kt_rb's Hbad, mock x1.03: 2.4720000000000004e-10); NH' = Lam + Hbad' <= 4.0000000000000028e+01; J-uniform given kappa
+READER-B MOCK mock_m3_entries_v1_1.kv: 27 + 27 entries; READER-C MOCK mock_s9b_inputs_v1_1.kv: 20 keys per N -> read
+PLANT-MOCK-B mock_m3_entries_v1_1.kv: refused (m3_reader_v4_4.load: mock_m3_entries_v1_1.kv: the asm output's VERDICT lines are not exactly ['VERDICT VALID']) -> FIRES
+PLANT-MOCK-C mock_s9b_inputs_v1_1.kv: refused (certified FORMAT/TAG) -> FIRES
+INFO G00-S7 N=4: m3_b5_N4_J300_v1_7.json g,0,0 through m3_reader_v4_4: a0_exact 1, err 1.4628735374677895e-07; lower end over every J >= 300 (t in [0, 1/300]) 9.9999125803962763e-01; at J = 300 1.00392367374 (value_ref 1.003923673740873)
+INFO G00-S7 N=3: m3_b5_N3_J300_v1_7.json g,0,0 through m3_reader_v4_4: a0_exact 1, err 6.5862971507535670e-08; lower end over every J >= 300 (t in [0, 1/300]) 9.9999559810059524e-01; at J = 300 1.00275201431 (value_ref 1.0027520143118114)
+C-G00-S7: the S7 certified g,0,0 matches the normalization pin, and its lower end over every J >= 300 lies within 5% of 1 at both N (Phi takes this lower end) -> PASS
+PLANT-G00-NORM: refused (G,0,0 normalization does not match the pin (claim, a0_exact or a_0)) -> FIRES
+PLANT-G00-CLAIM: refused (G,0,0 normalization does not match the pin (claim, a0_exact or a_0)) -> FIRES
+INFO LEMMA-G N=4 (eps 0.25, theta 0.7): S_eps <= 1.0235980510203004e+00 (supp0 on the same q 1.6932667305093938e+02); kt_rb ratio (MOCK) 1.0259155800020565e+00, G_00 9.9999125803962774e-01 (S7 certified lower end; Lemma T-prime); Phi_eps <= 4.3136391792956488e+01, Phi_eps,theta <= 1.5976441404798697e+03; Gbad-prime(40.0) <= 2.3596274229640957e-11 (kt_rb Gbad 1.9570000000000001e-05); Abad-prime(20.0) <= 2.3824912319337721e-09 (kt_rb Abad 5.7680000000000004e-08); (k1_lim/k1)^3 at J = 300: 1.0037633319250645e+00
+INFO LEMMA-G N=3 (eps 0.25, theta 0.7): S_eps <= 1.0205289728446973e+00 (supp0 on the same q 1.6881367236826091e+02); kt_rb ratio (MOCK) 1.1631743842509654e+00, G_00 9.9999559810059535e-01 (S7 certified lower end; Lemma T-prime); Phi_eps <= 1.2417666771697814e+01, Phi_eps,theta <= 1.3797407524108681e+02; Gbad-prime(40.0) <= 1.0427805191285047e-13 (kt_rb Gbad 1.0300000000000001e-07); Abad-prime(20.0) <= 7.0013886780301187e-10 (kt_rb Abad 1.5450000000000001e-09); (k1_lim/k1)^3 at J = 300: 1.0000000000000002e+00
+C-SEPS: S_eps (G3, z9sym q, t = 1/300) below supp0 on the same q and within 2e-6 of seps_v1 FLOAT, both N -> PASS
+C-JPOW: jfac = k1_lim^3 (2 pi/J)^(-3n/2) at J = 3000 against J = 300 below 1e-40, and k1_lim^3 main_T/main_D for the three weight sets below 1e-12 (A, B hulls), both N (the J-powers cancel) -> PASS
+C-K1-LIM: k1 < k1_lim at N = 4, J = 300 and 3000 (I_1 series; N = 3 exact) -> PASS
+C-ZR0: MOCK Z_T/Z_psi backed out of kt_rb Gbad/Hbad lies in 0.5..2 at both N (the main terms against kt_rb phi ratio) -> PASS
+C-GBADP: Gbad-prime < kt_rb Gbad and Abad-prime < kt_rb Abad at both N -> PASS
+PLANT-GBADP-LEVEL: refused (Lemma G level Lam below 1) -> FIRES
+PLANT-ABADP-LEVEL: refused (Lemma G level Lam_a below max(1/2, 1/(2 theta (1 - eps) A)), or theta outside (0, 1)) -> FIRES
+PLANT-SEPS-EPS: refused (Lemma G eps outside (0, 1)) -> FIRES
+C-QV4 N=4: ||Q_4 v_t|| <= 1.5915203402333525e-03 against the float reading 1.5913e-03: relative 1.38e-04 -> PASS
+INFO QV4-GBADP N=4: ||Q_4 v_t|| with Gbad-prime (Lemma G) <= 1.5719503638296267e-03; with kt_rb Gbad 1.5915203402333525e-03
+INFO QV4-CERT-A N=4: ||Q_4 v_t|| with the certified A_t and the MOCK inputs <= 1.5719498372321319e-03 (with the mock A_t: 1.5719503638296267e-03); a MOCK reading
+C-PT N=4: joint Pt^2 <= 3.8551596295078036e-05, difference route V_t - A_t^2 <= 3.8550924505392850e-05 (identity: they differ by dtx^2 and the Gram terms) -> PASS
+INFO C7 N=4: A_t >= 3.9959767260458738e-02, O_t <= 4.6846124678546358e-04, A_t^2/O_t >= 3.4086 (claim 1.05); X_ta >= 4.1871638331264800e-03
+INFO R_c^ta N=4: computed 4.0441316471679727e-06 (this run's delta t_x), input 4.8752437500000009e-06 (kt_sh1_v1's line); X_tb := X_ta (XTB_SOURCE = FLIP_OF_XTA)
+C-WIDTH N=4 (corner line): L = max(A_t,ref/At_lo, A_a,ref/Aa_lo) = 1.0000000000000000e+00 against pk07's joint-corner budgets 1.027 at the mixed d^h = 3 and 1.033 at d^h + 1 (planning budgets, MOCK references; the hard gate is the d^h + 1 budget) -> PASS
+INFO C-WIDTH N=4: L supports the mixed d^h = 3
+C-QV4 N=3: ||Q_4 v_t|| <= 3.8825786614275570e-04 against the float reading 3.8822e-04: relative 9.75e-05 -> PASS
+INFO QV4-GBADP N=3: ||Q_4 v_t|| with Gbad-prime (Lemma G) <= 3.8815486624703372e-04; with kt_rb Gbad 3.8825786614275570e-04
+INFO QV4-CERT-A N=3: ||Q_4 v_t|| with the certified A_t and the MOCK inputs <= 3.8815467560062344e-04 (with the mock A_t: 3.8815486624703372e-04); a MOCK reading
+C-PT N=3: joint Pt^2 <= 2.3009508670692691e-05, difference route V_t - A_t^2 <= 2.3009498963634712e-05 (identity: they differ by dtx^2 and the Gram terms) -> PASS
+INFO C7 N=3: A_t >= 3.2650335836914957e-02, O_t <= 3.1094234950669749e-04, A_t^2/O_t >= 3.4284 (claim 1.05); X_ta >= 2.7925574535247791e-03
+INFO R_c^ta N=3: computed 4.4150156923111485e-07 (this run's delta t_x), input 5.6432821500000001e-07 (kt_sh1_v1's line); X_tb := X_ta (XTB_SOURCE = FLIP_OF_XTA)
+C-WIDTH N=3 (corner line): L = max(A_t,ref/At_lo, A_a,ref/Aa_lo) = 9.9999999999999989e-01 against pk07's joint-corner budgets 1.008 at the mixed d^h = 2 and 1.030 at d^h + 1 (planning budgets, MOCK references; the hard gate is the d^h + 1 budget) -> PASS
+INFO C-WIDTH N=3: L supports the mixed d^h = 2
+INFO C-WIDTH N=4 at At_lo - 3%: L = 1.0309216902491503e+00 supports the mixed d^h = 4 (below the d^h + 1 budget 1.033, so no stop)
+PLANT-WIDTH-CORNER: refused (corner ratio 1.0416604578559123e+00 above even the budget 1.033 at d^h + 1 = 4: stop and ask) -> FIRES
+C-PX3: px_from on a positive, a negative and a straddling Cov ball gives cmin = 1/256, 1/256, 0 and pX = (E2 - cmin^2)^(1/2) -> PASS
+PLANT-PX-NEG: refused (E2_hi - cmin^2 is not >= 0) -> FIRES
+READER-E MOCK mock_p2_8_c4_v1.kv: 5424 rows (a MOCK stand-in for P2-8's C4.1 record) -> read
+PLANT-MOCK-E mock_p2_8_c4_v1.kv: refused (certified FORMAT/TAG) -> FIRES
+C-GAMMA: the closed form Gamma(3/2, 5) = 0.0164538091490 agrees with flint's gamma_upper as arb(5).gamma_upper(3/2) -> PASS
+C-GAMMA2: the closed forms of Gamma(5/2, L) and Gamma(7/2, L) at the 15 levels in use (3 4 6 6.5 8 8.5 9 11.5 14 15 19.5 20 24.5 26 26.5) and gamma(3/2, 300) = 0.886226925453 against flint's gamma_upper and gamma_lower: all agree -> PASS
+C-KAPPA: kappa_max = k1_hi^3/((1 - eps_r) lambda_h(300)), lambda_h by the matrix-tree theorem: N4 4.4426881135151497e+01, N3 1.2543779183440856e+01; against the kappa backed out of kt_rb's Hbad (2 digits, mock x1.03): N4 4.4559130130709661e+01, N3 1.2713426625478295e+01; worst relative 1.33e-02 (5e-2) -> PASS
+INFO LEMMA-E N=4 (Lemma E-prime, MOCK Z ratio): Phi_eps <= 4.3136391792956488e+01, Phi_eps,theta,b <= 2.6251972038203314e+02, S-prime <= 1.0641500604603077e+02, A_theta 0.663475; Lemma E (MOCK) had Phi <= 3.5253906250000006e+05, S <= 3.0242039354046768e+08; rho_phi <= 1.0234473704528904e+00 (Lemma R), e_1 <= 2.1260661262653663e-05
+INFO LEMMA-E N=3 (Lemma E-prime, MOCK Z ratio): Phi_eps <= 1.2417666771697814e+01, Phi_eps,theta,b <= 4.1392222572326048e+01, S-prime <= 2.2671454008137488e+01, A_theta 0.663475; Lemma E (MOCK) had Phi <= 1.7361111111111112e+05, S <= 2.0133388206531197e+07; rho_phi <= 1.0117811116386912e+00 (Lemma R), e_1 <= 3.9925051717569151e-06
+C-E1-RHO: e_1 with rho_phi = 1.5 exceeds e_1 with the run rho_phi at both N -> PASS
+PLANT-E2-LEVEL: refused (a Lemma E level below c+ + 2) -> FIRES
+PLANT-E2-VLEVEL: refused (a vertical Lemma E level below c+ + m/A (v1_14 (1))) -> FIRES
+C-THETA: Abad-prime and Lemma E-prime use one theta = 0.7 at both N -> PASS
+PLANT-THETA: refused (Abad-prime and Lemma E-prime use different theta (0.7, 0.9)) -> FIRES
+INFO TRACE N=4 eps: Lemma T exact ||W||^2 at J = 300 2.3872954195377898e-09, Z_T 9.9917900420499028e-01; Lemma T-prime bound 3.4613544115806882e-09, factor 1.4487158253892825e+00 over main_T
+INFO TRACE N=4 theta: Lemma T exact ||W||^2 at J = 300 4.7580257031535618e-08, Z_T 9.9856384804590326e-01; Lemma T-prime bound 1.2819831154002550e-07, factor 2.6904898643054644e+00 over main_T
+INFO TRACE N=4 theta_b: Lemma T exact ||W||^2 at J = 300 1.0322553134822945e-08, Z_T 9.9862402615374368e-01; Lemma T-prime bound 2.1065132119364044e-08, factor 2.0378821764099047e+00 over main_T
+INFO TRACE N=3 eps: Lemma T exact ||W||^2 at J = 300 6.0384734310229484e-07, Z_T 1.0001504230081173e+00; Lemma T-prime bound 7.7300797230400009e-07, factor 1.2803306321040175e+00 over main_T
+INFO TRACE N=3 theta: Lemma T exact ||W||^2 at J = 300 4.4433000102168524e-06, Z_T 1.0007334449105230e+00; Lemma T-prime bound 8.5889774700444447e-06, factor 1.9344354403467248e+00 over main_T
+INFO TRACE N=3 theta_b: Lemma T exact ||W||^2 at J = 300 1.6035464527309006e-06, Z_T 1.0003182858140161e+00; Lemma T-prime bound 2.5766932410133333e-06, factor 1.6073830362253712e+00 over main_T
+C-PHIT-FORM: Lemma T-prime closed form against its k1_lim form at J = 300 and 3000, three triangles, both N, relative below 1e-12 -> PASS
+C-TRACE: the exact Lemma T trace lies below the Lemma T-prime bound for the three triangles at J = 300, both N -> PASS
+C-TRACE-REC: the recurrence lambda_0 of the L = 600 chain agrees with k1 (I_1 series at N = 4, closed form at N = 3) -> PASS
+C-G00-FLOAT: the G_00 lower end lies within 5% of 1 at both N (S7 certified lower end) -> PASS
+PLANT-G00-NONPOS: refused (G_00 lower end not certainly positive) -> FIRES
+PLANT-G00-PIN: refused (S7 g,0,0 file m3_b5_N4_J300_v1_7.json does not match its pin) -> FIRES
+PLANT-TRACE-L: refused (Lemma T tail ratio R_L not below 1/2 (L = 10)) -> FIRES
+C-E2-VLEVEL-EDGE: the vertical level bound c+ + 2/A_theta = 3.9144298951539813e+00 (c+ 0.9): a level 2^-20 above it passes -> PASS
+PLANT-E2-VLEVEL-EDGE: refused (a vertical Lemma E level below c+ + m/A (v1_14 (1))) -> FIRES
+INFO RHO N=4 (Lemma R, eps 0.25): q_L 7.7861696577353101e-04, q_Q 8.7239633601605558e-05, r0 102.69435, r* 127.62941, sigma_eps 1.8271394396009847e-03, Phi_W 4.1170383693393568e+01; rho_phi <= 1.0234473704528904e+00
+INFO RHO N=3 (Lemma R, eps 0.25): q_L 5.0034607439767024e-04, q_Q 8.7240462834817359e-05, r0 104.23417, r* 129.17041, sigma_eps 1.7059315998276237e-03, Phi_W 1.1923103767116269e+01; rho_phi <= 1.0117811116386912e+00
+C-RHO: 1 <= rho_phi <= 1.1 and within 1e-4 of rho_float_v1 at both N -> PASS
+C-RHO-GRID: no grid value of h on [r0, 50 r0] (2001 points) above sigma_eps at both N -> PASS
+PLANT-RHO-SIGMA: refused (sigma_eps below rho_h at r = 105.210) -> FIRES
+C-E-LOWER: Lemma E ends min(R, (1 - sp^2) R) on R = -1, 1 and max(R, 0) on R = -1, 2 with 1 - sp^2 = 0.5 -> PASS
+PLANT-E-LOWER: refused (a Lemma E lower end above min(R, (1 - sp^2) R)) -> FIRES
+C-E2: E2_hi (Lemma E) >= the uncorrected SM value on every row -> PASS
+E2 N=3 D3: Delta_E2 0.7265 on the first piece (e_f 6.9504905417623353e-01, s-part 1.0589417456107959e-02) against e2_bound_v3's 0.7067: relative 2.80e-02
+E2 N=3 D4: Delta_E2 0.7030 on the first piece (e_f 6.4037991550865858e-01, s-part 1.0546986028033872e-03) against e2_bound_v3's 0.6411: relative 9.66e-02
+E2 N=4 D3: Delta_E2 10.3107 on the first piece (e_f 9.4447813383502730e+00, s-part 5.7849715531711543e-01) against e2_bound_v3's 10.0280: relative 2.82e-02
+E2 N=4 D4: Delta_E2 7.0519 on the first piece (e_f 6.2003579047453581e+00, s-part 5.7270513241913013e-02) against e2_bound_v3's 6.2207: relative 1.34e-01
+C-E2-FLOAT: Delta_E2 against e2_bound_v3 (theta 0.7, Lemma T-prime, rho_phi with it) within 30% (Lemma E-prime: the same Phi_eps, S-prime, A_theta and levels; the means +-1% there) -> PASS
+INFO DH-PREVIEW N=4 D3: min J0/Cov d=3 0.2865, d=4 0.8952 (corrected pX, Lemma S' normX, FLOAT grid e) -> d^h = 3 if certified (FLOAT slack positive on every row); the rule holds N4 at 4 until kt_s9h's certified DH; the certified decision is kt_s9h's DH_N4_D3
+INFO DH-PREVIEW N=4 D4: min J0/Cov d=3 0.1495, d=4 0.8742 (corrected pX, Lemma S' normX, FLOAT grid e) -> d^h = 3 if certified (FLOAT slack positive on every row); the rule holds N4 at 4 until kt_s9h's certified DH; the certified decision is kt_s9h's DH_N4_D4
+INFO DH-PREVIEW N=4 D4M: min J0/Cov d=3 0.1495, d=4 0.8742 (corrected pX, Lemma S' normX, FLOAT grid e) -> d^h = 3 if certified (FLOAT slack positive on every row); the rule holds N4 at 4 until kt_s9h's certified DH; the certified decision is kt_s9h's DH_N4_D4M
+INFO DH-PREVIEW N=3 D3: min J0/Cov d=3 0.7461, d=4 0.9628 (corrected pX, Lemma S' normX, FLOAT grid e) -> d^h = 3 if certified (FLOAT slack positive on every row); the certified decision is kt_s9h's DH_N3_D3
+INFO DH-PREVIEW N=3 D4: min J0/Cov d=3 0.6522, d=4 0.9486 (corrected pX, Lemma S' normX, FLOAT grid e) -> d^h = 3 if certified (FLOAT slack positive on every row); the certified decision is kt_s9h's DH_N3_D4
+INFO DH-PREVIEW N=3 D4M: min J0/Cov d=3 0.6522, d=4 0.9486 (corrected pX, Lemma S' normX, FLOAT grid e) -> d^h = 3 if certified (FLOAT slack positive on every row); the certified decision is kt_s9h's DH_N3_D4M
+INFO MEANS N=4: c_t over every piece and class in [9.4895513775777285e-01, 1.0529994102839260e+00] (MOCK SM entries; Lemma E-prime, m = 1); for SH4 (N - 1)/2 - c_t,hi = 4.4700058971607420e-01; largest relative width of c_t 0.1038
+INFO MEANS N=3: c_t over every piece and class in [6.5422412612809655e-01, 6.8054808100601283e-01] (MOCK SM entries; Lemma E-prime, m = 1); for SH4 (N - 1)/2 - c_t,hi = 3.1945191899398717e-01; largest relative width of c_t 0.0391
+C-MEANS: 5424 rows; every mean ball ordered and positive, and every first piece contains the J = 300 FLOAT mean (t and bb 1.00102816, b 0.82681845 at N4) -> PASS
+INFO CE-T N=4: c_t per piece (intersection over the classes): min ce_lo 9.9331680427660285e-01, max ce_hi 1.0086377429586704e+00; SH4 gate (N - 1)/2 - c_N/300 = 1.4920833333333332e+00; pk07 binding ce_lo >= 0.9724
+INFO CE-T N=3: c_t per piece (intersection over the classes): min ce_lo 6.6554489112319404e-01, max ce_hi 6.6922731440496075e-01; SH4 gate (N - 1)/2 - c_N/300 = 9.9333333333333329e-01; pk07 binding ce_lo >= 0.6444
+C-CE-T: the intersection of the three classes c_t balls is non-empty on every piece, both N -> PASS
+C-C1-SOURCE: the pinned SPEC_M2B_CERT_v1_ADD3.md holds C1_CLAIM once and kt_s9h_m21.py holds C1_NOSPACE once -> PASS
+C-REPF: 5424 rows against export_p2_14_joint_float_v1_2.kv: worst relative Cov_inf_lo 0.00e+00, pX_hi 4.40e-07, E2_hi 8.81e-07 (pX_hi and E2_hi uncorrected, the SM route; normX_hi left out: its FLOAT reference carries the old product form) -> PASS
+C-COVX: the SM route's Cov lower end against P2-8's record (MOCK): worst relative 2.44e-06 (a cross-check, 1e-4) -> PASS
+NORMX N=3 D3: normX_hi 7.2213449446295726e+01 at levels 8 8 (Lemma S') against float_check_schur_v2's 73.1116: relative 1.23e-02
+NORMX N=3 D4: normX_hi 2.8730581258069300e+01 at levels 4 6 (Lemma S') against float_check_schur_v2's 28.9355: relative 7.08e-03
+NORMX N=3 D4M: normX_hi 2.8730581258069300e+01 at levels 4 6 (Lemma S') against float_check_schur_v2's 28.9355: relative 7.08e-03
+NORMX N=4 D3: normX_hi 2.0089645649683550e+02 at levels 14 14 (Lemma S') against float_check_schur_v2's 201.2190: relative 1.60e-03
+NORMX N=4 D4: normX_hi 7.9029517401576939e+01 at levels 9 8.5 (Lemma S') against float_check_schur_v2's 78.4732: relative 7.09e-03
+NORMX N=4 D4M: normX_hi 7.9029517401576939e+01 at levels 9 8.5 (Lemma S') against float_check_schur_v2's 78.4732: relative 7.09e-03
+C-NORMX-FLOAT: worst relative 1.23e-02 (2e-2) -> PASS
+C-NORMX-BOX: at levels 29.0 28.5 the tails are 2.124e-10 of the box (at most 1e-9) -> PASS
+PLANT-NORMX-LEVEL: refused (a level below c+ + 1) -> FIRES
+PLANT-NORMX-HLEVEL D3: refused (a horizontal Lemma S-prime level below c+ (v1_11 (2))) -> FIRES
+PLANT-NORMX-HLEVEL D4: refused (a horizontal Lemma S-prime level below c+ (v1_11 (2))) -> FIRES
+EXPORT export_p2_14_joint_mock_kt_p2_assembly_v1_24.kv sha256 c899043df8639cdb40ae3b67a6b8bdfabfa78bcff79678ca846c784bbfe539ba rows 5424 (FORMAT S4U_KV_v1 MOCK)
+C-SELF export_p2_14_joint_mock_kt_p2_assembly_v1_24.kv: the MOCK reader accepts it -> PASS
+PLANT-MOCK-D export_p2_14_joint_mock_kt_p2_assembly_v1_24.kv: refused (certified FORMAT/TAG) -> FIRES
+C-NOCERT export_p2_14_joint_mock_kt_p2_assembly_v1_24.kv: 0 offending lines -> PASS
+EXPORT export_p2_t_mock_kt_p2_assembly_v1_24.kv sha256 25f7c6af3264c4741ffbe2330223a3c7aeded71ad2a9bf5401abd097f336f414 rows 1808 (FORMAT S4U_KV_v1 MOCK)
+C-SELF export_p2_t_mock_kt_p2_assembly_v1_24.kv: the MOCK reader accepts it -> PASS
+PLANT-MOCK-D export_p2_t_mock_kt_p2_assembly_v1_24.kv: refused (certified FORMAT/TAG) -> FIRES
+C-NOCERT export_p2_t_mock_kt_p2_assembly_v1_24.kv: 0 offending lines -> PASS
+EXPORT export_p2_14_means_mock_kt_p2_assembly_v1_24.kv sha256 7dc985d52ef3138862a45c1906f6d893f74d14094791772ec9e37116d1d6acdc rows 5424 (FORMAT S4U_KV_v1 MOCK)
+C-SELF export_p2_14_means_mock_kt_p2_assembly_v1_24.kv: the MOCK reader accepts it -> PASS
+PLANT-MOCK-D export_p2_14_means_mock_kt_p2_assembly_v1_24.kv: refused (certified FORMAT/TAG) -> FIRES
+C-NOCERT export_p2_14_means_mock_kt_p2_assembly_v1_24.kv: 0 offending lines -> PASS
+C-SRCJ export_p2_14_joint_mock_kt_p2_assembly_v1_24.kv: pk07's C-SRC-J, pX_hi^2 >= E2_hi - Cov_inf_lo^2 exactly on the printed decimals (5424 rows) -> PASS
+PLANT-SRCJ: refused (row N4_D3_P0000: pX_hi^2 < E2_hi - Cov_inf_lo^2) -> FIRES
+C-FLIP export_p2_t_mock_kt_p2_assembly_v1_24.kv: XTB_SOURCE = FLIP_OF_XTA and Xtb_lo equal to Xta_lo string for string (1808 rows) -> PASS
+PLANT-FLIP-ROW: refused (row N4_P0000: Xtb_lo 4.1871638331264801e-03, Xta_lo 4.1871638331264800e-03) -> FIRES
+PLANT-FLIP-DECL: refused (XTB_SOURCE None) -> FIRES
+PLANT-FLIP-SRC: refused (XTB_SOURCE 'COMPUTED') -> FIRES
+PLANT-CERTOUT: the writer with a certified FORMAT raised before opening a file -> FIRES
+ITEM mock cpu 2.5 s, peak resident memory 57 MiB
+VERDICT VALID

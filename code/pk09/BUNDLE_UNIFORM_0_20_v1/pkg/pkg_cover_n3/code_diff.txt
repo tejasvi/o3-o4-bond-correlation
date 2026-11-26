@@ -1,0 +1,198 @@
+--- code_ran/code8/o3cert6.py	2026-10-31 02:07:42.327454084 +0000
++++ code8/o3cert6.py	2026-10-31 02:07:42.320990010 +0000
+@@ -30,7 +30,7 @@
+ # tri and vec also keep every vertical label of a cut state (vmax = 2L: S = P T P exactly, no vertical tail eps_v, dTX,
+ # dTXY) and sum |Q b|, |R Q b| over admissible cut states (UNIF 9.25).
+ # tri and vec are PENDING REVIEW; every verdict line carries the placeholder and truncation tags.
+-# usage: o3cert6.py TAG L I J0:h[,J0:h,...] | adapt:JS:JE:q:qmax  [op|tri|vec] [frob|ph]
++# usage: o3cert6.py [--out DIR] [--cache FILE] TAG L I J0:h[,J0:h,...] | adapt:JS:JE:q:qmax  [op|tri|vec] [frob|ph]
+ import os, sys, time, math
+ from fractions import Fraction
+ import numpy as np
+@@ -46,6 +46,19 @@
+ sys.path.insert(2, os.path.join(os.path.dirname(HERE), 'code5'))
+ import o3lib3
+ from mfops import MR, dmul, mr_from_iv, iv_from_arb
++# optional path arguments (anywhere in argv; defaults keep the part paths): --out DIR (certificate file and ledger),
++# --cache FILE (the signed 6j cache of o3mfstruct)
++OUTDIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'out'); CACHE6ARG = None
++_av = []
++_it = iter(sys.argv[1:])
++for _a in _it:
++    if _a == '--out':
++        OUTDIR = os.path.abspath(next(_it))
++    elif _a == '--cache':
++        CACHE6ARG = os.path.abspath(next(_it))
++    else:
++        _av.append(_a)
++sys.argv = [sys.argv[0]] + _av
+ tag, L, I = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
+ TRUNC = sys.argv[5] if len(sys.argv) > 5 else 'op'
+ assert TRUNC in ('op', 'tri', 'vec')
+@@ -59,8 +72,8 @@
+     ivals = [(Fraction(x.split(':')[0]), float(x.split(':')[1])) for x in sys.argv[4].split(',')]
+ ctx.prec = 128
+ BASE = os.path.dirname(HERE)
+-OUT = os.path.join(BASE, 'out', 'o3cert6_%s.txt' % tag)
+-assert '/data/e17/unif/scratch/out/' in OUT and not os.path.exists(OUT)
++OUT = os.path.join(OUTDIR, 'o3cert6_%s.txt' % tag)
++assert os.path.isdir(OUTDIR) and not os.path.exists(OUT)
+ lines = []
+ def say(s):
+     print(s, flush=True); lines.append(s)
+@@ -72,7 +85,7 @@
+ PTAG = {'frob': 'lam5=frob[9.26,RV11_25;v2err,9.30]', 'ph': 'PLACEHOLDER(lam5,QcT1Qc)'}[LAM5]
+ TTAG = {'op': 'N3:trunc=op[o3cert2,RV21_43]', 'tri': 'N3:trunc=tri[9.30]', 'vec': 'N3:trunc=vec[9.24+MINOR-2,9.27,9.30]'}[TRUNC]
+ t00 = time.time()
+-st = mfstruct.build(L, verbose=False, vmax=(L if TRUNC == "op" else 2 * L))
++st = mfstruct.build(L, verbose=False, vmax=(L if TRUNC == "op" else 2 * L), cache=CACHE6ARG)
+ n = L + 1; nS = st['nS']
+ adm = st['adm']; aidx = np.nonzero(adm)[0]; nA = len(aidx)
+ fl = (st['bb'] * n + st['h']) * n + st['t']          # flip (t, h, bb) -> (bb, h, t)
+@@ -572,7 +585,7 @@
+         return MR(c, v.r * INF + 4 * U64 * np.abs(c) + 1e-300)
+     rr0 = shift(rb, kb); rrI = shift(rbI, kb)
+     mI = rrI.absup() * INF
+-    bIt = MR(b0.c, (b0.r + (np.abs(b0.c) + b0.r) * np.expm1(h * mI) * (1 + 1e-12)) * INF + 1e-300)    # b(J0) exp([-h, h] mI), b >= 0
++    bIt = MR(b0.c, (b0.r + (np.abs(b0.c) + b0.r) * np.expm1(h * mI) * (1 + 1e-12)) * INF + 1e-300)    # b(J0) exp([-h, h] mI); b is signed at N = 3, the radius uses |b(J0)|
+     b3 = dmul(bIt, dmul(dmul(rrI, rrI), rrI) + dmul(rrI, rb1I).scale(3.0) + rb2I)
+     bvt = VT(b0, dmul(b0, rr0), dmul(b0, dmul(rr0, rr0) + rb1).scale(0.5), b3.scale(1.0 / 6.0))
+     sq0 = dens[0].sqrt()
+@@ -908,8 +921,8 @@
+ else:
+     # adaptive cover of [JS, JE] (certint5)
+     JS, JE, q, qmax = ADAPT
+-    LEDGER = os.path.join(BASE, 'out', 'o3cover6_%s.ledger' % tag.split('_')[0])
+-    assert '/data/e17/unif/scratch/out/' in LEDGER
++    LEDGER = os.path.join(OUTDIR, 'o3cover6_%s.ledger' % tag.split('_')[0])
++    assert os.path.isdir(OUTDIR)
+     a = JS; ovl = 0.02; budget = 520.0; last = 0.0         # stop before an interval would end past the budget (jobs < 580 s)
+     while a < JE and time.time() - t00 + 1.3 * last < budget:
+         h = q * a / (1 - q * (1 - ovl))
+--- code_ran/code8/mfops.py	2026-10-31 02:07:42.327522026 +0000
++++ code8/mfops.py	2026-10-31 02:07:42.321846645 +0000
+@@ -15,7 +15,8 @@
+ import scipy.sparse as sp
+ import certlib3                       # bessel_derivs (N = 4 Riccati/monotone hulls), lohi
+ import sys as _sys
+-_sys.path.insert(1, '/mnt/g2/release/root/data/e17/unif/scratch/code5')
++import os as _os
++_sys.path.insert(1, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), 'code5'))     # ../code5 (part or package)
+ import o3lib3                         # bessel_derivs of the N = 3 weights i_l(J) (RV21_43)
+ 
+ U = 2.0 ** -53
+--- code_ran/code8/o3mfstruct.py	2026-10-31 02:07:42.327540905 +0000
++++ code8/o3mfstruct.py	2026-10-31 02:07:42.321865613 +0000
+@@ -10,18 +10,18 @@
+ # p <= a + a' <= 2L): the factors then give P T P exactly (9.25 (T1) for N = 3).
+ # g and the 6j symbols are exact rationals rounded once (sign sqrt(R), relative error <= 1.5 u each); a coefficient
+ # (two g, one 6j, two products) has relative error <= 5.5 u, so Factor.coef_ulps = 6.  The signed 6j values are cached
+-# on disk by canonical base-128 key (float of the exact value only).  T_X inserts on the top bond (p, in A2), T_Y on the
++# on disk by canonical base-128 key (float of the exact value only; the cache file is an argument of build).  T_X inserts on the top bond (p, in A2), T_Y on the
+ # bottom bond (q, in A1): A1bond = 'Y'.
+ import os, sys, time, math
+ from fractions import Fraction as Fr
+ import numpy as np
+ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+ import mfstruct, mfstruct2
+-sys.path.insert(1, '/mnt/g2/release/root/data/e17/unif/scratch/code5')
++sys.path.insert(1, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'code5'))      # ../code5 (part or package)
+ import o3struct                                   # three0_sq, delta_sq, fact (exact rationals)
+ 
+ BC = 128
+-CACHE6 = '/mnt/g2/release/root/data/e17/unif/scratch/tmp/sixj_signed_cache_b128.npz'
++CACHE6 = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'tmp', 'sixj_signed_cache_b128.npz')   # ../tmp by default; build(..., cache=FILE) overrides
+ 
+ 
+ def sixj_signed(j1, j2, j3, j4, j5, j6):
+@@ -47,11 +47,12 @@
+     return (1.0 if s > 0 else -1.0) * math.sqrt(float(R))
+ 
+ 
+-def signed_values_cached(keys, verbose=False):
++def signed_values_cached(keys, verbose=False, cache=None):
++    cache = CACHE6 if cache is None else cache
+     """signed 6j floats for sorted unique base-128 canonical keys, through the disk cache"""
+     ck = np.zeros(0, dtype=np.int64); cv = np.zeros(0)
+-    if os.path.exists(CACHE6):
+-        z = np.load(CACHE6)
++    if os.path.exists(cache):
++        z = np.load(cache)
+         ck, cv = z['k'], z['v']
+     miss = np.setdiff1d(keys, ck, assume_unique=True)
+     if len(miss):
+@@ -62,10 +63,10 @@
+             mv[i] = sixj_signed(c0 // BC, c1 // BC, c2 // BC, c0 % BC, c1 % BC, c2 % BC)
+         k2 = np.concatenate([ck, miss]); v2 = np.concatenate([cv, mv])
+         o = np.argsort(k2, kind='stable'); ck, cv = k2[o], v2[o]
+-        assert '/data/e17/unif/scratch/tmp/' in CACHE6
+-        tmpf = CACHE6 + '.part.npz'
++        assert os.path.isdir(os.path.dirname(os.path.abspath(cache))) and cache.endswith('.npz')
++        tmpf = cache + '.part.npz'
+         np.savez(tmpf, k=ck, v=cv)
+-        os.replace(tmpf, CACHE6)
++        os.replace(tmpf, cache)
+     idx = np.searchsorted(ck, keys)
+     assert np.all(ck[idx] == keys)
+     if verbose:
+@@ -87,7 +88,7 @@
+     return G
+ 
+ 
+-def build(L, verbose=True, vmax=None):
++def build(L, verbose=True, vmax=None, cache=None):
+     t0 = time.time()
+     Lv = L if vmax is None else vmax
+     assert max(2 * L, Lv) <= BC - 3
+@@ -100,7 +101,7 @@
+         k = mfstruct2.canon_keys_chunked(T)
+         uk, inv = np.unique(k, return_inverse=True)
+         del k
+-        six = signed_values_cached(uk, verbose)[inv]
++        six = signed_values_cached(uk, verbose, cache)[inv]
+         del uk, inv
+         if name == 'A1':                              # T = (b2, c', a, c, b, q)
+             b2, c2, a, c, b, q = [T[i].astype(np.int32) for i in range(6)]       # int32 labels (peak memory); indices < 2^31
+--- code_ran/code8/mfstruct2.py	2026-10-31 02:07:42.327556238 +0000
++++ code8/mfstruct2.py	2026-10-31 02:07:42.321893986 +0000
+@@ -12,12 +12,13 @@
+ import numpy as np
+ import scipy.sparse as sp
+ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+-sys.path.insert(0, '/mnt/g2/release/root/data/e15/dy4/scratch/code')
++_dep = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'code_dep')     # package copy of su2lib, else the part source
++sys.path.insert(0, _dep if os.path.isfile(os.path.join(_dep, 'su2lib.py')) else '/mnt/g2/release/root/data/e15/dy4/scratch/code')
+ from su2lib import sixj_sq
+ import mfstruct                                   # sixj_tuples, _adm (unchanged)
+ 
+ BC = 128                                          # cache key base (labels <= 125)
+-CACHE = '/mnt/g2/release/root/data/e17/unif/scratch/tmp/sixj_sq_cache_b128.npz'
++CACHE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'tmp', 'sixj_sq_cache_b128.npz')     # ../tmp (N = 4 squared 6j cache)
+ CHUNK = 1 << 21
+ 
+ 
+@@ -41,7 +42,7 @@
+         mv = mfstruct.exact_values(miss, BC)
+         k2 = np.concatenate([ck, miss]); v2 = np.concatenate([cv, mv])
+         o = np.argsort(k2, kind='stable'); ck, cv = k2[o], v2[o]
+-        assert '/data/e17/unif/scratch/tmp/' in CACHE
++        assert os.path.isdir(os.path.dirname(CACHE))
+         tmpf = CACHE + '.part.npz'
+         np.savez(tmpf, k=ck, v=cv)
+         os.replace(tmpf, CACHE)
+--- code_ran/code8/mfstruct.py	2026-10-31 02:07:42.327570509 +0000
++++ code8/mfstruct.py	2026-10-31 02:07:42.321879855 +0000
+@@ -7,10 +7,11 @@
+ # For each factor the structure stores the merged CSR pattern (entries with equal (row, col) over the vertical label are
+ # summed per weight vector) and, per tuple, its position in the CSR data array, its vertical label and its exact-rounded
+ # coefficient, so that A(w) for any weight vector w is one bincount.
+-import sys, time
++import os, sys, time
+ import numpy as np
+ import scipy.sparse as sp
+-sys.path.insert(0, '/mnt/g2/release/root/data/e15/dy4/scratch/code')
++_dep = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'code_dep')     # package copy of su2lib, else the part source
++sys.path.insert(0, _dep if os.path.isfile(os.path.join(_dep, 'su2lib.py')) else '/mnt/g2/release/root/data/e15/dy4/scratch/code')
+ from su2lib import sixj_sq
+ 
+ 

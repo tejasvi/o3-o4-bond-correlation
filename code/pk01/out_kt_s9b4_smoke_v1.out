@@ -1,0 +1,16 @@
+kt_s9b4_smoke_v1 sha256 860d34787fa5d81ae5201dc051fc9d9f4b8fcbdc488108a19060c1ba9f416e96 ITEM=smoke4 LIM=170 (RLIMIT_CPU soft 170, hard 175)
+C-HASH PASS (15 engine files, 1 inputs, 1 own outputs)
+C-GRAPH: 4-column strip graph V 12, edges 19, forms F 19 -> PASS
+C-XIH4: worst 0.00e+00 -> PASS
+C-QCAP: Q-degree 5 (qcap 6) -> PASS; C-CODE: Dn 7 (<= 8 for 19 forms) -> PASS
+AK4 N=4 J=300 H_00: ak=[0.8453463292920229, 1.7854208645974565, 2.893053688049755, 4.165215360700534] (Dn 7, 478984 codes at the top degree, 4.3 s)
+INFO: R = main_N^2/(main_D main_4) 1.000000000000 at J = 300, 1.000000000000 at J = 600 (J-independent)
+C-ET N=4: H_00 a_k 0.8453463293 1.7854208646 2.8930536880 4.1652153607 vs R m-hat Ih_0 0.8453463293 1.7854208646 2.8930536880 4.1646783021 (R 1.0000000000, m1 0.4110342096); relative differences a_0 1.20e-14, a_1 1.32e-14 -> PASS; a_2 -4.2188e-14, a_3 5.3706e-04 (the g-part)
+PLANT-ET N=4: H_00 a_k 0.8453463293 1.7854208646 2.8930536880 4.1652153607 vs R m-hat Ih_0 0.8453463293 1.7938743279 2.9074332341 4.1858859780 (R 1.0000000000, m1 0.4210342096); relative differences a_0 1.20e-14, a_1 4.71e-03 -> FIRES; a_2 -1.4380e-02, a_3 -2.0671e-02 (the g-part)
+PROJ: full riglap5s prep, degree-18 X-only norms: 3 columns 4686825 codes, 511 minors; 4 columns 86493225 codes, 4095 minors; work ratio about 148 x (codes x minors) on the 3-column prep (145-168 s in kt_s9b_v1) -> about 6.4 h [E]
+C-AK3: reduced 3-column Ih_0 a_k vs kt_s9b_v2 n4: worst 0.00e+00 -> PASS
+RED3 N=4 J=300 Ih_0 (reduced riglap5s, degree cap 10): rem 6.2549e-03 tail 5.2634e-07 ann 2.8265e-08 far 2.7468e-42, r 6.2555e-03 (prep 1.9 s, bound 56.9 s); kt_s9b_v2 refined r 8.0271e-07; inflation 7793.004
+RED4 N=4 J=300 H_00 (reduced riglap5s, degree cap 10): rem 1.0544e-01 tail 3.8642e-06 ann 4.3669e-08 far 1.5685e-23, r 1.0544e-01 (prep 9.0 s, bound 13.5 s); a_k vs part (1) 0.00e+00
+EST N=4 J=300: 4-column H_00 refined remainder about 1.353e-05 (= 1.054e-01 / 7793.004); the 3-column Ih_0 refined remainder is 8.027e-07 [E]
+ITEM smoke4 cpu 85.8 s, peak resident memory 838 MiB
+VERDICT VALID

@@ -1,0 +1,510 @@
+m3_run_es_v1_3 item ESm.4 LIM 1080; script sha256 3d638b75548a2a64ccceaed5b8a558b71bb0d014686c2dcc57529b17a0f99a88; python 3.14.4
+STAGE-CPU C-HASH start 0.03 s
+C-HASH (9 modules, the kernel files, 2 parts of this script, 27 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.12 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (the mock 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v16_1: 3 kernel calls, 6 layer calls in E2_ma/lp_moment_ma/lp_ma/pos_ma/E2_ball/e2 with fallback=False, 6 wanted) -> PASS
+PLANT-CALLER (m3_bar_v16_1 with one E2_combine call's plan= removed) -> FIRES
+PLANT-CALLER-FLAG (m3_bar_v16_1 with pos_ma's fallback=False dropped) -> FIRES
+C-SERIES (no *_series( call in 9 modules, the kernel files, this script and its 2 parts) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-330.000000000 +/- 2.94e-12] overlaps the layer's [-330.000000000 +/- 2.64e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU mock export start 0.15 s
+C-LIST (esemi_windows_v2.json be8ff5d6: 24/24/8/12 windows; 96 uses, 96 distinct; 6 records of 16 keys: True; failing none) -> PASS
+PLANT-LIST (ES9 without its first window) -> FIRES
+C-LIST-RULE (the class rules give 68 windows, the list 68: equal) -> PASS
+PLANT-LIST-RULE (D3's bb bond on the top row: differs) -> FIRES
+C-ENC ([cp, 1, 0], [cp, 0, 0], [xi, [3, 6]] give the conventions' tuples: True; pair forms outside the list pairs: none) -> PASS
+PLANT-ENC ([st, 0, 0] and [cp, 10, 0] refused: [True, True]) -> FIRES
+C-PARITY-SET (windows passing C-ODD: {'ES9': ['W1,2'], 'ES12A': ['W1,2'], 'ES12B': [], 'ES12C': []}; marked zero: {'ES9': ['W1,2'], 'ES12A': ['W1,2'], 'ES12B': [], 'ES12C': []}; the list's parity zeros: {'ES9': ['W1,2'], 'ES12A': ['W1,2'], 'ES12B': [], 'ES12C': []}) -> PASS
+PLANT-ODD (ES9 W1,2: passes True; with S[1][2] + 1e-12: a factor is neither exactly even nor exactly odd: [None]) -> FIRES
+C-GRAPH-LIST (ES9: the columns ['vac', 'int', 'free'] give V 9 and 13 edges; the list's 6 pairs [(0, 1), (0, 2), (1, 2), (3, 6), (4, 5), (7, 8)], F 15 (the list: 15); the entries use 6 of them) -> PASS
+PLANT-GRAPH-LIST (ES9: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-RULE (P9: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 5.8e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (P9: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 9 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 1.853136889780128, 1.8517206669514108) -> PASS
+C-PREP-REF (P9: m3ref_v1_10_V3E3.4.all_z9sym.out PREPJSON of family V3E3, N 4, J 300.0, theta0 0.915; dmaxH 18) -> PASS
+GDATA-CPU W1,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] D 6 caps {1: 6}: 541 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] D 6 caps {1: 6}: 0.25 s
+AK-TERMS W1,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 4.65e-08); totals radius / |mid| ['3.89e-15', '1.90e-13', '1.85e-11', '2.33e-09']; every total passes
+UNIT W1,0 ak: 0.26 s
+MOCK-AK ES9 W1,0: a_k ['1', '1.03527937799', '1.06010747609', '1.05779637608'], radii ['0.0e+00', '2.0e-13', '2.0e-11', '2.5e-09'], rnd 9.64e-16; 0.33 s
+GDATA-CPU W1,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] D 7 caps {1: 6}: 997 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] D 7 caps {1: 6}: 0.50 s
+AK-TERMS W1,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 9.62e-06); totals radius / |mid| ['5.31e-11', '1.22e-11', '1.85e-09', '4.65e-07']; every total passes
+UNIT W1,3 ak: 0.51 s
+MOCK-AK ES9 W1,3: a_k ['0.00232400242388', '1.08398080453', '0.960129815044', '0.595352876853'], radii ['1.2e-13', '1.3e-11', '1.8e-09', '2.8e-07'], rnd 1.98e-13; 0.58 s
+GDATA-CPU x3_6,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 7 caps {1: 6}: 1889 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 7 caps {1: 6}: 0.89 s
+AK-TERMS x3_6,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.80e-07); totals radius / |mid| ['6.20e-15', '8.57e-13', '1.21e-10', '2.03e-08']; every total passes
+UNIT x3_6,0 ak: 0.90 s
+MOCK-AK ES9 x3_6,0: a_k ['1.05699137717', '1.09173000891', '1.09691588547', '1.05170316174'], radii ['6.6e-15', '9.4e-13', '1.3e-10', '2.1e-08'], rnd 1.19e-14; 0.98 s
+GDATA-CPU x3_6,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 8 caps {1: 6}: 2891 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 8 caps {1: 6}: 2.03 s
+AK-TERMS x3_6,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.76e-05); totals radius / |mid| ['5.08e-11', '6.25e-11', '1.27e-08', '3.94e-06']; every total passes
+UNIT x3_6,3 ak: 2.04 s
+MOCK-AK ES9 x3_6,3: a_k ['0.00778140905095', '1.18427486673', '1.07347220116', '0.676929974306'], radii ['4.0e-13', '7.4e-11', '1.4e-08', '2.7e-06'], rnd 8.92e-13; 2.12 s
+GDATA-CPU x3_6x4_5,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] D 8 caps {1: 6}: 5607 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] D 8 caps {1: 6}: 3.71 s
+AK-TERMS x3_6x4_5,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.61e-06); totals radius / |mid| ['2.19e-14', '3.89e-12', '6.86e-10', '1.34e-07']; every total passes
+UNIT x3_6x4_5,0 ak: 3.72 s
+MOCK-AK ES9 x3_6x4_5,0: a_k ['0.899859446057', '1.07155200803', '1.17843201839', '1.22721660389'], radii ['2.0e-14', '4.2e-12', '8.1e-10', '1.6e-07'], rnd 4.86e-14; 3.81 s
+GDATA-CPU x3_6x4_5,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] D 9 caps {1: 6}: 7609 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] D 9 caps {1: 6}: 9.58 s
+AK-TERMS x3_6x4_5,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.35e-04); totals radius / |mid| ['1.47e-11', '3.17e-10', '6.86e-08', '2.00e-05']; every total passes
+UNIT x3_6x4_5,3 ak: 9.60 s
+MOCK-AK ES9 x3_6x4_5,3: a_k ['0.095159579145', '1.23410030982', '1.35338268677', '1.12354043469'], radii ['1.4e-12', '3.9e-10', '9.3e-08', '2.2e-05'], rnd 4.57e-12; 9.68 s
+GDATA-CPU x3_6x7_8,0: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 8 caps {1: 6}: 5607 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 8 caps {1: 6}: 3.57 s
+AK-TERMS x3_6x7_8,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 9.26e-07); totals radius / |mid| ['2.13e-14', '4.45e-12', '8.80e-10', '1.94e-07']; every total passes
+UNIT x3_6x7_8,0 ak: 3.58 s
+MOCK-AK ES9 x3_6x7_8,0: a_k ['1.12848710875', '1.16989120708', '1.15890987956', '1.06972888725'], radii ['2.4e-14', '5.2e-12', '1.0e-09', '2.1e-07'], rnd 6.05e-14; 3.67 s
+GDATA-CPU x3_6x7_8,3: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 9 caps {1: 6}: 7609 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 9 caps {1: 6}: 8.87 s
+AK-TERMS x3_6x7_8,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.85e-04); totals radius / |mid| ['1.21e-10', '3.79e-10', '9.76e-08', '3.68e-05']; every total passes
+UNIT x3_6x7_8,3 ak: 8.88 s
+MOCK-AK ES9 x3_6x7_8,3: a_k ['0.0148020468852', '1.30254172419', '1.20892062291', '0.775314388562'], radii ['1.8e-12', '4.9e-10', '1.2e-07', '2.9e-05'], rnd 5.80e-12; 8.97 s
+GDATA-CPU x4_5,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 7 caps {1: 6}: 1889 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 7 caps {1: 6}: 0.84 s
+AK-TERMS x4_5,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.63e-06); totals radius / |mid| ['6.34e-15', '7.31e-13', '9.31e-11', '1.44e-08']; every total passes
+UNIT x4_5,0 ak: 0.85 s
+MOCK-AK ES9 x4_5,0: a_k ['0.849556135985', '1.00575542523', '1.11373803064', '1.18428216658'], radii ['5.4e-15', '7.4e-13', '1.0e-10', '1.7e-08'], rnd 9.60e-15; 0.93 s
+GDATA-CPU x4_5,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 8 caps {1: 6}: 2891 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 8 caps {1: 6}: 1.85 s
+AK-TERMS x4_5,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 3.74e-05); totals radius / |mid| ['3.52e-12', '5.15e-11', '8.88e-09', '2.16e-06']; every total passes
+UNIT x4_5,3 ak: 1.87 s
+MOCK-AK ES9 x4_5,3: a_k ['0.0871737069718', '1.12888564971', '1.20611161086', '0.979806698391'], radii ['3.1e-13', '5.8e-11', '1.1e-08', '2.1e-06'], rnd 6.98e-13; 1.95 s
+GDATA-CPU x7_8,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14] D 7 caps {1: 6}: 1889 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14] D 7 caps {1: 6}: 0.82 s
+AK-TERMS x7_8,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.79e-07); totals radius / |mid| ['6.20e-15', '8.45e-13', '1.21e-10', '2.04e-08']; every total passes
+UNIT x7_8,0 ak: 0.83 s
+MOCK-AK ES9 x7_8,0: a_k ['1.05699137717', '1.09173000891', '1.09691588547', '1.05170316174'], radii ['6.6e-15', '9.2e-13', '1.3e-10', '2.1e-08'], rnd 1.19e-14; 0.91 s
+GDATA-CPU x7_8,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14] D 8 caps {1: 6}: 2891 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14] D 8 caps {1: 6}: 1.95 s
+AK-TERMS x7_8,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.88e-05); totals radius / |mid| ['5.08e-11', '6.25e-11', '1.27e-08', '3.95e-06']; every total passes
+UNIT x7_8,3 ak: 1.96 s
+MOCK-AK ES9 x7_8,3: a_k ['0.00778140905095', '1.18427486673', '1.07347220116', '0.676929974307'], radii ['4.0e-13', '7.4e-11', '1.4e-08', '2.7e-06'], rnd 8.93e-13; 2.04 s
+GDATA-CPU W1,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11] D 7 caps {1: 6}: 346 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11] D 7 caps {1: 6}: 0.25 s
+AK-TERMS W1,2: 10 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| inf); totals radius / |mid| ['inf', '5.70e+03', '6.14e+04', '2.70e+06']; parity zero: no total test (C-ODD-AK)
+UNIT W1,2 ak: 0.26 s
+C-ODD-AK ES9 W1,2: every a_k ball contains 0 -> PASS
+MOCK-AK ES9 W1,2: a_k ['0', '0', '0', '0'], radii ['0.0e+00', '0.0e+00', '0.0e+00', '0.0e+00'], rnd 0.00e+00; 0.33 s
+GDATA-CPU x3_6,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12] D 8 caps {1: 6}: 1133 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12] D 8 caps {1: 6}: 1.00 s
+AK-TERMS x3_6,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 7.06e-05); totals radius / |mid| ['8.14e-12', '1.42e-09', '3.17e-07', '9.29e-05']; every total passes
+UNIT x3_6,2 ak: 1.01 s
+MOCK-AK ES9 x3_6,2: a_k ['0.0176186597963', '0.0206816411064', '0.017801765563', '0.0122232350498'], radii ['1.4e-13', '2.9e-11', '5.6e-09', '1.1e-06'], rnd 3.46e-13; 1.09 s
+GDATA-CPU x3_6x4_5,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13] D 9 caps {1: 6}: 3182 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13] D 9 caps {1: 6}: 5.10 s
+AK-TERMS x3_6x4_5,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 8.67e-05); totals radius / |mid| ['3.99e-12', '1.29e-09', '4.42e-07', '1.80e-04']; every total passes
+UNIT x3_6x4_5,2 ak: 5.11 s
+MOCK-AK ES9 x3_6x4_5,2: a_k ['-0.135263586549', '-0.123533463712', '-0.0879898838159', '-0.0531368537623'], radii ['5.4e-13', '1.6e-10', '3.9e-08', '9.6e-06'], rnd 1.86e-12; 5.19 s
+GDATA-CPU x3_6x7_8,2: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14] D 9 caps {1: 6}: 3182 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14] D 9 caps {1: 6}: 5.13 s
+AK-TERMS x3_6x7_8,2: 2 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| inf); totals radius / |mid| ['1.77e+16', '6.49e+05', '4.86e+05', '2.36e+05']; recomputed in arb: a_k for k in [0, 1, 2, 3]
+UNIT x3_6x7_8,2 ak: 16.11 s
+MOCK-AK ES9 x3_6x7_8,2: a_k ['-3.69666211708e-41', '1.58385653609e-18', '4.28217380563e-17', '-1.90579266183e-15'], radii ['5.6e-14', '1.0e-12', '2.1e-11', '4.5e-10'], rnd 5.94e-14; 16.20 s
+GDATA-CPU x4_5,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13] D 8 caps {1: 6}: 1133 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13] D 8 caps {1: 6}: 1.00 s
+AK-TERMS x4_5,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 6.25e-06); totals radius / |mid| ['8.02e-13', '1.76e-10', '4.58e-08', '1.43e-05']; every total passes
+UNIT x4_5,2 ak: 1.01 s
+MOCK-AK ES9 x4_5,2: a_k ['-0.14094927837', '-0.132357128883', '-0.0975226984883', '-0.0623977749478'], radii ['1.1e-13', '2.3e-11', '4.5e-09', '8.9e-07'], rnd 2.73e-13; 1.09 s
+GDATA-CPU x7_8,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 14] D 8 caps {1: 6}: 1133 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 14] D 8 caps {1: 6}: 1.00 s
+AK-TERMS x7_8,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 7.63e-05); totals radius / |mid| ['8.14e-12', '1.42e-09', '3.17e-07', '9.30e-05']; every total passes
+UNIT x7_8,2 ak: 1.00 s
+MOCK-AK ES9 x7_8,2: a_k ['-0.0176186597963', '-0.0206816411064', '-0.017801765563', '-0.0122232350502'], radii ['1.4e-13', '2.9e-11', '5.6e-09', '1.1e-06'], rnd 3.46e-13; 1.10 s
+GDATA-CPU W1,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10] D 7 caps {1: 6}: 99 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10] D 7 caps {1: 6}: 0.13 s
+AK-TERMS W1,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.00e-07); totals radius / |mid| ['1.33e-12', '7.74e-12', '1.07e-09', '2.09e-07']; every total passes
+UNIT W1,1 ak: 0.14 s
+MOCK-AK ES9 W1,1: a_k ['-0.0260702086449', '0.421054009744', '0.404453336716', '0.316775527783'], radii ['3.5e-14', '3.3e-12', '4.3e-10', '6.6e-08'], rnd 5.27e-14; 0.21 s
+GDATA-CPU x3_6,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12] D 8 caps {1: 6}: 422 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12] D 8 caps {1: 6}: 0.48 s
+AK-TERMS x3_6,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.72e-06); totals radius / |mid| ['1.80e-12', '4.28e-11', '7.88e-09', '1.96e-06']; every total passes
+UNIT x3_6,1 ak: 0.49 s
+MOCK-AK ES9 x3_6,1: a_k ['-0.0567033651378', '0.424896777438', '0.41837190316', '0.325943416604'], radii ['1.0e-13', '1.8e-11', '3.3e-09', '6.4e-07'], rnd 2.23e-13; 0.57 s
+GDATA-CPU x3_6x4_5,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13] D 9 caps {1: 6}: 1300 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13] D 9 caps {1: 6}: 2.51 s
+AK-TERMS x3_6x4_5,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.31e-05); totals radius / |mid| ['2.00e-12', '3.58e-10', '6.17e-08', '1.51e-05']; every total passes
+UNIT x3_6x4_5,1 ak: 2.52 s
+MOCK-AK ES9 x3_6x4_5,1: a_k ['-0.175590038662', '0.266903704117', '0.364144359659', '0.355205419011'], radii ['3.5e-13', '9.6e-11', '2.2e-08', '5.4e-06'], rnd 1.12e-12; 2.60 s
+GDATA-CPU x3_6x7_8,1: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14] D 9 caps {1: 6}: 1300 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14] D 9 caps {1: 6}: 2.52 s
+AK-TERMS x3_6x7_8,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 3.74e-05); totals radius / |mid| ['5.28e-12', '2.79e-10', '6.38e-08', '1.97e-05']; every total passes
+UNIT x3_6x7_8,1 ak: 2.53 s
+MOCK-AK ES9 x3_6x7_8,1: a_k ['-0.0859870558095', '0.439115058783', '0.446769714404', '0.350088656536'], radii ['4.5e-13', '1.2e-10', '2.8e-08', '6.9e-06'], rnd 1.43e-12; 2.61 s
+GDATA-CPU x4_5,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 13] D 8 caps {1: 6}: 422 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 13] D 8 caps {1: 6}: 0.48 s
+AK-TERMS x4_5,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 7.97e-07); totals radius / |mid| ['5.80e-13', '5.35e-11', '7.59e-09', '1.56e-06']; every total passes
+UNIT x4_5,1 ak: 0.49 s
+MOCK-AK ES9 x4_5,1: a_k ['-0.138737623317', '0.271359403369', '0.345070755005', '0.324567372577'], radii ['8.0e-14', '1.5e-11', '2.6e-09', '5.1e-07'], rnd 1.77e-13; 0.57 s
+GDATA-CPU x7_8,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 14] D 8 caps {1: 6}: 422 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 14] D 8 caps {1: 6}: 0.48 s
+AK-TERMS x7_8,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.74e-06); totals radius / |mid| ['1.80e-12', '4.34e-11', '7.93e-09', '1.97e-06']; every total passes
+UNIT x7_8,1 ak: 0.49 s
+MOCK-AK ES9 x7_8,1: a_k ['-0.0567033651378', '0.424896777438', '0.41837190316', '0.325943416604'], radii ['1.0e-13', '1.8e-11', '3.3e-09', '6.4e-07'], rnd 2.24e-13; 0.57 s
+C-GRAPH-LIST (ES12A: the columns ['vac', 'int', 'int', 'free'] give V 12 and 18 edges; the list's 6 pairs [(0, 1), (0, 2), (1, 2), (3, 6), (4, 5), (7, 8)], F 18 (the list: 18); the entries use 6 of them) -> PASS
+PLANT-GRAPH-LIST (ES12A: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-RULE (P12: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 8.1e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (P12: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 12 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 1.5453758382672376, 1.543813959378917) -> PASS
+C-PREP-REF (P12: m3ref_v1_14_P16H.4.p6_z9sym.out PREPJSON of family P16H, N 4, J 300.0, theta0 0.855; dmaxH 16) -> PASS
+GDATA-CPU W1,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] D 6 caps {1: 6}: 1271 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] D 6 caps {1: 6}: 1.09 s
+AK-TERMS W1,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 3.48e-08); totals radius / |mid| ['3.89e-15', '2.34e-13', '3.60e-11', '7.71e-09']; every total passes
+UNIT W1,0 ak: 1.10 s
+MOCK-AK ES12A W1,0: a_k ['1', '1.4463135876', '1.7000371329', '1.84815024114'], radii ['0.0e+00', '3.4e-13', '6.1e-11', '1.4e-08'], rnd 2.34e-15; 1.30 s
+GDATA-CPU W1,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] D 7 caps {1: 6}: 3260 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] D 7 caps {1: 6}: 2.65 s
+AK-TERMS W1,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.48e-05); totals radius / |mid| ['1.25e-09', '2.25e-11', '4.26e-09', '1.38e-06']; every total passes
+UNIT W1,3 ak: 2.66 s
+MOCK-AK ES12A W1,3: a_k ['0.00010123531074', '1.05896238461', '1.36983849017', '1.19454813086'], radii ['1.3e-13', '2.4e-11', '5.8e-09', '1.6e-06'], rnd 3.32e-13; 2.86 s
+GDATA-CPU x3_6,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 7 caps {1: 6}: 5577 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 7 caps {1: 6}: 4.40 s
+AK-TERMS x3_6,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 8.58e-07); totals radius / |mid| ['6.28e-15', '1.04e-12', '2.24e-10', '6.14e-08']; every total passes
+UNIT x3_6,0 ak: 4.42 s
+MOCK-AK ES12A x3_6,0: a_k ['1.00837656427', '1.48694297901', '1.75863201973', '1.90282496767'], radii ['6.2e-15', '1.5e-12', '3.9e-10', '1.2e-07'], rnd 2.01e-14; 4.61 s
+GDATA-CPU x3_6,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 8 caps {1: 6}: 11592 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 8 caps {1: 6}: 11.49 s
+AK-TERMS x3_6,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 5.65e-05); totals radius / |mid| ['6.05e-11', '1.12e-10', '2.86e-08', '1.11e-05']; every total passes
+UNIT x3_6,3 ak: 11.51 s
+MOCK-AK ES12A x3_6,3: a_k ['0.00590106467398', '1.11690589867', '1.49755254428', '1.35382246481'], radii ['3.6e-13', '1.2e-10', '4.3e-08', '1.5e-05'], rnd 1.80e-12; 11.70 s
+GDATA-CPU x3_6x4_5,0: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] D 8 caps {1: 6}: 20286 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] D 8 caps {1: 6}: 19.20 s
+AK-TERMS x3_6x4_5,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 8.93e-06); totals radius / |mid| ['2.20e-14', '5.01e-12', '1.37e-09', '4.37e-07']; every total passes
+UNIT x3_6x4_5,0 ak: 19.22 s
+MOCK-AK ES12A x3_6x4_5,0: a_k ['0.839882450398', '1.3760653528', '1.76509594999', '2.05549043456'], radii ['1.8e-14', '6.9e-12', '2.4e-09', '9.0e-07'], rnd 1.02e-13; 19.43 s
+GDATA-CPU x3_6x4_5,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] D 9 caps {1: 6}: 35668 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] D 9 caps {1: 6}: 52.32 s
+AK-TERMS x3_6x4_5,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 4.87e-04); totals radius / |mid| ['1.48e-11', '5.67e-10', '1.64e-07', '6.87e-05']; every total passes
+UNIT x3_6x4_5,3 ak: 52.35 s
+MOCK-AK ES12A x3_6x4_5,3: a_k ['0.0871698085125', '1.17072933336', '1.76311998152', '1.8839051833'], radii ['1.3e-12', '6.6e-10', '2.9e-07', '1.3e-04'], rnd 1.15e-11; 52.56 s
+GDATA-CPU x3_6x7_8,0: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17] D 8 caps {1: 6}: 20286 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17] D 8 caps {1: 6}: 17.46 s
+AK-TERMS x3_6x7_8,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.05e-05); totals radius / |mid| ['2.21e-14', '4.93e-12', '1.37e-09', '4.43e-07']; every total passes
+UNIT x3_6x7_8,0 ak: 17.47 s
+MOCK-AK ES12A x3_6x7_8,0: a_k ['0.861854514494', '1.40815651733', '1.79758228422', '2.0791188096'], radii ['1.9e-14', '6.9e-12', '2.5e-09', '9.2e-07'], rnd 1.04e-13; 17.69 s
+GDATA-CPU x3_6x7_8,3: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17] D 9 caps {1: 6}: 35668 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17] D 9 caps {1: 6}: 51.11 s
+AK-TERMS x3_6x7_8,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 4.02e-04); totals radius / |mid| ['1.47e-10', '6.98e-10', '2.02e-07', '8.59e-05']; every total passes
+UNIT x3_6x7_8,3 ak: 51.14 s
+MOCK-AK ES12A x3_6x7_8,3: a_k ['0.00930159692487', '0.979719949804', '1.48304437756', '1.54319833265'], radii ['1.4e-12', '6.8e-10', '3.0e-07', '1.3e-04'], rnd 1.19e-11; 51.34 s
+GDATA-CPU x4_5,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16] D 7 caps {1: 6}: 5577 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16] D 7 caps {1: 6}: 4.20 s
+AK-TERMS x4_5,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 3.30e-07); totals radius / |mid| ['6.49e-15', '9.61e-13', '1.97e-10', '4.99e-08']; every total passes
+UNIT x4_5,0 ak: 4.21 s
+MOCK-AK ES12A x4_5,0: a_k ['0.829321993707', '1.32587366018', '1.67995497419', '1.94956686955'], radii ['5.4e-15', '1.3e-12', '3.3e-10', '9.7e-08'], rnd 1.70e-14; 4.41 s
+GDATA-CPU x4_5,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16] D 8 caps {1: 6}: 11592 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16] D 8 caps {1: 6}: 11.22 s
+AK-TERMS x4_5,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 4.99e-04); totals radius / |mid| ['3.61e-12', '9.42e-11', '2.22e-08', '7.62e-06']; every total passes
+UNIT x4_5,3 ak: 11.23 s
+MOCK-AK ES12A x4_5,3: a_k ['0.0838212474939', '1.10692319136', '1.60419394468', '1.6550145936'], radii ['3.0e-13', '1.0e-10', '3.6e-08', '1.3e-05'], rnd 1.51e-12; 11.44 s
+GDATA-CPU x7_8,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17] D 7 caps {1: 6}: 5577 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17] D 7 caps {1: 6}: 4.21 s
+AK-TERMS x7_8,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 3.42e-07); totals radius / |mid| ['6.34e-15', '9.54e-13', '1.98e-10', '5.03e-08']; every total passes
+UNIT x7_8,0 ak: 4.22 s
+MOCK-AK ES12A x7_8,0: a_k ['0.849556135985', '1.35495206011', '1.70927748007', '1.97112391802'], radii ['5.4e-15', '1.3e-12', '3.4e-10', '9.9e-08'], rnd 1.71e-14; 4.42 s
+GDATA-CPU x7_8,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17] D 8 caps {1: 6}: 11592 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17] D 8 caps {1: 6}: 11.48 s
+AK-TERMS x7_8,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 2.63e-04); totals radius / |mid| ['8.11e-11', '1.15e-10', '2.67e-08', '9.46e-06']; every total passes
+UNIT x7_8,3 ak: 11.50 s
+MOCK-AK ES12A x7_8,3: a_k ['0.00379735314924', '0.924882492533', '1.352060374', '1.36190290249'], radii ['3.1e-13', '1.1e-10', '3.6e-08', '1.3e-05'], rnd 1.54e-12; 11.69 s
+GDATA-CPU W1,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 7 caps {1: 6}: 1208 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 7 caps {1: 6}: 1.48 s
+AK-TERMS W1,2: 10 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| inf); totals radius / |mid| ['inf', 'inf', '8.97e+05', '4.39e+06']; parity zero: no total test (C-ODD-AK)
+UNIT W1,2 ak: 1.49 s
+C-ODD-AK ES12A W1,2: every a_k ball contains 0 -> PASS
+MOCK-AK ES12A W1,2: a_k ['0', '0', '0', '0'], radii ['0.0e+00', '0.0e+00', '0.0e+00', '0.0e+00'], rnd 0.00e+00; 1.68 s
+GDATA-CPU x3_6,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15] D 8 caps {1: 6}: 4869 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15] D 8 caps {1: 6}: 6.44 s
+AK-TERMS x3_6,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 4.38e-04); totals radius / |mid| ['6.24e-12', '1.75e-09', '6.60e-07', '3.19e-04']; every total passes
+UNIT x3_6,2 ak: 6.45 s
+MOCK-AK ES12A x3_6,2: a_k ['0.021068644027', '0.0284369218181', '0.0266813567671', '0.020003254964'], radii ['1.3e-13', '5.0e-11', '1.8e-08', '6.4e-06'], rnd 7.29e-13; 6.64 s
+GDATA-CPU x3_6x4_5,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 9 caps {1: 6}: 15912 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 9 caps {1: 6}: 29.58 s
+AK-TERMS x3_6x4_5,2: 1 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.39e-03); totals radius / |mid| ['4.13e-12', '1.61e-09', '7.33e-07', '3.84e-04']; every total passes
+UNIT x3_6x4_5,2 ak: 29.59 s
+MOCK-AK ES12A x3_6x4_5,2: a_k ['-0.119285848764', '-0.165438604086', '-0.163635258918', '-0.141521700908'], radii ['4.9e-13', '2.7e-10', '1.2e-07', '5.4e-05'], rnd 4.72e-12; 29.78 s
+GDATA-CPU x3_6x7_8,2: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 17] D 9 caps {1: 6}: 15912 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 17] D 9 caps {1: 6}: 28.39 s
+AK-TERMS x3_6x7_8,2: 1 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 2.61e-02); totals radius / |mid| ['7.64e-11', '4.65e-08', '1.07e-04', '1.72e-07']; recomputed in arb: a_k for k in [3]
+UNIT x3_6x7_8,2 ak: 100.20 s
+MOCK-AK ES12A x3_6x7_8,2: a_k ['0.00673337365321', '0.00603754791668', '0.00116295465565', '-0.006576916616'], radii ['5.1e-13', '2.8e-10', '1.2e-07', '1.1e-09'], rnd 2.83e-12; 100.40 s
+GDATA-CPU x4_5,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16] D 8 caps {1: 6}: 4869 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16] D 8 caps {1: 6}: 6.14 s
+AK-TERMS x4_5,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.70e-04); totals radius / |mid| ['8.24e-13', '2.30e-10', '8.41e-08', '3.71e-05']; every total passes
+UNIT x4_5,2 ak: 6.15 s
+MOCK-AK ES12A x4_5,2: a_k ['-0.133434745504', '-0.180643405391', '-0.173830901082', '-0.144979084442'], radii ['1.1e-13', '4.2e-11', '1.5e-08', '5.4e-06'], rnd 6.10e-13; 6.34 s
+GDATA-CPU x7_8,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 17] D 8 caps {1: 6}: 4869 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 17] D 8 caps {1: 6}: 5.97 s
+AK-TERMS x7_8,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.48e-04); totals radius / |mid| ['1.01e-11', '2.12e-09', '5.90e-07', '1.92e-04']; every total passes
+UNIT x7_8,2 ak: 5.98 s
+MOCK-AK ES12A x7_8,2: a_k ['-0.0112366101477', '-0.0201433245888', '-0.0254025715462', '-0.0286476420183'], radii ['1.1e-13', '4.3e-11', '1.5e-08', '5.5e-06'], rnd 6.26e-13; 6.17 s
+GDATA-CPU W1,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 7 caps {1: 6}: 386 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 7 caps {1: 6}: 0.83 s
+AK-TERMS W1,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 3.50e-07); totals radius / |mid| ['9.30e-12', '1.42e-11', '2.52e-09', '7.28e-07']; every total passes
+UNIT W1,1 ak: 0.84 s
+MOCK-AK ES12A W1,1: a_k ['-0.00380359214996', '0.419533725503', '0.562439120129', '0.547224721413'], radii ['3.5e-14', '6.0e-12', '1.4e-09', '4.0e-07'], rnd 8.58e-14; 1.03 s
+GDATA-CPU x3_6,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 8 caps {1: 6}: 3.26 s
+AK-TERMS x3_6,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 4.84e-06); totals radius / |mid| ['2.29e-12', '7.93e-11', '1.86e-08', '6.44e-06']; every total passes
+UNIT x3_6,1 ak: 3.27 s
+MOCK-AK ES12A x3_6,1: a_k ['-0.0421083612738', '0.389395311266', '0.562151720843', '0.567627440967'], radii ['9.6e-14', '3.1e-11', '1.0e-08', '3.7e-06'], rnd 4.51e-13; 3.46 s
+GDATA-CPU x3_6x4_5,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 16] D 9 caps {1: 6}: 7141 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 16] D 9 caps {1: 6}: 15.62 s
+AK-TERMS x3_6x4_5,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 4.51e-05); totals radius / |mid| ['2.21e-12', '8.73e-10', '1.71e-07', '6.17e-05']; every total passes
+UNIT x3_6x4_5,1 ak: 15.63 s
+MOCK-AK ES12A x3_6x4_5,1: a_k ['-0.148401034687', '0.186831525065', '0.406210945401', '0.501060775912'], radii ['3.3e-13', '1.6e-10', '6.9e-08', '3.1e-05'], rnd 2.79e-12; 15.83 s
+GDATA-CPU x3_6x7_8,1: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17] D 9 caps {1: 6}: 7141 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17] D 9 caps {1: 6}: 15.83 s
+AK-TERMS x3_6x7_8,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 5.70e-05); totals radius / |mid| ['6.80e-12', '5.46e-10', '1.40e-07', '5.52e-05']; every total passes
+UNIT x3_6x7_8,1 ak: 15.85 s
+MOCK-AK ES12A x3_6x7_8,1: a_k ['-0.0499463980144', '0.307720989659', '0.509126471406', '0.572429023802'], radii ['3.4e-13', '1.7e-10', '7.1e-08', '3.2e-05'], rnd 2.86e-12; 16.05 s
+GDATA-CPU x4_5,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 16] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 16] D 8 caps {1: 6}: 3.25 s
+AK-TERMS x4_5,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 3.16e-06); totals radius / |mid| ['7.26e-13', '1.19e-10', '2.13e-08', '6.53e-06']; every total passes
+UNIT x4_5,1 ak: 3.27 s
+MOCK-AK ES12A x4_5,1: a_k ['-0.109468036208', '0.221615091394', '0.406989900302', '0.468428351178'], radii ['7.9e-14', '2.6e-11', '8.7e-09', '3.1e-06'], rnd 3.77e-13; 3.45 s
+GDATA-CPU x7_8,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 17] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 17] D 8 caps {1: 6}: 3.23 s
+AK-TERMS x7_8,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 3.65e-06); totals radius / |mid| ['3.99e-12', '8.17e-11', '1.75e-08', '5.79e-06']; every total passes
+UNIT x7_8,1 ak: 3.24 s
+MOCK-AK ES12A x7_8,1: a_k ['-0.020241546423', '0.330051929199', '0.501594128156', '0.539488918766'], radii ['8.1e-14', '2.7e-11', '8.8e-09', '3.1e-06'], rnd 3.84e-13; 3.43 s
+C-GRAPH-LIST (ES12B: the columns ['vac', 'int', 'int', 'free'] give V 12 and 18 edges; the list's 5 pairs [(0, 1), (0, 2), (1, 2), (2, 5), (3, 6)], F 17 (the list: 17); the entries use 5 of them) -> PASS
+PLANT-GRAPH-LIST (ES12B: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-RULE (P12: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 8.1e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (P12: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 12 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 1.5453758382672376, 1.543813959378917) -> PASS
+C-PREP-REF (P12: m3ref_v1_14_P16H.4.p6_z9sym.out PREPJSON of family P16H, N 4, J 300.0, theta0 0.855; dmaxH 16) -> PASS
+GDATA-CPU x2_5,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 7 caps {1: 6}: 5937 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 7 caps {1: 6}: 4.16 s
+AK-TERMS x2_5,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 6.77e-07); totals radius / |mid| ['6.54e-15', '1.04e-12', '2.27e-10', '6.23e-08']; every total passes
+UNIT x2_5,0 ak: 4.17 s
+MOCK-AK ES12B x2_5,0: a_k ['1.00198157046', '1.47975947412', '1.75338906864', '1.90001360288'], radii ['6.4e-15', '1.5e-12', '4.0e-10', '1.2e-07'], rnd 2.04e-14; 4.36 s
+GDATA-CPU x2_5,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 8 caps {1: 6}: 12302 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 8 caps {1: 6}: 10.49 s
+AK-TERMS x2_5,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 5.82e-04); totals radius / |mid| ['2.64e-12', '8.30e-11', '2.22e-08', '9.23e-06']; every total passes
+UNIT x2_5,3 ak: 10.50 s
+MOCK-AK ES12B x2_5,3: a_k ['0.133709966428', '1.47710543773', '1.88573082948', '1.62494300379'], radii ['3.5e-13', '1.2e-10', '4.2e-08', '1.5e-05'], rnd 1.78e-12; 10.69 s
+GDATA-CPU x2_5x3_6,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] D 8 caps {1: 6}: 21336 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] D 8 caps {1: 6}: 17.90 s
+AK-TERMS x2_5x3_6,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 4.25e-04); totals radius / |mid| ['2.15e-14', '5.39e-12', '1.60e-09', '5.50e-07']; every total passes
+UNIT x2_5x3_6,0 ak: 17.91 s
+MOCK-AK ES12B x2_5x3_6,0: a_k ['1.01593118765', '1.52966025018', '1.82503664823', '1.97065785653'], radii ['2.2e-14', '8.3e-12', '2.9e-09', '1.1e-06'], rnd 1.22e-13; 18.11 s
+GDATA-CPU x2_5x3_6,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] D 9 caps {1: 6}: 37330 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] D 9 caps {1: 6}: 50.21 s
+AK-TERMS x2_5x3_6,3: 1 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 9.20e-03); totals radius / |mid| ['1.09e-11', '5.07e-10', '1.69e-07', '8.59e-05']; every total passes
+UNIT x2_5x3_6,3 ak: 50.23 s
+MOCK-AK ES12B x2_5x3_6,3: a_k ['0.144029287269', '1.55111228695', '2.04342756464', '1.81863314467'], radii ['1.6e-12', '7.9e-10', '3.5e-07', '1.6e-04'], rnd 1.38e-11; 50.43 s
+GDATA-CPU x2_5,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15] D 8 caps {1: 6}: 5160 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15] D 8 caps {1: 6}: 5.90 s
+AK-TERMS x2_5,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 9.17e-05); totals radius / |mid| ['4.76e-13', '2.03e-10', '1.45e-07', '2.62e-04']; every total passes
+UNIT x2_5,2 ak: 5.91 s
+MOCK-AK ES12B x2_5,2: a_k ['-0.269678643545', '-0.23980092439', '-0.121107133226', '0.0244697989123'], radii ['1.3e-13', '4.9e-11', '1.8e-08', '6.4e-06'], rnd 7.22e-13; 6.10 s
+GDATA-CPU x2_5x3_6,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 9 caps {1: 6}: 16586 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 9 caps {1: 6}: 28.48 s
+AK-TERMS x2_5x3_6,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.56e-04); totals radius / |mid| ['2.42e-12', '1.45e-09', '1.37e-06', '3.94e-08']; recomputed in arb: a_k for k in [3]
+UNIT x2_5x3_6,2 ak: 100.84 s
+MOCK-AK ES12B x2_5x3_6,2: a_k ['-0.248091656526', '-0.220786188792', '-0.104937921461', '0.0413863014914'], radii ['6.0e-13', '3.2e-10', '1.4e-07', '1.6e-09'], rnd 3.27e-12; 101.04 s
+GDATA-CPU x2_5,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 8 caps {1: 6}: 2174 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 8 caps {1: 6}: 5.20 s
+AK-TERMS x2_5,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 5.51e-06); totals radius / |mid| ['3.25e-13', '1.06e-10', '1.70e-08', '5.13e-06']; every total passes
+UNIT x2_5,1 ak: 5.22 s
+MOCK-AK ES12B x2_5,1: a_k ['-0.275974031207', '0.287429854937', '0.596261675472', '0.702046445629'], radii ['9.0e-14', '3.0e-11', '1.0e-08', '3.6e-06'], rnd 4.37e-13; 5.55 s
+GDATA-CPU x2_5x3_6,1: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 16] D 9 caps {1: 6}: 7501 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 16] D 9 caps {1: 6}: 16.69 s
+AK-TERMS x2_5x3_6,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 6.22e-05); totals radius / |mid| ['1.30e-12', '7.40e-10', '1.37e-07', '4.96e-05']; every total passes
+UNIT x2_5x3_6,1 ak: 16.70 s
+MOCK-AK ES12B x2_5x3_6,1: a_k ['-0.304232143761', '0.264213454541', '0.60722956269', '0.741536518089'], radii ['4.0e-13', '2.0e-10', '8.3e-08', '3.7e-05'], rnd 3.34e-12; 17.01 s
+C-GRAPH-LIST (ES12C: the columns ['vac', 'int', 'int', 'free'] give V 12 and 18 edges; the list's 5 pairs [(0, 1), (0, 2), (1, 2), (5, 8), (6, 9)], F 17 (the list: 17); the entries use 5 of them) -> PASS
+PLANT-GRAPH-LIST (ES12C: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-RULE (P12: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 8.1e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (P12: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 12 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 1.5453758382672376, 1.543813959378917) -> PASS
+C-PREP-REF (P12: m3ref_v1_14_P16H.4.p6_z9sym.out PREPJSON of family P16H, N 4, J 300.0, theta0 0.855; dmaxH 16) -> PASS
+GDATA-CPU x5_8,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 7 caps {1: 6}: 5577 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 7 caps {1: 6}: 4.16 s
+AK-TERMS x5_8,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 8.58e-07); totals radius / |mid| ['6.28e-15', '1.04e-12', '2.24e-10', '6.14e-08']; every total passes
+UNIT x5_8,0 ak: 4.17 s
+MOCK-AK ES12C x5_8,0: a_k ['1.00837656427', '1.48694297901', '1.75863201973', '1.90282496767'], radii ['6.2e-15', '1.5e-12', '3.9e-10', '1.2e-07'], rnd 2.01e-14; 4.38 s
+GDATA-CPU x5_8,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 8 caps {1: 6}: 11592 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 8 caps {1: 6}: 10.26 s
+AK-TERMS x5_8,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 5.65e-05); totals radius / |mid| ['6.05e-11', '1.12e-10', '2.83e-08', '1.11e-05']; every total passes
+UNIT x5_8,3 ak: 10.28 s
+MOCK-AK ES12C x5_8,3: a_k ['0.00590106467398', '1.11690589867', '1.49755254428', '1.35382246481'], radii ['3.6e-13', '1.2e-10', '4.2e-08', '1.5e-05'], rnd 1.80e-12; 10.48 s
+GDATA-CPU x5_8x6_9,0: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] D 8 caps {1: 6}: 20286 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] D 8 caps {1: 6}: 17.15 s
+AK-TERMS x5_8x6_9,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.17e-04); totals radius / |mid| ['2.17e-14', '5.59e-12', '1.68e-09', '5.92e-07']; every total passes
+UNIT x5_8x6_9,0 ak: 17.17 s
+MOCK-AK ES12C x5_8x6_9,0: a_k ['1.06977267728', '1.5764852513', '1.84478652128', '1.94788610839'], radii ['2.3e-14', '8.8e-12', '3.1e-09', '1.2e-06'], rnd 1.30e-13; 17.37 s
+GDATA-CPU x5_8x6_9,3: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] D 9 caps {1: 6}: 35668 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] D 9 caps {1: 6}: 48.52 s
+AK-TERMS x5_8x6_9,3: 1 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.18e-03); totals radius / |mid| ['2.54e-10', '7.19e-10', '2.33e-07', '1.16e-04']; every total passes
+UNIT x5_8x6_9,3 ak: 48.54 s
+MOCK-AK ES12C x5_8x6_9,3: a_k ['0.00659036472392', '1.18895097898', '1.597406576', '1.42960729627'], radii ['1.7e-12', '8.5e-10', '3.7e-07', '1.7e-04'], rnd 1.48e-11; 48.74 s
+GDATA-CPU x6_9,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16] D 7 caps {1: 6}: 5577 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16] D 7 caps {1: 6}: 4.14 s
+AK-TERMS x6_9,0: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 7.52e-07); totals radius / |mid| ['6.20e-15', '1.07e-12', '2.38e-10', '6.65e-08']; every total passes
+UNIT x6_9,0 ak: 4.15 s
+MOCK-AK ES12C x6_9,0: a_k ['1.05699137717', '1.5261896242', '1.77226719276', '1.87701623857'], radii ['6.6e-15', '1.6e-12', '4.2e-10', '1.2e-07'], rnd 2.13e-14; 4.34 s
+GDATA-CPU x6_9,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16] D 8 caps {1: 6}: 11592 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16] D 8 caps {1: 6}: 10.52 s
+AK-TERMS x6_9,3: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 3.78e-04); totals radius / |mid| ['1.16e-09', '1.19e-10', '3.12e-08', '1.29e-05']; every total passes
+UNIT x6_9,3 ak: 10.53 s
+MOCK-AK ES12C x6_9,3: a_k ['0.000338964104897', '1.12425401528', '1.45728397017', '1.25682902474'], radii ['3.9e-13', '1.3e-10', '4.5e-08', '1.6e-05'], rnd 1.95e-12; 10.73 s
+GDATA-CPU x5_8,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15] D 8 caps {1: 6}: 4869 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15] D 8 caps {1: 6}: 6.04 s
+AK-TERMS x5_8,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 4.41e-04); totals radius / |mid| ['6.24e-12', '1.75e-09', '6.60e-07', '3.20e-04']; every total passes
+UNIT x5_8,2 ak: 6.05 s
+MOCK-AK ES12C x5_8,2: a_k ['-0.021068644027', '-0.0284369218181', '-0.026681356767', '-0.020003254964'], radii ['1.3e-13', '5.0e-11', '1.8e-08', '6.4e-06'], rnd 7.30e-13; 6.25 s
+GDATA-CPU x5_8x6_9,2: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 9 caps {1: 6}: 15912 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 9 caps {1: 6}: 28.53 s
+AK-TERMS x5_8x6_9,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 9.41e-04); totals radius / |mid| ['3.13e-11', '1.28e-08', '6.51e-06', '1.04e-07']; recomputed in arb: a_k for k in [3]
+UNIT x5_8x6_9,2 ak: 100.66 s
+MOCK-AK ES12C x5_8x6_9,2: a_k ['-0.0207092927709', '-0.027035006412', '-0.02377269825', '-0.01513837692'], radii ['6.5e-13', '3.5e-10', '1.5e-07', '1.6e-09'], rnd 3.52e-12; 100.86 s
+GDATA-CPU x6_9,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16] D 8 caps {1: 6}: 4869 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16] D 8 caps {1: 6}: 6.15 s
+AK-TERMS x6_9,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 3.32e-04); totals radius / |mid| ['9.95e-11', '1.86e-08', '4.79e-06', '2.28e-07']; recomputed in arb: a_k for k in [3]
+UNIT x6_9,2 ak: 17.81 s
+MOCK-AK ES12C x6_9,2: a_k ['0.00140457626846', '0.00284772113682', '0.00391015648802', '0.00460454120906'], radii ['1.4e-13', '5.3e-11', '1.9e-08', '1.0e-09'], rnd 5.24e-13; 18.00 s
+GDATA-CPU x5_8,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 8 caps {1: 6}: 3.31 s
+AK-TERMS x5_8,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 4.86e-06); totals radius / |mid| ['2.29e-12', '8.05e-11', '1.86e-08', '6.47e-06']; every total passes
+UNIT x5_8,1 ak: 3.32 s
+MOCK-AK ES12C x5_8,1: a_k ['-0.0421083612738', '0.389395311266', '0.562151720843', '0.567627440965'], radii ['9.6e-14', '3.1e-11', '1.0e-08', '3.7e-06'], rnd 4.53e-13; 3.53 s
+GDATA-CPU x5_8x6_9,1: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 16] D 9 caps {1: 6}: 7141 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 16] D 9 caps {1: 6}: 15.99 s
+AK-TERMS x5_8x6_9,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 7.66e-05); totals radius / |mid| ['8.87e-12', '5.15e-10', '1.51e-07', '6.72e-05']; every total passes
+UNIT x5_8x6_9,1 ak: 16.01 s
+MOCK-AK ES12C x5_8x6_9,1: a_k ['-0.0475056981928', '0.409014919903', '0.592885670615', '0.59249175191'], radii ['4.2e-13', '2.1e-10', '9.0e-08', '4.0e-05'], rnd 3.60e-12; 16.20 s
+GDATA-CPU x6_9,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 16] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 16] D 8 caps {1: 6}: 3.24 s
+AK-TERMS x6_9,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 5.57e-06); totals radius / |mid| ['1.21e-11', '7.54e-11', '1.89e-08', '6.93e-06']; every total passes
+UNIT x6_9,1 ak: 3.25 s
+MOCK-AK ES12C x6_9,1: a_k ['-0.00827290944809', '0.437212334318', '0.587321017656', '0.562880832835'], radii ['1.0e-13', '3.3e-11', '1.1e-08', '3.9e-06'], rnd 4.78e-13; 3.44 s
+C-ES-ITEMS (MOCK: every item carries class, d_L, mono, k, its window, shape, the window's factors and uses, and its own use among them) -> PASS
+C-SCOPE (MOCK: 6 records, each with exactly the 16 keys ES,<mono>,<k>) -> PASS
+C-MOCK-FMT (m3_es_D4_dLm1_N4_J300_MOCK_v1_3.json: the MOCK path's checks and m3_reader_v6_3._items: reads; 16 keys; 57794 bytes; sha256 b0dc8c1b33bba0936a5f0bad1837a6afe60ab91bcb1943ed2b0124703c5a3386) -> PASS
+PLANT-MOCK-CERT (m3_reader_v6_3's certified parse refuses m3_es_D4_dLm1_N4_J300_MOCK_v1_3.json) -> FIRES
+C-MOCK-FMT (m3_es_D4M_dLm1_N4_J300_MOCK_v1_3.json: the MOCK path's checks and m3_reader_v6_3._items: reads; 16 keys; 57486 bytes; sha256 428c8aa6565b4df5b9e9ce021e3c753711cb12538e586e85a72d873af94ad521) -> PASS
+PLANT-MOCK-CERT (m3_reader_v6_3's certified parse refuses m3_es_D4M_dLm1_N4_J300_MOCK_v1_3.json) -> FIRES
+C-MOCK-FMT (m3_es_D4_dL0_N4_J300_MOCK_v1_3.json: the MOCK path's checks and m3_reader_v6_3._items: reads; 16 keys; 68657 bytes; sha256 dc7cd42dcb6123a676282154725d3f5452a1252d16be8f2ec0c9ecaad3d025b0) -> PASS
+PLANT-MOCK-CERT (m3_reader_v6_3's certified parse refuses m3_es_D4_dL0_N4_J300_MOCK_v1_3.json) -> FIRES
+C-MOCK-FMT (m3_es_D4M_dL0_N4_J300_MOCK_v1_3.json: the MOCK path's checks and m3_reader_v6_3._items: reads; 16 keys; 68649 bytes; sha256 ed7e6b52cf8303e9ee85009ff34b0f5cab71e1ed0794693edb41baca065d23f5) -> PASS
+PLANT-MOCK-CERT (m3_reader_v6_3's certified parse refuses m3_es_D4M_dL0_N4_J300_MOCK_v1_3.json) -> FIRES
+C-MOCK-FMT (m3_es_D3_dLm1_N4_J300_MOCK_v1_3.json: the MOCK path's checks and m3_reader_v6_3._items: reads; 16 keys; 69409 bytes; sha256 955bd44f362b295521dab9e6530000f6403b27170614e55465fd70596f6fd2be) -> PASS
+PLANT-MOCK-CERT (m3_reader_v6_3's certified parse refuses m3_es_D3_dLm1_N4_J300_MOCK_v1_3.json) -> FIRES
+C-MOCK-FMT (m3_es_D3_dL0_N4_J300_MOCK_v1_3.json: the MOCK path's checks and m3_reader_v6_3._items: reads; 16 keys; 69528 bytes; sha256 a9f3ebc260df0a6ea6f638a4e51452071ab4e2bb9518e80f4718e95718c10c00) -> PASS
+PLANT-MOCK-CERT (m3_reader_v6_3's certified parse refuses m3_es_D3_dL0_N4_J300_MOCK_v1_3.json) -> FIRES
+C-DEC-EXACT (m3_es_D4_dLm1_N4_J300_MOCK_v1_3.json: its written decimals read as exact rationals hold rnd >= sum_k ak_rad_k 300^-k, err >= the sum of B, Bp = B without rnd, parity zeros exactly 0; smallest margin 0.000e+00 at ES,1,0) -> PASS
+C-DEC-EXACT (m3_es_D4M_dLm1_N4_J300_MOCK_v1_3.json: its written decimals read as exact rationals hold rnd >= sum_k ak_rad_k 300^-k, err >= the sum of B, Bp = B without rnd, parity zeros exactly 0; smallest margin 0.000e+00 at ES,1,0) -> PASS
+C-DEC-EXACT (m3_es_D4_dL0_N4_J300_MOCK_v1_3.json: its written decimals read as exact rationals hold rnd >= sum_k ak_rad_k 300^-k, err >= the sum of B, Bp = B without rnd, parity zeros exactly 0; smallest margin 0.000e+00 at ES,1,0) -> PASS
+C-DEC-EXACT (m3_es_D4M_dL0_N4_J300_MOCK_v1_3.json: its written decimals read as exact rationals hold rnd >= sum_k ak_rad_k 300^-k, err >= the sum of B, Bp = B without rnd, parity zeros exactly 0; smallest margin 0.000e+00 at ES,1,0) -> PASS
+C-DEC-EXACT (m3_es_D3_dLm1_N4_J300_MOCK_v1_3.json: its written decimals read as exact rationals hold rnd >= sum_k ak_rad_k 300^-k, err >= the sum of B, Bp = B without rnd, parity zeros exactly 0; smallest margin 0.000e+00 at ES,1,0) -> PASS
+C-DEC-EXACT (m3_es_D3_dL0_N4_J300_MOCK_v1_3.json: its written decimals read as exact rationals hold rnd >= sum_k ak_rad_k 300^-k, err >= the sum of B, Bp = B without rnd, parity zeros exactly 0; smallest margin 0.000e+00 at ES,1,0) -> PASS
+PLANT-DEC-EXACT (m3_es_D4_dLm1_N4_J300_MOCK_v1_3.json with ES,ef,3 rnd 0 must fail C-DEC-EXACT) -> FIRES
+PLANT-MOCK-FMT (D4 -1 with ES,1,0's laws None, v1_1's MOCK form, must fail C-MOCK-FMT) -> FIRES
+C-WRITE (m3_es_D3_dLm1_N4_J300_MOCK_v1_3.json holds exactly its C-MOCK-FMT text) -> PASS
+RECORD m3_es_D3_dLm1_N4_J300_MOCK_v1_3.json 955bd44f362b295521dab9e6530000f6403b27170614e55465fd70596f6fd2be
+C-WRITE (m3_es_D3_dL0_N4_J300_MOCK_v1_3.json holds exactly its C-MOCK-FMT text) -> PASS
+RECORD m3_es_D3_dL0_N4_J300_MOCK_v1_3.json a9f3ebc260df0a6ea6f638a4e51452071ab4e2bb9518e80f4718e95718c10c00
+C-WRITE (m3_es_D4_dLm1_N4_J300_MOCK_v1_3.json holds exactly its C-MOCK-FMT text) -> PASS
+RECORD m3_es_D4_dLm1_N4_J300_MOCK_v1_3.json b0dc8c1b33bba0936a5f0bad1837a6afe60ab91bcb1943ed2b0124703c5a3386
+C-WRITE (m3_es_D4_dL0_N4_J300_MOCK_v1_3.json holds exactly its C-MOCK-FMT text) -> PASS
+RECORD m3_es_D4_dL0_N4_J300_MOCK_v1_3.json dc7cd42dcb6123a676282154725d3f5452a1252d16be8f2ec0c9ecaad3d025b0
+C-WRITE (m3_es_D4M_dLm1_N4_J300_MOCK_v1_3.json holds exactly its C-MOCK-FMT text) -> PASS
+RECORD m3_es_D4M_dLm1_N4_J300_MOCK_v1_3.json 428c8aa6565b4df5b9e9ce021e3c753711cb12538e586e85a72d873af94ad521
+C-WRITE (m3_es_D4M_dL0_N4_J300_MOCK_v1_3.json holds exactly its C-MOCK-FMT text) -> PASS
+RECORD m3_es_D4M_dL0_N4_J300_MOCK_v1_3.json ed7e6b52cf8303e9ee85009ff34b0f5cab71e1ed0794693edb41baca065d23f5
+FALLBACKS 26 (MAFallback recomputes in arb, INFO): u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14] D 9 caps {1: 6}: the a_0 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| inf); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14] D 9 caps {1: 6}: the a_1 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 2.23e+04); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14] D 9 caps {1: 6}: the a_1 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 2.23e+04); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14] D 9 caps {1: 6}: the a_2 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 8.40e+05); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14] D 9 caps {1: 6}: the a_2 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 8.40e+05); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14] D 9 caps {1: 6}: the a_2 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 8.40e+05); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14] D 9 caps {1: 6}: the a_3 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 2.09e+07); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14] D 9 caps {1: 6}: the a_3 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 2.09e+07); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14] D 9 caps {1: 6}: the a_3 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 2.09e+07); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14] D 9 caps {1: 6}: the a_3 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 2.09e+07); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 17] D 9 caps {1: 6}: the a_3 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 8.54e-03); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 17] D 9 caps {1: 6}: the a_3 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 8.54e-03); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 17] D 9 caps {1: 6}: the a_3 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 8.54e-03); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 17] D 9 caps {1: 6}: the a_3 total of x3_6x7_8,2 fails FALLBACK_REL (radius / |mid| 8.54e-03); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 9 caps {1: 6}: the a_3 total of x2_5x3_6,2 fails FALLBACK_REL (radius / |mid| 1.59e-03); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 9 caps {1: 6}: the a_3 total of x2_5x3_6,2 fails FALLBACK_REL (radius / |mid| 1.59e-03); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 9 caps {1: 6}: the a_3 total of x2_5x3_6,2 fails FALLBACK_REL (radius / |mid| 1.59e-03); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 9 caps {1: 6}: the a_3 total of x2_5x3_6,2 fails FALLBACK_REL (radius / |mid| 1.59e-03); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 9 caps {1: 6}: the a_3 total of x5_8x6_9,2 fails FALLBACK_REL (radius / |mid| 4.68e-03); u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 9 caps {1: 6}: the a_3 total of x5_8x6_9,2 fails FALLBACK_REL (radius / |mid| 4.68e-03)
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 920.13 s
+VERDICT VALID

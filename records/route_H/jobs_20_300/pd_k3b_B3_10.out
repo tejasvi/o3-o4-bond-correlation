@@ -1,0 +1,25 @@
+SELF sha256 b0f40c890d4e4be4b389f4fc690916d99d57816369465503b3989a64b3657de7
+cs33h_1_rh_cert core 929ab8a0 engine c08d33c1 probe 13f53bf6 item coverB:3:170.82444256118143:200:0.01 CAP_S 540 NMODE 8 NCERT 6 K_S 4 K_F 4 PE {'th': 6, 'mh': 9, 'bh': 6, 'tv': 6, 'bv': 6} K_EX 2 NSUB 16 K_MAX 60
+Q N=3 L=110: 6216 blocks, max Davis-Kahan radius 6.754e-12 (gate 1e-09) (1.5 s)
+BUILD N=3 L=110 K=4 Kb=30 n1=328 sertail=1.124e-26; labels 0..220: sqrt TM on 146, g TM on 144 (crude elsewhere); max rem a~ 3.141e-12, E~ 4.364e-14, XE~ 4.227e-14; t=1.7 s
+NODE t=+0.816400 lam1=7.876070275933e-02 lam_s/lam1 s=2..10: 0.1460652 0.0798590 0.0436739 0.0213847 0.0117047 0.0064057 0.0063688 0.0035044 0.0031381 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (2.1 s)
+NODE t=+0.504563 lam1=7.918969684235e-02 lam_s/lam1 s=2..10: 0.1460655 0.0798592 0.0436741 0.0213848 0.0117049 0.0064058 0.0063689 0.0035044 0.0031381 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (4.5 s)
+NODE t=+0.000000 lam1=7.989044704369e-02 lam_s/lam1 s=2..10: 0.1460660 0.0798596 0.0436745 0.0213851 0.0117051 0.0064059 0.0063689 0.0035045 0.0031382 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (6.5 s)
+NODE t=-0.504563 lam1=8.059948962243e-02 lam_s/lam1 s=2..10: 0.1460665 0.0798600 0.0436748 0.0213854 0.0117053 0.0064061 0.0063689 0.0035046 0.0031383 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (8.4 s)
+NODE t=-0.816400 lam1=8.104190181352e-02 lam_s/lam1 s=2..10: 0.1460669 0.0798603 0.0436750 0.0213856 0.0117055 0.0064062 0.0063690 0.0035047 0.0031384 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (10.4 s)
+SPECTRAL N=3: eps/mu0 2.4e-10 5.1e-10 5.9e-10 9.2e-10 2.3e-09 3.4e-09 6.2e-09 3.4e-09; parities +1.000000000 +1.000000000 -1.000000000 +1.000000000 +1.000000000 -1.000000000 +1.000000000 +1.000000000; C-NODE excess -0.00e+00; |T^| <= 1.079498e-01 (36.6 s)
+SPEC N=3 b0=171.68285684540848 part B: identification True; eps_T 6.444e-16 eps_e 1.182e-15; min gap/nu1 8.520e-01 1.021e-01 6.800e-02 2.221e-02 1.272e-02 4.737e-03; u_rem/nu2 <= 0.059165; mode sha8 (diagnostic) 2d149b56 4c76b2b5 42bcb8a3 2585e63f e6b65be2 87e00229 cc6ce83d a7bee3a9
+FAMILY base: p(t) coefficients 1.251714e+01 2.188807e-01 1.275816e-03 2.480428e-06 4.435798e-11 (sup 1.270597e+01, inf >= 1.232831e+01), centring th 0.996129612 mh 0.996730407 bh 0.996129612 tv 0.996803356 bv 0.996803356, |J_p| 7.629e-04 7.542e-04 7.540e-04 7.540e-04 7.540e-04 7.540e-04 7.540e-04 7.540e-04 7.540e-04 7.540e-04 (49.1 s)
+FAMILY common: 73 vectors (28.0 s)
+FAMILY part B: 111 vectors, max rho/norm 2.72e-04 (72.2 s)
+TRUNC N=3 b0=171.68285684540848 part B: eps_T 6.444e-16 eps_e 1.182e-15 eps_W 1.951e-15 kappa 1.138 rho 2.78e+04 (TY_bv) c 1.3504 slack_f 4.530e-05 | rho by type I_bh 645.8 I_bv 2312 I_mh 570.6 I_th 645.8 I_tv 2312 J 1.027 P_bh 5197 P_bv 2.694e+04 P_mh 1.374e+04 P_th 5197 P_tv 2.694e+04 TY_bh 5044 TY_bv 2.78e+04 TY_mh 1.369e+04 TY_th 5044 TY_tv 2.78e+04 U 9.383 Y_bh 523.3 Y_bv 2274 Y_mh 514.5 Y_th 523.3 Y_tv 2274 seed 1.007
+CHECKS N=3 b0=171.68285684540848 part B: NEAR 22832 min 1.122e-02 at (15,mh,8,bv,0,1,1.169e-02,9.271e-04) | FAR 0 k* <= 0 min - at - | fails 0 [] | negatives 0 [] | slack 4.53e-05 | controls {'cas': True, 'node': True, 'par': True, 'pos': True, 'slack': True, 'fin': True} | gram rows 470, per-pair 0, inner products 2242 (gram 1.3 s, checks 1.8 s)
+P6 flint: zero-centred ball (x > 0)=False (x < 0)=False contains(0)=True; ctx.prec=128 -> FIRED
+PLANTS N=3 b0=171.68285684540848 part B: P6:FIRED P-CAS:FIRED P-NODE:FIRED P-NEAR:FIRED P-TR:FIRED P-DELTA:FIRED P-L:FIRED (P-NODE excess 1.00e-06)
+C-PROBE N=3 beta=172.49925734410346 L=110: lam_s/lam1 rel 2.70e-12 (gate 1e-8); c_mh/c_th cs30 3.0208014346e-03 here 3.0208014416e-03 rel 2.32e-09 (gate 1e-4): PASS
+IV N=3 part B K=4 b0=171.68285684540848 h=0.8584142842270523 L=110 status CERTIFIED (200.9 s)
+LEDGER B N=3 lo=170.8244425611814278909151 hi=172.5412711296355325885088 b0hex=0x1.575d9f6995c22p+7 hhex=0x1.b78213ba59500p-1 K=4
+COVER_STOP N=3 part B next_left=172.5412711296355 (time)
+VALID True
+VERDICT PARTIAL B [170.82444256118143, 172.5412711296355325885088]
+CPU 207.7 s maxrss_kb 4302560

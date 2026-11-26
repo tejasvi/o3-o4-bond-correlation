@@ -1,0 +1,21 @@
+kt_ma_val_v1_6 sha256 09e7a3c6cec5435ec14a4b66193abba163293e10a02539654636fdd25cd18bde PIECE=v7u0 LIM=120
+kt_cert_v1_5 sha256 bf1995af9ae714e5ba225d2d4ea3c7a8802709ad2dfe55f2163e0452eee0e37b ITEM=tA.e1n4 LIM=120 (RLIMIT_CPU soft 120, hard 125)
+C-HASH PASS (5 engine files, 1 own files, 10 predecessor outputs, 6 inputs)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+C-HASH PASS (kt_cert_v1_5, arbeng_ma_v1_4, arbeng_ma_v1_1, arbeng_ma_stub_v1_1, arbeng_ma_stub_v1)
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-TREE: m 1: 3 terms k 2 (want 2); merged with 3 terms k 3 (want 3; formula 3); m 2: 5 terms k 3 (want 3); merged with 3 terms k 4 (want 4; formula 3); m 3: 9 terms k 4 (want 4); merged with 3 terms k 5 (want 5; formula 4); m 5: 33 terms k 6 (want 6); merged with 3 terms k 7 (want 7; formula 6); m 8: 257 terms k 9 (want 9); merged with 3 terms k 10 (want 10; formula 9); m 12: 4097 terms k 13 (want 13); merged with 3 terms k 14 (want 14; formula 13) -> PASS
+V7 UNIT [1, 0, 1] (asked [1, 0, 1]): terms 12, cpu 0.0 s (333333 ns/term), k_max 3, shadow max 3.33e-16, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 1 assembled
+V7 UNIT [2, 0, 1] (asked [2, 0, 1]): terms 210, cpu 0.0 s (14286 ns/term), k_max 8, shadow max 2.07e-15, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 2 assembled
+V7 UNIT [3, 0, 1] (asked [3, 0, 1]): terms 1948, cpu 0.0 s (1540 ns/term), k_max 14, shadow max 1.19e-14, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 3 assembled
+V7 UNIT [4, 0, 1] (asked [4, 0, 1]): terms 12651, cpu 0.0 s (316 ns/term), k_max 21, shadow max 7.43e-14, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 4 assembled
+V7 UNIT [5, 0, 1] (asked [5, 0, 1]): terms 64296, cpu 0.0 s (171 ns/term), k_max 29, shadow max 5.06e-13, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 5 assembled
+V7 UNIT [6, 0, 3] (asked [6, 0, 3]): terms 271624, cpu 0.0 s (125 ns/term), k_max 38, shadow max 3.77e-12, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 6 assembled
+V7 UNIT [7, 0, 7] (asked [7, 0, 7]): terms 990936, cpu 0.1 s (120 ns/term), k_max 48, shadow max 3.00e-11, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 7 assembled
+V7 UNIT [8, 0, 16] (asked [8, 0, 16]): terms 3205698, cpu 0.4 s (123 ns/term), k_max 59, shadow max 2.51e-10, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 8 assembled
+V7 UNIT [9, 0, 34] (asked [9, 0, 34]): terms 9377600, cpu 1.2 s (127 ns/term), k_max 71, shadow max 2.11e-09, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 9 assembled
+V7 UNIT [10, 0, 26] (asked [10, 0, 71]): terms 7896908, cpu 1.0 s (125 ns/term), k_max 84, shadow max 1.46e-08, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000
+V7 PROGRESS: 10 units this job; levels assembled [1, 2, 3, 4, 5, 6, 7, 8, 9]; peak RSS 209 MiB
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+ITEM v7u0 cpu 3.0 s, peak resident memory 209 MiB
+VERDICT VALID

@@ -1,0 +1,49 @@
+px08_m2bc4 sha256 6527d21b7661a355c6534cc055f1fb8f3ae74be9256dbd6a3c65067ca6a34a17 ITEM=n3 asm LIM=230 SIGC=0.5
+C-HASH PASS (6 sources)
+PARTITION N=3: nodes 0..32 once each, reflection yes, 61 G boxes tiling [0, 1] pi, 4 sub-boxes tiling each: PASS
+PRODUCERS N=3: g0 px08_m2bc3, g1 px08_m2bc3, g2 px08_m2bc4, g3 px08_m2bc3, g4 px08_m2bc3, g5 px08_m2bc3, g6 px08_m2bc3, g7 px08_m2bc3, nodes0 px08_m2bc3, nodes1 px08_m2bc3, nodes2 px08_m2bc3, nodes3 px08_m2bc3
+C-ITEMCODE N=3 (px08_m2bc3 = this file up to REFINE_C, except G_MAXEV_C): PASS, 937 lines, 1 differing
+C-EVEN (partial item): PASS
+C-EVEN (partial item): PASS
+C-EVEN (partial item): PASS
+C-EVEN (partial item): PASS
+PLANT-DET (partial item): FIRED
+C-CONJ (partial item): PASS
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+C-CORE N=3 (shared core = s4c_m2bb.py lines 84-636 and 638-836): PASS, block lines [553, 199]
+C-PROP N=3 (Q_c = Q - 2 T(1/300), interval LDL^T): PASS, 79 al-intervals tiling [0, pi] and the reflection; smallest pivot >= 1.02146877979e-3 on x in [43/64, 11/16] pi (0.0 s)
+C-COVER N=3 Re det Q_c at sigma 0.5: PASS (29508 boxes)
+C-REFINE-C N=3 (every box of width pi/128 or within the caps H1^4 2.83039716726e+15, h_lo^4 3.04083039046e+25): PASS
+G line N=3: Im al = 0.5 (the boundary line of the C-COVER strip), M = 64, 61 boxes, 4 sub-boxes each
+C-HALF N=3: PASS
+  N=3 I_c[H1^4] = [1.5e+3 +/- 67.0]; G 1.55805349809e+15, TW error 3.94628948682e+1, error/|T_M| 5.50471685073e-2
+  N=3 I_c[h_lo^4] = [1.7e+13 +/- 7.53e+11]; G 2.14288299413e+25, TW error 5.42756499798e+11, error/|T_M| 7.04703228713e-2
+  N=3 I_c[X1^16] = [1.2515032375e+13 +/- 2.18e+2]; G 2.28007060222e+15, TW error 5.77503831403e+1, error/|T_M| 9.14056845308e-12
+  N=3 I_c[X1^20] = [4.192622315e+18 +/- 2.02e+8]; G 3.14641727957e+21, TW error 7.96934986300e+7, error/|T_M| 3.76165483041e-11
+  N=3 I_c[X2^16] = [1.2515032375e+13 +/- 2.18e+2]; G 2.28916717999e+15, TW error 5.79807842737e+1, error/|T_M| 9.17703569740e-12
+  N=3 I_c[X2^20] = [4.192622315e+18 +/- 2.02e+8]; G 3.14337278894e+21, TW error 7.96163867632e+7, error/|T_M| 3.75801503255e-11
+  N=3 I_c[X3^16] = [3.09243783486e+15 +/- 9.12e+3]; G 2.02685987828e+17, TW error 5.13369780866e+3, error/|T_M| 3.28445973108e-12
+  N=3 I_c[X3^20] = [3.9404366228e+21 +/- 2.69e+10]; G 8.79126907811e+23, TW error 2.22668173984e+10, error/|T_M| 1.11638492083e-11
+  N=3 I_c[X5^16] = [3.09243783486e+15 +/- 8.98e+3]; G 1.97189971629e+17, TW error 4.99449289065e+3, error/|T_M| 3.19539859726e-12
+  N=3 I_c[X5^20] = [3.9404366228e+21 +/- 2.61e+10]; G 8.48920101014e+23, TW error 2.15017293944e+10, error/|T_M| 1.07802592702e-11
+  N=3 I_c[Z^16] = [1.8597001903e+19 +/- 3.10e+8]; G 3.47592406908e+21, TW error 8.80393556937e+7, error/|T_M| 1.05700029612e-11
+  N=3 I_c[Z^20] = [2.5773718763e+26 +/- 5.85e+15]; G 1.83386564778e+29, TW error 4.64487563166e+15, error/|T_M| 4.03698554460e-11
+TARGET N=3 (TW error <= 1/10 |T_M|): all within; misses, reported: none
+C-BLOCK-T N=3: PASS
+C-PORT N=3: worst 8.565e-17: PASS
+C-HBAR (U1, per-degree scale): worst 2.305e-16: PASS
+C-FLT-T N=3: worst 3.887e-14: PASS
+C-SPLIT: PASS
+C-COVERS: needed degrees [(10, 8), (6, 12), (1, 20)] against {10: 8, 6: 12, 1: 20}: PASS
+C-POS N=3 (U4: every upper end J_i^+ > 0, before the logs and roots of the reading): PASS
+CHECKS all PASS
+PLANTS PLANT-TILE:FIRED PLANT-ITEMCODE:FIRED PLANT-CORE:FIRED PLANT-PROP:FIRED PLANT-STRIP:FIRED PLANT-REFINE-C:FIRED PLANT-BLOCK-T:FIRED PLANT-PORT:FIRED PLANT-PORT-T:FIRED PLANT-HBAR:FIRED PLANT-FLT-T:FIRED PLANT-SPLIT:FIRED PLANT-COVERS:FIRED PLANT-POS:FIRED
+READING N=3 (t = 1/300, every J >= 300; S4_M2C_DESIGN_v1): pref^2 rho4 <= 8.46373172498e-6; N4_c <= 2.29242968774e+3; I_c[H1^4] <= 1.56691425543e+3; pref^2 <= 1.57345775316e+2
+VERDICT VALID
+CPU 27.8 s maxrss_kb 341304

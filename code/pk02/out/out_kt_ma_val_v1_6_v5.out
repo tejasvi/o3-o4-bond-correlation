@@ -1,0 +1,23 @@
+kt_ma_val_v1_6 sha256 e182d5039ae4e6abd203ecc53d8e7cd703e5a8793467feaf9ea0a1543fd4d829 PIECE=v5 LIM=540
+kt_cert_v1_5 sha256 bf1995af9ae714e5ba225d2d4ea3c7a8802709ad2dfe55f2163e0452eee0e37b ITEM=tA.e1n4 LIM=540 (RLIMIT_CPU soft 540, hard 545)
+C-HASH PASS (5 engine files, 1 own files, 10 predecessor outputs, 6 inputs)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+C-HASH PASS (kt_cert_v1_5, arbeng_ma_v1_4, arbeng_ma_v1_1, arbeng_ma_stub_v1_1, arbeng_ma_stub_v1)
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-TREE: m 1: 3 terms k 2 (want 2); merged with 3 terms k 3 (want 3; formula 3); m 2: 5 terms k 3 (want 3); merged with 3 terms k 4 (want 4; formula 3); m 3: 9 terms k 4 (want 4); merged with 3 terms k 5 (want 5; formula 4); m 5: 33 terms k 6 (want 6); merged with 3 terms k 7 (want 7; formula 6); m 8: 257 terms k 9 (want 9); merged with 3 terms k 10 (want 10; formula 9); m 12: 4097 terms k 13 (want 13); merged with 3 terms k 14 (want 14; formula 13) -> PASS
+C-V2-ARB F=6 D=10: 8008 moments: 0 MomTableU and 0 MomTable balls fail to contain the arb ball; largest |mid - arb|/rad (MomTableU) 0.103; largest relative radius 3.07e-09 -> PASS
+C-V2-OVL F=6 D=10: MomTableU and MomTable balls: 0 not overlapping; counts max MomTableU 75, MomTable 77 (0.5 s) -> PASS
+C-PAIRS F=6 D=10: 14 units: candidate pairs equal plan()'s count in each; largest terms/(2^|supp c| - 1) 1.000 -> PASS
+C-V2-ARB F=8 D=10: 43758 moments: 0 MomTableU and 0 MomTable balls fail to contain the arb ball; largest |mid - arb|/rad (MomTableU) 0.092; largest relative radius 1.31e-08 -> PASS
+C-V2-OVL F=8 D=10: MomTableU and MomTable balls: 0 not overlapping; counts max MomTableU 82, MomTable 77 (3.6 s) -> PASS
+C-PAIRS F=8 D=10: 73 units: candidate pairs equal plan()'s count in each; largest terms/(2^|supp c| - 1) 1.000 -> PASS
+PLANT-V2-ARB: (8, 10): 43758 of 43758 nonzero arb moments moved by 10 x 1.31e-08 relative fall outside the MomTableU balls -> FIRES
+C-V2-ARB F=12 D=6: 18564 moments: 0 MomTableU and 0 MomTable balls fail to contain the arb ball; largest |mid - arb|/rad (MomTableU) 0.087; largest relative radius 1.10e-11 -> PASS
+C-V2-OVL F=12 D=6: MomTableU and MomTable balls: 0 not overlapping; counts max MomTableU 39, MomTable 41 (1.6 s) -> PASS
+C-PAIRS F=12 D=6: 23 units: candidate pairs equal plan()'s count in each; largest terms/(2^|supp c| - 1) 1.000 -> PASS
+C-V2-ARB F=6 D=9 groups+caps: 2725 moments: 0 MomTableU and 0 MomTable balls fail to contain the arb ball; largest |mid - arb|/rad (MomTableU) 0.086; largest relative radius 4.46e-10 -> PASS
+C-V2-OVL F=6 D=9: MomTableU and MomTable balls: 0 not overlapping; counts max MomTableU 66, MomTable 68 (0.2 s) -> PASS
+C-PAIRS F=6 D=9: 10 units: candidate pairs equal plan()'s count in each; largest terms/(2^|supp c| - 1) 1.000 -> PASS
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+ITEM v5 cpu 6.0 s, peak resident memory 118 MiB
+VERDICT VALID

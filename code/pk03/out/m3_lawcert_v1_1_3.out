@@ -1,0 +1,54 @@
+m3_lawcert_v1_1 N 3 LIM 84; script sha256 981f0c12166561f74eb90ddea636c0f2a614bbd46f29d845f083a0a5b17b8920; python 3.14.4
+STAGE-CPU C-HASH start 0.02 s
+C-HASH (13 own files, 18 inputs) -> PASS
+PLANT-HASH (m3_bar_v10 against its sha256 with the last digit changed) -> FIRES
+STAGE-CPU C-PINS start 0.03 s
+C-PINS (MANIFEST_m3_run_v1_8_1 lists 27 of this script's pins with their full sha256s; the asmP output's first line names m3_run_v1_8_1 0d3388d2) -> PASS
+PLANT-PINS (the asmP output's first line against m3_run_v1_8_1's sha256 with the last digit changed) -> FIRES
+PRECISION iv.prec 136 (m3_scal_v2.setup, as the run)
+STAGE-CPU C-BIND start 0.07 s
+C-BIND (four records through m3_reader_v6.load against m3_run_v1_8_1_asmP.3.out; MANIFEST_m3_run_v1_8_1_asmP.3.sha256 names exactly the asm output and the four records with their sha256s; entries = the list's keys and parity per graph: D 66, E2 20, E3 20, FF 3; 82 free, 27 parity zeros) -> PASS
+C-PRODUCER (each record's engine names m3_run_v1_8_1 0d3388d2, entries_by m3_run_v1_8 be0c1be3 and m3_bar_v10 9a4de5dd, the bar that C-LAW-REM and C-LAW-SHAPE audit) -> PASS
+STAGE-CPU C-LAW-REM start 0.08 s
+C-LAW-REM (m3_bar_v10 Prep.bound: B_rem = overflow + nFle3 rE + rho4 + t^4 Nc EF4/24, each term a polynomial in t with nonnegative coefficients fixed at J_REF and valuation >= 4; l2 a polynomial of valuation >= 0; term valuations [4, 4, 4, 4], l2 valuation 0) -> PASS
+PLANT-LAW-REM (T(4) -> T(3) in the EF4 term: valuations [4, 4, 4, 3]) -> FIRES
+PLANT-LAW-REM (the overflow filter >= 3: valuations [3, 4, 4, 4]) -> FIRES
+PLANT-LAW-REM (nC8 without its factor t: valuations [4, 4, 0, 4]) -> FIRES
+PLANT-LAW-REM (rE's 't4|H4|' part with T(3): valuations [4, 3, 4, 4]) -> FIRES
+PLANT-LAW-REM (a '- nF0' term in B_rem: refused: Prep.bound: operator Sub refused) -> FIRES
+PLANT-LAW-REM (an unknown name in rho4: refused: Prep.bound: zeta must have exactly one binding, a direct statement with a value (bindings 0)) -> FIRES
+PLANT-LAW-REM (a second binding of overflow (condition 2): refused: Prep.bound: overflow must have exactly one binding, a direct statement with a value (bindings 2)) -> FIRES
+PLANT-LAW-REM (nFle3 allow-listed with a pinned text that is not its definition: refused: Prep.bound: nFle3 has bindings outside its pinned definition) -> FIRES
+PLANT-LAW-REM (a t-dependent name allow-listed with its own definition: refused: Prep.bound: allow-listed nFle3 mentions T) -> FIRES
+STAGE-CPU C-LAW-SHAPE start 0.59 s
+C-LAW-SHAPE (31 pinned texts of m3_lawcert_v1_pins, as ASTs, in their places: the tail, ann and far statements, sup_F, norm_any, chi_tail_up, ive1, logtree, logmain, far_base, the bound's return, Prep.UK/CK, __init__'s t, rates, tilts and restore, laws_of, compute_entry's law lines, entry_record) -> PASS
+PLANT-LAW-SHAPE (B_tail without sqrt_nn must be missed) -> FIRES
+PLANT-LAW-SHAPE (alpha_lo taking .b must be missed) -> FIRES
+PLANT-LAW-SHAPE (sup_F's m_F without '- i' must be missed) -> FIRES
+STAGE-CPU C-LAWFIELDS start 0.74 s
+C-LAWFIELDS (82 free entries: rem_tpow 4; tail and ann n, J_REF and a_G from the graphs' G_vv, tilt_p's G_vv and m3ref_v1_10's a_v; far_cF from the pinned sup_F's m_F, never below this script's own exponent; far_rate = down(alpha_lo - c_F/300); all exactly equal) -> PASS
+C-MONO-FAR (every recomputed far rate certainly > 0; smallest 3.9127e-01 at E3:fX,4) -> PASS
+STAGE-CPU C-BAND start 0.80 s
+C-BAND (sanity, 82 free entries: the banded bound in arb at J = 300, 600, 1000, 3000 is <= err (1 + 2^-30) at 300, <= err beyond and non-increasing; largest banded/err: J 300 1.0000, J 600 0.0610, J 1000 0.0079, J 3000 0.0001) -> PASS
+BAND-INFO D: 45 free entries; largest banded/err at J = 600 0.0533, at J = 1000 0.0069
+BAND-INFO E2: 17 free entries; largest banded/err at J = 600 0.0579, at J = 1000 0.0075
+BAND-INFO E3: 17 free entries; largest banded/err at J = 600 0.0610, at J = 1000 0.0079
+BAND-INFO FF: 3 free entries; largest banded/err at J = 600 0.0601, at J = 1000 0.0078
+STAGE-CPU C-LAWCERT-RT start 0.84 s
+C-LAWCERT-RT (the certificate through m3_reader_v6.loads_lawcert against the five loaded records: 109 entries back with the records' laws; claim and format equal the reader's) -> PASS
+PLANT-LAWCERT (rem_tpow 3 must be refused) -> FIRES
+PLANT-LAWCERT (far_rate 0 must be refused) -> FIRES
+PLANT-LAWCERT (an a_G entry 0 must be refused) -> FIRES
+PLANT-LAWCERT (J_REF 299 must be refused) -> FIRES
+PLANT-LAWCERT (n 4 must be refused) -> FIRES
+PLANT-LAWCERT (a record sha changed must be refused) -> FIRES
+PLANT-LAWCERT (an entry dropped must be refused) -> FIRES
+PLANT-LAWCERT (an entry added must be refused) -> FIRES
+PLANT-LAWCERT (law_claim + ' ' must be refused) -> FIRES
+PLANT-LAWCERT (a records map without one loaded record must be refused) -> FIRES
+PLANT-LAWCERT (a non-canonical exact string must be refused) -> FIRES
+PLANT-LAWCERT (a writing job whose VERDICT line is VERDICT VALID-PRECERT must be refused) -> FIRES
+C-WRITE (m3_lawcert_v1_1_N3.json re-read byte for byte) -> PASS
+RECORD m3_lawcert_v1_1_N3.json ec50ab52cd88b7b0cbd717c6dc4db295e72a8faf10b378b994a4f83cc5d7cfd4
+STAGE-CPU total 0.87 s
+VERDICT VALID

@@ -1,0 +1,923 @@
+#!/usr/bin/env python3
+"""kt_p2_v2_3.py -- pk25 (code/pk25/p2/). P2 of the D2 programme, the factored side table MR_LEMMAP_KV_v3F (the P0_LOG rows 4557, 4622, 4624,
+4628, 4629; D2_DESIGN_v1 sect. 0 (iii) and 4), option (b): for every piece of R4's grid the enclosures of X/t for MR_LEMMAP v3's O(t) fields
+(rho_k, L_k, q_a, eps_ka) and of (uhat_kb - uhat_kb(0))/t, with uhat_kb(0) exact from P1 (c10/C10_RECORD_v1.kv). v2_1 = v2 with the M0 term
+kept through the bridge in place of v2's dropped M0.
+v2_2 = v2_1 with the bridge's nu_g from pk24's certified NU record through pk25's nu_reader_v1_1 (the rows 4637, 4639; the N-2 on
+v2_1) in place of v2_1's dry STANDIN, PLANT-NU, and the N-1 there (the coordinate argument for m0*).
+The bridge is conditional (the row 4642): where a law's m0 equals m0* exactly (delta = 0 for every g, decided in exact arithmetic), the
+bridge term is 0 and C-NU is not required for that (N, kind); a build may carry no NU record (NU_PATH None), and then any nonzero delta is refused.
+The NU record is pk24/nu/NU_G_RECORD_v1.kv read by nu_reader_v1_1 with its producer pinned (the rows 4657, 4659), and the far term follows
+pk24/NU_G_NOTE_v1.md sect. 3: with m* = m + delta the residual's
+far-region part is bounded by far_out at |m_g(t)| + |delta_g|, so far is rebuilt from M4_KV_v1's far items with mbar_g(t) + |delta_g| in place
+of mbar_g(t) = sum_j |m_gj| t^j (each item's weight hf^2, 2 hf mbar_g or w_gh mbar_g mbar_h is nondecreasing in every mbar_g, hf = 1 for e1, e3),
+and C-COPY-FAR rebuilds far at delta = 0 against m4_reader_v1 law_balls. gB does not read m.
+v2_3 = v2_2 with the N1 (the row 4691): a grid token enters the bound arithmetic
+through grid_end, its conservative reading (the smaller of the exact decimal and its binary64 for a lower end, the larger for an upper end,
+R4's grid_j rule), so every bound covers the token's whole range: on the finite pieces X/t <= X_hi jhi and t in [1/jhi, 1/jlo], on the last
+piece J_lo (there the binary64 lies below the token, so the last rows are v2_2's). The cert record goes to p2/v3f2/MR_LEMMAP_V3F.kv;
+p2/MR_LEMMAP_V3F.kv (0cd95286) stays as cited.
+
+- Finite pieces (t in [t_lo, t_hi], t_lo = 1/jhi > 0): each v3 row upper bound X of an O(t) quantity gives X/t <= X_hi jhi; each uhat
+  interval [lo, hi] gives (uhat - uhat(0))/t in the hull of the corner quotients (lo - u0, hi - u0)/(t_lo, t_hi). Grid ends are the
+  binary64 doubles of v3's tokens, taken exactly.
+- The last piece (t in [0, t_hi], t_hi = 1/jlo), uhat (v1): the law entries G (S8 D g,b,c) and T (S8 N T,b,c) in the reader's
+  coefficient-ball form (entry_ball: a_k in [LO_k, HI_k]; the rest R(J) = rem (300/J)^4 + tail + ann + far, entry_law), a_0 = X(0) exact
+  from P1 (C-A0), X1 = (X - X(0))/t in sum_(k=1..3) [LO_k, HI_k] t^(k-1) + [-R/t, R/t], R/t <= rem 300^4 t_hi^3 + J_lo (tail + ann + far)(J_lo)
+  (C-MONO-TAIL: J_lo a/G > 5 for every chi-square pair, so J^2 P(J) decreases; C-MONO-FAR: J_lo far_rate > 1); then with P1's exact
+  (G0, T0, mu_j0, c_j0) and the true Ritz vector inside v3's last-piece uhat intervals:
+    dmu/t = c0_k^T (T1 - mu0_k G1) c_k / (c0_k^T G c_k);  r = -(T1 - mu0_k G1) c_k + (dmu/t) G c_k;  w = sum_(j != k) c0_j (c0_j^T r)/(mu0_j - mu0_k);
+    beta = c0_k^T G0 c_k;  alpha/t = -(g00 beta^2 + 2 beta t g0w + t w^T G w)/(beta + 1);  dc/t = w + (alpha/t) c0_k;
+    (uhat_kb - uhat0_kb)/t = (dc_b/t) G_bb^1/2 + c0_kb G1_bb/(G_bb^1/2 + G0_bb^1/2)   (C-UHATF control: uhat0 + t e meets v3's interval).
+- The last piece, residual fields (option (b), the rows 4624, 4628): v3's chain (C6a's lemma_a_cbar) is rho_k <= sum_b |uhat_kb| Rb[b] with
+  Rb = (eps_r/(1 - eps_r), R_e1, R_e3), bounds of the trial residuals out of W. eps_r: M2B_KV_v1's law (m2b_reader_v1 law_balls), near =
+  NP s^2 + R1 s + (D5 + R0) s^5 + tails (s = 150/J), no t^0 term. R_e1, R_e3: M4_KV_v1's law (m4_reader_v1 law_balls) bounds engine A's
+  residual P(t) = S e_k - sum_g m_g(t) psi_g(t) = r0 + t r1 + ... for solve_mid's binary64 m0 (kt_cert_v1_9 l.796-801), whose t^0 part
+  r0 = sum_g delta_g b0_g, delta = m0* - m0, lies in W(0) (P1's C-SPAN on the same trial pins) but is not 0; M0 bounds |r0|. The bridge:
+  Q_W(t) S e_k = Q_W(t) P(t), so |Q_W S e_k| <= |P(t) - r0| + |Q_W(t) r0| <= |P(t) - r0| + sum_g |delta_g| |psi_g(t) - psi_g(0)|, and
+  |P(t) - r0| is the law's bound with M0 taken out of nP. delta, by the coordinate argument: s0 = S^(0) e_k (k = e1, e3)
+  lies in W(0) by P1's C-SPAN, so its coordinates in the basis (psi, e1, e3) at t^0 are unique, and m0* are those coordinates; G0 m = T0[:, k]
+  gives exactly them, as <psi_a, S (S psi_k)> = sum_b <psi_a, S psi_b> m_b, whatever the inner product. So m0* = G0^-1 T0[:, k] from C10's
+  exact algebraic G0, T0; K-ORTH is a float check and is not used for m0*. m0 = the M4 record's MG(g, 0), tied by C-M0-TIE to the EXPLICIT
+  line of engine A's x record. nu_g >= ||(B_g(t) - b0_g) 1_near||_t / t for every t in (0, 1/J_lo], in engine A's chart and nP norm with
+  the series remainder review, from pk24's certified NU record through nu_reader_v1_1 (C-NU: pins of the record, the reader and the
+  producer; header, trial pins, J_LO_CHECK <= J_lo). Over t:
+    eps_r/t <= ((150 (NP s + R1 + (D5 + R0) s^4) + J tails)^2 + J^2 fJ)^1/2 + J g) / Z2^1/2;  Rb0/t = (eps_r/t)/(1 - eps_r(J_lo));
+    R_e/t <= [((300 (M1 + s M2 + s^2 M3) + 300^4 t^3 (ND + NR0) + J (tailX + tailB + ann))^2 + J^2 far*)^1/2 + J gB + sum_g |delta_g| nu_g] / D,
+  far* = far_out at mbar_g + |delta_g| (far at mbar_g where delta = 0 exactly),
+  each J-weighted part nonincreasing beyond J_lo (C-MONO-M2B, C-MONO-M4: J times an exponential rate above the J-power), so J_lo bounds the
+  piece; controls C-COPY-M2B and C-COPY-M4 rebuild eps_r and nP at J_lo from the record's coefficients against the readers. Then
+    rho_k/t = sum_b max|uhat_kb| Rb[b]/t;  L_k/t = (rho_k/t)/(mu_k,lo - tau);  L3 at level a (C6a's l3_level): q_a/t = (rho_a/t)/(g_a D_a),
+    eps_ka/t = rho_k,hi (q_a/t)/g_ka, g_a = s_lo[a] - tau, g_ka = mu_lo[k] - s_hi[a] (k < a), s_lo[a] - s_hi[k] (k > a), D_a >= 1 - sum rho_k,hi^2/(g_a g_ka),
+  with v3's last row (rho_k,hi, mu_k,lo, tau) and MR_SPECTRAL v4's s_x,hi, s_y,hi (s_lo = (1, mu_x,lo, mu_y,lo), s_hi = (1, s_x,hi, s_y,hi)).
+Gates: C-HASH, C-C10, C-LAW-READ, C-A0, C-MONO-TAIL, C-MONO-FAR, C-BETA, C-FIN, C-M4-READ, C-M2B-READ, C-MONO-M2B, C-MONO-M4, C-M0-TIE
+(engine A's printed m0 equals the M4 record's MG(g, 0) exactly), C-NU (where delta is not 0: a pinned NU record; the NU record, its
+producer and nu_reader_v1_1 match their pins; the reader's header, CODE, CLAIM-head and trial-pin checks; the record covers J >= J_lo), C-L3
+(gaps and D_a certainly positive), C-WRITE (the record read back). Controls: C-UHATF, C-COPY-M2B, C-COPY-M4, C-COPY-FAR, C-RESF (INFO).
+Plants (must be refused): PLANT-A0, PLANT-TAIL, PLANT-ORIENT (v1's), PLANT-M0 (M0 kept in nP in place of the bridge: R_e/t grows like
+M0 J, not O(t)), PLANT-MONO (J_lo = 1 in the M4 monotonicity test), PLANT-TIE (an m0 off by one binary64 step), PLANT-NU (a nonzero delta's
+bridge asked for J >= 1: outside the NU record's cover, or no NU record), PLANT-WRITE.
+MODE dry or cert (cert only under the word): the record to pk25/p2/v3f2/MR_LEMMAP_V3F.kv, a dry run's to p2/dry_<TAG>/.
+Usage: kt_p2_v2_3.py dry|cert TAG"""
+import hashlib
+import json
+import math
+import os
+import re
+import sys
+import time
+from fractions import Fraction
+
+MODES = ('dry', 'cert')
+if len(sys.argv) != 3 or sys.argv[1] not in MODES or not re.fullmatch(r'[A-Za-z0-9_]{1,40}', sys.argv[2]):
+    print('usage: kt_p2_v2_3.py dry|cert TAG')
+    sys.exit(2)
+MODE, TAG = sys.argv[1], sys.argv[2]
+SELF = os.path.abspath(__file__)
+LABEL = os.path.splitext(os.path.basename(SELF))[0]
+W18 = '/mnt/g2/release/root/code'
+OWN = W18 + '/pk25'
+P2D = OWN + '/p2'
+OUT_DIR = P2D + '/out'
+OUT_PATH = os.path.join(OUT_DIR, 'out_%s_%s_%s.out' % (LABEL, MODE, TAG))
+LEMMAP3 = OWN + '/mr/v3/MR_LEMMAP.kv'
+SPEC4 = OWN + '/mr/v4/MR_SPECTRAL.kv'
+C10REC = OWN + '/c10/C10_RECORD_v1.kv'
+RDR = OWN + '/m3/m3_reader_s9h_v1.py'
+M3O = W18 + '/pk03/out/'
+S8REC = dict((N, {'D': (M3O + 'm3_s8v3_D_N%d_J300_v1_8_1.json' % N, M3O + 'm3_run_v1_8_1_asmP.%d.out' % N),
+                  'N': (M3O + 'm3_s8v3_N_N%d_J300_v1_8_2.json' % N, M3O + 'm3_run_v1_8_2_asmN.%d.out' % N)}) for N in (4, 3))
+S8CERT = dict((N, {'D': (M3O + 'm3_lawcert_v1_1_N%d.json' % N, M3O + 'm3_lawcert_v1_1_%d.out' % N),
+                   'N': (M3O + 'm3_lawcert_v1_2_N%d.json' % N, M3O + 'm3_lawcert_v1_2_%d.out' % N)}) for N in (4, 3))
+TS_FILES = {4: W18 + '/pk11/out/ts_N4_J170_D_S_z9sym_v1.json', 3: W18 + '/pk11/out/ts_N3_S_z9sym_v1.json'}
+VACRES = dict((N, W18 + '/pk11/out/vacres_K3_N%d_sym_v1.json' % N) for N in (4, 3))
+M2B = (W18 + '/pk02/M2B_KV_v1.txt', W18 + '/pk02/out/out_m2b_asm_v1.out')
+M2B_READER_PATH = W18 + '/pk02/m2b_reader_v1.py'
+M4 = (W18 + '/pk15/M4_KV_v1.txt', W18 + '/pk15/out/out_m4_asm_v1.out')
+M4_READER_PATH = W18 + '/pk15/m4_reader_v1.py'
+M2B_PREC = 256
+M4_PREC = 256
+XREC = dict((N, dict((k, W18 + '/pk02/out_kt_cert_v1_6_x.%sn%d.out' % (k, N)) for k in ('e1', 'e3'))) for N in (4, 3))
+NU_PATH = W18 + '/pk24/nu/NU_G_RECORD_v1.kv'      # pk24's certified NU record (the rows 4637, 4639, 4659), path and pin set by the maker, or None (C-NU)
+NU_CODE = W18 + '/pk24/nu/kt_nu_g_v1_2.py'      # the NU record's producer (its CODE line), pinned with it, or None
+NU_READER_PATH = OWN + '/nu/nu_reader_v1_1.py'
+PINS = {
+    '/mnt/g2/release/root/code/pk25/mr/v3/MR_LEMMAP.kv': '275b179f6f8e80f12101fda25989a851177c0b6003eee05f4a7095ad003fe013',
+    '/mnt/g2/release/root/code/pk25/c10/C10_RECORD_v1.kv': '29a4f3c67afc2b3e2611e37e3026def71d6ae819bcc2ee5ed34f678734bebb98',
+    '/mnt/g2/release/root/code/pk25/m3/m3_reader_s9h_v1.py': '812d1395c47e1b00bcfdbf3b17c89d030db1d98655bb9c4ab62378394f9cc0c6',
+    '/mnt/g2/release/root/code/pk03/out/m3_s8v3_D_N4_J300_v1_8_1.json': '389be198d9fe919e1a097865759691847a9e4dc7553275c083d91bd753819b00',
+    '/mnt/g2/release/root/code/pk03/out/m3_s8v3_E2_N4_J300_v1_8_1.json': 'e900cbfed6a8a69e57f849733d4740787c978c58761ea4f0fcffbf95293ee18e',
+    '/mnt/g2/release/root/code/pk03/out/m3_s8v3_E3_N4_J300_v1_8_1.json': 'd1df7d4fc1b8e25f266f34c32180ccb771bc1719cc0fa730f240a33179feff0d',
+    '/mnt/g2/release/root/code/pk03/out/m3_s8v3_FF_N4_J300_v1_8_1.json': '042e8fc888243ac939fb9be4968f8fc9d42262a1deb7bf690993fc22a82f2a89',
+    '/mnt/g2/release/root/code/pk03/out/m3_run_v1_8_1_asmP.4.out': '08c8fab3f4b9080424a40c8cb61b7932f557852520e8d49c5915092a8963a127',
+    '/mnt/g2/release/root/code/pk03/out/m3_s8v3_N_N4_J300_v1_8_2.json': '4afe8f5ba75d29cbf89f0c0940c9d7790b9a215cbf1faba6f4759d1fdd7b28d6',
+    '/mnt/g2/release/root/code/pk03/out/m3_run_v1_8_2_asmN.4.out': '66a663de3924e2d8f8af1cdd65bfd88c0edc77cca9313f4dd2ef8cfb09eac3d9',
+    '/mnt/g2/release/root/code/pk03/out/m3_lawcert_v1_1_N4.json': '5b7cbff9443f4ff69e623caa776646b16629aa2b6436c186e1799e9f4d56ba4c',
+    '/mnt/g2/release/root/code/pk03/out/m3_lawcert_v1_1_4.out': 'f814f9f301f8814117dfccbd6715f8ff04e6cd24dcef04e4a95ecaaeb6e37325',
+    '/mnt/g2/release/root/code/pk03/out/m3_lawcert_v1_2_N4.json': '77cb4f7c05df69c5e185ecd14aeea8fb9caca8d98e306b549390d34163f190d6',
+    '/mnt/g2/release/root/code/pk03/out/m3_lawcert_v1_2_4.out': '10bc81fc53d21e3a5fff08945a1e890438145bbcee2dcc73033e7c33a37e4bb5',
+    '/mnt/g2/release/root/code/pk03/out/m3_s8v3_D_N3_J300_v1_8_1.json': '8707107b0ebc3dea6989d22b6284f9df368c954837c883dc36824edda63c4926',
+    '/mnt/g2/release/root/code/pk03/out/m3_s8v3_E2_N3_J300_v1_8_1.json': '3e7f7bf6101bc45282a202d85e3182b2340bff4d7d349bc78eb33d5d9f02f5d5',
+    '/mnt/g2/release/root/code/pk03/out/m3_s8v3_E3_N3_J300_v1_8_1.json': '6cd3dffbc6fac0845d05aa4b88f135c28a8091eb9623b779d874dace550a078a',
+    '/mnt/g2/release/root/code/pk03/out/m3_s8v3_FF_N3_J300_v1_8_1.json': 'dae3cfa88bf06fd97378108b9ceba0a85044f7790b38e67c0b86eb23d6443008',
+    '/mnt/g2/release/root/code/pk03/out/m3_run_v1_8_1_asmP.3.out': 'b6e9c2dd6a6308f6dc8d72124ba37326156983ec3444625d152ab46f28e927ed',
+    '/mnt/g2/release/root/code/pk03/out/m3_s8v3_N_N3_J300_v1_8_2.json': '87f09d3ee43e44d7572e49b40f7103d2e1ef2b7409a1cb24b67d117b4145315a',
+    '/mnt/g2/release/root/code/pk03/out/m3_run_v1_8_2_asmN.3.out': 'c1544e32848907c28ea30bf9e6e404fa836176947ce2f6f23e22ae4895c4697e',
+    '/mnt/g2/release/root/code/pk03/out/m3_lawcert_v1_1_N3.json': 'ec50ab52cd88b7b0cbd717c6dc4db295e72a8faf10b378b994a4f83cc5d7cfd4',
+    '/mnt/g2/release/root/code/pk03/out/m3_lawcert_v1_1_3.out': '2b7847dc902eed4dda6800ff2118d8c378421179ba4d77242b83dc9086c772d9',
+    '/mnt/g2/release/root/code/pk03/out/m3_lawcert_v1_2_N3.json': '819c100913e917d09bbf7788b9dba75f15584f232784b9601e9a19e266c7f70c',
+    '/mnt/g2/release/root/code/pk03/out/m3_lawcert_v1_2_3.out': 'ec6b099bc6517e11af92cfc641592719202bbe2dd234a2f87cce0e0a54276357',
+    '/mnt/g2/release/root/code/pk11/out/ts_N4_J170_D_S_z9sym_v1.json': 'ea9d6c1bc72cdac5b6d55091766a908937c7ce2bf60257636824388ffe5b7b5d',
+    '/mnt/g2/release/root/code/pk11/out/ts_N3_S_z9sym_v1.json': 'a298db655d832c0685a9aba093dd123d372698fa2fb7905a15f442bb0e35f8e6',
+    '/mnt/g2/release/root/code/pk11/out/vacres_K3_N4_sym_v1.json': 'b40859de2607f64cd127cb1834a04e9f33b3c2cbe4af9fe4f2bb80badaacd43e',
+    '/mnt/g2/release/root/code/pk11/out/vacres_K3_N3_sym_v1.json': 'e5a9b49fde1896ff1d87de1d4a44571376eeeeb31b0ce4205faecdd2463115c0',
+    '/mnt/g2/release/root/code/pk25/mr/v4/MR_SPECTRAL.kv': '4a609ccf717c0aedd9504ee4db47e7c98a679bc25df2ca2a187b415011470937',
+    '/mnt/g2/release/root/code/pk02/M2B_KV_v1.txt': '01ffc2aacb0bf6b4f33c55602c9419964481ce0f0a6c1fbdc6520a91aab0b72d',
+    '/mnt/g2/release/root/code/pk02/out/out_m2b_asm_v1.out': 'cf5ed7d4e73188870cd2bff8fc91f6ed0c5919b1e9a105d44a361dfe53658391',
+    '/mnt/g2/release/root/code/pk02/m2b_reader_v1.py': 'a9f15db48e9fa51629448181d8a83679c1b93cd2b5696c8ed1e6b41d60df8b02',
+    '/mnt/g2/release/root/code/pk15/M4_KV_v1.txt': '4bafdcc1c41cf44f6b618644d7b0fdd404422aa5ffeadcfaadae02183e9eee51',
+    '/mnt/g2/release/root/code/pk15/out/out_m4_asm_v1.out': '616dd9e1919695ed9dc953c55e8c46d66dabd9700d2913722d11f94502dc858e',
+    '/mnt/g2/release/root/code/pk15/m4_reader_v1.py': '5cef440ae313eddd2e6bcf49aac835f2595e61b6a3e59b23fca0c15671ec6bcd',
+    '/mnt/g2/release/root/code/pk02/out_kt_cert_v1_6_x.e1n4.out': '1e0aa13ee35d748c75c67e3af4f786f4df858d93f01e709933203a916e4b70aa',
+    '/mnt/g2/release/root/code/pk02/out_kt_cert_v1_6_x.e3n4.out': '4bb4ba5694aad31c4596af291f1089d4b5074f00afec72da9d4089fbc83a708d',
+    '/mnt/g2/release/root/code/pk02/out_kt_cert_v1_6_x.e1n3.out': 'dc9111f62519c3cce00eaa51c81845b5535b8aab8f9e6a69158ea8003e748b81',
+    '/mnt/g2/release/root/code/pk02/out_kt_cert_v1_6_x.e3n3.out': '28cfd89dbba2b7d2be5cdcaa6c5010873b677ed3f97f9f4eb15475691a580817',
+    '/mnt/g2/release/root/code/pk25/nu/nu_reader_v1_1.py': '907783935bce3199fda8f9f72b28c0f8cdf6f5a349196d9a5ee6b0a5562653f0',
+    '/mnt/g2/release/root/code/pk24/nu/NU_G_RECORD_v1.kv': 'edab94c8a479a5c8734099d486c5f3989918814cb2b65949f7352e5784473bdb',
+    '/mnt/g2/release/root/code/pk24/nu/kt_nu_g_v1_2.py': 'f725bf00530860d3fe16df9d071b882484737bb14441ce035a85a01cd1c609a4',
+}
+if not (os.path.isdir(OUT_DIR) and os.path.realpath(os.path.dirname(OUT_PATH)) == os.path.realpath(OUT_DIR)):
+    print('output path check failed')
+    sys.exit(2)
+FH = open(OUT_PATH, 'x')
+
+import sympy as sp
+from flint import arb, ctx
+
+REVEN, RPE = (0, 1, 3), ((0, 0), (0, 1), (0, 3), (1, 1), (1, 3), (3, 3))
+KN = ('0', 'x', 'y')
+BN = ('p', '1', '3')
+RES_FIELDS = ('rho0_hi', 'rhox_hi', 'rhoy_hi', 'L0_hi', 'Lx_hi', 'Ly_hi', 'q0_hi', 'qx_hi', 'qy_hi', 'eps_x0_hi', 'eps_y0_hi', 'eps_0x_hi',
+              'eps_yx_hi', 'eps_0y_hi', 'eps_xy_hi')
+UFIELDS = ['u%s%s' % (k, b) for k in KN for b in BN]
+OUT_FIELDS = ['jlo', 'jhi'] + [f[:-3] + 't_hi' for f in RES_FIELDS] + [u + s for u in UFIELDS for s in ('t_lo', 't_hi')]
+
+
+def out(line):
+    FH.write(line + '\n')
+    FH.flush()
+
+
+class Refused(Exception):
+    pass
+
+
+def sha_file(path):
+    with open(path, 'rb') as fh:
+        return hashlib.sha256(fh.read()).hexdigest()
+
+
+def gate(fails, name, ok):
+    if not ok:
+        fails.append(name)
+    return 'PASS' if ok else 'FAIL'
+
+
+def plant(nofire, name, fn):
+    """a must-fire plant: fn must raise Refused."""
+    try:
+        fn()
+    except Refused as e:
+        out('%s: refused (%s) -> FIRES' % (name, e))
+        return
+    except Exception as e:
+        out('%s: raised %r instead of a refusal -> DOES NOT FIRE' % (name, e))
+        nofire.append(name)
+        return
+    out('%s: accepted -> DOES NOT FIRE' % name)
+    nofire.append(name)
+
+
+def grid_end(s, low):
+    """v2_3: a grid token as an exact Fraction at its conservative reading, the smaller (low) or larger of the exact decimal
+    and its binary64 (R4's grid_j rule), so a bound built on it covers the token itself."""
+    a, b = Fraction(s), Fraction(float(s))
+    return min(a, b) if low else max(a, b)
+
+
+def qa(x):
+    """an exact rational as an arb ball."""
+    x = Fraction(x)
+    return arb(x.numerator) / arb(x.denominator)
+
+
+def hull(lo, hi):
+    return qa(lo).union(qa(hi))
+
+
+def dec_hi(x):
+    """a decimal string (17 significant digits) whose value is >= every point of the ball x (C6a's form)."""
+    u = x.upper()
+    f = float(u)
+    for _ in range(8):
+        s = '%.16e' % f
+        if arb(s).lower() >= u:
+            return s
+        f = math.nextafter(f, math.inf)
+    raise ValueError('dec_hi')
+
+
+def dec_lo(x):
+    """a decimal string (17 significant digits) whose value is <= every point of the ball x (C6a's form)."""
+    lo = x.lower()
+    f = float(lo)
+    for _ in range(8):
+        s = '%.16e' % f
+        if arb(s).upper() <= lo:
+            return s
+        f = math.nextafter(f, -math.inf)
+    raise ValueError('dec_lo')
+
+
+def to_arb(e):
+    """an exact sympy number (rationals, square roots, sums, products, integer powers) as an arb ball (C13's form)."""
+    if e.is_Rational:
+        return arb(int(e.p)) / arb(int(e.q))
+    if e.is_Add:
+        s = arb(0)
+        for t in e.args:
+            s += to_arb(t)
+        return s
+    if e.is_Mul:
+        s = arb(1)
+        for t in e.args:
+            s *= to_arb(t)
+        return s
+    if e.is_Pow:
+        b, x = e.args
+        if x == sp.Rational(1, 2):
+            return to_arb(b).sqrt()
+        if x == -sp.Rational(1, 2):
+            return 1 / to_arb(b).sqrt()
+        if x.is_Integer:
+            return to_arb(b) ** int(x)
+    raise Refused('to_arb: %s' % e)
+
+
+def kv_rows(path):
+    if sha_file(path) != PINS[path]:
+        raise Refused('C-HASH: %s does not match its pin' % os.path.basename(path))
+    ix, rows, head, order = None, {}, {}, []
+    for ln in open(path).read().splitlines():
+        if ln.startswith('FIELDS = '):
+            ix = dict((f, i) for i, f in enumerate(ln[len('FIELDS = '):].split()))
+        elif re.match(r'N[34]_P[0-9]+ = ', ln):
+            k, v = ln.split(' = ', 1)
+            rows[k] = v.split()
+            order.append(k)
+        elif ' = ' in ln and not ln.startswith('#'):
+            k, v = ln.split(' = ', 1)
+            head[k] = v
+    return ix, rows, head, order
+
+
+def c10_data(N, tamper=None):
+    """C-C10: the C10 record's exact t^0 data at N: uhat0[k][b], mu0[k] (sympy), G0, T0 (3 x 3 sympy, psi-hat, s1, s3), and the raw UHAT0 text."""
+    _ix, _rows, head, _o = kv_rows(C10REC)
+    if head.get('STATUS') != 'CERTIFIED' or head.get('RUN_VERDICT') != 'VALID' or head.get('FORMAT') != 'C10_KV_v1':
+        raise Refused('C-C10: the C10 record is not a certified valid C10_KV_v1')
+    raw = head['N%d_UHAT0' % N]
+    parts = raw.split('; ')
+    if len(parts) != 9:
+        raise Refused('C-C10: N%d_UHAT0 has %d parts' % (N, len(parts)))
+    u = [[None] * 3 for _ in range(3)]
+    for p in parts:
+        nm, ex = p.split(' ', 1)
+        m = re.fullmatch(r'u([0xy])([p13])', nm)
+        if m is None:
+            raise Refused('C-C10: uhat name %r' % nm)
+        u[KN.index(m.group(1))][BN.index(m.group(2))] = sp.sympify(ex)
+    rz = re.fullmatch(r'mu_0 1; mu_x (.+); mu_y (.+)', head['N%d_RITZ0' % N])
+    if rz is None:
+        raise Refused('C-C10: N%d_RITZ0 does not parse' % N)
+    mu0 = [sp.Integer(1), sp.sympify(rz.group(1)), sp.sympify(rz.group(2))]
+    mg = re.fullmatch(r'G \[(.+)\]; T \[(.+)\] \(psi-hat, s1, s3 unnormalised, t\^0\)', head['N%d_GT0_W' % N])
+    if mg is None:
+        raise Refused('C-C10: N%d_GT0_W does not parse' % N)
+    G0 = [sp.sympify(e) for e in mg.group(1).split(', ')]
+    T0 = [sp.sympify(e) for e in mg.group(2).split(', ')]
+    if len(G0) != 9 or len(T0) != 9:
+        raise Refused('C-C10: G0 or T0 is not 3 x 3 at N = %d' % N)
+    G0 = [G0[3 * i:3 * i + 3] for i in range(3)]
+    T0 = [T0[3 * i:3 * i + 3] for i in range(3)]
+    if tamper == 'A0':
+        G0[1][1] = G0[1][1] + sp.Rational(1, 10 ** 9)
+    if G0[0][0] != 1 or any(sp.expand(G0[i][j] - G0[j][i]) != 0 or sp.expand(T0[i][j] - T0[j][i]) != 0 for i in range(3) for j in range(3)):
+        raise Refused('C-C10: G0[0][0] is not 1 or G0, T0 are not symmetric at N = %d' % N)
+    return u, mu0, G0, T0, raw, head['N%d_RITZ0' % N]
+
+
+def import_pinned(path, name):
+    if sha_file(path) != PINS[path]:
+        raise Refused('%s does not match its pin' % os.path.basename(path))
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(name, path)
+    mod = importlib.util.module_from_spec(spec)
+    p0 = ctx.prec
+    spec.loader.exec_module(mod)
+    ctx.prec = p0
+    return mod
+
+
+def at_prec(prec, fn, *args, **kw):
+    """a reader call at its own precision, restored afterwards (C6a's m4_call / m2b_call)."""
+    p0 = ctx.prec
+    ctx.prec = prec
+    try:
+        r = fn(*args, **kw)
+        if ctx.prec != prec:
+            raise Refused('a reader call changed ctx.prec to %d' % ctx.prec)
+        return r
+    finally:
+        ctx.prec = p0
+
+
+def check_trial(path, N):
+    with open(path) as fh:
+        ts = json.load(fh).get('trial_set')
+    for k, p in (('ts', TS_FILES[N]), ('vacres', VACRES[N])):
+        if not isinstance(ts, dict) or ts.get(k) != '%s:%s' % (os.path.basename(p), PINS[p]):
+            raise Refused('C-LAW-READ: %s trial_set %s is not the pinned %s' % (os.path.basename(path), k, os.path.basename(p)))
+
+
+def load_laws(RD, N):
+    """S8 D (certificate m3_lawcert_v1_1, with E2, E3, FF which it covers) and S8 N (v1_2) at N through the reader fork: {F: (record, certificate)}."""
+    res = {}
+    for F in ('D', 'N'):
+        rp, ap = S8REC[N][F]
+        cp, co = S8CERT[N][F]
+        for p in (rp, ap, cp, co):
+            if sha_file(p) != PINS[p]:
+                raise Refused('C-LAW-READ: %s does not match its pin' % os.path.basename(p))
+        check_trial(rp, N)
+        try:
+            rec = RD.load(rp, ap, 300, N)
+            recs = {F: rec}
+            if F == 'D':
+                for G in ('E2', 'E3', 'FF'):
+                    rg = M3O + 'm3_s8v3_%s_N%d_J300_v1_8_1.json' % (G, N)
+                    if sha_file(rg) != PINS[rg]:
+                        raise Refused('C-LAW-READ: %s does not match its pin' % os.path.basename(rg))
+                    check_trial(rg, N)
+                    recs[G] = RD.load(rg, ap, 300, N)
+            cert = RD.load_lawcert(cp, co, 300, N, recs)
+        except Refused:
+            raise
+        except Exception as e:
+            raise Refused('C-LAW-READ: %s or %s: %s' % (os.path.basename(rp), os.path.basename(cp), e))
+        res[F] = (rec, cert)
+    return res
+
+
+def chi2_tail(n, s):
+    if n == 2:
+        return (-s / 2).exp()
+    if n == 3:
+        return (s / 2).sqrt().erfc() + (2 * s / arb.pi()).sqrt() * (-s / 2).exp()
+    raise Refused('chi2_tail: n = %r' % n)
+
+
+def r_over_t(E, J_lo, t_hi, jtest=None):
+    """R/t over the last piece: rem 300^4 t_hi^3 + J_lo (tail + ann + far)(J_lo), with C-MONO-TAIL and C-MONO-FAR (jtest: PLANT-TAIL)."""
+    if E.get('laws') is None:
+        return arb(0)
+    L, parts = E['laws'], E['parts']
+    j0, J = arb(300), qa(J_lo)
+    Jt = J if jtest is None else qa(jtest)
+    tot = qa(parts['rem']) * arb(300) ** 4 * qa(t_hi) ** 3
+    for part in ('tail', 'ann'):
+        g = L[part]
+        for a, G in g['a_G']:
+            if not (Jt * qa(a) / qa(G) > 5):
+                raise Refused('C-MONO-TAIL: J_lo a/G is not above 5 for a %s pair' % part)
+        P = lambda JJ: sum((chi2_tail(g['n'], JJ * qa(a) / qa(G)) for a, G in g['a_G']), arb(0))
+        r = P(J).upper() / P(j0).lower()
+        tot = tot + J * qa(parts[part]) * r.sqrt()
+    fr = qa(L['far_rate'])
+    if not (Jt * fr > 1):
+        raise Refused('C-MONO-FAR: J_lo far_rate is not above 1')
+    tot = tot + J * qa(parts['far']) * (-fr * (J - j0)).exp()
+    return tot.upper()
+
+
+def entry_x1(RD, LW, F, key, x0, J_lo, t_hi, tb, jtest=None):
+    """(X(t) - X(0))/t over the last piece from the coefficient balls and the law remainder; C-A0 first."""
+    rec, cert = LW[F]
+    LO, HI, _eb = RD.entry_ball(rec, key)
+    if len(LO) != 4 or len(HI) != 4:
+        raise Refused('C-A0: %s:%s has %d coefficient balls, expected 4' % (F, key, len(LO)))
+    if not (qa(LO[0]) <= x0 and x0 <= qa(HI[0])):
+        raise Refused('C-A0: P1\'s exact %s:%s(0) is outside [LO_0, HI_0]' % (F, key))
+    E = RD.entry_law(cert, F, key)
+    s = arb(0)
+    for k in (3, 2, 1):
+        s = s * tb + hull(LO[k], HI[k])
+    return s + arb(0, 1) * r_over_t(E, J_lo, t_hi, jtest)
+
+
+def last_uhat(N, RD, LW, c10, v3row, ix, jlo, flipx=False, jtest=None):
+    """the factored uhat on the last piece of N: {(k, b): enclosure of (uhat_kb - uhat0_kb)/t}, the control lines and t_hi."""
+    u0s, mu0s, G0s, T0s = c10[:4]
+    J_lo = grid_end(jlo, True)   # v2_3: the conservative reading of the token (here its binary64, below the token)
+    t_hi = 1 / J_lo
+    tb = arb(0).union(qa(t_hi))
+    G0 = [[to_arb(G0s[i][j]) for j in range(3)] for i in range(3)]
+    T0 = [[to_arb(T0s[i][j]) for j in range(3)] for i in range(3)]
+    G1 = [[None] * 3 for _ in range(3)]
+    T1 = [[None] * 3 for _ in range(3)]
+    for (b, c) in RPE:
+        i, j = REVEN.index(b), REVEN.index(c)
+        G1[i][j] = G1[j][i] = entry_x1(RD, LW, 'D', 'g,%d,%d' % (b, c), G0[i][j], J_lo, t_hi, tb, jtest)
+        T1[i][j] = T1[j][i] = entry_x1(RD, LW, 'N', 'T,%d,%d' % (b, c), T0[i][j], J_lo, t_hi, tb, jtest)
+    G = [[G0[i][j] + tb * G1[i][j] for j in range(3)] for i in range(3)]
+    sg = [G[b][b].sqrt() for b in range(3)]
+    sg0 = [G0[b][b].sqrt() for b in range(3)]
+    mu0 = [to_arb(m) for m in mu0s]
+    c0 = [[to_arb(u0s[k][b]) / sg0[b] for b in range(3)] for k in range(3)]
+    if flipx:
+        c0[1] = [-x for x in c0[1]]
+    U = [[hull(v3row[ix['u%s%s_lo' % (KN[k], BN[b])]], v3row[ix['u%s%s_hi' % (KN[k], BN[b])]]) for b in range(3)] for k in range(3)]
+    cvec = [[U[k][b] / sg[b] for b in range(3)] for k in range(3)]
+    mv = lambda M, v: [sum((M[i][j] * v[j] for j in range(3)), arb(0)) for i in range(3)]
+    dot = lambda a, b: sum((a[i] * b[i] for i in range(3)), arb(0))
+    res, ctl = {}, []
+    for k in range(3):
+        A = [[T1[i][j] - mu0[k] * G1[i][j] for j in range(3)] for i in range(3)]
+        ck = cvec[k]
+        den = dot(c0[k], mv(G, ck))
+        if not (den > 0):
+            raise Refused('C-BETA: c0^T G c is not certainly positive at N = %d, k = %s' % (N, KN[k]))
+        dmu = dot(c0[k], mv(A, ck)) / den
+        Gc = mv(G, ck)
+        r = [-x + dmu * y for x, y in zip(mv(A, ck), Gc)]
+        w = [arb(0)] * 3
+        for j in range(3):
+            if j == k:
+                continue
+            f = dot(c0[j], r) / (mu0[j] - mu0[k])
+            w = [w[i] + c0[j][i] * f for i in range(3)]
+        beta = dot(c0[k], mv(G0, ck))
+        if not (beta > 0):
+            raise Refused('C-BETA: beta is not certainly positive at N = %d, k = %s' % (N, KN[k]))
+        g00 = dot(c0[k], mv(G1, c0[k]))
+        g0w = dot(c0[k], mv(G1, w))
+        ww = dot(w, mv(G, w))
+        alpha_t = -(g00 * beta * beta + 2 * beta * tb * g0w + tb * ww) / (beta + 1)
+        dct = [w[i] + alpha_t * c0[k][i] for i in range(3)]
+        for b in range(3):
+            e = dct[b] * sg[b] + c0[k][b] * G1[b][b] / (sg[b] + sg0[b])
+            res[k, b] = e
+            u0 = to_arb(u0s[k][b])
+            if flipx and k == 1:
+                u0 = -u0
+            if not (u0 + tb * e).overlaps(U[k][b]):
+                raise Refused('C-UHATF: uhat0 + t e misses v3\'s interval for u%s%s at N = %d' % (KN[k], BN[b], N))
+        ctl.append('k=%s dmu/t %s' % (KN[k], dmu.str(6)))
+    return res, ctl, t_hi
+
+
+def load_m4():
+    for p in M4:
+        if sha_file(p) != PINS[p]:
+            raise Refused('C-M4-READ: %s does not match its pin' % os.path.basename(p))
+    mod = import_pinned(M4_READER_PATH, 'm4_reader_v1')
+    try:
+        rec = at_prec(M4_PREC, mod.load, M4[0], M4[1], PINS[M4[0]], PINS[M4_READER_PATH])
+    except Refused:
+        raise
+    except Exception as e:
+        raise Refused('C-M4-READ: m4_reader_v1.load: %s' % e)
+    return rec, mod
+
+
+def load_m2b():
+    for p in M2B:
+        if sha_file(p) != PINS[p]:
+            raise Refused('C-M2B-READ: %s does not match its pin' % os.path.basename(p))
+    mod = import_pinned(M2B_READER_PATH, 'm2b_reader_v1')
+    try:
+        rec = at_prec(M2B_PREC, mod.load, M2B[0], M2B[1], expected_sha256=PINS[M2B[0]], reader_sha256=PINS[M2B_READER_PATH])
+    except Refused:
+        raise
+    except Exception as e:
+        raise Refused('C-M2B-READ: m2b_reader_v1.load: %s' % e)
+    return rec, mod
+
+
+def eps_over_t(m2, N, J_lo):
+    """C-MONO-M2B and C-COPY-M2B: eps_r/t over J >= J_lo and eps_r(J_lo), from M2B_KV_v1's law (m2b_reader_v1 law_balls' terms)."""
+    rec, mod = m2
+    P = at_prec(M2B_PREC, mod.balls_of, rec, N)
+    J = qa(J_lo)
+    sig = 150 / J
+    ca = arb('0.3') * P['AE'] / 2
+    cb = arb('0.45') * P['KAPPA_B'] / 2
+    cf = arb('0.5') * mod.A_M_LAW
+    cg = arb('0.95') * (1 - mod.COS40) / 2
+    if not (J * ca > 1 and J * cb > 1 and J * cf > 4 and J * cg > 2):
+        raise Refused('C-MONO-M2B: J_lo is below a monotonicity threshold of the M2B law')
+    dec = (-ca * (J - 150)).exp()
+    tails = (P['TX'] + P['ANN']) * dec + P['TB'] * (-cb * (J - 150)).exp()
+    near = P['NP'] * sig ** 2 + P['R1'] * sig + (P['D5'] + P['R0']) * sig ** 5 + tails
+    fJ = P['FAR'] * (J / 150) ** 2 * (-cf * (J - 150)).exp()
+    g = P['GB'] * (J / 150) * (-cg * (J - 150)).exp()
+    rz = P['Z2'].sqrt()
+    eps = ((near * near + fJ).sqrt() + g) / rz
+    ref = at_prec(M2B_PREC, mod.law_balls, P, J)['eps_r']
+    if not eps.overlaps(ref):
+        raise Refused('C-COPY-M2B: eps_r(J_lo) rebuilt from the terms differs from m2b_reader_v1 law_balls at N = %d' % N)
+    near_t = 150 * (P['NP'] * sig + P['R1'] + (P['D5'] + P['R0']) * sig ** 4) + J * tails
+    eps_t = ((near_t * near_t + J * J * fJ).sqrt() + J * g) / rz
+    if not (eps < 1):
+        raise Refused('C-MONO-M2B: eps_r(J_lo) is not below 1')
+    return eps_t.upper(), eps.upper()
+
+
+def x_m0(N, kind):
+    """engine A's printed m0 (basis psi, e1, e3) from the EXPLICIT line of its x record (pinned)."""
+    p = XREC[N][kind]
+    if sha_file(p) != PINS[p]:
+        raise Refused('C-M0-TIE: %s does not match its pin' % os.path.basename(p))
+    L = [ln for ln in open(p).read().splitlines() if re.match(r'EXPLICIT N=%d %s +: m0 ' % (N, kind), ln)]
+    if len(L) != 1:
+        raise Refused('C-M0-TIE: %d EXPLICIT m0 lines in %s' % (len(L), os.path.basename(p)))
+    toks = L[0].split(': m0 ', 1)[1].split(' | ', 1)[0].split()
+    if len(toks) != 3:
+        raise Refused('C-M0-TIE: the m0 of %s has %d values' % (os.path.basename(p), len(toks)))
+    return [Fraction(float(x)) for x in toks]
+
+
+def delta_kind(m4, c10, N, kind, tamper=None):
+    """C-M0-TIE and delta = m0* - m0 for engine A's kind e1 or e3: m0* = G0^-1 T0[:, k] exact from C10's algebraic G0, T0, the unique
+    coordinates of S^(0) e_k in W(0) (C-SPAN; the coordinate argument, no K-ORTH), m0 the M4 record's MG(g, 0) for g in (psi, e1, e3), equal to
+    the x record's printed m0. Returns ([delta_g] as arb balls, zero) with zero True only if every delta_g is 0 in exact arithmetic (sympy's
+    simplify; an undecided case counts as nonzero, so C-NU is then required)."""
+    rec, mod = m4
+    p = rec['N%d' % N][kind]
+    if tuple(mod.BASES[kind]) != ('psi', 'e1', 'e3'):
+        raise Refused('C-M0-TIE: engine A basis of %s is not (psi, e1, e3)' % kind)
+    m0 = [Fraction(p['MG'][(g, 0)]) for g in ('psi', 'e1', 'e3')]
+    if tamper == 'TIE':
+        m0[1] = Fraction(math.nextafter(float(m0[1]), math.inf))
+    if m0 != x_m0(N, kind):
+        raise Refused('C-M0-TIE: the M4 record MG(g, 0) differ from engine A x record m0 at N = %d %s' % (N, kind))
+    G0 = sp.Matrix(c10[2])
+    T0 = sp.Matrix(c10[3])
+    k = {'e1': 1, 'e3': 2}[kind]
+    ms = G0.LUsolve(T0[:, k])
+    zero = all(sp.simplify(ms[i] - sp.Rational(m0[i].numerator, m0[i].denominator)) == 0 for i in range(3))
+    return [to_arb(sp.radsimp(sp.expand(ms[i]))) - qa(m0[i]) for i in range(3)], zero
+
+
+def load_nu():
+    """C-NU at load: the NU record, its producer and nu_reader_v1_1 match their pins; the reader checks the header (FORMAT NU_G_RECORD_v1,
+    STATUS CERTIFIED, RUN_VERDICT VALID, PRODUCER pk24, CODE = the pinned producer, the CLAIM's head, T1 = 1/J_LO_CHECK), the record's
+    TRIAL_SET against the trial pins (TS_FILES), and parses the bounds exactly (N<N>_NU = nu_psi nu_e1 nu_e3, the producer's order)."""
+    for p in (NU_PATH, NU_CODE, NU_READER_PATH):
+        if sha_file(p) != PINS[p]:
+            raise Refused('C-NU: %s does not match its pin' % os.path.basename(p))
+    rd = import_pinned(NU_READER_PATH, 'nu_reader_v1_1')
+    ts = dict((N, (os.path.basename(TS_FILES[N]), PINS[TS_FILES[N]])) for N in (4, 3))
+    try:
+        rec = rd.load(NU_PATH, PINS[NU_PATH], ts, (os.path.relpath(NU_CODE, W18), PINS[NU_CODE]))
+    except rd.NuError as e:
+        raise Refused('C-NU: nu_reader_v1_1.load: %s' % e)
+    return rd, rec
+
+
+def nu_values(NU, N, J_lo):
+    """C-NU: nu_g >= ||(B_g(t) - b0_g) 1_near||_t / t for g in (psi, e1, e3) and every t in (0, 1/J_lo], from the NU record through
+    nu_reader_v1_1 (the reader refuses unless the record's J_LO_CHECK <= J_lo); the exact decimal values as arb balls."""
+    rd, rec = NU
+    try:
+        v = rd.nu_bounds(rec, N, J_lo)
+    except rd.NuError as e:
+        raise Refused('C-NU: nu_reader_v1_1.nu_bounds at N = %d: %s' % (N, e))
+    if len(v) != 3 or not all(isinstance(x, Fraction) and x > 0 for x in v):
+        raise Refused('C-NU: the NU bounds at N = %d are not three positive exact values' % N)
+    return [qa(x) for x in v]
+
+
+def bridge_term(dl, zero, NU, N, J_lo):
+    """the bridge sum_g |delta_g| nu_g as an arb upper value, with the nu used: 0 and no C-NU where delta = 0 exactly (the row 4642);
+    otherwise C-NU through the NU record, refused when the build carries none."""
+    if zero:
+        return arb(0), None
+    if NU is None:
+        raise Refused('C-NU: delta is not 0 at N = %d and this build carries no NU record' % N)
+    nu = nu_values(NU, N, J_lo)
+    return sum((abs(dl[g]) * nu[g] for g in range(3)), arb(0)).upper(), nu
+
+
+def far_star(mod, p, kind, J, dabs):
+    """far_out at mbar_g(t) + |delta_g| (pk24/NU_G_NOTE_v1.md sect. 3): M4_KV_v1's far items X300 (J/300)^p e^(-c (J-300))
+    with the weights of m4_reader_v1 law_balls (hf = 1 for e1, e3: oSS 1, oS_g 2 mbar_g, oD_g_h w_gh mbar_g mbar_h), mbar_g = sum_j |m_gj|
+    t^j at t = 1/J, plus |delta_g| (dabs, in BASES order; None: delta = 0)."""
+    if kind not in ('e1', 'e3'):
+        raise Refused('far_star: kind %s' % kind)
+    t_ = 1 / J
+    mb = dict((g, sum((abs(mod.farb(p['MG'][(g, j)])) * mod.ipow(t_, j) for j in range(4)), arb(0))) for g in mod.BASES[kind])
+    if dabs is not None:
+        mb = dict((g, mb[g] + dabs[i]) for i, g in enumerate(mod.BASES[kind]))
+    far = arb(0)
+    for name in mod.far_names(kind):
+        x300, pw, c = p['FAR'][name]
+        xj = mod.farb(x300) * mod.ipow(J / 300, pw) * (-mod.farb(c) * (J - 300)).exp()
+        if name == 'oSS':
+            w = arb(1)
+        elif name.startswith('oS_'):
+            w = 2 * mb[name[3:]]
+        else:
+            g, h = name[3:].split('_')
+            w = (1 if g == h else 2) * mb[g] * mb[h]
+        far = far + w * xj
+    return far
+
+
+def re_over_t(m4, kind, N, J_lo, keep_m0=False, jtest=None, bridge=None, dabs=None, info=None):
+    """C-MONO-M4, C-COPY-M4 and C-COPY-FAR: R_e/t over J >= J_lo from M4_KV_v1's law (m4_reader_v1 law_balls' terms) with M0 taken out of nP,
+    the far term far_out at mbar_g + |delta_g| (dabs; None where delta = 0), plus the bridge sum_g |delta_g| nu_g (bridge = that sum as an arb
+    upper value); keep_m0 (PLANT-M0) keeps M0 J, the law's far and no bridge. info (a dict or None) receives far and far*."""
+    rec, mod = m4
+    Jf = Fraction(J_lo)
+    B = at_prec(M4_PREC, mod.law_balls, rec, kind, N, Jf)
+    p = rec['N%d' % N][kind]
+    J = qa(Jf)
+    Jt = J if jtest is None else qa(jtest)
+    s = 300 / J
+    M = [mod.farb(p['M%d' % k]) for k in range(4)]
+    nP = sum((mod.ipow(s, k) * M[k] for k in range(4)), arb(0))
+    if not nP.overlaps(B['nP']):
+        raise Refused('C-COPY-M4: nP(J_lo) rebuilt from M0..M3 differs from m4_reader_v1 at N = %d %s' % (N, kind))
+    far0 = at_prec(M4_PREC, far_star, mod, p, kind, J, None)
+    if not far0.overlaps(B['far']):
+        raise Refused('C-COPY-FAR: far(J_lo) rebuilt from the far items differs from m4_reader_v1 at N = %d %s' % (N, kind))
+    far = B['far'] if keep_m0 or dabs is None else at_prec(M4_PREC, far_star, mod, p, kind, J, dabs)
+    if info is not None:
+        info.update(far=B['far'], farstar=far)
+    ca = mod.LAM_CH * arb(mod.A_E_F) / 2
+    cb = mod.LAM_CH * mod.kappa_b() / 2
+    if not (Jt * ca > 1 and Jt * cb > 1):
+        raise Refused('C-MONO-M4: J_lo is below the tail monotonicity threshold at N = %d %s' % (N, kind))
+    for name in mod.far_names(kind):
+        _x300, pw, c = p['FAR'][name]
+        if not (Jt * mod.farb(c) > 2 + mod.farb(pw)):
+            raise Refused('C-MONO-M4: J_lo is below the far item %s threshold at N = %d %s' % (name, N, kind))
+    dmax = max(p['SUPF'])
+    if not (Jt * mod.RHO_G > 1 + dmax):
+        raise Refused('C-MONO-M4: J_lo is below the gB threshold at N = %d %s' % (N, kind))
+    t_hi = 1 / J
+    if keep_m0:
+        main_t = M[0] * J
+    else:
+        main_t = arb(0)   # |P(t) - r0|: M0 out of nP; r0 enters through the bridge
+    main_t = main_t + 300 * (M[1] + s * M[2] + s * s * M[3])
+    near_t = main_t + arb(300) ** 4 * t_hi ** 3 * (mod.farb(p['ND']) + mod.farb(p['NR0'])) + J * (B['tailX'] + B['tailB'] + B['ann'])
+    br = arb(0) if keep_m0 else bridge
+    if br is None:
+        raise Refused('C-NU: no bridge term for %s at N = %d' % (kind, N))
+    L_t = ((near_t * near_t + J * J * far).sqrt() + J * B['gB'] + br) / B['D']
+    return L_t.upper()
+
+
+def finite_rows(N, ix, rows, order, c10):
+    """the finite pieces of N: {key: (residual /t upper ends, uhat /t enclosures)}; C-FIN."""
+    u0s = c10[0]
+    u0 = [[to_arb(u0s[k][b]) for b in range(3)] for k in range(3)]
+    keys = [k for k in order if k.startswith('N%d_P' % N)]
+    last = [k for k in keys if rows[k][ix['jhi']] == 'inf']
+    if len(last) != 1 or last[0] != keys[-1]:
+        raise Refused('C-FIN: N = %d has %d last pieces, or it is not the last row' % (N, len(last)))
+    res = {}
+    for key in keys[:-1]:
+        v = rows[key]
+        jlo, jhi = grid_end(v[ix['jlo']], True), grid_end(v[ix['jhi']], False)   # v2_3: the N1, the token covered at both ends
+        if not (0 < jlo < jhi):
+            raise Refused('C-FIN: %s grid ends' % key)
+        tl, th = qa(1 / jhi), qa(1 / jlo)
+        rs = dict((f, qa(Fraction(v[ix[f]])) * qa(jhi)) for f in RES_FIELDS)
+        us = {}
+        for k in range(3):
+            for b in range(3):
+                lo = qa(Fraction(v[ix['u%s%s_lo' % (KN[k], BN[b])]])) - u0[k][b]
+                hi = qa(Fraction(v[ix['u%s%s_hi' % (KN[k], BN[b])]])) - u0[k][b]
+                qs = [x / y for x in (lo, hi) for y in (tl, th)]
+                e = qs[0]
+                for x in qs[1:]:
+                    e = e.union(x)
+                us[k, b] = e
+        res[key] = (rs, us)
+    return res, last[0]
+
+
+def last_resid(N, v3row, ix, sp4row, ix4, uh_abs, rb_t):
+    """the last piece's residual /t fields by option (b): rho_k/t, L_k/t, q_a/t, eps_ka/t (C-L3)."""
+    tau = qa(Fraction(v3row[ix['tau_hi']]))
+    mu_lo = [qa(Fraction(v3row[ix[f]])) for f in ('mu0_lo', 'mux_lo', 'muy_lo')]
+    rho_hi = [qa(Fraction(v3row[ix[f]])) for f in ('rho0_hi', 'rhox_hi', 'rhoy_hi')]
+    s_lo = [arb(1), mu_lo[1], mu_lo[2]]
+    s_hi = [arb(1), qa(Fraction(sp4row[ix4['sx_hi']])), qa(Fraction(sp4row[ix4['sy_hi']]))]
+    rho_t = [sum((uh_abs[k][b] * rb_t[b] for b in range(3)), arb(0)) for k in range(3)]
+    f = {}
+    for k in range(3):
+        f['rho%s_hi' % KN[k]] = rho_t[k]
+        den = mu_lo[k] - tau
+        if not (den > 0):
+            raise Refused('C-L3: mu_%s,lo - tau is not positive at N = %d' % (KN[k], N))
+        f['L%s_hi' % KN[k]] = rho_t[k] / den
+    for a in range(3):
+        ga = s_lo[a] - tau
+        if not (ga > 0):
+            raise Refused('C-L3: g_%s is not positive at N = %d' % (KN[a], N))
+        gk = {}
+        for k in range(3):
+            if k != a:
+                gk[k] = (mu_lo[k] - s_hi[a]) if k < a else (s_lo[a] - s_hi[k])
+                if not (gk[k] > 0):
+                    raise Refused('C-L3: the gap g_%s%s is not positive at N = %d' % (KN[k], KN[a], N))
+        Da = 1 - sum((rho_hi[k] * rho_hi[k] / (ga * gk[k]) for k in gk), arb(0))
+        if not (Da > 0):
+            raise Refused('C-L3: D_%s is not positive at N = %d' % (KN[a], N))
+        qt = rho_t[a] / (ga * Da)
+        f['q%s_hi' % KN[a]] = qt
+        for k in gk:
+            f['eps_%s%s_hi' % (KN[k], KN[a])] = rho_hi[k] * qt / gk[k]
+    return dict((fld, f[fld]) for fld in RES_FIELDS)
+
+
+def row_text(jlo, jhi, rs, us):
+    vals = [jlo, jhi] + [dec_hi(rs[f]) for f in RES_FIELDS]
+    for k in range(3):
+        for b in range(3):
+            vals += [dec_lo(us[k, b]), dec_hi(us[k, b])]
+    return ' '.join(vals)
+
+
+def readback(text, rows_expected, tamper=None):
+    """C-WRITE: the record text read back: FORMAT, FIELDS, every row's key and value count, and the rows equal to the computed strings."""
+    L = text.splitlines()
+    if tamper == 'ROW':
+        L = [ln.replace(' ', '  ', 1) if re.match(r'N4_P[0-9]+ = ', ln) else ln for ln in L]
+    head = dict(ln.split(' = ', 1) for ln in L if ' = ' in ln and not ln.startswith('#') and not re.match(r'N[34]_P', ln))
+    if head.get('FORMAT') != 'MR_LEMMAP_KV_v3F' or head.get('FIELDS') != ' '.join(OUT_FIELDS):
+        raise Refused('C-WRITE: FORMAT or FIELDS')
+    got = dict(ln.split(' = ', 1) for ln in L if re.match(r'N[34]_P[0-9]+ = ', ln))
+    if got != rows_expected or any(len(v.split()) != len(OUT_FIELDS) for v in got.values()):
+        raise Refused('C-WRITE: the rows differ from the computed strings')
+    return True
+
+
+def main():
+    t0 = time.process_time()
+    ctx.prec = 256
+    out('%s sha256 %s MODE=%s TAG=%s (P2 option (b): MR_LEMMAP_KV_v3F, %s)' % (
+        LABEL, sha_file(SELF), MODE, TAG, 'CERTIFIED record to p2/v3f2/MR_LEMMAP_V3F.kv' if MODE == 'cert' else 'DRY record to p2/dry_%s' % TAG))
+    fails, nofire = [], []
+    bad = [p for p in PINS if sha_file(p) != PINS[p]]
+    out('C-HASH %s (%d pinned files%s)' % (gate(fails, 'C-HASH', not bad), len(PINS), '; differ: ' + ', '.join(bad) if bad else ''))
+    if bad:
+        out('VERDICT INVALID')
+        return 3
+    ix, rows, head, order = kv_rows(LEMMAP3)
+    if head.get('FORMAT') != 'MR_LEMMAP_KV_v2' or head.get('STATUS') != 'CERTIFIED':
+        raise Refused('C-LEMMAP: MR_LEMMAP v3 is not a certified MR_LEMMAP_KV_v2 record')
+    ix4, rows4, head4, _o4 = kv_rows(SPEC4)
+    if head4.get('STATUS') != 'CERTIFIED':
+        raise Refused('C-SPEC: MR_SPECTRAL v4 is not certified')
+    c10 = dict((N, c10_data(N)) for N in (4, 3))
+    out('C-C10: %s (%s) UHAT0, RITZ0 and GT0_W parse at both N; G0[0][0] = 1, G0 and T0 symmetric -> PASS' % (os.path.basename(C10REC), PINS[C10REC][:8]))
+    RD = import_pinned(RDR, 'm3_reader_s9h_v1')
+    LW = dict((N, load_laws(RD, N)) for N in (4, 3))
+    out('C-LAW-READ: S8 D and N (N4 %s %s, N3 %s %s) with m3_lawcert_v1_1 and v1_2 through m3_reader_s9h_v1 (%s), trial sets pinned -> PASS' % (
+        PINS[S8REC[4]['D'][0]][:8], PINS[S8REC[4]['N'][0]][:8], PINS[S8REC[3]['D'][0]][:8], PINS[S8REC[3]['N'][0]][:8], PINS[RDR][:8]))
+    m4, m2 = load_m4(), load_m2b()
+    out('C-M4-READ, C-M2B-READ: M4_KV_v1 (%s) through m4_reader_v1 (%s), M2B_KV_v1 (%s) through m2b_reader_v1 (%s), records bound to their runs -> PASS' % (
+        PINS[M4[0]][:8], PINS[M4_READER_PATH][:8], PINS[M2B[0]][:8], PINS[M2B_READER_PATH][:8]))
+    if NU_PATH is None:
+        NU = None
+        out('C-NU (load): this build carries no NU record; a nonzero delta will be refused (the row 4642)')
+    else:
+        NU = load_nu()
+        out('C-NU (load): NU record %s (%s), producer %s (%s), through nu_reader_v1_1 (%s): pins, FORMAT %s, STATUS CERTIFIED, CODE = the pinned producer, CLAIM head, TRIAL_SET = the trial pins; covers J >= %s -> PASS' % (
+            os.path.relpath(NU_PATH, W18), PINS[NU_PATH][:8], os.path.relpath(NU_CODE, W18), PINS[NU_CODE][:8], PINS[NU_READER_PATH][:8], NU[0].FORMAT,
+            NU[1]['J_LO']))
+    BR, DABS = {}, {}
+    REC_ROWS, LAST = {}, {}
+    for N in (4, 3):
+        fin, lk = finite_rows(N, ix, rows, order, c10[N])
+        for key, (rs, us) in fin.items():
+            v = rows[key]
+            REC_ROWS[key] = row_text(v[ix['jlo']], v[ix['jhi']], rs, us)
+        wr = max(float(rs['rhox_hi'].mid()) for rs, _u in fin.values())
+        out('C-FIN N=%d: %d finite pieces, residual /t as X_hi jhi and uhat /t by interval division; largest rhox/t %.6g -> PASS' % (N, len(fin), wr))
+        v = rows[lk]
+        res, ctl, t_hi = last_uhat(N, RD, LW[N], c10[N], v, ix, v[ix['jlo']])
+        out('C-A0, C-MONO-TAIL, C-MONO-FAR, C-BETA N=%d: 12 entries, J_lo %s -> PASS' % (N, v[ix['jlo']]))
+        out('C-UHATF N=%d (control): uhat0 + [0, t_hi] e meets v3\'s last-piece interval for all 9 uhat; %s -> PASS' % (N, '; '.join(ctl)))
+        J_lo = grid_end(v[ix['jlo']], True)   # v2_3: the conservative reading, as in last_uhat
+        BR[N], DABS[N] = {}, {}
+        for kind in ('e1', 'e3'):
+            dl, zero = delta_kind(m4, c10[N], N, kind)
+            BR[N][kind], nu = bridge_term(dl, zero, NU, N, J_lo)
+            DABS[N][kind] = None if zero else [abs(d).upper() for d in dl]
+            out('C-M0-TIE, C-NU, C-BRIDGE N=%d %s: engine A m0 = the M4 record MG(g, 0) = the x record EXPLICIT m0; delta = m0* - m0 = %s; %s; sum |delta_g| nu_g <= %s -> PASS' % (
+                N, kind, ', '.join(x.str(4) for x in dl),
+                'delta = 0 exactly, C-NU not required' if zero else 'nu = %s (NU record, J_lo %s)' % (', '.join(x.str(6) for x in nu), v[ix['jlo']]),
+                BR[N][kind].str(4)))
+        e_t, e_lo = eps_over_t(m2, N, J_lo)
+        fi = {'e1': {}, 'e3': {}}
+        rb_t = [arb(e_t) / (1 - arb(e_lo))] + [re_over_t(m4, k, N, J_lo, bridge=BR[N][k], dabs=DABS[N][k], info=fi[k]) for k in ('e1', 'e3')]
+        out('C-MONO-M2B, C-COPY-M2B, C-MONO-M4, C-COPY-M4, C-COPY-FAR N=%d: eps_r/t <= %s (eps_r(J_lo) <= %s), R_e1/t <= %s, R_e3/t <= %s; far(J_lo) at |m| '
+            'and at |m| + |delta|: e1 %s, %s; e3 %s, %s -> PASS' % (
+                N, arb(e_t).str(6), arb(e_lo).str(6), rb_t[1].str(6), rb_t[2].str(6), fi['e1']['far'].str(8), fi['e1']['farstar'].str(8),
+                fi['e3']['far'].str(8), fi['e3']['farstar'].str(8)))
+        U = [[hull(v[ix['u%s%s_lo' % (KN[k], BN[b])]], v[ix['u%s%s_hi' % (KN[k], BN[b])]]) for b in range(3)] for k in range(3)]
+        uh_abs = [[abs(U[k][b]).upper() for b in range(3)] for k in range(3)]
+        sp4 = rows4[lk]
+        rs = last_resid(N, v, ix, sp4, ix4, uh_abs, rb_t)
+        REC_ROWS[lk] = row_text(v[ix['jlo']], v[ix['jhi']], rs, res)
+        out('C-L3 N=%d: gaps and D_a certainly positive on the last piece -> PASS' % N)
+        out('C-RESF N=%d (INFO): rho_k/t on the last piece %s; times t_hi %s against v3\'s rho_k,hi %s' % (
+            N, ', '.join(rs['rho%s_hi' % k].str(6) for k in KN), ', '.join((rs['rho%s_hi' % k] * qa(t_hi)).str(4) for k in KN),
+            ', '.join(v[ix['rho%s_hi' % k]] for k in KN)))
+        for k in range(3):
+            out('INFO LAST N=%d %s u%s: (uhat - uhat0)/t in %s' % (N, lk, KN[k], ', '.join('%s %s' % (BN[b], res[k, b].str(8)) for b in range(3))))
+        LAST[N] = (lk, J_lo)
+    plant(nofire, 'PLANT-A0', lambda: last_uhat(4, RD, LW[4], c10_data(4, tamper='A0'), rows[LAST[4][0]], ix, rows[LAST[4][0]][ix['jlo']]))
+    plant(nofire, 'PLANT-TAIL', lambda: last_uhat(4, RD, LW[4], c10[4], rows[LAST[4][0]], ix, rows[LAST[4][0]][ix['jlo']], jtest=1))
+    plant(nofire, 'PLANT-ORIENT', lambda: last_uhat(3, RD, LW[3], c10[3], rows[LAST[3][0]], ix, rows[LAST[3][0]][ix['jlo']], flipx=True))
+
+    def plant_m0():
+        # at t = 0 the bound with M0 kept is M0 J -> infinity: its value at J_lo times 10^100 J_lo must exceed any finite /t bound
+        a = re_over_t(m4, 'e1', 4, LAST[4][1] * 10 ** 100, keep_m0=True)
+        b = re_over_t(m4, 'e1', 4, LAST[4][1] * 10 ** 100, bridge=BR[4]['e1'], dabs=DABS[4]['e1'])
+        if a > 2 * b:
+            raise Refused('C-BRIDGE: with M0 kept and no bridge, R_e1/t grows like M0 J (%s against %s at J = 1e100 J_lo): not O(t)' % (a.str(4), b.str(4)))
+    plant(nofire, 'PLANT-M0', plant_m0)
+    plant(nofire, 'PLANT-MONO', lambda: re_over_t(m4, 'e1', 4, LAST[4][1], jtest=1, bridge=BR[4]['e1'], dabs=DABS[4]['e1']))
+    plant(nofire, 'PLANT-TIE', lambda: delta_kind(m4, c10[4], 4, 'e1', tamper='TIE'))
+    plant(nofire, 'PLANT-NU', lambda: bridge_term([arb(1)] * 3, False, NU, 4, 1))
+    rec_keys = [k for k in order if k in REC_ROWS]
+    if len(rec_keys) != len(order):
+        raise Refused('C-WRITE: %d of %d pieces have rows' % (len(rec_keys), len(order)))
+    lines = ['# MR_LEMMAP_V3F (pk25, %s %s): written by %s' % (LABEL, MODE, LABEL), 'FORMAT = MR_LEMMAP_KV_v3F', 'RECORD = MR_LEMMAP_F',
+             'PRODUCER = pk25 %s' % LABEL, 'CODE = pk25/p2/%s.py:%s' % (LABEL, sha_file(SELF)),
+             'STATUS = %s' % ('CERTIFIED' if MODE == 'cert' else 'DRY'), 'RUN_VERDICT = VALID',
+             'CLAIM = on every piece of MR_LEMMAP v3 (for every J in [jlo, jhi], t = 1/J, the last piece to t = 0): <X>t_hi >= X/t for each O(t) field X of '
+             'MR_LEMMAP v3 (rho_k, L_k, q_a, eps_ka), and u<k><b>t_lo <= (uhat_kb - uhat_kb(0))/t <= u<k><b>t_hi with uhat_kb(0) the exact values UHAT0 '
+             '(the C10 record\'s); the last piece by the law entries in coefficient-ball form with P1\'s exact t^0 data, and the option (b) bridge for the residuals',
+             'SOURCE = MR_LEMMAP v3 %s; MR_SPECTRAL v4 %s; C10 %s; S8 D N4 %s N3 %s, S8 N N4 %s N3 %s with m3_lawcert_v1_1, v1_2; M4_KV_v1 %s; M2B_KV_v1 %s; %s' % (
+                 PINS[LEMMAP3][:8], PINS[SPEC4][:8], PINS[C10REC][:8], PINS[S8REC[4]['D'][0]][:8], PINS[S8REC[3]['D'][0]][:8],
+                 PINS[S8REC[4]['N'][0]][:8], PINS[S8REC[3]['N'][0]][:8], PINS[M4[0]][:8], PINS[M2B[0]][:8],
+                 'NU none (delta = 0 exactly at both N, the row 4642)' if NU is None else
+                 'NU %s %s (producer %s %s) through nu_reader_v1_1 %s; far at |m_g| + |delta_g| (pk24 NU_G_NOTE_v1 sect. 3)' % (
+                     os.path.relpath(NU_PATH, W18), PINS[NU_PATH][:8], os.path.relpath(NU_CODE, W18), PINS[NU_CODE][:8], PINS[NU_READER_PATH][:8])),
+             'J_UNIFORMITY = PER-PIECE: every row holds for every J in [jlo, jhi] of its piece; the last piece runs to J = inf (t = 0)',
+             'ORIENTATION = u_x along e1, u_y along e3 (as MR_LEMMAP v3)',
+             'ROUNDING = *_hi rounded up, *_lo rounded down, 17 significant digits']
+    for N in (4, 3):
+        lines.append('N%d_UHAT0 = %s' % (N, c10[N][4]))
+        lines.append('N%d_RITZ0 = %s' % (N, c10[N][5]))
+    lines.append('FIELDS = %s' % ' '.join(OUT_FIELDS))
+    for k in order:
+        lines.append('%s = %s' % (k, REC_ROWS[k]))
+    text = '\n'.join(lines) + '\n'
+    out('C-WRITE: the record text read back (%d rows) -> %s' % (len(order), gate(fails, 'C-WRITE', readback(text, REC_ROWS))))
+    plant(nofire, 'PLANT-WRITE', lambda: readback(text, REC_ROWS, tamper='ROW'))
+    out('PLANTS: 8 of 8 must-fire plants ran; not firing: %s' % (', '.join(nofire) if nofire else 'none'))
+    ok = not fails and not nofire
+    if ok:
+        recdir = os.path.join(P2D, 'v3f2') if MODE == 'cert' else os.path.join(P2D, 'dry_%s' % TAG)   # v2_3: a new cert name (0cd95286 is cited)
+        if MODE == 'dry' and not os.path.isdir(recdir):
+            os.mkdir(recdir)
+        if not os.path.isdir(recdir) or os.path.realpath(recdir) not in (os.path.realpath(os.path.join(P2D, 'v3f2')), os.path.realpath(os.path.join(P2D, 'dry_%s' % TAG))):
+            out('VERDICT INVALID (record folder)')
+            return 3
+        rp = os.path.join(recdir, 'MR_LEMMAP_V3F.kv')
+        with open(rp, 'x') as fh:
+            fh.write(text)
+        out('RECORD %s sha256 %s rows %d' % (os.path.relpath(rp, W18), sha_file(rp), len(order)))
+    out('RUN cpu %.1f s' % (time.process_time() - t0))
+    out('VERDICT %s' % ('VALID' if ok else 'INVALID'))
+    return 0 if ok else 3
+
+
+if __name__ == '__main__':
+    try:
+        rc = main()
+    except Refused as e:
+        out('STOP: %s' % e)
+        out('VERDICT INVALID')
+        rc = 3
+    FH.close()
+    sys.exit(rc)

@@ -1,0 +1,8 @@
+union_check_v1 sha256 8a25390d3a875683e3025d2c5dc7f8560fc347a12ed2e7d02ab4b73ac2108fa9 engine fbed2d93a84a738207d59b3bd451e6c7572a293c2d356167c0a57a2ddac1ad30 a 20 b 100 files 4
+FILE out/hubcert_v1e_cover3_20_50.out engine_ok True verdict_ok True ledger_lines 46
+FILE out/hubcert_v1e_cover4_20_50.out engine_ok True verdict_ok True ledger_lines 46
+FILE out/hubcert_v1e_cover3_50_100.out engine_ok True verdict_ok True ledger_lines 35
+FILE out/hubcert_v1e_cover4_50_100.out engine_ok True verdict_ok True ledger_lines 35
+UNION N=3 intervals 81 first_lo 20.0 (<= a: True) reach 100.6899849200678 (>= b: True) gaps 0 -> COVERS
+UNION N=4 intervals 81 first_lo 20.0 (<= a: True) reach 100.6899849200678 (>= b: True) gaps 0 -> COVERS
+VERDICT VALID

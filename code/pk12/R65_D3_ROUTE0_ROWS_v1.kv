@@ -1,0 +1,15 @@
+# R65_D3_ROUTE0_ROWS_v1 (pk12): R6.5's D3 route-0 rows, i.e. every D3 row whose lo reads route 0's U: type B3 (d_L >= 1),
+# TB (d_L = -1) and TD (d_L = 0) in kt_p212_cert_v1_3_1; N4's D3 (0,1) and (1,1) are out (O5). Row names as INTERFACE_UHAT_R65_v1_1
+# sect. 3: rname "<fam> (<dL>,<dR>)" written <fam>_<dL>_<dR>, '-' as 'm'. Derived by awk from the frozen mock record named in SOURCE,
+# whose row set is the engine's (its pinned row tables); the set does not depend on the mock values. TYPES_N* runs parallel to ROWS_N*.
+RECORD = R65_D3_ROUTE0_ROWS_v1
+FORMAT = S4U_KV_v1
+ENGINE = pk12/kt_p212_cert_v1_3_1.py:52700ed4caa2b285c7a184b6f1cb9564fa69c8d3848d9e4ff54bd7c9de70849a
+SOURCE = pk12/mocks/out/p212_v1_3_1/P2_12_JOINT_RECORD_v1_MOCK_kt_p212_cert_v1_3_1.kv:d600e2f58a468e624f8a0572e2e38bb1d27745a112114b3c00bed74f3901b9b5
+COUNT_N4 = 34
+ROWS_N4 = D3_m1_2 D3_m1_3 D3_m1_4 D3_m1_5 D3_m1_6 D3_m1_far D3_m1_inf D3_0_2 D3_0_3 D3_0_4 D3_0_5 D3_0_6 D3_0_far D3_0_inf D3_1_2 D3_1_3 D3_1_4 D3_1_5 D3_1_6 D3_1_far D3_1_inf D3_2_2 D3_2_3 D3_2_4 D3_2_5 D3_2_6 D3_2_far D3_2_inf D3_3_3 D3_3_4 D3_3_5 D3_3_6 D3_3_far D3_3_inf
+TYPES_N4 = TB TB TB TB TB TB TB TD TD TD TD TD TD TD B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3
+COUNT_N3 = 30
+ROWS_N3 = D3_m1_2 D3_m1_3 D3_m1_4 D3_m1_5 D3_m1_6 D3_m1_far D3_m1_inf D3_0_1 D3_0_2 D3_0_3 D3_0_4 D3_0_5 D3_0_6 D3_0_far D3_0_inf D3_1_1 D3_1_2 D3_1_3 D3_1_4 D3_1_5 D3_1_6 D3_1_far D3_1_inf D3_2_2 D3_2_3 D3_2_4 D3_2_5 D3_2_6 D3_2_far D3_2_inf
+TYPES_N3 = TB TB TB TB TB TB TB TD TD TD TD TD TD TD TD B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3 B3
+END = R65_D3_ROUTE0_ROWS_v1

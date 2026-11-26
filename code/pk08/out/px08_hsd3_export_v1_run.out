@@ -1,0 +1,26 @@
+px08_hsd3_export_v1 start; code sha256 101646c7e1aa9e494f36683fb87b36c1b66cc9e96621610a226002fb0106b685
+C-SRC: 11 pinned inputs, sha256 of the parsed bytes -> PASS
+C-ULIT -> PASS
+C-HARM -> PASS
+C-OPSTR -> PASS
+N4: COEF = (A + 1.06)^4 U = 44.3756314989 (float 44.3756314989), normX at r = 1 <= 6.661503697; spot 40.3017050785 vs 2 Cov_LH + Cov^2 4.248230e-05 -> PASS
+  N4 D3 (1,1) need 15.5 margin 2.327 largest r 2.3268 PASS
+  N4 D3 (1,2) need 20.3 margin 3.047 largest r 3.0474 PASS
+  N4 D3 (0,2) need 18.5 margin 2.777 largest r 2.7772 PASS
+  N4 D3 (0,3) need 173.7 margin 26.075 largest r 26.0752 PASS
+N3: COEF = (A + 0.72)^4 U = 9.03928047080 (float 9.03928047079), normX at r = 1 <= 3.006539618; spot 7.96146728913 vs 2 Cov_LH + Cov^2 2.057310e-05 -> PASS
+  N3 D3 (1,1) need 15.0 margin 4.989 largest r 4.9891 PASS
+  N3 D3 (0,2) need 18.5 margin 6.153 largest r 6.1533 PASS
+C-ARITH -> PASS
+C-NEED -> PASS
+C-SPOT -> PASS
+PLANT-ARITH -> FIRED
+PLANT-HARM -> FIRED
+PLANT-NEED -> FIRED
+PLANT-OPSTR -> FIRED
+PLANT-SPOT -> FIRED
+PLANT-SRC -> FIRED
+PLANT-ULIT -> FIRED
+CPU 0.02 s, wall 0.00 s
+VERDICT VALID
+RECORD HS_INV_NORMX_v1.kv 90bbc6f2eaa35cee6b01a77c77995d35659028c9806d5e21278f1899a6c2e67e

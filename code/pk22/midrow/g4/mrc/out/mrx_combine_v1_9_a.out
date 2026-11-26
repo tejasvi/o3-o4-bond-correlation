@@ -1,0 +1,10 @@
+mrx_combine_v1_9; script sha256 b473a2ea243406761b01964c7faf954b6b863a62ba43229b5c6128452e3ea450; mrx_cert_v1_9 sha256 26e7768640cbb3c9427c0735bac9cb82c65ae8bdf27ccddba986b3ef08a91012; python 3.14.4
+C-SRC (MIDROW_G6_SPEC_v1_6_2.md 1e570ab7, kt_mr_assembly_v1_8_4.py abd48b2c, MANIFEST_MR_V4_CERT_v1.sha256 6ac308d7) -> PASS
+C-SPECTRAL-PIN (mr/v4 MR_SPECTRAL.kv 0e4d817729c6f735 as MANIFEST_MR_V4_CERT_v1 lists it) -> PASS
+C-RUNS (N4 mrx_cert_v1_9_cert_n4.out cad626f3: ['VERDICT VALID'], C-ORIENT on 843 pieces, PLANT-ORIENT fired; N3 mrx_cert_v1_9_cert_n3.out d951b219: ['VERDICT VALID'], C-ORIENT on 904 pieces, PLANT-ORIENT fired; each names its two part files with their sha256s on RECORD lines) -> PASS
+C-PARTS (4 parts: RECORD MR_EXACT_PART, STATUS CERTIFIED, RUN_VERDICT VALID, CODE mrx_cert_v1_9 26e77686; FIELDS, X_POWER, TRIAL_SET, LEMMAP_SHA256, ORIENTATION equal; TRIAL_SET equal to MR_SPECTRAL's; rows: each base key and its jlo, jhi exactly MR_SPECTRAL's, N4 843 and N3 904 pieces, four ends each) -> PASS
+C-TEXT (X_DEFINITION and ORIENT_CHECK copied from MIDROW_G6_SPEC_v1_6_2.md sect. 6: X_DEFINITION equals engine v1_8_4's XDEF[MR_EXACT]; ORIENT_CHECK matches its ORIENT_RX with N4 843, N3 904, the record grid's counts; FIELDS equal its FIELDS4[MR_EXACT] + Pe_hi, X_POWER its XPOW[MR_EXACT]) -> PASS
+PLANT-TEXT (X_DEFINITION with its first <= changed to < must fail C-TEXT) -> FIRES
+PLANT-COUNT (ORIENT_CHECK with N4 843 - 1 pieces must fail the engine's count rule) -> FIRES
+RECORD /mnt/g2/release/root/code/pk22/midrow/g4/mrc/out/cert/MR_EXACT_CERT_v1_9_C.kv sha256 3f4d413ba87b77afa9ffb7f3c45987f475d2a888e15dce4c8da776ba6720b99c rows 6988
+VERDICT VALID

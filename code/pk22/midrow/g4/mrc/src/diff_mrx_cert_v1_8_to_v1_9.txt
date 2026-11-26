@@ -1,0 +1,104 @@
+--- /mnt/g2/release/root/code/pk22/midrow/g4/mrc/src/mrx_cert_v1_8.py	2026-11-21 13:01:33.815044976 +0000
++++ /mnt/g2/release/root/code/pk22/midrow/g4/mrc/src/mrx_cert_v1_9.py	2026-11-21 13:17:14.045146359 +0000
+@@ -1,5 +1,12 @@
+ #!/usr/bin/env python3
+-"""mrx_cert_v1_8.py (pk22): the certified v4 MR_EXACT writer (the P0_LOG rows 4430, 4446, 4453): mrx_cert_v1_7.py with the h0 rows
++"""mrx_cert_v1_9.py (pk22): mrx_cert_v1_8.py with H4TH's certified J-laws (the P0_LOG row 4485). v1_8's h0 rows took the uniform claims
++of c3h's H4TH entries, which have no law certificate in m3_lawcert_c3h_v1, so h0's x sign held only to J 484 (N4) and 854 (N3). Now variant C
++reads the c3h certificates of m3_lawcert_c3h_v1_1 (2178e7ff, 5f085edb; frozen in MANIFEST_C3H_LAWCERT_v1_1 bce72571), which certify CE3H, CS4H
++and H4TH, through the reader fork m3_reader_c3h_v1_1 (73ca0690; frozen in MANIFEST_m3_reader_c3h_v1_1 5202b515): CERTDEF's c3h row names that
++producer with the three families, cert_law gives H4TH's entries their certified laws, and C-CERT-SAME now covers them too. Nothing else changes.
++Usage: mrx_cert_v1_9.py cert N
++---- mrx_cert_v1_8.py's docstring:
++mrx_cert_v1_8.py (pk22): the certified v4 MR_EXACT writer (the P0_LOG rows 4430, 4446, 4453): mrx_cert_v1_7.py with the h0 rows
+ and pk25's certified mr/v4 records (MR_SPECTRAL 0e4d8177, rows equal to mr/v3's; MR_INSERT 21e88843; MANIFEST_MR_V4_CERT_v1 6ac308d7), with
+ MR_LEMMAP kept at mr/v3 (3164b778). Mode 'cert' only: every input is certified, and the parts go to out/cert for mrx_combine_v1_8.
+ - h0, the h end at d = 0 (G6 v1_6_2 sect. 4.1 with sect. 0d item 2; no d = 0 norm entry): w1 = S M_h l_2 and w2 = S l_2 = S^2 w-hat are
+@@ -136,7 +143,7 @@
+ flint.ctx.prec = 256
+ arb, fmpq, arb_mat = flint.arb, flint.fmpq, flint.arb_mat
+ if len(sys.argv) != 3 or sys.argv[1] != 'cert' or sys.argv[2] not in ('4', '3'):
+-    print('usage: mrx_cert_v1_8.py cert N   (N = 4 or 3; certified parts for mrx_combine_v1_8)')
++    print('usage: mrx_cert_v1_9.py cert N   (N = 4 or 3; certified parts for mrx_combine_v1_9)')
+     sys.exit(2)
+ N = int(sys.argv[2])
+ W = '/mnt/g2/release/root/code'
+@@ -175,9 +182,9 @@
+ MRXERR = (W + '/pk22/midrow/g4/mrx/out/mrx_err_v1_2_n%d.out' % N, {4: '03e6fb9d', 3: 'eb94f546'}[N])
+ MRXA0 = (W + '/pk22/midrow/g4/mrx/out/mrx_a0_err_v1_n%d.out' % N, {4: 'bb096e93', 3: '043aa549'}[N])
+ CERTSRC = {   # mrx_cert_v1_5: the reader fork, the two law certificates with their jobs' outputs, and the S8 records and asm outputs
+-    'READER': ({4: '/mnt/g2/release/root/code/pk22/m3/m3_reader_c3h_v1.py', 3: '/mnt/g2/release/root/code/pk22/m3/m3_reader_c3h_v1.py'}[N], {4: 'd7e39d070e1ce739d1eba579f35c1b560519b7cd9dd620d1120419a4c6ee6371', 3: 'd7e39d070e1ce739d1eba579f35c1b560519b7cd9dd620d1120419a4c6ee6371'}[N]),
+-    'C_c3h': ({4: '/mnt/g2/release/root/code/pk22/m3/out/m3_lawcert_c3h_v1_N4.json', 3: '/mnt/g2/release/root/code/pk22/m3/out/m3_lawcert_c3h_v1_N3.json'}[N], {4: '45224f98258646f8661cd91f17fd4252cbf3bc52e037816d7a351779e2cd0b35', 3: '1733e826ccc38e08f665657917e16fc2ef413135c07f1490efdc64e31451c3cc'}[N]),
+-    'O_c3h': ({4: '/mnt/g2/release/root/code/pk22/m3/out/m3_lawcert_c3h_v1_4.out', 3: '/mnt/g2/release/root/code/pk22/m3/out/m3_lawcert_c3h_v1_3.out'}[N], {4: 'c6d651a5779beb18aed97dd3c6b912ac8de8fa2c94b62ab671662b2104b817d3', 3: '4e58bfb39bfcb62e5bb34cd7b8fa0003944a45ba6dd900ee0fe4913baf28e428'}[N]),
++    'READER': ({4: '/mnt/g2/release/root/code/pk22/m3/m3_reader_c3h_v1_1.py', 3: '/mnt/g2/release/root/code/pk22/m3/m3_reader_c3h_v1_1.py'}[N], {4: '73ca06900fa04f8863bfb0daf0ee9c5a2f64bbecae3008f96a132cbd3ea50c73', 3: '73ca06900fa04f8863bfb0daf0ee9c5a2f64bbecae3008f96a132cbd3ea50c73'}[N]),   # mrx_cert_v1_9: the reader fork v1_1
++    'C_c3h': ({4: '/mnt/g2/release/root/code/pk22/m3/out/m3_lawcert_c3h_v1_1_N4.json', 3: '/mnt/g2/release/root/code/pk22/m3/out/m3_lawcert_c3h_v1_1_N3.json'}[N], {4: '75eb63eb28efd31875cc7a9b2e8596b9e1096abbbeaa1fec674e5265310f7b5f', 3: '05ee268c4dae3be99361652f07ee95d7b744dfead75dc994ca79399bbff2887d'}[N]),   # mrx_cert_v1_9: m3_lawcert_c3h_v1_1's certificates
++    'O_c3h': ({4: '/mnt/g2/release/root/code/pk22/m3/out/m3_lawcert_c3h_v1_1_4.out', 3: '/mnt/g2/release/root/code/pk22/m3/out/m3_lawcert_c3h_v1_1_3.out'}[N], {4: '3ef6e59b6df1a40f6d95bd00a6b65387cd19926f1a57372506f6b2195f1fd234', 3: '054734389a93a9a272ce2ccec75e2d24808acd0edfc8824daa6b8ce4e18d8841'}[N]),   # mrx_cert_v1_9: their jobs' outputs
+     'A_c3h': ({4: '/mnt/g2/release/root/code/pk22/m3/out/m3_run_v1_9_3_asm.4_c3h_1.out', 3: '/mnt/g2/release/root/code/pk22/m3/out/m3_run_v1_9_3_asm.3_c3h_1.out'}[N], {4: '5b03e7f3d54ec403c6d7e10768ad006f38c1b1b527a6f0715fa6971f767c50aa', 3: '96e1fd949ef18bdf88e234f8d535a30bae4516a24f1a33505936e42e87ad58f8'}[N]),
+     'C_s8': ({4: '/mnt/g2/release/root/code/pk03/out/m3_lawcert_v1_1_N4.json', 3: '/mnt/g2/release/root/code/pk03/out/m3_lawcert_v1_1_N3.json'}[N], {4: '9dec1d9a43998b23894e1e867b6beb906bed7a581f57a37bf7ec64e59f3e58e6', 3: '873bed2b8af352002acec9c6c53f5e21780504d10be02563b9114eb901a4a09b'}[N]),
+     'O_s8': ({4: '/mnt/g2/release/root/code/pk03/out/m3_lawcert_v1_1_4.out', 3: '/mnt/g2/release/root/code/pk03/out/m3_lawcert_v1_1_3.out'}[N], {4: '96254de6a8101d777d5ab70c7317471f361bab750130e3538c6e06086680a07f', 3: '0b3c0a1829eef65a7df8565ad5113385cd71688c94b1f824c173dcd91fb7b4c8'}[N]),
+@@ -186,7 +193,7 @@
+     'R_s8_E2': ({4: '/mnt/g2/release/root/code/pk03/out/m3_s8v3_E2_N4_J300_v1_8_1.json', 3: '/mnt/g2/release/root/code/pk03/out/m3_s8v3_E2_N3_J300_v1_8_1.json'}[N], {4: '86dd4b93dbec6aa3e5db579c6c70332fdc63aa615c522324ceb4f8d0992a6e09', 3: '896ef6b688b72c5974ae6648e5e2b76d141334d8689c0c06fd634be5e52b4be2'}[N]),
+     'R_s8_FF': ({4: '/mnt/g2/release/root/code/pk03/out/m3_s8v3_FF_N4_J300_v1_8_1.json', 3: '/mnt/g2/release/root/code/pk03/out/m3_s8v3_FF_N3_J300_v1_8_1.json'}[N], {4: '240fcdd2adef0b2fa9b7f38bb0b3b9b9d0725ae41c36dcf9d5b512d746bc9733', 3: 'd6cd5116c315cf20bc46e453186a08f62d37ea315ef750bfd3874ed685daf740'}[N]),
+ }
+-CERTDEF = {'c3h': ('m3_lawcert_c3h_v1.py', ('CE3H', 'CS4H'), MYO + '/m3_c3h_%%s_N%d_J300_c3h.json' % N, 'A_c3h', 'C_c3h', 'O_c3h'),
++CERTDEF = {'c3h': ('m3_lawcert_c3h_v1_1.py', ('CE3H', 'CS4H', 'H4TH'), MYO + '/m3_c3h_%%s_N%d_J300_c3h.json' % N, 'A_c3h', 'C_c3h', 'O_c3h'),   # v1_9
+            's8': ('m3_lawcert_v1_1.py', ('D', 'E2', 'E3', 'FF'), M3O + '/m3_s8v3_%%s_N%d_J300_v1_8_1.json' % N, 'A_s8', 'C_s8', 'O_s8')}   # mrx_cert_v1_5
+ LEMMAP_FIELDS = ('jlo jhi rho0_hi rhox_hi rhoy_hi mu0_lo mux_lo muy_lo tau_hi L0_hi Lx_hi Ly_hi u0p_lo u0p_hi u01_lo u01_hi u03_lo u03_hi '
+                  'uxp_lo uxp_hi ux1_lo ux1_hi ux3_lo ux3_hi uyp_lo uyp_hi uy1_lo uy1_hi uy3_lo uy3_hi q0_hi qx_hi qy_hi eps_x0_hi eps_y0_hi '
+@@ -423,7 +430,7 @@
+     return mod
+ 
+ 
+-RDR = load_as('m3_reader_c3h_v1', CERTSRC['READER'][0])
++RDR = load_as('m3_reader_c3h_v1_1', CERTSRC['READER'][0])   # mrx_cert_v1_9
+ CERTS, CERT_RECS = {}, {}
+ for cn, (prod, fams, rfmt, ak_, ck_, ok_k) in CERTDEF.items():
+     asm_, cfile, cout = CERTSRC[ak_][0], CERTSRC[ck_][0], CERTSRC[ok_k][0]
+@@ -434,7 +441,7 @@
+     except ValueError as ex:
+         cobj, okc, why = None, False, 'refused: %s' % str(ex)[:160]
+     CERTS[cn], CERT_RECS[cn] = cobj, recs
+-    gate('C-LAWCERT', okc, '(%s: %s through m3_reader_c3h_v1.load_lawcert bound to %s; its records %s through load bound to %s: %s)' % (
++    gate('C-LAWCERT', okc, '(%s: %s through m3_reader_c3h_v1_1.load_lawcert bound to %s; its records %s through load bound to %s: %s)' % (
+         cn, os.path.basename(cfile), os.path.basename(cout), ', '.join(recs[f]['name'] for f in fams), os.path.basename(asm_), why))
+ try:
+     RDR.load_lawcert(CERTSRC['C_c3h'][0], CERTSRC['O_s8'][0], 300, N, CERT_RECS['c3h'])
+@@ -447,7 +454,7 @@
+ def cert_law(rk, key):
+     """mrx_cert_v1_5: the certified law of record rk's entry key (m3_reader_c3h_v1.entry_law), or None: c3h's for CE3H and CS4H, m3_lawcert_v1_1's
+     for S8's E3 and for S9's G entries whose alias is an item of the S8 D record that certificate binds (file name and sha256)."""
+-    if rk in ('CE3H', 'CS4H') and CERTS.get('c3h') is not None:
++    if rk in ('CE3H', 'CS4H', 'H4TH') and CERTS.get('c3h') is not None:   # mrx_cert_v1_9: + H4TH (m3_lawcert_c3h_v1_1)
+         return RDR.entry_law(CERTS['c3h'], rk, key)
+     if rk == 'E3' and CERTS.get('s8') is not None:
+         return RDR.entry_law(CERTS['s8'], 'E3', key)
+@@ -553,7 +560,7 @@
+     out('CERT-COUNT N=%d %s: %d of %d entries take a certified law (%s); the S9 Gram entries: %d of 9' % (
+         N, end, sum(1 for e in ents if e.claw is not None), len(ents), ', '.join(e.name for e in ents if e.claw is not None),
+         sum(1 for k, e in S9G.items() if e.claw is not None)))
+-out('CERT-COUNT N=%d h0: %d of %d entries take a certified law (H4TH has no law certificate: its uniform claims); the S9 Gram entries: %d of 9' % (
++out('CERT-COUNT N=%d h0: %d of %d entries take a certified law (H4TH through m3_lawcert_c3h_v1_1); the S9 Gram entries: %d of 9' % (
+     N, sum(1 for e in H0V[0] + H0V[1] if e.claw is not None), len(H0V[0] + H0V[1]), sum(1 for k, e in S9G.items() if e.claw is not None)))   # mrx_cert_v1_8
+ 
+ # ---- rho4 by the matrix-tree theorem (riglap2.logmain: main ~ tau^(-(N-1)/2) times factors that cancel in rho4)
+@@ -1110,14 +1117,14 @@
+ os.makedirs(OUTD, exist_ok=True)
+ code_sha = sha(os.path.abspath(__file__))
+ for V in ('U', 'C'):
+-    path = os.path.join(OUTD, 'MR_EXACT_PART_v1_8_%s_N%d.kv' % (V, N))
++    path = os.path.join(OUTD, 'MR_EXACT_PART_v1_9_%s_N%d.kv' % (V, N))
+     assert os.path.dirname(path) == OUTD
+-    head = ['# MR_EXACT PART (N = %d) of pk22 mrx_cert_v1_8 on mr/v4 MR_SPECTRAL and MR_INSERT with mr/v3 MR_LEMMAP (mrx_combine_v1_8 joins '
++    head = ['# MR_EXACT PART (N = %d) of pk22 mrx_cert_v1_9 on mr/v4 MR_SPECTRAL and MR_INSERT with mr/v3 MR_LEMMAP (mrx_combine_v1_9 joins '
+             'N = 4 and 3 into the certified MR_EXACT record with ORIENT_CHECK and X_DEFINITION; h-1, h0, t-1 and a0; errors: %s)' % (N, 'each record\'s uniform claim' if V == 'U' else 'min of the uniform claim and the '
+-                                                                'certified J-law where m3_lawcert_c3h_v1 or m3_lawcert_v1_1 covers the entry (all of h-1; '
+-                                                                'E3 and S9 G entries of t-1 and a0), else the uniform claim (h0\'s H4TH entries; the c3, c3j, c3l and c3n entries)'),
+-            'FORMAT = MR_INPUT_KV_v4', 'RECORD = MR_EXACT_PART', 'PRODUCER = pk22 mrx_cert_v1_8 CERT_%s' % V,
+-            'CODE = pk22/midrow/g4/mrc/src/mrx_cert_v1_8.py:%s' % code_sha[:8], 'STATUS = CERTIFIED', 'EXPORT_STATUS = PART', 'RUN_VERDICT = VALID',
++                                                                'certified J-law where m3_lawcert_c3h_v1_1 or m3_lawcert_v1_1 covers the entry (all of h-1 and h0; '
++                                                                'E3 and S9 G entries of t-1 and a0), else the uniform claim (the c3, c3j, c3l and c3n entries)'),
++            'FORMAT = MR_INPUT_KV_v4', 'RECORD = MR_EXACT_PART', 'PRODUCER = pk22 mrx_cert_v1_9 CERT_%s' % V,
++            'CODE = pk22/midrow/g4/mrc/src/mrx_cert_v1_9.py:%s' % code_sha[:8], 'STATUS = CERTIFIED', 'EXPORT_STATUS = PART', 'RUN_VERDICT = VALID',
+             'SOURCE = %s' % ' '.join('%s:%s' % (os.path.basename(p), shas[k][:8]) for k, (p, h) in srcs.items()) + ' MR_LEMMAP.kv:%s MR_SPECTRAL.kv:%s MR_INSERT.kv:%s' % (
+                 lem_sha[:8], spe_sha[:8], ins_sha[:8]),
+             'J_UNIFORMITY = PER-PIECE: every row holds for every J in [jlo, jhi] of its piece; the last piece runs to J = inf (t = 0)',

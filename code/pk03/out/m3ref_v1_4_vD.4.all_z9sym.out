@@ -1,0 +1,23 @@
+m3ref_v1_4 item vD.4.all LIM 540; python 3.14.4
+C-COPY (12 pinned copies in /mnt/g2/release/root/code/pk03/pin) -> PASS
+PLANT-COPY (riglap2 bytes plus one byte) -> FIRES
+C-SRC (lapl2 l.63-79, vacmod2 l.8-9 and l.12-13, endw l.16-19, vacrig11f l.166-170, 173-175, 178-186, 196-197, 240-244, 247, 250-287, riglap5s l.22-34 (C-SRC-H) against this file; source shas) -> PASS
+PLANT-SRC (strip_graph text with one character changed) -> FIRES
+C-HASH (15 pk10 inputs and J = 170 records, 4 trial files and 2 S8 lists in pk11/out, 6 m3ref_v1_2 records) -> PASS
+PLANT-HASH (vacres_K3_N4 against a sha with its last digit changed) -> FIRES
+versions: numpy 2.5.3, scipy 1.18.1; engines from /mnt/g2/release/root/code/pk03/pin
+TRIAL z9sym
+inputs: N = 4, kbar 0.8271394273441662 (m2_N4_J170.json.b), trial set ts_N4_J170_D_S_z9sym_v1.json, vacres_K3_N4_sym_v1.json
+family vD N=4: V 6, F 12, pairs [(0, 1), (1, 2), (0, 2), (3, 4), (4, 5), (3, 5)], NPOLY_B 16, qcap 6, 1 keys: D_Z2
+STAGE-CPU graph 0.00 s
+STAGE-CPU prep J=150 2.39 s (ok True)
+PROFILE prep J=150 {"AllMom2.E2": [30, 1.88], "AllMom2.init": [10, 0.29], "NPoly.mul": [235, 0.01], "pmul": [215, 0.17]}
+C-THETA theta0 0.93 reproduces farbase 6.29490739458052e-33: relative 0.0e+00 -> PASS
+PLANT-THETA (the base times 1 + 1e-9) -> FIRES
+PREPJSON {"family": "vD", "N": 4, "J": 150.0, "rho": [0.42790016247156076, 0.34933225966043263, 0.4279001624715607, 0.4279001624715609, 0.3493322596604327, 0.4279001624715609], "a_v": [0.1830985490431881, 0.12203302763946393, 0.18309854904318806, 0.1830985490431882, 0.12203302763946397, 0.1830985490431882], "ap": 0.48999999999999994, "ok": true, "tree": [1.2637626158259734, 1.2637626158259734, 1.2637626158259734, 1.2637626158259734, 1.0], "theta0": 0.93, "logmain": -44.345107629198964, "cpu_prep": 2.39, "rE": 2.483814410582353e-06, "rE_parts": {"t4|H4|": 1.078391975436467e-07, "t5 h5/120": 1.0835599621694854e-07, "t4 H2^2/2": 1.415390916075165e-07, "t6 h3^2/72": 1.7800971792496105e-08, "t4|H1H3|": 3.312935053100511e-07, "t5|H1H4|": 1.5450972339212543e-08, "t6|H1|h5/120": 1.9888361063252392e-08, "t5|H2|h3/6": 9.615928911112451e-08, "t4 H1^2|H2|/2": 7.350385632900664e-07, "t5 H1^2 h3/12": 2.794836263820029e-07, "t5|H1|h2^2/8": 5.940632560641965e-07, "E2^3 term": 3.6901579861838954e-08}, "nE": [1.0, 1.116750129053975, 2.056960338834059, 5.7786137393178185], "nE4": [1.0, 2.7592557451341295, 25.166262405362453, 4212.60941596269], "nC8": 0.09571068583107355, "nC6": 0.04115456174732072, "Nc": 1.020283736301051, "Np": 1.025530681478414, "Pout": 1.841566491703446e-16, "Pout_p": 2.1514043335544715e-16, "farbase": 6.29490739458052e-33}
+KEYJSON {"family": "vD", "N": 4, "J": 150.0, "key": "D_Z2", "index": 0, "ak": [1.0, 1.1719552788587524, 1.5377245943411513, 1.8985279810392375], "B": {"rem": 2.8479929913770014e-06, "tail": 1.4956707586866108e-08, "ann": 1.522181727996644e-08, "far": 4.661280196989368e-29}, "err": 2.878171516243834e-06, "cpu": 1.04, "refs": [], "rem_split": {"overflow": 3.8e-08, "F.R_E": 2.5e-06, "rho4": 1.32e-07, "rho4_C8": 3.6e-06, "rho4_C6": 1.32e-07, "R_F": 1.74e-07}}
+STAGE-CPU key D_Z2 J=150 1.04 s
+PROFILE after D_Z2 J=150 {"AllMom2.E": [10, 0.01], "AllMom2.E2": [56, 1.97], "AllMom2.init": [35, 0.7], "NPoly.mul": [5299, 0.29], "pmul": [895, 0.29]}
+keys done 1 of range 0-0
+STAGE-CPU total 3.59 s
+VERDICT VALID

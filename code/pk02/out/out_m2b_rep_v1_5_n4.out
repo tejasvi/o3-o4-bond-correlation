@@ -1,0 +1,53 @@
+m2b_rep_v1_5 sha256 0916e04abca80cede4a6d9b519054eb11693d14a4808fb4b8a322096b08a28a6 N=4; m2b_cert_v1_1 4b42e4f5 (x, tX0-2, tB); m2b_cert_v1_4 e1cecb52 (d5, dwt, dwl, r0, tA); m2b_floatref_v2 395dc411
+PLANT-PARSE 0 +- r: [+/- 9.10e-13] -> mid 0, rad 9.10e-13, parsed ball contains the original: True
+PLANT-PARSE negative: [-0.33333333333333333333333333333333333333333333 -> mid -0.333333333333333333333, rad 3.34e-81, parsed ball contains the original: True
+PLANT-PARSE negative, wide: [-0.33333 +/- 4.29e-6] -> mid -0.33333, rad 4.29e-6, parsed ball contains the original: True
+PLANT-PARSE exact negative: -1.250000000000000000000000000000000000000000000 -> mid -1.250000000000000000000, rad 0, parsed ball contains the original: True
+PLANT-PARSE exact zero: 0 -> mid 0, rad 0, parsed ball contains the original: True
+PLANT-PARSE tiny: [3.333333333333333333333333333333333333333333333 -> mid 3.3333333333333333333333, rad 3.34e-381, parsed ball contains the original: True
+PLANT-PARSE large negative: [-3.33333333333333333333333333333333333333333333 -> mid -3.333333333333333333333, rad 3.34e+219, parsed ball contains the original: True
+PLANT-PARSE positive: [2.333333333333333333333333333333333333333333333 -> mid 2.3333333333333333333333, rad 3.34e-80, parsed ball contains the original: True
+PLANT-PARSE sign drop: the negative ball read without its sign contains the original: False -> FIRES
+C-REP-READ floatref n4: out_m2b_floatref_v2_n4.out (sha256 c1f67f84): header and VERDICT -> PASS
+C-ANCHOR-VAC n4: old vacres_K3_N4.json vs sym: m1..m3 identical True; q1..q3 max |difference| 3.65e-13 (max |q| 2.502e-01, bound 1e-10 of it) -> PASS
+C-ANCHOR-KBAR n4: vacrig11w's printed wt kbar 0.827139427 vs m2's kbar 0.8271394273441662 -> PASS
+C-ANCHOR NP n4: twin 2.674377107997e-06 vs vacmono nP Minkowski, J1 150 2.6744e-06 (tolerance 5.0e-11 + 1e-9 rel) -> PASS
+C-ANCHOR min TX_lam n4: twin 7.470586264321e-06 vs vacmono tailX Minkowski (minimum over 0.3, 0.45, 0.6), J1 150 7.4706e-06 (tolerance 5.0e-11 + 1e-9 rel) -> PASS
+INFO C-ANCHOR n4 not anchored: R1, R1_wt, R1_dl (rounding-level; printed by no original)
+INFO C-ANCHOR n4 not anchored: NPM_wt, NPM_dl (the originals print the joint form of P = sum_k t^k r_k; the twin is Minkowski per order)
+INFO C-ANCHOR n4 not anchored: TB (the originals' tailB is the chi3 product form; the twin's is kt_cert's F1 per-bond form)
+INFO C-ANCHOR n4 not anchored: D5, D5W_wt, D5W_dl, R0, R0W_wt, R0W_dl, ann (the originals (vacrig11f, vacrig11w) use the trade; the twin uses majfix_v1)
+INFO C-ANCHOR n4 not anchored: TX_<lam> per lambda (the originals print only the minimum over lambda)
+PLANT-ANCHOR n4: the twin NP x (1 + 1e-3) against vacmono 2.6744e-06 -> FIRES
+C-REP-READ x.n4: record out_m2b_cert_v1_1_x.n4.out (sha256 2eacacc7): header, FORMAT, VERDICT, hand-off sha256, checksum and HEAD -> PASS
+C-REP-READ d5.n4: record out_m2b_cert_v1_4_d5.n4.out (sha256 5de12cd5): header, FORMAT, VERDICT, hand-off sha256, checksum and HEAD -> PASS
+C-REP-READ dwt.n4: record out_m2b_cert_v1_4_dwt.n4.out (sha256 b5d867c2): header, FORMAT, VERDICT, hand-off sha256, checksum and HEAD -> PASS
+C-REP-READ dwl.n4: record out_m2b_cert_v1_4_dwl.n4.out (sha256 938ff03e): header, FORMAT, VERDICT, hand-off sha256, checksum and HEAD -> PASS
+C-REP-READ r0.n4: record out_m2b_cert_v1_4_r0.n4.out (sha256 fd1218ce): header, FORMAT, VERDICT, hand-off sha256, checksum and HEAD -> PASS
+C-REP-READ tX0.n4: record out_m2b_cert_v1_1_tX0.n4.out (sha256 1ebbc9d7): header, FORMAT, VERDICT, hand-off sha256, checksum and HEAD -> PASS
+C-REP-READ tX1.n4: record out_m2b_cert_v1_1_tX1.n4.out (sha256 d34d4754): header, FORMAT, VERDICT, hand-off sha256, checksum and HEAD -> PASS
+C-REP-READ tX2.n4: record out_m2b_cert_v1_1_tX2.n4.out (sha256 7a15ac7c): header, FORMAT, VERDICT, hand-off sha256, checksum and HEAD -> PASS
+C-REP-READ tB.n4: record out_m2b_cert_v1_1_tB.n4.out (sha256 5c5cb7d9): header, FORMAT, VERDICT, hand-off sha256, checksum and HEAD -> PASS
+C-REP-READ tA.n4: record out_m2b_cert_v1_4_tA.n4.out (sha256 0f185c14): header, FORMAT, VERDICT, hand-off sha256, checksum and HEAD -> PASS
+C-REP-BOUND n4: 10 hand-off HEADs: rho_pp_hex 0x1.ea93ad4bd8e58p-1, a_m, a_e, a_pp exact -> PASS
+C-REP NP: cert midpoint 2.674377107997e-06 vs float 2.674377107997e-06: rel 8.2e-14 (tolerance 1e-06) -> PASS
+C-REP NPM_wt: cert midpoint 3.471200280585e-06 vs float 3.471200280585e-06: rel 4.4e-14 (tolerance 1e-06) -> PASS
+C-REP NPM_dl: cert midpoint 2.473280671853e-06 vs float 2.473280671853e-06: rel 7.3e-14 (tolerance 1e-06) -> PASS
+C-REP D5: cert midpoint 1.403353073000e-04 vs float 1.403353072914e-04: rel 6.1e-11 (tolerance 1e-06) -> PASS
+C-REP D5W_wt: cert midpoint 4.406442300000e-05 vs float 4.406442251998e-05: rel 1.1e-08 (tolerance 1e-06) -> PASS
+C-REP D5W_dl: cert midpoint 4.211710970000e-05 vs float 4.211710972961e-05: rel 7.0e-10 (tolerance 1e-06) -> PASS
+C-REP R0: cert midpoint 2.744565874806e-06 vs float 2.744565874806e-06: rel 1.0e-13 (tolerance 1e-06) -> PASS
+C-REP R0W_wt: cert midpoint 4.725104659545e-06 vs float 4.725104659545e-06: rel 6.1e-14 (tolerance 1e-06) -> PASS
+C-REP R0W_dl: cert midpoint 3.901489979713e-06 vs float 3.901489979713e-06: rel 1.2e-13 (tolerance 1e-06) -> PASS
+C-REP TX_0.3: cert midpoint 7.981788267720e-04 vs float 7.981788267720e-04: rel 6.9e-15 (tolerance 1e-06) -> PASS
+C-REP TX_0.45: cert midpoint 2.053808029489e-05 vs float 2.053808029489e-05: rel 7.2e-14 (tolerance 1e-06) -> PASS
+C-REP TX_0.6: cert midpoint 7.470586264322e-06 vs float 7.470586264321e-06: rel 1.6e-13 (tolerance 1e-06) -> PASS
+C-REP TB: cert midpoint 2.688333922472e-06 vs float 2.688333922472e-06: rel 8.1e-14 (tolerance 1e-06) -> PASS
+C-REP ANN_0.3: cert midpoint 7.168978674310e-03 vs float 7.168978674310e-03: rel 2.7e-14 (tolerance 1e-06) -> PASS
+C-REP ANN_0.45: cert midpoint 2.230495370118e-04 vs float 2.230495370118e-04: rel 8.6e-14 (tolerance 1e-06) -> PASS
+C-REP ANN_0.6: cert midpoint 1.306024003509e-05 vs float 1.306024003509e-05: rel 9.8e-14 (tolerance 1e-06) -> PASS
+INFO C-REP R1: cert midpoint 9.019130e-17 vs float 9.235695e-17 (rounding-level on both sides; not compared)
+INFO C-REP R1_wt: cert midpoint 1.014772e-16 vs float 1.041821e-16 (rounding-level on both sides; not compared)
+INFO C-REP R1_dl: cert midpoint 7.963479e-17 vs float 8.203035e-17 (rounding-level on both sides; not compared)
+PLANT-REP: the cert D5 midpoint x (1 + 1e-5) against the float -> FIRES
+VERDICT VALID

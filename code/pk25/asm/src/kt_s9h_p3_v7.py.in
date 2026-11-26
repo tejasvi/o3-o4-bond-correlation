@@ -1,0 +1,2239 @@
+#!/usr/bin/env python3
+"""@@NAME@@ -- pk25 (code/pk25/asm/): P3, H-CONN's factored MR_CRUDEX (the rows 4560, 4640, 4681, 4686, 4697, 4718; pk25/P3_NOTE_v1.md
+and D2_DESIGN_v1 to v1_3). v3 (asm/src/kt_s9h_p3_v3.py.in
+fb29ff97) = v2 (a1903674: P3a's window rows below J_s, PART window, and P3b's Lemma D rows on the finite pieces above J_s, PART lemd) with
+P3b-2's last piece (PART full): the first-order forms of mu_k, Lambda, s_a, c_a(-1), c_h, m_xx, m_xy and v_y from the laws (law_leaves;
+C-LP-CTL compares them with the record leaves on finite pieces), C-JS's check 1 with the last piece, the writer on every piece and the dry
+record asm/dry_<TAG>/MR_CRUDEX.kv. v4 = v3 with (the rows 4725, 4749): pk23's certified CW_X11 v2_2 in place of the dry record;
+C-TAU (tau4 is MR_SPECTRAL v4's tau_hi on the shared grid, equal to MR_LEMMAP v3's); and Pevw/t on the last piece by
+P3_NOTE_v1 sect. 3's route with no QV form (the QV form's Lam (mhat/lt0) eps_r and Lam s' terms would grow like log J there, since M2B's
+R1 is not 0): |Q v_h| <= |P_e v_h| <= |Q_W v_h| + sum_k |<u~_k, v_h>| L_k (Lemma P), |Q_W v_h| <= |uhat_0p| (A_h/(1 - eps_r) + |c_h| Rb_0) +
+sum_(b = 1, 3) |uhat_0b| C + C delta_0, with A_h/t by P2's re_over_t ported to M4H's hook kind h (re_over_t_h: hf = 2J far weights, M0 out
+of nP, the bridge sum_g |delta_g| nu_g with m0* exact (delta_h) and the NU record; C-MONO-M4H on every J-weighted term) and Rb_0/t =
+(eps_r/t)/(1 - eps_r(J_lo)) (eps_over_t, C-MONO-M2B). Plants PLANT-MONO-H (J_lo = 1 in the monotonicity tests) and PLANT-TIE-H.
+v5 = v4 (asm/src/kt_s9h_p3_v4.py.in 424e04d9) with one monotonicity gate and one plant per J-weighted term (the rows 4749, 4758;
+MONO_TERMS): S8's laws (C-MONO-S8-TAIL, -ANN, -FAR), eps_r (C-MONO-M2B-TAILA, -TAILB, -FAR, -GB) and A_h (C-MONO-M4H-TAILX, -TAILB, -GB and
+-FAR-<item> for each of the ten far items FARH, C-FAR-NAMES checking the reader's list); each PLANT-MONO-<term> sets J = 1 in its own test
+only and counts only when that term's gate refuses (PLANT-MONO-H is withdrawn). Nothing else changes.
+v6 = v5 (asm/src/kt_s9h_p3_v5.py.in 427bc790) for the certified run (the row 4768; the P3b-1 note N-1): R_xy per piece from
+pk22's certified E3 record e3_sq2_v2 (load_e3: format, kinds xy, the second-order claim R_xy <= t R_hat and R_xy^2 <= t^2 c2_hi with
+X(0) = X_1 = 0, sources naming MR_SPECTRAL v4 and C10, every piece of R4's grid; R_xy/(t |chi|) <= min(R_hat, c2_hi^1/2) on each piece)
+in place of the constant stand-in; C-SQ2 on its rows; MODE cert (PART full only): pk23's CW_X11 STATUS CERTIFIED (load_cw), no stand-in
+left, the record to pk25/mr/v6/MR_CRUDEX.kv with STATUS CERTIFIED (a dry run's to asm/dry_<TAG>/).
+v7 = v6 (asm/src/kt_s9h_p3_v6.py.in 59d26616) with the P3b-1 note N-3 (the row
+4772), the P4 N-1 in this engine: Lambda = mu_0,rec theta converts E4's T10,b and IhR,10,b into S units only because S8 N's T,b,c
+(from which mu_0,rec is formed), E4's T10,b (built from those same S8 N items) and the E4N record's IhR,10,b share one main, main_N. Input
+gate C-MAIN-E4 at both N: E4's sources name the pinned S8 N record; S8 N's record has graph N; the E4N record has graph E4N, names the
+pinned c3k entry list, and that list defines E4N as the N graph (columns vac, int, vac) with h on the bond next to one end column; the E4N
+and N families carry equal prep parameters (a_v, ap, theta0). PLANT-MAIN-E4 puts S8 D's record in the T slot and must be refused.
+Lemma D on P = span{u_x, u_y, z}, z = Q_e chi/|Q_e chi|, chi = the stored state 10' (P3_NOTE_v1 sect. 1-5), per piece above J_s, every
+quantity in first-order form X(t) = x0 + t x1 (class Sl: x0 a ball of the true t^0 value, x1 a ball of (X(t) - x0)/t over the piece's t
+range; products, quotients, powers and square roots by the exact difference rules; an O(t) bar B with |B| <= b t is Sl(0, [-b, b])):
+- leaves: P2's certified table (uhat_kb slopes on UHAT0, delta_a/t = (2 (q_a/t^2 + sum_k eps_ka/t^2))^1/2, rho_k/t, L_k/t, q_a/t); the S8
+  laws g,b,c (S8 D), T,b,c (S8 N), e,b (S8 E2) by P2's entry_x1 form with C-A0 (x0 = C10's exact G0, T0); E4's G10,b, T10,b, IhR,10,b and
+  E6's E6e (x0 the record's t0 ball, x1 its c1); on a finite piece a record ball X with exact t^0 value X0 gives x1 = (X - X0)/[t_lo, t_hi]
+  (s_x, s_y, c_x(-1), c_y(-1) from MR_SPECTRAL v4; v_y, m_xx, m_xy from MR_INSERT v5b; the W Ritz values mu_k in [mu_k,lo, s_k,hi]; c_h
+  from MR_JOINT; theta = Lambda/mu_0,rec in [1, 1/m0lo]), with X0 from C10 and C13; v_x = t xc (MR_INSERT v5b's xc).
+- W_ext = span{psi-hat, e1, e3, chi} in the basis (u~_0, u~_x, u~_y, chi''), chi' = chi - sum_k g_k u~_k, g_k = <u~_k, chi>, chi'' =
+  chi'/|chi'|, |chi'|^2 = n2 = G_cc - sum g_k^2 > 0 (C-ALPHA): S's compression is the arrowhead [[diag(mu), b], [b^T, d]] with
+  b_k = (tv_k - g_k mu_k)/n2^1/2 (b_k(0) = 0 exactly), d = (T_cc - 2 sum g_k tv_k + sum g_k^2 mu_k)/n2, tv_k = <u~_k, S chi> = sum_b c_kb
+  T10,b/Lambda, T_cc = T10,10/Lambda, c_kb = uhat_kb/|psi_b|, |psi_b|^2 = g,b,b, Lambda = mu_0,rec theta (E7_NOTE_v1's kappa = 1/Lambda),
+  mu_0,rec the Rayleigh quotient of u~_0 on the records' (T, G). Its lowest eigenpair (nu_xy, r_xy) is explicit: for d < min mu_k the secular
+  function has one root below min mu_k, nu_xy in [d - sum b_k^2/(mu_k - d), d], r_xy = (sum_k gamma_k u~_k + chi'')/(1 + sum gamma_k^2)^1/2,
+  gamma_k = b_k/(nu_xy - mu_k) (C-ARROW: d below every mu_k).
+- chi = alpha r_xy + sum_k beta_k u~_k, alpha = n2^1/2 (1 + sum gamma_k^2)^1/2 > 0, beta_k = g_k - n2^1/2 gamma_k, so Q_e chi - alpha r_xy =
+  -alpha Pi_e r_xy + sum_k beta_k Q_e u~_k with |Q_e u~_k| <= L_k (Lemma P, MR_LEMMAP's L_k), |<u_a, r_xy>| <= q_a rho_xy/(s_a - nu_xy)
+  (res_xy is orthogonal to W_ext and |Q_ext u_a| <= |Q_W u_a| <= q_a), rho_xy <= (sum_k |gamma_k| rho_k + (R_xy |chi| + sum_k |g_k| rho_k)/
+  n2^1/2)/(1 + sum gamma_k^2)^1/2 (|Q_ext S u~_k| <= rho_k); e_z = 2 eta/alpha (P3_NOTE_v1 sect. 4's lemma with the basis {r_xy, u~_k} for
+  the complement of r_xy in W_ext in place of W_ext's other Ritz vectors); nu_z = nu_xy -+ (2 e_z rho_xy + 2 e_z^2), c <= rho_xy + e_z (1 +
+  2 rho_xy + 2 e_z); g_z = <r_xy, eps(-1)> -+ e_z R_w with <u~_k, eps(-1)> = c_k(-1) -+ delta_k R_w (0 for k = 0), <chi, eps(-1)> =
+  (E6e/A~_0)(1 -+ (delta_0 R_w + delta_0^2/2)) - (g_0 -+ |chi| delta_0), A~_0 = sum_b c_0b e,b; k_z = <r_xy, S M_c u~_x> -+ C (e_z + delta_x),
+  eta_z = <r_xy, S M_c u~_0> -+ C (e_z + delta_0) with <u~_k, S M_c u~_a> = s_k m_ka -+ C (delta_k + delta_a) (m_0x = v_x, m_0y = v_y, m_00 = 0)
+  and <chi, S M_c u~_a> = sum_b c_ab (IhR,10,b - c_h T10,b)/Lambda (E4N's IhR,10,b = Lambda <chi, S M_h chi_b>, C-IHR; c_h MR_JOINT's).
+  The orientation: r_xy along chi'', so z(0) = sgn(A) u_xy0 (C10's C-PURE10 A for the stored 10'), g_z0 = sgn(A) c_x(-1)0 c_y(-1)0, k_z0 =
+  sgn(A) s_x0 s_y0 h_y0 (C13), nu_z0 = s_x0 s_y0; C-T0-Z checks each x0 ball holds its exact value, which is then used as x0.
+- rows, d = 1..9: E^Pi/t = c_x(d) m_xx/t + c_y(d) m_xy/t - c_x(d)^2 xc + D_d/t - nu_z^d g_z c_x(d) eta_z/t, D_d = nu_z^d g_z k_z -
+  c_x(d) c_y(d) v_y in first-order form (D_d(0) = 0 by C-PI0-EXACT; C-PI0: the x0 ball holds 0; D_d/t = its x1), eta_z(0) = 0;
+  E^Q/t <= (C_w + |c_x(d)| Pevw/t) tau4^d pe, C_w = |w_1| (x1t + |c_h - c_h'| tau4 (sum delta^2)^1/2/t) + |w_0| (Pevw + C (delta_0 + sum_b
+  |uhat_0b - uhat_0b(0)|))/t + |uhat_x3|/t C + C delta_x/t; E^R/t <= (N_x + |c_x(d)| N_u) R_w d (c/t) (s_x + c)^(d-1), N_x^2 = v_x^2 + s_x^2 m_xx^2
+  + s_y^2 m_xy^2 + k_z^2 + (C_w t)^2, N_u^2 = s_x^2 v_x^2 + s_y^2 v_y^2 + eta_z^2 + Pevw^2. The envelope: env_r = s_x,hi + c_hi + 1/100 and
+  env_delta0 = sum over the terms (A rho^d or A d rho^(d-1), every rho below env_r) of max_(d >= 10) term/env_r^(d+1) (the ratio of a d rho^(d-1)
+  term rises only while d < rho/(env_r - rho), so the max is over a finite range). C-ORDER-P (nu_z, s_y, tau4 below s_x), C-ENV, C-SIGN.
+- C-JS (D2 v1_3 (a)): per N, J_s starts at the R4 boundary nearest 2750 (N4), 2500 (N3); check 1: the Lemma D rows pass C-SIGN on every piece
+  above J_s, also with x1t and R_xy doubled; check 2: the window rows pass C-SIGN-W on every finite piece below; moves as v1_3 (a) item 3.
+  In this build check 1 covers the finite pieces (the last piece follows in P3b-2).
+- R_xy: E3's certified xy rows are not yet issued; dry mode takes pk22's float first-piece values as a stand-in, R_xy <= R_hat t |chi|
+  with R_hat 4.5 (N4), 3.7 (N3).
+Gates (P3b): C-C10X (UHAT0's exact zeros, A's sign), C-C13X, C-ZERO-EX, C-PI0-EXACT, C-HARM, C-A0-E4 (C10's exact t^0 values of
+G10,b, T10,b, G10,10, T10,10 inside E4's t0 balls), C-IHR (N-6: the entry list's IhR,10,b factors [cp 10 0] [xia (4,7,7)] [cp b 2] on
+graph E4N), C-TS-XY (N-2: E4, E6 and CW name the pinned 10' trial files, so pk23's psi_xy' is chi), C-E4-READ, C-E6-READ, C-P2-READ,
+C-LAW-READ, C-A0, C-MONO-TAIL, C-MONO-FAR, per piece C-ALPHA, C-ARROW, C-T0-Z, C-PI0, C-ORDER-P, C-ENV, C-SQ2 (stand-ins finite), C-SIGN;
+C-JS. Plants (P3b): PLANT-PI0, PLANT-SIGMA (sgn(A) flipped: C-T0-Z refuses), PLANT-ZEROX (uhat_x3(0) nonzero), PLANT-IHR (xia (4,7,8)),
+PLANT-A0E4, PLANT-ALPHA (n2 taken as G_cc - 2 sum g_k^2 - 2: C-ALPHA refuses), PLANT-SIGN, PLANT-JS-W, PLANT-JS-D, PLANT-SQ2.
+MODE dry or cert (cert: PART full only, under the pre-authorisation of row 4768; the record to pk25/mr/v6/MR_CRUDEX.kv; a dry run's
+to asm/dry_<TAG>/MR_CRUDEX.kv). Usage: @@NAME@@ dry|cert TAG window|lemd|full"""
+import ast
+import hashlib
+import json
+import math
+import os
+import re
+import sys
+import time
+from decimal import Decimal, Context, ROUND_CEILING
+from fractions import Fraction
+
+MODES = ('dry', 'cert')
+PARTS = ('window', 'lemd', 'full')
+if len(sys.argv) != 4 or sys.argv[1] not in MODES or not re.fullmatch(r'[A-Za-z0-9_]{1,40}', sys.argv[2]) or sys.argv[3] not in PARTS:
+    print('usage: @@NAME@@ dry|cert TAG window|lemd|full')
+    sys.exit(2)
+MODE, TAG, PART = sys.argv[1], sys.argv[2], sys.argv[3]
+SELF = os.path.abspath(__file__)
+LABEL = os.path.splitext(os.path.basename(SELF))[0]
+CODEDIR = '/mnt/g2/release/root/code'
+OWN = CODEDIR + '/pk25'
+ASM = OWN + '/asm'
+OUT_DIR = ASM + '/out'
+OUT_PATH = os.path.join(OUT_DIR, 'out_%s_%s_%s_%s.out' % (LABEL, MODE, TAG, PART))
+SPEC4 = OWN + '/mr/v4/MR_SPECTRAL.kv'
+INS5 = OWN + '/mr/v5b/MR_INSERT.kv'   # MR_INSERT v5b (P4 on P2's N1-fixed table; rows equal to v5's)
+CRX4 = OWN + '/mr/v4/MR_CRUDEX.kv'
+M1ENG = CODEDIR + '/pk24/mr_engine/kt_mr_assembly_v1_8_4.py'
+LEMMAP3 = OWN + '/mr/v3/MR_LEMMAP.kv'
+C10REC = OWN + '/c10/C10_RECORD_v1.kv'
+TS = {4: CODEDIR + '/pk11/out/ts_N4_J170_D_S_z9sym_v1.json', 3: CODEDIR + '/pk11/out/ts_N3_S_z9sym_v1.json'}
+TSX = {4: CODEDIR + '/pk22/midrow/psixy/ts_N4_J170_D_S_z9symxyp_v1.json', 3: CODEDIR + '/pk22/midrow/psixy/ts_N3_S_z9symxyp_v1.json'}
+JOINT = CODEDIR + '/pk22/midrow/g4/mrc/out/cert/MR_JOINT_CERT_v1.kv'
+CW = CODEDIR + '/pk23/cw/out/CW_X11_v2_2.kv'   # pk23's certified CW_X11 v2_2 on P2's table 47cef0dd (frozen: pk23/cw/MANIFEST_CW_COMB_V2_2_v1.sha256)
+P2REC = OWN + '/p2/v3f2/MR_LEMMAP_V3F.kv'
+C13REC = OWN + '/c13/C13_RECORD_v1_1.kv'
+E4J = dict((N, CODEDIR + '/pk22/midrow/e4/out/e4_comb_v2_N%d.json' % N) for N in (4, 3))
+E6J = dict((N, CODEDIR + '/pk22/midrow/e6/out/e6_comb_v3_N%d.json' % N) for N in (4, 3))
+E4NR = dict((N, CODEDIR + '/pk22/m3/out/m3_c3kp_E4N_N%d_J300_c3kp.json' % N) for N in (4, 3))
+C3KL = CODEDIR + '/pk22/m3/C3K_ENTRY_LIST_v1_2.json'
+RDR = OWN + '/m3/m3_reader_s9h_v1.py'
+M3O = CODEDIR + '/pk03/out/'
+S8REC = dict((N, {'D': (M3O + 'm3_s8v3_D_N%d_J300_v1_8_1.json' % N, M3O + 'm3_run_v1_8_1_asmP.%d.out' % N),
+                  'N': (M3O + 'm3_s8v3_N_N%d_J300_v1_8_2.json' % N, M3O + 'm3_run_v1_8_2_asmN.%d.out' % N)}) for N in (4, 3))
+S8CERT = dict((N, {'D': (M3O + 'm3_lawcert_v1_1_N%d.json' % N, M3O + 'm3_lawcert_v1_1_%d.out' % N),
+                   'N': (M3O + 'm3_lawcert_v1_2_N%d.json' % N, M3O + 'm3_lawcert_v1_2_%d.out' % N)}) for N in (4, 3))
+VACRES = dict((N, CODEDIR + '/pk11/out/vacres_K3_N%d_sym_v1.json' % N) for N in (4, 3))
+HREC = dict((N, dict((F, (OWN + '/m3/out/m3_s9h_%s_N%d_J300_v1.json' % (F, N), OWN + '/m3/out/m3_run_s9h_v1_1_asm.%d.out' % N)) for F in ('NIH', 'NHT', 'DH')))
+            for N in (4, 3))   # pk25's h records (P4's): NIH (Ih,b), DH (Gxh,b,c, Sh,b), with the certificate m3_lawcert_s9h_v1_1
+HCERT = dict((N, (OWN + '/m3/out/m3_lawcert_s9h_v1_1_N%d.json' % N, OWN + '/m3/out/m3_lawcert_s9h_v1_1_%d.out' % N)) for N in (4, 3))
+INSOUT = OWN + '/asm/out/out_kt_s9h_ins_v2_7_cert_c1.out'   # P4's certified run output: the mu tool's OR and C per N (MU lines)
+M4H = (OWN + '/m4h/M4H_KV_v1.txt', OWN + '/m4h/out/out_m4h_asm_v1_1.out')   # A_h's J-law (engine A's h kind), the sha-pinned reader below
+M4H_READER = OWN + '/m4h/m4h_reader_v1_1.py'
+M4_PREC = 256
+M2B = (CODEDIR + '/pk02/M2B_KV_v1.txt', CODEDIR + '/pk02/out/out_m2b_asm_v1.out')   # eps_r's J-law (P2's eps_over_t)
+M2B_READER = CODEDIR + '/pk02/m2b_reader_v1.py'
+M2B_PREC = 256
+NU_PATH = CODEDIR + '/pk24/nu/NU_G_RECORD_v1.kv'   # pk24's certified NU record (the bridge's nu_g, P2's), its producer and pk25's reader
+NU_CODE = CODEDIR + '/pk24/nu/kt_nu_g_v1_2.py'
+NU_READER = OWN + '/nu/nu_reader_v1_1.py'
+XREC_H = dict((N, CODEDIR + '/pk02/out_kt_cert_v1_6_x.hn%d.out' % N) for N in (4, 3))   # engine A's h x records (EXPLICIT m0; C-M0-TIE)
+FARH = ('oSS', 'oS_psi', 'oS_e1', 'oS_e3', 'oD_psi_psi', 'oD_psi_e1', 'oD_psi_e3', 'oD_e1_e1', 'oD_e1_e3', 'oD_e3_e3')   # the far items of the hook kind h (m4h_reader_v1_1 far_names)
+MONO_TERMS = (('S8-TAIL', 'S8-ANN', 'S8-FAR', 'M2B-TAILA', 'M2B-TAILB', 'M2B-FAR', 'M2B-GB', 'M4H-TAILX', 'M4H-TAILB', 'M4H-GB')
+              + tuple('M4H-FAR-' + _nm for _nm in FARH))   # one monotonicity gate and one plant per J-weighted term (the rows 4749, 4758)
+JS_TARGET = {4: 2750, 3: 2500}
+JS_CAP_N4 = 2900   # D2 v1_3 (a): at N4 the switch does not move past J 2900
+LD_FLOOR = {4: Fraction(2200), 3: Fraction(2000)}   # the Lemma D rows are computed from here up, so that C-JS can move J_s down
+E3J = dict((N, CODEDIR + '/pk22/midrow/e3/out/e3_sq2_v2_N%d.json' % N) for N in (4, 3))   # pk22's certified E3 second-order records (job304, frozen by job305)
+E3FORMAT = 'pk22 E3 second-order record v2'
+E3CLAIM = ('R_xy(t) <= t R_hat and R_xy(t)^2 <= t^2 c2_hi', 'X(0) = X_1 = 0', 't = 0 included on the last piece')
+CERT_DIR = OWN + '/mr/v6'   # the certified factored MR_CRUDEX (a new folder; mr/v4/MR_CRUDEX.kv stays C11's split record)
+DMAX = 9
+REVEN, RPE = (0, 1, 3), ((0, 0), (0, 1), (0, 3), (1, 1), (1, 3), (3, 3))
+KN = ('0', 'x', 'y')
+BN = ('p', '1', '3')
+PINS = {
+# @@PINS@@
+}
+if not (os.path.isdir(OUT_DIR) and os.path.realpath(os.path.dirname(OUT_PATH)) == os.path.realpath(OUT_DIR)):
+    print('output path check failed')
+    sys.exit(2)
+FH = open(OUT_PATH, 'x')
+
+
+def out(line):
+    FH.write(line + '\n')
+    FH.flush()
+
+
+def sha_file(path):
+    with open(path, 'rb') as fh:
+        return hashlib.sha256(fh.read()).hexdigest()
+
+
+class Refused(Exception):
+    pass
+
+
+def gate(fails, name, ok):
+    if not ok:
+        fails.append(name)
+    return 'PASS' if ok else 'FAIL'
+
+
+def plant(nofire, name, fn):
+    try:
+        fn()
+    except Refused as e:
+        out('%s: refused (%s) -> FIRES' % (name, e))
+        return
+    except Exception as e:
+        out('%s: raised %r instead of a refusal -> DOES NOT FIRE' % (name, e))
+        nofire.append(name)
+        return
+    out('%s: accepted -> DOES NOT FIRE' % name)
+    nofire.append(name)
+
+
+def read_kv(path, pins=None):
+    """a pinned MR_INPUT_KV record: (header dict, FIELDS list, [(key, values)]) by the M1 engine's kv_read rules (kt_s9h_crudex_v1's)."""
+    pins = PINS if pins is None else pins
+    if pins.get(path) is None or sha_file(path) != pins[path]:
+        raise Refused('C-HASH: %s does not match its pin' % os.path.relpath(path, CODEDIR))
+    head, flds, rows, seen = {}, None, [], set()
+    for ln in open(path).read().splitlines():
+        if ln.startswith('#') or not ln.strip():
+            continue
+        if '=' not in ln:
+            raise Refused('C-REC: %s has a line without "="' % os.path.basename(path))
+        k, v = [x.strip() for x in ln.split('=', 1)]
+        if k == 'FIELDS':
+            flds = v.split()
+        elif flds is None:
+            if k in head:
+                raise Refused('C-REC: %s repeats the header key %s' % (os.path.basename(path), k))
+            head[k] = v
+        else:
+            vals = v.split()
+            if k in seen or len(vals) != len(flds):
+                raise Refused('C-REC: %s row %s repeated or with %d values for %d fields' % (os.path.basename(path), k, len(vals), len(flds)))
+            seen.add(k)
+            rows.append((k, vals))
+    return head, flds, rows
+
+
+def m1_texts(pins=None):
+    """the M1 engine's texts read by ast from its pinned file: FIELDS (MR_SPECTRAL, MR_INSERT, MR_CRUDEX), the v4 MR_INSERT suffix, E_DEF,
+    E_DEF_FACT, F_CRX_FACT and ORIENT."""
+    pins = PINS if pins is None else pins
+    if pins.get(M1ENG) is None or sha_file(M1ENG) != pins[M1ENG]:
+        raise Refused('C-M1-TEXTS: the M1 engine does not match its pin')
+    got, suffix = {}, None
+    for node in ast.parse(open(M1ENG).read()).body:
+        if not (isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name)):
+            continue
+        nm = node.targets[0].id
+        if nm in ('FIELDS', 'E_DEF', 'E_DEF_FACT', 'F_CRX_FACT', 'ORIENT'):
+            got[nm] = ast.literal_eval(node.value)
+        elif nm == 'FIELDS4':
+            for kw in getattr(node.value, 'keywords', []):
+                if kw.arg == 'MR_INSERT' and isinstance(kw.value, ast.BinOp) and isinstance(kw.value.right, ast.Constant):
+                    suffix = kw.value.right.value
+    if sorted(got) != ['E_DEF', 'E_DEF_FACT', 'FIELDS', 'F_CRX_FACT', 'ORIENT'] or suffix is None:
+        raise Refused('C-M1-TEXTS: FIELDS, FIELDS4, E_DEF, E_DEF_FACT, F_CRX_FACT or ORIENT not found as expected')
+    return dict(spec=got['FIELDS']['MR_SPECTRAL'], ins=got['FIELDS']['MR_INSERT'] + suffix, crx=got['FIELDS']['MR_CRUDEX'],
+                edef=got['E_DEF'], edeff=got['E_DEF_FACT'], crxf=got['F_CRX_FACT'], orient=got['ORIENT'])
+
+
+def check_rec(head, flds, want_fields, record, TX, form=None):
+    """C-REC: a certified, VALID MR_INPUT_KV_v4 record of pk25 with the M1 engine's FIELDS and ORIENTATION (form: CRUDEX_FORM wanted)."""
+    ok = (head.get('FORMAT') == 'MR_INPUT_KV_v4' and head.get('RECORD') == record and head.get('STATUS') == 'CERTIFIED' and
+          head.get('EXPORT_STATUS') == 'CERTIFIED' and head.get('RUN_VERDICT') == 'VALID' and head.get('PRODUCER', '').split()[:1] == ['pk25'] and
+          head.get('ORIENTATION') == TX['orient'] and flds == want_fields.split() and head.get('TRIAL_SET', '').strip() != '' and
+          (form is None or head.get('CRUDEX_FORM') == form))
+    if not ok:
+        raise Refused('C-REC: %s is not a certified VALID pk25 MR_INPUT_KV_v4 record with the engine\'s FIELDS' % record)
+    return True
+
+
+def iv(lo, hi):
+    """an arb ball holding the decimal interval [lo, hi] (decimal strings, rounded outward by arb)."""
+    a, b = arb(lo), arb(hi)
+    if not (a.lower() <= b.upper()):
+        raise Refused('C-REC: a field with lo above hi')
+    return a.lower().union(b.upper())
+
+
+def dec_hi(x):
+    """an arb's upper end as a decimal string rounded up (17 significant digits), kt_s9h_crudex_v1's form."""
+    u = x.upper()
+    m, e = u.mid().man_exp()
+    f = Fraction(int(m)) * (Fraction(2) ** int(e))
+    c = Context(prec=17, rounding=ROUND_CEILING)
+    return str(c.divide(Decimal(f.numerator), Decimal(f.denominator)))
+
+
+def jhi_up(s):
+    """a finite grid end at its larger decimal or binary64 reading, as an exact arb point."""
+    a, b = Fraction(s), Fraction(float(s))
+    f = a if a > b else b
+    return arb(f.numerator) / arb(f.denominator)
+
+
+def window_piece(key, v, ix_s, h, ix_i, plant=None):
+    """the window rows of one finite piece: e_hi(d) for d = 1..DMAX (the d <= 3 arithmetic is kt_s9h_crudex_v1's, line for line), the six
+    envelope terms (A_k, rho_k) and mig(xc). plant 'ROWS' doubles the m_xx term of d = 1 (C-ROWS must refuse)."""
+    g = lambda f: iv(v[ix_s[f + '_lo']], v[ix_s[f + '_hi']])
+    G = lambda f: iv(h[ix_i[f + '_lo']], h[ix_i[f + '_hi']])
+    sx, sy, cx, cy = g('sx'), g('sy'), g('cxm1'), g('cym1')
+    tau, rw = arb(v[ix_s['tau_hi']]).upper(), arb(v[ix_s['Rw_hi']]).upper()
+    vx, vy, mxx, mxy = G('vx'), G('vy'), G('mxx'), G('mxy')
+    pevw, pebw = arb(h[ix_i['Pevw_hi']]).upper(), arb(h[ix_i['PeBwux_hi']]).upper()
+    vp = arb(h[ix_i['vp_hi']]).upper()
+    cxl = cx.lower() if cx.lower() > 0 else (-cx.upper() if cx.upper() < 0 else arb(0))
+    cyl = cy.lower() if cy.lower() > 0 else (-cy.upper() if cy.upper() < 0 else arb(0))
+    rad = rw * rw - cxl * cxl - cyl * cyl
+    if not (rad > 0):
+        raise Refused('C-PE: R_w^2 - c_x(-1)^2 - c_y(-1)^2 is not certainly positive at %s' % key)
+    pe = rad.sqrt().upper()
+    if not (sx.lower() > 0 and sy.lower() > 0):
+        raise Refused('C-S: s_x or s_y is not certainly positive at %s' % key)
+    es = []
+    for d in range(1, DMAX + 1):
+        cxd, cyd = sx ** (d + 1) * cx, sy ** (d + 1) * cy
+        bspec = sx ** (d + 1) * vx * cx + sy ** (d + 1) * vy * cy
+        win = (tau ** d * pe).upper()
+        h2 = ((abs(bspec).upper() + pevw * win) * abs(cxd).upper()).upper()
+        mx = abs(mxx).upper() * (2 if (plant == 'ROWS' and d == 1) else 1)
+        h1 = (abs(cxd).upper() * mx + abs(cyd).upper() * abs(mxy).upper() + pebw * win / sx.lower()).upper()
+        e = (h1 + h2).upper()
+        if d >= 4:   # D2 v1_3 (b): Lemma 3's |v+| |eps(d)| |c_x(d)|, |eps(d)| <= s_x^(d+1) R_w on H'
+            e = (e + vp * (sx ** (d + 1)).upper() * rw * abs(cxd).upper()).upper()
+        if not (e > 0 and e < arb(1)):
+            raise Refused('C-POS: e_hi(%d) at %s is not in (0, 1)' % (d, key))
+        es.append(e)
+    sxh, syh, cxh, cyh = sx.upper(), sy.upper(), abs(cx).upper(), abs(cy).upper()
+    terms = [((sxh * cxh * abs(mxx).upper()).upper(), sxh), ((syh * cyh * abs(mxy).upper()).upper(), syh), ((pebw * pe / sx.lower()).upper(), tau),
+             ((sxh * sxh * abs(vx).upper() * cxh * cxh).upper(), (sxh * sxh).upper()), ((sxh * syh * abs(vy).upper() * cyh * cxh).upper(), (sxh * syh).upper()),
+             ((pevw * pe * sxh * cxh).upper(), (tau * sxh).upper()), ((vp * rw * sxh * sxh * cxh).upper(), (sxh * sxh).upper())]
+    xl, xh = arb(h[ix_i['xc_lo']]), arb(h[ix_i['xc_hi']])
+    mig = xl.lower() if xl.lower() > 0 else (-xh.upper() if xh.upper() < 0 else arb(0))
+    return dict(e=es, terms=terms, sxh=sxh, mig=mig)
+
+
+def window_rows(SPEC, INS, CRX, plant=None):
+    """every finite piece at both N: rows ehat(d) = e_hi(d) jhi, the envelope (env_r, env_delta0) with C-ENV, the C-ROWS comparison of
+    d = 1..3 with C11's certified decimals, and the C-SIGN-W data. Returns {key: dict}. plant: 'ROWS', 'ENV', 'SIGNW'."""
+    ix_s = dict((f, i) for i, f in enumerate(SPEC[1]))
+    ix_i = dict((f, i) for i, f in enumerate(INS[1]))
+    ih = dict((k, v) for k, v in INS[2] if k.endswith('_h'))
+    crx = dict(CRX[2])
+    res = {}
+    for key, v in SPEC[2]:
+        if v[ix_s['jhi']] == 'inf':
+            continue
+        h = ih.get(key + '_h')
+        if h is None or (h[ix_i['jlo']], h[ix_i['jhi']]) != (v[ix_s['jlo']], v[ix_s['jhi']]):
+            raise Refused('C-GRID: piece %s has no MR_INSERT h row with its jlo, jhi' % key)
+        W = window_piece(key, v, ix_s, h, ix_i, plant=plant)
+        for d in (1, 2, 3):
+            c11 = crx.get('%s_h%d' % (key, d))
+            if c11 is None or c11[2] != dec_hi(W['e'][d - 1]) or (c11[0], c11[1]) != (v[ix_s['jlo']], v[ix_s['jhi']]):
+                raise Refused('C-ROWS: %s_h%d differs from C11\'s certified row' % (key, d))
+        J = jhi_up(v[ix_s['jhi']])
+        envr = (W['sxh'] + arb(1) / 100).upper() if plant != 'ENV' else (arb(v[ix_s['sx_lo']]) - arb(1) / 100).lower()
+        if not (envr > 0 and envr < 1):
+            raise Refused('C-ENV: env_r is not in (0, 1) at %s' % key)
+        if not all(r < envr for _a, r in W['terms']):
+            raise Refused('C-ENV: a rate is not below env_r at %s' % key)
+        envd0 = (J * sum((a * r ** 10 for a, r in W['terms']), arb(0)) / envr ** 11).upper()
+        ehat = [(e * J).upper() for e in W['e']]
+        if plant == 'SIGNW':
+            ehat[0] = (W['mig'] + 1).upper()
+        res[key] = dict(ehat=ehat, envr=envr, envd0=envd0, mig=W['mig'], e=W['e'], jlo=v[ix_s['jlo']], jhi=v[ix_s['jhi']],
+                        sgn=all(x < W['mig'] for x in ehat) and (envd0 * envr ** (DMAX + 2)).upper() < W['mig'])   # the envelope at d = DMAX + 1
+    return res
+
+
+def sign_w(res, N, Jcap):
+    """C-SIGN-W on the finite pieces of N with jhi <= Jcap: every row and the envelope at d = DMAX + 1 below mig(xc)."""
+    bad = [k for k, r in res.items() if k.startswith('N%d_' % N) and Fraction(r['jhi']) <= Jcap and not r['sgn']]
+    if bad:
+        raise Refused('C-SIGN-W: %d pieces of N = %d below J %s fail, first %s' % (len(bad), N, Jcap, sorted(bad)[0]))
+    return True
+
+
+def fact_rows(res, keys):
+    """the factored MR_CRUDEX rows of the given pieces from their computed rows: [(key_hd, [jlo, jhi, ehat_hi, env_delta0_hi, env_r_hi])],
+    every row of a piece carrying the piece's one envelope; decimals rounded up (dec_hi)."""
+    rows = []
+    for k in keys:
+        r = res[k]
+        e0, er = dec_hi(r['envd0']), dec_hi(r['envr'])
+        for d in range(1, DMAX + 1):
+            rows.append(('%s_h%d' % (k, d), [r['jlo'], r['jhi'], dec_hi(r['ehat'][d - 1]), e0, er]))
+    return rows
+
+
+def rec_text_fact(TX, rows, trial_set, source, xyroute, edef=None):
+    """the factored MR_CRUDEX text (G6 v1_6_7 sect. 6; the form of pk24's G-M2F stand-in): header, FIELDS, then one row per piece and item."""
+    cert = MODE == 'cert'
+    head = ['# MR_CRUDEX (pk25, %s %s): written by %s' % (LABEL, MODE, LABEL),
+            'FORMAT = MR_INPUT_KV_v4', 'RECORD = MR_CRUDEX', 'PRODUCER = pk25 %s' % LABEL, 'CODE = pk25/asm/%s.py:%s' % (LABEL, sha_file(SELF)),
+            'STATUS = %s' % ('CERTIFIED' if cert else 'DRY'), 'EXPORT_STATUS = %s' % ('CERTIFIED' if cert else 'DRY'), 'RUN_VERDICT = VALID',
+            'SOURCE = %s' % source,
+            'J_UNIFORMITY = PER-PIECE: every row holds for every J in [jlo, jhi] of its piece; the last piece runs to J = inf (t = 0)',
+            'ORIENTATION = %s' % TX['orient'], 'TRIAL_SET = %s' % trial_set, 'E_DEFINITION = %s' % (TX['edeff'] if edef is None else edef),
+            'CRUDEX_FORM = factored', 'D_MAX = %d' % DMAX, 'XY_ROUTE = %s' % xyroute, 'FIELDS = %s' % TX['crxf']]
+    return '\n'.join(head + ['%s = %s' % (k, ' '.join(v)) for k, v in rows]) + '\n'
+
+
+def readback_fact(text, TX, rows, pieces, tamper=None):
+    """C-WRITE on a factored MR_CRUDEX text by the M1/M2 engine's rules: header keys until FIELDS, no repeated key, '=' on every line; FORMAT,
+    RECORD, ORIENTATION, PRODUCER's first word pk25, E_DEFINITION = the engine's E_DEF_FACT, CRUDEX_FORM factored, D_MAX = DMAX, FIELDS =
+    F_CRX_FACT; the rows equal to memory with unique keys; every piece in pieces with its items h1..hDMAX and no other; each row finite
+    decimals with ehat_hi >= 0, env_delta0_hi >= 0, 0 < env_r_hi < 1, and one envelope per piece. tamper: 'ROW' (a row's ehat negated)."""
+    if tamper == 'ROW':
+        k0, v0 = rows[0]
+        text = text.replace('%s = %s' % (k0, ' '.join(v0)), '%s = %s' % (k0, ' '.join(v0[:2] + ['-' + v0[2]] + v0[3:])), 1)
+    head, got, flds = {}, [], None
+    for ln in text.splitlines():
+        if ln.startswith('#') or not ln.strip():
+            continue
+        if '=' not in ln:
+            raise Refused('C-WRITE: a line without "="')
+        k, v = [x.strip() for x in ln.split('=', 1)]
+        if k == 'FIELDS':
+            flds = v.split()
+        elif flds is None:
+            if k in head:
+                raise Refused('C-WRITE: repeated header key %s' % k)
+            head[k] = v
+        else:
+            got.append((k, v.split()))
+    if (head.get('FORMAT'), head.get('RECORD'), head.get('ORIENTATION'), head.get('CRUDEX_FORM'), head.get('D_MAX')) != (
+            'MR_INPUT_KV_v4', 'MR_CRUDEX', TX['orient'], 'factored', str(DMAX)):
+        raise Refused('C-WRITE: FORMAT, RECORD, ORIENTATION, CRUDEX_FORM or D_MAX')
+    if head.get('PRODUCER', '').split()[:1] != ['pk25'] or head.get('E_DEFINITION') != TX['edeff']:
+        raise Refused('C-WRITE: PRODUCER or E_DEFINITION')
+    if flds != TX['crxf'].split() or got != [(k, list(v)) for k, v in rows] or len(set(k for k, _ in got)) != len(got):
+        raise Refused('C-WRITE: FIELDS or rows differ from memory')
+    items, env = {}, {}
+    for k, v in got:
+        base, it = k.rsplit('_', 1)
+        for x in v[2:]:
+            if not re.fullmatch(r'-?[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?', x) or not Decimal(x).is_finite():
+                raise Refused('C-WRITE: row %s field %s is not a finite decimal' % (k, x))
+        if not (Decimal(v[2]) >= 0 and Decimal(v[3]) >= 0 and Decimal(0) < Decimal(v[4]) < Decimal(1)):
+            raise Refused('C-WRITE: row %s has ehat or env_delta0 below 0 or env_r outside (0, 1)' % k)
+        items.setdefault(base, set()).add(it)
+        env.setdefault(base, set()).add((v[3], v[4]))
+    if sorted(items) != sorted(pieces) or any(s != set('h%d' % d for d in range(1, DMAX + 1)) for s in items.values()):
+        raise Refused('C-WRITE: a piece missing, extra, or without its items h1..h%d' % DMAX)
+    if any(len(s) != 1 for s in env.values()):
+        raise Refused('C-WRITE: a piece with more than one envelope')
+    return len(got)
+
+
+def load_ts(path, pins=None):
+    """a pinned trial file's S matrix (10 rows: the constant and BASIS9's nine monomials; one column per stored state)."""
+    pins = PINS if pins is None else pins
+    if pins.get(path) is None or sha_file(path) != pins[path]:
+        raise Refused('C-HASH: %s does not match its pin' % os.path.relpath(path, CODEDIR))
+    with open(path) as fh:
+        d = json.load(fh)
+    S = d.get('S')
+    if not (isinstance(S, list) and len(S) == 10 and all(isinstance(r, list) for r in S)):
+        raise Refused('C-TS: %s has no 10-row S' % os.path.basename(path))
+    return S
+
+
+def check_zero(N, plant=None):
+    """C-ZERO (the rows 4626, 4686): state 1's xi_TM and xi_MB coefficients (rows 1, 2 of S: BASIS9's (0,) and (1,)) are exactly 0 in
+    the z9sym trial file. Returns whether every other non-constant coefficient but xi_TB's is 0 too (INFO: state 1 is pure mode 1)."""
+    S = load_ts(TS[N])
+    v = [S[1][1], S[2][1]]
+    if plant == 'ZERO':
+        v[0] = 2.0 ** -1000
+    if any(not (isinstance(x, float) and x == 0.0) for x in v):
+        raise Refused('C-ZERO: state 1 of %s has xi_TM, xi_MB coefficients %r, not exactly 0' % (os.path.basename(TS[N]), v))
+    return all(S[r][1] == 0.0 for r in range(4, 10))
+
+
+def c10p_values(N):
+    """P1's c10' rationals at N: the C10 record's N<N>_C10P line (10 exact rationals over (1, BASIS9)); the record must be a certified valid
+    C10_KV_v1 and match its pin."""
+    if PINS.get(C10REC) is None or sha_file(C10REC) != PINS[C10REC]:
+        raise Refused('C-HASH: the C10 record does not match its pin')
+    head = dict(ln.split(' = ', 1) for ln in open(C10REC).read().splitlines() if ' = ' in ln and not ln.startswith('#'))
+    if (head.get('FORMAT'), head.get('STATUS'), head.get('RUN_VERDICT')) != ('C10_KV_v1', 'CERTIFIED', 'VALID'):
+        raise Refused('C-10P: the C10 record is not a certified valid C10_KV_v1')
+    vals = head.get('N%d_C10P' % N, '').split()
+    if len(vals) != 10 or not all(re.fullmatch(r'-?[0-9]+(/[0-9]+)?', x) for x in vals):
+        raise Refused('C-10P: N%d_C10P is not ten exact rationals' % N)
+    return [Fraction(x) for x in vals]
+
+
+def check_10p(N, plant=None):
+    """C-10P (D2 v1_3 (e)): column 10 of the 10' trial file equals P1's c10' exactly (each binary64 entry as an exact rational); C-TS: its
+    columns 0..9 equal the z9sym file's, so psi-hat, e1 and e3 are the same states."""
+    Sx, S = load_ts(TSX[N]), load_ts(TS[N])
+    if any(len(r) != 11 for r in Sx) or any(len(r) != 10 for r in S):
+        raise Refused('C-TS: the S widths are not 11 (10 prime file) and 10 (z9sym file)')
+    want = c10p_values(N)
+    if plant == '10P':
+        want[0] = want[0] + Fraction(1, 2 ** 70)
+    if [Fraction(float(r[10])) for r in Sx] != want:
+        raise Refused('C-10P: column 10 of %s differs from C10 N%d_C10P' % (os.path.basename(TSX[N]), N))
+    if any(Sx[r][a] != S[r][a] for r in range(10) for a in range(10)):
+        raise Refused('C-TS: columns 0..9 of %s differ from %s' % (os.path.basename(TSX[N]), os.path.basename(TS[N])))
+    return True
+
+
+def load_joint(TX, SPEC):
+    """C-JOINT-READ: pk22's certified MR_JOINT (MR_INPUT_KV_v4, CERTIFIED, VALID, the engine's ORIENTATION, MR_LEMMAP v3's sha, one
+    TRIAL_SET with MR_SPECTRAL v4) on R4's grid: {key: (ch_lo, ch_hi)} as arb points."""
+    head, flds, rows = read_kv(JOINT)
+    ok = (head.get('FORMAT') == 'MR_INPUT_KV_v4' and head.get('RECORD') == 'MR_JOINT' and head.get('STATUS') == 'CERTIFIED' and
+          head.get('RUN_VERDICT') == 'VALID' and head.get('ORIENTATION') == TX['orient'] and head.get('LEMMAP_SHA256') == PINS[LEMMAP3] and
+          head.get('TRIAL_SET') == SPEC[0]['TRIAL_SET'] and 'ch_lo' in flds and 'ch_hi' in flds)
+    if not ok:
+        raise Refused('C-JOINT-READ: MR_JOINT is not a certified valid record on MR_LEMMAP v3 with ch_lo, ch_hi')
+    ix = dict((f, i) for i, f in enumerate(flds))
+    grid = dict((k, (v[0], v[1])) for k, v in SPEC[2])
+    out_ = {}
+    for k, v in rows:
+        if grid.get(k) != (v[ix['jlo']], v[ix['jhi']]):
+            raise Refused('C-JOINT-READ: MR_JOINT row %s is not on MR_SPECTRAL v4\'s grid' % k)
+        out_[k] = (arb(v[ix['ch_lo']]).lower(), arb(v[ix['ch_hi']]).upper())
+    if sorted(out_) != sorted(grid):
+        raise Refused('C-JOINT-READ: MR_JOINT does not cover every piece')
+    return out_
+
+
+def load_cw(SPEC):
+    """C-CW-READ: pk23's CW_X11 (FORMAT CW_X11_KV_v1, RUN_VERDICT VALID, STATUS CERTIFIED or, in dry mode, DRY; MR_LEMMAP v3's sha; TRIAL_SET
+    equal to MR_SPECTRAL v4's; TRIAL_SET_10P naming the pinned 10' trial files; FIELDS jlo jhi x1t_hi chp_lo chp_hi) on R4's grid: {key:
+    (x1t_hi, chp_lo, chp_hi)} as arb points."""
+    head, flds, rows = read_kv(CW)
+    st = head.get('STATUS')
+    ok = (head.get('FORMAT') == 'CW_X11_KV_v1' and head.get('RECORD') == 'CW_X11' and head.get('RUN_VERDICT') == 'VALID' and
+          (st == 'CERTIFIED' or (MODE == 'dry' and st == 'DRY')) and head.get('LEMMAP_SHA256') == PINS[LEMMAP3] and
+          head.get('TRIAL_SET') == SPEC[0]['TRIAL_SET'] and flds == ['jlo', 'jhi', 'x1t_hi', 'chp_lo', 'chp_hi'])
+    t10 = head.get('TRIAL_SET_10P', '')
+    for N in (4, 3):
+        if '%s:%s' % (os.path.basename(TSX[N]), PINS[TSX[N]]) not in t10:
+            ok = False
+    if not ok:
+        raise Refused('C-CW-READ: CW_X11 header (FORMAT, STATUS, LEMMAP_SHA256, TRIAL_SET, TRIAL_SET_10P or FIELDS)')
+    grid = dict((k, (v[0], v[1])) for k, v in SPEC[2])
+    out_ = {}
+    for k, v in rows:
+        if grid.get(k) != (v[0], v[1]):
+            raise Refused('C-CW-READ: CW_X11 row %s is not on MR_SPECTRAL v4\'s grid' % k)
+        out_[k] = (arb(v[2]).upper(), arb(v[3]).lower(), arb(v[4]).upper())
+    return out_, st
+
+
+
+# ---------------------------------------------------------------- P3b: the Lemma D rows above J_s ----------------------------------------------------------------
+
+def qa(x):
+    """an exact rational as an arb ball."""
+    x = Fraction(x)
+    return arb(x.numerator) / arb(x.denominator)
+
+
+def grid_end(s, low):
+    """a grid token at its outward reading (R4's grid_j rule, P2 v2_3's grid_end): the smaller of the exact decimal and its binary64 for a
+    lower end, the larger for an upper end, as an exact Fraction."""
+    a, b = Fraction(s), Fraction(float(s))
+    return min(a, b) if low else max(a, b)
+
+
+def to_arb(e):
+    """an exact sympy number (rationals, square roots, sums, products, integer powers) as an arb ball (P2's and C13's form)."""
+    if e.is_Rational:
+        return arb(int(e.p)) / arb(int(e.q))
+    if e.is_Add:
+        s = arb(0)
+        for x in e.args:
+            s += to_arb(x)
+        return s
+    if e.is_Mul:
+        s = arb(1)
+        for x in e.args:
+            s *= to_arb(x)
+        return s
+    if e.is_Pow:
+        b, x = e.args
+        if x == sp.Rational(1, 2):
+            return to_arb(b).sqrt()
+        if x == -sp.Rational(1, 2):
+            return 1 / to_arb(b).sqrt()
+        if x.is_Integer:
+            return to_arb(b) ** int(x)
+    raise Refused('to_arb: %s' % e)
+
+
+def has0(x):
+    return x.lower() <= 0 and x.upper() >= 0
+
+
+def au(x):
+    """an upper bound of |X| over the piece (an Sl or an arb ball)."""
+    return abs(x.val() if isinstance(x, Sl) else x).upper()
+
+
+def al(x):
+    """a lower bound of |X| over the piece (0 when the ball holds 0)."""
+    v = x.val() if isinstance(x, Sl) else x
+    return v.lower() if v.lower() > 0 else ((-v).lower() if v.upper() < 0 else arb(0))
+
+
+class Sl(object):
+    """X(t) = x0 + t x1 for every t in the piece's t range tb: x0 a ball holding X's true t^0 value, x1 a ball holding (X(t) - x0)/t over tb
+    (P3_NOTE_v1 sect. 3's first-order form). Sums are exact; XY - X0Y0 = t (X1 Y + X0 Y1); X/Y - X0/Y0 = t (X1 Y0 - X0 Y1)/(Y Y0);
+    X^n - X0^n = t X1 sum_(j<n) X^j X0^(n-1-j); X^1/2 - X0^1/2 = t X1/(X^1/2 + X0^1/2), with X and Y over tb."""
+    __slots__ = ('x0', 'x1', 'tb', 'pid')
+
+    def __init__(self, x0, x1, tb, pid):
+        self.x0, self.x1, self.tb, self.pid = x0, x1, tb, pid
+
+    def val(self):
+        return self.x0 + self.tb * self.x1
+
+    def _c(self, o):
+        if isinstance(o, Sl):
+            if o.pid != self.pid:
+                raise Refused('Sl: two pieces mixed (%s, %s)' % (self.pid, o.pid))
+            return o
+        if isinstance(o, int):
+            o = arb(o)
+        if not isinstance(o, arb) or o.rad() != 0:
+            raise Refused('Sl: a constant operand must be exact')
+        return Sl(o, arb(0), self.tb, self.pid)
+
+    def __add__(self, o):
+        o = self._c(o)
+        return Sl(self.x0 + o.x0, self.x1 + o.x1, self.tb, self.pid)
+
+    __radd__ = __add__
+
+    def __neg__(self):
+        return Sl(-self.x0, -self.x1, self.tb, self.pid)
+
+    def __sub__(self, o):
+        return self + (-self._c(o))
+
+    def __rsub__(self, o):
+        return self._c(o) + (-self)
+
+    def __mul__(self, o):
+        o = self._c(o)
+        return Sl(self.x0 * o.x0, self.x1 * o.val() + self.x0 * o.x1, self.tb, self.pid)
+
+    __rmul__ = __mul__
+
+    def __truediv__(self, o):
+        o = self._c(o)
+        y, y0 = o.val(), o.x0
+        if has0(y) or has0(y0):
+            raise Refused('Sl: a divisor may vanish on %s' % self.pid)
+        return Sl(self.x0 / y0, (self.x1 * y0 - self.x0 * o.x1) / (y * y0), self.tb, self.pid)
+
+    def __rtruediv__(self, o):
+        return self._c(o) / self
+
+    def __pow__(self, n):
+        if not (isinstance(n, int) and n >= 1):
+            raise Refused('Sl: power %r' % (n,))
+        v, v0 = self.val(), self.x0
+        s = arb(0)
+        for j in range(n):
+            s += v ** j * v0 ** (n - 1 - j)
+        return Sl(v0 ** n, self.x1 * s, self.tb, self.pid)
+
+    def sqrt(self):
+        v, v0 = self.val(), self.x0
+        if not (v.lower() > 0 and v0.lower() > 0):
+            raise Refused('Sl: a square root of a value not certainly positive on %s' % self.pid)
+        r, r0 = v.sqrt(), v0.sqrt()
+        return Sl(r0, self.x1 / (r + r0), self.tb, self.pid)
+
+
+def zero_at0(s, what):
+    """an Sl whose true t^0 value is exactly 0 by a named identity: C-ZERO-EX checks the x0 ball holds 0, then x0 = 0 exactly."""
+    if not has0(s.x0):
+        raise Refused('C-ZERO-EX: %s: the t^0 ball %s does not hold 0 on %s' % (what, s.x0.str(5), s.pid))
+    return Sl(arb(0), s.x1, s.tb, s.pid)
+
+
+def exact_at0(s, x0, what):
+    """an Sl whose true t^0 value is the exact x0 (a named identity): C-T0-Z checks the x0 ball meets it, then x0 replaces the ball."""
+    if not s.x0.overlaps(x0):
+        raise Refused('C-T0-Z: %s: the t^0 ball %s misses the exact value %s on %s' % (what, s.x0.str(8), x0.str(8), s.pid))
+    return Sl(x0, s.x1, s.tb, s.pid)
+
+
+def t_range(jlo, jhi):
+    """(tb, t_lo, t_hi, J_lo) on a piece: t in [t_lo, t_hi] with the grid ends at their outward readings; t_lo = 0 on the last piece."""
+    J_lo = grid_end(jlo, True)
+    t_hi = (1 / qa(J_lo)).upper()
+    t_lo = arb(0) if jhi == 'inf' else (1 / qa(grid_end(jhi, False))).lower()
+    return t_lo.union(t_hi), t_lo, t_hi, J_lo
+
+
+def import_pinned(path, name):
+    if PINS.get(path) is None or sha_file(path) != PINS[path]:
+        raise Refused('C-HASH: %s does not match its pin' % os.path.basename(path))
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(name, path)
+    mod = importlib.util.module_from_spec(spec)
+    p0 = ctx.prec
+    spec.loader.exec_module(mod)
+    ctx.prec = p0
+    return mod
+
+
+def check_trial(path, N):
+    with open(path) as fh:
+        ts = json.load(fh).get('trial_set')
+    for k, p in (('ts', TS[N]), ('vacres', VACRES[N])):
+        if not isinstance(ts, dict) or ts.get(k) != '%s:%s' % (os.path.basename(p), PINS[p]):
+            raise Refused('C-LAW-READ: %s trial_set %s is not the pinned %s' % (os.path.basename(path), k, os.path.basename(p)))
+
+
+def load_laws(RD, N):
+    """C-LAW-READ: S8 D with E2, E3, FF (certificate m3_lawcert_v1_1) and S8 N (v1_2) at N through the reader fork (P2's load_laws, the same
+    pinned files): {'D', 'E2', 'N': (record, certificate)}."""
+    res = {}
+    for F in ('D', 'N'):
+        rp, ap = S8REC[N][F]
+        cp, co = S8CERT[N][F]
+        for p in (rp, ap, cp, co):
+            if PINS.get(p) is None or sha_file(p) != PINS[p]:
+                raise Refused('C-LAW-READ: %s does not match its pin' % os.path.basename(p))
+        check_trial(rp, N)
+        try:
+            rec = RD.load(rp, ap, 300, N)
+            recs = {F: rec}
+            if F == 'D':
+                for G in ('E2', 'E3', 'FF'):
+                    rg = M3O + 'm3_s8v3_%s_N%d_J300_v1_8_1.json' % (G, N)
+                    if PINS.get(rg) is None or sha_file(rg) != PINS[rg]:
+                        raise Refused('C-LAW-READ: %s does not match its pin' % os.path.basename(rg))
+                    check_trial(rg, N)
+                    recs[G] = RD.load(rg, ap, 300, N)
+            cert = RD.load_lawcert(cp, co, 300, N, recs)
+        except Refused:
+            raise
+        except Exception as e:
+            raise Refused('C-LAW-READ: %s or %s: %s' % (os.path.basename(rp), os.path.basename(cp), e))
+        res[F] = (rec, cert)
+        if F == 'D':
+            res['E2'] = (recs['E2'], cert)
+    return res
+
+
+def chi2_tail(n, s):
+    if n == 2:
+        return (-s / 2).exp()
+    if n == 3:
+        return (s / 2).sqrt().erfc() + (2 * s / arb.pi()).sqrt() * (-s / 2).exp()
+    raise Refused('chi2_tail: n = %r' % n)
+
+
+def r_over_t(E, J_lo, t_hi, jt=None):
+    """R/t over a piece with lower end J_lo (P2's r_over_t): rem 300^4 t_hi^3 + J_lo (tail + ann + far)(J_lo), with one monotonicity gate per
+    J-weighted term, so J_lo bounds every J of the piece: C-MONO-S8-TAIL and C-MONO-S8-ANN (J_lo a/G > 5 for every chi-square pair, so J^2 P(J)
+    decreases) and C-MONO-S8-FAR (J_lo far_rate > 1). jt (a plant's dict term -> J) replaces J_lo in the named test only."""
+    if E.get('laws') is None:
+        return arb(0)
+    jt = jt or {}
+    L, parts = E['laws'], E['parts']
+    j0, J = arb(300), qa(J_lo)
+    tot = qa(parts['rem']) * arb(300) ** 4 * t_hi ** 3
+    for part in ('tail', 'ann'):
+        g = L[part]
+        Jt = qa(jt.get('S8-' + part.upper(), J_lo))
+        for a, G in g['a_G']:
+            if not (Jt * qa(a) / qa(G) > 5):
+                raise Refused('C-MONO-S8-%s: J_lo a/G is not above 5 for a %s pair' % (part.upper(), part))
+        P = lambda JJ: sum((chi2_tail(g['n'], JJ * qa(a) / qa(G)) for a, G in g['a_G']), arb(0))
+        r = P(J).upper() / P(j0).lower()
+        tot = tot + J * qa(parts[part]) * r.sqrt()
+    fr = qa(L['far_rate'])
+    if not (qa(jt.get('S8-FAR', J_lo)) * fr > 1):
+        raise Refused('C-MONO-S8-FAR: J_lo far_rate is not above 1')
+    tot = tot + J * qa(parts['far']) * (-fr * (J - j0)).exp()
+    return tot.upper()
+
+
+def law_x1(RD, LW, F, key, x0, J_lo, t_hi, tb):
+    """(X(t) - X(0))/t over the piece from the coefficient balls and the law remainder (P2's entry_x1), and the [LO_0, HI_0] ball; an exact x0
+    must lie in [LO_0, HI_0] (C-A0)."""
+    rec, cert = LW[F]
+    LO, HI, _eb = RD.entry_ball(rec, key)
+    if len(LO) != 4 or len(HI) != 4:
+        raise Refused('C-A0: %s:%s has %d coefficient balls, expected 4' % (F, key, len(LO)))
+    b0 = qa(LO[0]).union(qa(HI[0]))
+    if x0 is not None and not (qa(LO[0]) <= x0 and x0 <= qa(HI[0])):
+        raise Refused('C-A0: the exact %s:%s(0) is outside [LO_0, HI_0]' % (F, key))
+    E = RD.entry_law(cert, F, key)
+    s = arb(0)
+    for k in (3, 2, 1):
+        s = s * tb + qa(LO[k]).union(qa(HI[k]))
+    return s + arb(0, 1) * r_over_t(E, J_lo, t_hi), b0
+
+
+def t0ball(d):
+    """an E4/E6 t0 ball {A0: exact rational, rad0: decimal} as an arb ball."""
+    return qa(Fraction(d['A0'])) + arb(0, 1) * arb(d['rad0']).upper()
+
+
+E4Q = ['G10,%d' % b for b in (0, 1, 3, 10)] + ['T10,%d' % b for b in (0, 1, 3, 10)] + ['E4N:IhR,10,%d' % b for b in (0, 1, 3)]
+E4CLAIM = ('for each quantity X and each piece: for every J in [jlo, jhi] (t = 1/J; t = 0 included on the last piece), X(t) - X(0) lies in '
+           't [c1_lo, c1_hi]')
+E6CLAIM = ('for each family X in {E6e, E6f} and each piece: for every J in [jlo, jhi] (t = 1/J; t = 0 included on the last piece), X(t) - X(0) '
+           'lies in t [c1_lo, c1_hi]')
+
+
+def load_e4(N, SPEC, plant=None):
+    """C-E4-READ: pk22's E4 factored record at N (pinned; format v2, N, the claim, trial_set = the pinned 10' file, sources naming MR_SPECTRAL
+    v4 and the 10' file, t0 balls of the quantities P3b reads, every piece of R4's grid with its jlo, jhi): {'t0', 'pieces'}. plant 'A0E4'
+    moves T10,10's t0 ball by 1e-6 (C-A0-E4 must refuse)."""
+    p = E4J[N]
+    if PINS.get(p) is None or sha_file(p) != PINS[p]:
+        raise Refused('C-HASH: %s does not match its pin' % os.path.basename(p))
+    with open(p) as fh:
+        d = json.load(fh)
+    src = d.get('sources', {})
+    if (d.get('N') != N or d.get('format') != 'pk22 E4 factored record v2' or not d.get('claim', '').startswith(E4CLAIM) or
+            d.get('trial_set') != '%s:%s' % (os.path.basename(TSX[N]), PINS[TSX[N]]) or src.get('spectral', {}).get('sha256') != PINS[SPEC4] or
+            src.get('ts_z9symxy', {}).get('sha256') != PINS[TSX[N]] or any(q not in d.get('t0_ball', {}) for q in E4Q)):
+        raise Refused('C-E4-READ: E4 N%d header (N, format, claim, trial_set, sources, t0 balls)' % N)
+    t0 = dict((q, t0ball(d['t0_ball'][q])) for q in E4Q)
+    if plant == 'A0E4':
+        t0['T10,10'] = t0['T10,10'] + arb('1e-6')
+    grid = dict((k, (v[0], v[1])) for k, v in SPEC[2] if k.startswith('N%d_' % N))
+    pcs = {}
+    for k, v in d['pieces'].items():
+        if grid.get(k) != (v.get('jlo'), v.get('jhi')):
+            raise Refused('C-E4-READ: E4 N%d piece %s is not on MR_SPECTRAL v4\'s grid' % (N, k))
+        pcs[k] = dict((q, iv(v['c1'][q][0], v['c1'][q][1])) for q in E4Q)
+    if sorted(pcs) != sorted(grid):
+        raise Refused('C-E4-READ: E4 N%d does not cover every piece' % N)
+    return dict(t0=t0, pieces=pcs, src=src)
+
+
+def load_e3(N, SPEC, tamper=None):
+    """C-E3-READ and C-SQ2 (the P3b-1 note N-1): pk22's certified E3 record e3_sq2_v2 at N (pinned; the maker checks its sha against
+    pk22's freeze manifest): N, the format E3FORMAT, kinds ['xy'], the claim's second-order form (E3CLAIM: R_xy(t) <= t R_hat and
+    R_xy(t)^2 <= t^2 c2_hi, X(0) = X_1 = 0, the last piece to t = 0; not a MOCK), sources naming MR_SPECTRAL v4 (the grid) and C10, every
+    piece of R4's grid with its jlo, jhi, and R_hat, c2_hi finite nonnegative decimals on every piece (C-SQ2). R_xy is the engine bound over
+    lambda~_0 Z_xy^1/2, so R_xy/(t |chi|) <= min(R_hat, c2_hi^1/2). Returns {key: that bound} as arb upper values. tamper 'SQ2' makes one c2_hi
+    infinite (PLANT-SQ2)."""
+    p = E3J[N]
+    if PINS.get(p) is None or sha_file(p) != PINS[p]:
+        raise Refused('C-HASH: %s does not match its pin' % os.path.basename(p))
+    with open(p) as fh:
+        d = json.load(fh)
+    src = d.get('sources', {})
+    claim = d.get('claim', '')
+    if (d.get('N') != N or d.get('format') != E3FORMAT or d.get('kinds') != ['xy'] or claim.startswith('MOCK') or
+            any(c not in claim for c in E3CLAIM) or src.get('spectral', {}).get('sha256') != PINS[SPEC4] or
+            src.get('c10', {}).get('sha256') != PINS[C10REC] or not isinstance(d.get('pieces', {}).get('xy'), dict)):
+        raise Refused('C-E3-READ: E3 N%d header (N, format, kinds, the second-order claim, sources MR_SPECTRAL v4 and C10, pieces)' % N)
+    grid = dict((k, (v[0], v[1])) for k, v in SPEC[2] if k.startswith('N%d_' % N))
+    rows = d['pieces']['xy']
+    order = sorted(grid, key=lambda k: Fraction(grid[k][0]))
+    cov = [k for k in order if k in rows]
+    if not cov or any(k not in grid for k in rows) or cov != order[order.index(cov[0]):]:
+        raise Refused('C-E3-READ: E3 N%d does not carry a contiguous run of R4\'s pieces up to the last piece' % N)
+    dec = re.compile(r'[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?')
+    out_ = {}
+    for i, k in enumerate(sorted(rows)):
+        r = rows[k]
+        if grid[k] != (r.get('jlo'), r.get('jhi')):
+            raise Refused('C-E3-READ: E3 N%d piece %s is not on MR_SPECTRAL v4\'s grid' % (N, k))
+        rh, c2 = r.get('R_hat'), r.get('c2_hi')
+        if tamper == 'SQ2' and i == 0:
+            c2 = 'inf'
+        if not (isinstance(rh, str) and isinstance(c2, str) and dec.fullmatch(rh) and dec.fullmatch(c2)):
+            raise Refused('C-SQ2: E3 N%d piece %s has R_hat %r, c2_hi %r: not finite nonnegative decimals' % (N, k, rh, c2))
+        a, b = arb(rh).upper(), arb(c2).upper().sqrt().upper()
+        out_[k] = a if a < b else (b if b < a else a.union(b).upper())
+    return out_
+
+
+def load_e6(N, SPEC):
+    """C-E6-READ: pk22's E6 factored record at N (pinned; format v3, N, the claim, sources naming MR_SPECTRAL v4 and the pinned 10' file,
+    E6e's t0 ball, every piece with its jlo, jhi): {'t0', 'pieces'} for E6e."""
+    p = E6J[N]
+    if PINS.get(p) is None or sha_file(p) != PINS[p]:
+        raise Refused('C-HASH: %s does not match its pin' % os.path.basename(p))
+    with open(p) as fh:
+        d = json.load(fh)
+    src = d.get('sources', {})
+    if (d.get('N') != N or d.get('format') != 'pk22 E6 factored record v3' or not d.get('claim', '').startswith(E6CLAIM) or
+            src.get('spectral', {}).get('sha256') != PINS[SPEC4] or src.get('ts_z9symxy', {}).get('sha256') != PINS[TSX[N]] or
+            'E6e' not in d.get('t0_ball', {})):
+        raise Refused('C-E6-READ: E6 N%d header (N, format, claim, sources, t0 ball)' % N)
+    grid = dict((k, (v[0], v[1])) for k, v in SPEC[2] if k.startswith('N%d_' % N))
+    pcs = {}
+    for k, v in d['pieces'].items():
+        if grid.get(k) != (v.get('jlo'), v.get('jhi')):
+            raise Refused('C-E6-READ: E6 N%d piece %s is not on MR_SPECTRAL v4\'s grid' % (N, k))
+        pcs[k] = iv(v['E6e_c1'][0], v['E6e_c1'][1])
+    if sorted(pcs) != sorted(grid):
+        raise Refused('C-E6-READ: E6 N%d does not cover every piece' % N)
+    return dict(t0=t0ball(d['t0_ball']['E6e']), pieces=pcs)
+
+
+def check_ihr(plant=None):
+    """C-IHR: each E4N record (pinned) names the pinned c3k entry list on graph E4N and carries IhR,10,b (b = 0, 1, 3); the list
+    defines IhR,10,b on graph E4N by the factors [cp 10 0] [xia (4,7,7)] [cp b 2] (h on the bond (4,7) next to phi_b), so IhR,10,b = Lambda
+    <chi, S M_h chi_b> as pk22 confirmed. plant 'IHR' asks for xia (4,7,8)."""
+    if PINS.get(C3KL) is None or sha_file(C3KL) != PINS[C3KL]:
+        raise Refused('C-HASH: the c3k entry list does not match its pin')
+    for N in (4, 3):
+        if PINS.get(E4NR[N]) is None or sha_file(E4NR[N]) != PINS[E4NR[N]]:
+            raise Refused('C-HASH: %s does not match its pin' % os.path.basename(E4NR[N]))
+        with open(E4NR[N]) as fh:
+            r = json.load(fh)
+        items = r.get('items') if isinstance(r.get('items'), dict) else {}
+        if (r.get('entry_list') != '%s:%s' % (os.path.basename(C3KL), PINS[C3KL]) or r.get('graph') != 'E4N' or
+                any(('IhR,10,%d' % b) not in items for b in (0, 1, 3))):
+            raise Refused('C-IHR: the E4N record N%d does not name the pinned entry list on graph E4N with IhR,10,0/1/3' % N)
+    with open(C3KL) as fh:
+        L = json.load(fh)
+    ents = [e for e in L.get('entries', []) if isinstance(e, dict)]
+    xia = [4, 7, 8] if plant == 'IHR' else [4, 7, 7]
+    for b in (0, 1, 3):
+        e = [x for x in ents if x.get('key') == 'IhR,10,%d' % b]
+        if len(e) != 1 or e[0].get('graph') != 'E4N' or e[0].get('factors') != [['cp', 10, 0], ['xia', xia], ['cp', b, 2]]:
+            raise Refused('C-IHR: the entry list does not define IhR,10,%d as [cp 10 0] [xia (%s)] [cp %d 2] on graph E4N' % (b, ','.join(map(str, xia)), b))
+    return True
+
+
+def load_c10x():
+    """C-C10X: the C10 record's exact t^0 data at N = 4, 3 (sympy): UHAT0, RITZ0, GT0_W (G0, T0 on psi-hat, s1, s3 unnormalised) and the
+    C10P_T0 line (A with P_e 10'(0) = A u_xy0; the components a_0, a_x, a_y of the stored 10'(0) on u0, u_x0, u_y0; |10'(0)|)."""
+    if PINS.get(C10REC) is None or sha_file(C10REC) != PINS[C10REC]:
+        raise Refused('C-HASH: the C10 record does not match its pin')
+    head = {}
+    for ln in open(C10REC).read().splitlines():
+        if ' = ' in ln and not ln.startswith('#'):
+            k, v = ln.split(' = ', 1)
+            head[k] = v
+    if (head.get('FORMAT'), head.get('STATUS'), head.get('RUN_VERDICT')) != ('C10_KV_v1', 'CERTIFIED', 'VALID'):
+        raise Refused('C-C10X: the C10 record is not a certified valid C10_KV_v1')
+    res = {}
+    for N in (4, 3):
+        u = [[None] * 3 for _ in range(3)]
+        for part in head.get('N%d_UHAT0' % N, '').split('; '):
+            nm, ex = part.split(' ', 1)
+            m = re.fullmatch(r'u([0xy])([p13])', nm)
+            if m is None or u[KN.index(m.group(1))][BN.index(m.group(2))] is not None:
+                raise Refused('C-C10X: N%d uhat name %r' % (N, nm))
+            u[KN.index(m.group(1))][BN.index(m.group(2))] = sp.sympify(ex)
+        rz = re.fullmatch(r'mu_0 1; mu_x (.+); mu_y (.+)', head.get('N%d_RITZ0' % N, ''))
+        mg = re.fullmatch(r'G \[(.+)\]; T \[(.+)\] \(psi-hat, s1, s3 unnormalised, t\^0\)', head.get('N%d_GT0_W' % N, ''))
+        mt = re.fullmatch(r"B (.+); A (.+) \(P_e 10'\(0\) = A u_xy0\); components of 10'\(0\) on u0, u_x0, u_y0, u_xy0: (.+); \|10'\(0\)\| (.+); "
+                          r"canonical sign ([+-]1)", head.get('N%d_C10P_T0' % N, ''))
+        if rz is None or mg is None or mt is None or any(x is None for r_ in u for x in r_):
+            raise Refused('C-C10X: N%d UHAT0, RITZ0, GT0_W or C10P_T0 does not parse' % N)
+        G0 = [sp.sympify(e) for e in mg.group(1).split(', ')]
+        T0 = [sp.sympify(e) for e in mg.group(2).split(', ')]
+        comps = [sp.sympify(e) for e in mt.group(3).split(', ')]
+        A = sp.sympify(mt.group(2))
+        if len(G0) != 9 or len(T0) != 9 or len(comps) != 4 or sp.expand(comps[3] - A) != 0:
+            raise Refused('C-C10X: N%d G0, T0 or the components of 10\'(0) do not parse as expected' % N)
+        res[N] = dict(u=u, mu=[sp.Integer(1), sp.sympify(rz.group(1)), sp.sympify(rz.group(2))], G0=[G0[3 * i:3 * i + 3] for i in range(3)],
+                      T0=[T0[3 * i:3 * i + 3] for i in range(3)], A=A, a=comps[:3], n10=sp.sympify(mt.group(4)), csign=int(mt.group(5)))
+    return res
+
+
+def load_c13x():
+    """C-C13X: the C13 record's exact t^0 values at N = 4, 3 (sympy): s_x0 = q_1^2, s_y0 = q_2^2, c_h0, h_y0, c_x(-1)0, c_y(-1)0."""
+    if PINS.get(C13REC) is None or sha_file(C13REC) != PINS[C13REC]:
+        raise Refused('C-HASH: the C13 record does not match its pin')
+    head = {}
+    for ln in open(C13REC).read().splitlines():
+        if ' = ' in ln and not ln.startswith('#'):
+            k, v = ln.split(' = ', 1)
+            head[k] = v
+    if (head.get('FORMAT'), head.get('STATUS'), head.get('RUN_VERDICT')) != ('C13_KV_v1', 'CERTIFIED', 'VALID'):
+        raise Refused('C-C13X: the C13 record is not a certified valid C13_KV_v1')
+    mq = re.fullmatch(r'q_1 (.+), q_2 (.+); s_x0 = q_1\^2, s_y0 = q_2\^2', head.get('Q', ''))
+    res = {}
+    for N in (4, 3):
+        m = re.fullmatch(r'c_h0 (.+); h_y0 (.+); c_x\(-1\)0 (.+); c_y\(-1\)0 (.+)', head.get('N%d_T0' % N, ''))
+        if mq is None or m is None:
+            raise Refused('C-C13X: Q or N%d_T0 does not parse' % N)
+        q1, q2 = sp.sympify(mq.group(1)), sp.sympify(mq.group(2))
+        res[N] = dict(sx0=sp.expand(q1 ** 2), sy0=sp.expand(q2 ** 2), ch0=sp.sympify(m.group(1)), hy0=sp.sympify(m.group(2)),
+                      cx0=sp.sympify(m.group(3)), cy0=sp.sympify(m.group(4)))
+    return res
+
+
+def exact_data(C10X, C13X, N, plant=None):
+    """the exact t^0 values of P3b at N as arb balls, with C-ZERO-EX (N-4: UHAT0 has uhat_0(0) = (1, 0, 0) and uhat_x3(0) = 0 exactly), C-HARM
+    (C10's mu_x0, mu_y0 equal C13's q_1^2, q_2^2 exactly, so W_ext's t^0 Ritz values are 1, s_x0, s_y0 and, by C-PURE10, s_x0 s_y0 for
+    u_xy0), sgn(A) (C-ALPHA: A certainly nonzero; plant 'SIGMA' flips it) and the exact E4 t^0 values from C10: G10,b(0) = sum_k a_k <u_k0,
+    psi_b(0)>, T10,b(0) = sum_k a_k mu_k0 <u_k0, psi_b(0)> (<u_k0, psi_b(0)> = sum_j uhat0_kj G0_jb/G0_jj^1/2), G10,10(0) = |10'(0)|^2 and
+    T10,10(0) = sum_k a_k^2 mu_k0 + A^2 s_x0 s_y0. plant 'ZEROX' makes uhat_x3(0) = 2^-60."""
+    c, e = C10X[N], C13X[N]
+    u = c['u']
+    zx = [u[0][0], u[0][1], u[0][2], u[1][2] if plant != 'ZEROX' else sp.Rational(1, 2 ** 60)]
+    if zx != [1, 0, 0, 0]:
+        raise Refused('C-ZERO-EX: UHAT0 at N = %d is not uhat_0(0) = (1, 0, 0) with uhat_x3(0) = 0 exactly' % N)
+    if sp.expand(c['mu'][1] - e['sx0']) != 0 or sp.expand(c['mu'][2] - e['sy0']) != 0:
+        raise Refused('C-HARM: C10\'s mu_x0, mu_y0 differ from C13\'s q_1^2, q_2^2 at N = %d' % N)
+    A = c['A']
+    Aa = to_arb(A)
+    if not (Aa > 0 or Aa < 0):
+        raise Refused('C-ALPHA: A is not certainly nonzero at N = %d' % N)
+    sg = (1 if Aa > 0 else -1) * (-1 if plant == 'SIGMA' else 1)
+    G0, mu, a = c['G0'], c['mu'], c['a']
+    ov = [[sum((u[k][j] / sp.sqrt(G0[j][j]) * G0[j][b] for j in range(3)), sp.Integer(0)) for b in range(3)] for k in range(3)]
+    ex = {}
+    for i, b in enumerate(REVEN):
+        ex['G10,%d' % b] = to_arb(sum((a[k] * ov[k][i] for k in range(3)), sp.Integer(0)))
+        ex['T10,%d' % b] = to_arb(sum((a[k] * mu[k] * ov[k][i] for k in range(3)), sp.Integer(0)))
+    ex['G10,10'] = to_arb(c['n10']) ** 2
+    ex['T10,10'] = to_arb(sum((a[k] ** 2 * mu[k] for k in range(3)), sp.Integer(0))) + Aa * Aa * to_arb(e['sx0']) * to_arb(e['sy0'])
+    pz = sum((to_arb(x) ** 2 for x in a), arb(0)) + Aa * Aa - ex['G10,10']
+    if not has0(pz):
+        raise Refused('C-C10X: |10\'(0)|^2 differs from a_0^2 + a_x^2 + a_y^2 + A^2 at N = %d' % N)
+    sx0, sy0, cx0, cy0, hy0 = [to_arb(e[k]) for k in ('sx0', 'sy0', 'cx0', 'cy0', 'hy0')]
+    return dict(u=[[to_arb(u[k][b]) for b in range(3)] for k in range(3)], mu=[to_arb(m) for m in mu],
+                G0=[[to_arb(x) for x in r_] for r_ in G0], T0=[[to_arb(x) for x in r_] for r_ in c['T0']], sgA=sg, A=Aa,
+                sx0=sx0, sy0=sy0, cx0=cx0, cy0=cy0, hy0=hy0, ch0=to_arb(e['ch0']), sxy0=sx0 * sy0, gz0=sg * cx0 * cy0, kz0=sg * sx0 * sy0 * hy0,
+                e4=ex)
+
+
+def check_a0_e4(X, E4, N):
+    """C-A0-E4 (C-HARM's record side): C10's exact t^0 values of G10,b, T10,b (b = 0, 1, 3), G10,10 and T10,10 lie in E4's t0 balls."""
+    bad = [q for q in X['e4'] if not E4['t0'][q].overlaps(X['e4'][q])]
+    if bad:
+        raise Refused('C-A0-E4: at N = %d C10\'s exact t^0 values of %s miss E4\'s t0 balls' % (N, ', '.join(bad)))
+    return True
+
+
+def check_pi0_exact(C13X, sg, plant=None):
+    """C-PI0-EXACT: D_d(0) = (s_x0 s_y0)^d g_z0 k_z0 - s_x0^(d+1) c_x(-1)0 s_y0^(d+1) c_y(-1)0 h_y0 = 0
+    for d = 1..DMAX in exact arithmetic, with g_z0 = sgn(A) c_x(-1)0 c_y(-1)0 (C13's C-E6-0, G6's Lemma H0F (b)) and k_z0 = sgn(A) s_x0 s_y0 h_y0
+    (C13's C-BH0). plant 'PI0' takes g_z0 = c_x(-1)0^2."""
+    for N in (4, 3):
+        e = C13X[N]
+        gz0 = sg[N] * e['cx0'] * e['cy0'] if plant != 'PI0' else e['cx0'] ** 2
+        kz0 = sg[N] * e['sx0'] * e['sy0'] * e['hy0']
+        for d in range(1, DMAX + 1):
+            D = sp.expand((e['sx0'] * e['sy0']) ** d * gz0 * kz0 - e['sx0'] ** (d + 1) * e['cx0'] * e['sy0'] ** (d + 1) * e['cy0'] * e['hy0'])
+            if D != 0:
+                raise Refused('C-PI0-EXACT: D_%d(0) is not 0 at N = %d' % (d, N))
+    return True
+
+
+def load_p2(C10X):
+    """C-P2-READ: P2's certified table (pinned; FORMAT MR_LEMMAP_KV_v3F, RECORD MR_LEMMAP_F, RUN_VERDICT VALID, STATUS CERTIFIED, SOURCE naming
+    MR_LEMMAP v3 and C10 by sha8, N<N>_UHAT0 equal to the C10 record's line): (ix, rows)."""
+    if PINS.get(P2REC) is None or sha_file(P2REC) != PINS[P2REC]:
+        raise Refused('C-HASH: the P2 table does not match its pin')
+    head, rows, ix = {}, {}, None
+    for ln in open(P2REC).read().splitlines():
+        if ln.startswith('#') or not ln.strip():
+            continue
+        k, v = ln.split(' = ', 1)
+        if k == 'FIELDS':
+            ix = dict((f, i) for i, f in enumerate(v.split()))
+        elif re.fullmatch(r'N[34]_P[0-9]+', k):
+            rows[k] = v.split()
+        else:
+            head[k] = v
+    c10 = dict(ln.split(' = ', 1) for ln in open(C10REC).read().splitlines() if ' = ' in ln and not ln.startswith('#'))
+    src = head.get('SOURCE', '')
+    ok = ((head.get('FORMAT'), head.get('RECORD'), head.get('RUN_VERDICT'), head.get('STATUS')) == ('MR_LEMMAP_KV_v3F', 'MR_LEMMAP_F', 'VALID', 'CERTIFIED')
+          and ix is not None and ('MR_LEMMAP v3 %s;' % PINS[LEMMAP3][:8]) in src and ('C10 %s;' % PINS[C10REC][:8]) in src and
+          all(head.get('N%d_UHAT0' % N) == c10.get('N%d_UHAT0' % N) for N in (4, 3)))
+    if not ok:
+        raise Refused('C-P2-READ: the P2 table header (FORMAT, RECORD, RUN_VERDICT, STATUS, SOURCE, UHAT0)')
+    return ix, rows
+
+
+def env_coef(A, rho, kind, envr):
+    """the envelope coefficient of one row term over d >= 10: max_(d >= 10) term(d)/env_r^(d+1), term = A rho^d ('g') or A d rho^(d-1) ('d').
+    A 'g' ratio falls from d = 10 (rho < env_r); a 'd' ratio rises only while d < rho/(env_r - rho), so its max is over d = 10..d*."""
+    if not (rho < envr):
+        raise Refused('C-ENV: a rate %s is not below env_r %s' % (rho.str(6), envr.str(6)))
+    if kind == 'g':
+        return (A * rho ** 10 / envr ** 11).upper()
+    q = (rho / (envr - rho)).upper()
+    ds = int(float(q.upper())) + 1
+    if ds > 2000:
+        raise Refused('C-ENV: the d rho^(d-1) ratio peaks past d = 2000')
+    best = arb(0)
+    for d in range(10, max(10, ds) + 1):
+        best = best.union((A * d * rho ** (d - 1) / envr ** (d + 1)).upper()).upper()
+    return best
+
+
+def load_hlaws(RD, N):
+    """C-HLAW-READ: pk25's NIH, NHT and DH records at N with their certificate m3_lawcert_s9h_v1_1 through the reader fork (P4's group,
+    the same pinned files): {'NIH', 'DH': (record, certificate)}."""
+    recs = {}
+    for F in ('NIH', 'NHT', 'DH'):
+        rp, ap = HREC[N][F]
+        for p in (rp, ap):
+            if PINS.get(p) is None or sha_file(p) != PINS[p]:
+                raise Refused('C-HLAW-READ: %s does not match its pin' % os.path.basename(p))
+        check_trial(rp, N)
+        try:
+            recs[F] = RD.load(rp, ap, 300, N)
+        except Exception as e:
+            raise Refused('C-HLAW-READ: load %s: %s' % (os.path.basename(rp), e))
+    cp, co = HCERT[N]
+    for p in (cp, co):
+        if PINS.get(p) is None or sha_file(p) != PINS[p]:
+            raise Refused('C-HLAW-READ: %s does not match its pin' % os.path.basename(p))
+    try:
+        cert = RD.load_lawcert(cp, co, 300, N, recs)
+    except Exception as e:
+        raise Refused('C-HLAW-READ: load_lawcert %s: %s' % (os.path.basename(cp), e))
+    return dict(NIH=(recs['NIH'], cert), DH=(recs['DH'], cert))
+
+
+def main_e4_check(N, E4SRC, plant=None):
+    """C-MAIN-E4 (the P3b-1 N-3; the P4 N-1 in this engine): Lambda = mu_0,rec theta turns E4's T10,b and IhR,10,b into S units only
+    if they carry the main of S8 N's T,b,c, main_N. (a) E4's sources name the pinned S8 N record, so T10,b is formed from the same T items;
+    (b) S8 N's record has graph N with family N; (c) the E4N record (IhR,10,b; pinned, the one E4 names) has graph E4N, family E4N and names
+    the pinned c3k entry list, which defines E4N as the N graph (columns vac, int, vac) with h on the bond next to one end column; (d) the E4N
+    and N families carry equal prep parameters (a_v, ap, theta0). plant 'MAINE4' puts S8 D's record in the T slot (PLANT-MAIN-E4)."""
+    t_path = S8REC[N]['N'][0] if plant != 'MAINE4' else S8REC[N]['D'][0]
+    for p in (t_path, E4NR[N], C3KL):
+        if PINS.get(p) is None or sha_file(p) != PINS[p]:
+            raise Refused('C-MAIN-E4: %s does not match its pin' % os.path.basename(p))
+    if E4SRC.get('N', {}).get('sha256') != PINS[t_path] or E4SRC.get('E4N', {}).get('sha256') != PINS[E4NR[N]]:
+        raise Refused('C-MAIN-E4: E4 N%d does not name the pinned S8 N and E4N records in its sources' % N)
+    with open(t_path) as fh:
+        rt = json.load(fh)
+    with open(E4NR[N]) as fh:
+        re4 = json.load(fh)
+    with open(C3KL) as fh:
+        L = json.load(fh)
+    if rt.get('graph') != 'N' or not isinstance(rt.get('families'), dict) or 'N' not in rt['families']:
+        raise Refused('C-MAIN-E4: %s is not a graph N record (graph %r)' % (os.path.basename(t_path), rt.get('graph')))
+    gE = L.get('graphs', {}).get('E4N', {})
+    if (re4.get('graph') != 'E4N' or not isinstance(re4.get('families'), dict) or 'E4N' not in re4['families'] or
+            re4.get('entry_list') != '%s:%s' % (os.path.basename(C3KL), PINS[C3KL]) or gE.get('columns') != ['vac', 'int', 'vac'] or
+            not str(L.get('conventions', {}).get('joint', '')).count('E4N: the N graph with h on the bond next to one end column')):
+        raise Refused('C-MAIN-E4: the E4N record N%d or its entry list does not define E4N as the N graph with h next to an end column' % N)
+    ft, fe = rt['families']['N'], re4['families']['E4N']
+    if any(ft.get(k) is None or ft.get(k) != fe.get(k) for k in ('a_v', 'ap', 'theta0')):
+        raise Refused('C-MAIN-E4: the N and E4N families carry different prep parameters at N = %d' % N)
+    return True
+
+
+def main_n_check(N, plant=None):
+    """C-MAIN-N (P4 v2_6's): S8 N's record (the T entries) has graph N, the NIH record names the vertex graph VN, and the
+    two families carry equal prep parameters (a_v, ap, theta0), so the T and NIH entries share main_N and Lambda = lambda_0 main_D/main_N is
+    the eigenvalue mu_0,rec and m0lo bound. plant 'MAINN' puts S8 D's record in the T slot."""
+    t_path = S8REC[N]['N'][0] if plant != 'MAINN' else S8REC[N]['D'][0]
+    i_path = HREC[N]['NIH'][0]
+    for p in (t_path, i_path):
+        if PINS.get(p) is None or sha_file(p) != PINS[p]:
+            raise Refused('C-MAIN-N: %s does not match its pin' % os.path.basename(p))
+    with open(t_path) as fh:
+        rt = json.load(fh)
+    with open(i_path) as fh:
+        ri = json.load(fh)
+    if rt.get('graph') != 'N' or not isinstance(rt.get('families'), dict) or 'N' not in rt['families']:
+        raise Refused('C-MAIN-N: %s is not a graph N record (graph %r)' % (os.path.basename(t_path), rt.get('graph')))
+    prep = ri.get('prep') if isinstance(ri.get('prep'), dict) else {}
+    if prep.get('vgraph') != 'VN' or not isinstance(ri.get('families'), dict) or 'NIH' not in ri['families']:
+        raise Refused('C-MAIN-N: %s does not name the vertex graph VN' % os.path.basename(i_path))
+    ft, fi = rt['families']['N'], ri['families']['NIH']
+    if any(ft.get(k) is None or ft.get(k) != fi.get(k) for k in ('a_v', 'ap', 'theta0')):
+        raise Refused('C-MAIN-N: the T and NIH families carry different prep parameters at N = %d' % N)
+    return True
+
+
+def load_mu_lines():
+    """C-MU-READ: the mu tool's bounds from P4's certified run output (pinned; in MR_INSERT v5b's certification manifest): per N the c_h
+    interval [c_lo, c_hi], OR >= |M_c K^1/2| for every c_h in it and every J with 1/J <= t_max, and C = OR kappa_max^1/2 (MR_INSERT's C_hi)."""
+    if PINS.get(INSOUT) is None or sha_file(INSOUT) != PINS[INSOUT]:
+        raise Refused('C-HASH: P4\'s certified run output does not match its pin')
+    res = {}
+    for ln in open(INSOUT).read().splitlines():
+        m = re.fullmatch(r'MU N=([34]): c~_h over the pieces in \[\S+, \S+\]; the interval \[(\S+), (\S+)\]; OR <= (\S+) at t <= (\S+) \(\d+ boxes\); '
+                         r'C = OR kappa_max\^1/2 <= (\S+)', ln)
+        if m:
+            N = int(m.group(1))
+            if N in res:
+                raise Refused('C-MU-READ: two MU lines for N = %d' % N)
+            res[N] = dict(clo=arb(m.group(2)), chi=arb(m.group(3)), OR=arb(m.group(4)).upper(), tmax=arb(m.group(5)), C=m.group(6))
+    if sorted(res) != [3, 4]:
+        raise Refused('C-MU-READ: the MU lines for N = 4 and 3 are not both in P4\'s output')
+    return res
+
+
+def at_prec(prec, fn, *args, **kw):
+    """a reader call at its own precision, restored afterwards (P2's at_prec)."""
+    p0 = ctx.prec
+    ctx.prec = prec
+    try:
+        r = fn(*args, **kw)
+        if ctx.prec != prec:
+            raise Refused('a reader call changed ctx.prec to %d' % ctx.prec)
+        return r
+    finally:
+        ctx.prec = p0
+
+
+def load_m4h():
+    """C-M4H-READ: M4H_KV_v1 through its one sha-pinned reader m4h_reader_v1_1 (load binds the record to m4h_asm_v1_1's run output and runs the
+    record's checks with C-PINS); the record, the output and the reader match their pins. Returns (rec, reader)."""
+    for p in M4H:
+        if PINS.get(p) is None or sha_file(p) != PINS[p]:
+            raise Refused('C-M4H-READ: %s does not match its pin' % os.path.basename(p))
+    mod = import_pinned(M4H_READER, 'm4h_reader_v1_1')
+    try:
+        rec = at_prec(M4_PREC, mod.load, M4H[0], M4H[1], PINS[M4H[0]], PINS[M4H_READER])
+    except Refused:
+        raise
+    except Exception as e:
+        raise Refused('C-M4H-READ: m4h_reader_v1_1.load: %s' % e)
+    return rec, mod
+
+
+def load_m2b():
+    """C-M2B-READ: M2B_KV_v1 through m2b_reader_v1 (P2's load_m2b, the same pinned files)."""
+    for p in M2B:
+        if PINS.get(p) is None or sha_file(p) != PINS[p]:
+            raise Refused('C-M2B-READ: %s does not match its pin' % os.path.basename(p))
+    mod = import_pinned(M2B_READER, 'm2b_reader_v1')
+    try:
+        rec = at_prec(M2B_PREC, mod.load, M2B[0], M2B[1], expected_sha256=PINS[M2B[0]], reader_sha256=PINS[M2B_READER])
+    except Refused:
+        raise
+    except Exception as e:
+        raise Refused('C-M2B-READ: m2b_reader_v1.load: %s' % e)
+    return rec, mod
+
+
+def eps_over_t(m2, N, J_lo, jt=None):
+    """C-MONO-M2B and C-COPY-M2B (P2's eps_over_t): eps_r/t over J >= J_lo and eps_r(J_lo), from M2B_KV_v1's law terms, with one monotonicity
+    gate per J-weighted term: C-MONO-M2B-TAILA (J ca > 1: J e^(-ca J) for TX and ANN), C-MONO-M2B-TAILB (J cb > 1: TB), C-MONO-M2B-FAR (J cf > 4:
+    J^2 fJ ~ J^4 e^(-cf J)) and C-MONO-M2B-GB (J cg > 2: J g ~ J^2 e^(-cg J)). jt (a plant's dict term -> J) replaces J_lo in the named test."""
+    rec, mod = m2
+    jt = jt or {}
+    P = at_prec(M2B_PREC, mod.balls_of, rec, N)
+    J = qa(J_lo)
+    sig = 150 / J
+    ca = arb('0.3') * P['AE'] / 2
+    cb = arb('0.45') * P['KAPPA_B'] / 2
+    cf = arb('0.5') * mod.A_M_LAW
+    cg = arb('0.95') * (1 - mod.COS40) / 2
+    for nm, c, lim in (('TAILA', ca, 1), ('TAILB', cb, 1), ('FAR', cf, 4), ('GB', cg, 2)):
+        if not (qa(jt.get('M2B-' + nm, J_lo)) * c > lim):
+            raise Refused('C-MONO-M2B-%s: J_lo is below the monotonicity threshold of the M2B law' % nm)
+    dec = (-ca * (J - 150)).exp()
+    tails = (P['TX'] + P['ANN']) * dec + P['TB'] * (-cb * (J - 150)).exp()
+    near = P['NP'] * sig ** 2 + P['R1'] * sig + (P['D5'] + P['R0']) * sig ** 5 + tails
+    fJ = P['FAR'] * (J / 150) ** 2 * (-cf * (J - 150)).exp()
+    g = P['GB'] * (J / 150) * (-cg * (J - 150)).exp()
+    rz = P['Z2'].sqrt()
+    eps = ((near * near + fJ).sqrt() + g) / rz
+    ref = at_prec(M2B_PREC, mod.law_balls, P, J)['eps_r']
+    if not eps.overlaps(ref):
+        raise Refused('C-COPY-M2B: eps_r(J_lo) rebuilt from the terms differs from m2b_reader_v1 law_balls at N = %d' % N)
+    near_t = 150 * (P['NP'] * sig + P['R1'] + (P['D5'] + P['R0']) * sig ** 4) + J * tails
+    eps_t = ((near_t * near_t + J * J * fJ).sqrt() + J * g) / rz
+    if not (eps < 1):
+        raise Refused('C-MONO-M2B: eps_r(J_lo) is not below 1')
+    return eps_t.upper(), eps.upper()
+
+
+def load_nu():
+    """C-NU at load (P2's): the NU record, its producer and nu_reader_v1_1 match their pins; the reader checks the header, the record's
+    TRIAL_SET against the trial pins, and parses the bounds exactly (nu_psi nu_e1 nu_e3)."""
+    for p in (NU_PATH, NU_CODE, NU_READER):
+        if PINS.get(p) is None or sha_file(p) != PINS[p]:
+            raise Refused('C-NU: %s does not match its pin' % os.path.basename(p))
+    rd = import_pinned(NU_READER, 'nu_reader_v1_1')
+    ts = dict((N, (os.path.basename(TS[N]), PINS[TS[N]])) for N in (4, 3))
+    try:
+        rec = rd.load(NU_PATH, PINS[NU_PATH], ts, (os.path.relpath(NU_CODE, CODEDIR), PINS[NU_CODE]))
+    except rd.NuError as e:
+        raise Refused('C-NU: nu_reader_v1_1.load: %s' % e)
+    return rd, rec
+
+
+def nu_values(NU, N, J_lo):
+    """C-NU: nu_g >= ||(B_g(t) - b0_g) 1_near||_t / t for g in (psi, e1, e3) and every t in (0, 1/J_lo] (P2's nu_values)."""
+    rd, rec = NU
+    try:
+        v = rd.nu_bounds(rec, N, J_lo)
+    except rd.NuError as e:
+        raise Refused('C-NU: nu_reader_v1_1.nu_bounds at N = %d: %s' % (N, e))
+    if len(v) != 3 or not all(isinstance(x, Fraction) and x > 0 for x in v):
+        raise Refused('C-NU: the NU bounds at N = %d are not three positive exact values' % N)
+    return [qa(x) for x in v]
+
+
+def x_m0_h(N):
+    """engine A's printed m0 for the kind h (basis psi, e1, e3) from the EXPLICIT line of its x record (pinned; M4H's PIN_X)."""
+    p = XREC_H[N]
+    if PINS.get(p) is None or sha_file(p) != PINS[p]:
+        raise Refused('C-M0-TIE: %s does not match its pin' % os.path.basename(p))
+    L = [ln for ln in open(p).read().splitlines() if re.match(r'EXPLICIT N=%d h +: m0 ' % N, ln)]
+    if len(L) != 1:
+        raise Refused('C-M0-TIE: %d EXPLICIT m0 lines for h in %s' % (len(L), os.path.basename(p)))
+    toks = L[0].split(': m0 ', 1)[1].split(' | ', 1)[0].split()
+    if len(toks) != 3:
+        raise Refused('C-M0-TIE: the m0 of %s has %d values' % (os.path.basename(p), len(toks)))
+    return [Fraction(float(x)) for x in toks]
+
+
+def delta_h(m4h, C10X, C13X, N, tamper=None):
+    """C-M0-TIE and delta = m0* - m0 for engine A's kind h. m0* are the coordinates in engine A's basis (psi-hat, s1, s3 unnormalised) of
+    S^(0) M_h psi-hat(0) = c_h0 u0 + s_y0 h_y0 u_y0 (psi-hat(0) = u0, C10's C-T0-EXACT; v_h(0) = S M_c u0 lies along u_y0 with <u_y0, S M_c u0>
+    = s_y0 h_y0, G6 sect. 0d (iii) with C13's exact values): (c_h0 + s_y0 h_y0 uhat_yp(0), s_y0 h_y0 uhat_y1(0)/G0_11^1/2, s_y0 h_y0 uhat_y3(0)/
+    G0_33^1/2), unique since the vector lies in W(0) (C-SPAN). m0 = the M4H record's MG(g, 0), equal to the x record's printed m0 (C-M0-TIE).
+    C-DELTA-H: every |delta_g| <= 1e-12 (binary64 rounding; a larger delta means m0* is not engine A's target). Returns [delta_g] as arb balls.
+    tamper 'TIE': an m0 off by one binary64 step (PLANT-TIE-H)."""
+    rec, mod = m4h
+    p = rec['N%d' % N]['h']
+    if tuple(mod.BASES['h']) != ('psi', 'e1', 'e3'):
+        raise Refused('C-M0-TIE: engine A basis of h is not (psi, e1, e3)')
+    m0 = [Fraction(p['MG'][(g, 0)]) for g in ('psi', 'e1', 'e3')]
+    if tamper == 'TIE':
+        m0[1] = Fraction(math.nextafter(float(m0[1]), math.inf))
+    if m0 != x_m0_h(N):
+        raise Refused('C-M0-TIE: the M4H record MG(g, 0) differ from engine A x record m0 at N = %d h' % N)
+    c, e = C10X[N], C13X[N]
+    sh = e['sy0'] * e['hy0']
+    ms = [e['ch0'] + sh * c['u'][2][0] / sp.sqrt(c['G0'][0][0]), sh * c['u'][2][1] / sp.sqrt(c['G0'][1][1]), sh * c['u'][2][2] / sp.sqrt(c['G0'][2][2])]
+    dl = [to_arb(ms[i]) - qa(m0[i]) for i in range(3)]
+    if not all(abs(x) < arb('1e-12') for x in dl):
+        raise Refused('C-DELTA-H: |m0* - m0| is not below 1e-12 at N = %d (%s)' % (N, ', '.join(x.str(3) for x in dl)))
+    return dl
+
+
+def far_star_h(mod, p, J, dabs):
+    """far_out for the hook kind h at mbar_g(t) + |delta_g| (pk24/NU_G_NOTE_v1.md sect. 3; P2's far_star with m4h_reader_v1_1 law_balls'
+    hook weights: hf = 2J, oSS hf^2, oS_g 2 hf mbar_g, oD_g_h w_gh mbar_g mbar_h), mbar_g = sum_j |m_gj| t^j at t = 1/J, plus |delta_g|."""
+    t_ = 1 / J
+    hf = 2 * J
+    mb = dict((g, sum((abs(mod.farb(p['MG'][(g, j)])) * mod.ipow(t_, j) for j in range(4)), arb(0))) for g in mod.BASES['h'])
+    if dabs is not None:
+        mb = dict((g, mb[g] + dabs[i]) for i, g in enumerate(mod.BASES['h']))
+    far = arb(0)
+    for name in mod.far_names('h'):
+        x300, pw, c = p['FAR'][name]
+        xj = mod.farb(x300) * mod.ipow(J / 300, pw) * (-mod.farb(c) * (J - 300)).exp()
+        if name == 'oSS':
+            w = hf * hf
+        elif name.startswith('oS_'):
+            w = 2 * hf * mb[name[3:]]
+        else:
+            g, h = name[3:].split('_')
+            w = (1 if g == h else 2) * mb[g] * mb[h]
+        far = far + w * xj
+    return far
+
+
+def re_over_t_h(m4h, N, J_lo, bridge, dabs, jt=None):
+    """C-MONO-M4H, C-COPY-M4H and C-COPY-FAR-H: A_h/t over J >= J_lo from M4H_KV_v1's law for the hook kind h (P2's re_over_t with
+    m4h_reader_v1_1 law_balls' terms), M0 out of nP and the bridge sum_g |delta_g| nu_g in its place, far* at mbar_g + |delta_g|:
+      A_h/t <= [((300 (M1 + s M2 + s^2 M3) + 300^4 t_hi^3 (ND + NR0) + J (tailX + tailB + ann))^2 + J^2 far*)^1/2 + J gB + bridge] / D,
+    s = 300/J, D = ZMIN^1/2 (a hook kind: no lambda~_0, kt_cert's engine_value). Each J-weighted part is nonincreasing beyond J_lo (C-MONO-M4H):
+    the tails (J lam a_e/2 > 1, J lam kappa_B/2 > 1), each far item (J c > 2 + p + w, w = 2 for oSS and 1 for oS_g, the weight's J power at
+    hf = 2J, 0 for oD) and gB (J rho_G > 1 + d_max), one gate per term: C-MONO-M4H-TAILX, -TAILB, -FAR-<item>, -GB. jt (a plant's dict
+    term -> J) replaces J_lo in the named test only; C-FAR-NAMES: the reader's far items for h are FARH."""
+    rec, mod = m4h
+    jt = jt or {}
+    Jf = Fraction(J_lo)
+    B = at_prec(M4_PREC, mod.law_balls, rec, 'h', N, Jf)
+    p = rec['N%d' % N]['h']
+    J = qa(Jf)
+    Jm = lambda nm: qa(jt.get('M4H-' + nm, J_lo))
+    if tuple(mod.far_names('h')) != FARH:
+        raise Refused('C-FAR-NAMES: the reader\'s far items for h are not %s' % ' '.join(FARH))
+    s = 300 / J
+    M = [mod.farb(p['M%d' % k]) for k in range(4)]
+    nP = sum((mod.ipow(s, k) * M[k] for k in range(4)), arb(0))
+    if not nP.overlaps(B['nP']):
+        raise Refused('C-COPY-M4H: nP(J_lo) rebuilt from M0..M3 differs from m4h_reader_v1_1 at N = %d' % N)
+    far0 = at_prec(M4_PREC, far_star_h, mod, p, J, None)
+    if not far0.overlaps(B['far']):
+        raise Refused('C-COPY-FAR-H: far(J_lo) rebuilt from the far items differs from m4h_reader_v1_1 at N = %d' % N)
+    far = at_prec(M4_PREC, far_star_h, mod, p, J, dabs)
+    ca = mod.LAM_CH * arb(mod.A_E_F) / 2
+    cb = mod.LAM_CH * mod.kappa_b() / 2
+    if not (Jm('TAILX') * ca > 1):
+        raise Refused('C-MONO-M4H-TAILX: J_lo is below the tailX/ann monotonicity threshold at N = %d' % N)
+    if not (Jm('TAILB') * cb > 1):
+        raise Refused('C-MONO-M4H-TAILB: J_lo is below the tailB monotonicity threshold at N = %d' % N)
+    for name in FARH:
+        _x300, pw, c = p['FAR'][name]
+        wp = 2 if name == 'oSS' else (1 if name.startswith('oS_') else 0)
+        if not (Jm('FAR-' + name) * mod.farb(c) > 2 + mod.farb(pw) + wp):
+            raise Refused('C-MONO-M4H-FAR-%s: J_lo is below the far item threshold at N = %d' % (name, N))
+    dmax = max(p['SUPF'])
+    if not (Jm('GB') * mod.RHO_G > 1 + dmax):
+        raise Refused('C-MONO-M4H-GB: J_lo is below the gB threshold at N = %d' % N)
+    t_hi = 1 / J
+    main_t = 300 * (M[1] + s * M[2] + s * s * M[3])
+    near_t = main_t + arb(300) ** 4 * t_hi ** 3 * (mod.farb(p['ND']) + mod.farb(p['NR0'])) + J * (B['tailX'] + B['tailB'] + B['ann'])
+    L_t = ((near_t * near_t + J * J * far).sqrt() + J * B['gB'] + bridge) / B['D']
+    return L_t.upper()
+
+
+def pevw_last_data(m4h, m2b, NU, C10X, C13X, N, J_lo, jt=None, tamper=None):
+    """the per-N inputs of Pevw/t on the last piece (the reviewed P3_NOTE_v1 sect. 3 route, with no QV form): A_h/t (re_over_t_h with the
+    bridge from delta_h and the NU record), eps_r/t and eps_r(J_lo) (eps_over_t), Rb_0/t = (eps_r/t)/(1 - eps_r(J_lo))."""
+    dl = delta_h(m4h, C10X, C13X, N, tamper=tamper)
+    nu = nu_values(NU, N, J_lo)
+    br = sum((abs(dl[g]) * nu[g] for g in range(3)), arb(0)).upper()
+    aht = re_over_t_h(m4h, N, J_lo, br, [abs(x).upper() for x in dl], jt=jt)
+    ert, er = eps_over_t(m2b, N, J_lo, jt=jt)
+    return dict(Aht=aht, ert=ert, er=er, Rb0t=(ert / (1 - er)).upper(), dl=dl, br=br, nu=nu)
+
+
+def law_leaves(N, key, IN, D):
+    """P3b-2's law-based first-order forms on one piece (the last piece's route; on finite pieces C-LP-CTL compares them with the record leaves).
+    D carries the piece's tb, t_hi, J_lo, S, bar, U, G, T, cc, P (P2's /t fields), dlt, rhot, qt and the record balls sxb, syb, tau, Rw, m0lo,
+    mux_lo, muy_lo, C. Forms:
+    - mu_k,rec = c_k^T T c_k / c_k^T G c_k (the laws, P2's uhat slopes); theta = Lambda/mu_0,rec in 1 + [0, rho_0^2/(m0lo (m0lo - s_x,hi))]
+      (Kato-Temple at the top: 1 - mu_0 <= rho_0^2/(mu_0 - s_x,hi)); Lambda = mu_0,rec theta; mu_k = mu_k,rec/Lambda;
+    - s_x = mu_x + [0, rho_x^2/(mu_x,lo - s_y,hi)], s_y = mu_y + [0, rho_y^2/(mu_y,lo - tau4)] (Kato-Temple; the Ritz values lie below);
+    - c_a(-1) = <u_a, w-hat>, w-hat = u + eps(-1): <u~_k, w-hat> = (A~_k/A~_0) <u~_0, w-hat>, A~_k = sum_b c_kb e,b (S8 E2), <u~_0, w-hat> in
+      1 -+ (delta_0 R_w + delta_0^2/2), and Lemma A at level a with |Q_W w-hat| <= q_0 + R_w: |<u_a, w-hat> - <u~_a, w-hat>| <= q_a |Q_W w-hat|
+      + sum_(k != a) eps_ka |<u~_k, w-hat>| + (q_a^2 + sum eps_ka^2) |<u~_a, w-hat>|;
+    - c_h = <u~_0, M_h u~_0> -+ delta_0 (C + OR kappa_0) and m_ab = <u~_a, M_h u~_b> - c_h delta_ab -+ e_ab (P4's h_piece forms on the DH laws
+      Gxh,b,c, kappa_a = sum_b |c_ab| Sh,b^1/2, e_ab = min(delta_a C/s_b,lo^1/2 + OR kappa_a delta_b, the same with a, b exchanged); OR and C
+      from the mu tool's certified lines, C-CH-HULL: c_h inside the mu tool's interval); m_xx(0) = m_xy(0) = 0 (H0F (a));
+    - v_y by way A at level y (P4_LEMMA_NOTE_v1_1 at y): s_y v_y = h~_y + R_1 - c_h R_2 + E_A, h~_y = sum_b c_yb Ih,b/(G_00^1/2 Lambda) (NIH
+      laws; C-MAIN-N), |R_1|/t <= (C + |c_h|)(delta_0 + sum_b |uhat_0b - uhat_0b(0)|)/t, |c_h R_2|/t <= |c_h| delta_0/t, |E_A|/t <= C (q_y +
+      eps_0y + eps_xy + q_y^2 + eps_0y^2 + eps_xy^2)/t (Lemma A at y with |<u~_k, w>|, |Q_W w| <= |w| <= C for w = B^w u = S M_c u).
+    Each x0 ball is checked against its exact value (C-T0-L) and replaced by it."""
+    S, bar, X = D['S'], D['bar'], IN['X'][N]
+    tb, t_hi, J_lo = D['tb'], D['t_hi'], D['J_lo']
+    cc, G, T, U, P = D['cc'], D['G'], D['T'], D['U'], D['P']
+    dlt, rhot, qt = D['dlt'], D['rhot'], D['qt']
+    sxh, syh, tau, Rw, m0lo, C = D['sxb'].upper(), D['syb'].upper(), D['tau'], D['Rw'], D['m0lo'], D['C']
+    mux_lo, muy_lo = D['mux_lo'], D['muy_lo']
+    quad = lambda M, a, b: sum((cc[a][i] * cc[b][j] * M[i][j] for i in range(3) for j in range(3)), 0)
+    if not (m0lo > sxh and mux_lo > syh and muy_lo > tau):
+        raise Refused('C-KT: m0lo > s_x,hi, mu_x,lo > s_y,hi or mu_y,lo > tau4 fails on %s' % key)
+    murec = [quad(T, k, k) / quad(G, k, k) for k in range(3)]
+    th = S(arb(1), arb(0).union((rhot[0] * rhot[0] * t_hi / (m0lo * (m0lo - sxh))).upper()))
+    Lam = murec[0] * th
+    mu = [murec[k] / Lam for k in range(3)]
+    mu = [exact_at0(mu[k], X['mu'][k], 'mu_%s(0)' % KN[k]) for k in range(3)]
+    sx = exact_at0(mu[1] + S(arb(0), arb(0).union((rhot[1] * rhot[1] * t_hi / (mux_lo - syh)).upper())), X['sx0'], 's_x(0)')
+    sy = exact_at0(mu[2] + S(arb(0), arb(0).union((rhot[2] * rhot[2] * t_hi / (muy_lo - tau)).upper())), X['sy0'], 's_y(0)')
+    RD, LW, LH = IN['RD'], IN['LW'][N], IN['LH'][N]
+    eb = []
+    for b in REVEN:
+        x1, b0 = law_x1(RD, LW, 'E2', 'e,%d' % b, None, J_lo, t_hi, tb)
+        eb.append(S(b0, x1))
+    A = [sum((cc[k][i] * eb[i] for i in range(3)), 0) for k in range(3)]
+    wn = 1 + bar((dlt[0] * Rw + dlt[0] * dlt[0] * t_hi / 2).upper())
+    Ak = [A[k] / A[0] * wn for k in range(3)]
+    qw = (qt[0] * t_hi + Rw).upper()
+    ept = lambda k, a: arb(D['p2row'][IN['IX2']['eps_%s%st_hi' % (KN[k], KN[a])]]).upper()
+
+    def dl(a):
+        oth = [k for k in range(3) if k != a]
+        s = qt[a] * qw + sum((ept(k, a) * au(Ak[k]) for k in oth), arb(0))
+        s = s + t_hi * (qt[a] * qt[a] + sum((ept(k, a) ** 2 for k in oth), arb(0))) * au(Ak[a])
+        return s.upper()
+    cx = exact_at0(Ak[1] + bar(dl(1)), X['cx0'], 'c_x(-1)(0)')
+    cy = exact_at0(Ak[2] + bar(dl(2)), X['cy0'], 'c_y(-1)(0)')
+    # c_h, m_xx, m_xy on the DH laws
+    GX = [[None] * 3 for _ in range(3)]
+    for (b, c) in RPE:
+        i, j = REVEN.index(b), REVEN.index(c)
+        x1, b0 = law_x1(RD, LH, 'DH', 'Gxh,%d,%d' % (b, c), None, J_lo, t_hi, tb)
+        GX[i][j] = GX[j][i] = S(b0, x1)
+    SH = []
+    for b in REVEN:
+        x1, b0 = law_x1(RD, LH, 'DH', 'Sh,%d' % b, None, J_lo, t_hi, tb)
+        v = S(b0, x1).val()
+        if not (v > 0):
+            raise Refused('C-SH-POS: Sh,%d is not certainly positive on %s' % (b, key))
+        SH.append(v.upper().sqrt().upper())
+    kap = [sum((au(cc[a][i]) * SH[i] for i in range(3)), arb(0)).upper() for a in range(3)]
+    mu_ = IN['MU'][N]
+    if not (t_hi <= mu_['tmax']):
+        raise Refused('C-MU: the piece\'s t_hi is above the mu tool\'s t_max on %s' % key)
+    OR = mu_['OR']
+    ch = quad(GX, 0, 0) + bar((dlt[0] * (C + OR * kap[0])).upper())
+    if not (ch.val() > mu_['clo'] and ch.val() < mu_['chi']):
+        raise Refused('C-CH-HULL: c_h is not inside the mu tool\'s interval on %s' % key)
+    ch = exact_at0(ch, X['ch0'], 'c_h(0)')
+    s_lo = [arb(1), mux_lo, muy_lo]
+
+    def eab(a, b):
+        e1 = (dlt[a] * C / s_lo[b].sqrt() + OR * kap[a] * dlt[b]).upper()
+        e2 = (dlt[b] * C / s_lo[a].sqrt() + OR * kap[b] * dlt[a]).upper()
+        return e1 if e1 < e2 else (e2 if e2 < e1 else e1.union(e2).upper())
+    mxx = zero_at0(quad(GX, 1, 1) - ch + bar(eab(1, 1)), 'm_xx(0) = 0')
+    mxy = zero_at0(quad(GX, 1, 2) + bar(eab(1, 2)), 'm_xy(0) = 0')
+    # v_y by way A at level y
+    IH = []
+    for b in REVEN:
+        x1, b0 = law_x1(RD, LH, 'NIH', 'Ih,%d' % b, None, J_lo, t_hi, tb)
+        IH.append(S(b0, x1))
+    hty = sum((cc[2][i] * IH[i] for i in range(3)), 0) / (G[0][0].sqrt() * Lam)
+    U0t = sum((abs(U[0][b].x1).upper() for b in range(3)), arb(0)).upper()
+    chv = au(ch)
+    e0y, exy = ept(0, 2), ept(1, 2)
+    rem = ((C + chv) * (dlt[0] + U0t) + chv * dlt[0] + C * (qt[2] + e0y + exy + t_hi * (qt[2] ** 2 + e0y ** 2 + exy ** 2))).upper()
+    vy = exact_at0((hty + bar(rem)) / sy, X['hy0'], 'v_y(0) = h_y0')
+    return dict(mu=mu, Lam=Lam, sx=sx, sy=sy, cx=cx, cy=cy, ch=ch, mxx=mxx, mxy=mxy, vy=vy)
+
+
+def lemd_piece(N, key, IN, plant=None, ctl=False):
+    """the Lemma D rows of one finite piece above J_s (the docstring's chain): returns {ehat (normal), ehat2 (x1t and R_xy doubled), envr,
+    envd0, envr2, envd02, mig, info}. plant 'ALPHA' takes n2 = G_cc - 2 sum g_k^2 - 2 (C-ALPHA must refuse)."""
+    ixs, ixi, ixl, ix2 = IN['IXS'], IN['IXI'], IN['IXL'], IN['IX2']
+    v, h, lm, p2 = IN['SPEC'][key], IN['INS'][key + '_h'], IN['LM'][key], IN['P2'][key]
+    jlo, jhi = v[ixs['jlo']], v[ixs['jhi']]
+    last = jhi == 'inf'
+    if (h[ixi['jlo']], h[ixi['jhi']]) != (jlo, jhi) or (lm[ixl['jlo']], lm[ixl['jhi']]) != (jlo, jhi) or (p2[ix2['jlo']], p2[ix2['jhi']]) != (jlo, jhi):
+        raise Refused('C-GRID: %s differs between MR_SPECTRAL, MR_INSERT, MR_LEMMAP and P2' % key)
+    if v[ixs['tau_hi']] != lm[ixl['tau_hi']]:   # C-TAU: tau4 is MR_SPECTRAL v4's tau_hi on the shared grid, S4(c)'s claim as MR_LEMMAP v3's
+        raise Refused('C-TAU: MR_SPECTRAL and MR_LEMMAP carry different tau_hi on %s' % key)
+    if h[ixi['xf_hi']] != '0':
+        raise Refused('C-XF: the MR_INSERT h row %s has xf_hi %s, not 0' % (key, h[ixi['xf_hi']]))
+    tb, t_lo, t_hi, J_lo = t_range(jlo, jhi)
+    X = IN['X'][N]
+    S = lambda x0, x1: Sl(x0, x1, tb, key)
+    bar = lambda r: Sl(arb(0), arb(0, 1) * r, tb, key)
+    rec = lambda ball, x0: Sl(x0, (ball - x0) / tb, tb, key)
+    sv = lambda f: iv(v[ixs[f + '_lo']], v[ixs[f + '_hi']])
+    hv = lambda f: iv(h[ixi[f + '_lo']], h[ixi[f + '_hi']])
+    P = lambda f: arb(p2[ix2[f]]).upper()
+    PH = lambda f: iv(p2[ix2[f + '_lo']], p2[ix2[f + '_hi']])
+    # P2's slopes and /t fields
+    U = [[S(X['u'][k][b], PH('u%s%st' % (KN[k], BN[b]))) for b in range(3)] for k in range(3)]
+    sq2 = lambda *xs: (2 * sum((x * x for x in xs), arb(0))).sqrt().upper()
+    dlt = [sq2(P('q0t_hi'), P('eps_x0t_hi'), P('eps_y0t_hi')), sq2(P('qxt_hi'), P('eps_0xt_hi'), P('eps_yxt_hi')),
+           sq2(P('qyt_hi'), P('eps_0yt_hi'), P('eps_xyt_hi'))]
+    rhot = [P('rho0t_hi'), P('rhoxt_hi'), P('rhoyt_hi')]
+    Lt = [P('L0t_hi'), P('Lxt_hi'), P('Lyt_hi')]
+    qt = [P('q0t_hi'), P('qxt_hi'), P('qyt_hi')]
+    # the S8 laws: |psi_b|, the records' W block (Lambda) and E2's e,b
+    RD, LW = IN['RD'], IN['LW'][N]
+    G = [[None] * 3 for _ in range(3)]
+    T = [[None] * 3 for _ in range(3)]
+    for (b, c) in RPE:
+        i, j = REVEN.index(b), REVEN.index(c)
+        x1, _b0 = law_x1(RD, LW, 'D', 'g,%d,%d' % (b, c), X['G0'][i][j], J_lo, t_hi, tb)
+        G[i][j] = G[j][i] = S(X['G0'][i][j], x1)
+        x1, _b0 = law_x1(RD, LW, 'N', 'T,%d,%d' % (b, c), X['T0'][i][j], J_lo, t_hi, tb)
+        T[i][j] = T[j][i] = S(X['T0'][i][j], x1)
+    nb = [G[i][i].sqrt() for i in range(3)]
+    cc = [[U[k][i] / nb[i] for i in range(3)] for k in range(3)]
+    quad = lambda M, a, b: sum((cc[a][i] * cc[b][j] * M[i][j] for i in range(3) for j in range(3)), 0)
+    m0lo = arb(lm[ixl['mu0_lo']])
+    sxb, syb = sv('sx'), sv('sy')
+    xcb = hv('xc')
+    vx = S(arb(0), xcb)   # X_POWER h 1: v_x = t xc, v_x(0) = 0
+    C = arb(h[ixi['C_hi']]).upper()
+    Rw = arb(v[ixs['Rw_hi']]).upper()
+    tau = arb(v[ixs['tau_hi']]).upper()
+    pevw = arb(h[ixi['Pevw_hi']]).upper()
+    LD = dict(S=S, bar=bar, tb=tb, t_hi=t_hi, J_lo=J_lo, cc=cc, G=G, T=T, U=U, P=P, dlt=dlt, rhot=rhot, qt=qt, sxb=sxb, syb=syb, tau=tau, Rw=Rw,
+              m0lo=m0lo, C=C, mux_lo=arb(lm[ixl['mux_lo']]), muy_lo=arb(lm[ixl['muy_lo']]), p2row=p2)
+    ctlv = None
+    if last:   # P3b-2: the law-based first-order forms; Pevw/t a dry stand-in (the decision on the floor-free route pending)
+        LL = law_leaves(N, key, IN, LD)
+        Lam, mu, sx, sy, cx, cy = LL['Lam'], LL['mu'], LL['sx'], LL['sy'], LL['cx'], LL['cy']
+        vy, mxx, mxy, ch = LL['vy'], LL['mxx'], LL['mxy'], LL['ch']
+        chl, chh = ch.val().lower(), ch.val().upper()
+        pevw_t = None   # set after H_k below: Lemma P with A_h's law and the bridge (pevw_last_data)
+    else:   # record leaves (finite piece: x1 by interval division with the exact t^0 values)
+        mu0rec = quad(T, 0, 0) / quad(G, 0, 0)
+        Lam = mu0rec * rec(arb(1).union((1 / m0lo).upper()), arb(1))   # Lambda in [mu_0,rec, mu_0,rec/m0lo]
+        sx, sy = rec(sxb, X['sx0']), rec(syb, X['sy0'])
+        cx, cy = rec(sv('cxm1'), X['cx0']), rec(sv('cym1'), X['cy0'])
+        mu = [rec(m0lo.union(arb(1)), X['mu'][0]), rec(arb(lm[ixl['mux_lo']]).union(sxb.upper()), X['mu'][1]),
+              rec(arb(lm[ixl['muy_lo']]).union(syb.upper()), X['mu'][2])]
+        vy = rec(hv('vy'), X['hy0'])
+        mxx, mxy = S(arb(0), hv('mxx') / tb), S(arb(0), hv('mxy') / tb)   # m_xx(0) = m_xy(0) = 0 (H0F (a))
+        chl, chh = IN['JT'][key]
+        ch = rec(chl.union(chh), X['ch0'])
+        pevw_t = (pevw * jhi_up(jhi)).upper()
+        if ctl:   # C-LP-CTL: on a finite piece the law forms must meet the record leaves (value balls over the piece)
+            LL = law_leaves(N, key, IN, LD)
+            pairs = (('s_x', LL['sx'], sx), ('s_y', LL['sy'], sy), ('c_x(-1)', LL['cx'], cx), ('c_y(-1)', LL['cy'], cy), ('v_y', LL['vy'], vy),
+                     ('m_xx', LL['mxx'], mxx), ('m_xy', LL['mxy'], mxy), ('c_h', LL['ch'], ch), ('mu_x', LL['mu'][1], mu[1]),
+                     ('mu_y', LL['mu'][2], mu[2]), ('Lambda', LL['Lam'], Lam))
+            bad = [nm for nm, a_, b_ in pairs if not a_.val().overlaps(b_.val())]
+            if bad:
+                raise Refused('C-LP-CTL: the law forms of %s miss the record leaves on %s' % (', '.join(bad), key))
+            ctlv = dict((nm, (a_.val(), b_.val(), a_.x1)) for nm, a_, b_ in pairs)
+    eb = []
+    for b in REVEN:
+        x1, b0 = law_x1(RD, LW, 'E2', 'e,%d' % b, None, J_lo, t_hi, tb)
+        eb.append(S(b0, x1))
+    # E4 and E6 leaves
+    e4, pc = IN['E4'][N], IN['E4'][N]['pieces'][key]
+    E4L = lambda q: S(e4['t0'][q], pc[q])
+    G10 = dict((b, E4L('G10,%d' % b)) for b in (0, 1, 3, 10))
+    T10 = dict((b, E4L('T10,%d' % b)) for b in (0, 1, 3, 10))
+    IHR = dict((b, E4L('E4N:IhR,10,%d' % b)) for b in (0, 1, 3))
+    E6e = S(IN['E6'][N]['t0'], IN['E6'][N]['pieces'][key])
+    # W_ext in the basis (u~_0, u~_x, u~_y, chi''): the arrowhead
+    g = [sum((cc[k][i] * G10[REVEN[i]] for i in range(3)), 0) for k in range(3)]
+    tv = [sum((cc[k][i] * T10[REVEN[i]] for i in range(3)), 0) / Lam for k in range(3)]
+    Gcc, Tcc = G10[10], T10[10] / Lam
+    n2 = Gcc - sum((g[k] ** 2 for k in range(3)), 0) if plant != 'ALPHA' else Gcc - 2 * sum((g[k] ** 2 for k in range(3)), 0) - 2
+    if not (n2.val() > 0 and n2.x0 > 0):
+        raise Refused('C-ALPHA: |chi\'|^2 = G_cc - sum g_k^2 is not certainly positive on %s' % key)
+    bp = [zero_at0(tv[k] - g[k] * mu[k], 'b_%s(0) = 0' % KN[k]) for k in range(3)]
+    dp = Tcc - 2 * sum((g[k] * tv[k] for k in range(3)), 0) + sum((g[k] ** 2 * mu[k] for k in range(3)), 0)
+    sq = n2.sqrt()
+    bk = [bp[k] / sq for k in range(3)]
+    d = dp / n2
+    if not all(d.val() < mu[k].val() for k in range(3)):
+        raise Refused('C-ARROW: d is not certainly below every W Ritz value on %s' % key)
+    dl = sum((bk[k] ** 2 / (mu[k] - d) for k in range(3)), 0)
+    nu = Sl(d.x0, d.x1 - arb(0).union(arb(1)) * dl.x1, tb, key)   # nu_xy in [d - dl, d], dl(0) = 0
+    gam = [bk[k] / (nu - mu[k]) for k in range(3)]
+    nrm = (1 + sum((gam[k] ** 2 for k in range(3)), 0)).sqrt()
+    alpha = sq * nrm
+    beta = [g[k] - sq * gam[k] for k in range(3)]
+    chin = Gcc.val().sqrt().upper()
+    rxy = IN['RXYP'][key]   # E3's certified R_xy/(t |chi|) on this piece (v6)
+    sxl, syl = sxb.lower(), syb.lower()
+    s_lo = [arb(1), sxl, syl]
+    nuh = nu.val().upper()
+    if not all(s_lo[a] > nuh for a in range(3)):
+        raise Refused('C-ARROW: nu_xy is not certainly below s_y on %s' % key)
+    res = {}
+    for lab, k2 in (('n', 1), ('d', 2)):
+        rxt = ((sum((au(gam[k]) * rhot[k] for k in range(3)), arb(0)) + (k2 * rxy * chin + sum((au(g[k]) * rhot[k] for k in range(3)), arb(0))) / al(sq))
+               / al(nrm)).upper()
+        epsxy = [(qt[a] * rxt * t_hi / (s_lo[a] - nuh)).upper() for a in range(3)]
+        pie = sum((x * x for x in epsxy), arb(0)).sqrt().upper()
+        eta = (au(alpha) * pie + sum((au(beta[k]) * Lt[k] for k in range(3)), arb(0))).upper()
+        ez = (2 * eta / al(alpha)).upper()
+        res[lab] = dict(rxt=rxt, ez=ez, ct=(rxt + ez * (1 + 2 * rxt * t_hi + 2 * ez * t_hi)).upper())
+    ez, rxt = res['n']['ez'], res['n']['rxt']
+    nuz = nu + bar((2 * ez * rxt * t_hi + 2 * ez * ez * t_hi).upper())
+    # g_z
+    Uk = [bar(dlt[0] * Rw), cx + bar(dlt[1] * Rw), cy + bar(dlt[2] * Rw)]
+    A0 = sum((cc[0][i] * eb[i] for i in range(3)), 0)
+    Ce = (E6e / A0) * (1 + bar(dlt[0] * Rw + dlt[0] * dlt[0] * t_hi / 2)) - (g[0] + bar(chin * dlt[0]))
+    cf = [gam[k] - g[k] / sq for k in range(3)]
+    gz = (sum((cf[k] * Uk[k] for k in range(3)), 0) + Ce / sq) / nrm + bar(ez * Rw)
+    # k_z and eta_z
+    Mc = lambda a: sum((cc[a][i] * (IHR[REVEN[i]] - ch * T10[REVEN[i]]) for i in range(3)), 0) / Lam
+    Kk = [vx + bar(C * (dlt[0] + dlt[1])), sx * mxx + bar(2 * C * dlt[1]), sy * mxy + bar(C * (dlt[2] + dlt[1]))]
+    kz = (sum((cf[k] * Kk[k] for k in range(3)), 0) + Mc(1) / sq) / nrm + bar(C * (ez + dlt[1]))
+    Hk = [bar(2 * C * dlt[0]), sx * vx + bar(C * (dlt[1] + dlt[0])), sy * vy + bar(C * (dlt[2] + dlt[0]))]
+    etaz = zero_at0((sum((cf[k] * Hk[k] for k in range(3)), 0) + Mc(0) / sq) / nrm + bar(C * (ez + dlt[0])), 'eta_z(0) = 0')
+    if last:   # Pevw/t on the last piece (P3_NOTE_v1 sect. 3; no QV form): |Q v_h| <= |P_e v_h| <= |Q_W v_h| + sum_k |<u~_k, v_h>| L_k (Lemma P),
+        # |Q_W v_h| <= |uhat_0p| (|Q_W S M_h psi-hat_n| + |c_h| |Q_W S psi-hat_n|) + sum_(b = 1, 3) |uhat_0b| C + C delta_0, |Q_W S M_h psi-hat_n| <=
+        # A_h/lambda~_0 <= A_h/(1 - eps_r) (kt_cert's engine_value; mhat >= 1), |Q_W S psi-hat_n| <= Rb_0 = eps_r/(1 - eps_r), and |<u~_k, v_h>|
+        # <= |s_k v_k| + C delta_k <= |H_k| (H_k carries C (delta_k + delta_0))
+        PL = IN['PL'][N]
+        pevw_t = (au(U[0][0]) * (PL['Aht'] / (1 - PL['er']) + au(ch) * PL['Rb0t']) + (abs(U[0][1].x1).upper() + abs(U[0][2].x1).upper()) * C
+                  + C * dlt[0] + sum((au(Hk[k]) * Lt[k] for k in range(3)), arb(0))).upper()
+    nuz = exact_at0(nuz, X['sxy0'], 'nu_z(0) = s_x0 s_y0')
+    gz = exact_at0(gz, X['gz0'], 'g_z(0) = sgn(A) c_x(-1)0 c_y(-1)0')
+    kz = exact_at0(kz, X['kz0'], 'k_z(0) = sgn(A) s_x0 s_y0 h_y0')
+    # C-ORDER-P and the O(1) pieces
+    sxh, syh = sxb.upper(), syb.upper()
+    if not (nuz.val().upper() < sxl and syh < sxl and tau < sxl):
+        raise Refused('C-ORDER-P: nu_z, s_y or tau4 is not below s_x on %s' % key)
+    cxl, cyl = al(cx), al(cy)
+    rad = Rw * Rw - cxl * cxl - cyl * cyl
+    if not (rad > 0):
+        raise Refused('C-PE: R_w^2 - c_x(-1)^2 - c_y(-1)^2 is not certainly positive on %s' % key)
+    pe = rad.sqrt().upper()
+    w0, w1 = au(U[1][0]), au(U[1][1])
+    w3t = abs(U[1][2].x1).upper()   # uhat_x3(0) = 0 (C-ZERO-EX): |w_3|/t = |x1|
+    x1t, chpl, chph = IN['CW'][key]
+    dch = (chh - chpl).union(chph - chl).upper()   # |c_h - c_h'| <= max(ch_hi - chp_lo, chp_hi - ch_lo)
+    U0t = sum((abs(U[0][b].x1).upper() for b in range(3)), arb(0)).upper()
+    dsum = (dlt[0] ** 2 + dlt[1] ** 2 + dlt[2] ** 2).sqrt().upper()
+    xmax, mxxv, mxyv, vyv = (au(xcb) * t_hi).upper(), au(mxx), au(mxy), au(vy)
+    kzv, etv = au(kz), au(etaz)
+    mxx_t, mxy_t, eta_t = mxx.x1, mxy.x1, etaz.x1
+    xi = lambda Y: Y.val()
+    out_ = dict(mig=None)
+    xl, xh = xcb.lower(), xcb.upper()
+    mig = xl if xl > 0 else (-xh if xh < 0 else arb(0))
+    out_['mig'] = mig
+    for lab, k2 in (('n', 1), ('d', 2)):
+        ct = res[lab]['ct']
+        Cw = (w1 * (k2 * x1t + dch * tau * dsum) + w0 * (pevw_t + C * (dlt[0] + U0t)) + w3t * C + C * dlt[1]).upper()
+        Nx = (xmax ** 2 + (sxh * mxxv) ** 2 + (syh * mxyv) ** 2 + kzv ** 2 + (Cw * t_hi) ** 2).sqrt().upper()
+        Nu = ((sxh * xmax) ** 2 + (syh * vyv) ** 2 + etv ** 2 + pevw ** 2).sqrt().upper()
+        rhoR = (sxh + ct * t_hi).upper()
+        rows = []
+        for dd in range(1, DMAX + 1):
+            cxd, cyd = sx ** (dd + 1) * cx, sy ** (dd + 1) * cy
+            Dd = nuz ** dd * gz * kz - cxd * cyd * vy
+            if not has0(Dd.x0):
+                raise Refused('C-PI0: the t^0 ball of D_%d does not hold 0 on %s' % (dd, key))
+            cv = xi(cxd)
+            epi = cv * mxx_t + xi(cyd) * mxy_t - cv * cv * xcb + Dd.x1 - xi(nuz ** dd * gz) * cv * eta_t
+            eq = (Cw + au(cxd) * pevw_t) * tau ** dd * pe
+            er = (Nx + au(cxd) * Nu) * Rw * dd * ct * rhoR ** (dd - 1)
+            rows.append((abs(epi).upper() + eq + er).upper())
+        # the envelope terms (d >= 10)
+        cxh, cyh = au(cx), au(cy)
+        rn = au(nuz).union(X['sxy0'].upper()).upper()   # >= |nu_z| on the piece and |nu_z0|
+        sig = sx * sy
+        rs = au(sig).union(X['sxy0'].upper()).upper()
+        gk, ccv = gz * kz, cx * cy * vy
+        terms = [(sxh * cxh * au(mxx_t), sxh, 'g'), (syh * cyh * au(mxy_t), syh, 'g'), (sxh * sxh * cxh * cxh * au(xcb), sxh * sxh, 'g'),
+                 (abs(nuz.x1).upper() * au(gk), rn, 'd'), (abs(gk.x1).upper(), rn, 'g'),
+                 (2 * rs * abs(sig.x1).upper() * au(ccv), rs, 'd'), (rs * abs(ccv.x1).upper(), rs, 'g'),
+                 (au(gz) * sxh * cxh * au(eta_t), rn * sxh, 'g'),
+                 (Cw * pe, tau, 'g'), (sxh * cxh * pevw_t * pe, sxh * tau, 'g'),
+                 (Nx * Rw * ct, rhoR, 'd'), (sxh * sxh * cxh * Nu * Rw * ct, sxh * rhoR, 'd')]
+        envr = (sxh + ct * t_hi + arb(1) / 100).upper()
+        if not (envr > 0 and envr < 1):
+            raise Refused('C-ENV: env_r is not in (0, 1) on %s' % key)
+        envd0 = sum((env_coef(A_.upper(), r_.upper(), k_, envr) for A_, r_, k_ in terms), arb(0)).upper()
+        out_[lab] = dict(ehat=rows, envr=envr, envd0=envd0, Cw=Cw, ct=ct)
+    out_['info'] = dict(nuz=nuz, gz=gz, kz=kz, etaz=etaz, ez=ez, rxt=rxt, Lam=Lam, n2=n2, jlo=jlo, jhi=jhi, mxx_t=mxx_t, ctl=ctlv, vy=vy, ch=ch,
+                        cx=cx, sx=sx, pevw_t=pevw_t)
+    return out_
+
+
+def lemd_rows(IN, plant=None, keys=None):
+    """the Lemma D rows of every finite piece at both N with jlo at or above LD_FLOOR[N] (or the given keys): {key: dict with ehat, envr,
+    envd0 (normal), ehat2, envr2, envd02 (doubled), mig, sgn (C-SIGN: rows d = 1..9 and the envelope at d = 10 below mig(xc)), sgn2}."""
+    out_ = {}
+    ixs = IN['IXS']
+    for key, v in IN['SPECL']:
+        N = int(key[1])
+        if (v[ixs['jhi']] == 'inf' and PART != 'full') or (keys is None and Fraction(v[ixs['jlo']]) < LD_FLOOR[N]) or (keys is not None and key not in keys) or (
+                key not in IN['RXYP']):   # v6: only pieces with E3's certified R_xy (a contiguous run up to the last piece)
+            continue
+        R = lemd_piece(N, key, IN, plant=plant)
+        mig = R['mig']
+        r = dict(jlo=v[ixs['jlo']], jhi=v[ixs['jhi']], mig=mig, info=R['info'])
+        for lab, sfx in (('n', ''), ('d', '2')):
+            e = R[lab]
+            r['ehat' + sfx], r['envr' + sfx], r['envd0' + sfx] = e['ehat'], e['envr'], e['envd0']
+            r['Cw' + sfx], r['ct' + sfx] = e['Cw'], e['ct']
+            r['sgn' + sfx] = all(x < mig for x in e['ehat']) and (e['envd0'] * e['envr'] ** (DMAX + 2)).upper() < mig
+        if plant in ('SIGN', 'JSD') and key == IN['PLANT_KEY']:   # PLANT-SIGN: the d = 1 row past mig(xc); PLANT-JS-D: so only with doubled bars
+            sfx = '' if plant == 'SIGN' else '2'
+            r['ehat' + sfx] = [(mig + 1).upper()] + r['ehat' + sfx][1:]
+            r['sgn' + sfx] = all(x < mig for x in r['ehat' + sfx]) and (r['envd0' + sfx] * r['envr' + sfx] ** (DMAX + 2)).upper() < mig
+        out_[key] = r
+    return out_
+
+
+def sign_d(dres):
+    """C-SIGN on the Lemma D rows: every row d = 1..9 and the envelope at d = 10 below mig(xc), with the normal bars."""
+    bad = sorted(k for k in dres if not dres[k]['sgn'])
+    if bad:
+        raise Refused('C-SIGN: %d pieces fail, first %s' % (len(bad), bad[0]))
+    return True
+
+
+def sq2_check(CWR, RXYP):
+    """C-SQ2 (D2 v1_1's second-order form): pk23's x1t_hi (|Q_xy S M_c' x_1|/t) and E3's R_xy/(t |chi|) finite on every piece, so
+    neither enters as an O(1) quantity over t (load_e3 also checks E3's rows and claim)."""
+    bad = [k for k in CWR if not CWR[k][0].is_finite()] + [k for k in RXYP if not RXYP[k].is_finite()]
+    if bad:
+        raise Refused('C-SQ2: not finite: %s' % ', '.join(map(str, bad[:3])))
+    return True
+
+
+def cjs(N, wres, dres, keysN, plant=None, lastkey=None):
+    """C-JS (D2 v1_3 (a)) at N: J_s starts at the R4 boundary nearest the target; check 1 (dres: every piece above J_s, the last piece lastkey
+    included when given, passes C-SIGN with the normal and the doubled bars), check 2 (wres: every finite piece below passes C-SIGN-W); if check
+    1 fails J_s moves up one boundary at a time (at N4 not past JS_CAP_N4) while check 2 holds; if check 2 fails it moves down while check 1
+    holds. Returns (J_s token, its index). plant 'JSW' fails the window row of the lowest finite piece (below every boundary, so no J_s can
+    pass check 2)."""
+    fin = [k for k in keysN if wres.get(k) is not None]
+    bnds = [wres[k]['jhi'] for k in fin]
+    Jt = Fraction(JS_TARGET[N])
+    i0 = min(range(len(bnds)), key=lambda i: abs(Fraction(bnds[i]) - Jt))
+    wbad = set(k for k in fin if not wres[k]['sgn'])
+    if plant == 'JSW':
+        wbad.add(fin[0])
+    def ok2(i):
+        return not any(k in wbad for k in fin[:i + 1])
+    def ok1(i):
+        above = [k for k in fin[i + 1:]] + ([lastkey] if lastkey is not None else [])
+        if any(k not in dres for k in above):
+            return False
+        return all(dres[k]['sgn'] and dres[k]['sgn2'] for k in above)
+    i = i0
+    if ok1(i) and ok2(i):
+        return bnds[i], i
+    if not ok1(i):
+        while ok2(i) and not ok1(i) and i + 1 < len(bnds) and (N != 4 or Fraction(bnds[i + 1]) <= JS_CAP_N4):
+            i += 1
+        if ok1(i) and ok2(i):
+            return bnds[i], i
+    else:
+        while ok1(i) and not ok2(i) and i > 0 and fin[i] in dres:
+            i -= 1
+        if ok1(i) and ok2(i):
+            return bnds[i], i
+    raise Refused('C-JS: N = %d: no boundary passes both checks (target %s); the pieces where neither form passes are a gap (D2 v1_3 (c))' % (N, bnds[i0]))
+
+
+def main():
+    t0 = time.time()
+    fails, nofire, EXEC = [], [], []
+
+    def run_plant(name, fn):
+        EXEC.append(name)
+        plant(nofire, name, fn)
+    out('%s sha256 %s MODE=%s TAG=%s PART=%s (P3a window rows; P3b Lemma D rows above J_s, the last piece in PART full; R_xy from E3 v2)' % (
+        LABEL, sha_file(SELF), MODE, TAG, PART))
+    if MODE == 'cert' and PART != 'full':
+        raise Refused('MODE cert runs PART full only')
+    bad =['%s %s' % (os.path.basename(p), sha_file(p)[:8]) for p in sorted(PINS) if sha_file(p) != PINS[p]]
+    out('C-HASH %s (%d pinned files)%s' % ('PASS' if not bad else 'FAIL', len(PINS), (': ' + '; '.join(bad)) if bad else ''))
+    if bad:
+        out('VERDICT INVALID (C-HASH)')
+        return 2
+    run_plant('PLANT-PIN', lambda: read_kv(SPEC4, dict(PINS, **{SPEC4: '0' * 64})))
+    try:
+        TX = m1_texts()
+        SPEC, INS, CRX = read_kv(SPEC4), read_kv(INS5), read_kv(CRX4)
+        check_rec(SPEC[0], SPEC[1], TX['spec'], 'MR_SPECTRAL', TX)
+        check_rec(INS[0], INS[1], TX['ins'], 'MR_INSERT', TX)
+        check_rec(CRX[0], CRX[1], TX['crx'], 'MR_CRUDEX', TX, form='split')
+        ok = SPEC[0]['TRIAL_SET'] == INS[0]['TRIAL_SET'] == CRX[0]['TRIAL_SET']
+        if not ok:
+            out('  refused: the records name different TRIAL_SET lines')
+    except Refused as e:
+        out('  refused: %s' % e)
+        ok = False
+    out('C-REC: %s (%s), %s (%s) and %s (%s): certified VALID MR_INPUT_KV_v4 records of pk25 with the M1 engine\'s FIELDS (%s), one TRIAL_SET -> %s' % (
+        os.path.relpath(SPEC4, CODEDIR), PINS[SPEC4][:8], os.path.relpath(INS5, CODEDIR), PINS[INS5][:8], os.path.relpath(CRX4, CODEDIR), PINS[CRX4][:8],
+        PINS[M1ENG][:8], gate(fails, 'C-REC', ok)))
+    if fails:
+        out('VERDICT INVALID (%s)' % ' '.join(fails))
+        return 2
+    try:
+        res = window_rows(SPEC, INS, CRX)
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        res, ok = {}, False
+    out('C-ROWS, C-ENV, C-GRID, C-PE, C-S, C-POS: the window rows d = 1..%d and the envelope on every finite piece (N4 %d, N3 %d), d = 1..3 '
+        'equal to C11\'s certified rows byte for byte -> %s' % (DMAX, sum(1 for k in res if k.startswith('N4_')), sum(1 for k in res if k.startswith('N3_')),
+                                                               gate(fails, 'C-ROWS', ok)))
+    run_plant('PLANT-ROWS', lambda: window_rows(SPEC, INS, CRX, plant='ROWS'))
+    run_plant('PLANT-ENV', lambda: window_rows(SPEC, INS, CRX, plant='ENV'))
+    if fails:
+        out('VERDICT INVALID (%s)' % ' '.join(fails))
+        return 2
+    for N in (4, 3):
+        keys = sorted([k for k in res if k.startswith('N%d_' % N)], key=lambda k: Fraction(res[k]['jlo']))
+        Jt = JS_TARGET[N]
+        below = [k for k in keys if Fraction(res[k]['jhi']) <= Jt]
+        okN = True
+        try:
+            sign_w(res, N, Fraction(Jt))
+        except Refused as e:
+            out('  refused: %s' % e)
+            okN = False
+        worst = max(below, key=lambda k: float((max(res[k]['ehat']) / res[k]['mig']).upper()) if res[k]['mig'] > 0 else 1e9)
+        wr = float((max(res[worst]['ehat']) / res[worst]['mig']).upper())
+        out('C-SIGN-W N=%d: every finite piece with jhi <= %d (%d pieces) has rows d = 1..%d and the envelope at d = %d below mig(xc); worst '
+            'row ratio %.4f on %s (J %s to %s) -> %s' % (N, Jt, len(below), DMAX, DMAX + 1, wr, worst, res[worst]['jlo'], res[worst]['jhi'],
+                                                        gate(fails, 'C-SIGN-W N=%d' % N, okN)))
+        reach = None
+        for k in keys:
+            if not res[k]['sgn']:
+                break
+            reach = k
+        out('C-JS-W N=%d (INFO): the window rows pass C-SIGN-W on every piece from J_low up to J %s (piece %s); the first failing piece %s' % (
+            N, res[reach]['jhi'] if reach else '-', reach, next((k for k in keys if not res[k]['sgn']), 'none')))
+    run_plant('PLANT-SIGNW', lambda: sign_w(window_rows(SPEC, INS, CRX, plant='SIGNW'), 4, Fraction(JS_TARGET[4])))
+    for N in (4, 3):
+        try:
+            pure = check_zero(N)
+            ok = True
+        except Refused as e:
+            out('  refused: %s' % e)
+            ok, pure = False, False
+        out('C-ZERO N=%d: state 1 of %s (%s) has xi_TM and xi_MB coefficients exactly 0 (INFO: every other coefficient but the constant and xi_TB '
+            '%s) -> %s' % (N, os.path.basename(TS[N]), PINS[TS[N]][:8], 'is 0 too' if pure else 'is not all 0', gate(fails, 'C-ZERO N=%d' % N, ok)))
+        try:
+            ok = check_10p(N)
+        except Refused as e:
+            out('  refused: %s' % e)
+            ok = False
+        out('C-10P, C-TS N=%d: column 10 of %s (%s) equals C10 N%d_C10P (%s) exactly; its columns 0..9 equal %s -> %s' % (
+            N, os.path.basename(TSX[N]), PINS[TSX[N]][:8], N, PINS[C10REC][:8], os.path.basename(TS[N]), gate(fails, 'C-10P N=%d' % N, ok)))
+    run_plant('PLANT-ZERO', lambda: check_zero(4, plant='ZERO'))
+    run_plant('PLANT-10P', lambda: check_10p(4, plant='10P'))
+    try:
+        JT = load_joint(TX, SPEC)
+        CWR, cwst = load_cw(SPEC)
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        JT, CWR, cwst, ok = {}, {}, '-', False
+    out('C-JOINT-READ, C-CW-READ: MR_JOINT %s (%s, %d pieces) and CW_X11 %s (%s, STATUS %s, %d pieces) on R4\'s grid with MR_LEMMAP v3\'s sha and one '
+        'TRIAL_SET -> %s' % (os.path.relpath(JOINT, CODEDIR), PINS[JOINT][:8], len(JT), os.path.relpath(CW, CODEDIR), PINS[CW][:8], cwst, len(CWR),
+                             gate(fails, 'C-JOINT-CW-READ', ok)))
+    if ok:
+        grid = dict(SPEC[2])
+        for N in (4, 3):
+            keys = sorted([k for k in grid if k.startswith('N%d_' % N) and k in CWR], key=lambda k: Fraction(grid[k][0]))
+            gap = {}
+            for k in keys:
+                lo, hi = JT[k]
+                _x1, plo, phi = CWR[k]
+                gap[k] = float((hi - plo).union(phi - lo).upper())
+            fin = [k for k in keys if grid[k][1] != 'inf' and Fraction(grid[k][1]) <= JS_TARGET[N]]
+            tk = fin[-1] if fin else keys[0]
+            kmax = max(keys, key=lambda k: gap[k])
+            out('INFO N=%d |c_h - c_h\'| <= max(ch_hi - chp_lo, chp_hi - ch_lo): largest %.4e on %s; at the J_s target piece %s %.4e; x1t_hi there %s, '
+                'on the last piece %s %s' % (N, gap[kmax], kmax, tk, gap[tk], dec_hi(CWR[tk][0]), keys[-1], dec_hi(CWR[keys[-1]][0])))
+    # the writer, tested on the window rows below the J_s targets (no record in this build)
+    below = [k for k, v in SPEC[2] if v[1] != 'inf' and Fraction(v[1]) <= JS_TARGET[int(k[1])]]
+    wrows = fact_rows(res, below)
+    xyr = ('window rows e_hi(d) jhi (D2_DESIGN_v1_3 (b)) below J_s; writer test only')
+    src = 'mr/v4 MR_SPECTRAL %s, mr/v5b MR_INSERT %s, mr/v4 MR_CRUDEX (C11) %s (pk25, certified); the M1 engine %s for FIELDS and E_DEF_FACT' % (
+        PINS[SPEC4][:8], PINS[INS5][:8], PINS[CRX4][:8], PINS[M1ENG][:8])
+    text = rec_text_fact(TX, wrows, SPEC[0]['TRIAL_SET'], src, xyr)
+    try:
+        n = readback_fact(text, TX, wrows, below)
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        n, ok = 0, False
+    out('C-WRITE (test): the factored MR_CRUDEX text of the %d window pieces below the targets (%d rows) read back by the M1/M2 engine\'s rules -> %s' % (
+        len(below), n, gate(fails, 'C-WRITE', ok)))
+    run_plant('PLANT-WRITE', lambda: readback_fact(text, TX, wrows, below, tamper='ROW'))
+    run_plant('PLANT-EDEF', lambda: readback_fact(rec_text_fact(TX, wrows, SPEC[0]['TRIAL_SET'], src, xyr, edef=TX['edef']), TX, wrows, below))
+    if PART == 'window' or fails:
+        unrun = [p for p in PLANTS_WINDOW if p not in EXEC] + [p for p in EXEC if p not in PLANTS_WINDOW or EXEC.count(p) != 1]
+        out('PLANTS: %d of %d must-fire plants ran (not run or repeated: %s); not firing: %s' % (
+            len(set(EXEC)), len(PLANTS_WINDOW), ' '.join(unrun) if unrun else 'none', ' '.join(nofire) if nofire else 'none'))
+        if nofire or unrun:
+            fails.append('PLANTS')
+        out('RUN wall %.1f s' % (time.time() - t0))
+        out('VERDICT %s' % ('VALID (PART window)' if not fails else 'INVALID (%s)' % ' '.join(fails)))
+        return 0 if not fails else 2
+    # ---------------- P3b: the Lemma D rows above J_s (finite pieces) ----------------
+    try:
+        C10X, C13X = load_c10x(), load_c13x()
+        X = dict((N, exact_data(C10X, C13X, N)) for N in (4, 3))
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        ok = False
+    out('C-C10X, C-C13X, C-ZERO-EX, C-HARM: C10 (%s) and C13 (%s) exact t^0 data; uhat_0(0) = (1, 0, 0), uhat_x3(0) = 0 exactly; C10\'s mu_x0, mu_y0 = '
+        'C13\'s q_1^2, q_2^2; sgn(A) %s -> %s' % (PINS[C10REC][:8], PINS[C13REC][:8], ', '.join('N%d %+d' % (N, X[N]['sgA']) for N in (4, 3)) if ok else '-',
+                                                  gate(fails, 'C-C10X', ok)))
+    run_plant('PLANT-ZEROX', lambda: exact_data(C10X, C13X, 4, plant='ZEROX'))
+    if fails:
+        out('VERDICT INVALID (%s)' % ' '.join(fails))
+        return 2
+    try:
+        ok = check_pi0_exact(C13X, dict((N, X[N]['sgA']) for N in (4, 3)))
+    except Refused as e:
+        out('  refused: %s' % e)
+        ok = False
+    out('C-PI0-EXACT: D_d(0) = 0 for d = 1..%d at both N in exact arithmetic (g_z0 = sgn(A) c_x(-1)0 c_y(-1)0, k_z0 = sgn(A) s_x0 s_y0 h_y0) -> %s' % (
+        DMAX, gate(fails, 'C-PI0-EXACT', ok)))
+    run_plant('PLANT-PI0', lambda: check_pi0_exact(C13X, dict((N, X[N]['sgA']) for N in (4, 3)), plant='PI0'))
+    try:
+        ok = check_ihr()
+    except Refused as e:
+        out('  refused: %s' % e)
+        ok = False
+    out('C-IHR: the E4N records (N4 %s, N3 %s) name the c3k entry list %s, which defines IhR,10,b = [cp 10 0] [xia (4,7,7)] [cp b 2] on graph E4N '
+        '(h next to phi_b: IhR,10,b = Lambda <chi, S M_h chi_b>) -> %s' % (PINS[E4NR[4]][:8], PINS[E4NR[3]][:8], PINS[C3KL][:8], gate(fails, 'C-IHR', ok)))
+    run_plant('PLANT-IHR', lambda: check_ihr(plant='IHR'))
+    try:
+        E4 = dict((N, load_e4(N, SPEC)) for N in (4, 3))
+        E6 = dict((N, load_e6(N, SPEC)) for N in (4, 3))
+        for N in (4, 3):
+            check_a0_e4(X[N], E4[N], N)
+        P2IX, P2R = load_p2(C10X)
+        LM = read_kv(LEMMAP3)
+        lmh = LM[0]
+        if (lmh.get('FORMAT'), lmh.get('STATUS'), lmh.get('RUN_VERDICT')) != ('MR_LEMMAP_KV_v2', 'CERTIFIED', 'VALID'):
+            raise Refused('C-LEMMAP: MR_LEMMAP v3 is not a certified valid MR_LEMMAP_KV_v2 record')
+        cw10 = open(CW).read()
+        if any(('%s:%s' % (os.path.basename(TSX[N]), PINS[TSX[N]])) not in cw10 for N in (4, 3)):
+            raise Refused('C-TS-XY: CW_X11 does not name the pinned 10\' trial files')
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        ok = False
+    out('C-E4-READ, C-E6-READ, C-A0-E4, C-TS-XY, C-P2-READ, C-LEMMAP: E4 (N4 %s, N3 %s), E6 (N4 %s, N3 %s) on R4\'s grid with the pinned 10\' trial '
+        'files (so E4\'s chi, E6\'s and pk23\'s psi_xy\' are one vector), C10\'s exact t^0 values inside E4\'s t0 balls; P2\'s table %s; MR_LEMMAP v3 %s '
+        '-> %s' % (PINS[E4J[4]][:8], PINS[E4J[3]][:8], PINS[E6J[4]][:8], PINS[E6J[3]][:8], PINS[P2REC][:8], PINS[LEMMAP3][:8], gate(fails, 'C-E4-READ', ok)))
+    run_plant('PLANT-A0E4', lambda: check_a0_e4(X[4], load_e4(4, SPEC, plant='A0E4'), 4))
+    if fails:
+        out('VERDICT INVALID (%s)' % ' '.join(fails))
+        return 2
+    try:
+        RD = import_pinned(RDR, 'm3_reader_s9h_v1')
+        LW = dict((N, load_laws(RD, N)) for N in (4, 3))
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        ok = False
+    out('C-LAW-READ: S8 D, E2, E3, FF (m3_lawcert_v1_1) and S8 N (v1_2) at both N through m3_reader_s9h_v1 (%s), the files P2\'s certified engine pins '
+        '-> %s' % (PINS[RDR][:8], gate(fails, 'C-LAW-READ', ok)))
+    if fails:
+        out('VERDICT INVALID (%s)' % ' '.join(fails))
+        return 2
+    try:
+        LH = dict((N, load_hlaws(RD, N)) for N in (4, 3))
+        MU = load_mu_lines()
+        ixi_ = dict((f_, i_) for i_, f_ in enumerate(INS[1]))
+        for N in (4, 3):
+            main_n_check(N)
+            if any(v_[ixi_['C_hi']] != MU[N]['C'] for k_, v_ in INS[2] if k_.startswith('N%d_' % N) and k_.endswith('_h')):
+                raise Refused('C-MU-READ: the MU line C differs from MR_INSERT\'s C_hi on an h row at N = %d' % N)
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        ok = False
+    out('C-HLAW-READ, C-MU-READ, C-MAIN-N: pk25\'s NIH, NHT, DH with m3_lawcert_s9h_v1_1 at both N; the mu tool\'s OR and C from P4\'s certified run '
+        'output (%s); the T and NIH entries share main_N -> %s' % (PINS[INSOUT][:8], gate(fails, 'C-HLAW-READ', ok)))
+    run_plant('PLANT-MAIN-N', lambda: main_n_check(4, plant='MAINN'))
+    try:
+        ok = all(main_e4_check(N, E4[N]['src']) for N in (4, 3))
+    except Refused as e:
+        out('  refused: %s' % e)
+        ok = False
+    out('C-MAIN-E4: E4\'s T10,b and the E4N record\'s IhR,10,b carry S8 N\'s main_N at both N (E4 sources name the pinned S8 N '
+        'and E4N records; graph N; E4N the N graph with h next to an end column; equal prep parameters a_v, ap, theta0) -> %s' % gate(fails, 'C-MAIN-E4', ok))
+    run_plant('PLANT-MAIN-E4', lambda: main_e4_check(4, E4[4]['src'], plant='MAINE4'))
+    if fails:
+        out('VERDICT INVALID (%s)' % ' '.join(fails))
+        return 2
+    # Pevw/t on the last piece: A_h's law with the bridge, eps_r's law (P3_NOTE_v1 sect. 3; no QV form)
+    lastjlo = dict((N, [v[0] for k, v in SPEC[2] if k.startswith('N%d_' % N) and v[1] == 'inf'][0]) for N in (4, 3))
+    try:
+        M4HR, M2BR, NUR = load_m4h(), load_m2b(), load_nu()
+        PL = dict((N, pevw_last_data(M4HR, M2BR, NUR, C10X, C13X, N, grid_end(lastjlo[N], True))) for N in (4, 3))
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        PL, ok = {}, False
+    out('C-M4H-READ, C-M2B-READ, C-NU, C-M0-TIE, C-DELTA-H, C-COPY-M4H, C-COPY-FAR-H, C-MONO-M4H, C-COPY-M2B, C-MONO-M2B: A_h\'s law (M4H %s, '
+        'm4h_reader_v1_1 %s) with the bridge (NU %s) and eps_r\'s law (M2B %s) over the last piece J >= J_lo -> %s' % (
+            PINS[M4H[0]][:8], PINS[M4H_READER][:8], PINS[NU_PATH][:8], PINS[M2B[0]][:8], gate(fails, 'C-PEVW-LAST', ok)))
+    if ok:
+        for N in (4, 3):
+            q = PL[N]
+            out('INFO N=%d last piece (J >= %s): A_h/t <= %s (bridge sum_g |delta_g| nu_g %s; delta %s); eps_r/t <= %s, eps_r(J_lo) <= %s, Rb_0/t <= %s' % (
+                N, lastjlo[N], dec_hi(q['Aht']), dec_hi(q['br']), ' '.join(x.str(3) for x in q['dl']), dec_hi(q['ert']), dec_hi(q['er']), dec_hi(q['Rb0t'])))
+        run_plant('PLANT-TIE-H', lambda: pevw_last_data(M4HR, M2BR, NUR, C10X, C13X, 4, grid_end(lastjlo[4], True), tamper='TIE'))
+        # one plant per J-weighted term: J = 1 in that term's monotonicity test only; the plant counts only if that term's own gate refuses
+        JL4 = grid_end(lastjlo[4], True)
+        E8 = RD.entry_law(LW[4]['D'][1], 'D', 'g,0,0')
+        if E8.get('laws') is None:
+            raise Refused('the S8 plant entry g,0,0 carries no law parts')
+
+        def mono_plant(term):
+            try:
+                if term.startswith('S8-'):
+                    r_over_t(E8, JL4, (1 / qa(JL4)).upper(), jt={term: 1})
+                else:
+                    pevw_last_data(M4HR, M2BR, NUR, C10X, C13X, 4, JL4, jt={term: 1})
+            except Refused as e:
+                if ('C-MONO-' + term + ':') in str(e):
+                    raise
+                raise RuntimeError('another gate refused: %s' % e)
+        for term in MONO_TERMS:
+            run_plant('PLANT-MONO-' + term, lambda term=term: mono_plant(term))
+    if fails:
+        out('VERDICT INVALID (%s)' % ' '.join(fails))
+        return 2
+    try:
+        RXYP = {}
+        for N in (4, 3):
+            RXYP.update(load_e3(N, SPEC))
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        RXYP, ok = {}, False
+    out('C-E3-READ: pk22\'s certified E3 records e3_sq2_v2 (N4 %s, N3 %s; format %r, kind xy, the second-order claim, sources MR_SPECTRAL v4 and C10) '
+        'on all %d pieces of R4\'s grid; R_xy/(t |chi|) <= min(R_hat, c2_hi^1/2) per piece -> %s' % (
+            PINS[E3J[4]][:8], PINS[E3J[3]][:8], E3FORMAT, len(RXYP), gate(fails, 'C-E3-READ', ok)))
+    if ok:
+        for N in (4, 3):
+            kN = sorted([k for k in RXYP if k.startswith('N%d_' % N)], key=lambda k: Fraction(dict(SPEC[2])[k][0]))
+            above = [k for k in kN if Fraction(dict(SPEC[2])[k][0]) >= LD_FLOOR[N]] or kN
+            out('INFO N=%d E3 R_xy/(t |chi|): largest above J %s is %s on %s; on the last piece %s' % (
+                N, LD_FLOOR[N], dec_hi(max((RXYP[k] for k in above), key=lambda x: float(x))), max(above, key=lambda k: float(RXYP[k])), dec_hi(RXYP[kN[-1]])))
+    if fails:
+        out('VERDICT INVALID (%s)' % ' '.join(fails))
+        return 2
+    IN = dict(IXS=dict((f, i) for i, f in enumerate(SPEC[1])), IXI=dict((f, i) for i, f in enumerate(INS[1])),
+              IXL=dict((f, i) for i, f in enumerate(LM[1])), IX2=P2IX, SPEC=dict(SPEC[2]), SPECL=SPEC[2],
+              INS=dict((k, v) for k, v in INS[2] if k.endswith('_h')), LM=dict(LM[2]), P2=P2R, JT=JT, CW=CWR, E4=E4, E6=E6, RD=RD, LW=LW, LH=LH,
+              MU=MU, X=X, RXYP=RXYP, PLANT_KEY=None, PL=PL)
+    try:
+        dres = lemd_rows(IN)
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        dres, ok = {}, False
+    lastk = dict((N, [k for k, v in SPEC[2] if k.startswith('N%d_' % N) and v[1] == 'inf'][0]) for N in (4, 3))
+    out('C-ALPHA, C-ARROW, C-T0-Z, C-T0-L, C-PI0, C-ORDER-P, C-ENV, C-A0, C-MONO-TAIL, C-MONO-FAR, C-ZERO-EX, C-KT, C-CH-HULL, C-MU: the Lemma D rows '
+        'd = 1..%d and the envelope on every finite piece from J %s (N4) and %s (N3) up%s (N4 %d, N3 %d pieces), normal and with x1t and R_xy doubled '
+        '-> %s' % (DMAX, LD_FLOOR[4], LD_FLOOR[3], ', the last piece included (law forms; Pevw/t a dry stand-in)' if PART == 'full' else '',
+                   sum(1 for k in dres if k.startswith('N4_')), sum(1 for k in dres if k.startswith('N3_')), gate(fails, 'C-LEMD', ok)))
+    if fails:
+        out('VERDICT INVALID (%s)' % ' '.join(fails))
+        return 2
+    k4 = sorted([k for k in dres if k.startswith('N4_') and dres[k]['jhi'] != 'inf'], key=lambda k: Fraction(dres[k]['jlo']))
+    XS = dict(X)
+    XS[4] = exact_data(C10X, C13X, 4, plant='SIGMA')
+    run_plant('PLANT-SIGMA', lambda: lemd_piece(4, k4[0], dict(IN, X=XS)))
+    run_plant('PLANT-ALPHA', lambda: lemd_piece(4, k4[0], IN, plant='ALPHA'))
+    # C-LP-CTL: the last piece's law forms against the record leaves on three finite pieces per N
+    try:
+        ctl = {}
+        for N in (4, 3):
+            kN = sorted([k for k in dres if k.startswith('N%d_' % N) and dres[k]['jhi'] != 'inf'], key=lambda k: Fraction(dres[k]['jlo']))
+            for k in (kN[0], kN[len(kN) // 2], kN[-1]):
+                ctl[k] = lemd_piece(N, k, IN, ctl=True)['info']['ctl']
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        ok = False
+    out('C-LP-CTL: on three finite pieces per N the law forms of s_x, s_y, c_x(-1), c_y(-1), v_y, m_xx, m_xy, c_h, mu_x, mu_y and Lambda meet the record '
+        'leaves -> %s' % gate(fails, 'C-LP-CTL', ok))
+    if ok:
+        for k in sorted(ctl):
+            c = ctl[k]
+            out('INFO C-LP-CTL %s: law/record widths %s; law slopes v_y [%s] m_xx [%s] c_h [%s] c_x [%s]' % (
+                k, ' '.join('%s %.2e/%.2e' % (nm, float(c[nm][0].rad()), float(c[nm][1].rad())) for nm in ('s_x', 'c_x(-1)', 'v_y', 'm_xx', 'c_h')),
+                c['v_y'][2].str(4), c['m_xx'][2].str(4), c['c_h'][2].str(4), c['c_x(-1)'][2].str(4)))
+    try:
+        ok = sq2_check(CWR, IN['RXYP'])
+    except Refused as e:
+        out('  refused: %s' % e)
+        ok = False
+    out('C-SQ2: pk23\'s x1t_hi finite on all %d pieces (CW_X11 %s, STATUS %s) and E3\'s R_xy/(t |chi|) finite on all %d pieces (e3_sq2_v2 N4 %s, '
+        'N3 %s) -> %s' % (len(CWR), PINS[CW][:8], cwst, len(IN['RXYP']), PINS[E3J[4]][:8], PINS[E3J[3]][:8], gate(fails, 'C-SQ2', ok)))
+    run_plant('PLANT-SQ2', lambda: load_e3(4, SPEC, tamper='SQ2'))
+    # C-JS per N (check 1 with the last piece in PART full)
+    jsk = {}
+    for N in (4, 3):
+        keysN = sorted([k for k, v in SPEC[2] if k.startswith('N%d_' % N) and v[1] != 'inf'], key=lambda k: Fraction(dict(SPEC[2])[k][0]))
+        lk = lastk[N] if PART == 'full' else None
+        try:
+            Js, i = cjs(N, res, dres, keysN, lastkey=lk)
+            jsk[N] = (Js, i, keysN)
+            ok = True
+        except Refused as e:
+            out('  refused: %s' % e)
+            ok = False
+        if ok:
+            above = [k for k in keysN[i + 1:]] + ([lk] if lk else [])
+            wr = max(float((max(dres[k]['ehat']) / dres[k]['mig']).upper()) for k in above)
+            wr2 = max(float((max(dres[k]['ehat2']) / dres[k]['mig']).upper()) for k in above)
+            wk = max(above, key=lambda k: float((max(dres[k]['ehat2']) / dres[k]['mig']).upper()))
+            out('C-JS N=%d: J_s = %s (target %d): check 1 on the %d pieces above%s (worst row ratio %.4f, doubled %.4f on %s), check 2 on the %d finite '
+                'pieces below -> %s' % (N, Js, JS_TARGET[N], len(above), ', the last piece included' if lk else '', wr, wr2, wk, i + 1,
+                                       gate(fails, 'C-JS N=%d' % N, ok)))
+        else:
+            gate(fails, 'C-JS N=%d' % N, False)
+    if 4 in jsk:
+        Js, i, keysN = jsk[4]
+        pk, ptop = keysN[i + 1], (lastk[4] if PART == 'full' else keysN[-1])
+        lk4 = lastk[4] if PART == 'full' else None
+        run_plant('PLANT-SIGN', lambda: sign_d(lemd_rows(dict(IN, PLANT_KEY=pk), plant='SIGN', keys=[pk])))
+        run_plant('PLANT-JS-W', lambda: cjs(4, res, dres, keysN, plant='JSW', lastkey=lk4))
+        # PLANT-JS-D: the top piece's d = 1 row past mig(xc) with the doubled bars only (above every boundary J_s may reach)
+        run_plant('PLANT-JS-D', lambda: cjs(4, res, dict(dres, **lemd_rows(dict(IN, PLANT_KEY=ptop), plant='JSD', keys=[ptop])), keysN, lastkey=lk4))
+    if 4 in jsk and 3 in jsk:   # the writer: window rows below J_s, Lemma D rows above (the last piece in PART full)
+        allr, pcs = {}, []
+        for N in (4, 3):
+            Js, i, keysN = jsk[N]
+            for j, k in enumerate(keysN):
+                allr[k] = res[k] if j <= i else dres[k]
+                pcs.append(k)
+            if PART == 'full':
+                allr[lastk[N]] = dres[lastk[N]]
+                pcs.append(lastk[N])
+        frows = fact_rows(allr, pcs)
+        xyr = ('window rows e_hi(d) jhi below J_s (D2_DESIGN_v1_3 (b)); Lemma D on P = span{u_x, u_y, z} above J_s (P3_NOTE_v1, the W_ext arrowhead); '
+               'J_s N4 %s, N3 %s; Pevw/t on the last piece by Lemma P with A_h\'s law and the bridge; R_xy per piece from E3\'s certified e3_sq2_v2 '
+               '(N4 %s, N3 %s); C_w from CW_X11 %s (STATUS %s)' % (jsk[4][0], jsk[3][0], PINS[E3J[4]][:8], PINS[E3J[3]][:8], PINS[CW][:8], cwst))
+        src3 = src + '; P2 MR_LEMMAP_V3F %s, MR_LEMMAP v3 %s, C10 %s, C13 %s, E4 %s %s, E6 %s %s, E3 %s %s, MR_JOINT %s, CW_X11 %s, M4H %s, M2B %s, NU %s, S8 laws and pk25 h laws (pinned)' % (
+            PINS[P2REC][:8], PINS[LEMMAP3][:8], PINS[C10REC][:8], PINS[C13REC][:8], PINS[E4J[4]][:8], PINS[E4J[3]][:8], PINS[E6J[4]][:8],
+            PINS[E6J[3]][:8], PINS[E3J[4]][:8], PINS[E3J[3]][:8], PINS[JOINT][:8], PINS[CW][:8], PINS[M4H[0]][:8], PINS[M2B[0]][:8], PINS[NU_PATH][:8])
+        ftext = rec_text_fact(TX, frows, SPEC[0]['TRIAL_SET'], src3, xyr)
+        try:
+            n = readback_fact(ftext, TX, frows, pcs)
+            ok = True
+        except Refused as e:
+            out('  refused: %s' % e)
+            n, ok = 0, False
+        out('C-WRITE: the factored MR_CRUDEX text of the %d pieces (window below J_s, Lemma D above%s; %d rows) read back by the M1/M2 engine\'s rules '
+            '-> %s' % (len(pcs), ', the last pieces included' if PART == 'full' else '', n, gate(fails, 'C-WRITE-LD', ok)))
+        if ok and PART == 'full' and not fails:
+            base = os.path.realpath(OWN if MODE == 'cert' else ASM)
+            ddir = CERT_DIR if MODE == 'cert' else os.path.join(ASM, 'dry_%s' % TAG)
+            os.mkdir(ddir)
+            rp = os.path.join(ddir, 'MR_CRUDEX.kv')
+            if os.path.realpath(os.path.dirname(rp)) != os.path.realpath(ddir) or not os.path.realpath(ddir).startswith(base + '/'):
+                raise Refused('the record path check failed')
+            with open(rp, 'x') as fh:
+                fh.write(ftext)
+            out('%s RECORD %s sha256 %s (%d rows, STATUS %s)' % ('CERTIFIED' if MODE == 'cert' else 'DRY', os.path.relpath(rp, CODEDIR), sha_file(rp), n,
+                                                                 'CERTIFIED' if MODE == 'cert' else 'DRY'))
+    for N in (4, 3):
+        if N not in jsk:
+            continue
+        Js, i, keysN = jsk[N]
+        above = keysN[i + 1:]
+        for k in [above[0], above[len(above) // 2], above[-1]] + ([lastk[N]] if PART == 'full' else []):
+            r = dres[k]
+            I = r['info']
+            out('INFO N=%d %s (J %s to %s): rows %s; env_r %s env_delta0 %s; mig %s; C_w %s, c/t %s; nu_z [%s] + t [%s]; g_z [%s] + t [%s]; k_z [%s] + t [%s]; '
+                'eta_z/t [%s]; e_z/t %s, rho_xy/t %s; Lambda [%s]; m_xx/t [%s]; v_y [%s] + t [%s]; c_h + t [%s]; Pevw/t %s' % (
+                    N, k, r['jlo'], r['jhi'], ' '.join(dec_hi(x) for x in r['ehat']), dec_hi(r['envr']), dec_hi(r['envd0']), dec_hi(r['mig']),
+                    dec_hi(r['Cw']), dec_hi(r['ct']), I['nuz'].x0.str(8), I['nuz'].x1.str(4), I['gz'].x0.str(8), I['gz'].x1.str(4), I['kz'].x0.str(8),
+                    I['kz'].x1.str(4), I['etaz'].x1.str(4), dec_hi(I['ez']), dec_hi(I['rxt']), I['Lam'].val().str(10), I['mxx_t'].str(4),
+                    I['vy'].x0.str(8), I['vy'].x1.str(4), I['ch'].x1.str(4), dec_hi(I['pevw_t'])))
+    unrun = [p for p in PLANT_NAMES if p not in EXEC] + [p for p in EXEC if p not in PLANT_NAMES or EXEC.count(p) != 1]
+    out('PLANTS: %d of %d must-fire plants ran (not run or repeated: %s); not firing: %s' % (
+        len(set(EXEC)), len(PLANT_NAMES), ' '.join(unrun) if unrun else 'none', ' '.join(nofire) if nofire else 'none'))
+    if nofire or unrun:
+        fails.append('PLANTS')
+    out('RUN wall %.1f s' % (time.time() - t0))
+    out('VERDICT %s' % (('VALID (PART %s; %s)' % (PART, ('certified record' if MODE == 'cert' else 'dry record') if PART == 'full' else 'finite pieces; no record')) if not fails
+                        else 'INVALID (%s)' % ' '.join(fails)))
+    return 0 if not fails else 2
+
+
+PLANTS_WINDOW = ('PLANT-PIN', 'PLANT-ROWS', 'PLANT-ENV', 'PLANT-SIGNW', 'PLANT-ZERO', 'PLANT-10P', 'PLANT-WRITE', 'PLANT-EDEF')
+PLANT_NAMES = PLANTS_WINDOW + ('PLANT-ZEROX', 'PLANT-PI0', 'PLANT-IHR', 'PLANT-A0E4', 'PLANT-MAIN-N', 'PLANT-MAIN-E4', 'PLANT-SIGMA', 'PLANT-ALPHA', 'PLANT-SQ2', 'PLANT-SIGN',
+                               'PLANT-JS-W', 'PLANT-JS-D', 'PLANT-TIE-H') + tuple('PLANT-MONO-' + _t for _t in MONO_TERMS)
+
+
+if __name__ == '__main__':
+    from flint import arb, ctx
+    import sympy as sp
+    ctx.prec = 256
+    try:
+        rc = main()
+    except Refused as e:
+        out('STOP Refused: %s' % e)
+        out('VERDICT INVALID (refused)')
+        rc = 2
+    FH.close()
+    sys.exit(rc)

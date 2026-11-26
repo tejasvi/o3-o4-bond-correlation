@@ -1,0 +1,57 @@
+SELF sha256 b0f40c890d4e4be4b389f4fc690916d99d57816369465503b3989a64b3657de7
+cs33h_1_rh_cert core 929ab8a0 engine c08d33c1 probe 13f53bf6 item coverB:4:129.5868067522418:150:0.01 CAP_S 540 NMODE 8 NCERT 6 K_S 4 K_F 4 PE {'th': 6, 'mh': 9, 'bh': 6, 'tv': 6, 'bv': 6} K_EX 2 NSUB 16 K_MAX 60
+Q N=4 L=97: 4851 blocks, max Davis-Kahan radius 4.660e-12 (gate 1e-09) (1.0 s)
+BUILD N=4 L=97 K=4 Kb=27 n1=269 sertail=7.558e-27; labels 0..194: sqrt TM on 127, g TM on 125 (crude elsewhere); max rem a~ 8.423e-12, E~ 5.007e-14, XE~ 4.792e-14; t=1.1 s
+NODE t=+0.619318 lam1=2.229568180501e-02 lam_s/lam1 s=2..10: 0.1462851 0.0799911 0.0437980 0.0214648 0.0117546 0.0064391 0.0063900 0.0035255 0.0031592 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (1.3 s)
+NODE t=+0.382760 lam1=2.247808908800e-02 lam_s/lam1 s=2..10: 0.1462859 0.0799916 0.0437984 0.0214652 0.0117549 0.0064392 0.0063901 0.0035256 0.0031593 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (2.8 s)
+NODE t=+0.000000 lam1=2.277710994619e-02 lam_s/lam1 s=2..10: 0.1462870 0.0799924 0.0437991 0.0214657 0.0117552 0.0064395 0.0063902 0.0035257 0.0031595 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (4.3 s)
+NODE t=-0.382760 lam1=2.308100697202e-02 lam_s/lam1 s=2..10: 0.1462881 0.0799932 0.0437998 0.0214662 0.0117556 0.0064397 0.0063903 0.0035259 0.0031596 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (5.8 s)
+NODE t=-0.619318 lam1=2.327130478582e-02 lam_s/lam1 s=2..10: 0.1462889 0.0799937 0.0438003 0.0214666 0.0117558 0.0064399 0.0063904 0.0035260 0.0031597 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (7.1 s)
+SPECTRAL N=4: eps/mu0 9.2e-10 1.6e-09 1.8e-09 2.6e-09 6.1e-09 8.7e-09 1.6e-08 9.3e-09; parities +1.000000000 +1.000000000 -1.000000000 +1.000000000 +1.000000000 -1.000000000 +1.000000000 +1.000000000; C-NODE excess -0.00e+00; |T^| <= 3.102773e-02 (25.5 s)
+SPEC N=4 b0=130.23799673592143 part B: identification True; eps_T 2.346e-16 eps_e 4.709e-16; min gap/nu1 8.508e-01 1.021e-01 6.801e-02 2.221e-02 1.271e-02 4.724e-03; u_rem/nu2 <= 0.059603; mode sha8 (diagnostic) d1e149f7 87f50961 098494dc 53700d19 0c34a4ee 7f3dc19c 6168a15d ceeee50a
+FAMILY base: p(t) coefficients 4.390373e+01 1.518036e+00 2.041212e-02 1.307520e-04 3.796145e-07 (sup 4.490095e+01, inf >= 4.290650e+01), centring th 0.992349225 mh 0.993534078 bh 0.992349225 tv 0.993677376 bv 0.993677376, |J_p| 7.213e-05 7.090e-05 7.088e-05 7.088e-05 7.088e-05 7.088e-05 7.088e-05 7.088e-05 7.088e-05 7.088e-05 (35.3 s)
+FAMILY common: 73 vectors (19.3 s)
+FAMILY part B: 111 vectors, max rho/norm 9.17e-04 (46.8 s)
+TRUNC N=4 b0=130.23799673592143 part B: eps_T 2.346e-16 eps_e 4.709e-16 eps_W 8.271e-16 kappa 1.212 rho 1.828e+04 (TY_bv) c 1.56943 slack_f 4.495e-05 | rho by type I_bh 399.8 I_bv 1448 I_mh 417 I_th 399.8 I_tv 1448 J 1.04 P_bh 3282 P_bv 1.748e+04 P_mh 1.036e+04 P_th 3282 P_tv 1.748e+04 TY_bh 3194 TY_bv 1.828e+04 TY_mh 1.027e+04 TY_th 3194 TY_tv 1.828e+04 U 9.434 Y_bh 325.4 Y_bv 1410 Y_mh 372.6 Y_th 325.4 Y_tv 1410 seed 1.009
+CHECKS N=4 b0=130.23799673592143 part B: NEAR 22832 min 9.705e-03 at (15,mh,8,bv,0,1,1.035e-02,1.281e-03) | FAR 0 k* <= 0 min - at - | fails 0 [] | negatives 0 [] | slack 4.49e-05 | controls {'cas': True, 'node': True, 'par': True, 'pos': True, 'slack': True, 'fin': True} | gram rows 470, per-pair 0, inner products 2242 (gram 0.9 s, checks 1.3 s)
+P6 flint: zero-centred ball (x > 0)=False (x < 0)=False contains(0)=True; ctx.prec=128 -> FIRED
+PLANTS N=4 b0=130.23799673592143 part B: P6:FIRED P-CAS:FIRED P-NODE:FIRED P-NEAR:FIRED P-TR:FIRED P-DELTA:FIRED P-L:FIRED (P-NODE excess 9.99e-07)
+C-PROBE N=4 beta=130.85731521324607 L=97: lam_s/lam1 rel 4.45e-12 (gate 1e-8); c_mh/c_th cs30 6.5173820272e-03 here 6.5173820413e-03 rel 2.17e-09 (gate 1e-4): PASS
+IV N=4 part B K=4 b0=130.23799673592143 h=0.6511899836796147 L=97 status CERTIFIED (137.1 s)
+LEDGER B N=4 lo=129.5868067522418130010919 hi=130.8891867196010423413099 b0hex=0x1.0479dab54aacbp+7 hhex=0x1.4d68c606c6000p-1 K=4
+Q N=4 L=98: 4950 blocks, max Davis-Kahan radius 4.660e-12 (gate 1e-09) (1.0 s)
+BUILD N=4 L=98 K=4 Kb=27 n1=271 sertail=7.149e-27; labels 0..196: sqrt TM on 128, g TM on 125 (crude elsewhere); max rem a~ 8.424e-12, E~ 4.978e-14, XE~ 4.766e-14; t=1.1 s
+NODE t=+0.625543 lam1=2.229305063199e-02 lam_s/lam1 s=2..10: 0.1462813 0.0799884 0.0437956 0.0214631 0.0117534 0.0064382 0.0063897 0.0035249 0.0031587 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (1.2 s)
+NODE t=+0.386607 lam1=2.247543510407e-02 lam_s/lam1 s=2..10: 0.1462820 0.0799888 0.0437960 0.0214634 0.0117536 0.0064384 0.0063898 0.0035250 0.0031588 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (2.4 s)
+NODE t=+0.000000 lam1=2.277441854080e-02 lam_s/lam1 s=2..10: 0.1462831 0.0799896 0.0437967 0.0214639 0.0117540 0.0064386 0.0063899 0.0035252 0.0031589 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (3.6 s)
+NODE t=-0.386607 lam1=2.307827750026e-02 lam_s/lam1 s=2..10: 0.1462842 0.0799904 0.0437974 0.0214644 0.0117543 0.0064389 0.0063900 0.0035253 0.0031591 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (4.8 s)
+NODE t=-0.625543 lam1=2.326855145959e-02 lam_s/lam1 s=2..10: 0.1462850 0.0799909 0.0437979 0.0214648 0.0117546 0.0064390 0.0063900 0.0035254 0.0031592 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (6.0 s)
+SPECTRAL N=4: eps/mu0 9.2e-10 1.6e-09 1.8e-09 2.6e-09 6.1e-09 8.7e-09 1.6e-08 9.3e-09; parities +1.000000000 +1.000000000 -1.000000000 +1.000000000 +1.000000000 -1.000000000 +1.000000000 +1.000000000; C-NODE excess -0.00e+00; |T^| <= 3.102368e-02 (23.0 s)
+SPEC N=4 b0=131.54692132623217 part B: identification True; eps_T 1.629e-16 eps_e 3.272e-16; min gap/nu1 8.508e-01 1.021e-01 6.801e-02 2.221e-02 1.271e-02 4.724e-03; u_rem/nu2 <= 0.059592; mode sha8 (diagnostic) fd18b7c9 26e8e5d1 5625e450 c3277607 663b8563 e5aca2bd 4313dbc1 0df33916
+FAMILY base: p(t) coefficients 4.390891e+01 1.503098e+00 2.001001e-02 1.269000e-04 3.647626e-07 (sup 4.490625e+01, inf >= 4.291158e+01), centring th 0.992425369 mh 0.993598473 bh 0.992425369 tv 0.993740360 bv 0.993740360, |J_p| 7.105e-05 6.985e-05 6.982e-05 6.982e-05 6.982e-05 6.982e-05 6.982e-05 6.982e-05 6.982e-05 6.982e-05 (29.8 s)
+FAMILY common: 73 vectors (19.0 s)
+FAMILY part B: 111 vectors, max rho/norm 9.26e-04 (49.5 s)
+TRUNC N=4 b0=131.54692132623217 part B: eps_T 1.629e-16 eps_e 3.272e-16 eps_W 5.746e-16 kappa 1.212 rho 1.847e+04 (TY_bv) c 1.56943 slack_f 3.187e-05 | rho by type I_bh 403.8 I_bv 1462 I_mh 421.3 I_th 403.8 I_tv 1462 J 1.04 P_bh 3315 P_bv 1.766e+04 P_mh 1.046e+04 P_th 3315 P_tv 1.766e+04 TY_bh 3227 TY_bv 1.847e+04 TY_mh 1.038e+04 TY_th 3227 TY_tv 1.847e+04 U 9.434 Y_bh 328.7 Y_bv 1425 Y_mh 376.5 Y_th 328.7 Y_tv 1425 seed 1.009
+CHECKS N=4 b0=131.54692132623217 part B: NEAR 22832 min 9.715e-03 at (15,mh,8,bv,0,1,1.034e-02,1.256e-03) | FAR 0 k* <= 0 min - at - | fails 0 [] | negatives 0 [] | slack 3.19e-05 | controls {'cas': True, 'node': True, 'par': True, 'pos': True, 'slack': True, 'fin': True} | gram rows 470, per-pair 0, inner products 2242 (gram 0.9 s, checks 1.4 s)
+IV N=4 part B K=4 b0=131.54692132623217 h=0.657734606631152 L=98 status CERTIFIED (131.7 s)
+LEDGER B N=4 lo=130.8891867196010139196005 hi=132.2046559328633179575263 b0hex=0x1.07180612734dep+7 hhex=0x1.50c29721db400p-1 K=4
+Q N=4 L=98: 4950 blocks, max Davis-Kahan radius 4.660e-12 (gate 1e-09) (1.0 s)
+BUILD N=4 L=98 K=4 Kb=27 n1=273 sertail=6.845e-27; labels 0..196: sqrt TM on 128, g TM on 125 (crude elsewhere); max rem a~ 8.425e-12, E~ 4.948e-14, XE~ 4.739e-14; t=1.1 s
+NODE t=+0.631830 lam1=2.229044612620e-02 lam_s/lam1 s=2..10: 0.1462774 0.0799857 0.0437933 0.0214613 0.0117522 0.0064374 0.0063894 0.0035244 0.0031581 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (1.2 s)
+NODE t=+0.390492 lam1=2.247280801876e-02 lam_s/lam1 s=2..10: 0.1462781 0.0799862 0.0437937 0.0214616 0.0117524 0.0064375 0.0063894 0.0035245 0.0031582 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (2.4 s)
+NODE t=+0.000000 lam1=2.277175441359e-02 lam_s/lam1 s=2..10: 0.1462793 0.0799869 0.0437944 0.0214621 0.0117527 0.0064378 0.0063895 0.0035246 0.0031584 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (3.6 s)
+NODE t=-0.390492 lam1=2.307557569281e-02 lam_s/lam1 s=2..10: 0.1462804 0.0799877 0.0437951 0.0214626 0.0117531 0.0064380 0.0063896 0.0035248 0.0031585 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (4.9 s)
+NODE t=-0.631830 lam1=2.326582603964e-02 lam_s/lam1 s=2..10: 0.1462811 0.0799882 0.0437955 0.0214630 0.0117533 0.0064382 0.0063897 0.0035249 0.0031586 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (6.2 s)
+SPECTRAL N=4: eps/mu0 9.2e-10 1.6e-09 1.8e-09 2.6e-09 6.1e-09 8.7e-09 1.6e-08 9.3e-09; parities +1.000000000 +1.000000000 -1.000000000 +1.000000000 +1.000000000 -1.000000000 +1.000000000 +1.000000000; C-NODE excess -0.00e+00; |T^| <= 3.101966e-02 (23.6 s)
+SPEC N=4 b0=132.86900093755105 part B: identification True; eps_T 2.280e-16 eps_e 4.551e-16; min gap/nu1 8.508e-01 1.021e-01 6.800e-02 2.221e-02 1.271e-02 4.724e-03; u_rem/nu2 <= 0.059582; mode sha8 (diagnostic) 6a9e1787 482fa9d8 ec694abb 86315c3b 3f317ff3 d5d4dcdb 81700d99 78190ed1
+FAMILY base: p(t) coefficients 4.391405e+01 1.488306e+00 1.961581e-02 1.231613e-04 3.504909e-07 (sup 4.491149e+01, inf >= 4.291661e+01), centring th 0.992500756 mh 0.993662227 bh 0.992500756 tv 0.993802716 bv 0.993802716, |J_p| 6.999e-05 6.880e-05 6.878e-05 6.878e-05 6.878e-05 6.878e-05 6.878e-05 6.878e-05 6.878e-05 6.878e-05 (32.5 s)
+FAMILY common: 73 vectors (19.9 s)
+FAMILY part B: 111 vectors, max rho/norm 9.31e-04 (50.5 s)
+TRUNC N=4 b0=132.86900093755105 part B: eps_T 2.280e-16 eps_e 4.551e-16 eps_W 7.959e-16 kappa 1.212 rho 1.865e+04 (TY_bv) c 1.56942 slack_f 4.504e-05 | rho by type I_bh 407.8 I_bv 1477 I_mh 421.3 I_th 407.8 I_tv 1477 J 1.04 P_bh 3348 P_bv 1.784e+04 P_mh 1.047e+04 P_th 3348 P_tv 1.784e+04 TY_bh 3259 TY_bv 1.865e+04 TY_mh 1.038e+04 TY_th 3259 TY_tv 1.865e+04 U 9.435 Y_bh 332 Y_bv 1439 Y_mh 376.4 Y_th 332 Y_tv 1439 seed 1.009
+CHECKS N=4 b0=132.86900093755105 part B: NEAR 22832 min 9.699e-03 at (15,mh,8,bv,0,1,1.034e-02,1.282e-03) | FAR 0 k* <= 0 min - at - | fails 0 [] | negatives 0 [] | slack 4.50e-05 | controls {'cas': True, 'node': True, 'par': True, 'pos': True, 'slack': True, 'fin': True} | gram rows 470, per-pair 0, inner products 2242 (gram 0.9 s, checks 1.3 s)
+IV N=4 part B K=4 b0=132.86900093755105 h=0.6643450046877604 L=98 status CERTIFIED (137.0 s)
+LEDGER B N=4 lo=132.2046559328632895358169 hi=133.5333459422388102666446 b0hex=0x1.09bcedb0ddf34p+7 hhex=0x1.54250748ca300p-1 K=4
+COVER_STOP N=4 part B next_left=133.53334594223878 (time)
+VALID True
+VERDICT PARTIAL B [129.5868067522418, 133.5333459422388102666446]
+CPU 410.4 s maxrss_kb 2950752

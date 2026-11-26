@@ -1,0 +1,195 @@
+m3_run_v1_9_3 item CE3a.4 LIM 540; script sha256 1c589cd533d4078ce69278be143bc6a7a1825c33ea177f2e49cd569419126745; python 3.14.4
+STAGE-CPU C-HASH start 0.04 s
+C-HASH (9 modules, the kernel files, 31 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.12 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v11: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=) -> PASS
+PLANT-CALLER (m3_bar_v11 with one E2_combine call's plan= removed) -> FIRES
+C-SERIES (no *_series( call in 9 modules, the kernel files and this script) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-330.000000000 +/- 2.94e-12] overlaps the layer's [-330.000000000 +/- 2.64e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU smoke CE3 start 0.14 s
+C-PARITY-SET (the entries whose factors pass C-ODD on their own graph: []; marked zero: []; PARITY_ZERO []) -> PASS
+C-ODD-PLANT-BASE (c3: [cp, 2, 0] alone on E2T passes C-ODD: one exactly odd factor, the rest exactly even, T <-> B an automorphism of E2T) -> PASS
+PLANT-ODD ([cp, 2, 0] on E2T with S[1][2] + 1e-12: a factor is neither exactly even nor exactly odd: [None]) -> FIRES
+C-GRAPH-LIST (CE3: the columns ['vac', 'int', 'free'] give V 9, 13 edges and F 16 (the list: [9, 13, 16]); pairs [(0, 1), (0, 2), (0, 3), (1, 2), (3, 6), (4, 5), (7, 8)] equal the list's) -> PASS
+PLANT-GRAPH-LIST (CE3: the pair list without its first pair) -> FIRES
+C-RULE (CE3: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 5.8e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (CE3: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 9 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 1.853136889780128, 1.8517206669514108) -> PASS
+C-PREP-REF (CE3: m3ref_px22_v1_5_P16CE3.4.p1_z9sym.out PREPJSON of family P16CE3, N 4, J 300.0) -> PASS
+C-PREP-GRAPH (CE3: the prep graph has V 9, F 9 and pairs [] (the family graph: F 16); against the family graph, V, N, S_gauge and the 13 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 9 x 9 vertex block of Gam, 9 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo (C-4)) -> PASS
+PLANT-PREP-EDGE (CE3: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (CE3: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (CE3: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (CE3: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+GDATA-CPU fT,0: 0.95 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13] D 7 caps {1: 6}: 1889 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13] D 7 caps {1: 6}: 0.91 s
+UNIT fT,0 ak: 0.91 s
+SMOKE fT,0 ak ['1.05699137717', '1.09173000891', '1.09691588547', '1.05170316174'] Dn 7 forms 13: 1.95 s
+PACK-PLAN fT,0: 22 table requests; largest code range 8^13 (a_k)
+GDATA-CPU fT2,0: 1.91 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 7 caps {1: 6}: 2007 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 7 caps {1: 6}: 0.89 s
+UNIT fT2,0 ak: 0.90 s
+SMOKE fT2,0 ak ['1.00837656427', '1.07246571492', '1.10162277332', '1.08474514917'] Dn 7 forms 13: 2.89 s
+PACK-PLAN fT2,0: 8 table requests; largest code range 8^13 (a_k)
+GDATA-CPU fT,1: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 13] D 8 caps {1: 6}: 422 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 13] D 8 caps {1: 6}: 0.53 s
+UNIT fT,1 ak: 0.54 s
+SMOKE fT,1 ak ['-0.0567033651378', '0.424896777438', '0.41837190316', '0.325943416604'] Dn 8 forms 11: 0.62 s
+PACK-PLAN fT,1: 24 table requests; largest code range 9^11 (a_k)
+GDATA-CPU fT2,1: 0.03 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11] D 8 caps {1: 6}: 453 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11] D 8 caps {1: 6}: 0.53 s
+UNIT fT2,1 ak: 0.54 s
+SMOKE fT2,1 ak ['-0.288615002015', '0.402442439244', '0.501167219323', '0.463422548314'] Dn 8 forms 11: 0.65 s
+PACK-PLAN fT2,1: 8 table requests; largest code range 9^11 (a_k)
+GDATA-CPU fT,2: 0.02 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13] D 8 caps {1: 6}: 1133 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13] D 8 caps {1: 6}: 1.08 s
+UNIT fT,2 ak: 1.09 s
+SMOKE fT,2 ak ['0.0176186597963', '0.0206816411064', '0.017801765563', '0.0122232350498'] Dn 8 forms 12: 1.18 s
+PACK-PLAN fT,2: 24 table requests; largest code range 9^12 (a_k)
+GDATA-CPU fT2,2: 0.05 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12] D 8 caps {1: 6}: 1194 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12] D 8 caps {1: 6}: 1.06 s
+UNIT fT2,2 ak: 1.07 s
+SMOKE fT2,2 ak ['0.264279896944', '0.131113661182', '0.0156846937106', '-0.0861807242508'] Dn 8 forms 12: 1.19 s
+PACK-PLAN fT2,2: 8 table requests; largest code range 9^12 (a_k)
+GDATA-CPU fT,3: 0.02 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13] D 8 caps {1: 6}: 2891 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13] D 8 caps {1: 6}: 2.07 s
+UNIT fT,3 ak: 2.09 s
+SMOKE fT,3 ak ['0.00778140905095', '1.18427486673', '1.07347220116', '0.676929974306'] Dn 8 forms 13: 2.18 s
+PACK-PLAN fT,3: 24 table requests; largest code range 9^13 (a_k)
+GDATA-CPU fT2,3: 0.06 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 8 caps {1: 6}: 3043 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 8 caps {1: 6}: 2.02 s
+UNIT fT2,3 ak: 2.03 s
+SMOKE fT2,3 ak ['0.135467432787', '1.44993915478', '1.30237546289', '0.795300116004'] Dn 8 forms 13: 2.17 s
+PACK-PLAN fT2,3: 8 table requests; largest code range 9^13 (a_k)
+GDATA-CPU A.J,0: 0.02 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14] D 8 caps {1: 6}: 5607 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14] D 8 caps {1: 6}: 3.77 s
+UNIT A.J,0 ak: 3.79 s
+SMOKE A.J,0 ak ['0.899859446057', '1.07155200803', '1.17843201839', '1.22721660389'] Dn 8 forms 14: 3.89 s
+PACK-PLAN A.J,0: 33 table requests; largest code range 9^14 (a_k)
+GDATA-CPU A.y,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14] D 7 caps {1: 6}: 1889 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14] D 7 caps {1: 6}: 0.84 s
+UNIT A.y,0 ak: 0.85 s
+SMOKE A.y,0 ak ['0.849556135985', '1.00575542523', '1.11373803064', '1.18428216658'] Dn 7 forms 13: 0.93 s
+PACK-PLAN A.y,0: 22 table requests; largest code range 8^13 (a_k)
+GDATA-CPU A.J,1: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 14] D 9 caps {1: 6}: 1300 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 14] D 9 caps {1: 6}: 2.50 s
+UNIT A.J,1 ak: 2.51 s
+SMOKE A.J,1 ak ['-0.175590038662', '0.266903704117', '0.364144359659', '0.355205419011'] Dn 9 forms 12: 2.59 s
+PACK-PLAN A.J,1: 35 table requests; largest code range 10^12 (a_k)
+GDATA-CPU A.y,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 14] D 8 caps {1: 6}: 422 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 14] D 8 caps {1: 6}: 0.47 s
+UNIT A.y,1 ak: 0.48 s
+SMOKE A.y,1 ak ['-0.138737623317', '0.271359403369', '0.345070755005', '0.324567372577'] Dn 8 forms 11: 0.56 s
+PACK-PLAN A.y,1: 24 table requests; largest code range 9^11 (a_k)
+GDATA-CPU A.J,2: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14] D 9 caps {1: 6}: 3182 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14] D 9 caps {1: 6}: 5.19 s
+UNIT A.J,2 ak: 5.20 s
+SMOKE A.J,2 ak ['-0.135263586549', '-0.123533463712', '-0.0879898838159', '-0.0531368537623'] Dn 9 forms 13: 5.28 s
+PACK-PLAN A.J,2: 35 table requests; largest code range 10^13 (a_k)
+GDATA-CPU A.y,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 14] D 8 caps {1: 6}: 1133 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 14] D 8 caps {1: 6}: 0.95 s
+UNIT A.y,2 ak: 0.96 s
+SMOKE A.y,2 ak ['-0.14094927837', '-0.132357128883', '-0.0975226984883', '-0.0623977749478'] Dn 8 forms 12: 1.03 s
+PACK-PLAN A.y,2: 24 table requests; largest code range 9^12 (a_k)
+GDATA-CPU A.J,3: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14] D 9 caps {1: 6}: 7609 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14] D 9 caps {1: 6}: 9.14 s
+UNIT A.J,3 ak: 9.15 s
+SMOKE A.J,3 ak ['0.095159579145', '1.23410030982', '1.35338268677', '1.12354043469'] Dn 9 forms 14: 9.24 s
+PACK-PLAN A.J,3: 35 table requests; largest code range 10^14 (a_k)
+GDATA-CPU A.y,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14] D 8 caps {1: 6}: 2891 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14] D 8 caps {1: 6}: 1.83 s
+UNIT A.y,3 ak: 1.84 s
+SMOKE A.y,3 ak ['0.0871737069718', '1.12888564971', '1.20611161086', '0.979806698391'] Dn 8 forms 13: 1.92 s
+PACK-PLAN A.y,3: 24 table requests; largest code range 9^13 (a_k)
+GDATA-CPU D.J,0: 0.02 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15] D 8 caps {1: 6}: 5607 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15] D 8 caps {1: 6}: 3.43 s
+UNIT D.J,0 ak: 3.44 s
+SMOKE D.J,0 ak ['1.12848710875', '1.16989120708', '1.15890987956', '1.06972888725'] Dn 8 forms 14: 3.54 s
+PACK-PLAN D.J,0: 33 table requests; largest code range 9^14 (a_k)
+GDATA-CPU D.y,0: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15] D 7 caps {1: 6}: 1889 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15] D 7 caps {1: 6}: 0.82 s
+UNIT D.y,0 ak: 0.83 s
+SMOKE D.y,0 ak ['1.05699137717', '1.09173000891', '1.09691588547', '1.05170316174'] Dn 7 forms 13: 0.91 s
+PACK-PLAN D.y,0: 22 table requests; largest code range 8^13 (a_k)
+GDATA-CPU D.J,1: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 15] D 9 caps {1: 6}: 1300 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 15] D 9 caps {1: 6}: 2.33 s
+UNIT D.J,1 ak: 2.34 s
+SMOKE D.J,1 ak ['-0.0859870558095', '0.439115058783', '0.446769714404', '0.350088656536'] Dn 9 forms 12: 2.42 s
+PACK-PLAN D.J,1: 35 table requests; largest code range 10^12 (a_k)
+GDATA-CPU D.y,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 15] D 8 caps {1: 6}: 422 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 15] D 8 caps {1: 6}: 0.47 s
+UNIT D.y,1 ak: 0.48 s
+SMOKE D.y,1 ak ['-0.0567033651378', '0.424896777438', '0.41837190316', '0.325943416604'] Dn 8 forms 11: 0.56 s
+PACK-PLAN D.y,1: 24 table requests; largest code range 9^11 (a_k)
+GDATA-CPU D.J,2: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 15] D 9 caps {1: 6}: 3182 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 15] D 9 caps {1: 6}: 4.83 s
+UNIT D.J,2 ak: 15.29 s
+SMOKE D.J,2 ak ['0', '-8.881784197e-15', '-5.86197757002e-14', '-2.51661849123e-14'] Dn 9 forms 13: 15.38 s
+PACK-PLAN D.J,2: 35 table requests; largest code range 10^13 (a_k)
+GDATA-CPU D.y,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 15] D 8 caps {1: 6}: 1133 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 15] D 8 caps {1: 6}: 0.97 s
+UNIT D.y,2 ak: 0.97 s
+SMOKE D.y,2 ak ['-0.0176186597963', '-0.0206816411064', '-0.017801765563', '-0.0122232350502'] Dn 8 forms 12: 1.05 s
+PACK-PLAN D.y,2: 24 table requests; largest code range 9^12 (a_k)
+GDATA-CPU D.J,3: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15] D 9 caps {1: 6}: 7609 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15] D 9 caps {1: 6}: 9.39 s
+UNIT D.J,3 ak: 9.40 s
+SMOKE D.J,3 ak ['0.0148020468852', '1.30254172419', '1.20892062291', '0.775314388562'] Dn 9 forms 14: 9.49 s
+PACK-PLAN D.J,3: 35 table requests; largest code range 10^14 (a_k)
+GDATA-CPU D.y,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15] D 8 caps {1: 6}: 2891 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15] D 8 caps {1: 6}: 1.79 s
+UNIT D.y,3 ak: 1.81 s
+SMOKE D.y,3 ak ['0.00778140905095', '1.18427486673', '1.07347220116', '0.676929974307'] Dn 8 forms 13: 1.89 s
+PACK-PLAN D.y,3: 24 table requests; largest code range 9^13 (a_k)
+C-SMOKE-AK (the a_k of 24 CE3 entries against m3ref_px22_v1_5 P16CE3: largest |certified mid - float| / max(1, |float|) 1.47e-12 at fT,3 a_3) -> PASS
+PLANT-SMOKE-AK (the largest difference plus 1e-6) -> FIRES
+GDATA-CPU fT,0 (planted): 0.01 s (group series, majorants and F_i)
+UNIT fT,0 (planted) ak: 0.01 s
+PLANT-SMOKE-PATH (fT,0 with its xi factor's c9 times 1 + 1e-6: largest difference 1.00e-06) -> FIRES
+C-PACK-PLAN (CE3: the bound of all 24 entries asks the kernel for 590 table requests, distinct within each entry; the largest code range (D + 1)^forms is 10^14 = 1.000e+14 (A.J,3, a_k), below 9.0e+18; the largest lp-norm D is 24 (<= 64)) -> PASS
+PLANT-PACK-PLAN (a request of D 16 over 16 forms, 17^16 = 4.866e+19, must be refused, and the control D 14 over 16 forms, 15^16 = 6.568e+18, accepted) -> FIRES
+FALLBACKS 1 (MAFallback recomputes in arb, INFO): u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 15] D 9 caps {1: 6}: E2: M-a error 1.12e-05 of 2.27e-03
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 74.00 s
+VERDICT VALID

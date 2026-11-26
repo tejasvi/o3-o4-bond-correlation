@@ -1,0 +1,275 @@
+--- cw_comb_v2_0.py
++++ cw_comb_v2_2.py
+@@ -1,5 +1,23 @@
+ #!/usr/bin/env python3
+-"""cw_comb_v2_0.py (pk23, C_w variant B; the P0_LOG rows 4589, 4610, 4620, 4633, 4638; pk25's D2_DESIGN_v1_3 sect. (d), its P2 note
++"""cw_comb_v2_2.py (pk23, C_w variant B): cw_comb_v2_0.py (sha256 c7d317fc9d6d90b2479bd92392c1668caaa49525d542a9837c00bd00aabe960d) with IhR,10',b read through pk22's law certificate
++m3_lawcert_c3k_v2 (sha256 69730e387a039525d35382c112db23d38ca9755a82fc51ce828c1ca972c8b859; the records m3_c3kp_E4D/E4N_N<N>_J300_c3kp.json, loaded with load bound to m3_run_v1_9_3_asm.<N>_c3k2.out,
++and the certificate with load_lawcert bound to m3_lawcert_c3k_v2_<N>.out) through pk23's reader fork m3_reader_cw_v1_1 (sha256 c1331e0436244a1f59ae722d5611c6ff84acab7aa4712b372683b1f5770d9c12),
++the P2 table pk25/p2/v3f2/MR_LEMMAP_V3F.kv (sha256 9ef6abafdf450eff317545dd95aff519051352db3c01c752f739466a616d48c4) pinned, and the record's STATUS decided by the run: CERTIFIED when every gate passes, every plant fires,
++both N run on state 10' and the P2 table's header says STATUS = CERTIFIED and RUN_VERDICT = VALID; DRY otherwise, with the DRY inputs
++named on the DRY_INPUTS line. The VERDICT line is exactly VERDICT VALID when every gate passes and every plant fires; a STATUS line follows
++it. For P3 (pk25's confirmation of CW_X11_v1): jlo and jhi are MR_LEMMAP v3's tokens exactly; the header carries LEMMAP_SHA256,
++TRIAL_SET (MR_LEMMAP v3's line), TRIAL_SET_10P (psi_xy''s trial file per N with its sha256) and DEFINITIONS. The notes on
++v2_0 (9994a402), closed here: C-SQ2's sentence below words the normalisation factors as additive O(t^2) corrections; yes, the
++T2 class carries the products of the first-order coefficients into R: __mul__'s R holds c1 d1 (the exact t^2 remainder of the product),
++and inv's R holds (c1 + R t)^2 / (y0^3 (1 + eps)) from 1/(1 + e) = 1 - e + e^2/(1 + e), valid while 1 + eps does not hold 0 over the
++piece's ball T, which C-FINITE checks on every piece (an arb ball that holds 0 makes the result infinite). C-FINITE's plant (the row
++4655), PLANT-FINITE: on the first piece, TT00 with a_1 = -a_0/t_mid makes the 1 + eps of its inverse hold 0 over T, and the piece must be
++refused. cw_comb_v2_0's per-piece lines for C-KAPPA's factor and for x1t_hi and c_h' move into the helpers fac_of and x1t_chp, which
++the plant shares. Exact tokens (the row 4691; the class of P2's finite_rows fix): jlo, jhi and C-KAPPA's table
++fields enter every bound as the exact Fractions of their tokens (tq, tmax; never float()); T is [1/jhi, 1/jlo] ([0, 1/jlo] on the last
++piece) from those endpoints. The floats jlo, jhi serve the piece selection, the DRY |Q f|/t and the printout only. Made by
++make_cw_comb_v2_x4.py. cw_comb_v2_0's docstring follows.
++cw_comb_v2_0.py (pk23, C_w variant B; the P0_LOG rows 4589, 4610, 4620, 4633, 4638; pk25's D2_DESIGN_v1_3 sect. (d), its P2 note
+ and pk24's MIDROW_G6_SPEC_v1_7 sect. 4.3, Lemma mu_pe): the comb of C_w's (1,1) block for P3, per piece of MR_LEMMAP v3 and both N, with the
+ record writer, and the DRY |Q f|/t of the triangle form on every piece, the last one [1008859.4, inf) included. The T2 class, LawItem, c_t2
+ and rows_t2 are cw_comb_v1_4's (d620ef48), unchanged.
+@@ -14,8 +32,9 @@
+ and c1; R holds a2 + a3 t, their radii and the law certificate's B(J) J^2: B(jlo) jhi^2 on a finite piece, B(jlo) jlo^2 on the last one
+ under C-MONO-LAST2).
+ - C-SQ2: X11's c0 and c1 balls hold 0 on every piece. Their true values are 0: Q_xy S M_c' psi_1 vanishes at t^0, since S M_c' psi_1(0) is a
+-  multiple of psi_xy'(0) = x_1 (x) y exactly (state 10'), and X11 is its squared norm times factors 1 + O(t^2) (C-KAPPA); so on the piece
+-  X11 <= t^2 max(R_hi, 0).
++  multiple of psi_xy'(0) = x_1 (x) y exactly (state 10'), and X11 main_D is its squared norm plus (a0/a2 - 1) A - ((a0/a1)^2 - 1)
++  P^2/|psi_xy'|^2 (C-KAPPA's notation), additive corrections that are O(t^2) since a0 - a_k = |r|^2 - <r, S^k r> = O(t^2) for psi_0 =
++  alpha u + r; so on the piece X11 <= t^2 max(R_hi, 0).
+ - C-KAPPA: in true units X11 = [(a0/a2) A - (a0/a1)^2 P^2/|psi_xy'|^2] / main_D, with a_k = <psi_0, S^k psi_0>, A = |S M_c' psi_1|^2 and
+   P = <psi_xy', S M_c' psi_1>. Since 0 <= S <= 1, a0 >= a1 >= a2, so |Q_xy S M_c' psi_1|^2 / main_D <= X11 + ((a0/a1)^2 - 1) sub, with
+   sub = (kappa P1)^2/G_xy' >= (P^2/|psi_xy'|^2)/main_D. And 1 - a1/a0 <= sin^2 angle(psi_0, u) <= |x_0 - u|^2 <= d_x0^2, d_x0 = |1 - c_0| +
+@@ -44,11 +63,12 @@
+ M3O, S3O = CODEDIR + '/pk03/out', CODEDIR + '/pk22/m3/out'
+ PSX = CODEDIR + '/pk22/midrow/psixy'
+ MRL3, MRI, MRS = CODEDIR + '/pk25/mr/v3/MR_LEMMAP.kv', CODEDIR + '/pk25/mr/v4b/MR_INSERT.kv', CODEDIR + '/pk25/mr/v4/MR_SPECTRAL.kv'
+-P2F = CODEDIR + '/pk25/p2/dry_d2/MR_LEMMAP_V3F.kv'
++P2F = CODEDIR + '/pk25/p2/v3f2/MR_LEMMAP_V3F.kv'
+ MRJ = CODEDIR + '/pk22/midrow/g4/mrc/out/cert/MR_JOINT_CERT_v1.kv'
+ SPEC, S9HB = CODEDIR + '/pk24/MIDROW_G6_SPEC_v1_7.md', CODEDIR + '/notes/S9H_G5_BRIEF_v1.md'
+-RDRF = HLD + '/m3_reader_cw_v1.py'
+-PINS = {MRL3: '3164b778', MRI: '54691bc1', MRS: '0e4d8177', P2F: '4a464522', MRJ: '80bc8d81', RDRF: '876b6184'}
++RDRF = HLD + '/m3_reader_cw_v1_1.py'
++C3K2F = CODEDIR + '/pk22/m3/m3_lawcert_c3k_v2.py'
++PINS = {MRL3: '3164b778', MRI: '54691bc1', MRS: '0e4d8177', P2F: '47cef0dd', MRJ: '80bc8d81', RDRF: 'c1331e04', C3K2F: '69730e38'}
+ ROOM = {4: (2.1489 - 1.3407, 2.957), 3: (1.6612 - 0.4338, 2.889)}   # KC3's design room (D2 v1 sect. 0); the hard C-SIGN room (the rows 4610, 4620)
+ LCK = ('Cxx,1,1', 'Cx1,1,1', 'C1x,1,1', 'C11,1,1')
+ FAILS, NOFIRE = [], []
+@@ -223,6 +243,7 @@
+             assert fields is not None and len(v) >= len(fields), (path, m.group(1))
+             keys.append(m.group(1))
+             rows[m.group(1)] = dict((f, (None if x == 'inf' else (x if x in ('True', 'False') else float(x)))) for f, x in zip(fields, v))
++            rows[m.group(1)]['_tok'] = dict(zip(fields, v))   # the table's own tokens (the record copies jlo and jhi exactly)
+             continue
+         m = re.match(r'^([A-Za-z0-9_]+) = (.*)$', ln)
+         if m and not re.match(r'^N\d_P\d+', m.group(1)):
+@@ -234,6 +255,15 @@
+ 
+ def amax(r, f):
+     return max(abs(r[f + '_lo']), abs(r[f + '_hi']))
++
++
++def tq(row, f):
++    """v2_2 (the row 4691): a table field as the exact Fraction of its token, never through float()."""
++    return Fr(row['_tok'][f])
++
++
++def tmax(row, f):
++    return max(abs(tq(row, f + '_lo')), abs(tq(row, f + '_hi')))
+ 
+ 
+ # inputs and pins
+@@ -271,13 +301,14 @@
+     for k in LCK:
+         IT[k] = LI('cw', 'LC', k)
+     C3KP = {}
+-    if STATE == '10p':   # pk22's c3k rerun on 10' (DRY until its law certificate: the record's own laws)
++    if STATE == '10p':   # pk22's c3k rerun on 10', through its law certificate m3_lawcert_c3k_v2
+         for f in ('E4D', 'E4N'):
+             C3KP[f] = RDR.load(S3O + '/m3_c3kp_%s_N%d_J300_c3kp.json' % (f, N), S3O + '/m3_run_v1_9_3_asm.%d_c3k2.out' % N, 300, N)
+-        out('C3KP N=%d: %s (record laws: DRY until the law certificate)' % (N, ', '.join('%s %s' % (r_['name'], r_['sha256'][:16]) for r_ in C3KP.values())))
++        CERTS['c3kp'] = RDR.load_lawcert(S3O + '/m3_lawcert_c3k_v2_N%d.json' % N, S3O + '/m3_lawcert_c3k_v2_%d.out' % N, 300, N, C3KP)
++        out('LAWCERT c3kp N=%d: m3_lawcert_c3k_v2_N%d.json (%s), %d entries; records %s' % (N, N, CERTS['c3kp']['producer'], len(CERTS['c3kp']['entries']),
++                                                                                    ', '.join('%s %s' % (r_['name'], r_['sha256'][:16]) for r_ in C3KP.values())))
+     for b in (0, 1, 3):
+-        IT['IhR%d' % b] = (LawItem('E4N:IhR,10p,%d' % b, C3KP['E4N']['laws']['IhR,10,%d' % b]) if STATE == '10p'
+-                           else LI('c3k', 'E4N', 'IhR,10,%d' % b))
++        IT['IhR%d' % b] = LI('c3kp', 'E4N', 'IhR,10,%d' % b) if STATE == '10p' else LI('c3k', 'E4N', 'IhR,10,%d' % b)
+     XDF = {'10': PSX + '/out/psixy_exact_d_v1_n%d.json' % N, '10p': PSX + '/out/psixy_exact_d_v2_n%d.json' % N}
+     XDATA = {}
+     for st_, pth_ in XDF.items():
+@@ -331,29 +362,57 @@
+         sub = kP1 * kP1 * g['G10,10'].inv()
+         return kapL * N11 - sub, sub, ch, N11, g
+ 
+-    rows_rec, first, worst, worst11, last_info, sq2_all, ccor = [], None, None, None, None, True, 0.0
++    def fac_of(key, r, last, jlo, jhi):
++        """C-KAPPA's factor over t^2 on a piece (cw_comb_v2_0's lines moved here so that PLANT-FINITE shares them; v2_2: jlo and jhi
++        exact Fractions and every table field its exact token)."""
++        if last:
++            p = P2[key]
++            dt = ab(tmax(p, 'u0pt') + tmax(p, 'u01t') + tmax(p, 'u03t')) + (2 * (ab(tq(p, 'q0t_hi')) ** 2 + ab(tq(p, 'eps_x0t_hi')) ** 2
++                                                                                + ab(tq(p, 'eps_y0t_hi')) ** 2)).sqrt()
++            dmax = dt / ab(jlo)
++            return 2 * dt * dt / (1 - dmax * dmax) ** 2
++        d = ab(max(abs(1 - tq(r, 'u0p_lo')), abs(1 - tq(r, 'u0p_hi'))) + tmax(r, 'u01') + tmax(r, 'u03')) + (
++            2 * (ab(tq(r, 'q0_hi')) ** 2 + ab(tq(r, 'eps_x0_hi')) ** 2 + ab(tq(r, 'eps_y0_hi')) ** 2)).sqrt()
++        return 2 * d * d / (1 - d * d) ** 2 * ab(jhi) ** 2
++
++    def x1t_chp(X11, sub, ch, g, fac, key):
++        """x1t_hi, chp_lo, chp_hi, R_hi and the C-KAPPA term on a piece (cw_comb_v2_0's lines, unchanged, moved here so that PLANT-FINITE
++        shares them)."""
++        g11lo = g['g11'].value().lower()
++        assert lo(g11lo) > 0, 'g11 not positive on %s' % key
++        RX = X11.R.upper()
++        RX = arb(0) if hi(RX) <= 0 else RX
++        corr = sub.value().upper() * fac
++        y2 = ((RX + corr) / g11lo).upper()
++        chv = ch.value()
++        return hi(y2.sqrt()), lo(chv), hi(chv), RX, corr
++
++    rows_rec, first, worst, worst11, last_info, sq2_all, ccor, fin_all = [], None, None, None, None, True, 0.0, True
+     for key in k3:
+         r = L3[key]
+-        jlo, jhi = r['jlo'], r['jhi']
++        jlo, jhi = r['jlo'], r['jhi']                                   # floats: the selection, the DRY |Q f|/t and the printout only
+         last = jhi is None
+-        T = arb(1 / (2 * jlo), 1 / (2 * jlo)) if last else arb((1 / jlo + 1 / jhi) / 2, (1 / jlo - 1 / jhi) / 2)
++        jq = tq(r, 'jlo')                                               # v2_2: the exact tokens enter every bound (no float())
++        hq = None if last else tq(r, 'jhi')
++        tlo_q = Fr(0) if last else 1 / hq
++        T = ab((1 / jq + tlo_q) / 2) + arb(0, ab((1 / jq - tlo_q) / 2).upper())   # v2_2: [1/jhi, 1/jlo] ([0, 1/jlo]) from exact endpoints
+         if last:
+-            bad = sorted(k for k, v in IT.items() if not v.mono_last2(Fr(jlo)))
++            bad = sorted(k for k, v in IT.items() if not v.mono_last2(jq))
+             gate('C-MONO-LAST2', not bad, '(N=%d: on the last piece from jlo %.1f, J^2 B(J) is non-increasing for every one of the %d laws (rate jlo >= 2; '
+                  '4/kappa <= jlo for tail and ann); failing: %s)' % (N, jlo, len(IT), ', '.join(bad) or 'none'))
+             pm = copy.copy(IT['Cxx,1,1'])
+             pm.law = dict(pm.law)
+             pm.law['laws'] = dict(pm.law['laws'])
+             pm.law['laws']['far_rate'] = Fr(1, 10 ** 7)
+-            plant('PLANT-MONO', not pm.mono_last2(Fr(jlo)), '(N=%d: Cxx,1,1 with a far rate of 1e-7 must fail C-MONO-LAST2 at jlo %.1f)' % (N, jlo))
++            plant('PLANT-MONO', not pm.mono_last2(jq), '(N=%d: Cxx,1,1 with a far rate of 1e-7 must fail C-MONO-LAST2 at jlo %.1f)' % (N, jlo))
+         if first is None:   # C-ROWS: the rows code on state 10 (v1's exact c(t)) against e12_comb_v1's float series (state 10)
+-            g0 = dict((k, v.t2(Fr(jlo), Fr(jhi), T)) for k, v in IT.items())
++            g0 = dict((k, v.t2(jq, hq, T)) for k, v in IT.items())
+             g10 = rows_t2(g0, T, XDATA['10'], SUP)
+             dr = max(max(abs(float(g10[k].c0.mid()) - float(E12[k]['A_float'][0])), abs(float(g10[k].c1.mid()) - float(E12[k]['A_float'][1])))
+                      for k in ('T10,0', 'T10,1', 'T10,3', 'G10,10'))
+             gate('C-ROWS', dr <= 1e-9, '(N=%d: T10,b and G10,10 from S8 laws times the exact c(t) of state 10: t^0 and t^1 against e12_comb_v1, '
+                  'largest difference %.2e; the same code builds the rows of state %s)' % (N, dr, STATE))
+-        X11, sub, ch, N11, g = x11_of(IT, jlo, jhi, T, XDATA[STATE])
++        X11, sub, ch, N11, g = x11_of(IT, jq, hq, T, XDATA[STATE])
+         if first is None:
+             dn, dc = abs(float(N11.c0.mid()) - n11_0), abs(float(ch.c0.mid()) - ch0)
+             gate('C-T0', dn <= 1e-12 + float(N11.c0.rad()) and dc <= 1e-12 + float(ch.c0.rad()),
+@@ -363,33 +422,31 @@
+             pc = copy.copy(IT['Cxx,1,1'])
+             pc.ak = [pc.ak[0] + Fr(1, 10 ** 6)] + pc.ak[1:]
+             pit['Cxx,1,1'] = pc
+-            Xp = x11_of(pit, jlo, jhi, T, XDATA[STATE])[0]
++            Xp = x11_of(pit, jq, hq, T, XDATA[STATE])[0]
+             plant('PLANT-SQ2', not (Xp.c0.contains(arb(0)) and Xp.c1.contains(arb(0))),
+                   '(N=%d: Cxx,1,1 with a_0 moved by 1e-6 must fail C-SQ2 on the first piece: t^0 ball %s)' % (N, Xp.c0.str(3)))
++            pif = dict(IT)   # PLANT-FINITE (the row 4655): TT00 with a_1 = -a_0/t_mid, so the 1 + eps of its inverse holds 0 over T
++            pt = copy.copy(IT['TT00'])
++            pt.ak = [pt.ak[0], -pt.ak[0] / ((1 / jq + 1 / hq) / 2)] + pt.ak[2:]
++            pif['TT00'] = pt
++            gtt = pt.t2(jq, hq, T)
++            onef = 1 + (gtt.c1 * T + gtt.R * T * T) / gtt.c0
++            try:
++                Xf, subf, chf, _, gf = x11_of(pif, jq, hq, T, XDATA[STATE])
++                xf = x1t_chp(Xf, subf, chf, gf, fac_of(key, r, False, jq, hq), key)
++                refused, shown = not all(math.isfinite(v_) for v_ in xf[:3]), 'x1t_hi %s, c_h\' [%s, %s]' % xf[:3]
++            except (ZeroDivisionError, ValueError, ArithmeticError) as exc_:
++                refused, shown = True, 'the piece raised %s' % type(exc_).__name__
++            plant('PLANT-FINITE', onef.contains(arb(0)) and refused,
++                  '(N=%d: TT00 with a_1 = -a_0/t_mid makes 1 + eps of its inverse hold 0 over the first piece (1 + eps %s), and C-FINITE must '
++                  'refuse the piece: %s)' % (N, onef.str(3), shown))
+             first = key
+         sq2 = X11.c0.contains(arb(0)) and X11.c1.contains(arb(0))
+         sq2_all = sq2_all and sq2
+-        g11lo = g['g11'].value().lower()
+-        assert lo(g11lo) > 0, 'g11 not positive on %s' % key
+-        RX = X11.R.upper()
+-        RX = arb(0) if hi(RX) <= 0 else RX
+-        if last:
+-            p = P2[key]
+-            dt = ab(Fr(amax(p, 'u0pt')) + Fr(amax(p, 'u01t')) + Fr(amax(p, 'u03t'))) + (2 * (ab(Fr(p['q0t_hi'])) ** 2 + ab(Fr(p['eps_x0t_hi'])) ** 2
+-                                                                                        + ab(Fr(p['eps_y0t_hi'])) ** 2)).sqrt()
+-            dmax = dt / ab(Fr(jlo))
+-            fac = 2 * dt * dt / (1 - dmax * dmax) ** 2
+-        else:
+-            d = ab(Fr(max(abs(1 - r['u0p_lo']), abs(1 - r['u0p_hi']))) + Fr(amax(r, 'u01')) + Fr(amax(r, 'u03'))) + (
+-                2 * (ab(Fr(r['q0_hi'])) ** 2 + ab(Fr(r['eps_x0_hi'])) ** 2 + ab(Fr(r['eps_y0_hi'])) ** 2)).sqrt()
+-            fac = 2 * d * d / (1 - d * d) ** 2 * ab(Fr(jhi)) ** 2
+-        corr = sub.value().upper() * fac
+-        y2 = ((RX + corr) / g11lo).upper()
+-        x1t = hi(y2.sqrt())
+-        chv = ch.value()
+-        chp_lo, chp_hi = lo(chv), hi(chv)
++        x1t, chp_lo, chp_hi, RX, corr = x1t_chp(X11, sub, ch, g, fac_of(key, r, last, jq, hq), key)
++        fin_all = fin_all and all(math.isfinite(v_) for v_ in (x1t, chp_lo, chp_hi))
+         ccor = max(ccor, float((corr / (RX + corr)).upper()) if hi(RX + corr) > 0 else 0.0)
+-        rows_rec.append((key, jlo, jhi, x1t, chp_lo, chp_hi))
++        rows_rec.append((key, jlo, jhi, x1t, chp_lo, chp_hi, r['_tok']['jlo'], r['_tok']['jhi']))
+         # the DRY |Q f|/t (P3's assembly, for the report)
+         p, ins, spe, jn = P2[key], INS[key], SPE[key], JNT.get(key)
+         mupe = ins['C_hi'] * math.sqrt(spe['tau_hi'])
+@@ -408,6 +465,8 @@
+                 worst11 = (x1t, jlo)
+     gate('C-SQ2', sq2_all and last_info is not None, '(N=%d STATE %s: X11\'s t^0 and t^1 balls hold 0 on all %d pieces, the last [%.1f, inf) included)' % (
+         N, STATE, len(rows_rec), last_info[0] if last_info else float('nan')))
++    gate('C-FINITE', fin_all, '(N=%d: x1t_hi and [chp_lo, chp_hi] are finite on all %d pieces, so every inverse 1/(y0 (1 + eps)) of the T2 class '
++         'stayed away from 0 over the piece\'s ball T (the condition on N-2; its plant is PLANT-FINITE))' % (N, len(rows_rec)))
+     js_row = next(x for x in rows_rec if x[1] >= JS)
+     chm = [(x[0], x[4], x[5], JNT[x[0]]['ch_lo'], JNT[x[0]]['ch_hi']) for x in rows_rec if x[0] in JNT]
+     ov = sum(1 for x in chm if x[1] <= x[4] and x[3] <= x[2])
+@@ -431,19 +490,32 @@
+     run_n(N, JSN[N], STN[N])
+ code_sha = sha(os.path.abspath(__file__))
+ verdict = 'VALID' if not FAILS and not NOFIRE else 'INVALID'
+-L = ['# CW_X11 (pk23, cw_comb_v2_0 DRY): written by cw_comb_v2_0', 'FORMAT = CW_X11_KV_v1', 'RECORD = CW_X11', 'PRODUCER = pk23 cw_comb_v2_0',
+-     'CODE = pk23/cw/cw_comb_v2_0.py:%s' % code_sha, 'STATUS = DRY', 'RUN_VERDICT = %s' % verdict,
++P2HEAD = kv_table(P2F, 4)[0]
++dry_parts = (['N%d STATE 10 (state 10 for 10\')' % n for n in (4, 3) if STN[n] != '10p'] +
++             ([] if (P2HEAD.get('STATUS') == 'CERTIFIED' and P2HEAD.get('RUN_VERDICT') == 'VALID') else
++              ['P2 %s (STATUS %s) for the last piece\'s C-KAPPA term' % (os.path.relpath(P2F, CODEDIR), P2HEAD.get('STATUS'))]))
++status = 'CERTIFIED' if verdict == 'VALID' and not dry_parts else 'DRY'
++L = ['# CW_X11 (pk23, cw_comb_v2_2 %s): written by cw_comb_v2_2' % status, 'FORMAT = CW_X11_KV_v1', 'RECORD = CW_X11', 'PRODUCER = pk23 cw_comb_v2_2',
++     'CODE = pk23/cw/cw_comb_v2_2.py:%s' % code_sha, 'STATUS = %s' % status, 'RUN_VERDICT = %s' % verdict,
+      'CLAIM = on every piece (for every J in [jlo, jhi], t = 1/J, the last piece to t = 0): x1t_hi t >= |Q_xy S M_c\' x_1| >= |Q_ext S M_c\' x_1|, '
+      'x_1 = psi_1/|psi_1|, Q_xy = I - |psi_xy\'><psi_xy\'|/|psi_xy\'|^2 (state 10\'), M_c\' = M_h - c_h\', c_h\' = Mh00/TT00 in [chp_lo, chp_hi]',
+-     'DRY_INPUTS = N4 STATE %s, N3 STATE %s; the c3kp laws from the records (law certificate pending); P2 dry_d2 (4a464522) for the last piece\'s '
+-     'C-KAPPA term' % (STN[4], STN[3]),
+-     'SOURCE = pk23 m3_lawcert_cw_v1 9087afc2, m3_lawcert_hl_v1_1 8d5fe3c7, reader m3_reader_cw_v1 876b6184; pk03 m3_lawcert_v1_1, v1_2; '
+-     'pk22 m3_lawcert_c3k_v1, c3kp records, psixy_exact_d_v1, v2; pk25 MR_LEMMAP v3 3164b778, P2 dry_d2 4a464522',
++     'DRY_INPUTS = %s' % ('; '.join(dry_parts) or 'none'),
++     'SOURCE = pk23 m3_lawcert_cw_v1 9087afc2, m3_lawcert_hl_v1_1 8d5fe3c7, reader m3_reader_cw_v1_1 %s; pk03 m3_lawcert_v1_1, v1_2; '
++     'pk22 m3_lawcert_c3k_v1, m3_lawcert_c3k_v2 %s (c3kp records), psixy_exact_d_v1, v2 (MANIFEST_PSIXY_10P_v1); pk25 MR_LEMMAP v3 3164b778, '
++     'P2 %s %s; MR_INSERT v4b 54691bc1, MR_SPECTRAL v4 0e4d8177 and pk22 MR_JOINT 80bc8d81 for the DRY |Q f|/t only' % (
++         sha(RDRF)[:8], sha(C3K2F)[:8], os.path.relpath(P2F, CODEDIR), sha(P2F)[:8]),
+      'J_UNIFORMITY = PER-PIECE: every row holds for every J in [jlo, jhi] of its piece; the last piece runs to J = inf (t = 0)',
+-     'TRIAL_SET = N4 %s, N3 %s' % (TS_LINE[4], TS_LINE[3]), 'FIELDS = jlo jhi x1t_hi chp_lo chp_hi']
++     'LEMMAP_SHA256 = %s' % sha(MRL3), 'TRIAL_SET = %s' % kv_table(MRL3, 4)[0]['TRIAL_SET'],
++     'TRIAL_SET_10P = N4 %s, N3 %s (the trial file of psi_xy\' per N, as psixy_exact_d names it: state 10\' when the run\'s STATE is 10p; '
++     'C-10P)' % (TS_LINE[4], TS_LINE[3]),
++     'DEFINITIONS = x1t_hi >= |Q_xy S M_c\' x_1| / t at every J of the piece (t = 1/J, the last piece to t = 0); x_1 = psi_1/|psi_1| (state 1 of '
++     'TRIAL_SET); Q_xy = I - |psi_xy\'><psi_xy\'| / |psi_xy\'|^2 with psi_xy\' the state 10\' of TRIAL_SET_10P (pk22\'s exact c\'(t), '
++     'psixy_exact_d_v2); M_c\' = M_h - c_h\' with c_h\' = Mh00/TT00 = <S psi_0, M_h S psi_0> / <S psi_0, S psi_0> (pk23\'s Pev laws); '
++     'chp_lo <= c_h\' <= chp_hi on the piece; ran Q_ext lies in ran Q_xy, so x1t_hi t >= |Q_ext S M_c\' x_1| too',
++     'FIELDS = jlo jhi x1t_hi chp_lo chp_hi']
+ for N in (4, 3):
+-    for key, jlo, jhi, x1t, a, b in REC_ROWS[N]:
+-        L.append('%s = %r %s %r %r %r' % (key, jlo, 'inf' if jhi is None else repr(jhi), x1t, a, b))
++    for key, jlo, jhi, x1t, a, b, tlo, thi in REC_ROWS[N]:
++        L.append('%s = %s %s %r %r %r' % (key, tlo, thi, x1t, a, b))
+ text = '\n'.join(L) + '\n'
+ with open(OUT, 'x') as fh:
+     fh.write(text)
+@@ -451,5 +523,5 @@
+     out('SUMMARY N=%d STATE %s: x1t_hi %.4f at J_s, at most %.4f from J_s, %.4f on the last piece; DRY |Q f|/t worst %.4f at jlo %.1f, %.4f on the '
+         'last piece' % s)
+ out('RECORD %s %s' % (os.path.basename(OUT), hashlib.sha256(text.encode()).hexdigest()))
+-out('VERDICT %s' % ('DRY (record STATUS DRY; gates and plants: %s)' % ('all PASS / FIRE' if verdict == 'VALID' else
+-                                                                         'FAIL ' + ', '.join(FAILS + ['%s did not fire' % x for x in NOFIRE]))))
++out('VERDICT %s' % ('VALID' if verdict == 'VALID' else 'INVALID (%s)' % ', '.join(FAILS + ['%s did not fire' % x for x in NOFIRE])))
++out('STATUS %s (DRY inputs: %s)' % (status, '; '.join(dry_parts) or 'none'))

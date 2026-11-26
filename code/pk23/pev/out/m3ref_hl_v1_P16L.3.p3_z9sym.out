@@ -1,0 +1,32 @@
+m3ref_v1_15 item P16L.3.p3 LIM 540; python 3.14.4
+C-COPY (12 pinned copies in /mnt/g2/release/root/code/pk03/pin) -> PASS
+PLANT-COPY (riglap2 bytes plus one byte) -> FIRES
+C-SRC (lapl2 l.63-79, vacmod2 l.8-9 and l.12-13, endw l.16-19, vacrig11f l.166-170, 173-175, 178-186, 196-197, 240-244, 247, 250-287, riglap5s l.22-34 (C-SRC-H) against this file; source shas) -> PASS
+PLANT-SRC (strip_graph text with one character changed) -> FIRES
+C-HASH (15 pk10 inputs and J = 170 records, 4 trial files and 4 S8 lists in pk11/out, 6 m3ref_v1_2 records, the S9 list and 2 m3ref_v1_10 base records) -> PASS
+PLANT-HASH (vacres_K3_N4 against a sha with its last digit changed) -> FIRES
+versions: numpy 2.5.3, scipy 1.18.1; engines from /mnt/g2/release/root/code/pk03/pin
+PLANT-NPGUARD (riglap5b's guarded NPoly product is installed and refuses x^3 times x^2 in base 4) -> FIRES
+TRIAL z9sym
+inputs: N = 3, kbar 0.5514259266145797 (m2_N3_J170.json.b), trial set ts_N3_S_z9sym_v1.json, vacres_K3_N3_sym_v1.json
+C-CACHE-CHAIN (piece 3: m3ref_hl_v1_P16L.3.p2_z9sym.out has VERDICT lines ['VERDICT VALID'], one CACHE-STATE line and no P16-DONE; the memo (7 entries) and 3 tables have its sha256s) -> PASS
+PLANT-CACHE (the memo against its recorded sha256 with the last digit changed) -> FIRES
+P16 piece 3 of P16L N=3: disk table cache /mnt/g2/release/root/code/pk23/pev/out/tab16, E2 memo s16memo_P16L_N3.jsonl (7 entries)
+family P16L N=3: V 12, F 18, pairs [(0, 1), (1, 2), (0, 2), (9, 10), (10, 11), (9, 11)], NPOLY_B 11, qcap 6, 1 keys: TT,0,0
+C-NPB (npoly base 11 for F = 18 forms: 11**18 = 5559917313492231481, below 2**63 = 9223372036854775808) -> PASS
+STAGE-CPU graph 0.95 s
+C-GRAPH (the column specs of D (v1_1, v2), N, E2, FF and L (v2) give strip_graph(2), strip_graph(3), Emix, Efree and strip_graph(4) exactly) -> PASS
+PLANT-GRAPH (D with its T-B coupling times 1 + 1e-12) -> FIRES
+TABLE-LOADED 681cfc62190a490525458653bf22ae93.npz: D 16 F 12 moments 30421755 (cpu so far 14.5 s)
+TABLE-LOADED 8cdc6bd97ec303235d0f53ae70061480.npz: D 14 F 12 moments 9657700 (cpu so far 16.4 s)
+TABLE-LOADED 4ff8c68cfa04fda5715da49ab208e144.npz: D 16 F 12 moments 30421755 (cpu so far 19.1 s)
+E2-CHUNK 2 of 3 (26699 x 74907 terms): 80.3 s (cpu so far 99.7 s)
+E2-CHUNK 3 of 3 (21509 x 74907 terms): 64.7 s (cpu so far 164.4 s)
+E2-CHUNK 1 of 3 (26461 x 75582 terms): 80.3 s (cpu so far 245.6 s)
+E2-CHUNK 2 of 3 (26461 x 75582 terms): 84.2 s (cpu so far 329.9 s)
+E2-CHUNK 3 of 3 (22660 x 75582 terms): 76.0 s (cpu so far 405.8 s)
+E2-CHUNK 1 of 3 (26611 x 75155 terms): 68.7 s (cpu so far 475.2 s)
+PREP-PARTIAL piece 3: prep: an E2 chunk of 26611 x 75155 terms needs about 95 s and 40 s are left
+CACHE-STATE {"memo": "s16memo_P16L_N3.jsonl", "memo_entries": 13, "memo_sha": "37e938b4c105fe537b9151ae8b75346dddbec9230dce1adbbe3a888dd74c6571", "tables": {"4ff8c68cfa04fda5715da49ab208e144": ["4ff8c68cfa04fda5715da49ab208e144.npz", "7fa093de32817b3b8e898bbbb73a2f7f64b32d98ea1faa70f13d8493b43a3c62", 486759024], "681cfc62190a490525458653bf22ae93": ["681cfc62190a490525458653bf22ae93.npz", "1e63dd09151a6176802ba46893c69d2607402092b8148809f0f72b7845b64359", 486759024], "8cdc6bd97ec303235d0f53ae70061480": ["8cdc6bd97ec303235d0f53ae70061480.npz", "a68a1e63efff83f57748ca297f5674eff235b0e760deb89c3796aaf46a1eb414", 154533160]}}
+STAGE-CPU total 475.20 s
+VERDICT VALID

@@ -1,0 +1,28 @@
+px08_trbhcert_v1 sha256 a403d2c443f8d7cf5be114babb2df8a861004bd417aaeca939f1102b8f952b9a ITEM=n3 cov LIM=230 SIGC=-
+C-HASH PASS (28 sources)
+C-PROP N=3 group P (Q, interval LDL^T): PASS, 66 al-intervals tiling [0, pi] and the reflection; smallest pivot >= 9.59890502829e-2 on x in [23/64, 3/8] pi (0.0 s)
+CHECK C-PROP-P PASS
+CHECK PLANT-PROP-P FIRED
+C-PROP N=3 group D (Q - 2 delta B_Y, interval LDL^T): PASS, 72 al-intervals tiling [0, pi] and the reflection; smallest pivot >= 9.87789773984e-4 on x in [1/2, 17/32] pi (0.0 s)
+CHECK C-PROP-D PASS
+CHECK PLANT-PROP-D FIRED
+C-PROP N=3 group T (Q - 2 T(1/300, 0.65) - 2 delta B_Y, interval LDL^T): PASS, 78 al-intervals tiling [0, pi] and the reflection; smallest pivot >= 1.98383139964e-2 on x in [13/32, 27/64] pi (0.0 s)
+CHECK C-PROP-T PASS
+CHECK PLANT-PROP-T FIRED
+COVER N=3 Re det > 0 for groups P, D, T: certified at sigma 0.5, M = 64 (30400 boxes, 11.2 s)
+CHECK C-COVER PASS
+CHECK PLANT-STRIP FIRED
+C-PORT N=3: PASS (worst 1.935e-16)
+CHECK C-PORT PASS
+CHECK PLANT-PORT FIRED
+C-BLOCK N=3: PASS
+CHECK C-BLOCK PASS
+CHECK PLANT-BLOCK FIRED
+C-GFM N=3: PASS
+CHECK C-GFM PASS
+CHECK PLANT-GFM FIRED
+C-FLT N=3 (68 family values at al = 0.7 against float GFMom; worst 2.137e-11 at P:fT3) (21.7 s)
+CHECK C-FLT PASS
+CHECK PLANT-FLT FIRED
+VERDICT PART-DONE
+CPU 33.9 s maxrss_kb 347140

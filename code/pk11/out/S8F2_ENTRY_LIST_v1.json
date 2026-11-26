@@ -1,0 +1,7526 @@
+{
+ "author": "pk11",
+ "conventions": {
+  "J_REF": 300,
+  "K": "3 (a_0..a_3 plus the Lemma 19.1c remainder) where (D+1)^F < 9e18 at the entry's moment degree D (F <= 17 here); the float items (kt_s8f1_v1_2) print D",
+  "N": [
+   3,
+   4
+  ],
+  "bonds": "TM (3c, 3c+1), MB (3c+1, 3c+2) of column c; HT (3c, 3c+3), HM (3c+1, 3c+4), HB (3c+2, 3c+5) between columns c and c+1",
+  "classes": "edges and pairs up to left-right (column c -> n-1-c, gap c -> n-2-c) and top-bottom (TM <-> MB, HT <-> HB, HM fixed) reflection; the key is the class representative, images lists the class",
+  "cov": "J^2 Cov(sigma.sigma on e, sigma.sigma on f) = N_ef/Z - N_e N_f/Z^2, Z = S<n>,Z, N_e = S<n>,x,e, N_ef = S<n>,xy,e,f",
+  "flags": "INFO: S0 (common vertex), L19.6a ((t_i, bb_i)), THM-n<=3 (Theorems D(i), B(a), C); every pair is certified anyway",
+  "keys": "'S<n>,Z' (graph pairs []), 'S<n>,x,c,B' (pairs [the bond]), 'S<n>,xy,c1,B1,c2,B2' (pairs [bond 1, bond 2]); one graph per key, F = V + number of pairs (V = 3n)",
+  "reuse": "reuse_key: the class is S8's S4 entry of that key (S8_ENTRY_LIST_v2 4565c6c7, graph S4, pk03's D16 S4 records): not produced again",
+  "strip": "whole strip, both ends free: verticals T-M 1, M-B 1 in every column, no T-B bond; horizontals 1 between adjacent columns (T-T, M-M, B-B); no vacuum column, no trial states (columns as S8_ENTRY_LIST_v2: free, int)",
+  "vertex": "3*col + row (row 0 T, 1 M, 2 B); columns 0-indexed",
+  "xi": "[xi, B, c]: xi_uv = J(1 - sigma_u . sigma_v) on bond B at c, riglap3's xi factor: a vertical bond as S8, (xi, (3c, 3c+1, 3c+2), 0.0, c9 = e_TM or e_MB); a horizontal bond (u, v) as (xi, (u, v, v), 0.0, c9 = e_1), its (T, M) pair being (u, v) (only that pair is used; the factor's vertex set is {u, v})"
+ },
+ "counts": {
+  "n2": {
+   "edge_classes": 3,
+   "edges": 7,
+   "entries": 12,
+   "pair_classes": 8,
+   "pairs": 21,
+   "pairs_covered_by_classes": 21,
+   "reused_from_S8": 0,
+   "to_produce": 12
+  },
+  "n3": {
+   "edge_classes": 4,
+   "edges": 12,
+   "entries": 26,
+   "pair_classes": 21,
+   "pairs": 66,
+   "pairs_covered_by_classes": 66,
+   "reused_from_S8": 0,
+   "to_produce": 26
+  },
+  "n4": {
+   "edge_classes": 6,
+   "edges": 17,
+   "entries": 48,
+   "pair_classes": 41,
+   "pairs": 136,
+   "pairs_covered_by_classes": 136,
+   "reused_from_S8": 11,
+   "to_produce": 37
+  },
+  "n5": {
+   "edge_classes": 7,
+   "edges": 22,
+   "entries": 75,
+   "pair_classes": 67,
+   "pairs": 231,
+   "pairs_covered_by_classes": 231,
+   "reused_from_S8": 0,
+   "to_produce": 75
+  }
+ },
+ "entries": [
+  {
+   "K": 3,
+   "factors": [],
+   "graph": {
+    "columns": [
+     "free",
+     "free"
+    ],
+    "pairs": []
+   },
+   "key": "S2,Z",
+   "n": 2,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    6,
+    7,
+    6
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ]
+    ]
+   },
+   "images": [
+    "S2,x,0,TM",
+    "S2,x,0,MB",
+    "S2,x,1,TM",
+    "S2,x,1,MB"
+   ],
+   "key": "S2,x,0,TM",
+   "n": 2,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    6,
+    7,
+    7
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ]
+    ]
+   },
+   "images": [
+    "S2,x,0,HT",
+    "S2,x,0,HB"
+   ],
+   "key": "S2,x,0,HT",
+   "n": 2,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    6,
+    7,
+    7
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S2,x,0,HM"
+   ],
+   "key": "S2,x,0,HM",
+   "n": 2,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    6,
+    7,
+    7
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     0
+    ]
+   ],
+   "flags": [
+    "S0",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      2
+     ]
+    ]
+   },
+   "images": [
+    "S2,xy,0,TM,0,MB",
+    "S2,xy,1,TM,1,MB"
+   ],
+   "key": "S2,xy,0,TM,0,MB",
+   "n": 2,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    6,
+    7,
+    8
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     0
+    ]
+   ],
+   "flags": [
+    "S0",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      3
+     ]
+    ]
+   },
+   "images": [
+    "S2,xy,0,TM,0,HT",
+    "S2,xy,0,MB,0,HB",
+    "S2,xy,0,HT,1,TM",
+    "S2,xy,0,HB,1,MB"
+   ],
+   "key": "S2,xy,0,TM,0,HT",
+   "n": 2,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    6,
+    7,
+    8
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     0
+    ]
+   ],
+   "flags": [
+    "S0",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S2,xy,0,TM,0,HM",
+    "S2,xy,0,MB,0,HM",
+    "S2,xy,0,HM,1,TM",
+    "S2,xy,0,HM,1,MB"
+   ],
+   "key": "S2,xy,0,TM,0,HM",
+   "n": 2,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    6,
+    7,
+    8
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     0
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S2,xy,0,TM,0,HB",
+    "S2,xy,0,MB,0,HT",
+    "S2,xy,0,HT,1,MB",
+    "S2,xy,0,HB,1,TM"
+   ],
+   "key": "S2,xy,0,TM,0,HB",
+   "n": 2,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    6,
+    7,
+    8
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S2,xy,0,TM,1,TM",
+    "S2,xy,0,MB,1,MB"
+   ],
+   "key": "S2,xy,0,TM,1,TM",
+   "n": 2,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    6,
+    7,
+    8
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     1
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      4,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S2,xy,0,TM,1,MB",
+    "S2,xy,0,MB,1,TM"
+   ],
+   "key": "S2,xy,0,TM,1,MB",
+   "n": 2,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    6,
+    7,
+    8
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     0
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S2,xy,0,HT,0,HM",
+    "S2,xy,0,HM,0,HB"
+   ],
+   "key": "S2,xy,0,HT,0,HM",
+   "n": 2,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    6,
+    7,
+    8
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     0
+    ]
+   ],
+   "flags": [
+    "L19.6a",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      2,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S2,xy,0,HT,0,HB"
+   ],
+   "key": "S2,xy,0,HT,0,HB",
+   "n": 2,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    6,
+    7,
+    8
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": []
+   },
+   "key": "S3,Z",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    9
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ]
+    ]
+   },
+   "images": [
+    "S3,x,0,TM",
+    "S3,x,0,MB",
+    "S3,x,2,TM",
+    "S3,x,2,MB"
+   ],
+   "key": "S3,x,0,TM",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    10
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ]
+    ]
+   },
+   "images": [
+    "S3,x,0,HT",
+    "S3,x,0,HB",
+    "S3,x,1,HT",
+    "S3,x,1,HB"
+   ],
+   "key": "S3,x,0,HT",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    10
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S3,x,0,HM",
+    "S3,x,1,HM"
+   ],
+   "key": "S3,x,0,HM",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    10
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S3,x,1,TM",
+    "S3,x,1,MB"
+   ],
+   "key": "S3,x,1,TM",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    10
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     0
+    ]
+   ],
+   "flags": [
+    "S0",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      2
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,TM,0,MB",
+    "S3,xy,2,TM,2,MB"
+   ],
+   "key": "S3,xy,0,TM,0,MB",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     0
+    ]
+   ],
+   "flags": [
+    "S0",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      3
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,TM,0,HT",
+    "S3,xy,0,MB,0,HB",
+    "S3,xy,1,HT,2,TM",
+    "S3,xy,1,HB,2,MB"
+   ],
+   "key": "S3,xy,0,TM,0,HT",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     0
+    ]
+   ],
+   "flags": [
+    "S0",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,TM,0,HM",
+    "S3,xy,0,MB,0,HM",
+    "S3,xy,1,HM,2,TM",
+    "S3,xy,1,HM,2,MB"
+   ],
+   "key": "S3,xy,0,TM,0,HM",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     0
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,TM,0,HB",
+    "S3,xy,0,MB,0,HT",
+    "S3,xy,1,HT,2,MB",
+    "S3,xy,1,HB,2,TM"
+   ],
+   "key": "S3,xy,0,TM,0,HB",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,TM,1,TM",
+    "S3,xy,0,MB,1,MB",
+    "S3,xy,1,TM,2,TM",
+    "S3,xy,1,MB,2,MB"
+   ],
+   "key": "S3,xy,0,TM,1,TM",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     1
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      4,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,TM,1,MB",
+    "S3,xy,0,MB,1,TM",
+    "S3,xy,1,TM,2,MB",
+    "S3,xy,1,MB,2,TM"
+   ],
+   "key": "S3,xy,0,TM,1,MB",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     1
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,TM,1,HT",
+    "S3,xy,0,MB,1,HB",
+    "S3,xy,0,HT,2,TM",
+    "S3,xy,0,HB,2,MB"
+   ],
+   "key": "S3,xy,0,TM,1,HT",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,TM,1,HM",
+    "S3,xy,0,MB,1,HM",
+    "S3,xy,0,HM,2,TM",
+    "S3,xy,0,HM,2,MB"
+   ],
+   "key": "S3,xy,0,TM,1,HM",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     1
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      5,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,TM,1,HB",
+    "S3,xy,0,MB,1,HT",
+    "S3,xy,0,HT,2,MB",
+    "S3,xy,0,HB,2,TM"
+   ],
+   "key": "S3,xy,0,TM,1,HB",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     2
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      6,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,TM,2,TM",
+    "S3,xy,0,MB,2,MB"
+   ],
+   "key": "S3,xy,0,TM,2,TM",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     2
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      7,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,TM,2,MB",
+    "S3,xy,0,MB,2,TM"
+   ],
+   "key": "S3,xy,0,TM,2,MB",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     0
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,HT,0,HM",
+    "S3,xy,0,HM,0,HB",
+    "S3,xy,1,HT,1,HM",
+    "S3,xy,1,HM,1,HB"
+   ],
+   "key": "S3,xy,0,HT,0,HM",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     0
+    ]
+   ],
+   "flags": [
+    "L19.6a",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      2,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,HT,0,HB",
+    "S3,xy,1,HT,1,HB"
+   ],
+   "key": "S3,xy,0,HT,0,HB",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "flags": [
+    "S0",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,HT,1,TM",
+    "S3,xy,0,HB,1,MB",
+    "S3,xy,1,TM,1,HT",
+    "S3,xy,1,MB,1,HB"
+   ],
+   "key": "S3,xy,0,HT,1,TM",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     1
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,HT,1,MB",
+    "S3,xy,0,HB,1,TM",
+    "S3,xy,1,TM,1,HB",
+    "S3,xy,1,MB,1,HT"
+   ],
+   "key": "S3,xy,0,HT,1,MB",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     1
+    ]
+   ],
+   "flags": [
+    "S0",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,HT,1,HT",
+    "S3,xy,0,HB,1,HB"
+   ],
+   "key": "S3,xy,0,HT,1,HT",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,HT,1,HM",
+    "S3,xy,0,HM,1,HT",
+    "S3,xy,0,HM,1,HB",
+    "S3,xy,0,HB,1,HM"
+   ],
+   "key": "S3,xy,0,HT,1,HM",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     1
+    ]
+   ],
+   "flags": [
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      5,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,HT,1,HB",
+    "S3,xy,0,HB,1,HT"
+   ],
+   "key": "S3,xy,0,HT,1,HB",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "flags": [
+    "S0",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,HM,1,TM",
+    "S3,xy,0,HM,1,MB",
+    "S3,xy,1,TM,1,HM",
+    "S3,xy,1,MB,1,HM"
+   ],
+   "key": "S3,xy,0,HM,1,TM",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [
+    "S0",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,0,HM,1,HM"
+   ],
+   "key": "S3,xy,0,HM,1,HM",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "MB",
+     1
+    ]
+   ],
+   "flags": [
+    "S0",
+    "THM-n<=3"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S3,xy,1,TM,1,MB"
+   ],
+   "key": "S3,xy,1,TM,1,MB",
+   "n": 3,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    9,
+    12,
+    11
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": []
+   },
+   "key": "S4,Z",
+   "n": 4,
+   "reuse_key": "S4,Z",
+   "shape_V_edges_F": [
+    12,
+    17,
+    12
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ]
+    ]
+   },
+   "images": [
+    "S4,x,0,TM",
+    "S4,x,0,MB",
+    "S4,x,3,TM",
+    "S4,x,3,MB"
+   ],
+   "key": "S4,x,0,TM",
+   "n": 4,
+   "reuse_key": "S4,x,0,TM",
+   "shape_V_edges_F": [
+    12,
+    17,
+    13
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ]
+    ]
+   },
+   "images": [
+    "S4,x,0,HT",
+    "S4,x,0,HB",
+    "S4,x,2,HT",
+    "S4,x,2,HB"
+   ],
+   "key": "S4,x,0,HT",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    13
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S4,x,0,HM",
+    "S4,x,2,HM"
+   ],
+   "key": "S4,x,0,HM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    13
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S4,x,1,TM",
+    "S4,x,1,MB",
+    "S4,x,2,TM",
+    "S4,x,2,MB"
+   ],
+   "key": "S4,x,1,TM",
+   "n": 4,
+   "reuse_key": "S4,x,1,TM",
+   "shape_V_edges_F": [
+    12,
+    17,
+    13
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     1
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "images": [
+    "S4,x,1,HT",
+    "S4,x,1,HB"
+   ],
+   "key": "S4,x,1,HT",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    13
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S4,x,1,HM"
+   ],
+   "key": "S4,x,1,HM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    13
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     0
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      2
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,0,MB",
+    "S4,xy,3,TM,3,MB"
+   ],
+   "key": "S4,xy,0,TM,0,MB",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     0
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      3
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,0,HT",
+    "S4,xy,0,MB,0,HB",
+    "S4,xy,2,HT,3,TM",
+    "S4,xy,2,HB,3,MB"
+   ],
+   "key": "S4,xy,0,TM,0,HT",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     0
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,0,HM",
+    "S4,xy,0,MB,0,HM",
+    "S4,xy,2,HM,3,TM",
+    "S4,xy,2,HM,3,MB"
+   ],
+   "key": "S4,xy,0,TM,0,HM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     0
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,0,HB",
+    "S4,xy,0,MB,0,HT",
+    "S4,xy,2,HT,3,MB",
+    "S4,xy,2,HB,3,TM"
+   ],
+   "key": "S4,xy,0,TM,0,HB",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,1,TM",
+    "S4,xy,0,MB,1,MB",
+    "S4,xy,2,TM,3,TM",
+    "S4,xy,2,MB,3,MB"
+   ],
+   "key": "S4,xy,0,TM,1,TM",
+   "n": 4,
+   "reuse_key": "S4,xy,0,TM,1,TM",
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      4,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,1,MB",
+    "S4,xy,0,MB,1,TM",
+    "S4,xy,2,TM,3,MB",
+    "S4,xy,2,MB,3,TM"
+   ],
+   "key": "S4,xy,0,TM,1,MB",
+   "n": 4,
+   "reuse_key": "S4,xy,0,TM,1,MB",
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,1,HT",
+    "S4,xy,0,MB,1,HB",
+    "S4,xy,1,HT,3,TM",
+    "S4,xy,1,HB,3,MB"
+   ],
+   "key": "S4,xy,0,TM,1,HT",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,1,HM",
+    "S4,xy,0,MB,1,HM",
+    "S4,xy,1,HM,3,TM",
+    "S4,xy,1,HM,3,MB"
+   ],
+   "key": "S4,xy,0,TM,1,HM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      5,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,1,HB",
+    "S4,xy,0,MB,1,HT",
+    "S4,xy,1,HT,3,MB",
+    "S4,xy,1,HB,3,TM"
+   ],
+   "key": "S4,xy,0,TM,1,HB",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      6,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,2,TM",
+    "S4,xy,0,MB,2,MB",
+    "S4,xy,1,TM,3,TM",
+    "S4,xy,1,MB,3,MB"
+   ],
+   "key": "S4,xy,0,TM,2,TM",
+   "n": 4,
+   "reuse_key": "S4,xy,0,TM,2,TM",
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      7,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,2,MB",
+    "S4,xy,0,MB,2,TM",
+    "S4,xy,1,TM,3,MB",
+    "S4,xy,1,MB,3,TM"
+   ],
+   "key": "S4,xy,0,TM,2,MB",
+   "n": 4,
+   "reuse_key": "S4,xy,0,TM,2,MB",
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      6,
+      9
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,2,HT",
+    "S4,xy,0,MB,2,HB",
+    "S4,xy,0,HT,3,TM",
+    "S4,xy,0,HB,3,MB"
+   ],
+   "key": "S4,xy,0,TM,2,HT",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      7,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,2,HM",
+    "S4,xy,0,MB,2,HM",
+    "S4,xy,0,HM,3,TM",
+    "S4,xy,0,HM,3,MB"
+   ],
+   "key": "S4,xy,0,TM,2,HM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      8,
+      11
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,2,HB",
+    "S4,xy,0,MB,2,HT",
+    "S4,xy,0,HT,3,MB",
+    "S4,xy,0,HB,3,TM"
+   ],
+   "key": "S4,xy,0,TM,2,HB",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      9,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,3,TM",
+    "S4,xy,0,MB,3,MB"
+   ],
+   "key": "S4,xy,0,TM,3,TM",
+   "n": 4,
+   "reuse_key": "S4,xy,0,TM,3,TM",
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      10,
+      11
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,TM,3,MB",
+    "S4,xy,0,MB,3,TM"
+   ],
+   "key": "S4,xy,0,TM,3,MB",
+   "n": 4,
+   "reuse_key": "S4,xy,0,TM,3,MB",
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     0
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HT,0,HM",
+    "S4,xy,0,HM,0,HB",
+    "S4,xy,2,HT,2,HM",
+    "S4,xy,2,HM,2,HB"
+   ],
+   "key": "S4,xy,0,HT,0,HM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     0
+    ]
+   ],
+   "flags": [
+    "L19.6a"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      2,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HT,0,HB",
+    "S4,xy,2,HT,2,HB"
+   ],
+   "key": "S4,xy,0,HT,0,HB",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HT,1,TM",
+    "S4,xy,0,HB,1,MB",
+    "S4,xy,2,TM,2,HT",
+    "S4,xy,2,MB,2,HB"
+   ],
+   "key": "S4,xy,0,HT,1,TM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HT,1,MB",
+    "S4,xy,0,HB,1,TM",
+    "S4,xy,2,TM,2,HB",
+    "S4,xy,2,MB,2,HT"
+   ],
+   "key": "S4,xy,0,HT,1,MB",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HT,1,HT",
+    "S4,xy,0,HB,1,HB",
+    "S4,xy,1,HT,2,HT",
+    "S4,xy,1,HB,2,HB"
+   ],
+   "key": "S4,xy,0,HT,1,HT",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HT,1,HM",
+    "S4,xy,0,HB,1,HM",
+    "S4,xy,1,HM,2,HT",
+    "S4,xy,1,HM,2,HB"
+   ],
+   "key": "S4,xy,0,HT,1,HM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      5,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HT,1,HB",
+    "S4,xy,0,HB,1,HT",
+    "S4,xy,1,HT,2,HB",
+    "S4,xy,1,HB,2,HT"
+   ],
+   "key": "S4,xy,0,HT,1,HB",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      6,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HT,2,TM",
+    "S4,xy,0,HB,2,MB",
+    "S4,xy,1,TM,2,HT",
+    "S4,xy,1,MB,2,HB"
+   ],
+   "key": "S4,xy,0,HT,2,TM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      7,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HT,2,MB",
+    "S4,xy,0,HB,2,TM",
+    "S4,xy,1,TM,2,HB",
+    "S4,xy,1,MB,2,HT"
+   ],
+   "key": "S4,xy,0,HT,2,MB",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      6,
+      9
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HT,2,HT",
+    "S4,xy,0,HB,2,HB"
+   ],
+   "key": "S4,xy,0,HT,2,HT",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      7,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HT,2,HM",
+    "S4,xy,0,HM,2,HT",
+    "S4,xy,0,HM,2,HB",
+    "S4,xy,0,HB,2,HM"
+   ],
+   "key": "S4,xy,0,HT,2,HM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      8,
+      11
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HT,2,HB",
+    "S4,xy,0,HB,2,HT"
+   ],
+   "key": "S4,xy,0,HT,2,HB",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HM,1,TM",
+    "S4,xy,0,HM,1,MB",
+    "S4,xy,2,TM,2,HM",
+    "S4,xy,2,MB,2,HM"
+   ],
+   "key": "S4,xy,0,HM,1,TM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HM,1,HT",
+    "S4,xy,0,HM,1,HB",
+    "S4,xy,1,HT,2,HM",
+    "S4,xy,1,HB,2,HM"
+   ],
+   "key": "S4,xy,0,HM,1,HT",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HM,1,HM",
+    "S4,xy,1,HM,2,HM"
+   ],
+   "key": "S4,xy,0,HM,1,HM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HM,2,TM",
+    "S4,xy,0,HM,2,MB",
+    "S4,xy,1,TM,2,HM",
+    "S4,xy,1,MB,2,HM"
+   ],
+   "key": "S4,xy,0,HM,2,TM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      7,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,0,HM,2,HM"
+   ],
+   "key": "S4,xy,0,HM,2,HM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "MB",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,1,TM,1,MB",
+    "S4,xy,2,TM,2,MB"
+   ],
+   "key": "S4,xy,1,TM,1,MB",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "HT",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,1,TM,1,HT",
+    "S4,xy,1,MB,1,HB",
+    "S4,xy,1,HT,2,TM",
+    "S4,xy,1,HB,2,MB"
+   ],
+   "key": "S4,xy,1,TM,1,HT",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,1,TM,1,HM",
+    "S4,xy,1,MB,1,HM",
+    "S4,xy,1,HM,2,TM",
+    "S4,xy,1,HM,2,MB"
+   ],
+   "key": "S4,xy,1,TM,1,HM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "HB",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,1,TM,1,HB",
+    "S4,xy,1,MB,1,HT",
+    "S4,xy,1,HT,2,MB",
+    "S4,xy,1,HB,2,TM"
+   ],
+   "key": "S4,xy,1,TM,1,HB",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,1,TM,2,TM",
+    "S4,xy,1,MB,2,MB"
+   ],
+   "key": "S4,xy,1,TM,2,TM",
+   "n": 4,
+   "reuse_key": "S4,xy,1,TM,2,TM",
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "MB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      7,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,1,TM,2,MB",
+    "S4,xy,1,MB,2,TM"
+   ],
+   "key": "S4,xy,1,TM,2,MB",
+   "n": 4,
+   "reuse_key": "S4,xy,1,TM,2,MB",
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     1
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,1,HT,1,HM",
+    "S4,xy,1,HM,1,HB"
+   ],
+   "key": "S4,xy,1,HT,1,HM",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     1
+    ],
+    [
+     "xi",
+     "HB",
+     1
+    ]
+   ],
+   "flags": [
+    "L19.6a"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S4,xy,1,HT,1,HB"
+   ],
+   "key": "S4,xy,1,HT,1,HB",
+   "n": 4,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    12,
+    17,
+    14
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": []
+   },
+   "key": "S5,Z",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    15
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ]
+    ]
+   },
+   "images": [
+    "S5,x,0,TM",
+    "S5,x,0,MB",
+    "S5,x,4,TM",
+    "S5,x,4,MB"
+   ],
+   "key": "S5,x,0,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    16
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ]
+    ]
+   },
+   "images": [
+    "S5,x,0,HT",
+    "S5,x,0,HB",
+    "S5,x,3,HT",
+    "S5,x,3,HB"
+   ],
+   "key": "S5,x,0,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    16
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S5,x,0,HM",
+    "S5,x,3,HM"
+   ],
+   "key": "S5,x,0,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    16
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S5,x,1,TM",
+    "S5,x,1,MB",
+    "S5,x,3,TM",
+    "S5,x,3,MB"
+   ],
+   "key": "S5,x,1,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    16
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     1
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "images": [
+    "S5,x,1,HT",
+    "S5,x,1,HB",
+    "S5,x,2,HT",
+    "S5,x,2,HB"
+   ],
+   "key": "S5,x,1,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    16
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,x,1,HM",
+    "S5,x,2,HM"
+   ],
+   "key": "S5,x,1,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    16
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     2
+    ]
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      6,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,x,2,TM",
+    "S5,x,2,MB"
+   ],
+   "key": "S5,x,2,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    16
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     0
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      2
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,0,MB",
+    "S5,xy,4,TM,4,MB"
+   ],
+   "key": "S5,xy,0,TM,0,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     0
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      3
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,0,HT",
+    "S5,xy,0,MB,0,HB",
+    "S5,xy,3,HT,4,TM",
+    "S5,xy,3,HB,4,MB"
+   ],
+   "key": "S5,xy,0,TM,0,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     0
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,0,HM",
+    "S5,xy,0,MB,0,HM",
+    "S5,xy,3,HM,4,TM",
+    "S5,xy,3,HM,4,MB"
+   ],
+   "key": "S5,xy,0,TM,0,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     0
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,0,HB",
+    "S5,xy,0,MB,0,HT",
+    "S5,xy,3,HT,4,MB",
+    "S5,xy,3,HB,4,TM"
+   ],
+   "key": "S5,xy,0,TM,0,HB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,1,TM",
+    "S5,xy,0,MB,1,MB",
+    "S5,xy,3,TM,4,TM",
+    "S5,xy,3,MB,4,MB"
+   ],
+   "key": "S5,xy,0,TM,1,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      4,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,1,MB",
+    "S5,xy,0,MB,1,TM",
+    "S5,xy,3,TM,4,MB",
+    "S5,xy,3,MB,4,TM"
+   ],
+   "key": "S5,xy,0,TM,1,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,1,HT",
+    "S5,xy,0,MB,1,HB",
+    "S5,xy,2,HT,4,TM",
+    "S5,xy,2,HB,4,MB"
+   ],
+   "key": "S5,xy,0,TM,1,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,1,HM",
+    "S5,xy,0,MB,1,HM",
+    "S5,xy,2,HM,4,TM",
+    "S5,xy,2,HM,4,MB"
+   ],
+   "key": "S5,xy,0,TM,1,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      5,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,1,HB",
+    "S5,xy,0,MB,1,HT",
+    "S5,xy,2,HT,4,MB",
+    "S5,xy,2,HB,4,TM"
+   ],
+   "key": "S5,xy,0,TM,1,HB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      6,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,2,TM",
+    "S5,xy,0,MB,2,MB",
+    "S5,xy,2,TM,4,TM",
+    "S5,xy,2,MB,4,MB"
+   ],
+   "key": "S5,xy,0,TM,2,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      7,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,2,MB",
+    "S5,xy,0,MB,2,TM",
+    "S5,xy,2,TM,4,MB",
+    "S5,xy,2,MB,4,TM"
+   ],
+   "key": "S5,xy,0,TM,2,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      6,
+      9
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,2,HT",
+    "S5,xy,0,MB,2,HB",
+    "S5,xy,1,HT,4,TM",
+    "S5,xy,1,HB,4,MB"
+   ],
+   "key": "S5,xy,0,TM,2,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      7,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,2,HM",
+    "S5,xy,0,MB,2,HM",
+    "S5,xy,1,HM,4,TM",
+    "S5,xy,1,HM,4,MB"
+   ],
+   "key": "S5,xy,0,TM,2,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      8,
+      11
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,2,HB",
+    "S5,xy,0,MB,2,HT",
+    "S5,xy,1,HT,4,MB",
+    "S5,xy,1,HB,4,TM"
+   ],
+   "key": "S5,xy,0,TM,2,HB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      9,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,3,TM",
+    "S5,xy,0,MB,3,MB",
+    "S5,xy,1,TM,4,TM",
+    "S5,xy,1,MB,4,MB"
+   ],
+   "key": "S5,xy,0,TM,3,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      10,
+      11
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,3,MB",
+    "S5,xy,0,MB,3,TM",
+    "S5,xy,1,TM,4,MB",
+    "S5,xy,1,MB,4,TM"
+   ],
+   "key": "S5,xy,0,TM,3,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      9,
+      12
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,3,HT",
+    "S5,xy,0,MB,3,HB",
+    "S5,xy,0,HT,4,TM",
+    "S5,xy,0,HB,4,MB"
+   ],
+   "key": "S5,xy,0,TM,3,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      10,
+      13
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,3,HM",
+    "S5,xy,0,MB,3,HM",
+    "S5,xy,0,HM,4,TM",
+    "S5,xy,0,HM,4,MB"
+   ],
+   "key": "S5,xy,0,TM,3,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      11,
+      14
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,3,HB",
+    "S5,xy,0,MB,3,HT",
+    "S5,xy,0,HT,4,MB",
+    "S5,xy,0,HB,4,TM"
+   ],
+   "key": "S5,xy,0,TM,3,HB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     4
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      12,
+      13
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,4,TM",
+    "S5,xy,0,MB,4,MB"
+   ],
+   "key": "S5,xy,0,TM,4,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     4
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,TM,4,MB",
+    "S5,xy,0,MB,4,TM"
+   ],
+   "key": "S5,xy,0,TM,4,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     0
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,0,HM",
+    "S5,xy,0,HM,0,HB",
+    "S5,xy,3,HT,3,HM",
+    "S5,xy,3,HM,3,HB"
+   ],
+   "key": "S5,xy,0,HT,0,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     0
+    ]
+   ],
+   "flags": [
+    "L19.6a"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      2,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,0,HB",
+    "S5,xy,3,HT,3,HB"
+   ],
+   "key": "S5,xy,0,HT,0,HB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,1,TM",
+    "S5,xy,0,HB,1,MB",
+    "S5,xy,3,TM,3,HT",
+    "S5,xy,3,MB,3,HB"
+   ],
+   "key": "S5,xy,0,HT,1,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,1,MB",
+    "S5,xy,0,HB,1,TM",
+    "S5,xy,3,TM,3,HB",
+    "S5,xy,3,MB,3,HT"
+   ],
+   "key": "S5,xy,0,HT,1,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,1,HT",
+    "S5,xy,0,HB,1,HB",
+    "S5,xy,2,HT,3,HT",
+    "S5,xy,2,HB,3,HB"
+   ],
+   "key": "S5,xy,0,HT,1,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,1,HM",
+    "S5,xy,0,HB,1,HM",
+    "S5,xy,2,HM,3,HT",
+    "S5,xy,2,HM,3,HB"
+   ],
+   "key": "S5,xy,0,HT,1,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      5,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,1,HB",
+    "S5,xy,0,HB,1,HT",
+    "S5,xy,2,HT,3,HB",
+    "S5,xy,2,HB,3,HT"
+   ],
+   "key": "S5,xy,0,HT,1,HB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      6,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,2,TM",
+    "S5,xy,0,HB,2,MB",
+    "S5,xy,2,TM,3,HT",
+    "S5,xy,2,MB,3,HB"
+   ],
+   "key": "S5,xy,0,HT,2,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      7,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,2,MB",
+    "S5,xy,0,HB,2,TM",
+    "S5,xy,2,TM,3,HB",
+    "S5,xy,2,MB,3,HT"
+   ],
+   "key": "S5,xy,0,HT,2,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      6,
+      9
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,2,HT",
+    "S5,xy,0,HB,2,HB",
+    "S5,xy,1,HT,3,HT",
+    "S5,xy,1,HB,3,HB"
+   ],
+   "key": "S5,xy,0,HT,2,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      7,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,2,HM",
+    "S5,xy,0,HB,2,HM",
+    "S5,xy,1,HM,3,HT",
+    "S5,xy,1,HM,3,HB"
+   ],
+   "key": "S5,xy,0,HT,2,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      8,
+      11
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,2,HB",
+    "S5,xy,0,HB,2,HT",
+    "S5,xy,1,HT,3,HB",
+    "S5,xy,1,HB,3,HT"
+   ],
+   "key": "S5,xy,0,HT,2,HB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      9,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,3,TM",
+    "S5,xy,0,HB,3,MB",
+    "S5,xy,1,TM,3,HT",
+    "S5,xy,1,MB,3,HB"
+   ],
+   "key": "S5,xy,0,HT,3,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "MB",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      10,
+      11
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,3,MB",
+    "S5,xy,0,HB,3,TM",
+    "S5,xy,1,TM,3,HB",
+    "S5,xy,1,MB,3,HT"
+   ],
+   "key": "S5,xy,0,HT,3,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      9,
+      12
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,3,HT",
+    "S5,xy,0,HB,3,HB"
+   ],
+   "key": "S5,xy,0,HT,3,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      10,
+      13
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,3,HM",
+    "S5,xy,0,HM,3,HT",
+    "S5,xy,0,HM,3,HB",
+    "S5,xy,0,HB,3,HM"
+   ],
+   "key": "S5,xy,0,HT,3,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     0
+    ],
+    [
+     "xi",
+     "HB",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      0,
+      3
+     ],
+     [
+      11,
+      14
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HT,3,HB",
+    "S5,xy,0,HB,3,HT"
+   ],
+   "key": "S5,xy,0,HT,3,HB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HM,1,TM",
+    "S5,xy,0,HM,1,MB",
+    "S5,xy,3,TM,3,HM",
+    "S5,xy,3,MB,3,HM"
+   ],
+   "key": "S5,xy,0,HM,1,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HM,1,HT",
+    "S5,xy,0,HM,1,HB",
+    "S5,xy,2,HT,3,HM",
+    "S5,xy,2,HB,3,HM"
+   ],
+   "key": "S5,xy,0,HM,1,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HM,1,HM",
+    "S5,xy,2,HM,3,HM"
+   ],
+   "key": "S5,xy,0,HM,1,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HM,2,TM",
+    "S5,xy,0,HM,2,MB",
+    "S5,xy,2,TM,3,HM",
+    "S5,xy,2,MB,3,HM"
+   ],
+   "key": "S5,xy,0,HM,2,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "HT",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      6,
+      9
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HM,2,HT",
+    "S5,xy,0,HM,2,HB",
+    "S5,xy,1,HT,3,HM",
+    "S5,xy,1,HB,3,HM"
+   ],
+   "key": "S5,xy,0,HM,2,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      7,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HM,2,HM",
+    "S5,xy,1,HM,3,HM"
+   ],
+   "key": "S5,xy,0,HM,2,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      9,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HM,3,TM",
+    "S5,xy,0,HM,3,MB",
+    "S5,xy,1,TM,3,HM",
+    "S5,xy,1,MB,3,HM"
+   ],
+   "key": "S5,xy,0,HM,3,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     0
+    ],
+    [
+     "xi",
+     "HM",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      1,
+      4
+     ],
+     [
+      10,
+      13
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,0,HM,3,HM"
+   ],
+   "key": "S5,xy,0,HM,3,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "MB",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      5
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,TM,1,MB",
+    "S5,xy,3,TM,3,MB"
+   ],
+   "key": "S5,xy,1,TM,1,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "HT",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,TM,1,HT",
+    "S5,xy,1,MB,1,HB",
+    "S5,xy,2,HT,3,TM",
+    "S5,xy,2,HB,3,MB"
+   ],
+   "key": "S5,xy,1,TM,1,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,TM,1,HM",
+    "S5,xy,1,MB,1,HM",
+    "S5,xy,2,HM,3,TM",
+    "S5,xy,2,HM,3,MB"
+   ],
+   "key": "S5,xy,1,TM,1,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "HB",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,TM,1,HB",
+    "S5,xy,1,MB,1,HT",
+    "S5,xy,2,HT,3,MB",
+    "S5,xy,2,HB,3,TM"
+   ],
+   "key": "S5,xy,1,TM,1,HB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,TM,2,TM",
+    "S5,xy,1,MB,2,MB",
+    "S5,xy,2,TM,3,TM",
+    "S5,xy,2,MB,3,MB"
+   ],
+   "key": "S5,xy,1,TM,2,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "MB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      7,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,TM,2,MB",
+    "S5,xy,1,MB,2,TM",
+    "S5,xy,2,TM,3,MB",
+    "S5,xy,2,MB,3,TM"
+   ],
+   "key": "S5,xy,1,TM,2,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "HT",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      6,
+      9
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,TM,2,HT",
+    "S5,xy,1,MB,2,HB",
+    "S5,xy,1,HT,3,TM",
+    "S5,xy,1,HB,3,MB"
+   ],
+   "key": "S5,xy,1,TM,2,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "HM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      7,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,TM,2,HM",
+    "S5,xy,1,MB,2,HM",
+    "S5,xy,1,HM,3,TM",
+    "S5,xy,1,HM,3,MB"
+   ],
+   "key": "S5,xy,1,TM,2,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "HB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      8,
+      11
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,TM,2,HB",
+    "S5,xy,1,MB,2,HT",
+    "S5,xy,1,HT,3,MB",
+    "S5,xy,1,HB,3,TM"
+   ],
+   "key": "S5,xy,1,TM,2,HB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      9,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,TM,3,TM",
+    "S5,xy,1,MB,3,MB"
+   ],
+   "key": "S5,xy,1,TM,3,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "xi",
+     "MB",
+     3
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      4
+     ],
+     [
+      10,
+      11
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,TM,3,MB",
+    "S5,xy,1,MB,3,TM"
+   ],
+   "key": "S5,xy,1,TM,3,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     1
+    ],
+    [
+     "xi",
+     "HM",
+     1
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,HT,1,HM",
+    "S5,xy,1,HM,1,HB",
+    "S5,xy,2,HT,2,HM",
+    "S5,xy,2,HM,2,HB"
+   ],
+   "key": "S5,xy,1,HT,1,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     1
+    ],
+    [
+     "xi",
+     "HB",
+     1
+    ]
+   ],
+   "flags": [
+    "L19.6a"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,HT,1,HB",
+    "S5,xy,2,HT,2,HB"
+   ],
+   "key": "S5,xy,1,HT,1,HB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     2
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      6
+     ],
+     [
+      6,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,HT,2,TM",
+    "S5,xy,1,HB,2,MB",
+    "S5,xy,2,TM,2,HT",
+    "S5,xy,2,MB,2,HB"
+   ],
+   "key": "S5,xy,1,HT,2,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     1
+    ],
+    [
+     "xi",
+     "MB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      6
+     ],
+     [
+      7,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,HT,2,MB",
+    "S5,xy,1,HB,2,TM",
+    "S5,xy,2,TM,2,HB",
+    "S5,xy,2,MB,2,HT"
+   ],
+   "key": "S5,xy,1,HT,2,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     1
+    ],
+    [
+     "xi",
+     "HT",
+     2
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      6
+     ],
+     [
+      6,
+      9
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,HT,2,HT",
+    "S5,xy,1,HB,2,HB"
+   ],
+   "key": "S5,xy,1,HT,2,HT",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     1
+    ],
+    [
+     "xi",
+     "HM",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      6
+     ],
+     [
+      7,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,HT,2,HM",
+    "S5,xy,1,HM,2,HT",
+    "S5,xy,1,HM,2,HB",
+    "S5,xy,1,HB,2,HM"
+   ],
+   "key": "S5,xy,1,HT,2,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HT",
+     1
+    ],
+    [
+     "xi",
+     "HB",
+     2
+    ]
+   ],
+   "flags": [],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      3,
+      6
+     ],
+     [
+      8,
+      11
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,HT,2,HB",
+    "S5,xy,1,HB,2,HT"
+   ],
+   "key": "S5,xy,1,HT,2,HB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     2
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      4,
+      7
+     ],
+     [
+      6,
+      7
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,HM,2,TM",
+    "S5,xy,1,HM,2,MB",
+    "S5,xy,2,TM,2,HM",
+    "S5,xy,2,MB,2,HM"
+   ],
+   "key": "S5,xy,1,HM,2,TM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "HM",
+     1
+    ],
+    [
+     "xi",
+     "HM",
+     2
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      4,
+      7
+     ],
+     [
+      7,
+      10
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,1,HM,2,HM"
+   ],
+   "key": "S5,xy,1,HM,2,HM",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  },
+  {
+   "K": 3,
+   "factors": [
+    [
+     "xi",
+     "TM",
+     2
+    ],
+    [
+     "xi",
+     "MB",
+     2
+    ]
+   ],
+   "flags": [
+    "S0"
+   ],
+   "graph": {
+    "columns": [
+     "free",
+     "int",
+     "int",
+     "int",
+     "free"
+    ],
+    "pairs": [
+     [
+      6,
+      7
+     ],
+     [
+      7,
+      8
+     ]
+    ]
+   },
+   "images": [
+    "S5,xy,2,TM,2,MB"
+   ],
+   "key": "S5,xy,2,TM,2,MB",
+   "n": 5,
+   "reuse_key": null,
+   "shape_V_edges_F": [
+    15,
+    22,
+    17
+   ]
+  }
+ ],
+ "list": "S8F2_ENTRY_LIST_v1",
+ "purpose": "P2-13 (C3-short; STB_PHASE2_PLAN_v1_6 row P2-13): every pair of distinct edges of P3 x P_n, n = 2..5, at N = 3 and 4, J >= 300 (t in [0, 1/300])",
+ "source": "kt_s8f2_list_v1.py (sha256 7d81b613b13d57b687f623fed790d422704192651746c9f3d5b5def062d975dc)",
+ "to_produce_per_N": 150
+}

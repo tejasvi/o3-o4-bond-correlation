@@ -1,0 +1,15 @@
+px08_px03_v4 sha256 a236ed429580d462e3034edd7069f3fb783b82d3ad66b76378b47124aad0f98b ITEM=n3 asm LIM=230
+C-HASH PASS (6 sources)
+PRODUCERS N=3: tail px08_px03_v4, sh1a px08_px03_v4, sh1b px08_px03_v4, sh2a px08_px03_v4, sh2b px08_px03_v4, sh3a px08_px03_v4, sh3b px08_px03_v4, far px08_px03_v4
+C-MULTISET N=3 (M3: each item printed exactly its expected CHECK and PLANT lines): PASS
+C-ITEMCODE-M3 N=3 (evaluation code of px08_px03_v3 = this file): PASS, region lines [783, 377]
+ITEM CHECKS N=3: 143 controls, 39 plants; failed: none
+C-CORE N=3 (shared core = s4c_m2bb.py lines 84-636 and 638-836): PASS, block lines [553, 199]
+C-POS N=3 (every upper end > 0): PASS
+PIECES N=3 (J = 300, every J >= 300): L2 <= 1.05816187032e-3 (group (b)); Chernoff sum 1.41519681442e-12; tail <= 1.98068592778e-7; annulus <= 3.38475118044e-9; far <= 1.22059226169e-15; equator <= 1.06161757712e-25
+GROUP-B TARGET N=3 (TW error <= 1/10 |T_M|, TGT_V): 1 of 22 miss; tail-only misses, accepted: (E H2^2)^2; other misses, reported: none
+CHECKS all PASS
+PLANTS PLANT-MULTISET:FIRED PLANT-ITEMCODE-M3:FIRED PLANT-PROP(tail):FIRED PLANT-STRIP(tail):FIRED PLANT-DET(tail):FIRED PLANT-BLOCK-M(tail):FIRED PLANT-FLT-M(tail):FIRED PLANT-PROP(sh1a):FIRED PLANT-STRIP(sh1a):FIRED PLANT-DET(sh1a):FIRED PLANT-BLOCK-M(sh1a):FIRED PLANT-PORT-M(sh1a):FIRED PLANT-FLT-M(sh1a):FIRED PLANT-PROP(sh1b):FIRED PLANT-STRIP(sh1b):FIRED PLANT-DET(sh1b):FIRED PLANT-FLT-M(sh1b):FIRED PLANT-PROP(sh2a):FIRED PLANT-STRIP(sh2a):FIRED PLANT-DET(sh2a):FIRED PLANT-FLT-M(sh2a):FIRED PLANT-PROP(sh2b):FIRED PLANT-STRIP(sh2b):FIRED PLANT-DET(sh2b):FIRED PLANT-FLT-M(sh2b):FIRED PLANT-PROP(sh3a):FIRED PLANT-STRIP(sh3a):FIRED PLANT-DET(sh3a):FIRED PLANT-FLT-M(sh3a):FIRED PLANT-PROP(sh3b):FIRED PLANT-STRIP(sh3b):FIRED PLANT-DET(sh3b):FIRED PLANT-FLT-M(sh3b):FIRED PLANT-PROP(far):FIRED PLANT-BLOCK-M(far):FIRED PLANT-BLOCK-M(far):FIRED PLANT-BLOCK-M(far):FIRED PLANT-BLOCK-M(far):FIRED PLANT-BLOCK-M(far):FIRED PLANT-BLOCK-M(far):FIRED PLANT-FLT-M(far):FIRED PLANT-CORE:FIRED
+READING N=3 (t = 1/300, every J >= 300): pref^2 (tail + annulus) + far + equator <= 2.01453345179e-7
+VERDICT VALID
+CPU 0.6 s maxrss_kb 49388

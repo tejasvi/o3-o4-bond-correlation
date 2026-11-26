@@ -1,0 +1,575 @@
+def s_eps_lin(S, b, eps):
+    """(G3) for a stored state: S_eps,b = sup over xi >= 0 of |p_b| W^eps <= sum_m |S[m][b]| prod_j (d_j/(eps w_j e))^d_j, with p_b = S[0][b] +
+    sum_m S[m+1][b] BASIS[m] (column b of the pinned trial set's S matrix: row 0 the constant, rows 1..9 the BASIS monomials in xi_TM, xi_MB,
+    xi_TB) and w = (A, A, B); each monomial's sup against e^(-eps w . xi) factorizes. J-free (the trial polynomials of the stored states carry
+    no t)."""
+    if not (eps > 0 and eps < 1):
+        raise Refused('Lemma G eps outside (0, 1)')
+    A, B = trial_ab()
+    w, e = (A, A, B), arb(1).exp()
+    tot = abs(arb(S[0][b]))
+    for m, mono in enumerate(BASIS):
+        c = S[m + 1][b]
+        if c == 0:
+            continue
+        f = arb(1)
+        for j in range(3):
+            d = mono.count(j)
+            for _ in range(d):
+                f = f * d / (eps * w[j] * e)
+        tot = tot + abs(arb(c)) * f
+    return tot
+
+
+def load_enga_m(N, pins=None):
+    """engine A's coefficients m_bg(t) = m0 + m1 t + m2 t^2 + m3 t^3 (lambda_h units; b in e1, e3 rows, g in psi, e1, e3 columns) from its
+    EXPLICIT lines (kt_c_v2_3's pinned output ENGA[N]), as exact decimals: the free choices that define f_b = V K phi_b - sum_g lambda_h m_bg
+    phi_g. Returns {b: {g: [Fraction m0..m3]}} with b, g in (1, 3) and (0, 1, 3)."""
+    pins = PINS if pins is None else pins
+    p = ENGA[N]
+    if pins.get(p) is None or sha_file(p) != pins[p]:
+        raise Refused('C-ENGA: engine A output %s does not match its pin' % os.path.basename(p))
+    res = {}
+    rx = re.compile(r'^EXPLICIT N=%d (e1|e3) +: m0 (\S+) (\S+) (\S+) \| m1 (\S+) (\S+) (\S+) \| m2 (\S+) (\S+) (\S+) \| m3 (\S+) (\S+) (\S+);' % N)
+    for ln in lines_of(p):
+        mm = rx.match(ln)
+        if mm:
+            b = 1 if mm.group(1) == 'e1' else 3
+            v = [Fraction(x) for x in mm.groups()[1:]]
+            res[b] = dict((g, [v[3 * k + i] for k in range(4)]) for i, g in enumerate((0, 1, 3)))
+    if sorted(res) != [1, 3]:
+        raise Refused('C-ENGA: N=%d: the e1 and e3 EXPLICIT lines are not found once each' % N)
+    return res
+
+
+def load_m4_mg(N, pins=None):
+    """v1_1: M4_KV_v1's coefficients m_bg(t) = m0 + m1 t + m2 t^2 + m3 t^3 for b = e1, e3 (the lines N<N>_E1_MG and N<N>_E3_MG, items g:k:value
+    with g in psi, e1, e3 and k = 0..3), as exact decimals: the free choices that R_e1 and R_e3 belong to (kt_cert's), so f_b of the S9(c)
+    assembly is the f_b of M4's residual laws. Returns {b: {g: [m0..m3]}} with b in (1, 3), g in (0, 1, 3)."""
+    pins = PINS if pins is None else pins
+    p = M4[0]
+    if pins.get(p) is None or sha_file(p) != pins[p]:
+        raise Refused('C-MBG: M4_KV_v1 does not match its pin')
+    res = {}
+    for b, nm in ((1, 'E1'), (3, 'E3')):
+        ln = [x for x in lines_of(p) if x.startswith('N%d_%s_MG = ' % (N, nm))]
+        if len(ln) != 1:
+            raise Refused('C-MBG: N%d_%s_MG found %d times' % (N, nm, len(ln)))
+        d = {}
+        for it in ln[0].split(' = ', 1)[1].split(';'):
+            g, k, v = [x.strip() for x in it.split(':')]
+            d.setdefault({'psi': 0, 'e1': 1, 'e3': 3}[g], {})[int(k)] = Fraction(v)
+        if sorted(d) != [0, 1, 3] or any(sorted(d[g]) != [0, 1, 2, 3] for g in d):
+            raise Refused('C-MBG: N%d_%s_MG does not hold g in psi, e1, e3 with k = 0..3' % (N, nm))
+        res[b] = dict((g, [d[g][k] for k in range(4)]) for g in d)
+    return res
+
+
+def piece_t(jlo, jhi):
+    """a grid piece's t ends (exact arb points, t_ends's readings) and its J lower end for the laws (grid_j's smaller reading)."""
+    tl, th = t_ends(jlo, jhi)
+    return tl, th, grid_j(jlo, True)
+
+
+def poly_ball(mc, tb):
+    """sum_k m_k t^k on the t-ball tb (exact decimal coefficients)."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    s = arb(0)
+    for c in reversed(mc):
+        s = s * tb + q(c)
+    return s
+
+
+def s9c_main_piece(N, tl, th, JL, IN, plant=None, keep=None, tpt=None):
+    """v1_1, S9C stage 2a: the (C9) main term on the t range [tl, th] (pk01/S9C_PLAN_v2 sect. 1-2; pk02/kt_s9c_v1 option_a), every entry
+    by its law certificate at J_lo: H_b0 = mhat Ih_b + sum_g m_bg (IhT_g - mhat Gx_g0) (b = 1, 3), H_00 = 2 mhat Ih_0 - mhat^2 Gx_00,
+    n_h = 1/(G_00^1/2 mu_0^2), M_U = n_h sum_(b = 1, 3) c_xb (H_b0 - G_b0 H_00/G_00), hhat = H_00/(G_00 mu_0^2), alpha_k = (G c_k)_0/G_00^1/2,
+    M_R^c = (M_U + alpha_x hhat)/alpha_0, with u~_x in the orientation; also S9(b)-h's eigen-trick h^_x (ritz_piece's t amplitude with Ih
+    in the Iht slot) in the same orientation, and IhT_0 against Ih_0 (C-IHT0). v1_2: plant='IHT0' shifts IhT_0 by twice the two radii plus
+    1e-6 (beyond any overlap); keep (diagnostics only, never in a record) is None or a predicate keep(group, key): an input ball whose
+    predicate is False is replaced by its midpoint, groups 'B' (the 18 Ritz entries, key RITZ_KEYS), 'MH' (mhat, key None), 'Ih' and 'IhT'
+    (key g), 'Gx' (key (g, h)) and 'M' (m_bg, key (b, g)). v1_3: C-IHT0 reads the full balls, before keep. v1_5: tpt (a t point in
+    [tl, th]) evaluates every law polynomial, mhat and m_bg at tpt alone while each law box keeps its size on the range (ak_rad at th, law_err
+    at J_lo): the centre term of the centred form (s9c_main_cf)."""
+    kp = lambda grp, key, x: x if (keep is None or keep(grp, key)) else arb(x.mid())
+    if tpt is not None and not (tpt >= tl and tpt <= th):
+        raise Refused('s9c_main_piece: tpt is not inside [tl, th]')
+    tb = tl.union(th) if tpt is None else tpt
+    B = ritz_entries(IN['RD'], IN['LW'][N], tb, th, JL)
+    B = dict((k, kp('B', k, v)) for k, v in B.items())
+    mh = kp('MH', None, mhat_ball(IN['MC'][N], tb))
+    RC = ritz_piece(B, mh)
+    sx_, sy_ = IN['SIG'][N]
+    G, vals = RC['G'], RC['vals']
+    V = [RC['vecs'][0], [x if sx_ == 1 else -x for x in RC['vecs'][1]], [x if sy_ == 1 else -x for x in RC['vecs'][2]]]
+    check_orient(V, G, IN['TS'][N])
+    LW, RD = IN['LW'][N], IN['RD']
+    ent = lambda F, key: entry_law_piece(RD.entry_law(LW[F][1], F, key), tb, th, JL)
+    Ih = dict((b, ent('NIH', 'Ih,%d' % b)) for b in REVEN)
+    IhT = dict((g, ent('NHT', 'IhTh,%d' % g)) for g in REVEN)
+    if plant == 'IHT0':
+        IhT[0] = IhT[0] + 2 * (IhT[0].rad() + Ih[0].rad()) + arb('1e-6')
+    if not IhT[0].overlaps(Ih[0]):
+        raise Refused('C-IHT0: IhT_0 and Ih_0 do not meet (the reflection IhT_0 = Ih_0)')
+    Ih = dict((b, kp('Ih', b, x)) for b, x in Ih.items())
+    IhT = dict((g, kp('IhT', g, x)) for g, x in IhT.items())
+    Gx = dict(((g, h), kp('Gx', (g, h), ent('DH', 'Gxh,%d,%d' % (min(g, h), max(g, h))))) for g in REVEN for h in REVEN)
+    M = IN['MG'][N]
+    m = dict(((b, g), kp('M', (b, g), poly_ball(M[b][g], tb))) for b in (1, 3) for g in (0, 1, 3))
+    iht = {0: Ih[0], 1: IhT[1], 3: IhT[3]}
+    H = dict((b, mh * Ih[b] + sum((m[(b, g)] * (iht[g] - mh * Gx[(g, 0)]) for g in (0, 1, 3)), arb(0))) for b in (1, 3))
+    H00 = 2 * mh * Ih[0] - mh * mh * Gx[(0, 0)]
+    pos = {0: 0, 1: 1, 3: 2}
+    g00, mu0 = G[0][0], vals[0]
+    nh = 1 / (g00.sqrt() * mu0 * mu0)
+    MU = nh * sum((V[1][pos[b]] * (H[b] - G[pos[b]][0] * H00 / g00) for b in (1, 3)), arb(0))
+    hhat = H00 / (g00 * mu0 * mu0)
+    alpha = [sum((G[0][j] * V[k][j] for j in range(3)), arb(0)) / g00.sqrt() for k in range(3)]
+    if not (alpha[0] > 0):
+        raise Refused('C-ALPHA0: alpha_0 is not certainly positive')
+    MR = (MU + alpha[1] * hhat) / alpha[0]
+    hS = RC['t'][1] if sx_ == 1 else -RC['t'][1]
+    return dict(MR=MR, hS=hS, MU=MU, hhat=hhat, alpha=alpha, H=H, H00=H00, Ih=Ih, IhT=IhT, Gx=Gx, m=m, nh=nh, RC=RC, V=V, G=G, mh=mh,
+                tb=tb, B=B)
+
+
+def entry_of(N, IN, grp, key):
+    """v1_2 diagnostics: the law entry behind one input of s9c_main_piece, as (name, E); (None, None) for mhat and m_bg, whose balls are the
+    t range only (exact coefficients)."""
+    LW, RD = IN['LW'][N], IN['RD']
+    if grp == 'B':
+        fam, kk = key.split(',', 1)
+        F, kk = {'G': ('D', 'g,' + kk), 'T': ('N', 'T,' + kk), 'Iht': ('NIH', 'Ih,' + kk)}.get(fam, ('D', 'DY,' + kk))
+    elif grp == 'Ih':
+        F, kk = 'NIH', 'Ih,%d' % key
+    elif grp == 'IhT':
+        F, kk = 'NHT', 'IhTh,%d' % key
+    elif grp == 'Gx':
+        F, kk = 'DH', 'Gxh,%d,%d' % (min(key), max(key))
+    else:
+        return None, None
+    return '%s:%s' % (F, kk), RD.entry_law(LW[F][1], F, kk)
+
+
+def law_parts(E, tb, t_hi, J_lo):
+    """v1_2 diagnostics: an entry over the piece split as entry_law_piece adds it up: the law polynomial on the t-ball (midpoint, radius = the
+    t range), the ak_rad term at t_hi, and law_err's four parts at J_lo (rem, tail, ann, far). Floats."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    s = arb(0)
+    for a in reversed(E['ak']):
+        s = s * tb + q(a)
+    akr, tp = arb(0), arb(1)
+    for ar in E['ak_rad']:
+        akr = akr + q(ar) * tp
+        tp = tp * t_hi
+    res = dict(mid=float(s.mid()), trad=float(s.rad()), akr=float(akr.upper()), rem=0.0, tail=0.0, ann=0.0, far=0.0)
+    if E.get('laws') is None:
+        return res
+    L, parts = E['laws'], E['parts']
+    j0 = arb(300)
+    J = q2arb(J_lo) if isinstance(J_lo, Fraction) else (J_lo if isinstance(J_lo, arb) else arb(J_lo))
+    res['rem'] = float((q(parts['rem']) * (j0 / J) ** 4).upper())
+    for part in ('tail', 'ann'):
+        g = L[part]
+        P = lambda JJ: sum((chi2_tail(g['n'], JJ * q(a) / q(G)) for a, G in g['a_G']), arb(0))
+        res[part] = float((q(parts[part]) * (P(J).upper() / P(j0).lower()).sqrt()).upper())
+    res['far'] = float((q(parts['far']) * (-q(L['far_rate']) * (J - j0)).exp()).upper())
+    return res
+
+
+def mr_solo(N, tl, th, JL, IN):
+    """v1_2 diagnostics: on one piece, the radius of M_R^c with every input ball (full), with none (every input at its midpoint), with one
+    group only and with one input only (first-order shares of the width; the shares add up to about the full radius). Returns (full, none,
+    {group: radius}, [(radius, group, key)] largest first)."""
+    run = lambda kf: float(s9c_main_piece(N, tl, th, JL, IN, keep=kf)['MR'].rad())
+    full, none = run(None), run(lambda g, k: False)
+    gr = dict((g0, run(lambda g, k, g0=g0: g == g0)) for g0 in ('B', 'MH', 'Ih', 'IhT', 'Gx', 'M'))
+    keys = ([('B', k) for k in RITZ_KEYS] + [('MH', None)] + [('Ih', b) for b in REVEN] + [('IhT', g) for g in (1, 3)] +
+            [('Gx', (g, 0)) for g in REVEN] + [('M', (b, g)) for b in (1, 3) for g in (0, 1, 3)])
+    er = sorted(((run(lambda g, k, g0=g0, k0=k0: g == g0 and k == k0), g0, k0) for g0, k0 in keys), key=lambda x: -x[0])
+    return full, none, gr, er
+
+
+def s9c_main_sub(N, tl, th, JL, IN, K):
+    """v1_3: s9c_main_piece on K equal t sub-ranges of [tl, th] (K a power of 2), each with its own t-ball and ak_rad top, law_err at the
+    piece's J_lo (law_err falls with J); returns the union of the K M_R^c balls. The sub-ranges cut the dependency blow-up of evaluating
+    each entry's law separately on one t-ball. v1_4: the cut points x_i = tl + (th - tl) i / K are balls (the sum rounds at ctx.prec), so
+    sub-range i runs from the lower end of x_i to the upper end of x_(i+1), x_0 = tl and x_K = th exact: the sub-ranges overlap by the
+    rounding and their union covers [tl, th]."""
+    if K < 1 or K & (K - 1):
+        raise Refused('s9c_main_sub: K = %r is not a power of 2' % K)
+    if tl.rad() != 0 or th.rad() != 0:
+        raise Refused('s9c_main_sub: the piece ends are not exact points')
+    xs = [tl] + [tl + (th - tl) * i / K for i in range(1, K)] + [th]
+    res = None
+    for i in range(K):
+        a, b = xs[i].lower(), xs[i + 1].upper()
+        if not (a <= b):
+            raise Refused('s9c_main_sub: sub-range %d is empty' % i)
+        x = s9c_main_piece(N, a, b, JL, IN)['MR']
+        res = x if res is None else res.union(x)
+    return res
+
+
+class Du(object):
+    """v1_5: a first-order dual number (value ball v, t-derivative ball d) for the derivative of the (C9) main term along a path in t."""
+    __slots__ = ('v', 'd')
+
+    def __init__(self, v, d):
+        self.v, self.d = v, d
+
+    def __add__(self, o):
+        o = du(o)
+        return Du(self.v + o.v, self.d + o.d)
+
+    __radd__ = __add__
+
+    def __sub__(self, o):
+        o = du(o)
+        return Du(self.v - o.v, self.d - o.d)
+
+    def __rsub__(self, o):
+        return du(o) - self
+
+    def __mul__(self, o):
+        o = du(o)
+        return Du(self.v * o.v, self.d * o.v + self.v * o.d)
+
+    __rmul__ = __mul__
+
+    def __truediv__(self, o):
+        o = du(o)
+        if not (o.v > 0 or o.v < 0):
+            raise Refused('Du: a divisor may vanish')
+        q = self.v / o.v
+        return Du(q, (self.d - q * o.d) / o.v)
+
+    def __rtruediv__(self, o):
+        return du(o) / self
+
+    def __neg__(self):
+        return Du(-self.v, -self.d)
+
+    def sqrt(self):
+        if not (self.v > 0):
+            raise Refused('Du: a square root of a value not certainly positive')
+        s = self.v.sqrt()
+        return Du(s, self.d / (2 * s))
+
+
+def du(x):
+    """v1_5: an int or arb constant as a Du with derivative 0."""
+    if isinstance(x, Du):
+        return x
+    return Du(x if isinstance(x, arb) else arb(x), arb(0))
+
+
+def du_sum(xs):
+    s = Du(arb(0), arb(0))
+    for x in xs:
+        s = s + x
+    return s
+
+
+def law_der(E, tb):
+    """v1_5: d/dt of an entry law's polynomial sum_k ak[k] t^k on the t-ball tb (Horner on k ak[k]). The law box is held fixed along the
+    centred form's path, so it carries no derivative."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    ak = E['ak']
+    s = arb(0)
+    for k in range(len(ak) - 1, 0, -1):
+        s = s * tb + k * q(ak[k])
+    return s
+
+
+def poly_der(mc, tb):
+    """v1_5: d/dt of sum_k m_k t^k (exact decimal coefficients) on the t-ball tb."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    s = arb(0)
+    for k in range(len(mc) - 1, 0, -1):
+        s = s * tb + k * q(mc[k])
+    return s
+
+
+def mhat_der(m, tb):
+    """v1_5: d/dt of mhat_ball's 1 + m1 t + m2 t^2 + m3 t^3 (exact binary64 m) on the t-ball tb."""
+    a = [arb(x) for x in m]
+    return a[0] + 2 * a[1] * tb + 3 * a[2] * tb * tb
+
+
+def eig_der(Gd, Td, lam, cv):
+    """v1_5: the t-derivatives of the generalized eigenpairs T c_k = lambda_k G c_k, c_j^T G c_k = delta_jk (ritz_piece's c_k = X^T v_k are
+    G-orthonormal), from enclosures of lambda_k, c_k and of G', T': lambda_k' = c_k^T (T' - lambda_k G') c_k and c_k' = sum_(j != k)
+    [c_j^T (T' - lambda_k G') c_k / (lambda_k - lambda_j)] c_j - (1/2) (c_k^T G' c_k) c_k (the gaps are ritz_piece's disjoint enclosures)."""
+    n = 3
+    qf = lambda a, M, b: sum((a[i] * M[i][j] * b[j] for i in range(n) for j in range(n)), arb(0))
+    lamd, cvd = [], []
+    for k in range(n):
+        E = [[Td[i][j] - lam[k] * Gd[i][j] for j in range(n)] for i in range(n)]
+        lamd.append(qf(cv[k], E, cv[k]))
+        h = qf(cv[k], Gd, cv[k]) / 2
+        d = [-h * cv[k][i] for i in range(n)]
+        for j in range(n):
+            if j == k:
+                continue
+            gap = lam[k] - lam[j]
+            if not (gap > 0 or gap < 0):
+                raise Refused('eig_der: eigenvalue enclosures %d and %d meet' % (k, j))
+            a = qf(cv[j], E, cv[k]) / gap
+            d = [d[i] + a * cv[j][i] for i in range(n)]
+        cvd.append(d)
+    return lamd, cvd
+
+
+def mr_der(N, tb, Df, IN, plant=None):
+    """v1_5: an enclosure of d/dtau M_R^c(p(tau) + delta) over tau in the t-ball tb and every law error delta in its box: the (C9) formula of
+    s9c_main_piece in Du arithmetic, values = the full balls Df of s9c_main_piece on the same range (its eigenpair enclosures hold at every
+    point of the box), derivatives = law_der of each entry (S8 D g, S8 N T, NIH Ih, NHT IhTh, DH Gxh), mhat_der, poly_der of m_bg, and
+    eig_der for lambda_0 and the oriented c_k. Returns the Du of M_R^c. plant='DER' negates every input derivative (PLANT-DER)."""
+    LW, RD = IN['LW'][N], IN['RD']
+    sgn = -1 if plant == 'DER' else 1
+    dl = lambda F, key: sgn * law_der(RD.entry_law(LW[F][1], F, key), tb)
+    Gd = [[dl('D', 'g,%d,%d' % (min(b, c), max(b, c))) for c in REVEN] for b in REVEN]
+    Td = [[dl('N', 'T,%d,%d' % (min(b, c), max(b, c))) for c in REVEN] for b in REVEN]
+    lam, cv = Df['RC']['vals'], Df['RC']['vecs']
+    lamd, cvd = eig_der(Gd, Td, lam, cv)
+    sx_, sy_ = IN['SIG'][N]
+    sg = (1, sx_, sy_)
+    G = [[Du(Df['G'][i][j], Gd[i][j]) for j in range(3)] for i in range(3)]
+    V = [[Du(Df['V'][k][j], sg[k] * cvd[k][j]) for j in range(3)] for k in range(3)]
+    Ih = dict((b, Du(Df['Ih'][b], dl('NIH', 'Ih,%d' % b))) for b in REVEN)
+    IhT = dict((g, Du(Df['IhT'][g], dl('NHT', 'IhTh,%d' % g))) for g in (1, 3))
+    Gx = dict((g, Du(Df['Gx'][(g, 0)], dl('DH', 'Gxh,%d,%d' % (min(g, 0), max(g, 0))))) for g in REVEN)
+    mh = Du(Df['mh'], sgn * mhat_der(IN['MC'][N], tb))
+    M = IN['MG'][N]
+    m = dict(((b, g), Du(Df['m'][(b, g)], sgn * poly_der(M[b][g], tb))) for b in (1, 3) for g in (0, 1, 3))
+    iht = {0: Ih[0], 1: IhT[1], 3: IhT[3]}
+    H = dict((b, mh * Ih[b] + du_sum(m[(b, g)] * (iht[g] - mh * Gx[g]) for g in (0, 1, 3))) for b in (1, 3))
+    H00 = 2 * mh * Ih[0] - mh * mh * Gx[0]
+    pos = {0: 0, 1: 1, 3: 2}
+    g00, mu0 = G[0][0], Du(lam[0], lamd[0])
+    nh = 1 / (g00.sqrt() * mu0 * mu0)
+    MU = nh * du_sum(V[1][pos[b]] * (H[b] - G[pos[b]][0] * H00 / g00) for b in (1, 3))
+    hhat = H00 / (g00 * mu0 * mu0)
+    alpha = [du_sum(G[0][j] * V[k][j] for j in range(3)) / g00.sqrt() for k in range(2)]
+    return (MU + alpha[1] * hhat) / alpha[0]
+
+
+def s9c_main_cf(N, tl, th, JL, IN, K=1, plant=None):
+    """v1_5: the centred form of M_R^c on [tl, th]. An entry is e(t) = p(t) + delta(t), p the law polynomial, delta(t) in the law box of the
+    range (ak_rad at the range top, law_err at J_lo). For t in a sub-range [a, b] with centre c, the path tau -> M_R^c(p(tau) + delta(t))
+    from c to t is differentiable (the eigenpair enclosures and gaps of the range hold at every point of the box) and the mean value theorem
+    gives M_R^c(t) in M_R^c(p(c) + box) + (t - c) D, D = mr_der over [a, b] and the box. K equal sub-ranges (K a power of 2, outward-rounded
+    cut points as s9c_main_sub). Returns the union and the per-sub-range parts (a, b, c, centre ball, D, full-range result)."""
+    if K < 1 or K & (K - 1):
+        raise Refused('s9c_main_cf: K = %r is not a power of 2' % K)
+    tl, th = tl.lower(), th.upper()   # v1_6: ends given as balls (way B's t_min) are widened outward to exact points
+    xs = [tl] + [tl + (th - tl) * i / K for i in range(1, K)] + [th]
+    res, parts = None, []
+    for i in range(K):
+        a, b = xs[i].lower(), xs[i + 1].upper()
+        Df = s9c_main_piece(N, a, b, JL, IN)
+        Dd = mr_der(N, a.union(b), Df, IN, plant)
+        c = arb(((a + b) / 2).mid())
+        Dc = s9c_main_piece(N, a, b, JL, IN, tpt=c)
+        u1, u2 = (b - c).upper(), (c - a).upper()
+        hw = u1 if u1 > u2 else u2
+        x = Dc['MR'] + Dd.d * hw * arb(0, 1)
+        parts.append(dict(a=a, b=b, c=c, MRc=Dc['MR'], D=Dd.d, Df=Df))
+        res = x if res is None else res.union(x)
+    return res, parts
+
+
+def der_fd_check(N, tl, th, JL, IN, plant=None):
+    """v1_5 C-DER-FD, a sanity check of mr_der's formula (not part of any bound): the central difference (m(c + h) - m(c - h)) / (2 h) of the
+    M_R^c midpoints at the t points c +- h (c the centre, h = (th - tl) / 2^12) meets the derivative enclosure of [tl, th]. Returns the
+    difference quotient, the enclosure and its position (fd - mid D) / rad D; refuses when they do not meet."""
+    Df = s9c_main_piece(N, tl, th, JL, IN)
+    D = mr_der(N, tl.union(th), Df, IN, plant).d
+    c = arb(((tl + th) / 2).mid())
+    h = arb(((th - tl) / 4096).mid())
+    mp = arb(s9c_main_piece(N, tl, th, JL, IN, tpt=c + h)['MR'].mid())
+    mm = arb(s9c_main_piece(N, tl, th, JL, IN, tpt=c - h)['MR'].mid())
+    fd = (mp - mm) / (2 * h)
+    pos = float((fd - D.mid()).mid()) / float(D.rad()) if float(D.rad()) > 0 else float('inf')
+    if not D.overlaps(fd):
+        raise Refused('C-DER-FD: the difference quotient %s is outside the derivative enclosure %s' % (fd.str(6), D.str(6, radius=True)))
+    return fd, D, pos
+
+
+def m_abs_up(mc, t_hi):
+    """|m(t)| <= sum_k |m_k| t^k on 0 <= t <= t_hi (an arb upper value)."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    s, tp = arb(0), arb(1)
+    for c in mc:
+        s = s + abs(q(c)) * tp
+        tp = tp * t_hi
+    return s.upper()
+
+
+def badpart_constants(N, IN, Lam, plant=None):
+    """the bad-part lemma's constants at level Lam for N (S9C_BADPART_LEMMA_v1 sect. 2): J-uniform for J >= 300. Returns a dict of arb upper
+    values. plant='GBB' halves G_bb's lower end for b = 1 (PLANT-GBB must move Phi_1)."""
+    C = IN['LG'][N]
+    kap, uC, pe, S0, g00 = C['kap'], C['uC'], C['pe'], C['S'], C['g00']
+    eps, th = arb(EPS_G), arb(THETA_G)
+    _w0, we, _wt = lg_weights(eps, th)
+    r = tau_strip(2) / (we[0] * we[1])
+    fT = r * r.sqrt() if N == 4 else r
+    if not (abs(S0 * S0 * fT / g00 - pe) < arb('1e-30') * pe + (S0 * S0 * fT / g00).rad() + pe.rad()):
+        raise Refused('C-FT: Phi_eps does not equal S_eps^2 f_T / G_00 (Lemma T prime at R4 weights)')
+    t_hi = 1 / arb(300)
+    tb = arb(0).union(t_hi)
+    LW, RD = IN['LW'][N], IN['RD']
+    G = {}
+    for b in REVEN:
+        x = entry_law_piece(RD.entry_law(LW['D'][1], 'D', 'g,%d,%d' % (b, b)), tb, t_hi, 300)
+        G[b] = (x.lower() * (arb('0.5') if (plant == 'GBB' and b == 1) else 1), x.upper())
+        if not (G[b][0] > 0):
+            raise Refused('C-GBB: G_%d%d is not certainly positive over J >= 300' % (b, b))
+    Sb = {0: S0, 1: s_eps_lin(IN['TS'][N], 1, eps), 3: s_eps_lin(IN['TS'][N], 3, eps)}
+    Phi = {0: pe, 1: (Sb[1] * Sb[1] * fT / G[1][0]).upper(), 3: (Sb[3] * Sb[3] * fT / G[3][0]).upper()}
+    M = IN['MG'][N]   # v1_1: M4's MG coefficients (the ones R_e1, R_e3 belong to)
+    mab = dict(((b, g), m_abs_up(M[b][g], t_hi)) for b in (1, 3) for g in (0, 1, 3))
+    Psi = {}
+    for b in (1, 3):
+        s = Phi[b].sqrt()
+        for g in (0, 1, 3):
+            s = s + uC * mab[(b, g)] * Phi[g].sqrt() * (G[g][1] / G[b][0]).sqrt()
+        Psi[b] = s.upper()
+    tau0 = tail_h(N, 1, arb(Lam), arb(0)).upper()
+    Gb = gbad_p(N, arb(Lam), kap, uC, pe).upper()
+    out_ = dict(kap=kap, uC=uC, fT=fT.upper(), S=Sb, G=G, Phi=Phi, mab=mab, Psi=Psi, tau0=tau0, Gb=Gb)
+    out_['P0'] = (tau0 * (kap + uC) * (kap + uC) * pe).upper()
+    for b in (1, 3):
+        out_['P%d' % b] = (Gb * Psi[b]).upper()
+        out_['H%d' % b] = (tau0 * kap * kap * Psi[b]).upper()
+    out_['H0'] = Gb
+    for b in (1, 3):
+        for c in (1, 3):
+            cross = arb(0)
+            for g in (0, 1, 3):
+                cross = cross + tau0 * kap * uC * mab[(b, g)] * Phi[g].sqrt() * Psi[c] * (G[g][1] / G[b][0]).sqrt()
+            out_['X%d%d' % (b, c)] = cross.upper()
+            out_['F%d%d' % (b, c)] = (tau0 * kap * kap * Psi[b] * Psi[c]).upper()
+    return out_
+
+
+def bad_bc(D):
+    """v1_7: the bad parts of H_bc's double (C9) expansion for b, c in {1, 3}, normalised by lambda_0^2 ||psi_b|| ||psi_c||, J-uniform for
+    J >= 300: X_bc + X_cb + F_bc of S9C_BADPART_LEMMA_v1 (both cross terms and the f-f term), read from
+    badpart_constants's dict D for one N."""
+    return dict(((b, c), (D['X%d%d' % (b, c)] + D['X%d%d' % (c, b)] + D['F%d%d' % (b, c)]).upper()) for b in (1, 3) for c in (1, 3))
+
+
+def hb_bound(ca, cb, Q9):
+    """v1_7: |<u~_a, H_xi u~_b>| / lambda_0^2 for Ritz coefficient vectors with |c_ab| <= ca[b], |c_bc| <= cb[c] (b, c in 0, 1, 3), the pairs
+    split as the N-1. For b, c in {1, 3}: the double (C9) expansion H_bc = sum_(g,h) m_bg m_ch Gx_gh
+    (lambda_0 >= mu_0) + the cross terms m_bg <phi_g, K_xi f_c> + m_ch <f_b, K_xi phi_h> + <f_b, K_xi f_c>, split at Lam: good parts by
+    positivity with ||K^1/2 |phi_g| || <= Sh_g^1/2 and ||K^1/2 |f_b| || <= R_b lambda_0 ||psi_b|| (M4's R_e1, R_e3 in the |f| form
+    a9e77bd7), bad parts X_bc + X_cb + F_bc (bad_bc). For the pairs with 0: the single (C9) identities H_b0 = mhat Ih_b + sum_g m_bg (IhT_g - mhat
+    Gx_g0) + P_b and H_00 = 2 mhat Ih_0 - mhat^2 Gx_00 + P_0 (H_0b = H_b0), the law-certified values |H_b0^(C9)| and |P_b| <= lambda_0^2 G_00^1/2
+    G_bb^1/2 pb_b, |P_0| <= lambda_0^2 G_00 p0 (good part with R_0 = eps_r mhat / lambda_0 by Lemma 19.2, bad part (P_b), (P_0)). Returns a dict
+    of uppers: main, cross, ff, bad (the b, c in {1, 3} pairs), zero (the pairs with 0, all of it) and zbad (the (P_b), (P_0) share of zero)."""
+    E1, E = (1, 3), (0, 1, 3)
+    mabs, gx, sSh, sG, R, l0, Lam, B = Q9['mabs'], Q9['gx'], Q9['sSh'], Q9['sG'], Q9['R'], Q9['l0lo'], Q9['Lam'], Q9['Bbc']
+    main_ = sum((ca[b] * cb[c] * mabs[(b, g)] * mabs[(c, h)] * gx[(g, h)] for b in E1 for c in E1 for g in E for h in E), arb(0)) / (l0 * l0)
+    ms = dict((b, sum((mabs[(b, g)] * sSh[g] for g in E), arb(0))) for b in E1)
+    cross = sum((ca[b] * cb[c] * (ms[b] * R[c] * sG[c] + ms[c] * R[b] * sG[b]) for b in E1 for c in E1), arb(0)) * Lam / l0
+    ff = sum((ca[b] * cb[c] * R[b] * R[c] * sG[b] * sG[c] for b in E1 for c in E1), arb(0)) * Lam
+    bad = sum((ca[b] * cb[c] * B[(b, c)] * sG[b] * sG[c] for b in E1 for c in E1), arb(0))
+    w = dict((b, ca[b] * cb[0] + ca[0] * cb[b]) for b in E1)
+    zero = (sum((w[b] * (Q9['Hb0'][b] / (l0 * l0) + sG[0] * sG[b] * Q9['pb'][b]) for b in E1), arb(0)) +
+            ca[0] * cb[0] * (Q9['Hb0'][0] / (l0 * l0) + sG[0] * sG[0] * Q9['p0']))
+    zbad = sum((w[b] * sG[0] * sG[b] * Q9['pbad'][b] for b in E1), arb(0)) + ca[0] * cb[0] * sG[0] * sG[0] * Q9['pbad'][0]
+    return dict(main=main_.upper(), cross=cross.upper(), ff=ff.upper(), bad=bad.upper(), zero=zero.upper(), zbad=zbad.upper())
+
+
+def s9c_htx(N, tl, th, JL, IN, H, plant=None):
+    """v1_6, S9C stage 2b: S9(c)-h's Ritz-level x amplitude on [tl, th] in the orientation (S9C_LINES_v1): h~_x = M_R^c +- (E_R + L6 + L7),
+    M_R^c the centred form of the (C9) main term (s9c_main_cf). E_R = (1 - m0lo^2) |M_R^c| + (L2 + L3 + L3b + L4 + L5 + bad2 + bad4) / alpha_0,lo
+    bounds M_R - M_R^c ((C8): alpha_0 M_R = M_U + alpha_x (h-hat - h_xx) - alpha_y h_xy with lambda_0 in place of the Ritz value, mu_0 / lambda_0
+    in [m0lo, 1]; the products <f_b, K_xi g> (L2, L4; bad2, bad4 by (P_b)) and <g, K_xi g> (L3 through G_b0 / G_00, L3b through alpha_x h-hat;
+    (P_0) inside) split at Lam; L5 = |alpha_x| |h_xx| + |alpha_y| |h_xy| by hb_bound). L6 = H^Q X: X = rho_0 / (1 - tau4 - sum_k rho_k^2 /
+    (1 - mu_k)) and H^Q <= PeBwu_x + C delta_x + sum_k beta_k q_k + |c_h| (1 + mu_x) rho_x (S9C_ENGINE_DESIGN_v1 sect. 3; no Lam split, so no bad
+    part). L7 = <u~_k, Omega_0> h_kx (k = x, y) + |h_00| <u~_x, Omega_0> + (1 - <u~_0, Omega_0>) |M_R|. H holds h_piece's quantities on the
+    same piece (beta_0 takes S9(b)'s |v_x| bound). plant: 'HQ' (H^Q times 1e4), 'RB' (R_e1 times 1e3), 'BAD' (the bad parts at Lam = 10).
+    v1_7: hb_bound with the pair split (the pairs with 0 by the single (C9) identities and (P_b), (P_0); X_bc + X_cb + F_bc for b, c in
+    {1, 3}); H^Q's P_e term tau4 C delta_x in place of C delta_x (the bound ||P_e B^w (u~_x - u_x)|| <= ||S P_e||
+    ||M_c S|| delta_x with ||S P_e|| <= tau4)."""
+    CF, parts = s9c_main_cf(N, tl, th, JL, IN)
+    Df = parts[0]['Df']
+    BP = IN['BP10'][N] if plant == 'BAD' else IN['BP'][N]
+    BBC = bad_bc(BP)
+    E = (0, 1, 3)
+    pos = {0: 0, 1: 1, 3: 2}
+    G, V, al = Df['G'], Df['V'], Df['alpha']
+    l0lo = Df['RC']['vals'][0].lower()
+    a0lo = al[0].lower()
+    if not (l0lo > 0 and a0lo > 0):
+        raise Refused('C-S9C-POS: mu_0 or alpha_0 is not certainly positive')
+    mh = abs(Df['mh']).upper()
+    er = H['er'].upper()
+    R = {0: (er * mh / l0lo).upper(), 1: (H['Rb12'][0].upper() * (1000 if plant == 'RB' else 1)).upper(), 3: H['Rb12'][1].upper()}
+    sG = dict((g, G[pos[g]][pos[g]].upper().sqrt().upper()) for g in E)
+    sSh = dict((g, H['SH'][pos[g]].upper().sqrt().upper()) for g in E)
+    cv = lambda k: dict((g, abs(V[k][pos[g]]).upper()) for g in E)
+    c0, cx, cy = cv(0), cv(1), cv(2)
+    mabs = dict(((b, g), abs(Df['m'][(b, g)]).upper()) for b in (1, 3) for g in E)
+    mabs.update({(0, 0): mh, (0, 1): arb(0), (0, 3): arb(0)})
+    gx = dict(((g, h), abs(Df['Gx'][(g, h)]).upper()) for g in E for h in E)
+    Lam = arb(LAM9C)
+    mhl = (mh / l0lo).upper()
+    pbad = {0: BP['P0'], 1: BP['P1'], 3: BP['P3']}
+    pb = dict((b, (Lam * R[b] * er * mhl + pbad[b]).upper()) for b in (1, 3))   # |P_b| / (lambda_0^2 ||psi_0|| ||psi_b||): good part and (P_b)
+    Hb0 = {0: abs(Df['H00']).upper(), 1: abs(Df['H'][1]).upper(), 3: abs(Df['H'][3]).upper()}   # the (C9) values on the range, law bars inside
+    Q9 = dict(mabs=mabs, gx=gx, sSh=sSh, sG=sG, R=R, l0lo=l0lo, Lam=Lam, Bbc=BBC, Hb0=Hb0, pb=pb, pbad=pbad,
+              p0=(Lam * er * er * mhl * mhl + BP['P0']).upper())
+    hxx, hxy, h00 = hb_bound(cx, cx, Q9), hb_bound(cx, cy, Q9), hb_bound(c0, c0, Q9)
+    HXX, HXY, H00 = [(x['main'] + x['cross'] + x['ff'] + x['bad'] + x['zero']).upper() for x in (hxx, hxy, h00)]
+    hbad = dict((k, (x['bad'] + x['zbad']).upper()) for k, x in (('xx', hxx), ('xy', hxy), ('00', h00)))
+    g10, g30 = (abs(G[1][0]) / G[0][0]).upper(), (abs(G[2][0]) / G[0][0]).upper()
+    axa, aya = abs(al[1]).upper(), abs(al[2]).upper()
+    L2 = (cx[1] * Lam * R[1] * er * mhl * sG[1]).upper()
+    L4 = (cx[3] * Lam * R[3] * er * mhl * sG[3]).upper()
+    p0 = Q9['p0']   # |<g, K_xi g>| / (lambda_0^2 ||psi_0||^2): the good part and (P_0)
+    L3 = ((cx[1] * g10 + cx[3] * g30) * sG[0] * p0).upper()
+    L3b = (axa * p0).upper()
+    L5 = (axa * HXX + aya * HXY).upper()
+    bad2 = (cx[1] * sG[1] * BP['P1']).upper()
+    bad4 = (cx[3] * sG[3] * BP['P3']).upper()
+    MRhi = abs(CF).upper()
+    lamterm = ((1 - H['m0lo'] * H['m0lo']) * MRhi).upper()
+    ER = (lamterm + (L2 + L3 + L3b + L4 + L5 + bad2 + bad4) / a0lo).upper()
+    rho, mu_hi, tau_hi = H['rho'], H['mu_hi'], H['tau_hi']
+    den = 1 - tau_hi - sum((rho[k] * rho[k] / (1 - mu_hi[k]) for k in (1, 2)), arb(0))
+    if not (den > 0):
+        raise Refused('C-X: 1 - tau4 - sum_k rho_k^2 / (1 - mu_k) is not certainly positive')
+    X = (rho[0] / den).upper()
+    ukO = dict((k, (X * rho[k] / (1 - mu_hi[k])).upper()) for k in (1, 2))
+    rad = 1 - X * X - ukO[1] * ukO[1] - ukO[2] * ukO[2]
+    if not (rad > 0):
+        raise Refused('C-X: 1 - X^2 - sum_k <u~_k, Omega_0>^2 is not certainly positive')
+    uO0 = (1 - rad.sqrt()).upper()
+    s_hi, Cc, dx = H['s_hi'], H['Cc'], H['delta'][1]
+    qk = [H['L3'][a][0].upper() for a in range(3)]
+    b0 = s_hi[1] * abs(H['vx']).upper() + Cc * dx
+    bx = s_hi[1] * s_hi[1] * abs(H['m'][(1, 1)]).upper() + Cc * s_hi[1].sqrt() * dx
+    by = s_hi[1] * s_hi[2] * abs(H['m'][(1, 2)]).upper() + Cc * s_hi[2].sqrt() * dx
+    HQ = (H['pebw'][0] + tau_hi * Cc * dx + b0 * qk[0] + bx * qk[1] + by * qk[2] + abs(H['ch']).upper() * (1 + mu_hi[1]) * rho[1]).upper()
+    if plant == 'HQ':
+        HQ = (HQ * 10000).upper()
+    L6 = (HQ * X).upper()
+    MRabs = (MRhi + ER).upper()
+    # (C8)'s h_00 is the vacuum amplitude <Omega_0, H_xi Omega_0>/lambda_0^2. With Omega_0 = beta u~_0 + w,
+    # ||w||^2 <= W^2 = 1 - rad, and ||H_xi||/lambda_0^2 <= N_H = Lam + tau~0 kappa^2 for every J >= 300 (positivity below Lam, the lemma's
+    # Schur step above), |h_00| <= hb_bound(c_0, c_0) + (2 W + W^2) N_H
+    W2 = (1 - rad).upper()
+    H00 = (H00 + (2 * W2.sqrt() + W2) * (Lam + BP['tau0'] * BP['kap'] * BP['kap'])).upper()
+    L7 = (ukO[1] * HXX + ukO[2] * HXY + H00 * ukO[1] + uO0 * MRabs).upper()
+    tot = (ER + L6 + L7).upper()
+    badw = ((bad2 + bad4 + ((cx[1] * g10 + cx[3] * g30) * sG[0] + axa) * BP['P0'] + axa * hbad['xx'] + aya * hbad['xy']) / a0lo +
+            ukO[1] * hbad['xx'] + ukO[2] * hbad['xy'] + ukO[1] * hbad['00']).upper()
+    return dict(htx=CF + tot * arb(0, 1), MRc=CF, ER=ER, L2=L2, L3=L3, L3b=L3b, L4=L4, L5=L5, L6=L6, L7=L7, lamterm=lamterm, bad2=bad2,
+                bad4=bad4, badw=badw, X=X, HQ=HQ, HXX=HXX, HXY=HXY, H00=H00, hxx=hxx, hxy=hxy, uO0=uO0, ukO=ukO, tot=tot, D=parts[0]['D'],
+                R=R, er=er, mhl=mhl)

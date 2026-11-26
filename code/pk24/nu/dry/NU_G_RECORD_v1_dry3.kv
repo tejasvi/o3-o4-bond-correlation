@@ -1,0 +1,20 @@
+# NU_G_RECORD (pk24, kt_nu_g_v1_2 dry): certified nu_g for the delta bridge of pk24/NU_G_NOTE_v1.md sect. 3-4
+FORMAT = NU_G_RECORD_v1
+RECORD = NU_G_RECORD
+PRODUCER = pk24 kt_nu_g_v1_2
+CODE = pk24/nu/kt_nu_g_v1_2.py:582b07000208b9b9c8635204426d888f75692ee5165be71a5512ce5229a5a40f
+STATUS = DRY
+RUN_VERDICT = VALID
+TRIAL_SET = N4 ts_N4_J170_D_S_z9sym_v1.json:ea9d6c1bc72cdac5b6d55091766a908937c7ce2bf60257636824388ffe5b7b5d, N3 ts_N3_S_z9sym_v1.json:a298db655d832c0685a9aba093dd123d372698fa2fb7905a15f442bb0e35f8e6 (psi-hat and the stored states 1, 3 of the S9 records per N; u_x and u_y lie along the canonical e1, e3: the stored-state coefficients are flipped where S[3][1] or S[1][3] is negative)
+J_LO_CHECK = 300
+T1 = 1/300
+CLAIM = for N in {3, 4}, g in {psi, e1, e2, e3} (engine A's basis states on the trial set above; psi from vac_poly with the vacres q1..q3) and every t in (0, 1/J_LO_CHECK]: nu_g >= ||(B_g(t) - b0_g) 1_near||_t / t, the near-region part of |psi_g(t) - iota_t(b0_g)| / t in engine A's norm (the norm of nP: ||F||_t = (n1(t) E_G1(t)[F^2])^1/2, G1, n1 = tilted_cov_a(LD, BD, [c_m t] * 6) of kt_cert_v1_9, Wishart on column 1); the far part enters through far_out at |m_g(t)| + |delta_g| (BRIDGE). B_g(t) = E0 pS_g(xi; t) is the full chart function (no truncation: the series remainder is included), b0_g = pS_g(Q/2; 0), near = t X_v <= a_m at every vertex; TRI_p > 0 (C-TRI). Sign flips of the stored states leave nu_g unchanged.
+BRIDGE = |Q_W(t) S e_k| <= [engine A bound with nP -> ||P - r0||_t and far_out at |m_g(t)| + |delta_g|] + t sum_g |delta_g| nu_g, the last term outside the square root (NU_G_NOTE_v1 sect. 3)
+INPUTS = pk02/arbeng_c2b_v2.py:fb8cd1b5162930b1e9ff83c35fb652575a9f2ff1649f733c5d45bdf7f7762993, pk02/kt_cert_v1_9.py:86bcb6c7b3a3e9eaf2d051c2ee2266c70da81884ee8203fc78408eb80f44a25d, pk24/NU_G_NOTE_v1.md:0c05f650c756a37e8caa7c4f4f12a87f7451035f9c9e02dde6eee6b3447f1149, pk24/nu/arbeng_c2b_v2.py:fb8cd1b5162930b1e9ff83c35fb652575a9f2ff1649f733c5d45bdf7f7762993, rv02/REVIEW_NU_G_NOTE_V1_rv02.md:41cff4bb6c61f40da4af6a34b1877abf982f7c46f661b24b39fc024c79cc50ef, pk25/mr/v3/MR_LEMMAP.kv:275b179f6f8e80f12101fda25989a851177c0b6003eee05f4a7095ad003fe013, pk11/out/ts_N3_S_z9sym_v1.json:a298db655d832c0685a9aba093dd123d372698fa2fb7905a15f442bb0e35f8e6, pk11/out/ts_N4_J170_D_S_z9sym_v1.json:ea9d6c1bc72cdac5b6d55091766a908937c7ce2bf60257636824388ffe5b7b5d, pk11/out/vacres_K3_N3_sym_v1.json:e5a9b49fde1896ff1d87de1d4a44571376eeeeb31b0ce4205faecdd2463115c0, pk11/out/vacres_K3_N4_sym_v1.json:b40859de2607f64cd127cb1834a04e9f33b3c2cbe4af9fe4f2bb80badaacd43e
+PARAMS = a_m 0.30250000000000005, a_e 0.36, a = max(a_m, a_e) 0.36, wbar = 1/(4 (1 - a)), c_m 0.5954591161762255, xibar_p = Q_p/2 + T1 wbar d_p/2
+GATES = C-HASH PASS; C-CORE, C-TRI, C-ID, C-MAJ, C-MONO PASS; PLANT-ID, PLANT-MAJ FIRED
+ROUNDING = nu values are 17-significant-digit decimals rounded up (checked in arb)
+N4_NU = 2.1190507285925970e+00 1.6007550867193828e+01 4.9558008468965774e+01
+N4_NU_E2 = 1.7823586106129412e+01
+N3_NU = 1.2683348616832164e+00 1.1533272335743622e+01 3.6026745679680090e+01
+N3_NU_E2 = 1.3346833616140612e+01

@@ -1,0 +1,55 @@
+# QEF_DLM1_v1: single-bond crude bounds at d_L = -1 for the truncated-Cov readings R_e and R_f (pk02, kt_qef_dlm1_v1_1). Format
+# S4U_KV_v1; computed decimals are exact strings in e-form, upper ends (the smallest 12-significant-digit decimals whose
+# squares are at or above the formula's square); N*_A and N*_TAU_HI are copied strings.
+RECORD = QEF_DLM1_v1
+FORMAT = S4U_KV_v1
+EXPORT_STATUS = CERTIFIED
+REVIEW_STATUS = math PENDING (the one-bond forms of Lemma B, A-D4 and A-D4M); code: the review found no defect in v1 (7d362ea3), and v1_1 changes only the binding line and the write order
+PRODUCER = pk02
+CODE = pk02/kt_qef_dlm1_v1_1.py:7ee17059be221031a27d22336d8c02eb0e4b5c71552d4f5aa568ad4b8fdf3492
+VERDICT_OF_WRITER = VALID
+SUPERSEDES = pk02/out/QEF_DLM1_v1_r1.kv:773aa6f921343a7b857fe30de8a74c1526d99c09904624150646fb09113e7769 (the same twelve values, C-SAME; re-issued for the ruled binding line "RECORD <file name> sha256 <full sha256>" )
+INPUT = pk02/out/TRICK_DLM1_v1_4_r1.kv:d6afc761daf44d69c49926a6dfdc08d836698fcfcc76e3d6892d5ff6581424d5
+INPUT = rv02/ERRATUM_ESEMI_TRUNCATED_COV_V2_rv02.md:4f34050b522407ba19e6572a839fb52f526582c4482be77582af139a376dd295
+INPUT = pk08/HS_NORMX_LEMMA_NOTE_v1.md:ffd98fc1946714e36e86359c338c38a6b89af31eb7f707306a0a59f3f281493b
+INPUT = pk08/HS_TYPEB_LEMMA_NOTE_v1_1_ADD1.md:799cf99e7386dbf04dabbcb8b8bb49bff20cd498d9b8913a7ca949743c9c9ce3
+INPUT = pk08/HS_TYPEB_LEMMA_NOTE_v1_1.md:801099463aa4dff112c1bc2078c943f8aff15ecdcf9738aed1a7d9f2f03f0e53
+INPUT = rv02/RULING_TRUNCATED_COV_SCOPE_rv02.md:6e38bd40639064d28ff4a84e9eb25d47d2c8ce71599c0d6ce7734bb363b9eea3
+INPUT = rv04/CHECK_KT_QEF_DLM1_v1_rv04.md:46aee0ebbd47824755ffeb13a7f3f7682af0677cf0b68d724efa129356c31c8b
+INPUT = pk08/out/TAU_D3B_v1.kv:24aaccc0890421d5ba533b42067b182a3a1f8014a85c9ad2c04a9e2f99218b95
+INPUT = pk02/out/QEF_DLM1_v1_r1.kv:773aa6f921343a7b857fe30de8a74c1526d99c09904624150646fb09113e7769
+INPUT = pk08/out/HS_INV_NORMX_v1_d3d4ba.kv:a8862b08e8666d6118af850c36a7bee7393d13c89c38ee92726717d5054556f0
+CLAIM = for N in {3, 4}, every J >= 300 and every d_L = -1 row of TRICK_DLM1_v1_4_r1 (895634f5) of kind <kind> (D3B for class D3, D4A for D4, D4MA for D4M), with a-hat = a = S'^-1 w-hat (so <u, a-hat> = 1 and <a-hat, X_1 u> = 1) and X_e, X_f the single centred bond operators of OPERATOR_SINGLE_<kind>: q_e = ||Q0 X_e* a-hat|| <= ||X_e* a-hat|| <= N*_QE_HI_<kind> and q_f = ||Q0 X_f* a-hat|| <= ||X_f* a-hat|| <= N*_QF_HI_<kind>, for every centre in the row's box (v3's ce and cf fields). Bond e is t for every kind; bond f is bb (D3B) or b (D4A, D4MA). N*_QF_HI_D4MA already holds the J-uniform lambda_h/lambda_0 factor, so the reader must not apply it again; no other key carries a lambda factor.
+KEYMAP_D3B = QE N*_QE_HI_D3B (bond t) ; QF N*_QF_HI_D3B (bond bb) (rows of class D3)
+KEYMAP_D4A = QE N*_QE_HI_D4A (bond t) ; QF N*_QF_HI_D4A (bond b) (rows of class D4)
+KEYMAP_D4MA = QE N*_QE_HI_D4MA (bond t) ; QF N*_QF_HI_D4MA (bond b) (rows of class D4M)
+OBJECTS = as in the lemma notes (6d0864e5 sect. 1, 8aadb7e8 sect. 1) and v3's OPERATOR_D3, OPERATOR_D4, OPERATOR_D4M: Z = K^(1/2) V^(1/2), T = Z Z*, Th = Z* Z = V^(1/2) K V^(1/2); ||Z||_H = lambda_0^(1/2) and ||Th||_H = lambda_0 (T and Th have the same top eigenvalue on H); G_t = V^(1/2) (K_t - c_t K) V^(1/2) with ||G_t||_H <= (A + |c_t|) lambda_0 (F4), G_bb likewise; M is multiplication by xi_b - c_b; Z* a-hat = (lambda_0/<u,w>) V^(1/2) 1 with ||V^(1/2) 1|| = v_0 and 1 + tau^2 = lambda_0 v_0^2/<u,w>^2 (B6); every vector below lies in H (Z, Th, G and M commute with the diagonal O(N) action, and V^(1/2) 1 is invariant)
+OPERATOR_SINGLE_D3B = the D3 frame (w = 3; t = gap-0 top, bb = gap-1 bottom) with the other bond's insertion removed: lambda_0^3 X_t = Z G_t Th Z*, lambda_0^3 X_bb = Z Th G_bb Z*
+OPERATOR_SINGLE_D4A = the D4 frame (w = 2; t = gap-0 top, b = column-0 MB vertical): lambda_0^2 X_t = Z G_t Z* (M -> 1), lambda_0^2 X_b = Z M Th Z* (G_t -> Th)
+OPERATOR_SINGLE_D4MA = the D4M frame (w = 2; t = gap-0 top, b = column-1 MB vertical): lambda_0^2 X_t = Z G_t Z* (M -> 1), lambda_0^2 X_b = Z Th M Z* (G_t -> Th)
+FORMULA_D3B = Lemma B's B3 and B5 with one G replaced by Th: ||X_t* a-hat|| <= ||Z||_H ||Th||_H ||G_t||_H ||Z* a-hat||/lambda_0^3 = (A + |c_t|) (1 + tau^2)^(1/2), and ||X_bb* a-hat|| <= (A + |c_bb|) (1 + tau^2)^(1/2); sups at the box's largest |c|; no lambda factor
+FORMULA_D4A = bond t: X_t* a-hat = (lambda_0/<u,w>) Z h/lambda_0^2 with h = G_t V^(1/2) 1, ||h|| <= (A + |c_t|) lambda_0 v_0 (A-D4M's M1), so ||X_t* a-hat|| <= (A + |c_t|) (1 + tau^2)^(1/2); bond b: X_b* = Z Th M Z*/lambda_0^2 and X_b* a-hat = (lambda_0/<u,w>) Z Th f/lambda_0^2 with f = M V^(1/2) 1, ||f|| = v_0 E_1(c_b)^(1/2) (A3), so ||X_b* a-hat|| <= (1 + tau^2)^(1/2) E_1(c_b)^(1/2) <= (1 + tau^2)^(1/2) ((A - c_b)^2 + A^2)^(1/2) for c_b < J + A (A5, A6); sup at the box's smallest c_b (c_b <= A on the box); no lambda factor
+FORMULA_D4MA = bond t: as D4A's (the same X_t); bond b: X_b* = Z M Th Z*/lambda_0^2 and X_b* a-hat = (lambda_0/<u,w>) Z M h1/lambda_0^2 with h1 = Th V^(1/2) 1, ||h1|| <= lambda_0 v_0, and ||Z M||_H <= ||Z M||_HS,H <= (A2 + c_b^2 A0)^(1/2) lambda_h^(1/2) for c_b >= 0 (A-D4M's M2, Lemma D4 of 1340a52c), so ||X_b* a-hat|| <= (1 + tau^2)^(1/2) (A2 + c_b^2 A0)^(1/2) (lambda_h/lambda_0)^(1/2), with lambda_h/lambda_0 <= 1/(N*_I_FREE_LO N*_RQH_LO) (TAU_D3B_v1's J-uniform fallback, as in TRICK_DLM1's Q_HI_D4MA); sup at the box's largest c_b
+FORMULA_VALUES = in exact rationals from v3's A, A2, A0_HI and boxes and TAU_D3B_v1's TAU_HI, I_FREE_LO and RQH_LO; each value the smallest 12-significant-digit decimal whose square is at or above the formula's square at the sup corner (C-QEF)
+CHECK_JOINT = per kind and N, QE^2 QF^2 = Q^2 (1 + tau^2) exactly, with Q^2 the joint lemma's square at the same corners, and Q^2 at most TRICK_DLM1_v1_4_r1's N*_Q_HI_<kind>^2 and within 1e-10 of it (C-JOINT)
+NOTE_SCOPE = crude forms (the review 6e38bd40 sect. (a): a crude bound will do for type A; the approval 2026-11-09T00:21Z allows crude for every kind). TRICK_DLM1_v1_4_r1 lists the row N4 D3 (-1,2) as OPEN for its joint q; the single-bond keys hold for it as for every row
+NOTE_LAMBDA = N*_QF_HI_D4MA uses the exact ratio 1/(N*_I_FREE_LO N*_RQH_LO) of TAU_D3B_v1's decimals; N*_LAMBDA_RATIO_HI is its 12-digit upper end, written for reference only
+N4_A = 3/2
+N4_TAU_HI = 0.613769569310
+N4_LAMBDA_RATIO_HI = 1.30766417906e0
+N4_QE_HI_D3B = 3.00373548581e0
+N4_QF_HI_D3B = 3.00373548581e0
+N4_QE_HI_D4A = 3.00373548581e0
+N4_QF_HI_D4A = 1.95735915000e0
+N4_QE_HI_D4MA = 3.00373548581e0
+N4_QF_HI_D4MA = 2.47083699988e0
+N3_A = 1
+N3_TAU_HI = 0.494050213724
+N3_LAMBDA_RATIO_HI = 1.19581638076e0
+N3_QE_HI_D3B = 1.91846367689e0
+N3_QF_HI_D3B = 1.91846367689e0
+N3_QE_HI_D4A = 1.91846367689e0
+N3_QF_HI_D4A = 1.24703930055e0
+N3_QE_HI_D4MA = 1.91846367689e0
+N3_QF_HI_D4MA = 1.70573160766e0
+END = QEF_DLM1_v1

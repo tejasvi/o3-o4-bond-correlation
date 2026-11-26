@@ -1,0 +1,11 @@
+# o5_jobs_v7b_2_r2.txt (pk23 O5 box kit v7b_2, stage 2 run r2 of the n = 5 statement): kit v7b's
+# o5_jobs_v7b_r2.txt (0071ed57) with only the G33_n5_N4_K5 cap changed, from 337G to 369G, after run r1's measured peaks (record
+# O5_BOX_RECORD_run_20261118T154150Z_v1.md, sect. 5); G33_n5_N3_K5 keeps 446G. The caps total 815G, inside the box's 85% line (816 GiB),
+# which launcher v7_2 passes as BUDGET_GB. Columns as in kit v7's o5_jobs_v7.txt: PHASE TAG CAP_GB GUARD_CAP_COREH LIM ENGINE REF K ROWS
+# COLS N J1 ORBIT SIGMA CONTROLS MEMSTOP NCELL. Phase C: kit v7's three controls on g37fs v1_1; phase B: one wave of the two K5 jobs of
+# orbit G33 of P_3 x P_5, each with LIM 50000 s and guard 14.5 core-h.
+C c_G02_n4_fs64 8 0.10 600 kt_lbu_g37fs_v1_1.py ref_pk06_full_n4_G02_s14_v1.out 3 3 4 4 350 G02 1/4 none 0 64
+C c3_G02_N3K4_s1413_65536 8 0.10 600 kt_lbu_g37fs_v1_1.py ref_n3_N3_K4_G02_sig14_13_ncell65536.out 4 3 3 3 300 G02 1/4,1/3 none 7800 65536
+C c3_G02_N4K5_16384 8 0.10 600 kt_lbu_g37fs_v1_1.py ref_n3_N4_K5_G02_ncell16384.out 5 3 3 4 350 G02 1/4 none 7800 16384
+B G33_n5_N3_K5 446 14.50 50000 kt_lbu_g37fs_v1_1.py - 5 3 5 3 300 G33 1/4,1/3 none 0 65536
+B G33_n5_N4_K5 369 14.50 50000 kt_lbu_g37fs_v1_1.py - 5 3 5 4 350 G33 1/4,1/3 none 0 65536

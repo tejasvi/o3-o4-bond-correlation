@@ -1,0 +1,122 @@
+SHA OK manifest 8d1a2fcf (every entry, --strict; kt_ma_val_v1_6, arbeng_ma_v1_4 in it) 2026-11-08T00:53:43Z
+start 2026-11-08T00:53:43Z; used 0.0 s
+launch v3 AS 8589934592 2026-11-08T00:53:43Z; used 0.0 s
+v3 rc 0 cpu 4.4 s peak RSS 372 MiB, bytes 5611 2026-11-08T00:53:47Z
+  C-CROSS (layer): 12 intervals (two with 136/134-bit ends at iv.dps 40): [-3.25, -1.5] ok; [-0.75, 1.25] ok; [-0.25, 0.25] ok; [0.0, 2.5] ok; [-2.5, 0.0] ok; [-1.607262910779401e+301, -5.357543035931337e+300] ok; [-8.289046e-317, -
+  C-CROSS (stub): 12 intervals (two with 136/134-bit ends at iv.dps 40): [-3.25, -1.5] ok; [-0.75, 1.25] ok; [-0.25, 0.25] ok; [0.0, 2.5] ok; [-2.5, 0.0] ok; [-1.607262910779401e+301, -5.357543035931337e+300] ok; [-8.289046e-317, -8
+  PLANT-SIGN: arbeng_ma_stub_v1's unsigned mpi_to_arb misses the endpoints of 10 of 12 intervals -> FIRES
+  C-TINY (Dc 6) table containment: 246961 M-a entries (0 without an arb entry), 0 arb-only entries; 0 M-a and 0 arb entries fail (no overlap, or a one-sided entry not containing 0); largest M-a relative width 9.05e+156 -> PASS
+  C-TINY rule exercised: 101784 terms made error-only; C-UF: largest einsum allowance 1.897e-320, Smax 1.000e+00; 246961 entries (cpu 3.9 s) -> PASS
+  PLANT-TINY: the same table under arbeng_ma_v1_1: a shadow product 5.563e-309 in the subnormal range -> FIRES
+  C-ZMID: npoly_mul ok; npoly_pow k=2 ok; E2 ok; E2 two parts ok; lp_norm p=4 ok; condE ok; CondTable ok -> PASS
+  C-FALLBACK: E2 of (0 +- 0.25) Y0 + 1 against Y0 with the default fallback (relative M-a error 0.5 > FALLBACK_REL 1e-03): MAFallback: E2: M-a error 5.00e-01 of 1.00e+00 -> PASS
+  PLANT-ZMID: arbeng_ma_v1_1: npoly_mul lost; npoly_pow k=2 lost; E2 ok; E2 two parts ok; lp_norm p=4 lost; condE lost; CondTable lost -> FIRES
+  C-COUNT: ma_add(normal k 3, error-only k 5): k 6 (want 6), sr 1.25 (want 1.25) -> PASS
+  PLANT-COUNT: arbeng_ma_v1_1: k 3 -> FIRES
+  C-FLOOR: npoly_mul((1e-200 +- 1e-210) x, same) -> {(2,): '[+/- 4.01e-292]'}; arb product [1.0000e-400 +/- 3e-409] -> PASS
+  PLANT-FLOOR: without the floor (TWO_TINY := 0): {} -> FIRES
+  C-INT64: 6^24 passes: True; 7^24 raises: True; MomTable F = 24, D = 6: MomTable: monomial codes would overflow int64 (7^24 >= 2^63): split the forms (cpu 0.00 s) -> PASS
+  PLANT-INT64: numpy int64 7^24 = 7113790643470898241, exact 191581231380566414401 -> FIRES
+  C-AK exact moments: 2810 moments, 0 not contained; largest printed relative width 2.71e-09 -> PASS
+  PLANT-MA-AK: 2810 of 2810 nonzero exact moments perturbed by 10 x 2.71e-09 relative fall outside -> FIRES
+v3 VALID 2026-11-08T00:53:47Z; used 4.4 s of 2150
+launch v4 AS 8589934592 2026-11-08T00:53:47Z; used 4.4 s
+v4 rc 0 cpu 28.0 s peak RSS 1009 MiB, bytes 4344 2026-11-08T00:54:15Z
+  C-SING B0: 511 kept, 512 dropped (all rank-deficient, det balls containing 0: True), 1023 allowed -> PASS
+  QC C-BUDGET B0 (quality control, not a gate): M-a part 7.47e-35, relative 5.65e-12
+  PLANT-MA-SING: forms with X0's column zeroed (W = W_int, not the forms of Gam): det of the singular subset (0,) excludes 0 -> FIRES
+  PLANT-MA-W: W unequal to W_int: ValueError (W[0, 0] = 0 is not the exact integer W_int = 1); W missing: ValueError (W_int given without the forms W) -> FIRES
+  C-ERRORS: MAFallback a plain Exception: True; 2^2000 at conversion raises MAFallback: True; the 1e-320 shadow product goes through the tiny rule (v1_2) to [+/- 4.01e-292], which contains (1e-160)^2: True -> PASS
+  PLANT-MA-INPUT: first minor of j = 1 scaled by 1 + 1e-3: M-a E2(Q4, Q4) 9.612447982e+00 +- 4.2e-12 (rel 4.3e-13) against arb 9.612149786e+00 +- 5.1e-150 (rel 5.3e-151) -> FIRES
+v4 VALID 2026-11-08T00:54:15Z; used 32.4 s of 2150
+launch v1 AS 12884901888 2026-11-08T00:54:15Z; used 32.4 s
+v1 rc 0 cpu 381.5 s peak RSS 7781 MiB, bytes 3932 2026-11-08T01:00:37Z
+  C-TINY V1: 4273190 terms made error-only by the tiny rule; C-UF: largest einsum allowance 3.440e-319, Smax 1.000e+00
+  PLANT-MA-ROUND: without the rounding term 2 entries miss their arb ball -> FIRES
+  C-REPRO nD: M-a midpoint 2.437214e-04 against kt_c_v2_3 printed 2.437e-04 (old trial set) -> PASS
+  QC C-BUDGET nD (quality control, not a gate): M-a part 7.32e-15 = radius with the M-a radii 7.32e-15 minus without 2.54e-152; relative 3.00e-11
+v1 VALID 2026-11-08T01:00:37Z; used 413.8 s of 2150
+launch v2 AS 8589934592 2026-11-08T01:00:37Z; used 413.8 s
+v2 rc 0 cpu 80.6 s peak RSS 1103 MiB, bytes 4211 2026-11-08T01:01:58Z
+  C-SING X0: 511 kept, 512 dropped (all rank-deficient, det balls containing 0: True), 1023 allowed -> PASS
+  QC C-BUDGET X0 (quality control, not a gate): M-a part 1.04e-30, relative 1.99e-11
+  C-SING X1: 511 kept, 512 dropped (all rank-deficient, det balls containing 0: True), 1023 allowed -> PASS
+  QC C-BUDGET X1 (quality control, not a gate): M-a part 1.59e-31, relative 1.04e-11
+  C-SING X2: 511 kept, 512 dropped (all rank-deficient, det balls containing 0: True), 1023 allowed -> PASS
+  QC C-BUDGET X2 (quality control, not a gate): M-a part 1.04e-30, relative 1.98e-11
+  C-REPRO tailX: M-a 3.4668e-10 against kt_c_v2_3 printed 3.47e-10 (old trial set) -> PASS
+v2 VALID 2026-11-08T01:01:58Z; used 494.5 s of 2150
+launch cmp AS 8589934592 2026-11-08T01:01:58Z; used 494.5 s
+cmp rc 0 cpu 0.2 s peak RSS 84 MiB, bytes 2954 2026-11-08T01:01:58Z
+  C-V15SAME v1: out_kt_ma_val_v1_6_v1.out (sha256 78a6e1a8, 22 lines) against kt_ma_val_v1_5's (22 lines): 0 differing lines after normalization -> PASS
+  C-V15SAME v2: out_kt_ma_val_v1_6_v2.out (sha256 8173c83b, 23 lines) against kt_ma_val_v1_5's (23 lines): 0 differing lines after normalization -> PASS
+  C-V15SAME v3: out_kt_ma_val_v1_6_v3.out (sha256 af14f2f1, 30 lines) against kt_ma_val_v1_5's (30 lines): 0 differing lines after normalization -> PASS
+  C-V15SAME v4: out_kt_ma_val_v1_6_v4.out (sha256 56ab092b, 23 lines) against kt_ma_val_v1_5's (23 lines): 0 differing lines after normalization -> PASS
+cmp VALID 2026-11-08T01:01:58Z; used 494.7 s of 2150
+launch v5 AS 8589934592 2026-11-08T01:01:58Z; used 494.7 s
+v5 rc 0 cpu 6.3 s peak RSS 118 MiB, bytes 4180 2026-11-08T01:02:05Z
+  C-V2-ARB F=6 D=10: 8008 moments: 0 MomTableU and 0 MomTable balls fail to contain the arb ball; largest |mid - arb|/rad (MomTableU) 0.103; largest relative radius 3.07e-09 -> PASS
+  C-V2-OVL F=6 D=10: MomTableU and MomTable balls: 0 not overlapping; counts max MomTableU 75, MomTable 77 (0.5 s) -> PASS
+  C-PAIRS F=6 D=10: 14 units: candidate pairs equal plan()'s count in each; largest terms/(2^|supp c| - 1) 1.000 -> PASS
+  C-V2-ARB F=8 D=10: 43758 moments: 0 MomTableU and 0 MomTable balls fail to contain the arb ball; largest |mid - arb|/rad (MomTableU) 0.092; largest relative radius 1.31e-08 -> PASS
+  C-V2-OVL F=8 D=10: MomTableU and MomTable balls: 0 not overlapping; counts max MomTableU 82, MomTable 77 (3.6 s) -> PASS
+  C-PAIRS F=8 D=10: 73 units: candidate pairs equal plan()'s count in each; largest terms/(2^|supp c| - 1) 1.000 -> PASS
+  PLANT-V2-ARB: (8, 10): 43758 of 43758 nonzero arb moments moved by 10 x 1.31e-08 relative fall outside the MomTableU balls -> FIRES
+  C-V2-ARB F=12 D=6: 18564 moments: 0 MomTableU and 0 MomTable balls fail to contain the arb ball; largest |mid - arb|/rad (MomTableU) 0.087; largest relative radius 1.10e-11 -> PASS
+  C-V2-OVL F=12 D=6: MomTableU and MomTable balls: 0 not overlapping; counts max MomTableU 39, MomTable 41 (1.6 s) -> PASS
+  C-PAIRS F=12 D=6: 23 units: candidate pairs equal plan()'s count in each; largest terms/(2^|supp c| - 1) 1.000 -> PASS
+  C-V2-ARB F=6 D=9 groups+caps: 2725 moments: 0 MomTableU and 0 MomTable balls fail to contain the arb ball; largest |mid - arb|/rad (MomTableU) 0.086; largest relative radius 4.46e-10 -> PASS
+  C-V2-OVL F=6 D=9: MomTableU and MomTable balls: 0 not overlapping; counts max MomTableU 66, MomTable 68 (0.2 s) -> PASS
+  C-PAIRS F=6 D=9: 10 units: candidate pairs equal plan()'s count in each; largest terms/(2^|supp c| - 1) 1.000 -> PASS
+v5 VALID 2026-11-08T01:02:05Z; used 501.0 s of 2150
+launch v6 AS 8589934592 2026-11-08T01:02:05Z; used 501.0 s
+v6 rc 0 cpu 14.2 s peak RSS 115 MiB, bytes 3432 2026-11-08T01:02:24Z
+  C-RESUME: (12, 8): blocks 97 (8 units), 31 (8 units) and 97 stopping after every block (1304 units): moments bit-identical -> PASS
+  PLANT-STATE-HASH: one moment moved by 1 ulp in mom_k05.npz -> FIRES
+  PLANT-PARAM (n): the same files loaded with n + 1 -> FIRES
+  PLANT-PARAM (Gam): the same files with Gam[0, 0] moved by 2^-60 -> FIRES
+  PLANT-FLOATSTATE: a float npz (codes, moments) in place of level_k03.npz -> FIRES
+  PLANT-CHAIN: another table's level hand-off -> FIRES
+  PLANT-CODES: level_k03.npz with one code changed and its hand-off sha256 rewritten -> FIRES
+  PLANT-PARTITION: a second hand-off for a unit range of level 8 already covered -> FIRES
+  C-FASTSUM: scalar_sum_fast equals scalar_sum bit for bit on 36 lengths (1, 2, 3, 2^m - 1, 2^m, 2^m + 1, m = 2..12) with zeros, error-only and near-TINY terms -> PASS
+  C-E2B: (6, 10), P with 120 terms: one-block plan equals E2 bit for bit True; the 18-block plan's ball and E2's ball contain the arb E2 True -> PASS
+  PLANT-E2PLAN: a plan without its last block refused True; a combine with a missing part refused True -> FIRES
+v6 VALID 2026-11-08T01:02:24Z; used 515.2 s of 2150
+launch v7s AS 8589934592 2026-11-08T01:02:24Z; used 515.2 s
+v7s rc 0 cpu 39.2 s peak RSS 2353 MiB, bytes 2480 2026-11-08T01:03:03Z
+  C-PLAN16: 19 units for 16 levels; planned candidate pairs 5304518790, exact binomial total 5304518790 (38.9 s) -> PASS
+v7s VALID 2026-11-08T01:03:03Z; used 554.4 s of 2150
+launch v7u0 AS 8589934592 2026-11-08T01:03:03Z; used 554.4 s
+v7u0 rc 0 cpu 467.3 s peak RSS 5771 MiB, bytes 5199 2026-11-08T01:10:51Z
+  V7 UNIT [1, 0, 1] (asked [1, 0, 1]): terms 12, cpu 0.0 s (333333 ns/term), k_max 3, shadow max 3.33e-16, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 1 assembled
+  V7 UNIT [2, 0, 1] (asked [2, 0, 1]): terms 210, cpu 0.0 s (14286 ns/term), k_max 8, shadow max 2.07e-15, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 2 assembled
+  V7 UNIT [3, 0, 1] (asked [3, 0, 1]): terms 1948, cpu 0.0 s (1540 ns/term), k_max 14, shadow max 1.19e-14, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 3 assembled
+  V7 UNIT [4, 0, 1] (asked [4, 0, 1]): terms 12651, cpu 0.0 s (395 ns/term), k_max 21, shadow max 7.43e-14, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 4 assembled
+  V7 UNIT [5, 0, 1] (asked [5, 0, 1]): terms 64296, cpu 0.0 s (156 ns/term), k_max 29, shadow max 5.06e-13, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 5 assembled
+  V7 UNIT [6, 0, 1] (asked [6, 0, 1]): terms 271624, cpu 0.0 s (136 ns/term), k_max 38, shadow max 3.77e-12, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 6 assembled
+  V7 UNIT [7, 0, 1] (asked [7, 0, 1]): terms 990936, cpu 0.1 s (115 ns/term), k_max 48, shadow max 3.00e-11, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 7 assembled
+  V7 UNIT [8, 0, 2] (asked [8, 0, 2]): terms 3205698, cpu 0.4 s (119 ns/term), k_max 59, shadow max 2.51e-10, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 8 assembled
+  V7 UNIT [9, 0, 4] (asked [9, 0, 4]): terms 9377600, cpu 1.3 s (141 ns/term), k_max 71, shadow max 2.11e-09, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 9 assembled
+  V7 UNIT [10, 0, 8] (asked [10, 0, 8]): terms 25181652, cpu 4.1 s (161 ns/term), k_max 84, shadow max 1.89e-08, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 10 assembled
+  V7 UNIT [11, 0, 15] (asked [11, 0, 15]): terms 62815920, cpu 10.5 s (167 ns/term), k_max 98, shadow max 1.64e-07, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 11 assembled
+  V7 UNIT [12, 0, 28] (asked [12, 0, 28]): terms 146969266, cpu 26.8 s (182 ns/term), k_max 113, shadow max 1.16e-06, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 12 assembled
+  V7 UNIT [13, 0, 50] (asked [13, 0, 50]): terms 325076712, cpu 61.3 s (188 ns/term), k_max 128, shadow max 8.46e-06, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 13 assembled
+  V7 UNIT [14, 0, 90] (asked [14, 0, 90]): terms 684228648, cpu 121.8 s (178 ns/term), k_max 143, shadow max 6.54e-05, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 14 assembled
+  V7 UNIT [15, 0, 112] (asked [15, 0, 112]): terms 993134518, cpu 199.2 s (201 ns/term), k_max 158, shadow max 4.89e-04, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000
+  V7 PROGRESS: 15 units this job; levels assembled [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]; peak RSS 5771 MiB
+v7u0 VALID 2026-11-08T01:10:51Z; used 1021.7 s of 2150
+launch v7u1 AS 8589934592 2026-11-08T01:10:51Z; used 1021.7 s
+v7u1 rc 0 cpu 479.6 s peak RSS 6293 MiB, bytes 3211 2026-11-08T01:18:52Z
+  V7 UNIT [15, 112, 155] (asked [15, 112, 155]): terms 384933474, cpu 75.8 s (197 ns/term), k_max 158, shadow max 5.24e-04, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 15 assembled
+  V7 UNIT [16, 0, 122] (asked [16, 0, 122]): terms 997536294, cpu 155.4 s (156 ns/term), k_max 168, shadow max 2.69e-03, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000
+  V7 UNIT [16, 122, 194] (asked [16, 122, 194]): terms 999099008, cpu 152.9 s (153 ns/term), k_max 173, shadow max 4.20e-03, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000
+  V7 UNIT [16, 194, 221] (asked [16, 194, 261]): terms 309377556, cpu 53.8 s (174 ns/term), k_max 173, shadow max 3.67e-03, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000
+  V7 PROGRESS: 4 units this job; levels assembled [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; peak RSS 6292 MiB
+v7u1 VALID 2026-11-08T01:18:52Z; used 1501.3 s of 2150
+launch v7u2 AS 8589934592 2026-11-08T01:18:52Z; used 1501.3 s
+v7u2 rc 0 cpu 115.9 s peak RSS 4421 MiB, bytes 2692 2026-11-08T01:20:48Z
+  V7 UNIT [16, 221, 261] (asked [16, 221, 261]): terms 362240767, cpu 75.2 s (208 ns/term), k_max 173, shadow max 3.11e-03, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 16 assembled
+  V7 PROGRESS: 1 units this job; levels assembled [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]; peak RSS 4421 MiB
+v7u2 VALID 2026-11-08T01:20:48Z; used 1617.2 s of 2150
+CAP-GUARD: used 1617.2 s before v7f, cap 2150 s 2026-11-08T01:20:48Z

@@ -1,0 +1,12 @@
+kt_ma_val_v1_6 sha256 09e7a3c6cec5435ec14a4b66193abba163293e10a02539654636fdd25cd18bde PIECE=v7u1 LIM=120
+kt_cert_v1_5 sha256 bf1995af9ae714e5ba225d2d4ea3c7a8802709ad2dfe55f2163e0452eee0e37b ITEM=tA.e1n4 LIM=120 (RLIMIT_CPU soft 120, hard 125)
+C-HASH PASS (5 engine files, 1 own files, 10 predecessor outputs, 6 inputs)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+C-HASH PASS (kt_cert_v1_5, arbeng_ma_v1_4, arbeng_ma_v1_1, arbeng_ma_stub_v1_1, arbeng_ma_stub_v1)
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-TREE: m 1: 3 terms k 2 (want 2); merged with 3 terms k 3 (want 3; formula 3); m 2: 5 terms k 3 (want 3); merged with 3 terms k 4 (want 4; formula 3); m 3: 9 terms k 4 (want 4); merged with 3 terms k 5 (want 5; formula 4); m 5: 33 terms k 6 (want 6); merged with 3 terms k 7 (want 7; formula 6); m 8: 257 terms k 9 (want 9); merged with 3 terms k 10 (want 10; formula 9); m 12: 4097 terms k 13 (want 13); merged with 3 terms k 14 (want 14; formula 13) -> PASS
+V7 UNIT [10, 26, 71] (asked [10, 26, 71]): terms 17284744, cpu 2.3 s (131 ns/term), k_max 84, shadow max 1.89e-08, tiny 0, C-PAIRS cand = plan True, terms ratio 1.000; level 10 assembled
+V7 PROGRESS: 1 units this job; levels assembled [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; peak RSS 258 MiB
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+ITEM v7u1 cpu 2.6 s, peak resident memory 258 MiB
+VERDICT VALID

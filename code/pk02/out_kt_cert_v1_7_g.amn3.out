@@ -1,0 +1,21 @@
+kt_cert_v1_7 sha256 efe4c40db1b82f7d6e4106d7a5e1f878c6d3cac2405b9c1d56c4cab86c24b5ab ITEM=g.amn3 LIM=300 (RLIMIT_CPU soft 300, hard 305)
+C-HASH PASS (5 engine files, 1 own files, 11 predecessor outputs, 6 inputs, 4 trial-set files, 12 float references, 1 replay record)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+FORMAT KT_CERT_RECORD_v1_7 CERTIFIED
+KERNEL arbeng_c2b_v2.py fb8cd1b5162930b1e9ff83c35fb652575a9f2ff1649f733c5d45bdf7f7762993 ctx.prec 512
+C-TILT (a) N=3: c_m 0.59545911617622549 >= -log(1 - a)/(2a) = 0.595459116176 (a 0.30250000000000005), c_e 0.61984319809502719 >= -log(1 - a)/(2a) = 0.619843198095 (a 0.35999999999999999), c_pp 1.3625639128541667 >= -log(1 - a)/(2a) = 1.36256391285 (a 0.91806662960623808); a_pp 0.91806662960623808 >= sin^2(asin rho_m + delta) = 0.918066629606; Chernoff lambdas 0.45 0.5 > 0 -> PASS
+PLANT-TILT N=3: c_m (1 - 1e-9) passes the rate test: False; a lambda = 1e3 tilt certified positive definite: False -> FIRES
+HANDOFF-READ N=3 am x: hand_kt_cert_v1_7_x.amn3.txt sha256 9954df887a1162fec43b4e24504f27db28db6efbe9886b3c8485f9d7c6b3211e equals its record (out_kt_cert_v1_7_x.amn3.out); body checksum and header PASS
+PLANT-HANDOFF N=3 am x: (a) rejected: body checksum; (b) rejected: sha256 differs from the record; (c) rejected: header -> FIRES
+STAGE-CPU N=3 am: Da (2554 terms) done at cpu 0.4 s
+STAGE-CPU N=3 am: nP, nR done at cpu 4.3 s
+STAGE-CPU N=3 am: far (FLOAT parts with the cross terms) done at cpu 45.3 s
+AENGINE N=3 J=300 am: bound 1.547115839e-04 +- 3.7e-83 (rel 2.4e-79) | nP 1.508861717e-04 +- 3.7e-83 (rel 2.4e-79) | nR 3.825412192e-06 +- 5.8e-152 (rel 1.5e-146) | far 2.629523471e-19 +- 9.9e-173 (rel 3.8e-154) (FLOAT parts) | Da 2554 terms, deg 10 | cpu D4 0.2 wish 3.8 far 41.0 (45.1 s)
+FLOAT-IN N=3 am (repr; F4, for M2/M3; eps_r and Z from the old trial set, indicative): oSS np.float64(6.585264461541221e-20) | oS_e2 np.float64(6.080121254235958e-19) | oD_e2_e2 np.float64(5.6137321794450014e-18) | eps_r 1.9728672580359356e-06 (not used by this kind) | Z: a_k [1.0, 0.8230070134373547, 0.7765835242312656, 0.7801522802941093] remainder 7.320436945523051e-07 -> Z 1.002751282e+00 +- 4.5e-154 (rel 4.5e-154)
+VALUE N=3 J=300 am: A_am <= 1.544991947e-04 (ball 1.544991944e-04 +- 3.7e-83 (rel 2.4e-79); rounded up; eps_r and Z FLOAT, old trial set, indicative: W2 v2 uses the certified eps_r of M2(b) and Z of M3)
+RESULT N=3 J=300 am: A_am [1.5449919441815475e-04, 1.5449919441815478e-04] bound [1.5471158387967825e-04, 1.5471158387967828e-04] FLOAT-IN far eps_r Z
+C-REP N=3 am against out_kt_c_t_v1_1_amn3.out: C-REFHEAD PASS; bound 1.547115839e-04 vs 1.547116000e-04 (v2_3 1.547116e-04 with far 2.63e-19 -> 2.630e-19 and tailB 0 -> 0.000e+00; rel 1.0e-07); nP 1.5089e-04 vs 1.509e-04; nR 3.8254e-06 vs 3.825e-06 -> PASS
+C-RAD N=3: worst relative radius over the bound and the main parts 2.44e-79 -> PASS
+C-TILT (b) N=3: 1 positive-definiteness tests (tilted_cov), all certified: True; smallest leading minor lower end 8.488e+00 -> PASS
+ITEM g.amn3 cpu 45.3 s, peak resident memory 419 MiB
+VERDICT VALID

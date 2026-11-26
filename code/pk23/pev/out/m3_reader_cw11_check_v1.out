@@ -1,0 +1,25 @@
+m3_reader_cw11_check_v1: fork c1331e0436244a1f, parent 876b61841b5193af, producer 69730e387a039525
+C-PINS (the fork lists m3_lawcert_c3k_v2 69730e387a039525 with prefix m3_c3kp_, suffix _J300_c3kp.json and families E4D, E4N; the parent's 9 producers kept) -> PASS
+C-LOAD-LAWCERT (N=4: m3_lawcert_c3k_v2_N4.json through load_lawcert bound to m3_lawcert_c3k_v2_4.out: producer m3_lawcert_c3k_v2.py, 11 entries, each with its record's ak, ak_rad, err, parts and laws; IhR,10,b free) -> PASS
+LAW N=4 E4N:IhR,10,0: ak ['8.371936274902e-13', '-3.592182646838e+00', '-3.376952854057e+00', '-2.298105550045e+00'] ak_rad ['7.445e-13', '1.184e-09', '2.605e-07', '6.015e-05'] parts {'rem': '3.261e-04', 'tail': '1.419e-05', 'ann': '1.826e-05', 'far': '2.089e-37', 'rnd': '9.815e-12'}
+LAW N=4 E4N:IhR,10,1: ak ['3.397120019983e-03', '6.563788563961e-01', '-2.514763705398e-01', '-6.889392006033e-01'] ak_rad ['9.114e-11', '3.021e-08', '7.928e-06', '2.109e-03'] parts {'rem': '2.461e-03', 'tail': '9.451e-05', 'ann': '1.755e-04', 'far': '1.773e-36', 'rnd': '3.580e-10'}
+LAW N=4 E4N:IhR,10,3: ak ['-7.575045268149e-14', '-2.280192337580e+00', '-4.508224540617e+00', '-3.040654944702e+00'] ak_rad ['1.615e-11', '1.218e-07', '3.302e-05', '6.169e-04'] parts {'rem': '7.263e-03', 'tail': '1.765e-04', 'ann': '5.204e-04', 'far': '1.107e-35', 'rnd': '8.120e-10'}
+C-PARENT-RECORDS (N=4: the cw certificate still loads through the fork: producer m3_lawcert_cw_v1.py, 4 entries) -> PASS
+PLANT-READER-CW11 (N=4: the producer sha256 with its last digit changed must be refused) -> FIRES
+PLANT-READER-CW11 (N=4: the other N on the first line must be refused) -> FIRES
+PLANT-READER-CW11 (N=4: the cw producer with its own sha256 for the c3kp records must be refused) -> FIRES
+PLANT-READER-CW11 (N=4: the records passed without E4D must be refused) -> FIRES
+PLANT-READER-CW11 (N=4: a law changed with the RECORD line re-hashed must be refused) -> FIRES
+PLANT-PARENT (N=4: the parent m3_reader_cw_v1 must refuse the c3kp certificate) -> FIRES
+C-LOAD-LAWCERT (N=3: m3_lawcert_c3k_v2_N3.json through load_lawcert bound to m3_lawcert_c3k_v2_3.out: producer m3_lawcert_c3k_v2.py, 11 entries, each with its record's ak, ak_rad, err, parts and laws; IhR,10,b free) -> PASS
+LAW N=3 E4N:IhR,10,0: ak ['-8.724624346145e-15', '1.952768049235e+00', '2.477531732274e+00', '2.715090586699e+00'] ak_rad ['3.543e-13', '6.956e-10', '1.354e-07', '2.817e-05'] parts {'rem': '2.074e-04', 'tail': '4.957e-06', 'ann': '6.270e-06', 'far': '3.197e-43', 'rnd': '5.220e-12'}
+LAW N=3 E4N:IhR,10,1: ak ['2.773736889104e-03', '4.198245967247e-01', '7.653547364710e-01', '1.102057295317e+00'] ak_rad ['6.776e-11', '1.956e-08', '4.715e-06', '1.149e-03'] parts {'rem': '1.504e-03', 'tail': '3.706e-05', 'ann': '5.817e-05', 'far': '3.331e-42', 'rnd': '2.279e-10'}
+LAW N=3 E4N:IhR,10,3: ak ['2.327479344024e-14', '1.510230436748e+00', '3.416149302735e+00', '4.579697055211e+00'] ak_rad ['6.496e-12', '8.207e-08', '1.999e-05', '3.556e-04'] parts {'rem': '4.376e-03', 'tail': '6.918e-05', 'ann': '1.688e-04', 'far': '2.080e-41', 'rnd': '5.153e-10'}
+C-PARENT-RECORDS (N=3: the cw certificate still loads through the fork: producer m3_lawcert_cw_v1.py, 4 entries) -> PASS
+PLANT-READER-CW11 (N=3: the producer sha256 with its last digit changed must be refused) -> FIRES
+PLANT-READER-CW11 (N=3: the other N on the first line must be refused) -> FIRES
+PLANT-READER-CW11 (N=3: the cw producer with its own sha256 for the c3kp records must be refused) -> FIRES
+PLANT-READER-CW11 (N=3: the records passed without E4D must be refused) -> FIRES
+PLANT-READER-CW11 (N=3: a law changed with the RECORD line re-hashed must be refused) -> FIRES
+PLANT-PARENT (N=3: the parent m3_reader_cw_v1 must refuse the c3kp certificate) -> FIRES
+VERDICT VALID

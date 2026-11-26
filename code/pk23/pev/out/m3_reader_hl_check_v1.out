@@ -1,0 +1,21 @@
+m3_reader_hl_check_v1: fork 1fefb14743d62f24, parent bff8344c2ecfaaa7, producer 8d5fe3c797b7861f
+C-PINS (the fork lists m3_lawcert_hl_v1_1 8d5fe3c797b7861f with prefix m3_hl_, suffix _J300_hl.json and families L, LH, LT; the parent's 7 producers kept) -> PASS
+C-LOAD-LAWCERT (N=4: m3_lawcert_hl_v1_1_N4.json through load_lawcert bound to m3_lawcert_hl_v1_1_4.out: producer m3_lawcert_hl_v1_1.py, 6 entries L:TT,0,0, LH:Mh,0,0, LH:Mhh,0,0, LH:TTh,0,0, LT:Mt,0,0, LT:Mtt,0,0) -> PASS
+LAW N=4 L:TT,0,0: ak ['1', '56126777397980', '69780800230099', '12115884062673'] ak_rad ['0', '1373976218', '2953462714', '8271169358'] parts {'rem': '638477968827', 'tail': '385685402473', 'ann': '325667231506', 'far': '455463592619', 'rnd': '615106049550'}
+LAW N=4 LH:Mh,0,0: ak ['38071014135985', '40204103702503', '65145777557318', '23448077932959'] ak_rad ['227399367/', '3152094743', '9725825107', '3485317791'] parts {'rem': '746314702748', 'tail': '574246945673', 'ann': '329980929540', 'far': '266873198800', 'rnd': '558696255539'}
+PLANT-READER-HL (N=4: the producer sha256 with its last digit changed must be refused) -> FIRES
+PLANT-READER-HL (N=4: the other N on the first line must be refused) -> FIRES
+PLANT-READER-HL (N=4: the c3k producer with its own sha256 for the hl records must be refused) -> FIRES
+PLANT-READER-HL (N=4: the records passed without LT must be refused) -> FIRES
+PLANT-READER-HL (N=4: a law changed with the RECORD line re-hashed must be refused) -> FIRES
+PLANT-PARENT (N=4: the parent m3_reader_c3h_v1_2 must refuse the hl certificate) -> FIRES
+C-LOAD-LAWCERT (N=3: m3_lawcert_hl_v1_1_N3.json through load_lawcert bound to m3_lawcert_hl_v1_1_3.out: producer m3_lawcert_hl_v1_1.py, 6 entries L:TT,0,0, LH:Mh,0,0, LH:Mhh,0,0, LH:TTh,0,0, LT:Mt,0,0, LT:Mtt,0,0) -> PASS
+LAW N=3 L:TT,0,0: ak ['1', '34921565685066', '85047545603547', '24413094091413'] ak_rad ['0', '1968462963', '2670143312', '1951557016'] parts {'rem': '303587547560', 'tail': '446636927617', 'ann': '477766599418', 'far': '595691018223', 'rnd': '763613931521'}
+LAW N=3 LH:Mh,0,0: ak ['12690338045328', '85501122906939', '55553135994404', '84209906953947'] ak_rad ['75799789/1', '1263466301', '4066552056', '4933745854'] parts {'rem': '549376347899', 'tail': '475165099325', 'ann': '404624096949', 'far': '698075411980', 'rnd': '571172419590'}
+PLANT-READER-HL (N=3: the producer sha256 with its last digit changed must be refused) -> FIRES
+PLANT-READER-HL (N=3: the other N on the first line must be refused) -> FIRES
+PLANT-READER-HL (N=3: the c3k producer with its own sha256 for the hl records must be refused) -> FIRES
+PLANT-READER-HL (N=3: the records passed without LT must be refused) -> FIRES
+PLANT-READER-HL (N=3: a law changed with the RECORD line re-hashed must be refused) -> FIRES
+PLANT-PARENT (N=3: the parent m3_reader_c3h_v1_2 must refuse the hl certificate) -> FIRES
+VERDICT VALID

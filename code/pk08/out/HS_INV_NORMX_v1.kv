@@ -1,0 +1,46 @@
+# HS_INV_NORMX_v1: the lemma-form D3 rows of the normX_HS record (pk08), for pk15's reader (SPEC_HS_INV_NORMX_v1_2).
+# Format S4U_KV_v1: one "KEY = value" per line; lines starting with # are comments. Decimals are exact; COEF is rounded up.
+RECORD = HS_INV_NORMX_v1
+FORMAT = S4U_KV_v1
+EXPORT_STATUS = CERTIFIED
+PRODUCER = pk08
+CODE = pk08/px08_hsd3_export_v1.py:101646c7
+INTERFACE = CENTRED_HS2_BOX
+TRACE = HAAR_TWISTED_ON_H
+NORMALIZATION = HS2_TR_XC_STAR_XC
+LEMMA_NOTE = pk08/HS_NORMX_LEMMA_NOTE_v1.md:ffd98fc1946714e36e86359c338c38a6b89af31eb7f707306a0a59f3f281493b
+OPERATOR_D3 = Z = K^(1/2) V^(1/2); G_t = V^(1/2) (K_t - c_t K) V^(1/2); G_bb = V^(1/2) (K_bb - c_bb K) V^(1/2); lambda_0^3 X_c = Z G_t G_bb Z*; w = 3; t = gap-0 top horizontal, bb = gap-1 bottom horizontal; HS2 = tr_H(X_c* X_c) <= COEF (lambda_h/lambda_0)^2, lambda_0 by its certified lower end
+LAMBDA_POWER_D3 = 2
+J_CLAIM = UNIFORM-J PER-ROW: every row holds for every J in [jlo, jhi]; jhi = inf includes t = 0
+FIELDS = jlo jhi ce_lo ce_hi cf_lo cf_hi COEF
+N4_D3_ROWS = 1
+N4_D3_R000 = 300 inf 0.94 1.06 0.94 1.06 44.3756314989
+N4_D3_METHOD = LEMMA
+N3_D3_ROWS = 1
+N3_D3_R000 = 300 inf 0.62 0.72 0.62 0.72 9.03928047080
+N3_D3_METHOD = LEMMA
+# binding and INFO keys (not read by the gates)
+LEMMA_REVIEW = rv01/REVIEW_HS_NORMX_LEMMA_NOTE_V1_rv01.md:969321c8e3ebd467233a0cd282303ef11d0be0dad4ead4fcf15ec2fb4cde4035
+DELTA = rv01/DELTA_SPEC_HS_INV_NORMX_V1_2_rv01.md:93c32c910c84fa7cf6e2a67c80d3e14a1e28efb3d0db5eb3c0061f49527cb547
+LEMMA_FORM_SOURCE = rv01/RULING_C_HS_OP_LEMMA_FORM_rv01.md:d0cc9120dae530429747379bb883d993be3351c1faa16d32648d4f28f582a94f
+SPEC = pk15/SPEC_HS_INV_NORMX_v1_2.md:84f6a3e02cb19bedab4f7ba7b585002058b6dea3fd72b733b4bf4770c12bdf7f ; pk15/SPEC_HS_INV_NORMX_v1_1.md:8043f94a77923d2f58e532b9d677b5de9fb6c656e832b8228b42390e826a653f
+PLAN = pk15/NOTE_STB_OPTION2_PLAN_v1_2.md:0a686ada4026e6a10df85364a6e9c5e2faddd082e66cea0ce22ebe0e9c881d8e
+FORMULA_D3 = Lemma D3 of LEMMA_NOTE, reading A: HS2 = tr_H(X_c* X_c) <= (A + |c_t|)^2 (A + |c_bb|)^2 U (lambda_h/lambda_0)^2 for every J >= 300 and every c; COEF is its sup over the row's box (|c| at the box's largest)
+OUTWARD = U's decimal is an upper end; COEF is exact from it and rounded up; the reader applies the upper end of lambda_h/lambda_0,lo to the power LAMBDA_POWER_D3
+N4_A = 3/2
+N3_A = 1
+N4_U = 1.033200684443
+N3_U = 1.032809143879
+U_SOURCE = pk08/S4_U_CERTIFIED_v3.md:eb98948365fa35498206c9f1b80c6d98d421f69b9dca6c245f3f2d1198112751
+T_DEF = T = K^(1/2) V K^(1/2) on L^2((S^(N-1))^3) with normalized measures; V = e^{J(s_T.s_M - 1)} e^{J(s_M.s_B - 1)}; K = K_T (x) K_M (x) K_B with K_r(s, s') = e^{J(s.s' - 1)}
+H_DEF = H = the O(N)-invariant subspace; P_H = int_O(N) U_g dg (Haar); lambda_0 = max spec(T), attained on H
+LAMBDA_H_DEF = S4-U's lambda_h equals SPEC v1_2's lambda_h := exp(logmain_N(J) - logmain_D(J)) at the same J: the 3- and 2-column strips with the ends (A_EX, B_EX) = ((3 + sqrt 21)/6, (3 sqrt 5 - sqrt 21)/12), whose matrix-tree determinant factor is S4's PR = pref_arb(N) = (detred(3)/detred(2))^((N-1)/2)
+U_T_H_BINDING = S4-U's T and H (S4_U_CERTIFIED_v3's CLAIM) are T_DEF and H_DEF; S4-U's lambda_h is LAMBDA_H_DEF's (PR = pref_arb(N) on strip_graph(ncols, AEX, BEX), copied into px08_m2bc4); the consumer's S8 identity (SPEC_S8_CERT_v1 19.6.2) and the port kt_s67_cert_v1_1's Ctx.U use the same objects
+# INFO: normX at r = lambda_h/lambda_0,lo = 1, the needs (plan l.28-31) and the spot control (the lemma at harmonic inputs; 2 Cov(X_c, theta X_c) + Cov^2 at the half-step plane)
+N4_D3_NORMX_R1 = 6.661503697
+N4_D3_NEEDS = (1,1) 15.5 ; (1,2) 20.3 ; (0,2) 18.5 ; (0,3) 173.7
+N4_D3_SPOT = 40.3017050785 0.000042482302 ; c_harm 1.00090 ; LEAD_HI 1.03023930410320116 ; Cov_LH 3.923151e-06 ; Cov^2 3.4636e-05 ; source pk11/out/s8hf_v1/out_kt_s8rf_v1_n4.out:a2edc1d7d757093a0061ccfe2b936d23132a186c0b72b6166e5deaeb3d03dbb4
+N3_D3_NORMX_R1 = 3.006539618
+N3_D3_NEEDS = (1,1) 15.0 ; (0,2) 18.5
+N3_D3_SPOT = 7.96146728913 0.000020573102 ; c_harm 0.667300 ; LEAD_HI 1.03023930410320116 ; Cov_LH 2.589551e-06 ; Cov^2 1.5394e-05 ; source pk11/out/s8hf_v1/out_kt_s8rf_v1_n3.out:070ddd443063835c096fc50a3516ea96a08c019d7ae13b91a84802308c4a7c5b
+END = HS_INV_NORMX_v1

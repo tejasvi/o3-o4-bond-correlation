@@ -1,0 +1,8 @@
+# o5_jobs_v1.txt (pk23 O5 box kit v3): PHASE TAG CAP_GB GUARD_CAP_COREH LIM K ROWS COLS N J1 ORBIT SIGMA CONTROLS MEMSTOP
+# Phase C = the box-side control (must reproduce pk06/runs/full_n4_G02_s14_v1.out: L 2.726006e-03); phase A in parallel under the
+# memory budget; phase B alone. Caps = 1.25 x the upper [E] peaks of pk23 plan v2 (543ebbe7). D0 jobs (item 3) are in o5_jobs_d0_v1.txt.
+C c_G02_n4 8 0.10 600 3 3 4 4 350 G02 1/4 none 0
+A G21_n5_N4 36 0.70 2400 3 3 5 4 350 G21 1/4 none 0
+A G27_n6_N4 170 3.00 10700 3 3 6 4 350 G27 1/4 none 0
+A G46_n6_N4 170 3.00 10700 3 3 6 4 350 G46 1/4 none 0
+B G55_n7_N4 663 12.50 43000 3 3 7 4 350 G55 1/4 none 0

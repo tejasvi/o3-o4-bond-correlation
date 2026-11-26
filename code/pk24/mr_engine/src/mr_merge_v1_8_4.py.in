@@ -1,0 +1,264 @@
+#!/usr/bin/env python3
+"""mr_merge_v1_8_4.py (pk24): merges the part records of kt_mr_assembly_v1_8_4 (RECORD MR_ASSEMBLY_PART, written with the PIECES option)
+into one MR_ASSEMBLY_KV_v1 record. Made by tools/make_mrengine_v1_8_4.py from mr_engine/src/mr_merge_v1_8_4.py.in (the maker fills the pins).
+Changes from v1_8_3: the engine v1_8_4 pin and names.
+v1_8_3's changes from v1_8_2: the engine v1_8_3 pin and names.
+v1_8_2's changes from v1_8_1: the engine v1_8_2 pin and names; the parts' ROUTE_V lines must agree and go into the merged record.
+v1_8_1's changes from v1_8: the engine v1_8_1 pin and names; the count line's list is named cnt.
+v1_8's changes from v1_7_1: the engine v1_8 pin and names; the parts' TAIL lines must agree. When the parts carry tail records (PART.tail, the
+engine's TAIL option), M-TAIL checks their lines, pins and pieces and that their rows cover the grid exactly once, and the merge writes
+OUT.tail; its verdict enters RUN_VERDICT unless TAIL is a design run; with --full, C-MERGE also compares the tail rows.
+v1_7_1's changes from v1_7: the engine v1_7_1 pin and names; the parts' TRIAL_SET lines must agree and go into the merged record.
+v1_7's changes from v1_6: the engine v1_7 pin and names; the parts' INPUT_FORMAT and XMODE lines must agree and go into the merged record.
+v1_6's changes from v1_5: the engine v1_6 pin and names, and the G-FLOAT reference v17 (the engine's PRODUCER check and plant rules need no
+merge change). v1_5's changes from v1_3 (v1_4 withdrawn with its engine): parts must carry PLANT = none; CODE and INPUT_PINS compared in full sha256 (N6); a line without "=" stops the
+read; the Q1 rule (G-FLOAT INFO only; a WARN block for rows with float H < 2; VALID from the margins and the checks).
+Usage: mr_merge_v1_8_4.py RECDIR PINS_SHA256 OUT PART [PART ...] [--full FULL]
+Checks that stop the merge:
+- M-PIN: RECDIR's PINS.txt has the given sha256 and its MR_SPECTRAL matches PINS; every part has FORMAT MR_ASSEMBLY_KV_v1, RECORD
+  MR_ASSEMBLY_PART, PLANT none, the pinned engine's CODE line, INPUT_PINS equal to RECDIR's PINS.txt, one MODE and one NMAX, and a COUNT line
+  that matches its rows;
+- M-COVER: per N, the parts' pieces are disjoint and their union is MR_SPECTRAL's grid;
+- M-ROWS: every part has the same row keys in the same order, with the same route d k dp m.
+Merge per row: the least Lmin over the parts with its piece (the parts taken in piece order, so a tie keeps the earliest piece, as in a
+full run), PASS iff every part passes, the least Hmin. Then G-FLOAT as INFO, the WARN block and, with --full, C-MERGE: every merged row
+equals the full run's row, byte for byte. RUN_VERDICT VALID (STANDIN-VALID on stand-in inputs) iff every part is PART-VALID (or
+PART-STANDIN-VALID), no row fails and C-MERGE (when asked) holds."""
+import hashlib, os, re, sys
+from decimal import Decimal as Dm
+
+W = '/mnt/g2/release/root/code/'
+ENGINE = (W + 'pk24/mr_engine/kt_mr_assembly_v1_8_4.py', '{{SHA256:pk24/mr_engine/kt_mr_assembly_v1_8_4.py}}')
+FREF = (W + 'pk24/mr_engine/v17/kt_mr_v1_5_NOF1_L3.out', '{{SHA256:pk24/mr_engine/v17/kt_mr_v1_5_NOF1_L3.out}}')
+
+
+def sha(p):
+    return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+
+
+class Stop(Exception):
+    pass
+
+
+def read_asm(path):
+    head, rows, order, count, fields = {}, {}, [], None, None
+    for ln in open(path).read().splitlines():
+        if ln.startswith('#') or not ln.strip():
+            continue
+        if '=' not in ln:
+            raise Stop('M-ROWS: %s has a line without "="' % os.path.basename(path))
+        k, v = [x.strip() for x in ln.split('=', 1)]
+        if k == 'FIELDS':
+            fields = v.split()
+        elif fields is None:
+            head[k] = v
+        elif k == 'COUNT':
+            count = v
+        else:
+            vals = v.split()
+            if len(vals) != len(fields) or k in rows:
+                raise Stop('M-ROWS: %s row %s malformed or repeated' % (os.path.basename(path), k))
+            rows[k] = vals
+            order.append(k)
+    return head, fields, rows, order, count
+
+
+def float_ref():
+    if sha(FREF[0]) != FREF[1]:
+        raise Stop('G-FLOAT: reference sha256 %s, pinned %s' % (sha(FREF[0])[:8], FREF[1][:8]))
+    ref = {}
+    for ln in open(FREF[0]):
+        mm = re.match(r'^SUMMARY N=(\d) n=(\d+): .* least headroom (\S+) at', ln)
+        if mm:
+            ref[(int(mm.group(1)), int(mm.group(2)))] = float(mm.group(3))
+    return ref
+
+
+def main():
+    args = sys.argv[1:]
+    full = None
+    if '--full' in args:
+        i = args.index('--full')
+        full = args[i + 1]
+        args = args[:i] + args[i + 2:]
+    recdir, pins_sha, outp, parts = args[0], args[1], args[2], args[3:]
+    print('mr_merge_v1_8_4 (%s): RECDIR %s, %d parts%s' % (sha(__file__), recdir.replace(W, ''), len(parts),
+                                                        ', full run %s' % full.replace(W, '') if full else ''))
+    try:
+        if sha(ENGINE[0]) != ENGINE[1]:
+            raise Stop('M-PIN: engine sha256 %s, pinned %s' % (sha(ENGINE[0])[:8], ENGINE[1][:8]))
+        code = 'pk24/mr_engine/kt_mr_assembly_v1_8_4.py:%s' % ENGINE[1]
+        pp = os.path.join(recdir, 'PINS.txt')
+        if sha(pp) != pins_sha:
+            raise Stop('M-PIN: PINS.txt sha256 %s, expected %s' % (sha(pp)[:8], pins_sha[:8]))
+        pins = dict((l.split()[1], l.split()[0]) for l in open(pp).read().splitlines() if l.strip())
+        ipins = ' '.join('%s:%s' % (k, v) for k, v in sorted(pins.items()))
+        sp = os.path.join(recdir, 'MR_SPECTRAL.kv')
+        if sha(sp) != pins.get('MR_SPECTRAL.kv'):
+            raise Stop('M-PIN: MR_SPECTRAL.kv does not match PINS.txt')
+        grid = {}
+        for ln in open(sp).read().splitlines():
+            mm = re.match(r'^N(\d)_P(\d+) = ', ln)
+            if mm:
+                grid.setdefault(int(mm.group(1)), set()).add(int(mm.group(2)))
+        P = []
+        for p in parts:
+            head, fields, rows, order, count = read_asm(p)
+            for k, v in (('FORMAT', 'MR_ASSEMBLY_KV_v1'), ('RECORD', 'MR_ASSEMBLY_PART'), ('PLANT', 'none'), ('CODE', code), ('INPUT_PINS', ipins)):
+                if head.get(k) != v:
+                    raise Stop('M-PIN: %s has %s = %s, expected %s' % (os.path.basename(p), k, str(head.get(k))[:80], v[:80]))
+            if head.get('RUN_VERDICT') not in ('PART-VALID', 'PART-STANDIN-VALID', 'PART-INVALID'):
+                raise Stop('M-PIN: %s RUN_VERDICT %s' % (os.path.basename(p), head.get('RUN_VERDICT')))
+            mm = re.match(r'^rows (\d+) pass (\d+) fail (\d+)$', count or '')
+            if not mm or int(mm.group(1)) != len(rows):
+                raise Stop('M-PIN: %s COUNT line %s against %d rows' % (os.path.basename(p), count, len(rows)))
+            pcs = dict((N, [int(z) for z in head.get('PIECES_N%d' % N, '').split()]) for N in (4, 3))
+            P.append({'path': p, 'sha': sha(p), 'head': head, 'fields': fields, 'rows': rows, 'order': order, 'pcs': pcs})
+            print('PART %s %s: pieces N4 %s, N3 %s; %s; %s' % (P[-1]['sha'][:8], p.replace(W, ''), ' '.join(map(str, pcs[4])),
+                                                              ' '.join(map(str, pcs[3])), count, head['RUN_VERDICT']))
+        for k in ('MODE', 'NMAX', 'INPUT_FORMAT', 'XMODE', 'TRIAL_SET', 'TAIL', 'ROUTE_V'):
+            if len(set(q['head'].get(k) for q in P)) != 1:
+                raise Stop('M-PIN: the parts differ in %s' % k)
+        if len(set(tuple(q['fields']) for q in P)) != 1:
+            raise Stop('M-PIN: the parts differ in FIELDS')
+        P.sort(key=lambda q: min(q['pcs'][4] + q['pcs'][3]))
+        for N in (4, 3):
+            allp = [z for q in P for z in q['pcs'][N]]
+            if len(allp) != len(set(allp)) or set(allp) != grid.get(N, set()):
+                raise Stop('M-COVER: N = %d pieces of the parts %s against the grid of %d pieces' % (N, sorted(allp), len(grid.get(N, ()))))
+        print('M-PIN OK; M-COVER OK: N = 4 %d pieces, N = 3 %d pieces' % (len(grid[4]), len(grid[3])))
+        order = P[0]['order']
+        for q in P[1:]:
+            if q['order'] != order:
+                raise Stop('M-ROWS: %s has other row keys or order' % os.path.basename(q['path']))
+        merged = []
+        for k in order:
+            vals = [q['rows'][k] for q in P]
+            if any(v[:5] != vals[0][:5] for v in vals):
+                raise Stop('M-ROWS: row %s differs in route d k dp m' % k)
+            best = None
+            for v in vals:
+                if best is None or Dm(v[5]) < Dm(best[5]):
+                    best = v
+            verdict = 'PASS' if all(v[7] == 'PASS' for v in vals) else 'FAIL'
+            merged.append((k, vals[0][:5] + [best[5], best[6], verdict, '%.6g' % min(float(v[8]) for v in vals)]))
+        print('M-ROWS OK: %d rows' % len(merged))
+        ref = float_ref()
+    except Stop as ex:
+        print('STOP %s' % ex)
+        print('RUN_VERDICT STOPPED')
+        return 8
+    hmin = {}
+    for k, v in merged:
+        mm = re.match(r'^N(\d)_n(\d\d)_', k)
+        if v[0] != 'same-bond':
+            key = (int(mm.group(1)), int(mm.group(2)))
+            if key not in hmin or float(v[8]) < hmin[key][0]:
+                hmin[key] = (float(v[8]), k)
+    for (N, n) in sorted(hmin, key=lambda z: (-z[0], z[1])):
+        h, k = hmin[(N, n)]
+        href = ref.get((N, n))
+        print('SUMMARY N=%d n=%d: least headroom %.4f at %s; G-FLOAT INFO reference %s' % (N, n, h, k, ('%.4f' % href) if href else '-'))
+    cm = None
+    if full:
+        fh_, ff, frows, forder, fcount = read_asm(full)
+        if forder != [k for k, v in merged]:
+            cm = 'C-MERGE FAIL: the full run has other row keys or order'
+        else:
+            bad = [k for k, v in merged if frows[k] != v]
+            cm = 'C-MERGE OK: %d rows equal to the full run %s (%s)' % (len(merged), sha(full)[:8], full.replace(W, '')) if not bad else \
+                'C-MERGE FAIL: %d rows differ, first %s: merged %s, full %s' % (len(bad), bad[0], ' '.join(dict(merged)[bad[0]]), ' '.join(frows[bad[0]]))
+        print(cm)
+    tail_ok, tmerged, T = True, None, []
+    tparts = [os.path.isfile(q['path'] + '.tail') for q in P]
+    if any(tparts):
+        try:
+            if not all(tparts):
+                raise Stop('M-TAIL: some parts have a tail record and some do not')
+            for q in P:
+                th, tf, trows, torder, tcount = read_asm(q['path'] + '.tail')
+                for k, v in (('FORMAT', 'MR_TAIL_KV_v1'), ('RECORD', 'MR_TAIL_PART'), ('PLANT', 'none'), ('CODE', code), ('INPUT_PINS', ipins),
+                             ('TAIL', q['head'].get('TAIL'))):
+                    if th.get(k) != v:
+                        raise Stop('M-TAIL: %s.tail has %s = %s, expected %s' % (os.path.basename(q['path']), k, str(th.get(k))[:80], str(v)[:80]))
+                if dict((N, [int(z) for z in th.get('PIECES_N%d' % N, '').split()]) for N in (4, 3)) != q['pcs']:
+                    raise Stop('M-TAIL: %s.tail covers other pieces than its part' % os.path.basename(q['path']))
+                mm = re.match(r'^rows (\d+) pass (\d+) fail (\d+)$', tcount or '')
+                if not mm or int(mm.group(1)) != len(trows):
+                    raise Stop('M-TAIL: %s.tail COUNT line %s against %d rows' % (os.path.basename(q['path']), tcount, len(trows)))
+                T.append((th, tf, trows, torder))
+            if len(set(tuple(t[1]) for t in T)) != 1:
+                raise Stop('M-TAIL: the tail records differ in FIELDS')
+            tmerged = [(k, t[2][k]) for t in T for k in t[3]]
+            keys = [k for k, v in tmerged]
+            if len(keys) != len(set(keys)) or sorted(keys) != sorted('N%d_P%04d' % (N, z) for N in (4, 3) for z in grid[N]):
+                raise Stop('M-TAIL: the tail rows do not cover the grid exactly once')
+            tmerged.sort(key=lambda kv: (-int(kv[0][1]), kv[0]))
+        except Stop as ex:
+            print('STOP %s' % ex)
+            print('RUN_VERDICT STOPPED')
+            return 8
+        tpass = all(v[-1] == 'PASS' for k, v in tmerged)
+        tdesign = P[0]['head'].get('TAIL', '').endswith('DESIGN')
+        tail_ok = tpass or tdesign
+        print('M-TAIL OK: %d tail rows, TAIL %s; %s' % (len(tmerged), P[0]['head'].get('TAIL'), 'every row PASS' if tpass else
+                                                        '%d rows FAIL' % sum(1 for k, v in tmerged if v[-1] != 'PASS')))
+        if full:
+            if not os.path.isfile(full + '.tail'):
+                cm = 'C-MERGE FAIL: the full run has no tail record'
+                print(cm)
+            else:
+                fth, ftf, ftrows, ftorder, ftcount = read_asm(full + '.tail')
+                badt = [k for k, v in tmerged if ftrows.get(k) != v] + [k for k in ftrows if k not in dict(tmerged)]
+                if badt:
+                    cm = 'C-MERGE FAIL: %d tail rows differ from the full run, first %s' % (len(badt), badt[0])
+                    print(cm)
+                else:
+                    print('C-MERGE TAIL OK: %d tail rows equal to the full run %s' % (len(tmerged), sha(full + '.tail')[:8]))
+    warns = [(k, v) for k, v in merged if float(v[8]) < 2]
+    print('WARN BLOCK: %d rows with float headroom H < 2 (design target 2; not an acceptance rule)' % len(warns))
+    for k, v in sorted(warns, key=lambda kv: float(kv[1][8])):
+        print('WARN %s H %s %s' % (k, v[8], v[7]))
+    nfail = sum(1 for k, v in merged if v[7] == 'FAIL')
+    okparts = all(q['head']['RUN_VERDICT'] in ('PART-VALID', 'PART-STANDIN-VALID') for q in P)
+    verdict = 'VALID' if (okparts and nfail == 0 and (cm is None or cm.startswith('C-MERGE OK')) and tail_ok) else 'INVALID'
+    mode = P[0]['head']['MODE']
+    if mode == 'STANDIN' and verdict == 'VALID':
+        verdict = 'STANDIN-VALID'
+    head = ['# MR_ASSEMBLY: mr_merge_v1_8_4 output, %d parts of kt_mr_assembly_v1_8_4 (%s)' % (len(P), 'stand-in inputs; not a certificate'
+                                                                                       if mode == 'STANDIN' else 'certified inputs'),
+            'FORMAT = MR_ASSEMBLY_KV_v1', 'RECORD = MR_ASSEMBLY_BASE', 'PRODUCER = pk24 mr_merge_v1_8_4',
+            'CODE = pk24/mr_engine/mr_merge_v1_8_4.py:%s' % sha(__file__), 'ENGINE_CODE = %s' % P[0]['head']['CODE'],
+            'MERGED_FROM = %s' % ' '.join('%s:%s' % (q['path'].replace(W, ''), q['sha']) for q in P),
+            'INPUT_PINS = %s' % P[0]['head']['INPUT_PINS'], 'MODE = %s' % mode, 'INPUT_FORMAT = %s' % P[0]['head'].get('INPUT_FORMAT'),
+            'XMODE = %s' % P[0]['head'].get('XMODE'), 'TRIAL_SET = %s' % P[0]['head'].get('TRIAL_SET'), 'TAIL = %s' % P[0]['head'].get('TAIL', 'none'), 'ROUTE_V = %s' % P[0]['head'].get('ROUTE_V', 'off'), 'PLANT = none', 'NMAX = %s' % P[0]['head']['NMAX'],
+            'PIECES_N4 = %s' % ' '.join(str(z) for z in sorted(grid[4])), 'PIECES_N3 = %s' % ' '.join(str(z) for z in sorted(grid[3])),
+            'WARN_ROWS = %d' % len(warns), 'RUN_VERDICT = %s' % verdict, 'FIELDS = %s' % ' '.join(P[0]['fields'])]
+    body = ['%s = %s' % (k, ' '.join(v)) for k, v in merged]
+    cnt = ['COUNT = rows %d pass %d fail %d' % (len(merged), len(merged) - nfail, nfail)]
+    with open(outp, 'x') as fh:
+        fh.write('\n'.join(head + body + cnt) + '\n')
+    print('WROTE %s %s (%d rows); FAIL rows %d; WARN rows %d' % (sha(outp)[:8], outp.replace(W, ''), len(merged), nfail, len(warns)))
+    if tmerged is not None:
+        tp = outp + '.tail'
+        tv = ('DESIGN-' if tdesign else '') + ('PASS' if tpass else 'FAIL')
+        thead = ['# MR_TAIL: mr_merge_v1_8_4 output, %d parts of kt_mr_assembly_v1_8_4 (%s)' % (len(P), 'stand-in inputs; not a certificate'
+                                                                                         if mode == 'STANDIN' else 'certified inputs'),
+                 'FORMAT = MR_TAIL_KV_v1', 'RECORD = MR_TAIL_BASE', 'PRODUCER = pk24 mr_merge_v1_8_4',
+                 'CODE = pk24/mr_engine/mr_merge_v1_8_4.py:%s' % sha(__file__), 'ENGINE_CODE = %s' % code,
+                 'MERGED_FROM = %s' % ' '.join('%s.tail:%s' % (q['path'].replace(W, ''), sha(q['path'] + '.tail')) for q in P),
+                 'INPUT_PINS = %s' % ipins, 'MODE = %s' % mode, 'PLANT = none', 'TAIL = %s' % P[0]['head'].get('TAIL'),
+                 'PIECES_N4 = %s' % ' '.join(str(z) for z in sorted(grid[4])), 'PIECES_N3 = %s' % ' '.join(str(z) for z in sorted(grid[3])),
+                 'TAIL_VERDICT = %s' % tv, 'FIELDS = %s' % ' '.join(T[0][1])]
+        tbody = ['%s = %s' % (k, ' '.join(v)) for k, v in tmerged]
+        tcnt = ['COUNT = rows %d pass %d fail %d' % (len(tmerged), sum(1 for k, v in tmerged if v[-1] == 'PASS'),
+                                                     sum(1 for k, v in tmerged if v[-1] != 'PASS'))]
+        with open(tp, 'x') as fh:
+            fh.write('\n'.join(thead + tbody + tcnt) + '\n')
+        print('WROTE TAIL %s %s (%d rows); TAIL_VERDICT %s' % (sha(tp)[:8], tp.replace(W, ''), len(tmerged), tv))
+    print('RUN_VERDICT %s' % verdict)
+    return 0 if verdict in ('VALID', 'STANDIN-VALID') else 9
+
+
+if __name__ == '__main__':
+    sys.exit(main())

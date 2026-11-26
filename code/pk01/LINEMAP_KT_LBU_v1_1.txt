@@ -1,0 +1,34 @@
+LINEMAP_KT_LBU_v1_1: LBU_SPEC_v1 (44974154) items -> kt_lbu_v1_1.py functions and lines (for the code review; pk01).
+Lines are those of kt_lbu_v1_1.py as frozen with this file (MANIFEST_KT_LBU_v1_1.sha256).
+
+spec item                                   | code
+--------------------------------------------|------------------------------------------------------------------------------------------
+sec. 1 orbit table, Delta^2                 | EDGES l.979, ELIST l.981, ORBITS l.983, delta_of l.1006; checked in run_v1 (C-GRAPH) l.1075
+sec. 1 symmetry (one pair per orbit)        | C-SYM in run_v1 (second members, ORBITS 5th field); C-ECON, C-R1 in run_v1
+sec. 2 setting: L+, tau, R_x                | class Graph l.217 (Lp, tau via the reduced Laplacian, R l.242)
+sec. 2 chart series meas, FP, anh           | H_series l.455 (meas: 1/(2k) X^k; FP: -fpc sum_m y^m/m; anh: -(1/2) D_x [w]_{k-1})
+sec. 2 w(x, y)                              | w_exact l.419, wpoly l.444
+sec. 2 insertions xi_x                      | xi_series l.484; F series in Build.__init__ l.769 (keys ('1',0), ('e',0), ('f',b), ('ef',b))
+sec. 2 central values a_k (exact)           | Build.__init__: T0 = Moments(untilted), s.a = T0.E((F e^H)_k)
+sec. 2 Gaussian moments (amom2b recursion)  | class Moments l.504: Gram l.518, minors D l.520-539, recursion l.542-564, moments alpha! [s^alpha] M, E() l.577
+sec. 2 Pbar = |P| (C2)                      | pabs l.357
+sec. 2 (C1) radii a_v = 1 - r_v^2           | radii l.740 (cap 3/5); n7 assert rho'^2 > max a_v in Build.add_sigma l.862
+sec. 2 tilt slopes c_v, C35, c'_up          | cslope l.755, C35 l.760; c'_up in Build.__init__ (T3 block)
+sec. 2 (H) (RV12_3 L1; the review r1)         | Graph.tilt l.245 (Sylvester on B^T (L - 2 diag) B); ann_rates l.273; C-H lines in Build.__init__
+sec. 2 majorants h_k, xibar, Fbar, Dbar     | class Maj l.663: hbar l.676, xibar l.697, Fbar l.705, Dbar l.717; partial_bell l.644
+sec. 2 annulus majorant F0'                 | F0p l.727
+sec. 2 B_rem, B_tail, B_ann                 | Build.errors l.885 (formulas in the header); tables T1, T2_v, T3_v in Build.__init__ l.769
+sec. 2 (C3) B_far                           | far_bound l.910 (theta grid k/400, monotonicity assert)
+sec. 2 vertex form Phi; cells               | phi_scan l.944 (box conditions in the header), horner l.937
+sec. 3 monotone errors frozen at J1         | Build.errors evaluated once per (sigma, J1); certify l.1011 scans JGRID l.987, SIGMAS l.988
+sec. 4 exact layer / scalar layer           | fmpq, fmpq_mat, fmpq_mpoly throughout; arb only in cslope, C35, Narb, errors, far_bound, phi_scan
+sec. 5 C-EXACT (+ PLANT-MOM)                | aperm l.595, c_exact l.618; run_v1 (X_0^2 explicit); Build (T1, T2_v0, T3_v0)
+sec. 5 C-TREE (+ PLANT-FP)                  | tree_expect l.1039; run_v1
+sec. 5 C-LIT                                | c_lit l.1196 (lbu_lit_v1/ copies, sha256 in LIT_SHA l.109)
+sec. 5 C-BOUND (+ PLANT-BOUND)              | c_bound l.1267, tree_truth l.1062
+sec. 5 C-GAUSS, C-ROW0, R-SERIES            | run_v1; ROW0 l.995, A1ROW0 l.1001; cov_series l.209
+sec. 5 C-H (+ PLANT-H, PLANT-H-ANN)         | run_v1 (P3 x P3 tilts) and Build.__init__ (each tilted Gram matrix)
+sec. 5 C-DATA                               | run_cert l.1322 (SET = all), CDATA l.992
+sec. 5 PLANT-NEG                            | run_v1 (synthetic Phi)
+sec. 5 R-J1                                 | certify l.1011; run_v2 l.1304 (O4, N = 4, K = 3, 4); run_cert l.1322
+CPU guard, RSS                              | guard l.132, rss_mb l.115; main l.1361

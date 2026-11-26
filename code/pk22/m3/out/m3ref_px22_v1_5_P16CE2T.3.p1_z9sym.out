@@ -1,0 +1,47 @@
+m3ref_v1_15 item P16CE2T.3.p1 LIM 540; python 3.14.4
+C-COPY (12 pinned copies in /mnt/g2/release/root/code/pk03/pin) -> PASS
+PLANT-COPY (riglap2 bytes plus one byte) -> FIRES
+C-SRC (lapl2 l.63-79, vacmod2 l.8-9 and l.12-13, endw l.16-19, vacrig11f l.166-170, 173-175, 178-186, 196-197, 240-244, 247, 250-287, riglap5s l.22-34 (C-SRC-H) against this file; source shas) -> PASS
+PLANT-SRC (strip_graph text with one character changed) -> FIRES
+C-HASH (15 pk10 inputs and J = 170 records, 4 trial files and 4 S8 lists in pk11/out, 6 m3ref_v1_2 records, the S9 list and 2 m3ref_v1_10 base records) -> PASS
+PLANT-HASH (vacres_K3_N4 against a sha with its last digit changed) -> FIRES
+versions: numpy 2.5.3, scipy 1.18.1; engines from /mnt/g2/release/root/code/pk03/pin
+PLANT-NPGUARD (riglap5b's guarded NPoly product is installed and refuses x^3 times x^2 in base 4) -> FIRES
+TRIAL z9sym
+inputs: N = 3, kbar 0.5514259266145797 (m2_N3_J170.json.b), trial set ts_N3_S_z9sym_v1.json, vacres_K3_N3_sym_v1.json
+C-CACHE-CHAIN (piece 1: no memo s16memo_P16CE2T_N3.jsonl yet; no recorded table) -> PASS
+P16 piece 1 of P16CE2T N=3: disk table cache /mnt/g2/release/root/code/pk22/m3/out/tab16, E2 memo s16memo_P16CE2T_N3.jsonl (0 entries)
+family P16CE2T N=3: V 6, F 10, pairs [(0, 1), (1, 2), (0, 2), (0, 3)], NPOLY_B 16, qcap 6, 4 keys: eT,0, eT,1, eT,2, eT,3
+C-NPB (npoly base 16 for F = 10 forms: 16**10 = 1099511627776, below 2**63 = 9223372036854775808) -> PASS
+STAGE-CPU graph 0.00 s
+C-GRAPH (the column specs of D (v1_1, v2), N, E2, FF and L (v2) give strip_graph(2), strip_graph(3), Emix, Efree and strip_graph(4) exactly) -> PASS
+PLANT-GRAPH (D with its T-B coupling times 1 + 1e-12) -> FIRES
+TABLE-ADOPTED 05b48ae39f6a94360fba1d4d9b46680d.npz: sha256 dc7d8a0aa5b2b94fa0f38a8207c0a2c6dfd1ba3b72703b01bcc177fdd53c9dda, 1203784 bytes (the same key; built by another family or copied)
+TABLE-LOADED 05b48ae39f6a94360fba1d4d9b46680d.npz: D 16 F 6 moments 74613 (cpu so far 0.2 s)
+TABLE-ADOPTED 7410a5efed0375e37209867001ce8bb0.npz: sha256 07332f6397d57f78309dd554a95692759c8b98f95453171b5e0700a5859d3563, 629152 bytes (the same key; built by another family or copied)
+TABLE-LOADED 7410a5efed0375e37209867001ce8bb0.npz: D 14 F 6 moments 38760 (cpu so far 0.3 s)
+TABLE-ADOPTED 63a30050b217e78e80eb3cc533887c72.npz: sha256 d32c61b53f3a7ba739d29b90e064827355e5748bd6142b8f1f936badad5215c2, 1203784 bytes (the same key; built by another family or copied)
+TABLE-LOADED 63a30050b217e78e80eb3cc533887c72.npz: D 16 F 6 moments 74613 (cpu so far 0.5 s)
+STAGE-CPU prep J=300 1.20 s (ok True)
+PROFILE prep J=300 {"AllMom2.E2": [27, 0.95], "AllMom2.init": [5, 0.03], "NPoly.mul": [221, 0.01], "pmul": [197, 0.14]}
+C-THETA theta0 0.97 reproduces farbase 1.4310085877900317e-62: relative 0.0e+00 -> PASS
+PLANT-THETA (the base times 1 + 1e-9) -> FIRES
+PREPJSON {"family": "P16CE2T", "N": 3, "J": 300.0, "rho": [0.3081565055627353, 0.24772811376473863, 0.3081565055627352, 0.3411004793035923, 0.26289418769652834, 0.34110047930359216], "a_v": [0.0949604319206361, 0.06136921834943529, 0.09496043192063607, 0.11634953698114038, 0.06911335392461747, 0.11634953698114031], "ap": 0.48999999999999994, "ok": true, "tree": [1.2637626158259734, 1.2637626158259734, 1.0, 1.0, 1.0], "theta0": 0.97, "logmain": -35.2291764623841, "cpu_prep": 1.2, "rE": 1.276049708836212e-07, "rE_parts": {"t4|H4|": 7.433991258459368e-09, "t5 h5/120": 2.903848960270281e-09, "t4 H2^2/2": 9.889587183078613e-09, "t6 h3^2/72": 2.5326461333213194e-10, "t4|H1H3|": 2.3367546539080476e-08, "t5|H1H4|": 6.517712445160148e-10, "t6|H1|h5/120": 3.2801939533833565e-10, "t5|H2|h3/6": 3.0179342399844747e-09, "t4 H1^2|H2|/2": 5.286082055303424e-08, "t5 H1^2 h3/12": 9.05100136017675e-09, "t5|H1|h2^2/8": 1.6025465739334305e-08, "E2^3 term": 1.821719797016224e-09}, "nE": [1.0, 1.0013647939914425, 1.8011358206984756, 5.735273639168099], "nE4": [1.0, 2.5173245801503557, 27.480020325084535, 4181.014482953544], "nC8": 0.03884302420484102, "nC6": 0.026001457508767895, "Nc": 1.0073069555951677, "Np": 1.009557574993679, "Pout": 2.5490125531749444e-17, "Pout_p": 2.793646126962079e-17, "farbase": 1.4310085877900317e-62}
+KEYJSON {"family": "P16CE2T", "N": 3, "J": 300.0, "key": "eT,0", "index": 0, "ak": [0.7046609181139074, 0.5135929408732474, 0.4400202738066139, 0.42234960845411684], "B": {"rem": 1.619893450702038e-07, "tail": 5.425186489283043e-09, "ann": 5.3438229156161835e-09, "far": 1.4494428893721247e-57}, "err": 1.7275835447510303e-07, "cpu": 0.63, "refs": [], "rem_split": {"overflow": 1.24e-09, "F.R_E": 1.27e-07, "rho4": 3.09e-08, "rho4_C8": 9.55e-08, "rho4_C6": 3.09e-08, "R_F": 2.4e-09}}
+STAGE-CPU key eT,0 J=300 0.63 s
+PROFILE after eT,0 J=300 {"AllMom2.E": [1, 0.0], "AllMom2.E2": [47, 0.96], "AllMom2.init": [17, 0.26], "NPoly.mul": [5367, 0.23], "pmul": [542, 0.15]}
+KEYJSON {"family": "P16CE2T", "N": 3, "J": 300.0, "key": "eT,1", "index": 1, "ak": [0.2659276030379134, 0.061721895716898234, 0.07078393169343089, 0.12602360579513405], "B": {"rem": 6.431899683438367e-07, "tail": 1.9178021712313993e-08, "ann": 3.560392777359187e-08, "far": 1.5101564912236901e-56}, "err": 6.979719178297426e-07, "cpu": 0.09, "refs": [], "rem_split": {"overflow": 1.24e-08, "F.R_E": 4.13e-07, "rho4": 1.98e-07, "rho4_C8": 3.1e-07, "rho4_C6": 1.98e-07, "R_F": 1.99e-08}}
+STAGE-CPU key eT,1 J=300 0.09 s
+PROFILE after eT,1 J=300 {"AllMom2.E": [2, 0.0], "AllMom2.E2": [67, 0.96], "AllMom2.init": [29, 0.34], "NPoly.mul": [5451, 0.24], "pmul": [589, 0.15]}
+KEYJSON {"family": "P16CE2T", "N": 3, "J": 300.0, "key": "eT,2", "index": 2, "ak": [0.18044912627393297, 0.1435616614657499, 0.12765537016005724, 0.13659468460101376], "B": {"rem": 7.751658381846122e-07, "tail": 2.4143009575716147e-08, "ann": 3.7945210305286405e-08, "far": 4.768812066896222e-56}, "err": 8.372540580656148e-07, "cpu": 0.05, "refs": [], "rem_split": {"overflow": 1.56e-08, "F.R_E": 5.19e-07, "rho4": 2.16e-07, "rho4_C8": 3.89e-07, "rho4_C6": 2.16e-07, "R_F": 2.48e-08}}
+STAGE-CPU key eT,2 J=300 0.05 s
+PROFILE after eT,2 J=300 {"AllMom2.E": [3, 0.0], "AllMom2.E2": [87, 0.96], "AllMom2.init": [38, 0.38], "NPoly.mul": [5561, 0.24], "pmul": [647, 0.15]}
+KEYJSON {"family": "P16CE2T", "N": 3, "J": 300.0, "key": "eT,3", "index": 3, "ak": [0.13050581301640918, 0.9500984607356496, 0.9918515479878169, 0.9983118774667084], "B": {"rem": 1.0243184727386997e-06, "tail": 2.9847292773926284e-08, "ann": 1.0868507883258949e-07, "far": 9.430069756482994e-56}, "err": 1.1628508443452156e-06, "cpu": 0.03, "refs": [], "rem_split": {"overflow": 1.34e-08, "F.R_E": 6.53e-07, "rho4": 2.92e-07, "rho4_C8": 4.9e-07, "rho4_C6": 2.92e-07, "R_F": 6.67e-08}}
+STAGE-CPU key eT,3 J=300 0.03 s
+PROFILE after eT,3 J=300 {"AllMom2.E": [4, 0.0], "AllMom2.E2": [107, 0.96], "AllMom2.init": [43, 0.4], "NPoly.mul": [5697, 0.25], "pmul": [716, 0.15]}
+keys done 4 of range 0-3
+P16-PART none (P16CE2T has no dmaxH-12 base record)
+P16-DONE piece 1 of P16CE2T N=3
+CACHE-STATE {"memo": "s16memo_P16CE2T_N3.jsonl", "memo_entries": 0, "memo_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "tables": {"05b48ae39f6a94360fba1d4d9b46680d": ["05b48ae39f6a94360fba1d4d9b46680d.npz", "dc7d8a0aa5b2b94fa0f38a8207c0a2c6dfd1ba3b72703b01bcc177fdd53c9dda", 1203784], "63a30050b217e78e80eb3cc533887c72": ["63a30050b217e78e80eb3cc533887c72.npz", "d32c61b53f3a7ba739d29b90e064827355e5748bd6142b8f1f936badad5215c2", 1203784], "7410a5efed0375e37209867001ce8bb0": ["7410a5efed0375e37209867001ce8bb0.npz", "07332f6397d57f78309dd554a95692759c8b98f95453171b5e0700a5859d3563", 629152]}}
+STAGE-CPU total 2.18 s
+VERDICT VALID

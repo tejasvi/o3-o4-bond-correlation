@@ -1,0 +1,1896 @@
+#!/usr/bin/env python3
+"""@@NAME@@ (pk25, code/pk25/asm/; G5 C12 step 1, the rows 4380, 4401, 4407, 4418): the MR_INSERT v4 producer, MODE dry or
+cert (cert only under the approval naming this file's sha8; the record to mr/v4/MR_INSERT.kv, a dry run's to asm/dry_<TAG>/). h rows:
+S9(c)-h (the code of the S9C engine kt_s9c_h_v1_7, pk25/S9C_LINES_v1.md with S9C_LINES_v1_1.md), xc enclosing v_x/t by the centred
+form of M_R^c/t with the lines and Lemma A over t_lo, vx joined with t xc at both ends, way B on the last piece (xc = [g_lo, g_hi],
+xf = f); t and a rows as kt_s9h_ins_v1_5 (power 0: xc = vx, xf = 0); Pev = C for h and t (the row 4376); the header of
+pk24/MIDROW_G6_SPEC_v1_6_2.md sect. 6 with FIELDS, X_POWER, X_DEFINITION and the ORIENT_CHECK pattern read by ast from the
+pinned M1 engine, TRIAL_SET copied from mr/v3 MR_SPECTRAL, LEMMAP_SHA256 of mr/v3 MR_LEMMAP; gates C-SIGN-S9C, C-BAD-W, C-ANCHOR,
+C-FACTX, C-FLOOR, C-ORIENT-LINE, C-WRITE; the C8 notes N1 (c_t ends by exact comparison), N2 (PLANT-MU-T, PLANT-MU-C), N4
+(mu tool v1_1). v2_2: L7's |h_00| bounds (C8)'s vacuum amplitude, + (2 W + W^2) N_H (the row 4441).
+The C6b base template text follows. C6b base: h's bulk amplitudes per piece of R4's grid (S9(b)-h).
+Made by asm/make_kt_s9h_ins_v1.py from asm/src/kt_s9h_ins_v1.py.in. CORE blocks copied by tool: R4's code (pk15/kt_p2_assembly_v1_37_1.py,
+R4_SHA) and pk25's C6a code (asm/kt_s9h_asm_v1_5.py, C6A_SHA); C-CORE compares every copy with its pinned source at run time.
+Design: pk25/C6B_DESIGN_NOTE_v1.md sect. 1-2. Per piece (N = 4 from the J = 350 piece, N = 3 from the J = 300 piece):
+- the Ritz problem on W = span{psi-hat, e1, e3} from S8's D (g) and N (T) records with their law certificates (pk03's m3_lawcert_v1_1 and
+  v1_2) at err(J_lo) (LAWCERT_CLAIM's right side, nonincreasing in J, evaluated here with outward rounding: rem (300/J)^4 + tail and ann by the
+  chi-square P-ratios + far e^(-far_rate (J - 300)) + sum_k ak_rad[k] t^k over the piece's t range), with pk25's Ih,b (NIH record and its
+  certificate m3_lawcert_s9h_v1_1) in R4's Iht slot, so ritz_piece's t amplitudes are h^_k = mhat (c_k . Ih)/(G00^1/2 lambda~0^2), and S8 D's
+  DY,b in the Dx slot (the S9 record's Dx alias); all read through pk25's reader fork m3_reader_s9h_v1 (load, load_lawcert, entry_law);
+- lemma_a_cbar with tau4 (S4(c) v1_1's claim), the S-unit bounds and L3 as C6a; lemma_a_amp (R4) for Delta_k with Lam = 40, Hbad' =
+  tail_h kappa^2, Gbad', NA-prime and Abad' (Lemma G and B constants; C-R4-LG checks them against R4's certified run output); qv4 with
+  A_h from M4H_KV_v1 (pk25's m4h_reader_v1_1); Lemma A (L3) at x and y: dh_a = q_a Q + eps_0a h0t + eps_ba |h~_b| + (q_a^2 + eps_0a^2 +
+  eps_ba^2) |h~_a|;
+- the orientation (P0_LOG line 4089): the x amplitude times sign(S[3][1]) and the y amplitude times sign(S[1][3]) of the pinned trial
+  sets (C-ORIENT-SIGNS), C-ORIENT on the flipped Ritz vectors;
+- v_x = sigma_x h~_x + [-dh_x, dh_x], v_y likewise; xc = v_x/[t_lo, t_hi] on pieces with t_lo > 0; Pev = Q + h0t L_0 + |h~_x| L_x +
+  |h~_y| L_y with MR_LEMMAP v2's L_k; vp = (h0t^2 + h~_x^2 + h~_y^2 + Q^2)^1/2.
+Output: the run log asm/out/out_<name>_dry_<TAG>.out and a TSV asm/out/ins_h_<name>_<TAG>.tsv (per piece: vx, vy, xc, the error parts).
+Usage: @@NAME@@ dry TAG"""
+import ast
+import hashlib
+import json
+import math
+import os
+import re
+import sys
+import time
+from fractions import Fraction
+
+# ---- CORE constants (R4)
+# @@CORE_CONSTS@@
+
+# ---- CORE constants (pk25's C6a engine kt_s9h_asm_v1_5)
+# @@C6A_CONSTS@@
+
+MODES = ('dry', 'cert')   # v2_1: cert only under the approval naming this file's sha8
+if len(sys.argv) != 3 or sys.argv[1] not in MODES or not re.fullmatch(r'[A-Za-z0-9_]{1,40}', sys.argv[2]):
+    print('usage: @@NAME@@ dry|cert TAG')
+    sys.exit(2)
+MODE, TAG = sys.argv[1], sys.argv[2]
+SELF = os.path.abspath(__file__)
+LABEL = os.path.splitext(os.path.basename(SELF))[0]
+OWN = CODEDIR + '/pk25'
+ASM = OWN + '/asm'
+OUT_DIR = ASM + '/out'
+OUT_PATH = os.path.join(OUT_DIR, 'out_%s_%s_%s.out' % (LABEL, MODE, TAG))
+TSV_PATH = os.path.join(OUT_DIR, 'ins_h_%s_%s.tsv' % (LABEL, TAG))
+R4_PATH = CODEDIR + '/pk15/kt_p2_assembly_v1_37_1.py'
+R4_SHA = '@@R4_SHA@@'
+C6A_PATH = ASM + '/kt_s9h_asm_v1_5.py'
+C6A_SHA = '@@C6A_SHA@@'
+CORE_DEFS = @@CORE_DEFS@@
+CORE_CONSTS = @@CORE_CONSTS_NAMES@@
+C6A_DEFS = @@C6A_DEFS@@
+C6A_CONSTS_N = @@C6A_CONSTS_NAMES@@
+R4_CERT_OUT = CODEDIR + '/pk15/out/out_kt_p2_assembly_v1_37_1_cert.out'
+RDR = OWN + '/m3/m3_reader_s9h_v1.py'
+M3O = CODEDIR + '/pk03/out/'
+S8REC = dict((N, dict((F, (M3O + 'm3_s8v3_%s_N%d_J300_v1_8_1.json' % (F, N), M3O + 'm3_run_v1_8_1_asmP.%d.out' % N)) for F in ('D', 'E2', 'E3', 'FF')))
+             for N in (4, 3))
+for _N in (4, 3):
+    S8REC[_N]['N'] = (M3O + 'm3_s8v3_N_N%d_J300_v1_8_2.json' % _N, M3O + 'm3_run_v1_8_2_asmN.%d.out' % _N)
+S8CERT = dict((N, {'v1_1': (M3O + 'm3_lawcert_v1_1_N%d.json' % N, M3O + 'm3_lawcert_v1_1_%d.out' % N),
+                   'v1_2': (M3O + 'm3_lawcert_v1_2_N%d.json' % N, M3O + 'm3_lawcert_v1_2_%d.out' % N)}) for N in (4, 3))
+HREC = dict((N, dict((F, (OWN + '/m3/out/m3_s9h_%s_N%d_J300_v1.json' % (F, N), OWN + '/m3/out/m3_run_s9h_v1_1_asm.%d.out' % N)) for F in ('NIH', 'NHT', 'DH')))
+            for N in (4, 3))
+HCERT = dict((N, (OWN + '/m3/out/m3_lawcert_s9h_v1_1_N%d.json' % N, OWN + '/m3/out/m3_lawcert_s9h_v1_1_%d.out' % N)) for N in (4, 3))
+M4H = (OWN + '/m4h/M4H_KV_v1.txt', OWN + '/m4h/out/out_m4h_asm_v1_1.out')
+M4H_READER_PATH = OWN + '/m4h/m4h_reader_v1_1.py'
+MU = OWN + '/mu/kt_mu_hw_v1_1.py'   # the mu tool v1_1 (the row 4386 N4)
+CI_MARGIN = '0.01'   # the margin around c~_h's hull for the mu tool's interval (C-CH-HULL checks c_h inside)
+MEANS = CODEDIR + '/pk15/out/export_p2_14_means_cert_kt_p2_assembly_v1_37_1.kv'   # R4's certified means export (c_t, c_b)
+DJREC = dict((N, (CODEDIR + '/pk22/m3/out/m3_c3j_DJ_N%d_J300_c3j.json' % N, CODEDIR + '/pk22/m3/out/m3_run_v1_9_3_asm.%d_c3j.out' % N)) for N in (4, 3))   # pk22's c3j DJ records (DHT)
+LAM9C = 60   # the S9(c) Lam-split level (pk02/S9C_PLAN_v2_ADD1.md sect. 1; the row 4328)
+BAD_TOL = '1e-10'   # C-BAD-SMALL and C-BAD-W (S9C_BADPART_LEMMA_v1 sect. 4)
+ENGA = dict((N, CODEDIR + '/pk01/out_kt_c_v2_3_e1n%d.out' % N) for N in (4, 3))   # engine A's EXPLICIT lines (m_bg, INFO)
+M1ENG = CODEDIR + '/pk24/mr_engine/kt_mr_assembly_v1_8_4.py'   # the M1 engine: MR_INSERT v4 FIELDS, X_POWER, X_DEFINITION, ORIENT_RX
+SPEC_V3 = OWN + '/mr/v3/MR_SPECTRAL.kv'   # the certified MR_SPECTRAL: TRIAL_SET is copied from it (the row 4321)
+LEMMAP = OWN + '/mr/v3/MR_LEMMAP.kv'   # v2_1: the certified C6a v3 side table (the review 087868a8 CLEAR; the row 4401)
+S4C_RECORD = CODEDIR + '/pk21/p2/s4c/S4C_TIGHT_RECORD_v1_1.md'
+M_RITZ = CODEDIR + '/pk15/mocks/mock_ritz_entries_v1.kv'
+KC4_A1 = {4: '3.3786416397e-02', 3: '1.6907850836e-02'}   # KC4's a_1 h_x in u_x's orientation (G5_PLAN_v1 sect. 4, C-HARM), for INFO only here
+PINS = {
+# @@PINS@@
+}
+if not (os.path.isdir(OUT_DIR) and os.path.realpath(os.path.dirname(OUT_PATH)) == os.path.realpath(OUT_DIR)):
+    print('output path check failed')
+    sys.exit(2)
+FH = open(OUT_PATH, 'x')
+
+# ---- CORE defs (R4)
+# @@CORE_DEFS_BLOCK@@
+
+# ---- CORE defs (pk25's C6a engine)
+# @@C6A_DEFS_BLOCK@@
+
+# ---- pk25's C6b code
+
+
+def check_core2(tamper=None):
+    """C-CORE: every copied R4 def and constant equals R4's (pinned) source text, and every copied C6a def and constant equals
+    kt_s9h_asm_v1_5's (pinned), each defined exactly once in both files. tamper (PLANT-CORE) changes one character of one copy."""
+    if sha_file(R4_PATH) != R4_SHA or sha_file(C6A_PATH) != C6A_SHA:
+        raise Refused('C-CORE: R4 or the C6a engine does not match its pin')
+    me, dm = segments(open(SELF).read())
+    if tamper:
+        k0 = C6A_DEFS[0]
+        me = dict(me, **{k0: me[k0].replace('(', '[', 1)})
+    bad, n = [], 0
+    for path, defs, consts in ((R4_PATH, CORE_DEFS, CORE_CONSTS), (C6A_PATH, C6A_DEFS, C6A_CONSTS_N)):
+        src, ds = segments(open(path).read())
+        for k in list(defs) + ['=' + c for c in consts]:
+            n += 1
+            if k in ds or k in dm or src.get(k) is None or me.get(k) != src.get(k):
+                bad.append(k)
+    if bad:
+        raise Refused('C-CORE: %d of %d copies differ or are defined twice: %s' % (len(bad), n, ' '.join(bad[:6])))
+    return n
+
+
+def load_rdr(pins=None):
+    """pk25's reader fork m3_reader_s9h_v1 (pinned), imported once."""
+    pins = PINS if pins is None else pins
+    if pins.get(RDR) is None or sha_file(RDR) != pins[RDR]:
+        raise Refused('C-RDR: the reader fork does not match its pin')
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('m3_reader_s9h_v1', RDR)
+    mod = importlib.util.module_from_spec(spec)
+    p0 = ctx.prec
+    spec.loader.exec_module(mod)
+    ctx.prec = p0
+    return mod
+
+
+def load_laws(RD, N, pins=None):
+    """the records and law certificates of N through the reader fork: S8's D, E2, E3, FF (certificate m3_lawcert_v1_1), S8's N (v1_2) and
+    pk25's NIH, NHT, DH (m3_lawcert_s9h_v1_1); every record and job output pinned, check_s9_trial on every record. Returns
+    {family: (record, certificate)}."""
+    pins = PINS if pins is None else pins
+    out_ = {}
+    groups = ((('D', 'E2', 'E3', 'FF'), S8REC[N], S8CERT[N]['v1_1']), (('N',), S8REC[N], S8CERT[N]['v1_2']), (('NIH', 'NHT', 'DH'), HREC[N], HCERT[N]))
+    for fams, recmap, (cp, co) in groups:
+        recs = {}
+        for F in fams:
+            rp, ap = recmap[F]
+            for p in (rp, ap):
+                if pins.get(p) is None or sha_file(p) != pins[p]:
+                    raise Refused('C-LAW-READ: %s does not match its pin' % os.path.basename(p))
+            with open(rp) as fh:
+                check_s9_trial(json.load(fh), N, pins)
+            try:
+                recs[F] = RD.load(rp, ap, 300, N)
+            except Exception as e:
+                raise Refused('C-LAW-READ: load %s: %s' % (os.path.basename(rp), e))
+        for p in (cp, co):
+            if pins.get(p) is None or sha_file(p) != pins[p]:
+                raise Refused('C-LAW-READ: %s does not match its pin' % os.path.basename(p))
+        try:
+            cert = RD.load_lawcert(cp, co, 300, N, recs)
+        except Exception as e:
+            raise Refused('C-LAW-READ: load_lawcert %s: %s' % (os.path.basename(cp), e))
+        for F in fams:
+            out_[F] = (recs[F], cert)
+    return out_
+
+
+def chi2_tail(n, s):
+    """Prob(chi^2_n > s) for n = 2 (e^(-s/2)) and n = 3 (erfc(sqrt(s/2)) + sqrt(2 s/pi) e^(-s/2)), as arb balls."""
+    if n == 2:
+        return (-s / 2).exp()
+    if n == 3:
+        return (s / 2).sqrt().erfc() + (2 * s / arb.pi()).sqrt() * (-s / 2).exp()
+    raise Refused('chi2_tail: n = %r' % n)
+
+
+def law_err(E, J):
+    """LAWCERT_CLAIM's right side without the ak_rad term, at J >= 300 (an arb upper value): rem (300/J)^4 + tail (P(J)/P(300))^1/2 + ann
+    (P(J)/P(300))^1/2 + far e^(-far_rate (J - 300)), the P-ratios with P(J) at its upper end over P(300) at its lower end."""
+    if E.get('laws') is None:
+        return arb(0)
+    L, parts = E['laws'], E['parts']
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    j0 = arb(300)
+    J = q2arb(J) if isinstance(J, Fraction) else (J if isinstance(J, arb) else arb(J))
+    if not (J >= j0):
+        raise Refused('law_err: J below J_REF')
+    tot = q(parts['rem']) * (j0 / J) ** 4
+    for part in ('tail', 'ann'):
+        g = L[part]
+        P = lambda JJ: sum((chi2_tail(g['n'], JJ * q(a) / q(G)) for a, G in g['a_G']), arb(0))
+        r = P(J).upper() / P(j0).lower()
+        tot = tot + q(parts[part]) * r.sqrt()
+    tot = tot + q(parts['far']) * (-q(L['far_rate']) * (J - j0)).exp()
+    return tot.upper()
+
+
+def entry_law_piece(E, tb, t_hi, J_lo):
+    """an entry over the piece by LAWCERT_CLAIM's form: sum_k ak[k] t^k on the t-ball plus [-r, r], r = sum_k ak_rad[k] t_hi^k + law_err(J_lo)."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    s = arb(0)
+    for a in reversed(E['ak']):
+        s = s * tb + q(a)
+    r = law_err(E, J_lo)
+    tp = arb(1)
+    for ar in E['ak_rad']:
+        r = r + q(ar) * tp
+        tp = tp * t_hi
+    return s + r.upper() * arb(0, 1)
+
+
+def ritz_entries(RD, LW, tb, t_hi, J_lo):
+    """the 18 RITZ_KEYS balls on the piece: G,b,c from S8 D's g,b,c, T,b,c from S8 N's T,b,c, Iht,b from pk25's Ih,b (NIH) and Dx,b from S8 D's
+    DY,b (the S9 record's aliases), each by entry_law_piece."""
+    B = {}
+    for k in RITZ_KEYS:
+        fam, key = k.split(',', 1)
+        if fam == 'G':
+            F, kk = 'D', 'g,' + key
+        elif fam == 'T':
+            F, kk = 'N', 'T,' + key
+        elif fam == 'Iht':
+            F, kk = 'NIH', 'Ih,' + key
+        else:
+            F, kk = 'D', 'DY,' + key
+        rec, cert = LW[F]
+        B[k] = entry_law_piece(RD.entry_law(cert, F, kk), tb, t_hi, J_lo)
+    return B
+
+
+def check_alias(LW, RE):
+    """C-ALIAS: the S8 entries used for G, T and Dx carry the same ak as the S9 record's entries (load_ritz), so the Ritz problem is the S9
+    records' (C6a's) with law-based bars."""
+    bad = []
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    for k in RITZ_KEYS:
+        fam, key = k.split(',', 1)
+        if fam == 'Iht':
+            continue
+        F, kk = {'G': ('D', 'g,'), 'T': ('N', 'T,'), 'Dx': ('D', 'DY,')}[fam]
+        ak = LW[F][1]['entries']['%s:%s%s' % (F, kk, key)]['ak']
+        mine = RE[k][0]
+        if len(ak) != len(mine) or any(not (q(a).lower() >= m.lower() - arb('1e-30') and q(a).upper() <= m.upper() + arb('1e-30')) for a, m in zip(ak, mine)):
+            bad.append(k)
+    if bad:
+        raise Refused('C-ALIAS: %s differ from the S9 record' % ' '.join(bad))
+    return True
+
+
+def load_m4h(pins=None):
+    """M4H_KV_v1 through pk25's m4h_reader_v1_1 (load binds the record to its asm output; law returns L_k at J)."""
+    pins = PINS if pins is None else pins
+    for p in (M4H[0], M4H[1], M4H_READER_PATH):
+        if pins.get(p) is None or sha_file(p) != pins[p]:
+            raise Refused('C-M4H-READ: %s does not match its pin' % os.path.basename(p))
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('m4h_reader_v1_1', M4H_READER_PATH)
+    mod = importlib.util.module_from_spec(spec)
+    p0 = ctx.prec
+    spec.loader.exec_module(mod)
+    ctx.prec = p0
+    try:
+        rec = m4_call(mod.load, M4H[0], M4H[1], pins[M4H[0]], pins[M4H_READER_PATH])
+    except Exception as e:
+        raise Refused('C-M4H-READ: m4h_reader_v1_1.load: %s' % e)
+    return rec, mod
+
+
+def lg_constants(M2MOD, M2R):
+    """Lemma G and B constants per N, as R4 forms them: eps_r at J = 300, kappa_max, S_eps, G_00, Phi_eps, Phi_eps,theta, Hbad', Gbad', Abad',
+    NA-prime. Returns {N: dict}."""
+    epsg, thg = arb(EPS_G), arb(THETA_G)
+    w0, we, wt = lg_weights(epsg, thg)
+    G00 = load_g00('CERTIFIED')
+    C = {}
+    for N in (4, 3):
+        er300 = m2b_eps(m2b_call(M2MOD.law_v1, M2R, N, 300))
+        kap = kappa_bound(N, er300[0])
+        S = s_eps(load_trial_q(VACRES[N], N), epsg, 1 / arb(300))
+        g00 = check_g00(G00[N])
+        pe, pt = phi_T(N, S, we, g00), phi_T(N, S, wt, g00)
+        uC = 1 / (1 - er300[0])
+        C[N] = dict(er300=er300, kap=kap, S=S, g00=g00, pe=pe, pt=pt, uC=uC,
+                    HBP=tail_h(N, 1, arb(LAM_T), arb(0)) * kap * kap, GBP=gbad_p(N, arb(LAM_T), kap, uC, pe),
+                    ABP=abad_p(arb(LAM_A), kap, uC, pe, pt, epsg, thg), NAP=na_prime(kap))
+    return C
+
+
+def check_r4_lg(C):
+    """C-R4-LG: the constants equal R4's certified run output (PHI-EPS lines: S_eps, G_00, Phi_eps, Phi_eps,theta; C-NA lines: NA-prime and
+    kappa_max), as the same decimal strings by dec_hi / dec_lo."""
+    if PINS.get(R4_CERT_OUT) is None or sha_file(R4_CERT_OUT) != PINS[R4_CERT_OUT]:
+        raise Refused('C-R4-LG: R4\'s certified run output does not match its pin')
+    L = lines_of(R4_CERT_OUT)
+    bad = []
+    for N in (4, 3):
+        c = C[N]
+        ph = [x for x in L if x.startswith('PHI-EPS N=%d ' % N)]
+        na = [x for x in L if x.startswith('C-NA N=%d: ' % N)]
+        want_ph = 'S_eps <= %s, G_00 >= %s, Phi_eps <= %s, Phi_eps,theta <= %s' % (dec_hi(c['S']), dec_lo(c['g00']), dec_hi(c['pe']), dec_hi(c['pt']))
+        want_na = 'NA-prime (Lemma B) = %s at L = %s with kappa_max %s;' % (dec_hi(c['NAP'][0]), c['NAP'][1].str(5, radius=False), dec_hi(c['kap']))
+        if len(ph) != 1 or want_ph not in ph[0]:
+            bad.append('PHI-EPS N=%d' % N)
+        if len(na) != 1 or want_na not in na[0]:
+            bad.append('C-NA N=%d' % N)
+    if bad:
+        raise Refused('C-R4-LG: %s differ from R4\'s certified run output' % ' '.join(bad))
+    return True
+
+
+def load_lemmap():
+    """MR_LEMMAP v2 (pinned): {key: {field: Fraction or token}}, with its header's FORMAT checked."""
+    if PINS.get(LEMMAP) is None or sha_file(LEMMAP) != PINS[LEMMAP]:
+        raise Refused('C-LEMMAP: MR_LEMMAP.kv does not match its pin')
+    head, flds, rows = {}, None, {}
+    for ln in lines_of(LEMMAP):
+        if not ln.strip() or ln.startswith('#'):
+            continue
+        k, v = [x.strip() for x in ln.split('=', 1)]
+        if k == 'FIELDS':
+            flds = v.split()
+        elif flds is None:
+            head[k] = v
+        else:
+            rows[k] = dict(zip(flds, v.split()))
+    if head.get('FORMAT') != 'MR_LEMMAP_KV_v2' or head.get('EXPORT_STATUS') != 'CERTIFIED' or head.get('RUN_VERDICT') != 'VALID':
+        raise Refused('C-LEMMAP: MR_LEMMAP.kv is not a certified MR_LEMMAP_KV_v2 record')
+    return rows
+
+
+def load_mu(pins=None):
+    """pk25's mu tool (C8, pinned; S9C v1_6: kt_mu_hw_v1_1, the K >= -3/2 condition of the review's N-1, equal to v1 on every set): one_row(N, t,
+    c_lo, c_hi) bounds OR = sup_l |m(l) - c| a_l^1/2 = |M_c K^1/2| (a_0 = 1) on every J with 1/J <= t (nondecreasing in t)."""
+    pins = PINS if pins is None else pins
+    if pins.get(MU) is None or sha_file(MU) != pins[MU]:
+        raise Refused('C-MU: the mu tool does not match its pin')
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('kt_mu_hw_v1', MU)
+    mod = importlib.util.module_from_spec(spec)
+    p0 = ctx.prec
+    spec.loader.exec_module(mod)
+    ctx.prec = p0
+    return mod
+
+
+def piece_t(jlo, jhi):
+    """a grid piece's t ends (exact arb points, t_ends's readings) and its J lower end for the laws (grid_j's smaller reading)."""
+    tl, th = t_ends(jlo, jhi)
+    return tl, th, grid_j(jlo, True)
+
+
+def h_piece(N, tl, th, JL, key, IN, mode='full', plant=None, s9c=None):
+    """h's quantities on the t range [tl, th] (exact arb points; JL the J lower end, a Fraction or int, for the laws and the lawcerts).
+    mode 'c0' returns only c~_h = <u~_0, M_h u~_0> (the Ritz-level mean); 'full' returns every MR_INSERT(h) quantity. key names the
+    MR_LEMMAP row (the grid piece) whose L_k serve. Per-piece gates raise Refused. v1_3: vx, vy are MR_INSERT's unwindowed amplitudes
+    <u_a, v> (the windowed <u_a, S v> of R4's frame divided by the piece's s_a enclosure; vxw, vyw keep the windowed ones); Pevw bounds
+    |P_e S v|, Pev and vp the unwindowed |P_e v| and |v+|. v1_4: win = C tau4^3/2 >= |P_e B^w P_e| (beta_perp). v1_5: uhat, the
+    unit-basis Ritz coefficients uhat_kb = c_kb |psi_b| of the law-based Ritz problem (MR_LEMMAP's u_kb form), for the width comparison.
+    S9C v1_6: s9c (None, or s9c_htx) gives S9(c)-h's Ritz-level x amplitude h~_x in the orientation from this piece's quantities (H^Q, X
+    and the Lemma A inputs below); Lemma A at level x with |h~_x| as its own amplitude (the k = 0, y amplitudes stay S9(b)'s), the
+    windowed and unwindowed S9(c) v_x are returned under 'S9' next to S9(b)'s vx, vxw (unchanged)."""
+    tb = tl.union(th)
+    B = ritz_entries(IN['RD'], IN['LW'][N], tb, th, JL)
+    mh = mhat_ball(IN['MC'][N], tb)
+    er, s_, sp = m2b_eps(m2b_call(IN['M2MOD'].law_v1, IN['M2R'], N, JL))
+    Rb12 = (m4_law(IN['M4REC'], IN['M4MOD'], 'e1', N, JL), m4_law(IN['M4REC'], IN['M4MOD'], 'e3', N, JL))
+    RC = ritz_piece(B, mh)
+    sx_, sy_ = IN['SIG'][N]
+    G = RC['G']
+    V = [RC['vecs'][0], [x if sx_ == 1 else -x for x in RC['vecs'][1]], [x if sy_ == 1 else -x for x in RC['vecs'][2]]]   # exact negation
+    if plant == 'ORIENT':
+        V = [V[0], [-x for x in V[1]], V[2]]
+    check_orient(V, G, IN['TS'][N])
+    uhat = [[V[k][i] * G[i][i].sqrt() for i in range(3)] for k in range(3)]   # v1_5: MR_LEMMAP's unit-basis coefficients (C6a's form), law-based
+    GX = [[entry_law_piece(IN['RD'].entry_law(IN['LW'][N]['DH'][1], 'DH', 'Gxh,%d,%d' % (min(b, c), max(b, c))), tb, th, JL) for c in REVEN] for b in REVEN]
+    quad = lambda a, b: sum((V[a][i] * V[b][j] * GX[i][j] for i in range(3) for j in range(3)), arb(0))
+    ch0 = quad(0, 0)
+    if mode == 'c0':
+        return dict(ch0=ch0)
+    Aa = m4_law(IN['M4REC'], IN['M4MOD'], 'am', N, JL)
+    Ah = m4_law(IN['M4HREC'], IN['M4HMOD'], 'h', N, JL)
+    tau = IN['TAU4A'][N]
+    LA = lemma_a_cbar(RC, er, Rb12, None, tau)
+    tau_hi = tau.upper()
+    s_x, mu_y, m0lo = LA['s_x'], LA['mu_y'], LA['m0lo'].lower()
+    mu_lo = [m0lo, (s_x.lower() * m0lo).lower(), (mu_y.lower() * m0lo).lower()]
+    mu_hi = [arb(1), s_x.upper(), mu_y.upper()]
+    s_lo = [arb(1), mu_lo[1], mu_lo[2]]
+    s_hi = [arb(1), LA['sxhi'].upper(), LA['syhi'].upper()]
+    rho = [r.upper() for r in LA['rho']]
+    if not (tau_hi < s_lo[2] and s_hi[2] < s_lo[1] and s_hi[1] < mu_lo[0]):
+        raise Refused('C-ORDER: tau4 < s_y,lo, s_y,hi < s_x,lo < s_x,hi < mu_0,lo does not hold')
+    L3 = dict((a, l3_level(a, rho, s_lo, s_hi, mu_lo, mu_hi, tau_hi)) for a in range(3))
+    delta = [(2 * (L3[a][0] * L3[a][0] + sum((L3[a][1][k] * L3[a][1][k] for k in L3[a][1]), arb(0)))).sqrt().upper() for a in range(3)]
+    C = IN['LG'][N]
+    IP = lemma_a_amp(RC, LA, er, s_, mh, C['NAP'][0], C['HBP'], C['GBP'], C['ABP'], Aa)
+    Q = qv4(Ah, IP)
+    hx, hy, h0t = IP['tx'], IP['ty'], IP['t0t']
+    ax, ay, a0t = abs(hx).upper(), abs(hy).upper(), abs(h0t).upper()
+    dh = []
+    for a, own, others in ((1, ax, {0: a0t, 2: ay}), (2, ay, {0: a0t, 1: ax})):
+        q, eps = L3[a][0], L3[a][1]
+        d = q * Q + sum((eps[k] * others[k] for k in eps), arb(0)) + (q * q + sum((eps[k] * eps[k] for k in eps), arb(0))) * own
+        dh.append(d.upper())
+    one = arb(0, 1)
+    vxw = (hx if sx_ == 1 else -hx) + dh[0] * one   # <u_x, S v>: R4's paper frame, v_e = S v for a horizontal insertion
+    vyw = (hy if sy_ == 1 else -hy) + dh[1] * one
+    sxb, syb = s_lo[1].union(s_hi[1]), s_lo[2].union(s_hi[2])
+    vx, vy = vxw / sxb, vyw / syb   # v1_3: MR_INSERT's unwindowed <u_a, v> = <u_a, S v> / s_a (G6 v1_6_1 sect. 1, Frames)
+    lm = IN['LM'][key]
+    Lk = [arb(lm['L%s_hi' % k]) for k in KNAME]
+    if lm['tau_hi'] != IN['TOK'][N]:
+        raise Refused('C-LEMMAP-ROW: MR_LEMMAP row %s carries another tau_hi' % key)
+    PevwL = (Q + a0t * Lk[0] + ax * Lk[1] + ay * Lk[2]).upper()   # v1_3: Lemma P on the windowed vector S v (Q = |Q_W S v|)
+    SH = [entry_law_piece(IN['RD'].entry_law(IN['LW'][N]['DH'][1], 'DH', 'Sh,%d' % b), tb, th, JL) for b in REVEN]
+    if not all(x > 0 for x in SH):
+        raise Refused('C-SH-POS: an Sh entry is not certainly positive')
+    kap = [sum((abs(V[a][i]).upper() * SH[i].upper().sqrt().upper() for i in range(3)), arb(0)).upper() for a in range(3)]
+    Cc, OR = IN['CC'][N], IN['OR'][N]
+    Pev = Cc   # v1_3, provisional: |P_e v| <= |v| <= |M_c u| <= C; R4's Q bounds |Q_W S v| only, so no Lemma P route for v itself
+    Pevw = PevwL if PevwL < (tau_hi * Pev).upper() else (tau_hi * Pev).upper()   # |P_e S v|: Lemma P on S v, or tau4 |P_e v|
+    vpa = (abs(vx).upper() * abs(vx).upper() + abs(vy).upper() * abs(vy).upper() + Pev * Pev).sqrt().upper()
+    vp = Cc if Cc < vpa else vpa   # |v+|^2 = v_x^2 + v_y^2 + |P_e v|^2, and |v+| <= |v| <= C
+    dc = (delta[0] * (Cc + OR * kap[0])).upper()
+    ch = ch0 + dc * one
+    if not (IN['CI'][N][0] < ch and ch < IN['CI'][N][1]):
+        raise Refused('C-CH-HULL: c_h is not inside the interval the mu tool used')
+    m = {}
+    for a, b in ((1, 1), (1, 2), (2, 2)):
+        mt = quad(a, b) - (ch if a == b else 0)
+        e1 = delta[a] * Cc / s_lo[b].sqrt() + OR * kap[a] * delta[b]
+        e2 = delta[b] * Cc / s_lo[a].sqrt() + OR * kap[b] * delta[a]
+        e = (e1.upper() if e1.upper() < e2.upper() else e2.upper())
+        m[(a, b)] = mt + e * one
+    pebw = []
+    for a in (1, 2):
+        f1 = (tau_hi * Cc * s_hi[a].sqrt()).upper()
+        f2 = (s_hi[a] * (tau_hi * OR * kap[a] + Cc * delta[a])).upper()
+        pebw.append(f1 if f1 < f2 else f2)
+    win = (Cc * tau_hi * tau_hi.sqrt()).upper()   # v1_4: beta_perp >= |P_e B^w P_e| = |P_e S M_c S P_e| <= |S P_e| |M_c S P_e| <= tau4 C tau4^1/2
+    if not (win < (Cc * s_hi[1] * s_hi[1].sqrt()).upper()):
+        raise Refused('C-WIN: C tau4^3/2 is not below C s_x^3/2')
+    T_, A_ = ta_rows(N, RC, LA, L3, delta, kap, er, s_, sp, mh, tb, th, JL, key, IN, V, s_lo, s_hi, tau_hi, Lk) if mode == 'full' else (None, None)
+    S9 = None
+    if s9c is not None:   # S9C v1_6: S9(c)-h's h~_x, then Lemma A at level x as above with its own amplitude
+        S9 = s9c(N, tl, th, JL, IN, dict(RC=RC, LA=LA, L3=L3, delta=delta, Q=Q, Cc=Cc, OR=OR, ch=ch, m=m, pebw=pebw, s_hi=s_hi, mu_hi=mu_hi,
+                                         rho=rho, tau_hi=tau_hi, vx=vx, er=er, Rb12=Rb12, m0lo=m0lo, SH=SH, mh=mh))
+        hc = S9['htx']
+        q, eps = L3[1][0], L3[1][1]
+        others = {0: a0t, 2: ay}
+        dhc = (q * Q + sum((eps[k] * others[k] for k in eps), arb(0)) + (q * q + sum((eps[k] * eps[k] for k in eps), arb(0))) * abs(hc).upper()).upper()
+        S9['dhx'] = dhc
+        S9['vxw'] = hc + dhc * one
+        S9['vx'] = S9['vxw'] / sxb
+    return dict(vx=vx, vy=vy, vxw=vxw, vyw=vyw, uhat=uhat, Pev=Pev, Pevw=Pevw, PevwL=PevwL, vp=vp, Q=Q, dlx=IP['tx'].rad(), dhx=dh[0], dhy=dh[1], ch=ch, ch0=ch0, dc=dc, kap=kap, t=T_, a=A_,
+                delta=delta, m=m, pebw=pebw, win=win, s_lo=s_lo, s_hi=s_hi, Ah=Ah, q=[L3[a][0] for a in range(3)], S9=S9)
+
+
+def agg(Ds):
+    """one piece's quantities from its sub-pieces: hulls of the intervals, maxima of the upper bounds."""
+    mx = lambda a, b: a.upper() if a.upper() >= b.upper() else b.upper()
+    D = dict(Ds[0])
+    for E in Ds[1:]:
+        for k in ('vx', 'vy', 'vxw', 'vyw', 'ch', 'ch0'):
+            D[k] = D[k].union(E[k])
+        for k in ('Pev', 'Pevw', 'PevwL', 'vp', 'Q', 'dhx', 'dhy', 'dc', 'win', 'Ah'):
+            D[k] = mx(D[k], E[k])
+        D['m'] = dict((ab, D['m'][ab].union(E['m'][ab])) for ab in D['m'])
+        D['uhat'] = [[D['uhat'][k][i].union(E['uhat'][k][i]) for i in range(3)] for k in range(3)]
+        D['pebw'] = [mx(D['pebw'][i], E['pebw'][i]) for i in range(2)]
+        D['kap'] = [mx(D['kap'][i], E['kap'][i]) for i in range(3)]
+        D['delta'] = [mx(D['delta'][i], E['delta'][i]) for i in range(3)]
+    return D
+
+
+def last_piece_floor(N, tl, th, key, IN, ratio=Fraction(101, 100), t_min=Fraction(1, 10 ** 13), s9c=None):
+    """Way B on the piece whose t range starts at 0 (the row 4325), on the unwindowed v_x (v1_3): sub-pieces [t_(k+1), t_k] with
+    t_0 = th, t_(k+1) = t_k/ratio down to t_min, and [0, t_min]; v_x on each by h_piece. f = F0 + t_min max(|g_lo|, |g_hi|) with F0 >= |v_x| on [0, t_min]; g_lo, g_hi such that
+    t g_lo - f <= v_x(t) <= t g_hi + f on every sub-piece (the end of the sub-piece chosen by the sign of v_x -+ f). Returns
+    (g_lo, g_hi, f, F0, number of sub-pieces, the hull of v_x and v_y over the piece). S9C v1_6: with s9c, v_x is S9(c)'s (h_piece's
+    'S9' entry) on every sub-piece; any ratio > 1 is valid."""
+    vxof = (lambda D: D['S9']['vx']) if s9c is not None else (lambda D: D['vx'])
+    if not (tl == 0):
+        raise Refused('last_piece_floor: the piece does not start at t = 0')
+    ts = [th]
+    tk = th
+    while True:
+        nxt = (tk / q2arb(ratio)).upper()
+        if not (nxt > q2arb(t_min)):
+            break
+        ts.append(nxt)
+        tk = nxt
+    tz = q2arb(t_min)
+    ts.append(tz)
+    subs = []
+    for k in range(len(ts) - 1):
+        hi_, lo_ = ts[k], ts[k + 1]
+        JL = Fraction(int((1 / hi_).lower().floor().unique_fmpz()))
+        D = h_piece(N, lo_, hi_, JL, key, IN, mode='hx', s9c=s9c)
+        subs.append((lo_, hi_, D))
+    J0 = Fraction(int((1 / tz).lower().floor().unique_fmpz()))
+    D0 = h_piece(N, arb(0), tz, J0, key, IN, mode='hx', s9c=s9c)
+    F0 = max(abs(vxof(D0).lower()), abs(vxof(D0).upper())).upper()
+    f = F0
+    for _it in range(3):
+        glo = ghi = None
+        for lo_, hi_, D in subs:
+            a = vxof(D).lower() + f
+            g1 = (a / (hi_ if a >= 0 else lo_)).lower()
+            b = vxof(D).upper() - f
+            g2 = (b / (lo_ if b >= 0 else hi_)).upper()
+            glo = g1 if glo is None or g1 < glo else glo
+            ghi = g2 if ghi is None or g2 > ghi else ghi
+        fn = (F0 + tz * (abs(glo) if abs(glo) > abs(ghi) else abs(ghi))).upper()
+        if fn <= f:
+            break
+        f = fn
+    if not (f >= (F0 + tz * (abs(glo) if abs(glo) > abs(ghi) else abs(ghi))).upper()):
+        raise Refused('C-FLOOR: the floor does not cover [0, t_min] after three passes')
+    vxh = vxof(D0)
+    vyh = D0['vy']
+    for _lo, _hi, D in subs:
+        vxh, vyh = vxh.union(vxof(D)), vyh.union(D['vy'])
+    return glo, ghi, f, F0, len(subs) + 1, vxh, vyh, subs, D0
+
+
+def load_sv2(P, pins=None):
+    """the S_V export's Bp_hi and vp2_hi per piece (C6a's load_sv pattern: pins, check_tau_trial, kt_s67_export_reader_v2_1.load with rule V2,
+    the grid index for index with the same doubles, each token on the export's own line equal to the reader's positive value).
+    Returns {N: {idx: {field: (Fraction, token)}}}."""
+    pins = PINS if pins is None else pins
+    for p in (S67[0], S67[1], S67_READER_PATH):
+        if pins.get(p) is None or sha_file(p) != pins[p]:
+            raise Refused('C-SV-READ: S67 file %s does not match its pin' % os.path.basename(p))
+    check_tau_trial(pins)
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('kt_s67_export_reader_v2_1', S67_READER_PATH)
+    mod = importlib.util.module_from_spec(spec)
+    p0 = ctx.prec
+    spec.loader.exec_module(mod)
+    ctx.prec = p0
+    try:
+        ex = mod.load(S67[0], S67[1])
+    except Exception as e:
+        raise Refused('C-SV-READ: kt_s67_export_reader_v2_1.load: %s' % e)
+    names = ('Bp_hi', 'vp2_hi')
+    if any(f not in ex['fields'] for f in names):
+        raise Refused('C-SV-READ: the S_V export lacks Bp_hi or vp2_hi')
+    fi = dict((f, ex['fields'].index(f)) for f in names)
+    lab = {}
+    for x in lines_of(S67[0]):
+        mm = re.match(r'N([34])_P([0-9]{4}) = (.*)$', x)
+        if mm:
+            lab[(int(mm.group(1)), int(mm.group(2)))] = mm.group(3).partition(' | ')[0].split(' ')
+    res = {}
+    for N in (4, 3):
+        pcs = ex['pieces'].get(N, {})
+        if len(pcs) != len(P[N]):
+            raise Refused('C-SV-READ: piece count at N=%d' % N)
+        res[N] = {}
+        for i, (idx, jlo, jhi) in enumerate(P[N]):
+            e = pcs[i]
+            if e['jlo'] != float(jlo) or e['jhi'] != (math.inf if jhi == 'inf' else float(jhi)):
+                raise Refused('C-SV-READ: the S_V grid differs at N=%d piece %s' % (N, idx))
+            tk = lab.get((N, i))
+            d = {}
+            for f in names:
+                v, tok = e[f], tk[fi[f]]
+                if Fraction(tok) != v or not (v > 0):
+                    raise Refused('C-SV-COPY: N=%d piece %s field %s' % (N, idx, f))
+                d[f] = (v, tok)
+            res[N][idx] = d
+    return res
+
+
+def load_means(P, pins=None):
+    """R4's certified means export EXPORT_P2_14_MEANS_v1 (pinned): {N: {idx: (ce_lo, ce_hi, cf_lo, cf_hi)}} with ce = c_t from the D3 rows and
+    cf = c_b, the vertical edge's mean, from the D4 rows (c_a = c_b by the flip); FORMAT, RECORD, EXPORT_STATUS, RUN_VERDICT and the grid tokens
+    of every row checked against R4's grid. Means only: no sign is read from it (the row 4326)."""
+    pins = PINS if pins is None else pins
+    if pins.get(MEANS) is None or sha_file(MEANS) != pins[MEANS]:
+        raise Refused('C-MEANS: the means export does not match its pin')
+    head, rows = {}, {}
+    for ln in lines_of(MEANS):
+        if not ln.strip() or ln.startswith('#'):
+            continue
+        k, v = ln.split(' = ', 1)
+        if re.match(r'^N[34]_D(3|4|4M)_P[0-9]{4}$', k):
+            rows[k] = v.split()
+        else:
+            head[k] = v
+    if head.get('RECORD') != 'EXPORT_P2_14_MEANS_v1' or head.get('EXPORT_STATUS') != 'CERTIFIED' or head.get('RUN_VERDICT') != 'VALID' or \
+            head.get('FIELDS') != 'jlo jhi ce_lo ce_hi cf_lo cf_hi Cov_inf_lo Cov_inf_hi':
+        raise Refused('C-MEANS: the means export header is not the certified EXPORT_P2_14_MEANS_v1')
+    out_ = {}
+    for N in (4, 3):
+        out_[N] = {}
+        for idx, jlo, jhi in P[N]:
+            r3, r4 = rows.get('N%d_D3_P%s' % (N, idx)), rows.get('N%d_D4_P%s' % (N, idx))
+            if r3 is None or r4 is None or (r3[0], r3[1]) != (jlo, jhi) or (r4[0], r4[1]) != (jlo, jhi):
+                raise Refused('C-MEANS: no D3/D4 row on the grid for N=%d piece %s' % (N, idx))
+            out_[N][idx] = (arb(r3[2]), arb(r3[3]), arb(r4[4]), arb(r4[5]))
+    return out_
+
+
+def load_dj(RD, pins=None):
+    """pk22's c3j DJ records (DJREC, pinned) through the reader fork's certified load with their asm outputs, check_s9_trial on each:
+    DHT,a,b = <psi_a, M_t psi_b> with t on the top-row bond (0,3) of the D vertex graph, D-normalised, in the stored basis {0, 1, 3}
+    (pk22's message; the records carry no law certificate, so their uniform bars serve). Returns {N: record}."""
+    pins = PINS if pins is None else pins
+    res = {}
+    for N in (4, 3):
+        rp, ap = DJREC[N]
+        for p in (rp, ap):
+            if pins.get(p) is None or sha_file(p) != pins[p]:
+                raise Refused('C-DJ-READ: %s does not match its pin' % os.path.basename(p))
+        with open(rp) as fh:
+            check_s9_trial(json.load(fh), N, pins)
+        try:
+            res[N] = RD.load(rp, ap, 300, N)
+        except Exception as e:
+            raise Refused('C-DJ-READ: load %s: %s' % (os.path.basename(rp), e))
+        miss = [b for b in REVEN for c in REVEN if 'DHT,%d,%d' % (min(b, c), max(b, c)) not in res[N]['balls']]
+        if miss:
+            raise Refused('C-DJ-READ: a DHT entry is missing at N=%d' % N)
+    return res
+
+
+def dj_piece(RD, rec, key, tb):
+    """a DJ entry over the piece: sum_k [LO_k, HI_k] t^k on the t-ball plus the record's constant bar err_b (entry_ball's form, t <= 1/300)."""
+    LO, HI, eb = RD.entry_ball(rec, key)
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    s = arb(0)
+    for lo, hi in reversed(list(zip(LO, HI))):
+        s = s * tb + q(lo).union(q(hi))
+    return s + q(eb).upper() * arb(0, 1)
+
+
+def ta_rows(N, RC, LA, L3, delta, kap, er, s_, sp, mh, tb, th, JL, key, IN, V, s_lo, s_hi, tau_hi, Lk):
+    """the t and a quantities on one t range, in the orientation (V already flipped; t~ and a~ come in R4's stored-state frame from
+    lemma_a_amp and are flipped here by the same signs). Returns ({t fields}, {a fields}). v1_3: t is horizontal, so its amplitudes are
+    divided by the s_a enclosures (MR_INSERT's unwindowed frame) and Pevw, Pev, vp are formed as h_piece's; a is vertical (w_e = 1) and
+    its paper-frame vector is already unwindowed. v1_5: m_ab(t) from the DHT entries (load_dj, dj_piece)."""
+    sx_, sy_ = IN['SIG'][N]
+    one = arb(0, 1)
+    C = IN['LG'][N]
+    vals, Gm, Vs = RC['vals'], RC['G'], RC['vecs']
+    tS = [entry_piece(IN['RE'][N]['Iht,%d' % b], tb) for b in REVEN]
+    sg0, l0 = Gm[0][0].sqrt(), vals[0]
+    that = [mh * sum((Vs[k][i] * tS[i] for i in range(3)), arb(0)) / (sg0 * l0 * l0) for k in range(3)]
+    Aa = m4_law(IN['M4REC'], IN['M4MOD'], 'am', N, JL)
+    At = m4_law(IN['M4REC'], IN['M4MOD'], 't', N, JL)
+    IPt = lemma_a_amp(dict(RC, t=that, Iht0=tS[0]), LA, er, s_, mh, C['NAP'][0], C['HBP'], C['GBP'], C['ABP'], Aa)
+    Qt = qv4(At, IPt)
+    tx, ty, t0t = IPt['tx'], IPt['ty'], IPt['t0t']
+    bx, by, b0 = abs(tx).upper(), abs(ty).upper(), abs(t0t).upper()
+
+    def lemA(Qv, own_x, own_y, z0):
+        res = []
+        for a, own, others in ((1, own_x, {0: z0, 2: own_y}), (2, own_y, {0: z0, 1: own_x})):
+            q, eps = L3[a][0], L3[a][1]
+            d = q * Qv + sum((eps[k] * others[k] for k in eps), arb(0)) + (q * q + sum((eps[k] * eps[k] for k in eps), arb(0))) * own
+            res.append(d.upper())
+        return res
+    dtx, dty = lemA(Qt, bx, by, b0)
+    vxtw = (tx if sx_ == 1 else -tx) + dtx * one   # <u_x, S v_t>: R4's paper frame
+    vytw = (ty if sy_ == 1 else -ty) + dty * one
+    vxt, vyt = vxtw / s_lo[1].union(s_hi[1]), vytw / s_lo[2].union(s_hi[2])   # v1_3: MR_INSERT's unwindowed <u_a, v_t>
+    PtL = (Qt + b0 * Lk[0] + bx * Lk[1] + by * Lk[2]).upper()   # v1_3: Lemma P on S v_t
+    ce = IN['MEANS'][N][key[4:]] if key[4:] in IN['MEANS'][N] else None
+    Ct, ORt = IN['CCT'][N], IN['ORT'][N]
+    Pt = Ct   # v1_3, provisional: |P_e v_t| <= |M_c u| <= C_t, as h_piece's Pev
+    Ptw = PtL if PtL < (tau_hi * Pt).upper() else (tau_hi * Pt).upper()
+    vpa = (abs(vxt).upper() * abs(vxt).upper() + abs(vyt).upper() * abs(vyt).upper() + Pt * Pt).sqrt().upper()
+    pebt = []
+    for a in (1, 2):
+        f1 = (tau_hi * Ct * s_hi[a].sqrt()).upper()
+        f2 = (s_hi[a] * (tau_hi * ORt * kap[a] + Ct * delta[a])).upper()
+        pebt.append(f1 if f1 < f2 else f2)
+    # v1_5: m_ab(t) from pk22's DHT,a,b = <psi_a, M_t psi_b> (c3j DJ records), h's trial route with C_t and OR_t; c_t is the means export's,
+    # and C-CT-MEANS checks it against <u, M_t u> = <u~_0, M_t u~_0> +- delta_0 (C_t + OR_t kappa_0) from the same entries
+    DT = [[dj_piece(IN['RD'], IN['DJ'][N], 'DHT,%d,%d' % (min(b, c), max(b, c)), tb) for c in REVEN] for b in REVEN]
+    qt = lambda a, b: sum((V[a][i] * V[b][j] * DT[i][j] for i in range(3) for j in range(3)), arb(0))
+    ctr = qt(0, 0) + (delta[0] * (Ct + ORt * kap[0])).upper() * one
+    if ce is None:
+        raise Refused('C-MEANS-ROW: no c_t for %s' % key)
+    cem = ce[0].union(ce[1])
+    if not ctr.overlaps(cem):
+        raise Refused('C-CT-MEANS: <u, M_t u> from the DHT entries misses the means export c_t on %s' % key)
+    mtab = {}
+    for a, b in ((1, 1), (1, 2), (2, 2)):
+        e1 = delta[a] * Ct / s_lo[b].sqrt() + ORt * kap[a] * delta[b]
+        e2 = delta[b] * Ct / s_lo[a].sqrt() + ORt * kap[b] * delta[a]
+        e = e1.upper() if e1.upper() < e2.upper() else e2.upper()
+        mtab[(a, b)] = qt(a, b) - (cem if a == b else 0) + e * one
+    T_ = dict(vx=vxt, vy=vyt, vxw=vxtw, vyw=vytw, Pev=Pt, Pevw=Ptw, PevwL=PtL, vp=(Ct if Ct < vpa else vpa), Q=Qt,
+              pebw=pebt, win=(Ct * tau_hi * tau_hi.sqrt()).upper(), C=Ct, thx=that[1], m=mtab, ctr=ctr)   # v1_4: beta_perp <= C_t tau4^3/2
+    # a: lemma_a_amp's a~_x, and a~_y's Delta by its formulas (replicated; C-A-DELTA compares the x radius)
+    lt0 = (1 - er) * mh
+    sig0 = er * mh / (mh - vals[1].upper())
+    s0 = sig0.upper()
+    ip = [sum((Gm[0][b] * Vs[k][b] for b in range(3)), arb(0)) / Gm[0][0].sqrt() for k in range(3)]
+    sgk = [None, s0 if s0 < abs(ip[1]).upper() else abs(ip[1]).upper(), s0 if s0 < abs(ip[2]).upper() else abs(ip[2]).upper()]
+    NAp, AbP, Lam_a = C['NAP'][0], C['ABP'], arb(LAM_A)
+    GA = Lam_a * (mh / lt0) * er + AbP
+    a00 = IPt['a00']
+    dlax = NAp * sp + (sp + sgk[1]) * a00 + GA
+    dlay = NAp * sp + (sp + sgk[2]) * a00 + GA
+    if not (abs(IPt['ax'].rad() - RC['a'][1].rad() - dlax.upper()) < arb('1e-30') + RC['a'][1].rad() * arb('1e-6') + dlax.upper() * arb('1e-12')):
+        raise Refused('C-A-DELTA: the replicated Delta_x of a differs from lemma_a_amp\'s')
+    ax = IPt['ax']
+    ay = RC['a'][2] + dlay.upper() * one
+    d0 = sig0 * (1 + sig0) + sp
+    z0 = (d0 * NAp).upper()
+    Qva = ((mh / lt0) * Aa + Lam_a * (mh / lt0) * er + (NAp + a00) * sp + AbP).upper()
+    cx_, cy_ = abs(ax).upper(), abs(ay).upper()
+    dax, day = lemA(Qva, cx_, cy_, z0)
+    vxa = (ax if sx_ == 1 else -ax) + dax * one
+    vya = (ay if sy_ == 1 else -ay) + day * one
+    Pa = (Qva + z0 * Lk[0] + cx_ * Lk[1] + cy_ * Lk[2]).upper()
+    sv = IN['SV'][N][key[4:]]
+    Bp = q2arb(sv['Bp_hi'][0])
+    vp2 = q2arb(sv['vp2_hi'][0])
+    ca_lo, ca_hi = (ce[2], ce[3]) if ce is not None else (None, None)
+    if ce is None or not (ca_lo > 0):
+        raise Refused('C-MEANS-ROW: no positive c_a for %s' % key)
+    Lam = (Bp + ca_hi).upper()
+    TX = [[entry_law_piece(IN['RD'].entry_law(IN['LW'][N]['N'][1], 'N', 'TX,%d,%d' % (min(b, c), max(b, c))), tb, th, JL) for c in REVEN] for b in REVEN]
+    lam0 = l0.lower().union((l0 / LA['m0lo']).upper())
+    mut = lambda a, b: sum((V[a][i] * V[b][j] * TX[i][j] for i in range(3) for j in range(3)), arb(0)) / lam0
+    mud = {a: mut(a, a) for a in (1, 2)}
+    muhi = {}
+    for a in (1, 2):
+        mh_ = mud[a].upper() if mud[a].upper() > 0 else arb(0)
+        r = (delta[a] * Lam.sqrt() + (delta[a] * delta[a] * Lam + 4 * (mh_ + delta[a] * (Lam * mh_).sqrt())).sqrt()) / 2
+        muhi[a] = (r * r).upper()
+    mab = {}
+    for a, b in ((1, 1), (1, 2), (2, 2)):
+        if a == b:
+            mh_ = mud[a].upper() if mud[a].upper() > 0 else arb(0)
+            err = (Lam.sqrt() * delta[a] * (muhi[a].sqrt() + mh_.sqrt())).upper()
+            mu_lo = (mud[a] - err).lower()
+            mu_up = muhi[a] if muhi[a] < (mud[a] + err).upper() else (mud[a] + err).upper()
+            mab[(a, b)] = arb(mu_lo).union(mu_up) - arb(ca_lo).union(ca_hi) * arb(s_lo[a]).union(s_hi[a])
+        else:
+            m1 = mud[a].upper() if mud[a].upper() > 0 else arb(0)
+            m2 = mud[b].upper() if mud[b].upper() > 0 else arb(0)
+            e1 = Lam.sqrt() * (delta[a] * muhi[b].sqrt() + delta[b] * m1.sqrt())
+            e2 = Lam.sqrt() * (delta[b] * muhi[a].sqrt() + delta[a] * m2.sqrt())
+            e = e1.upper() if e1.upper() < e2.upper() else e2.upper()
+            mab[(a, b)] = mut(a, b) + e * one
+    peba = []
+    mlo = lambda z: arb(0) if (z.lower() <= 0 <= z.upper()) else (abs(z.lower()) if z.lower() > 0 else abs(z.upper()))
+    for a, va in ((1, vxa), (2, vya)):
+        mu = muhi[a]
+        first = (Lam * Lam / 4) if mu > Lam / 2 else (Lam * mu - mu * mu)
+        rad = first - mlo(va) * mlo(va) - mlo(mab[(1, 2)]) * mlo(mab[(1, 2)])
+        ru = rad.upper()
+        peba.append(ru.sqrt().upper() if ru > 0 else arb(0))
+    A_ = dict(vx=vxa, vy=vya, Pev=Pa, Pevw=(tau_hi * Pa).upper(), vp=vp2.upper().sqrt().upper(), Q=Qva, m=mab, pebw=peba, win=Bp.upper(),
+              C=arb(0), Lam=Lam, muhi=muhi)
+    return T_, A_
+
+
+def s_eps_lin(S, b, eps):
+    """(G3) for a stored state: S_eps,b = sup over xi >= 0 of |p_b| W^eps <= sum_m |S[m][b]| prod_j (d_j/(eps w_j e))^d_j, with p_b = S[0][b] +
+    sum_m S[m+1][b] BASIS[m] (column b of the pinned trial set's S matrix: row 0 the constant, rows 1..9 the BASIS monomials in xi_TM, xi_MB,
+    xi_TB) and w = (A, A, B); each monomial's sup against e^(-eps w . xi) factorizes. J-free (the trial polynomials of the stored states carry
+    no t)."""
+    if not (eps > 0 and eps < 1):
+        raise Refused('Lemma G eps outside (0, 1)')
+    A, B = trial_ab()
+    w, e = (A, A, B), arb(1).exp()
+    tot = abs(arb(S[0][b]))
+    for m, mono in enumerate(BASIS):
+        c = S[m + 1][b]
+        if c == 0:
+            continue
+        f = arb(1)
+        for j in range(3):
+            d = mono.count(j)
+            for _ in range(d):
+                f = f * d / (eps * w[j] * e)
+        tot = tot + abs(arb(c)) * f
+    return tot
+
+
+def load_enga_m(N, pins=None):
+    """engine A's coefficients m_bg(t) = m0 + m1 t + m2 t^2 + m3 t^3 (lambda_h units; b in e1, e3 rows, g in psi, e1, e3 columns) from its
+    EXPLICIT lines (kt_c_v2_3's pinned output ENGA[N]), as exact decimals: the free choices that define f_b = V K phi_b - sum_g lambda_h m_bg
+    phi_g. Returns {b: {g: [Fraction m0..m3]}} with b, g in (1, 3) and (0, 1, 3)."""
+    pins = PINS if pins is None else pins
+    p = ENGA[N]
+    if pins.get(p) is None or sha_file(p) != pins[p]:
+        raise Refused('C-ENGA: engine A output %s does not match its pin' % os.path.basename(p))
+    res = {}
+    rx = re.compile(r'^EXPLICIT N=%d (e1|e3) +: m0 (\S+) (\S+) (\S+) \| m1 (\S+) (\S+) (\S+) \| m2 (\S+) (\S+) (\S+) \| m3 (\S+) (\S+) (\S+);' % N)
+    for ln in lines_of(p):
+        mm = rx.match(ln)
+        if mm:
+            b = 1 if mm.group(1) == 'e1' else 3
+            v = [Fraction(x) for x in mm.groups()[1:]]
+            res[b] = dict((g, [v[3 * k + i] for k in range(4)]) for i, g in enumerate((0, 1, 3)))
+    if sorted(res) != [1, 3]:
+        raise Refused('C-ENGA: N=%d: the e1 and e3 EXPLICIT lines are not found once each' % N)
+    return res
+
+
+def load_m4_mg(N, pins=None):
+    """v1_1: M4_KV_v1's coefficients m_bg(t) = m0 + m1 t + m2 t^2 + m3 t^3 for b = e1, e3 (the lines N<N>_E1_MG and N<N>_E3_MG, items g:k:value
+    with g in psi, e1, e3 and k = 0..3), as exact decimals: the free choices that R_e1 and R_e3 belong to (kt_cert's), so f_b of the S9(c)
+    assembly is the f_b of M4's residual laws. Returns {b: {g: [m0..m3]}} with b in (1, 3), g in (0, 1, 3)."""
+    pins = PINS if pins is None else pins
+    p = M4[0]
+    if pins.get(p) is None or sha_file(p) != pins[p]:
+        raise Refused('C-MBG: M4_KV_v1 does not match its pin')
+    res = {}
+    for b, nm in ((1, 'E1'), (3, 'E3')):
+        ln = [x for x in lines_of(p) if x.startswith('N%d_%s_MG = ' % (N, nm))]
+        if len(ln) != 1:
+            raise Refused('C-MBG: N%d_%s_MG found %d times' % (N, nm, len(ln)))
+        d = {}
+        for it in ln[0].split(' = ', 1)[1].split(';'):
+            g, k, v = [x.strip() for x in it.split(':')]
+            d.setdefault({'psi': 0, 'e1': 1, 'e3': 3}[g], {})[int(k)] = Fraction(v)
+        if sorted(d) != [0, 1, 3] or any(sorted(d[g]) != [0, 1, 2, 3] for g in d):
+            raise Refused('C-MBG: N%d_%s_MG does not hold g in psi, e1, e3 with k = 0..3' % (N, nm))
+        res[b] = dict((g, [d[g][k] for k in range(4)]) for g in d)
+    return res
+
+
+def piece_t(jlo, jhi):
+    """a grid piece's t ends (exact arb points, t_ends's readings) and its J lower end for the laws (grid_j's smaller reading)."""
+    tl, th = t_ends(jlo, jhi)
+    return tl, th, grid_j(jlo, True)
+
+
+def poly_ball(mc, tb):
+    """sum_k m_k t^k on the t-ball tb (exact decimal coefficients)."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    s = arb(0)
+    for c in reversed(mc):
+        s = s * tb + q(c)
+    return s
+
+
+def s9c_main_piece(N, tl, th, JL, IN, plant=None, keep=None, tpt=None):
+    """v1_1, S9C stage 2a: the (C9) main term on the t range [tl, th] (pk01/S9C_PLAN_v2 sect. 1-2; pk02/kt_s9c_v1 option_a), every entry
+    by its law certificate at J_lo: H_b0 = mhat Ih_b + sum_g m_bg (IhT_g - mhat Gx_g0) (b = 1, 3), H_00 = 2 mhat Ih_0 - mhat^2 Gx_00,
+    n_h = 1/(G_00^1/2 mu_0^2), M_U = n_h sum_(b = 1, 3) c_xb (H_b0 - G_b0 H_00/G_00), hhat = H_00/(G_00 mu_0^2), alpha_k = (G c_k)_0/G_00^1/2,
+    M_R^c = (M_U + alpha_x hhat)/alpha_0, with u~_x in the orientation; also S9(b)-h's eigen-trick h^_x (ritz_piece's t amplitude with Ih
+    in the Iht slot) in the same orientation, and IhT_0 against Ih_0 (C-IHT0). v1_2: plant='IHT0' shifts IhT_0 by twice the two radii plus
+    1e-6 (beyond any overlap); keep (diagnostics only, never in a record) is None or a predicate keep(group, key): an input ball whose
+    predicate is False is replaced by its midpoint, groups 'B' (the 18 Ritz entries, key RITZ_KEYS), 'MH' (mhat, key None), 'Ih' and 'IhT'
+    (key g), 'Gx' (key (g, h)) and 'M' (m_bg, key (b, g)). v1_3: C-IHT0 reads the full balls, before keep. v1_5: tpt (a t point in
+    [tl, th]) evaluates every law polynomial, mhat and m_bg at tpt alone while each law box keeps its size on the range (ak_rad at th, law_err
+    at J_lo): the centre term of the centred form (s9c_main_cf)."""
+    kp = lambda grp, key, x: x if (keep is None or keep(grp, key)) else arb(x.mid())
+    if tpt is not None and not (tpt >= tl and tpt <= th):
+        raise Refused('s9c_main_piece: tpt is not inside [tl, th]')
+    tb = tl.union(th) if tpt is None else tpt
+    B = ritz_entries(IN['RD'], IN['LW'][N], tb, th, JL)
+    B = dict((k, kp('B', k, v)) for k, v in B.items())
+    mh = kp('MH', None, mhat_ball(IN['MC'][N], tb))
+    RC = ritz_piece(B, mh)
+    sx_, sy_ = IN['SIG'][N]
+    G, vals = RC['G'], RC['vals']
+    V = [RC['vecs'][0], [x if sx_ == 1 else -x for x in RC['vecs'][1]], [x if sy_ == 1 else -x for x in RC['vecs'][2]]]
+    check_orient(V, G, IN['TS'][N])
+    LW, RD = IN['LW'][N], IN['RD']
+    ent = lambda F, key: entry_law_piece(RD.entry_law(LW[F][1], F, key), tb, th, JL)
+    Ih = dict((b, ent('NIH', 'Ih,%d' % b)) for b in REVEN)
+    IhT = dict((g, ent('NHT', 'IhTh,%d' % g)) for g in REVEN)
+    if plant == 'IHT0':
+        IhT[0] = IhT[0] + 2 * (IhT[0].rad() + Ih[0].rad()) + arb('1e-6')
+    if not IhT[0].overlaps(Ih[0]):
+        raise Refused('C-IHT0: IhT_0 and Ih_0 do not meet (the reflection IhT_0 = Ih_0)')
+    Ih = dict((b, kp('Ih', b, x)) for b, x in Ih.items())
+    IhT = dict((g, kp('IhT', g, x)) for g, x in IhT.items())
+    Gx = dict(((g, h), kp('Gx', (g, h), ent('DH', 'Gxh,%d,%d' % (min(g, h), max(g, h))))) for g in REVEN for h in REVEN)
+    M = IN['MG'][N]
+    m = dict(((b, g), kp('M', (b, g), poly_ball(M[b][g], tb))) for b in (1, 3) for g in (0, 1, 3))
+    iht = {0: Ih[0], 1: IhT[1], 3: IhT[3]}
+    H = dict((b, mh * Ih[b] + sum((m[(b, g)] * (iht[g] - mh * Gx[(g, 0)]) for g in (0, 1, 3)), arb(0))) for b in (1, 3))
+    H00 = 2 * mh * Ih[0] - mh * mh * Gx[(0, 0)]
+    pos = {0: 0, 1: 1, 3: 2}
+    g00, mu0 = G[0][0], vals[0]
+    nh = 1 / (g00.sqrt() * mu0 * mu0)
+    MU = nh * sum((V[1][pos[b]] * (H[b] - G[pos[b]][0] * H00 / g00) for b in (1, 3)), arb(0))
+    hhat = H00 / (g00 * mu0 * mu0)
+    alpha = [sum((G[0][j] * V[k][j] for j in range(3)), arb(0)) / g00.sqrt() for k in range(3)]
+    if not (alpha[0] > 0):
+        raise Refused('C-ALPHA0: alpha_0 is not certainly positive')
+    MR = (MU + alpha[1] * hhat) / alpha[0]
+    hS = RC['t'][1] if sx_ == 1 else -RC['t'][1]
+    return dict(MR=MR, hS=hS, MU=MU, hhat=hhat, alpha=alpha, H=H, H00=H00, Ih=Ih, IhT=IhT, Gx=Gx, m=m, nh=nh, RC=RC, V=V, G=G, mh=mh,
+                tb=tb, B=B)
+
+
+def entry_of(N, IN, grp, key):
+    """v1_2 diagnostics: the law entry behind one input of s9c_main_piece, as (name, E); (None, None) for mhat and m_bg, whose balls are the
+    t range only (exact coefficients)."""
+    LW, RD = IN['LW'][N], IN['RD']
+    if grp == 'B':
+        fam, kk = key.split(',', 1)
+        F, kk = {'G': ('D', 'g,' + kk), 'T': ('N', 'T,' + kk), 'Iht': ('NIH', 'Ih,' + kk)}.get(fam, ('D', 'DY,' + kk))
+    elif grp == 'Ih':
+        F, kk = 'NIH', 'Ih,%d' % key
+    elif grp == 'IhT':
+        F, kk = 'NHT', 'IhTh,%d' % key
+    elif grp == 'Gx':
+        F, kk = 'DH', 'Gxh,%d,%d' % (min(key), max(key))
+    else:
+        return None, None
+    return '%s:%s' % (F, kk), RD.entry_law(LW[F][1], F, kk)
+
+
+def law_parts(E, tb, t_hi, J_lo):
+    """v1_2 diagnostics: an entry over the piece split as entry_law_piece adds it up: the law polynomial on the t-ball (midpoint, radius = the
+    t range), the ak_rad term at t_hi, and law_err's four parts at J_lo (rem, tail, ann, far). Floats."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    s = arb(0)
+    for a in reversed(E['ak']):
+        s = s * tb + q(a)
+    akr, tp = arb(0), arb(1)
+    for ar in E['ak_rad']:
+        akr = akr + q(ar) * tp
+        tp = tp * t_hi
+    res = dict(mid=float(s.mid()), trad=float(s.rad()), akr=float(akr.upper()), rem=0.0, tail=0.0, ann=0.0, far=0.0)
+    if E.get('laws') is None:
+        return res
+    L, parts = E['laws'], E['parts']
+    j0 = arb(300)
+    J = q2arb(J_lo) if isinstance(J_lo, Fraction) else (J_lo if isinstance(J_lo, arb) else arb(J_lo))
+    res['rem'] = float((q(parts['rem']) * (j0 / J) ** 4).upper())
+    for part in ('tail', 'ann'):
+        g = L[part]
+        P = lambda JJ: sum((chi2_tail(g['n'], JJ * q(a) / q(G)) for a, G in g['a_G']), arb(0))
+        res[part] = float((q(parts[part]) * (P(J).upper() / P(j0).lower()).sqrt()).upper())
+    res['far'] = float((q(parts['far']) * (-q(L['far_rate']) * (J - j0)).exp()).upper())
+    return res
+
+
+def mr_solo(N, tl, th, JL, IN):
+    """v1_2 diagnostics: on one piece, the radius of M_R^c with every input ball (full), with none (every input at its midpoint), with one
+    group only and with one input only (first-order shares of the width; the shares add up to about the full radius). Returns (full, none,
+    {group: radius}, [(radius, group, key)] largest first)."""
+    run = lambda kf: float(s9c_main_piece(N, tl, th, JL, IN, keep=kf)['MR'].rad())
+    full, none = run(None), run(lambda g, k: False)
+    gr = dict((g0, run(lambda g, k, g0=g0: g == g0)) for g0 in ('B', 'MH', 'Ih', 'IhT', 'Gx', 'M'))
+    keys = ([('B', k) for k in RITZ_KEYS] + [('MH', None)] + [('Ih', b) for b in REVEN] + [('IhT', g) for g in (1, 3)] +
+            [('Gx', (g, 0)) for g in REVEN] + [('M', (b, g)) for b in (1, 3) for g in (0, 1, 3)])
+    er = sorted(((run(lambda g, k, g0=g0, k0=k0: g == g0 and k == k0), g0, k0) for g0, k0 in keys), key=lambda x: -x[0])
+    return full, none, gr, er
+
+
+def s9c_main_sub(N, tl, th, JL, IN, K):
+    """v1_3: s9c_main_piece on K equal t sub-ranges of [tl, th] (K a power of 2), each with its own t-ball and ak_rad top, law_err at the
+    piece's J_lo (law_err falls with J); returns the union of the K M_R^c balls. The sub-ranges cut the dependency blow-up of evaluating
+    each entry's law separately on one t-ball. v1_4: the cut points x_i = tl + (th - tl) i / K are balls (the sum rounds at ctx.prec), so
+    sub-range i runs from the lower end of x_i to the upper end of x_(i+1), x_0 = tl and x_K = th exact: the sub-ranges overlap by the
+    rounding and their union covers [tl, th]."""
+    if K < 1 or K & (K - 1):
+        raise Refused('s9c_main_sub: K = %r is not a power of 2' % K)
+    if tl.rad() != 0 or th.rad() != 0:
+        raise Refused('s9c_main_sub: the piece ends are not exact points')
+    xs = [tl] + [tl + (th - tl) * i / K for i in range(1, K)] + [th]
+    res = None
+    for i in range(K):
+        a, b = xs[i].lower(), xs[i + 1].upper()
+        if not (a <= b):
+            raise Refused('s9c_main_sub: sub-range %d is empty' % i)
+        x = s9c_main_piece(N, a, b, JL, IN)['MR']
+        res = x if res is None else res.union(x)
+    return res
+
+
+class Du(object):
+    """v1_5: a first-order dual number (value ball v, t-derivative ball d) for the derivative of the (C9) main term along a path in t."""
+    __slots__ = ('v', 'd')
+
+    def __init__(self, v, d):
+        self.v, self.d = v, d
+
+    def __add__(self, o):
+        o = du(o)
+        return Du(self.v + o.v, self.d + o.d)
+
+    __radd__ = __add__
+
+    def __sub__(self, o):
+        o = du(o)
+        return Du(self.v - o.v, self.d - o.d)
+
+    def __rsub__(self, o):
+        return du(o) - self
+
+    def __mul__(self, o):
+        o = du(o)
+        return Du(self.v * o.v, self.d * o.v + self.v * o.d)
+
+    __rmul__ = __mul__
+
+    def __truediv__(self, o):
+        o = du(o)
+        if not (o.v > 0 or o.v < 0):
+            raise Refused('Du: a divisor may vanish')
+        q = self.v / o.v
+        return Du(q, (self.d - q * o.d) / o.v)
+
+    def __rtruediv__(self, o):
+        return du(o) / self
+
+    def __neg__(self):
+        return Du(-self.v, -self.d)
+
+    def sqrt(self):
+        if not (self.v > 0):
+            raise Refused('Du: a square root of a value not certainly positive')
+        s = self.v.sqrt()
+        return Du(s, self.d / (2 * s))
+
+
+def du(x):
+    """v1_5: an int or arb constant as a Du with derivative 0."""
+    if isinstance(x, Du):
+        return x
+    return Du(x if isinstance(x, arb) else arb(x), arb(0))
+
+
+def du_sum(xs):
+    s = Du(arb(0), arb(0))
+    for x in xs:
+        s = s + x
+    return s
+
+
+def law_der(E, tb):
+    """v1_5: d/dt of an entry law's polynomial sum_k ak[k] t^k on the t-ball tb (Horner on k ak[k]). The law box is held fixed along the
+    centred form's path, so it carries no derivative."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    ak = E['ak']
+    s = arb(0)
+    for k in range(len(ak) - 1, 0, -1):
+        s = s * tb + k * q(ak[k])
+    return s
+
+
+def poly_der(mc, tb):
+    """v1_5: d/dt of sum_k m_k t^k (exact decimal coefficients) on the t-ball tb."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    s = arb(0)
+    for k in range(len(mc) - 1, 0, -1):
+        s = s * tb + k * q(mc[k])
+    return s
+
+
+def mhat_der(m, tb):
+    """v1_5: d/dt of mhat_ball's 1 + m1 t + m2 t^2 + m3 t^3 (exact binary64 m) on the t-ball tb."""
+    a = [arb(x) for x in m]
+    return a[0] + 2 * a[1] * tb + 3 * a[2] * tb * tb
+
+
+def eig_der(Gd, Td, lam, cv):
+    """v1_5: the t-derivatives of the generalized eigenpairs T c_k = lambda_k G c_k, c_j^T G c_k = delta_jk (ritz_piece's c_k = X^T v_k are
+    G-orthonormal), from enclosures of lambda_k, c_k and of G', T': lambda_k' = c_k^T (T' - lambda_k G') c_k and c_k' = sum_(j != k)
+    [c_j^T (T' - lambda_k G') c_k / (lambda_k - lambda_j)] c_j - (1/2) (c_k^T G' c_k) c_k (the gaps are ritz_piece's disjoint enclosures)."""
+    n = 3
+    qf = lambda a, M, b: sum((a[i] * M[i][j] * b[j] for i in range(n) for j in range(n)), arb(0))
+    lamd, cvd = [], []
+    for k in range(n):
+        E = [[Td[i][j] - lam[k] * Gd[i][j] for j in range(n)] for i in range(n)]
+        lamd.append(qf(cv[k], E, cv[k]))
+        h = qf(cv[k], Gd, cv[k]) / 2
+        d = [-h * cv[k][i] for i in range(n)]
+        for j in range(n):
+            if j == k:
+                continue
+            gap = lam[k] - lam[j]
+            if not (gap > 0 or gap < 0):
+                raise Refused('eig_der: eigenvalue enclosures %d and %d meet' % (k, j))
+            a = qf(cv[j], E, cv[k]) / gap
+            d = [d[i] + a * cv[j][i] for i in range(n)]
+        cvd.append(d)
+    return lamd, cvd
+
+
+def mr_der(N, tb, Df, IN, plant=None):
+    """v1_5: an enclosure of d/dtau M_R^c(p(tau) + delta) over tau in the t-ball tb and every law error delta in its box: the (C9) formula of
+    s9c_main_piece in Du arithmetic, values = the full balls Df of s9c_main_piece on the same range (its eigenpair enclosures hold at every
+    point of the box), derivatives = law_der of each entry (S8 D g, S8 N T, NIH Ih, NHT IhTh, DH Gxh), mhat_der, poly_der of m_bg, and
+    eig_der for lambda_0 and the oriented c_k. Returns the Du of M_R^c. plant='DER' negates every input derivative (PLANT-DER)."""
+    LW, RD = IN['LW'][N], IN['RD']
+    sgn = -1 if plant == 'DER' else 1
+    dl = lambda F, key: sgn * law_der(RD.entry_law(LW[F][1], F, key), tb)
+    Gd = [[dl('D', 'g,%d,%d' % (min(b, c), max(b, c))) for c in REVEN] for b in REVEN]
+    Td = [[dl('N', 'T,%d,%d' % (min(b, c), max(b, c))) for c in REVEN] for b in REVEN]
+    lam, cv = Df['RC']['vals'], Df['RC']['vecs']
+    lamd, cvd = eig_der(Gd, Td, lam, cv)
+    sx_, sy_ = IN['SIG'][N]
+    sg = (1, sx_, sy_)
+    G = [[Du(Df['G'][i][j], Gd[i][j]) for j in range(3)] for i in range(3)]
+    V = [[Du(Df['V'][k][j], sg[k] * cvd[k][j]) for j in range(3)] for k in range(3)]
+    Ih = dict((b, Du(Df['Ih'][b], dl('NIH', 'Ih,%d' % b))) for b in REVEN)
+    IhT = dict((g, Du(Df['IhT'][g], dl('NHT', 'IhTh,%d' % g))) for g in (1, 3))
+    Gx = dict((g, Du(Df['Gx'][(g, 0)], dl('DH', 'Gxh,%d,%d' % (min(g, 0), max(g, 0))))) for g in REVEN)
+    mh = Du(Df['mh'], sgn * mhat_der(IN['MC'][N], tb))
+    M = IN['MG'][N]
+    m = dict(((b, g), Du(Df['m'][(b, g)], sgn * poly_der(M[b][g], tb))) for b in (1, 3) for g in (0, 1, 3))
+    iht = {0: Ih[0], 1: IhT[1], 3: IhT[3]}
+    H = dict((b, mh * Ih[b] + du_sum(m[(b, g)] * (iht[g] - mh * Gx[g]) for g in (0, 1, 3))) for b in (1, 3))
+    H00 = 2 * mh * Ih[0] - mh * mh * Gx[0]
+    pos = {0: 0, 1: 1, 3: 2}
+    g00, mu0 = G[0][0], Du(lam[0], lamd[0])
+    nh = 1 / (g00.sqrt() * mu0 * mu0)
+    MU = nh * du_sum(V[1][pos[b]] * (H[b] - G[pos[b]][0] * H00 / g00) for b in (1, 3))
+    hhat = H00 / (g00 * mu0 * mu0)
+    alpha = [du_sum(G[0][j] * V[k][j] for j in range(3)) / g00.sqrt() for k in range(2)]
+    return (MU + alpha[1] * hhat) / alpha[0]
+
+
+def s9c_main_cf(N, tl, th, JL, IN, K=1, plant=None):
+    """v1_5: the centred form of M_R^c on [tl, th]. An entry is e(t) = p(t) + delta(t), p the law polynomial, delta(t) in the law box of the
+    range (ak_rad at the range top, law_err at J_lo). For t in a sub-range [a, b] with centre c, the path tau -> M_R^c(p(tau) + delta(t))
+    from c to t is differentiable (the eigenpair enclosures and gaps of the range hold at every point of the box) and the mean value theorem
+    gives M_R^c(t) in M_R^c(p(c) + box) + (t - c) D, D = mr_der over [a, b] and the box. K equal sub-ranges (K a power of 2, outward-rounded
+    cut points as s9c_main_sub). Returns the union and the per-sub-range parts (a, b, c, centre ball, D, full-range result)."""
+    if K < 1 or K & (K - 1):
+        raise Refused('s9c_main_cf: K = %r is not a power of 2' % K)
+    tl, th = tl.lower(), th.upper()   # v1_6: ends given as balls (way B's t_min) are widened outward to exact points
+    xs = [tl] + [tl + (th - tl) * i / K for i in range(1, K)] + [th]
+    res, parts = None, []
+    for i in range(K):
+        a, b = xs[i].lower(), xs[i + 1].upper()
+        Df = s9c_main_piece(N, a, b, JL, IN)
+        Dd = mr_der(N, a.union(b), Df, IN, plant)
+        c = arb(((a + b) / 2).mid())
+        Dc = s9c_main_piece(N, a, b, JL, IN, tpt=c)
+        u1, u2 = (b - c).upper(), (c - a).upper()
+        hw = u1 if u1 > u2 else u2
+        x = Dc['MR'] + Dd.d * hw * arb(0, 1)
+        parts.append(dict(a=a, b=b, c=c, MRc=Dc['MR'], D=Dd.d, Df=Df))
+        res = x if res is None else res.union(x)
+    return res, parts
+
+
+def der_fd_check(N, tl, th, JL, IN, plant=None):
+    """v1_5 C-DER-FD, a sanity check of mr_der's formula (not part of any bound): the central difference (m(c + h) - m(c - h)) / (2 h) of the
+    M_R^c midpoints at the t points c +- h (c the centre, h = (th - tl) / 2^12) meets the derivative enclosure of [tl, th]. Returns the
+    difference quotient, the enclosure and its position (fd - mid D) / rad D; refuses when they do not meet."""
+    Df = s9c_main_piece(N, tl, th, JL, IN)
+    D = mr_der(N, tl.union(th), Df, IN, plant).d
+    c = arb(((tl + th) / 2).mid())
+    h = arb(((th - tl) / 4096).mid())
+    mp = arb(s9c_main_piece(N, tl, th, JL, IN, tpt=c + h)['MR'].mid())
+    mm = arb(s9c_main_piece(N, tl, th, JL, IN, tpt=c - h)['MR'].mid())
+    fd = (mp - mm) / (2 * h)
+    pos = float((fd - D.mid()).mid()) / float(D.rad()) if float(D.rad()) > 0 else float('inf')
+    if not D.overlaps(fd):
+        raise Refused('C-DER-FD: the difference quotient %s is outside the derivative enclosure %s' % (fd.str(6), D.str(6, radius=True)))
+    return fd, D, pos
+
+
+def m_abs_up(mc, t_hi):
+    """|m(t)| <= sum_k |m_k| t^k on 0 <= t <= t_hi (an arb upper value)."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    s, tp = arb(0), arb(1)
+    for c in mc:
+        s = s + abs(q(c)) * tp
+        tp = tp * t_hi
+    return s.upper()
+
+
+def badpart_constants(N, IN, Lam, plant=None):
+    """the bad-part lemma's constants at level Lam for N (S9C_BADPART_LEMMA_v1 sect. 2): J-uniform for J >= 300. Returns a dict of arb upper
+    values. plant='GBB' halves G_bb's lower end for b = 1 (PLANT-GBB must move Phi_1)."""
+    C = IN['LG'][N]
+    kap, uC, pe, S0, g00 = C['kap'], C['uC'], C['pe'], C['S'], C['g00']
+    eps, th = arb(EPS_G), arb(THETA_G)
+    _w0, we, _wt = lg_weights(eps, th)
+    r = tau_strip(2) / (we[0] * we[1])
+    fT = r * r.sqrt() if N == 4 else r
+    if not (abs(S0 * S0 * fT / g00 - pe) < arb('1e-30') * pe + (S0 * S0 * fT / g00).rad() + pe.rad()):
+        raise Refused('C-FT: Phi_eps does not equal S_eps^2 f_T / G_00 (Lemma T prime at R4 weights)')
+    t_hi = 1 / arb(300)
+    tb = arb(0).union(t_hi)
+    LW, RD = IN['LW'][N], IN['RD']
+    G = {}
+    for b in REVEN:
+        x = entry_law_piece(RD.entry_law(LW['D'][1], 'D', 'g,%d,%d' % (b, b)), tb, t_hi, 300)
+        G[b] = (x.lower() * (arb('0.5') if (plant == 'GBB' and b == 1) else 1), x.upper())
+        if not (G[b][0] > 0):
+            raise Refused('C-GBB: G_%d%d is not certainly positive over J >= 300' % (b, b))
+    Sb = {0: S0, 1: s_eps_lin(IN['TS'][N], 1, eps), 3: s_eps_lin(IN['TS'][N], 3, eps)}
+    Phi = {0: pe, 1: (Sb[1] * Sb[1] * fT / G[1][0]).upper(), 3: (Sb[3] * Sb[3] * fT / G[3][0]).upper()}
+    M = IN['MG'][N]   # v1_1: M4's MG coefficients (the ones R_e1, R_e3 belong to)
+    mab = dict(((b, g), m_abs_up(M[b][g], t_hi)) for b in (1, 3) for g in (0, 1, 3))
+    Psi = {}
+    for b in (1, 3):
+        s = Phi[b].sqrt()
+        for g in (0, 1, 3):
+            s = s + uC * mab[(b, g)] * Phi[g].sqrt() * (G[g][1] / G[b][0]).sqrt()
+        Psi[b] = s.upper()
+    tau0 = tail_h(N, 1, arb(Lam), arb(0)).upper()
+    Gb = gbad_p(N, arb(Lam), kap, uC, pe).upper()
+    out_ = dict(kap=kap, uC=uC, fT=fT.upper(), S=Sb, G=G, Phi=Phi, mab=mab, Psi=Psi, tau0=tau0, Gb=Gb)
+    out_['P0'] = (tau0 * (kap + uC) * (kap + uC) * pe).upper()
+    for b in (1, 3):
+        out_['P%d' % b] = (Gb * Psi[b]).upper()
+        out_['H%d' % b] = (tau0 * kap * kap * Psi[b]).upper()
+    out_['H0'] = Gb
+    for b in (1, 3):
+        for c in (1, 3):
+            cross = arb(0)
+            for g in (0, 1, 3):
+                cross = cross + tau0 * kap * uC * mab[(b, g)] * Phi[g].sqrt() * Psi[c] * (G[g][1] / G[b][0]).sqrt()
+            out_['X%d%d' % (b, c)] = cross.upper()
+            out_['F%d%d' % (b, c)] = (tau0 * kap * kap * Psi[b] * Psi[c]).upper()
+    return out_
+
+
+def bad_bc(D):
+    """v1_7: the bad parts of H_bc's double (C9) expansion for b, c in {1, 3}, normalised by lambda_0^2 ||psi_b|| ||psi_c||, J-uniform for
+    J >= 300: X_bc + X_cb + F_bc of S9C_BADPART_LEMMA_v1 (both cross terms and the f-f term), read from
+    badpart_constants's dict D for one N."""
+    return dict(((b, c), (D['X%d%d' % (b, c)] + D['X%d%d' % (c, b)] + D['F%d%d' % (b, c)]).upper()) for b in (1, 3) for c in (1, 3))
+
+
+def hb_bound(ca, cb, Q9):
+    """v1_7: |<u~_a, H_xi u~_b>| / lambda_0^2 for Ritz coefficient vectors with |c_ab| <= ca[b], |c_bc| <= cb[c] (b, c in 0, 1, 3), the pairs
+    split as the N-1. For b, c in {1, 3}: the double (C9) expansion H_bc = sum_(g,h) m_bg m_ch Gx_gh
+    (lambda_0 >= mu_0) + the cross terms m_bg <phi_g, K_xi f_c> + m_ch <f_b, K_xi phi_h> + <f_b, K_xi f_c>, split at Lam: good parts by
+    positivity with ||K^1/2 |phi_g| || <= Sh_g^1/2 and ||K^1/2 |f_b| || <= R_b lambda_0 ||psi_b|| (M4's R_e1, R_e3 in the |f| form
+    a9e77bd7), bad parts X_bc + X_cb + F_bc (bad_bc). For the pairs with 0: the single (C9) identities H_b0 = mhat Ih_b + sum_g m_bg (IhT_g - mhat
+    Gx_g0) + P_b and H_00 = 2 mhat Ih_0 - mhat^2 Gx_00 + P_0 (H_0b = H_b0), the law-certified values |H_b0^(C9)| and |P_b| <= lambda_0^2 G_00^1/2
+    G_bb^1/2 pb_b, |P_0| <= lambda_0^2 G_00 p0 (good part with R_0 = eps_r mhat / lambda_0 by Lemma 19.2, bad part (P_b), (P_0)). Returns a dict
+    of uppers: main, cross, ff, bad (the b, c in {1, 3} pairs), zero (the pairs with 0, all of it) and zbad (the (P_b), (P_0) share of zero)."""
+    E1, E = (1, 3), (0, 1, 3)
+    mabs, gx, sSh, sG, R, l0, Lam, B = Q9['mabs'], Q9['gx'], Q9['sSh'], Q9['sG'], Q9['R'], Q9['l0lo'], Q9['Lam'], Q9['Bbc']
+    main_ = sum((ca[b] * cb[c] * mabs[(b, g)] * mabs[(c, h)] * gx[(g, h)] for b in E1 for c in E1 for g in E for h in E), arb(0)) / (l0 * l0)
+    ms = dict((b, sum((mabs[(b, g)] * sSh[g] for g in E), arb(0))) for b in E1)
+    cross = sum((ca[b] * cb[c] * (ms[b] * R[c] * sG[c] + ms[c] * R[b] * sG[b]) for b in E1 for c in E1), arb(0)) * Lam / l0
+    ff = sum((ca[b] * cb[c] * R[b] * R[c] * sG[b] * sG[c] for b in E1 for c in E1), arb(0)) * Lam
+    bad = sum((ca[b] * cb[c] * B[(b, c)] * sG[b] * sG[c] for b in E1 for c in E1), arb(0))
+    w = dict((b, ca[b] * cb[0] + ca[0] * cb[b]) for b in E1)
+    zero = (sum((w[b] * (Q9['Hb0'][b] / (l0 * l0) + sG[0] * sG[b] * Q9['pb'][b]) for b in E1), arb(0)) +
+            ca[0] * cb[0] * (Q9['Hb0'][0] / (l0 * l0) + sG[0] * sG[0] * Q9['p0']))
+    zbad = sum((w[b] * sG[0] * sG[b] * Q9['pbad'][b] for b in E1), arb(0)) + ca[0] * cb[0] * sG[0] * sG[0] * Q9['pbad'][0]
+    return dict(main=main_.upper(), cross=cross.upper(), ff=ff.upper(), bad=bad.upper(), zero=zero.upper(), zbad=zbad.upper())
+
+
+def s9c_htx(N, tl, th, JL, IN, H, plant=None):
+    """v1_6, S9C stage 2b: S9(c)-h's Ritz-level x amplitude on [tl, th] in the orientation (S9C_LINES_v1): h~_x = M_R^c +- (E_R + L6 + L7),
+    M_R^c the centred form of the (C9) main term (s9c_main_cf). E_R = (1 - m0lo^2) |M_R^c| + (L2 + L3 + L3b + L4 + L5 + bad2 + bad4) / alpha_0,lo
+    bounds M_R - M_R^c ((C8): alpha_0 M_R = M_U + alpha_x (h-hat - h_xx) - alpha_y h_xy with lambda_0 in place of the Ritz value, mu_0 / lambda_0
+    in [m0lo, 1]; the products <f_b, K_xi g> (L2, L4; bad2, bad4 by (P_b)) and <g, K_xi g> (L3 through G_b0 / G_00, L3b through alpha_x h-hat;
+    (P_0) inside) split at Lam; L5 = |alpha_x| |h_xx| + |alpha_y| |h_xy| by hb_bound). L6 = H^Q X: X = rho_0 / (1 - tau4 - sum_k rho_k^2 /
+    (1 - mu_k)) and H^Q <= PeBwu_x + C delta_x + sum_k beta_k q_k + |c_h| (1 + mu_x) rho_x (S9C_ENGINE_DESIGN_v1 sect. 3; no Lam split, so no bad
+    part). L7 = <u~_k, Omega_0> h_kx (k = x, y) + |h_00| <u~_x, Omega_0> + (1 - <u~_0, Omega_0>) |M_R|. H holds h_piece's quantities on the
+    same piece (beta_0 takes S9(b)'s |v_x| bound). plant: 'HQ' (H^Q times 1e4), 'RB' (R_e1 times 1e3), 'BAD' (the bad parts at Lam = 10).
+    v1_7: hb_bound with the pair split (the pairs with 0 by the single (C9) identities and (P_b), (P_0); X_bc + X_cb + F_bc for b, c in
+    {1, 3}); H^Q's P_e term tau4 C delta_x in place of C delta_x (the bound ||P_e B^w (u~_x - u_x)|| <= ||S P_e||
+    ||M_c S|| delta_x with ||S P_e|| <= tau4)."""
+    CF, parts = s9c_main_cf(N, tl, th, JL, IN)
+    Df = parts[0]['Df']
+    BP = IN['BP10'][N] if plant == 'BAD' else IN['BP'][N]
+    BBC = bad_bc(BP)
+    E = (0, 1, 3)
+    pos = {0: 0, 1: 1, 3: 2}
+    G, V, al = Df['G'], Df['V'], Df['alpha']
+    l0lo = Df['RC']['vals'][0].lower()
+    a0lo = al[0].lower()
+    if not (l0lo > 0 and a0lo > 0):
+        raise Refused('C-S9C-POS: mu_0 or alpha_0 is not certainly positive')
+    mh = abs(Df['mh']).upper()
+    er = H['er'].upper()
+    R = {0: (er * mh / l0lo).upper(), 1: (H['Rb12'][0].upper() * (1000 if plant == 'RB' else 1)).upper(), 3: H['Rb12'][1].upper()}
+    sG = dict((g, G[pos[g]][pos[g]].upper().sqrt().upper()) for g in E)
+    sSh = dict((g, H['SH'][pos[g]].upper().sqrt().upper()) for g in E)
+    cv = lambda k: dict((g, abs(V[k][pos[g]]).upper()) for g in E)
+    c0, cx, cy = cv(0), cv(1), cv(2)
+    mabs = dict(((b, g), abs(Df['m'][(b, g)]).upper()) for b in (1, 3) for g in E)
+    mabs.update({(0, 0): mh, (0, 1): arb(0), (0, 3): arb(0)})
+    gx = dict(((g, h), abs(Df['Gx'][(g, h)]).upper()) for g in E for h in E)
+    Lam = arb(LAM9C)
+    mhl = (mh / l0lo).upper()
+    pbad = {0: BP['P0'], 1: BP['P1'], 3: BP['P3']}
+    pb = dict((b, (Lam * R[b] * er * mhl + pbad[b]).upper()) for b in (1, 3))   # |P_b| / (lambda_0^2 ||psi_0|| ||psi_b||): good part and (P_b)
+    Hb0 = {0: abs(Df['H00']).upper(), 1: abs(Df['H'][1]).upper(), 3: abs(Df['H'][3]).upper()}   # the (C9) values on the range, law bars inside
+    Q9 = dict(mabs=mabs, gx=gx, sSh=sSh, sG=sG, R=R, l0lo=l0lo, Lam=Lam, Bbc=BBC, Hb0=Hb0, pb=pb, pbad=pbad,
+              p0=(Lam * er * er * mhl * mhl + BP['P0']).upper())
+    hxx, hxy, h00 = hb_bound(cx, cx, Q9), hb_bound(cx, cy, Q9), hb_bound(c0, c0, Q9)
+    HXX, HXY, H00 = [(x['main'] + x['cross'] + x['ff'] + x['bad'] + x['zero']).upper() for x in (hxx, hxy, h00)]
+    hbad = dict((k, (x['bad'] + x['zbad']).upper()) for k, x in (('xx', hxx), ('xy', hxy), ('00', h00)))
+    g10, g30 = (abs(G[1][0]) / G[0][0]).upper(), (abs(G[2][0]) / G[0][0]).upper()
+    axa, aya = abs(al[1]).upper(), abs(al[2]).upper()
+    L2 = (cx[1] * Lam * R[1] * er * mhl * sG[1]).upper()
+    L4 = (cx[3] * Lam * R[3] * er * mhl * sG[3]).upper()
+    p0 = Q9['p0']   # |<g, K_xi g>| / (lambda_0^2 ||psi_0||^2): the good part and (P_0)
+    L3 = ((cx[1] * g10 + cx[3] * g30) * sG[0] * p0).upper()
+    L3b = (axa * p0).upper()
+    L5 = (axa * HXX + aya * HXY).upper()
+    bad2 = (cx[1] * sG[1] * BP['P1']).upper()
+    bad4 = (cx[3] * sG[3] * BP['P3']).upper()
+    MRhi = abs(CF).upper()
+    lamterm = ((1 - H['m0lo'] * H['m0lo']) * MRhi).upper()
+    ER = (lamterm + (L2 + L3 + L3b + L4 + L5 + bad2 + bad4) / a0lo).upper()
+    rho, mu_hi, tau_hi = H['rho'], H['mu_hi'], H['tau_hi']
+    den = 1 - tau_hi - sum((rho[k] * rho[k] / (1 - mu_hi[k]) for k in (1, 2)), arb(0))
+    if not (den > 0):
+        raise Refused('C-X: 1 - tau4 - sum_k rho_k^2 / (1 - mu_k) is not certainly positive')
+    X = (rho[0] / den).upper()
+    ukO = dict((k, (X * rho[k] / (1 - mu_hi[k])).upper()) for k in (1, 2))
+    rad = 1 - X * X - ukO[1] * ukO[1] - ukO[2] * ukO[2]
+    if not (rad > 0):
+        raise Refused('C-X: 1 - X^2 - sum_k <u~_k, Omega_0>^2 is not certainly positive')
+    uO0 = (1 - rad.sqrt()).upper()
+    s_hi, Cc, dx = H['s_hi'], H['Cc'], H['delta'][1]
+    qk = [H['L3'][a][0].upper() for a in range(3)]
+    b0 = s_hi[1] * abs(H['vx']).upper() + Cc * dx
+    bx = s_hi[1] * s_hi[1] * abs(H['m'][(1, 1)]).upper() + Cc * s_hi[1].sqrt() * dx
+    by = s_hi[1] * s_hi[2] * abs(H['m'][(1, 2)]).upper() + Cc * s_hi[2].sqrt() * dx
+    HQ = (H['pebw'][0] + tau_hi * Cc * dx + b0 * qk[0] + bx * qk[1] + by * qk[2] + abs(H['ch']).upper() * (1 + mu_hi[1]) * rho[1]).upper()
+    if plant == 'HQ':
+        HQ = (HQ * 10000).upper()
+    L6 = (HQ * X).upper()
+    MRabs = (MRhi + ER).upper()
+    # (C8)'s h_00 is the vacuum amplitude <Omega_0, H_xi Omega_0>/lambda_0^2. With Omega_0 = beta u~_0 + w,
+    # ||w||^2 <= W^2 = 1 - rad, and ||H_xi||/lambda_0^2 <= N_H = Lam + tau~0 kappa^2 for every J >= 300 (positivity below Lam, the lemma's
+    # Schur step above), |h_00| <= hb_bound(c_0, c_0) + (2 W + W^2) N_H
+    W2 = (1 - rad).upper()
+    H00 = (H00 + (2 * W2.sqrt() + W2) * (Lam + BP['tau0'] * BP['kap'] * BP['kap'])).upper()
+    L7 = (ukO[1] * HXX + ukO[2] * HXY + H00 * ukO[1] + uO0 * MRabs).upper()
+    tot = (ER + L6 + L7).upper()
+    badw = ((bad2 + bad4 + ((cx[1] * g10 + cx[3] * g30) * sG[0] + axa) * BP['P0'] + axa * hbad['xx'] + aya * hbad['xy']) / a0lo +
+            ukO[1] * hbad['xx'] + ukO[2] * hbad['xy'] + ukO[1] * hbad['00']).upper()
+    return dict(htx=CF + tot * arb(0, 1), MRc=CF, ER=ER, L2=L2, L3=L3, L3b=L3b, L4=L4, L5=L5, L6=L6, L7=L7, lamterm=lamterm, bad2=bad2,
+                bad4=bad4, badw=badw, X=X, HQ=HQ, HXX=HXX, HXY=HXY, H00=H00, hxx=hxx, hxy=hxy, uO0=uO0, ukO=ukO, tot=tot, D=parts[0]['D'],
+                R=R, er=er, mhl=mhl)
+
+
+def m1_texts(pins=None):
+    """v2_1: MR_INSERT's MR_INPUT_KV_v4 texts read by ast from the pinned M1 engine (pk24's kt_mr_assembly_v1_8_4, G6 v1_6_2 sect. 6 as
+    built): the v4 FIELDS (FIELDS['MR_INSERT'] plus FIELDS4's MR_INSERT suffix), X_POWER and X_DEFINITION for MR_INSERT, ORIENTATION and the
+    ORIENT_CHECK pattern ORIENT_RX. The writer copies them; nothing here is typed."""
+    pins = PINS if pins is None else pins
+    if pins.get(M1ENG) is None or sha_file(M1ENG) != pins[M1ENG]:
+        raise Refused('C-M1-TEXTS: the M1 engine does not match its pin')
+    tree = ast.parse(open(M1ENG).read())
+    got, suffix = {}, None
+    for node in tree.body:
+        if not (isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name)):
+            continue
+        nm = node.targets[0].id
+        if nm in ('FIELDS', 'XPOW', 'XDEF', 'ORIENT', 'ORIENT_RX'):
+            if nm in got:
+                raise Refused('C-M1-TEXTS: %s is assigned twice in the M1 engine' % nm)
+            got[nm] = ast.literal_eval(node.value)
+        elif nm == 'FIELDS4':
+            for kw in getattr(node.value, 'keywords', []):
+                if kw.arg == 'MR_INSERT' and isinstance(kw.value, ast.BinOp) and isinstance(kw.value.right, ast.Constant):
+                    suffix = kw.value.right.value
+    if sorted(got) != ['FIELDS', 'ORIENT', 'ORIENT_RX', 'XDEF', 'XPOW'] or suffix is None:
+        raise Refused('C-M1-TEXTS: the M1 engine does not define FIELDS, FIELDS4, XPOW, XDEF, ORIENT and ORIENT_RX as expected')
+    return dict(fields=(got['FIELDS']['MR_INSERT'] + suffix), xpow=got['XPOW']['MR_INSERT'], xdef=got['XDEF']['MR_INSERT'],
+                orient=got['ORIENT'], orient_rx=got['ORIENT_RX'])
+
+
+def trial_set_line(pins=None):
+    """v2_1: the TRIAL_SET header value copied by tool from pk25's certified MR_SPECTRAL (mr/v3, pinned; the row 4321)."""
+    pins = PINS if pins is None else pins
+    if pins.get(SPEC_V3) is None or sha_file(SPEC_V3) != pins[SPEC_V3]:
+        raise Refused('C-TRIAL-SET: mr/v3 MR_SPECTRAL.kv does not match its pin')
+    v = [ln.split('=', 1)[1].strip() for ln in lines_of(SPEC_V3) if ln.startswith('TRIAL_SET = ')]
+    if len(v) != 1 or not v[0]:
+        raise Refused('C-TRIAL-SET: mr/v3 MR_SPECTRAL.kv has %d TRIAL_SET lines' % len(v))
+    return v[0]
+
+
+def s9c_main_cf_q(N, tl, th, JL, IN):
+    """v2_1: the centred form of M_R^c(t) / t on [tl, th] with tl > 0, as s9c_main_cf with one range: F(p(c) + B)/c + [a - c, b - c] D_q,
+    D_q an enclosure of d/dtau [F(p(tau) + delta)/tau] = (F' - F/tau)/tau, mr_der's dual number divided by the dual (tau, 1) on the t-ball
+    (the mean value theorem on tau -> F(p(tau) + delta)/tau, C^1 on [a, b] since a > 0 and s9c_main_cf's conditions hold)."""
+    tl, th = tl.lower(), th.upper()
+    if not (tl > 0):
+        raise Refused('s9c_main_cf_q: the range reaches t = 0')
+    Df = s9c_main_piece(N, tl, th, JL, IN)
+    tb = tl.union(th)
+    Dq = mr_der(N, tb, Df, IN) / Du(tb, arb(1))
+    c = arb(((tl + th) / 2).mid())
+    Dc = s9c_main_piece(N, tl, th, JL, IN, tpt=c)
+    u1, u2 = (th - c).upper(), (c - tl).upper()
+    hw = u1 if u1 > u2 else u2
+    return Dc['MR'] / c + Dq.d * hw * arb(0, 1)
+
+
+def ins_fields(jlo, jhi, vx, vy, Pevw, Pev, vp, m, pebw, win, C, windowed, xc, xf):
+    """v2_1: one MR_INSERT v4 row as decimal strings in FIELDS order (jlo jhi vx vy Pevw Pev vp m_xx m_xy m_yy PeBwux PeBwuy win C windowed
+    xc xf): *_lo rounded down, *_hi rounded up (dec_lo, dec_hi); xc given as strings when it must equal vx exactly (power 0)."""
+    if m is None:
+        raise Refused('C-INS-M: a row has no m_ab')
+    xs = list(xc) if isinstance(xc, tuple) else [dec_lo(xc), dec_hi(xc)]
+    return [jlo, jhi, dec_lo(vx), dec_hi(vx), dec_lo(vy), dec_hi(vy), dec_hi(Pevw), dec_hi(Pev), dec_hi(vp), dec_lo(m[(1, 1)]), dec_hi(m[(1, 1)]),
+            dec_lo(m[(1, 2)]), dec_hi(m[(1, 2)]), dec_lo(m[(2, 2)]), dec_hi(m[(2, 2)]), dec_hi(pebw[0]), dec_hi(pebw[1]), dec_hi(win), dec_hi(C),
+            windowed] + xs + [xf]
+
+
+def h_row_v4(N, jlo, jhi, tl, th, JL, D, IN, plant=None):
+    """v2_1: MR_INSERT's h row on a piece with t_lo > 0, from h_piece's output D with S9(c) (D['S9']). xc encloses v_x(t)/t on the piece:
+    (M_R^c(t)/t by s9c_main_cf_q + [-1, 1] (tot + dhx)/t_lo) / s_x, because h~_x(t) lies in M_R^c(t) +- tot (s9c_htx) and Lemma A adds dhx, and
+    v_x = h_x/s_x with s_x in the piece's enclosure. vx is S9(c)'s unwindowed v_x joined with t xc at both ends, so t xc lies inside the
+    amplitude at both ends (the M1 engine's G-FACTX); xf = 0. vp = min(C, (v_x^2 + v_y^2 + Pev^2)^1/2) with S9(c)'s vx. The other fields are
+    h_piece's. plant='FACTX' doubles xc's upper end after the join (C-FACTX must stop it)."""
+    S9 = D['S9']
+    sxb = D['s_lo'][1].union(D['s_hi'][1])
+    tlo, thi = tl.lower(), th.upper()
+    xc = (s9c_main_cf_q(N, tl, th, JL, IN) + ((S9['tot'] + S9['dhx']) / tlo).upper() * arb(0, 1)) / sxb
+    vx = S9['vx'].union(xc * tlo).union(xc * thi)
+    if plant == 'FACTX':
+        xc = xc + abs(xc).upper() * arb(1)
+    Cc = IN['CC'][N]
+    vpa = (abs(vx).upper() * abs(vx).upper() + abs(D['vy']).upper() * abs(D['vy']).upper() + D['Pev'] * D['Pev']).sqrt().upper()
+    vp = Cc if Cc < vpa else vpa
+    return ins_fields(jlo, jhi, vx, D['vy'], D['Pevw'], D['Pev'], vp, D['m'], D['pebw'], D['win'], Cc, '1', xc, '0'), dict(xc=xc, vx=vx)
+
+
+def h_last_row_v4(N, jlo, jhi, th, L, Dagg, IN):
+    """v2_1: MR_INSERT's h row on the last piece by way B on S9(c)'s v_x (the row 4325, G6 v1_6_2 sect. 6): xc = [g_lo, g_hi], xf = f and
+    the amplitude columns min(0, t_1 g_lo) - f and t_1 g_hi + f with t_1 the piece's top t; the other fields the sub-pieces' aggregate."""
+    t1 = th.upper()
+    glo, ghi, f = L['glo'], L['ghi'], L['f']
+    lo = ((t1 * glo).lower() if (t1 * glo).lower() < 0 else arb(0)) - f
+    vx = lo.lower().union((t1 * ghi + f).upper())
+    Cc = IN['CC'][N]
+    vpa = (abs(vx).upper() * abs(vx).upper() + abs(Dagg['vy']).upper() * abs(Dagg['vy']).upper() + Dagg['Pev'] * Dagg['Pev']).sqrt().upper()
+    vp = Cc if Cc < vpa else vpa
+    return ins_fields(jlo, jhi, vx, Dagg['vy'], Dagg['Pevw'], Dagg['Pev'], vp, Dagg['m'], Dagg['pebw'], Dagg['win'], Cc, '1',
+                      glo.lower().union(ghi.upper()), dec_hi(f))
+
+
+def ta_row_v4(jlo, jhi, E, windowed):
+    """v2_1: MR_INSERT's t or a row from ta_rows' dict E: power 0, so xc is the amplitude's own two strings and xf = 0."""
+    s = [dec_lo(E['vx']), dec_hi(E['vx'])]
+    return ins_fields(jlo, jhi, E['vx'], E['vy'], E['Pevw'], E['Pev'], E['vp'], E.get('m'), E['pebw'], E['win'], E['C'], windowed, tuple(s), '0')
+
+
+def factx_check(rows, fields, tamper=None):
+    """v2_1 C-FACTX and C-FLOOR on the written decimals (the M1 engine's G-FACTX and G-FLOOR, exact Fractions): an h row's t xc -+ xf lies
+    inside [vx_lo, vx_hi] at both ends of its piece (t = 1/jlo and 1/jhi, or 0 on the last piece; relative slack 1e-14 as the engine), a t or a
+    row has xc equal to vx string for string and xf = 0, and xf > 0 only on the last piece's h row. Returns the number of rows checked."""
+    from decimal import Decimal as Dm
+    ix = dict((f, i) for i, f in enumerate(fields))
+    n = 0
+    for k, v in rows:
+        it = k.rsplit('_', 1)[1]
+        jlo, jhi = v[ix['jlo']], v[ix['jhi']]
+        lo, hi, clo, chi, ff = (Fraction(Dm(v[ix[f]])) for f in ('vx_lo', 'vx_hi', 'xc_lo', 'xc_hi', 'xf_hi'))
+        if ff < 0 or (ff > 0 and (jhi != 'inf' or it != 'h')):
+            raise Refused('C-FLOOR: row %s has the floor %s off the last piece or on a power-0 row' % (k, v[ix['xf_hi']]))
+        n += 1
+        if it in ('t', 'a'):
+            if (v[ix['xc_lo']], v[ix['xc_hi']]) != (v[ix['vx_lo']], v[ix['vx_hi']]):
+                raise Refused('C-FACTX: row %s: with power 0 xc must equal vx' % k)
+            continue
+        slack = Fraction(1, 10 ** 14) * max(abs(lo), abs(hi))
+        for t in [Fraction(1) / Fraction(Dm(jlo))] + ([Fraction(0)] if jhi == 'inf' else [Fraction(1) / Fraction(Dm(jhi))]):
+            if t * clo - ff < lo - slack or t * chi + ff > hi + slack:
+                raise Refused('C-FACTX: row %s: t xc with the floor leaves the amplitude at t = %.6e' % (k, float(t)))
+    return n
+
+
+def anchor_check(rows, fields):
+    """v2_1 C-ANCHOR, the M1 engine's anchors on MR_INSERT (G6 v1_6_2 sect. 6): t and a v_x > 0 and h, t and a v_y > 0 on every row, and h's
+    v_x lower end > 0 on every piece with t_lo > 0 (the orientation)."""
+    from decimal import Decimal as Dm
+    ix = dict((f, i) for i, f in enumerate(fields))
+    for k, v in rows:
+        it = k.rsplit('_', 1)[1]
+        if not Dm(v[ix['vy_lo']]) > 0:
+            raise Refused('C-ANCHOR: row %s has vy_lo <= 0' % k)
+        if (it in ('t', 'a') or v[ix['jhi']] != 'inf') and not Dm(v[ix['vx_lo']]) > 0:
+            raise Refused('C-ANCHOR: row %s has vx_lo <= 0' % k)
+    return len(rows)
+
+
+def rec_text_v4(fields, rows, extra, source):
+    """v2_1: the MR_INSERT v4 record text: header (FORMAT, RECORD, PRODUCER, CODE, STATUS, EXPORT_STATUS, RUN_VERDICT, SOURCE, J_UNIFORMITY,
+    then the extra lines: ORIENTATION, ORIENT_CHECK, TRIAL_SET, X_POWER, X_DEFINITION, LEMMAP_SHA256, PEV_ROUTE), FIELDS, then one row per
+    piece and item, 'N<N>_P<idx4>_<h|t|a> = values'."""
+    cert = MODE == 'cert'
+    head = ['# MR_INSERT (pk25, %s %s): written by %s' % (LABEL, MODE, LABEL),
+            'FORMAT = MR_INPUT_KV_v4', 'RECORD = MR_INSERT', 'PRODUCER = pk25 %s' % LABEL,
+            'CODE = pk25/asm/%s.py:%s' % (LABEL, sha_file(SELF)), 'STATUS = %s' % ('CERTIFIED' if cert else 'DRY'),
+            'EXPORT_STATUS = %s' % ('CERTIFIED' if cert else 'DRY'), 'RUN_VERDICT = VALID', 'SOURCE = %s' % source,
+            'J_UNIFORMITY = PER-PIECE: every row holds for every J in [jlo, jhi] of its piece; the last piece runs to J = inf (t = 0)'] + extra
+    return '\n'.join(head + ['FIELDS = %s' % fields] + ['%s = %s' % (k, ' '.join(v)) for k, v in rows]) + '\n'
+
+
+def readback_v4(text, TX, rows, counts, tamper=None):
+    """v2_1 C-WRITE on the MR_INSERT v4 text: the M1 engine's kv_read rules (header keys until FIELDS, no repeated key, '=' on every line),
+    FORMAT MR_INPUT_KV_v4, RECORD, ORIENTATION, PRODUCER's first word pk25, X_POWER and X_DEFINITION equal to the engine's, ORIENT_CHECK
+    matching ORIENT_RX with this record's piece counts, TRIAL_SET equal to mr/v3 MR_SPECTRAL's, FIELDS, the rows equal to memory with unique
+    keys, finite decimals, *_lo <= *_hi, single *_hi >= 0. tamper: 'ROW' changes the first row's third value, 'OCHK' drops ORIENT_CHECK."""
+    from decimal import Decimal as Dm
+    if tamper == 'ROW':
+        k0, v0 = rows[0]
+        text = text.replace('%s = %s' % (k0, ' '.join(v0)), '%s = %s' % (k0, ' '.join(v0[:2] + ['9' + v0[2]] + v0[3:])), 1)
+    if tamper == 'OCHK':
+        text = '\n'.join(ln for ln in text.split('\n') if not ln.startswith('ORIENT_CHECK = ')) + '\n'
+    head, got, flds = {}, [], None
+    for ln in text.splitlines():
+        if ln.startswith('#') or not ln.strip():
+            continue
+        if '=' not in ln:
+            raise Refused('C-WRITE: a line without "="')
+        k, v = [x.strip() for x in ln.split('=', 1)]
+        if k == 'FIELDS':
+            flds = v.split()
+        elif flds is None:
+            if k in head:
+                raise Refused('C-WRITE: repeated header key %s' % k)
+            head[k] = v
+        else:
+            got.append((k, v.split()))
+    if (head.get('FORMAT'), head.get('RECORD'), head.get('ORIENTATION')) != ('MR_INPUT_KV_v4', 'MR_INSERT', TX['orient']):
+        raise Refused('C-WRITE: FORMAT, RECORD or ORIENTATION')
+    if head.get('PRODUCER', '').split()[:1] != ['pk25'] or head.get('X_POWER') != TX['xpow'] or head.get('X_DEFINITION') != TX['xdef']:
+        raise Refused('C-WRITE: PRODUCER, X_POWER or X_DEFINITION')
+    mo = re.match(TX['orient_rx'], head.get('ORIENT_CHECK', ''))
+    if not mo or (int(mo.group(1)), int(mo.group(2))) != (counts[4], counts[3]):
+        raise Refused('C-WRITE: ORIENT_CHECK missing or with other piece counts')
+    if head.get('TRIAL_SET') != trial_set_line():
+        raise Refused('C-WRITE: TRIAL_SET differs from mr/v3 MR_SPECTRAL')
+    if flds != TX['fields'].split() or got != [(k, list(v)) for k, v in rows] or len(set(k for k, _ in got)) != len(got):
+        raise Refused('C-WRITE: FIELDS or rows differ from memory')
+    for k, vals in got:
+        row = dict(zip(flds, vals))
+        for f, v in row.items():
+            if f in ('jlo', 'jhi', 'windowed'):
+                continue
+            if not re.fullmatch(r'-?[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?', v) or not Dm(v).is_finite():
+                raise Refused('C-WRITE: row %s field %s = %s' % (k, f, v))
+        for f in row:
+            if f.endswith('_lo') and (f[:-3] + '_hi') in row and Dm(row[f]) > Dm(row[f[:-3] + '_hi']):
+                raise Refused('C-WRITE: row %s has %s > %s_hi' % (k, f, f[:-3]))
+            if f.endswith('_hi') and (f[:-3] + '_lo') not in row and Dm(row[f]) < 0:
+                raise Refused('C-WRITE: row %s has %s < 0' % (k, f))
+    return len(got)
+
+
+def mu_refuses(fn):
+    """v2_1, for the C8 note N2: the mu tool's refusal (ValueError) of an input outside its domain, turned into a Refused for plant()."""
+    try:
+        fn()
+    except ValueError as e:
+        raise Refused('C-MU-DOMAIN: the mu tool refused: %s' % e)
+
+
+def main():
+    t0 = time.time()
+    fails, nofire, EXEC = [], [], []
+
+    def run_plant(name, fn):
+        EXEC.append(name)
+        plant(nofire, name, fn)
+
+    def flag(fn):
+        try:
+            fn()
+            return True
+        except Refused as e:
+            out('  refused: %s' % e)
+            return False
+    out('%s sha256 %s MODE=%s TAG=%s (MR_INSERT v4 producer: h rows from S9(c)-h, t and a rows, the G6 v1_6_2 sect. 6 header; %s)' % (
+        LABEL, sha_file(SELF), MODE, TAG, 'CERTIFIED record to mr/v4' if MODE == 'cert' else 'DRY record to asm/dry_%s' % TAG))
+    bad = ['%s %s' % (os.path.basename(p), sha_file(p)[:8]) for p in sorted(PINS) if sha_file(p) != PINS[p]]
+    out('C-HASH %s (%d pinned files)%s' % ('PASS' if not bad else 'FAIL', len(PINS), (': ' + '; '.join(bad)) if bad else ''))
+    if bad:
+        out('VERDICT INVALID (C-HASH)')
+        return 2
+    try:
+        n = check_core2()
+        out('C-CORE PASS: %d copies equal R4 (%s) and the C6a engine (%s), each defined once' % (n, R4_SHA[:8], C6A_SHA[:8]))
+    except Refused as e:
+        out('C-CORE FAIL: %s' % e)
+        out('VERDICT INVALID (C-CORE)')
+        return 2
+    run_plant('PLANT-CORE', lambda: check_core2(tamper=True))
+    P, _gd = read_grid()
+    FIRST = check_grid(P)
+    IN = {}
+    IN['RD'] = load_rdr()
+    IN['LW'] = dict((N, load_laws(IN['RD'], N)) for N in (4, 3))
+    out('C-LAW-READ: S8 D, E2, E3, FF with m3_lawcert_v1_1, S8 N with m3_lawcert_v1_2, pk25 NIH, NHT, DH with m3_lawcert_s9h_v1_1, through '
+        'm3_reader_s9h_v1 (%s), both N -> %s' % (PINS[RDR][:8], gate(fails, 'C-LAW-READ', True)))
+    RE = dict((N, load_ritz(N, 'CERTIFIED')) for N in (4, 3))
+    out('C-ALIAS: the S8 entries for G, T and Dx carry the S9 records\' ak (both N) -> %s' % gate(
+        fails, 'C-ALIAS', all(flag(lambda N=N: check_alias(IN['LW'][N], RE[N])) for N in (4, 3))))
+    IN['RE'] = RE
+    IN['M2R'], IN['M2MOD'], _m2l = load_m2b()
+    IN['MC'] = dict((N, m2b_mhat_coeffs(lines_of(M2B[1]), N)) for N in (4, 3))
+    IN['M4REC'], IN['M4MOD'] = load_m4()
+    IN['M4HREC'], IN['M4HMOD'] = load_m4h()
+    IN['MU'] = load_mu()
+    out('C-READ: M2B (%s), M4 (%s), M4H (%s), the mu tool %s (%s) through their pinned files -> %s' % (
+        PINS[M2B[0]][:8], PINS[M4[0]][:8], PINS[M4H[0]][:8], os.path.basename(MU), PINS[MU][:8], gate(fails, 'C-READ', True)))
+    m = re.findall(r'tau_4\(4\) = ([0-9]+\.[0-9]+),\s+tau_4\(3\) = ([0-9]+\.[0-9]+),', open(S4C_RECORD).read())
+    if len(m) != 1:
+        out('VERDICT INVALID (the S4(c) claim line)')
+        return 2
+    IN['TOK'] = {4: m[0][0], 3: m[0][1]}
+    IN['TAU4A'] = dict((N, arb(IN['TOK'][N])) for N in (4, 3))
+    IN['LG'] = lg_constants(IN['M2MOD'], IN['M2R'])
+    out('C-R4-LG: S_eps, G_00, Phi_eps, Phi_eps,theta, NA-prime and kappa_max equal R4\'s certified run output (%s) -> %s' % (
+        PINS[R4_CERT_OUT][:8], gate(fails, 'C-R4-LG', flag(lambda: check_r4_lg(IN['LG'])))))
+    IN['TS'], IN['SIG'], IN['MG'], IN['ENGA'] = {}, {}, {}, {}
+    for N in (4, 3):
+        IN['TS'][N], IN['SIG'][N] = orient_signs(N)
+        IN['MG'][N] = load_m4_mg(N)
+        IN['ENGA'][N] = load_enga_m(N)
+    out('C-ORIENT-SIGNS: u~_x times %+d (N4), %+d (N3); u~_y times %+d, %+d -> %s' % (
+        IN['SIG'][4][0], IN['SIG'][3][0], IN['SIG'][4][1], IN['SIG'][3][1], gate(fails, 'C-ORIENT-SIGNS', True)))
+    out('C-MBG: M4_KV_v1\'s N<N>_E1_MG and E3_MG coefficients m_bg(t) (kt_cert\'s own m_g) from %s (%s) -> %s' % (
+        os.path.basename(M4[0]), PINS[M4[0]][:8], gate(fails, 'C-MBG', True)))
+    run_plant('PLANT-MBG-PIN', lambda: load_m4_mg(4, dict(PINS, **{M4[0]: '0' * 64})))
+    IN['LM'] = load_lemmap()
+    out('C-LEMMAP: MR_LEMMAP v3 %s (%s) read, %d rows (cleared by the review 087868a8, main row 4401) -> %s' % (
+        os.path.relpath(LEMMAP, CODEDIR), PINS[LEMMAP][:8], len(IN['LM']), gate(fails, 'C-LEMMAP', True)))
+    IN['MEANS'] = load_means(P)
+    IN['SV'] = load_sv2(P)
+    out('C-MEANS-SV: R4\'s means export (%s; c_t from D3, c_a = c_b from D4) and the S_V export (%s; Bp_hi, vp2_hi) on R4\'s grid -> %s' % (
+        PINS[MEANS][:8], PINS[S67[0]][:8], gate(fails, 'C-MEANS-SV', True)))
+    try:
+        IN['DJ'] = load_dj(IN['RD'])
+        dj_ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        dj_ok = False
+    out('C-DJ-READ: pk22\'s c3j DJ records (N4 %s, N3 %s) through m3_reader_s9h_v1 -> %s' % (
+        PINS[DJREC[4][0]][:8], PINS[DJREC[3][0]][:8], gate(fails, 'C-DJ-READ', dj_ok)))
+    try:
+        TX = m1_texts()
+        TSL = trial_set_line()
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        ok = False
+    out('C-M1-TEXTS: MR_INSERT v4 FIELDS, X_POWER, X_DEFINITION, ORIENTATION and the ORIENT_CHECK pattern from %s (%s); TRIAL_SET from %s (%s) -> %s' % (
+        os.path.relpath(M1ENG, CODEDIR), PINS[M1ENG][:8], os.path.relpath(SPEC_V3, CODEDIR), PINS[SPEC_V3][:8], gate(fails, 'C-M1-TEXTS', ok)))
+    if fails:
+        out('VERDICT INVALID (%s)' % ' '.join(fails))
+        return 2
+    # S9C stage 1: the bad-part constants (S9C_BADPART_LEMMA_v1) at Lam = LAM9C and, for PLANT-BAD, at Lam = 10
+    IN['BP'], IN['BP10'] = {}, {}
+    for N in (4, 3):
+        try:
+            IN['BP'][N] = badpart_constants(N, IN, LAM9C)
+            IN['BP10'][N] = badpart_constants(N, IN, 10)
+            ok = True
+        except Refused as e:
+            out('  refused: %s' % e)
+            ok = False
+        if not gate(fails, 'C-BADPART N=%d' % N, ok) == 'PASS':
+            continue
+        D = IN['BP'][N]
+        B = bad_bc(D)
+        mx = max([float(D[k]) for k in ('P0', 'P1', 'P3')] + [float(x) for x in B.values()])
+        out('BADPART N=%d Lam %s: normalised P_0 %s, P_1 %s, P_3 %s; B_bc = X_bc + X_cb + F_bc (b, c in 1, 3): B_11 %s, B_13 %s, B_33 %s -> '
+            'C-BAD-SMALL %s' % (N, LAM9C, dec_hi(D['P0']), dec_hi(D['P1']), dec_hi(D['P3']), dec_hi(B[(1, 1)]), dec_hi(B[(1, 3)]),
+                                dec_hi(B[(3, 3)]), gate(fails, 'C-BAD-SMALL N=%d' % N, mx <= float(BAD_TOL))))
+    if 4 in IN['BP']:
+        def gbb_plant():
+            D = badpart_constants(4, IN, LAM9C, plant='GBB')
+            if D['Phi'][1] > IN['BP'][4]['Phi'][1]:
+                raise Refused('C-GBB: halving G_11 raised Phi_1 (the bound reads G_bb)')
+        run_plant('PLANT-GBB', gbb_plant)
+    if fails:
+        out('VERDICT INVALID (%s)' % ' '.join(fails))
+        return 2
+    # the mu tool for t (C_t, OR_t): c_t's interval ends by exact comparison
+    IN['ORT'], IN['CCT'] = {}, {}
+    for N in (4, 3):
+        prs = P[N][FIRST[N]:]
+        clo = chi = None
+        for idx, _a, _b in prs:
+            lo_, hi_ = IN['MEANS'][N][idx][0].lower(), IN['MEANS'][N][idx][1].upper()
+            clo = lo_ if clo is None or lo_ < clo else clo
+            chi = hi_ if chi is None or hi_ > chi else chi
+        tmax = t_ends(prs[0][1], prs[0][2])[1]
+        try:
+            up_, lw_, inf_ = IN['MU'].one_row(N, tmax, clo, chi)
+        except ValueError as e:
+            out('VERDICT INVALID (the mu tool refused for t: %s)' % e)
+            return 2
+        IN['ORT'][N] = up_.upper()
+        IN['CCT'][N] = (up_ * (IN['LG'][N]['kap']).sqrt()).upper()
+        out('MU-T N=%d: c_t over the pieces in [%s, %s] (exact ends); OR_t <= %s at t <= %s (%d boxes); C_t = OR_t kappa_max^1/2 <= %s' % (
+            N, dec_lo(clo), dec_hi(chi), dec_hi(IN['ORT'][N]), dec_hi(tmax), inf_['boxes'], dec_hi(IN['CCT'][N])))
+    # pass 1: the Ritz-level mean c~_h on every piece; the mu tool's interval; OR and C per N
+    IN['CI'], IN['OR'], IN['CC'] = {}, {}, {}
+    for N in (4, 3):
+        prs = P[N][FIRST[N]:]
+        lo_ = hi_ = None
+        for idx, jlo, jhi in prs:
+            tl, th, JL = piece_t(jlo, jhi)
+            c0 = h_piece(N, tl, th, JL, 'N%d_P%s' % (N, idx), IN, mode='c0')['ch0']
+            lo_ = c0.lower() if lo_ is None or c0.lower() < lo_ else lo_
+            hi_ = c0.upper() if hi_ is None or c0.upper() > hi_ else hi_
+        IN['CI'][N] = ((lo_ - arb(CI_MARGIN)).lower(), (hi_ + arb(CI_MARGIN)).upper())
+        tmax = t_ends(prs[0][1], prs[0][2])[1]
+        try:
+            up_, lw_, inf_ = IN['MU'].one_row(N, tmax, IN['CI'][N][0], IN['CI'][N][1])
+        except ValueError as e:
+            out('VERDICT INVALID (the mu tool refused: %s)' % e)
+            return 2
+        IN['OR'][N] = up_.upper()
+        IN['CC'][N] = (up_ * (IN['LG'][N]['kap']).sqrt()).upper()
+        out('MU N=%d: c~_h over the pieces in [%s, %s]; the interval [%s, %s]; OR <= %s at t <= %s (%d boxes); C = OR kappa_max^1/2 <= %s' % (
+            N, dec_lo(lo_), dec_hi(hi_), dec_lo(IN['CI'][N][0]), dec_hi(IN['CI'][N][1]), dec_hi(IN['OR'][N]), dec_hi(tmax), inf_['boxes'],
+            dec_hi(IN['CC'][N])))
+    t4max = t_ends(P[4][FIRST[4]][1], P[4][FIRST[4]][2])[1]
+    run_plant('PLANT-MU-T', lambda: mu_refuses(lambda: IN['MU'].one_row(4, arb(1) / 298, IN['CI'][4][0], IN['CI'][4][1])))
+    run_plant('PLANT-MU-C', lambda: mu_refuses(lambda: IN['MU'].one_row(4, t4max, IN['CI'][4][1], IN['CI'][4][0])))
+    for N in (4, 3):
+        idx0, jlo0, jhi0 = P[N][FIRST[N]]
+        tl0, th0, JL0 = piece_t(jlo0, jhi0)
+        run_plant('PLANT-ORIENT N=%d' % N, lambda N=N, a=(tl0, th0, JL0, idx0): h_piece(N, a[0], a[1], a[2], 'N%d_P%s' % (N, a[3]), IN, mode='c0',
+                                                                                          plant='ORIENT'))
+    # pass 2: h (S9(c)), t and a on every piece; the last piece by way B on S9(c)'s v_x
+    rows, perr, hst, last = [], {}, {}, {}
+    for N in (4, 3):
+        prs = P[N][FIRST[N]:]
+        hst[N] = []
+        for j, (idx, jlo, jhi) in enumerate(prs):
+            tl, th, JL = piece_t(jlo, jhi)
+            key = 'N%d_P%s' % (N, idx)
+            try:
+                if jhi == 'inf':
+                    glo, ghi, f, F0, nsub, vxh, vyh, subs, D0 = last_piece_floor(N, tl, th, key, IN, ratio=Fraction(11, 10), s9c=s9c_htx)
+                    L = dict(glo=glo, ghi=ghi, f=f, F0=F0, nsub=nsub, vxh=vxh, idx=idx)
+                    Dagg = agg([s[2] for s in subs] + [D0])
+                    Dta = h_piece(N, arb(0), th, JL, key, IN, mode='full')
+                    rh = h_last_row_v4(N, jlo, jhi, th, L, Dagg, IN)
+                    rt, ra = ta_row_v4(jlo, jhi, Dta['t'], '1'), ta_row_v4(jlo, jhi, Dta['a'], '0')
+                    last[N] = L
+                else:
+                    D = h_piece(N, tl, th, JL, key, IN, mode='full', s9c=s9c_htx)
+                    rh, hx = h_row_v4(N, jlo, jhi, tl, th, JL, D, IN)
+                    rt, ra = ta_row_v4(jlo, jhi, D['t'], '1'), ta_row_v4(jlo, jhi, D['a'], '0')
+                    hst[N].append((idx, jlo, D['S9'], hx))
+            except Refused as e:
+                g = str(e).split(':')[0] if str(e).startswith('C-') else 'C-PIECE (%s)' % str(e)[:50]
+                perr.setdefault(g, []).append(key)
+                continue
+            rows += [(key + '_h', rh), (key + '_t', rt), (key + '_a', ra)]
+        nN = sum(1 for k, _v in rows if k.startswith('N%d_' % N) and k.endswith('_h'))
+        out('C-PIECE N=%d: %d of %d pieces carry h (S9(c), the last by way B), t and a rows (C-ORIENT on every piece) -> %s' % (
+            N, nN, len(prs), gate(fails, 'C-PIECE N=%d' % N, nN == len(prs))))
+    for g, v in sorted(perr.items()):
+        out('  refusals %s: %d pieces, first %s' % (g, len(v), v[0]))
+    rw = lambda x: float(x.rad()) / abs(float(x.mid())) if float(x.mid()) != 0 else float('inf')
+    for N in (4, 3):
+        H = hst.get(N, [])
+        if not H:
+            continue
+        n9 = sum(1 for h in H if bool(h[2]['vx'] > 0 or h[2]['vx'] < 0))
+        out('C-SIGN-S9C N=%d: S9(c)\'s v_x certainly signed on %d of %d pieces with t_lo > 0 -> %s' % (
+            N, n9, len(H), gate(fails, 'C-SIGN-S9C N=%d' % N, n9 == len(H))))
+        bmax = max(H, key=lambda h: float(h[2]['badw']))
+        out('C-BAD-W N=%d: the weighted bad parts at most %s (piece %s) <= %s -> %s' % (
+            N, dec_hi(bmax[2]['badw']), bmax[0], BAD_TOL, gate(fails, 'C-BAD-W N=%d' % N, bmax[2]['badw'] <= arb(BAD_TOL))))
+        wv = max((rw(h[3]['vx']), h[0]) for h in H)
+        wx = max((rw(h[3]['xc']), h[0]) for h in H)
+        out('INFO WIDTH N=%d: h row relative half-widths, largest: vx %.3e (piece %s), xc %.3e (piece %s); S9(c) v_x alone %.3e' % (
+            N, wv[0], wv[1], wx[0], wx[1], max(rw(h[2]['vx']) for h in H)))
+        L = last.get(N)
+        if L:
+            out('WAYB-S9C N=%d last piece %s: xc = [%s, %s], xf = %s (F0 %s, %d sub-pieces, ratio 11/10); the sign holds for J < %s' % (
+                N, L['idx'], dec_lo(L['glo']), dec_hi(L['ghi']), dec_hi(L['f']), dec_hi(L['F0']), L['nsub'],
+                dec_lo((L['glo'] / L['f']).lower()) if L['glo'] > 0 else 'none'))
+    fields = TX['fields']
+    nf = len(fields.split())
+    out('C-ROW-LEN: every row carries the %d v4 fields -> %s' % (nf, gate(fails, 'C-ROW-LEN', all(len(v) == nf for _k, v in rows))))
+    out('C-ANCHOR: t and a v_x > 0, h, t and a v_y > 0, h v_x > 0 off the last piece, on all %d rows -> %s' % (
+        len(rows), gate(fails, 'C-ANCHOR', flag(lambda: anchor_check(rows, fields.split())))))
+    out('C-FACTX: h rows t xc -+ xf inside the amplitude at both ends, t and a rows xc = vx, floors only on the last h rows -> %s' % (
+        gate(fails, 'C-FACTX', flag(lambda: factx_check(rows, fields.split())))))
+    idx0, jlo0, jhi0 = P[4][FIRST[4]]
+    tl0, th0, JL0 = piece_t(jlo0, jhi0)
+    key0 = 'N4_P%s' % idx0
+
+    def factx_plant():
+        D = h_piece(4, tl0, th0, JL0, key0, IN, mode='hx', s9c=s9c_htx)
+        r, _x = h_row_v4(4, jlo0, jhi0, tl0, th0, JL0, D, IN, plant='FACTX')
+        factx_check([(key0 + '_h', r)], fields.split())
+    run_plant('PLANT-FACTX', factx_plant)
+
+    def anchor_plant():
+        k, v = [(k, v) for k, v in rows if k.endswith('_t')][0]
+        anchor_check([(k, v[:2] + ['-' + v[2]] + v[3:])], fields.split())
+    run_plant('PLANT-ANCHOR', anchor_plant)
+    try:
+        fd, Dd, pos = der_fd_check(4, tl0, th0, JL0, IN)
+        ok = True
+    except Refused as e:
+        out('  refused: %s' % e)
+        ok = False
+    out('C-DER-FD N=4 piece %s: the difference quotient %s against dM_R^c/dt %s -> %s' % (
+        idx0, fd.str(8) if ok else '-', Dd.str(8, radius=True) if ok else '-', gate(fails, 'C-DER-FD', ok)))
+    run_plant('PLANT-DER', lambda: der_fd_check(4, tl0, th0, JL0, IN, plant='DER'))
+    run_plant('PLANT-IHT0', lambda: s9c_main_piece(4, tl0, th0, JL0, IN, plant='IHT0'))
+
+    def sign_plant(pl):
+        D = h_piece(4, tl0, th0, JL0, key0, IN, mode='hx', s9c=lambda a, b, c, d, e, f: s9c_htx(a, b, c, d, e, f, plant=pl))
+        if not bool(D['S9']['vx'] > 0 or D['S9']['vx'] < 0):
+            raise Refused('C-SIGN-S9C: v_x is not certainly signed with plant %s' % pl)
+    run_plant('PLANT-HQ', lambda: sign_plant('HQ'))
+    run_plant('PLANT-RB', lambda: sign_plant('RB'))
+
+    def bad_plant():
+        D = h_piece(4, tl0, th0, JL0, key0, IN, mode='hx', s9c=lambda a, b, c, d, e, f: s9c_htx(a, b, c, d, e, f, plant='BAD'))
+        if D['S9']['badw'] > arb(BAD_TOL):
+            raise Refused('C-BAD-W: the weighted bad parts at Lam = 10 exceed %s' % BAD_TOL)
+    run_plant('PLANT-BAD', bad_plant)
+    counts = dict((N, sum(1 for k, _v in rows if k.startswith('N%d_' % N) and k.endswith('_h'))) for N in (4, 3))
+    ochk = ('C-ORIENT PASS on every piece (N4 %d, N3 %d): u~_x has a positive coefficient on the canonical e1 and u~_y on the canonical e3; '
+            'plant PLANT-ORIENT fired' % (counts[4], counts[3]))
+    oriented = ('C-PIECE N=4' not in fails and 'C-PIECE N=3' not in fails and 'PLANT-ORIENT N=4' in EXEC and 'PLANT-ORIENT N=3' in EXEC and
+                'PLANT-ORIENT N=4' not in nofire and 'PLANT-ORIENT N=3' not in nofire and re.match(TX['orient_rx'], ochk) is not None)
+    out('C-ORIENT-LINE: C-ORIENT passed on every piece of the record (N4 %d, N3 %d), PLANT-ORIENT fired at both N, the line matches the M1 '
+        'engine\'s ORIENT_RX -> %s' % (counts[4], counts[3], gate(fails, 'C-ORIENT-LINE', oriented)))
+    source = ('S8 law certificates m3_lawcert_v1_1 N4 %s N3 %s, m3_lawcert_v1_2 N4 %s N3 %s (pk03); pk25 m3_lawcert_s9h_v1_1 N4 %s N3 %s; '
+              'M2B_KV_v1 %s; M4_KV_v1 %s (R_e1, R_e3 and the E1_MG, E3_MG lines; A_am); M4H_KV_v1 %s (A_h); S4(c) v1_1 %s (tau4 claim); R4 %s '
+              '(CORE); mu tool %s; MR_LEMMAP v3 %s; R4 means export %s; S_V export %s; pk22 c3j DJ N4 %s N3 %s; S9C bad-part lemma '
+              'S9C_BADPART_LEMMA_v1' % (
+                  PINS[S8CERT[4]['v1_1'][0]][:8], PINS[S8CERT[3]['v1_1'][0]][:8], PINS[S8CERT[4]['v1_2'][0]][:8], PINS[S8CERT[3]['v1_2'][0]][:8],
+                  PINS[HCERT[4][0]][:8], PINS[HCERT[3][0]][:8], PINS[M2B[0]][:8], PINS[M4[0]][:8], PINS[M4H[0]][:8], PINS[S4C_RECORD][:8],
+                  R4_SHA[:8], PINS[MU][:8], PINS[LEMMAP][:8], PINS[MEANS][:8], PINS[S67[0]][:8], PINS[DJREC[4][0]][:8], PINS[DJREC[3][0]][:8]))
+    extra = ['ORIENTATION = %s' % TX['orient'], 'ORIENT_CHECK = %s' % ochk, 'TRIAL_SET = %s' % TSL, 'X_POWER = %s' % TX['xpow'],
+             'X_DEFINITION = %s' % TX['xdef'], 'LEMMAP_SHA256 = %s' % PINS[LEMMAP],
+             'PEV_ROUTE = Pev_hi = C (N-1) for h and t until the bulk Pev route lands (the row 4376; G6 v1_6_2 sect. 6)']
+    text = rec_text_v4(fields, rows, extra, source)
+    out('C-WRITE: the MR_INSERT v4 text read back by the M1 engine\'s rules (%d rows) -> %s' % (
+        len(rows), gate(fails, 'C-WRITE', flag(lambda: readback_v4(text, TX, rows, counts)))))
+    run_plant('PLANT-WRITE', lambda: readback_v4(text, TX, rows, counts, tamper='ROW'))
+    run_plant('PLANT-OCHK', lambda: readback_v4(text, TX, rows, counts, tamper='OCHK'))
+    unrun = [p for p in PLANT_NAMES if p not in EXEC] + [p for p in EXEC if p not in PLANT_NAMES or EXEC.count(p) != 1]
+    out('PLANTS: %d of %d must-fire plants ran (not run or repeated: %s); not firing: %s' % (
+        len(set(EXEC)), len(PLANT_NAMES), ' '.join(unrun) if unrun else 'none', ' '.join(nofire) if nofire else 'none'))
+    if nofire or unrun:
+        fails.append('PLANTS')
+    if fails:
+        out('VERDICT INVALID (%s)' % ' '.join(fails))
+        return 2
+    recdir = OWN + '/mr/v4' if MODE == 'cert' else os.path.join(ASM, 'dry_%s' % TAG)
+    if MODE == 'dry':
+        os.mkdir(recdir)
+    if not os.path.isdir(recdir) or os.path.realpath(recdir) not in (os.path.realpath(OWN + '/mr/v4'), os.path.realpath(os.path.join(ASM, 'dry_%s' % TAG))):
+        out('VERDICT INVALID (record folder)')
+        return 2
+    path = os.path.join(recdir, 'MR_INSERT.kv')
+    with open(path, 'x') as fh:
+        fh.write(text)
+    if sha_file(path) != hashlib.sha256(text.encode()).hexdigest():
+        out('VERDICT INVALID (the written MR_INSERT differs from memory)')
+        return 2
+    out('RECORD %s sha256 %s rows %d' % (os.path.relpath(path, CODEDIR), sha_file(path), len(rows)))
+    out('RUN wall %.1f s' % (time.time() - t0))
+    out('VERDICT VALID')
+    return 0
+
+
+PLANT_NAMES = ('PLANT-CORE', 'PLANT-MBG-PIN', 'PLANT-GBB', 'PLANT-MU-T', 'PLANT-MU-C', 'PLANT-ORIENT N=4', 'PLANT-ORIENT N=3', 'PLANT-FACTX',
+               'PLANT-ANCHOR', 'PLANT-DER', 'PLANT-IHT0', 'PLANT-HQ', 'PLANT-RB', 'PLANT-BAD', 'PLANT-WRITE', 'PLANT-OCHK')
+
+
+if __name__ == '__main__':
+    from flint import arb, arb_mat, ctx
+    ctx.prec = 256
+    try:
+        rc = main()
+    except Refused as e:
+        out('STOP Refused: %s' % e)
+        out('VERDICT INVALID (refused)')
+        rc = 2
+    FH.close()
+    sys.exit(rc)

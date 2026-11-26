@@ -1,0 +1,17 @@
+2026-11-08T11:48:56Z BWRAP-S4N3 prod run 1: run_bwrap_s4n3_v1_1.sh eba73118; chain 2d52af21; bubblewrap 0.11.1; log bwrap_s4n3_v1_1_prod_1.log
+2026-11-08T11:48:56Z MANIFEST_bwrap_s4n3_v1_1.sha256 3bbfc96c OK (--strict)
+2026-11-08T11:48:56Z DISK /mnt/g2/release/root/code/pk03/out/tab16c before: listing sha256 d95a1a8d906d6ce0, 6 entries; free space on /mnt/g2/release/root/code/pk03's filesystem 1029464965120 bytes
+2026-11-08T11:48:56Z G-MEM (MemAvailable 490632613888 bytes >= 25769803776: the 8 GiB tmpfs, the 8 GiB item, an 8 GiB margin) -> PASS
+2026-11-08T11:48:56Z SESSION start (prod): bwrap --die-with-parent --dev-bind / / --size 8589934592 --tmpfs /mnt/g2/release/root/code/pk03/out/tab16c
+2026-11-08T11:48:56Z SESSION inner prod: shell pid 2085606; G-IN (/mnt/g2/release/root/code/pk03/out/tab16c: fstype tmpfs, 0 entries, size 8589934592 >= 8373741824) -> PASS
+2026-11-08T11:48:56Z START S4 3 chain: pid 2085639 (pid file tmp/bwrap_s4n3_v1_1_S43_1.pid), log chain_m3_run_v1_9_3b_S43_1.log, cap 6000 s; sampler pid 2085640
+2026-11-08T12:49:46Z END S4 3 chain rc 0; last line: 2026-11-08T12:49:44Z CHAIN end: CPU 3647.8 s of 6000
+2026-11-08T12:49:46Z TMPFS-USE after S4 3: 7302242304 of 8589934592 bytes
+2026-11-08T12:49:46Z TABLE u16_1cea1fe05882a483d0d279c89ace9529_97ea161946d0: 90 files, 3650877745 bytes; handoff_table.json b8a62463ce3f7278aaee55ceea0ac5355df62ebf7fc51b56b74ff0987dd25ce1
+2026-11-08T12:49:46Z TABLE u16_ccb6cb65b78cc9312b663c7346cb2c6c_97ea161946d0: 90 files, 3650877742 bytes; handoff_table.json 7dc7080d066996c961ff076ec7347be5fbd660a3193120940d9cfa90309a73a9
+2026-11-08T12:49:46Z START asm 3 chain: log chain_m3_run_v1_9_3b_asm3_1.log, cap 200 s
+2026-11-08T12:49:47Z END asm 3 chain rc 0; last line: 2026-11-08T12:49:47Z CHAIN end: CPU 0.5 s of 200
+2026-11-08T12:49:47Z SESSION inner done
+2026-11-08T12:49:47Z SESSION exit rc 0
+2026-11-08T12:49:47Z G-OUT (the disk's /mnt/g2/release/root/code/pk03/out/tab16c listing after d95a1a8d906d6ce0, before d95a1a8d906d6ce0: equal; this session's own files under out/, hand/ and tmp/ newer than its marker: 444103 bytes, limit 10000000) -> PASS
+2026-11-08T12:49:47Z VERDICT VALID

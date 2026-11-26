@@ -1,0 +1,15 @@
+C-SRC (C10_RECORD_v1.kv 7090c13a33fec1e4, MANIFEST_C10_V1_3_CERT_c1.sha256 bf8df39779ec0d3a, m4xy_asm_v1_1_cert.out 3680f37d6c21ba66, M4XY_KV_v1.txt f697229931f7e8b9, MANIFEST_M4XY_V1_1_v1.sha256 770f3f4d97ae8a56, m4xy_reader_v1_1.py 52004e3da4f520cf, MR_SPECTRAL.kv 0e4d817729c6f735, kt_cert_v1_8_xy_2.py 7f6d0e0f79961828, MANIFEST_V1_8_XY_2_X_v1.sha256 522f9bbf029f9bae, out_kt_cert_v1_8_xy_2_x.xyn3.out ce8160d9f080a417, out_kt_cert_v1_8_xy_2_x.xyn4.out f79fa36e7cec4cf7) -> PASS
+C-MANIFEST (M4XY_KV_v1, m4xy_reader_v1_1.py and the asm output are rows of MANIFEST_M4XY_V1_1_v1.sha256 with these sha256s) -> PASS
+C-LOAD (M4XY_KV_v1 through m4xy_reader_v1_1.load bound to its asm output, expected sha256 and the reader's own sha256 given: load passed) -> PASS
+C-LEMMA (C10_RECORD_v1.kv: FORMAT C10_KV_v1, STATUS CERTIFIED, CLAIM with C-SPAN and C-PURE10, a row of MANIFEST_C10_V1_3_CERT_c1.sha256; kt_cert_v1_8_xy_2 x records (first line naming 7f6d0e0f, VERDICT VALID, C-T0ZERO PASS, PLANT-T0ZERO FIRES, rows of MANIFEST_V1_8_XY_2_X_v1.sha256): x.xyn4 ok, x.xyn3 ok) -> PASS
+C-GRID (MR_SPECTRAL v4's N = 3 keys: 904 pieces from J 300.0 to inf, contiguous, J >= 300) -> PASS
+C-JMIN-GRID (the first piece's jlo 300.0 equals the record's N3_XY_JMIN 300.0 exactly: the law holds on every piece) -> PASS
+C-MONO-J (xy: the tail rates, the far items' (2 + w + p)/c <= 300 and gB's (d_max + 1)/rho_G <= 300, so J L'(J) is nonincreasing on J >= 300; failures []) -> PASS
+C-L300 (xy: law_balls' formula at J = 300, 1.231863285514e-02, against the record's L300 1.2318632855139608e-02) -> PASS
+C-LIMIT (xy: the last piece's R_hat 2.7301746437209324e-01 is at least the t -> 0 limit 300 M_1/D = 2.7301654988302130e-01) -> PASS
+ROWS N=3 xy: first piece R_hat 3.6955898565418823e+00 (full 3.7048288311832370e+00), last piece R_hat 2.7301746437209324e-01; C0 = 300 M_1/D 2.7301654988302130e-01; engine t^0 M_0/D 0; J_MIN 300.0
+PLANT-MONO-J (xy's far item oSS with its rate just below (2 + w + p)/300 must fail) -> FIRES
+PLANT-JMIN (the law just below J_MIN(3) = 300.0 must be refused by m4xy_reader_v1_1.law_balls) -> FIRES
+C-ROUND (every written c2_hi >= the written R_hat squared; failures 0) -> PASS
+RECORD /mnt/g2/release/root/code/pk22/midrow/e3/out/e3_sq2_v2_N3.json sha256 83251af95bf9e015a0fe6532c330ea3ad9d16b4086401b891b6b426a2e41fe06 pieces 904 kinds ['xy']
+VERDICT VALID

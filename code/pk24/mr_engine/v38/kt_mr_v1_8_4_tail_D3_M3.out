@@ -1,0 +1,94 @@
+TAIL ARGUMENT 3:3: D0 3, M0 3, n0 = 2 D0 + M0 + 1 = 10
+kt_mr_assembly_v1_8_4 (abd48b2c94e0d64328ce631a21f8ab3c93c665f1de86e4abcdb190c3744df448): RECDIR pk24/mr_engine/v36/up_cwa0e MODE STANDIN PLANT none NMAX 10 PIECES all
+C-CORE OK: mr_core_v1_3 b897451f512c69c3e08ac61d330f993634c105d42169dbd898dc91448554898a; 7 blocks and 3 constants equal to the prototype 5e3fc430d69a445487a449fd54faefdf540ba8a3298a52c7e5fd9cadb0bd76e6
+C-IV OK: 3000 operations (add, sub, mul, inv, sqrt; negation, amax, hull, pow, division with 50-digit endpoints) enclose or equal the exact rational results
+G-PIN MR_SPECTRAL.kv 483dec43c54d09114fb63e3e7beaf0da36de57e8d58718713741cffe3c294952 OK (PRODUCER pk24)
+G-PIN MR_INSERT.kv 5a25ca1ea6b1fd07aa84c73ebfcb8202c45b88ae327e39fdc958f2f77020f511 OK (PRODUCER pk24)
+G-PIN MR_EXACT.kv b663d9a7ce8610e1a5d167b4d8ed15b1eef99a9696c77a0791a8d37b449b64b9 OK (PRODUCER pk24)
+G-PIN MR_CRUDEX.kv fc2934e183003549126166444bf81cecb6129ea3ab48fcac3f6731d8e586717d OK (PRODUCER pk24) (CRUDEX_FORM factored)
+G-PIN MR_JOINT.kv 5045cc8cebaaf5371d16605628cff17450e89d388658dc27ee835da990a4d213 OK (PRODUCER pk24)
+G-FACTX OK: 84 x-coefficient rows inside their amplitudes with their floors (power 1) or equal to them (power 0); 0 rows with a Way B floor (last piece, h); one envelope per piece with 0 < env_r < 1
+C-ORIENT OK: c_x(-1) > 0 and c_y(-1) > 0 on every MR_SPECTRAL row; t and a v_x > 0, h, t and a v_y > 0 on every MR_INSERT row; 48 exact ends checked against the sign of their bulk x amplitude; ORIENT_CHECK on MR_SPECTRAL, MR_INSERT and MR_EXACT with the grid's piece counts
+A0X ON: the vertical end at d' = 0 is exact (MR_EXACT a0 rows on every piece)
+G-UNIF OK: N = 4 6 pieces, N = 3 6 pieces; every record on the same grid with every row; last piece to inf; decimal fields finite, lo <= hi, single upper bounds >= 0, the spectral data positive
+XMODE FACTORED: x signs read on the coefficient intervals (MR_INPUT_KV_v4, factored MR_CRUDEX, D_MAX 30)
+ROUTE V OFF: MR_EXACT has no Pe_hi; the m = 1 rest uses the crude ends' |P_e a| only
+C-SIGN OK: 12 pieces, e-hat(d) for d = 1..30 and the envelope at 31 against the modulus of h's coefficient
+SUMMARY N=4 n=6: to-do orbits 25; channel classes 22, PASS 22; least headroom 3.098 at h2-bb4 (piece 0); reference 1.636; same-bond orbits 2, least H_J 17.24; FAIL 0
+CLASS N=4 n=6 h1-a3     chan-exact d=-1 k=0 dp=2 m=1: L 1.681604e-03 at piece 0, H 17.305 PASS 
+CLASS N=4 n=6 h1-a4     chan-exact d=-1 k=1 dp=1 m=2: L 7.087954e-05 at piece 0, H 11.005 PASS 
+CLASS N=4 n=6 h1-a5     chan-exact d=-1 k=2 dp=0 m=3: L 3.295773e-06 at piece 0, H 20.763 PASS 
+CLASS N=4 n=6 h1-a6     chan-exact d=-1 k=3 dp=-1 m=4: L 1.715231e-07 at piece 0, H 4.788 PASS 
+CLASS N=4 n=6 h1-bb2    chan-exact d=-1 k=-1 dp=2 m=1: L 2.664201e-03 at piece 0, H 15.570 PASS 
+CLASS N=4 n=6 h1-bb3    chan-exact d=-1 k=0 dp=1 m=2: L 1.160415e-04 at piece 0, H 15.130 PASS 
+CLASS N=4 n=6 h1-bb4    chan-exact d=-1 k=1 dp=0 m=3: L 3.804525e-06 at piece 0, H 3.379 PASS 
+CLASS N=4 n=6 h1-bb5    chan-exact d=-1 k=2 dp=-1 m=4: L 1.715231e-07 at piece 0, H 4.788 PASS 
+CLASS N=4 n=6 h1-h3     chan-crude d=-1 k=0 dp=1 m=2: L 4.708166e-04 at piece 0, H 19.222 PASS 
+CLASS N=4 n=6 h1-h4     chan-exact d=-1 k=1 dp=0 m=3: L 2.023874e-05 at piece 0, H 15.875 PASS 
+CLASS N=4 n=6 h2-a4     chan-exact d=0 k=0 dp=1 m=1: L 1.746215e-03 at piece 0, H 9.773 PASS 
+CLASS N=4 n=6 h2-a5     chan-exact d=0 k=1 dp=0 m=2: L 8.183748e-05 at piece 0, H 18.965 PASS 
+CLASS N=4 n=6 h2-a6     chan-exact d=0 k=2 dp=-1 m=3: L 4.117261e-06 at piece 0, H 4.186 PASS 
+CLASS N=4 n=6 h2-bb3    chan-exact d=0 k=-1 dp=1 m=1: L 2.727404e-03 at piece 0, H 8.316 PASS 
+CLASS N=4 n=6 h2-bb4    chan-exact d=0 k=0 dp=0 m=2: L 9.131072e-05 at piece 0, H 3.098 PASS 
+CLASS N=4 n=6 h2-bb5    chan-exact d=0 k=1 dp=-1 m=3: L 4.117261e-06 at piece 0, H 4.186 PASS 
+CLASS N=4 n=6 h3-a5     chan-crude d=1 k=0 dp=0 m=1: L 1.872690e-03 at piece 0, H 17.452 PASS 
+CLASS N=4 n=6 h3-a6     chan-crude d=1 k=1 dp=-1 m=2: L 1.059727e-04 at piece 0, H 6.756 PASS 
+CLASS N=4 n=6 h3-bb4    chan-crude d=1 k=-1 dp=0 m=1: L 2.212376e-03 at piece 0, H 3.492 PASS 
+CLASS N=4 n=6 h3-bb5    chan-crude d=1 k=0 dp=-1 m=2: L 1.059727e-04 at piece 0, H 6.756 PASS 
+CLASS N=4 n=6 h4-a6     chan-crude d=2 k=0 dp=-1 m=1: L 2.365671e-03 at piece 0, H 5.883 PASS 
+CLASS N=4 n=6 h4-bb5    chan-crude d=2 k=-1 dp=-1 m=1: L 2.365671e-03 at piece 0, H 5.883 PASS 
+SUMMARY N=4 n=7: to-do orbits 37; channel classes 34, PASS 34; least headroom 3.743 at h2-bb5 (piece 0); reference 1.961; same-bond orbits 2, least H_J 17.38; FAIL 0
+SUMMARY N=4 n=8: to-do orbits 52; channel classes 48, PASS 48; least headroom 4.312 at h2-bb6 (piece 0); reference 2.243; same-bond orbits 3, least H_J 17.40; FAIL 0
+SUMMARY N=4 n=9: to-do orbits 69; channel classes 65, PASS 65; least headroom 4.482 at h6-bb7 (piece 0); reference 2.388; same-bond orbits 3, least H_J 17.41; FAIL 0
+SUMMARY N=4 n=10: to-do orbits 89; channel classes 84, PASS 84; least headroom 4.485 at h7-bb8 (piece 0); reference 2.388; same-bond orbits 4, least H_J 17.41; FAIL 0
+SUMMARY N=3 n=6: to-do orbits 25; channel classes 22, PASS 22; least headroom 6.312 at h1-bb4 (piece 0); reference 3.107; same-bond orbits 2, least H_J 27.38; FAIL 0
+CLASS N=3 n=6 h1-a3     chan-exact d=-1 k=0 dp=2 m=1: L 1.146358e-03 at piece 0, H 27.299 PASS 
+CLASS N=3 n=6 h1-a4     chan-exact d=-1 k=1 dp=1 m=2: L 4.914904e-05 at piece 0, H 18.532 PASS 
+CLASS N=3 n=6 h1-a5     chan-exact d=-1 k=2 dp=0 m=3: L 2.256377e-06 at piece 0, H 46.377 PASS 
+CLASS N=3 n=6 h1-a6     chan-exact d=-1 k=3 dp=-1 m=4: L 1.261326e-07 at piece 0, H 7.924 PASS 
+CLASS N=3 n=6 h1-bb2    chan-exact d=-1 k=-1 dp=2 m=1: L 1.824962e-03 at piece 0, H 25.588 PASS 
+CLASS N=3 n=6 h1-bb3    chan-exact d=-1 k=0 dp=1 m=2: L 7.943359e-05 at piece 0, H 24.313 PASS 
+CLASS N=3 n=6 h1-bb4    chan-exact d=-1 k=1 dp=0 m=3: L 3.030472e-06 at piece 0, H 6.312 PASS 
+CLASS N=3 n=6 h1-bb5    chan-exact d=-1 k=2 dp=-1 m=4: L 1.261326e-07 at piece 0, H 7.924 PASS 
+CLASS N=3 n=6 h1-h3     chan-crude d=-1 k=0 dp=1 m=2: L 3.225988e-04 at piece 0, H 38.479 PASS 
+CLASS N=3 n=6 h1-h4     chan-exact d=-1 k=1 dp=0 m=3: L 1.394514e-05 at piece 0, H 31.904 PASS 
+CLASS N=3 n=6 h2-a4     chan-exact d=0 k=0 dp=1 m=1: L 1.228567e-03 at piece 0, H 18.971 PASS 
+CLASS N=3 n=6 h2-a5     chan-exact d=0 k=1 dp=0 m=2: L 5.639208e-05 at piece 0, H 48.913 PASS 
+CLASS N=3 n=6 h2-a6     chan-exact d=0 k=2 dp=-1 m=3: L 3.157634e-06 at piece 0, H 8.082 PASS 
+CLASS N=3 n=6 h2-bb3    chan-exact d=0 k=-1 dp=1 m=1: L 1.955255e-03 at piece 0, H 18.339 PASS 
+CLASS N=3 n=6 h2-bb4    chan-exact d=0 k=0 dp=0 m=2: L 7.581859e-05 at piece 0, H 6.387 PASS 
+CLASS N=3 n=6 h2-bb5    chan-exact d=0 k=1 dp=-1 m=3: L 3.157634e-06 at piece 0, H 8.082 PASS 
+CLASS N=3 n=6 h3-a5     chan-crude d=1 k=0 dp=0 m=1: L 1.295373e-03 at piece 0, H 45.556 PASS 
+CLASS N=3 n=6 h3-a6     chan-crude d=1 k=1 dp=-1 m=2: L 7.619255e-05 at piece 0, H 12.355 PASS 
+CLASS N=3 n=6 h3-bb4    chan-crude d=1 k=-1 dp=0 m=1: L 1.785132e-03 at piece 0, H 7.309 PASS 
+CLASS N=3 n=6 h3-bb5    chan-crude d=1 k=0 dp=-1 m=2: L 7.619255e-05 at piece 0, H 12.355 PASS 
+CLASS N=3 n=6 h4-a6     chan-crude d=2 k=0 dp=-1 m=1: L 1.722428e-03 at piece 0, H 10.666 PASS 
+CLASS N=3 n=6 h4-bb5    chan-crude d=2 k=-1 dp=-1 m=1: L 1.722428e-03 at piece 0, H 10.666 PASS 
+SUMMARY N=3 n=7: to-do orbits 37; channel classes 34, PASS 34; least headroom 7.571 at h1-bb5 (piece 0); reference 3.637; same-bond orbits 2, least H_J 27.54; FAIL 0
+SUMMARY N=3 n=8: to-do orbits 52; channel classes 48, PASS 48; least headroom 8.632 at h1-bb6 (piece 0); reference 4.064; same-bond orbits 3, least H_J 27.57; FAIL 0
+SUMMARY N=3 n=9: to-do orbits 69; channel classes 65, PASS 65; least headroom 8.674 at h6-bb7 (piece 0); reference 4.146; same-bond orbits 3, least H_J 27.57; FAIL 0
+SUMMARY N=3 n=10: to-do orbits 89; channel classes 84, PASS 84; least headroom 8.678 at h7-bb8 (piece 0); reference 4.147; same-bond orbits 4, least H_J 27.57; FAIL 0
+G-FLOAT INFO N4 n6: least headroom 3.0981, reference 1.6360 (differs)
+G-FLOAT INFO N4 n7: least headroom 3.7429, reference 1.9610 (differs)
+G-FLOAT INFO N4 n8: least headroom 4.3124, reference 2.2430 (differs)
+G-FLOAT INFO N4 n9: least headroom 4.4816, reference 2.3880 (differs)
+G-FLOAT INFO N4 n10: least headroom 4.4847, reference 2.3880 (differs)
+G-FLOAT INFO N3 n6: least headroom 6.3124, reference 3.1070 (differs)
+G-FLOAT INFO N3 n7: least headroom 7.5710, reference 3.6370 (differs)
+G-FLOAT INFO N3 n8: least headroom 8.6319, reference 4.0640 (differs)
+G-FLOAT INFO N3 n9: least headroom 8.6738, reference 4.1460 (differs)
+G-FLOAT INFO N3 n10: least headroom 8.6779, reference 4.1470 (differs)
+FACTORED SIGN FALLBACK: 0 class-piece evaluations had no certified sign for the product of the two x coefficients, so X took v1_6's form there (the v1_7 N-2)
+FAIL REASONS: classes failing at G-POS 0, at G-DELTA 0, on the margin alone 0 (same-bond failures count as margin)
+TAIL N=4 D0 3 M0 3: envelope classes 45 per piece, FAIL 0, least L 7.479874e-05 at h-1-aD0+/m2 (piece 0); m-tail at M0: FAIL 0, least lower end 2.572431e-02 (pair h-a, piece 0), q_R <= 0.6347, q_T <= 0.4886; sign condition (c): FAIL on 0 pieces; Proposition J envelope orbits: FAIL 0, least L_J 6.738028e-02 (d_R 0, piece 0)
+C-TAILMONO OK N=4: 6 pieces; s_x, s_y, tau, rho_1 and env_r below 1; the envelope at D0 = 3 encloses the end at d = 3..15, 30 and 31 (A_y, A_x, N', |P_e a|, |S a|, e; for h also the coefficient and e)
+TAIL SUP N=4: sup over d >= D0 = 3 of e-hat(d) = max(rows 3..30, envelope at 31): least 2.478407e-05, largest 2.478407e-05 over the pieces; it enters h's envelope as the coefficient xc -+ sup and the x amplitude v_x -+ t_hi sup (the h end at every d >= D0)
+TAIL N=3 D0 3 M0 3: envelope classes 45 per piece, FAIL 0, least L 5.054482e-05 at h-1-aD0+/m2 (piece 0); m-tail at M0: FAIL 0, least lower end 2.081471e-02 (pair h-a, piece 0), q_R <= 0.6171, q_T <= 0.4886; sign condition (c): FAIL on 0 pieces; Proposition J envelope orbits: FAIL 0, least L_J 4.594906e-02 (d_R 0, piece 0)
+C-TAILMONO OK N=3: 6 pieces; s_x, s_y, tau, rho_1 and env_r below 1; the envelope at D0 = 3 encloses the end at d = 3..15, 30 and 31 (A_y, A_x, N', |P_e a|, |S a|, e; for h also the coefficient and e)
+TAIL SUP N=3: sup over d >= D0 = 3 of e-hat(d) = max(rows 3..30, envelope at 31): least 1.042323e-05, largest 1.042323e-05 over the pieces; it enters h's envelope as the coefficient xc -+ sup and the x amplitude v_x -+ t_hi sup (the h end at every d >= D0)
+TAIL REASONS: envelope classes failing 0, m-tail pairs failing 0, pieces failing the sign condition 0, Proposition J envelope orbits failing 0
+TAIL_VERDICT PASS (TAIL = 3 3 10)
+WARN BLOCK: 0 rows with float headroom H < 2 (design target 2; not an acceptance rule)
+WROTE be8b6a00 pk24/mr_engine/v38/MR_ASSEMBLY_tail_D3_M3.kv (534 rows); FAIL rows 0; gate lines 0; WARN rows 0
+WROTE TAIL a3dcab6d pk24/mr_engine/v38/MR_ASSEMBLY_tail_D3_M3.kv.tail (12 rows); TAIL_VERDICT PASS
+RUN_VERDICT STANDIN-VALID

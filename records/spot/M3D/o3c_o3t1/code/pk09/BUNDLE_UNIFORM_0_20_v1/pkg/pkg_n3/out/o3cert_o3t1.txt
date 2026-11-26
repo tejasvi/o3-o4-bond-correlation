@@ -1,0 +1,17 @@
+o3cert o3t1: L=10 I=3; 381 states, 1978365 quadruples (max merged terms 11); structure 0.6s
+   residual coefficients (r0, r1, r2, r3) per mode: 8.2e-14 7.2e-12 4.3e-10 2.8e+00 ; 3.3e-18 1.9e-12 1.9e-10 2.4e+00 ; 2.4e-18 2.7e-12 2.7e-10 3.1e+00 ; 3.3e-18 1.9e-12 1.9e-10 2.4e+00; |Qc T1 Qc| <= 2.986e-08; |T2 + t T3| <= 1.221e+00; eF 8.2e-14 fF 1.3e-12; lam_min/lam_1 = -3.01e-17; min eig (S -+ T_X, S -+ T_XY)/lam_1 = -1.31e-21 -2.56e-21
+J in [0.009900, 0.010100] (J0=1/100, h=0.0001): assembly 2.5s; parities +1 +1 -1 +1; |w_k| 0.01 0.11 0.00 0.11; gaps over I 1.000e+00 5.091e-08 5.069e-08 5.069e-08; rotation theta 2.88e-12 4.80e-05 6.14e-05 4.83e-05
+   (C1) ordering over I: True; (C2) min over I of (lam2+lam4-2lam3)/lam1 >= 0.00000 (scaled lam1 in [1.00000, 1.00000]); lam5/lam1 <= 1.2283e-08; lam2/lam1 <= 0.0000
+   classes: eps(0) <= 3.2619e-10; deep radii: horizontal 4.28e-21, vertical 5.78e-24; truncation: trel 1.14e-16, |dy| 2.27e-16; mode fuzz h 4.60e-14 v 7.80e-16, norm fuzz h 5.05e-13 v 7.80e-16 (Rq 101.10, Tq 0.00); frame Gram dev 2.0e-13; block angle 4.30e-07
+      t@0    a2 -9.7557e-04 -9.5592e-04 a3 -1.3746e-03 -1.3470e-03 a4 -9.6840e-04 -9.4903e-04 |u~| 1.944e-03 |eps| 3.262e-10 |Q5 u~| 1.791e-07
+      bb@0   a2 -9.7557e-04 -9.5592e-04 a3 1.3470e-03 1.3746e-03 a4 -9.6840e-04 -9.4903e-04 |u~| 1.944e-03 |eps| 3.262e-10 |Q5 u~| 1.791e-07
+      h@0    a2 -1.9418e-03 -1.9030e-03 a3 -2.3941e-07 2.3941e-07 a4 -1.9460e-03 -1.9070e-03 |u~| 2.749e-03 |eps| 3.262e-10 |Q5 u~| 2.538e-07
+      a@1    a2 -9.7557e-04 -9.5592e-04 a3 -1.3746e-03 -1.3470e-03 a4 -9.6840e-04 -9.4903e-04 |u~| 1.944e-03 |eps| 7.676e-15 |Q5 u~| 1.794e-07
+      t@4    a2 -9.7558e-04 -9.5593e-04 a3 -1.3746e-03 -1.3470e-03 a4 -9.6841e-04 -9.4904e-04 |u~| 1.944e-03 |eps| 2.463e-16 |Q5 u~| 1.791e-07
+      a@4    a2 -9.7557e-04 -9.5592e-04 a3 -1.3746e-03 -1.3470e-03 a4 -9.6840e-04 -9.4903e-04 |u~| 1.944e-03 |eps| 2.463e-16 |Q5 u~| 1.794e-07
+   (C3) signs over I: a2 one-signed True, a4 one-signed True, a3 by side True
+   (C4) over I: min (p2 - p4) = 1.2609e-08 at (a@1, b@1); min F(0) = 3.6003e-11 at (a@4, b@4); same-side min 1.8142e-06 at (b@3, b@4)
+   (C5) over I: m0 = 0, safety factor >= 1.119e+03 at (a@4, b@4) (ratios lam5/lam4 <= 0.0011, lam5/lam3 <= 0.0011, lam2^2/(lam1 lam4) <= 0.0000)
+   (C7) same-column over I: 25 position pairs, not certified > 0: 0; min (Cov Z^2 / <S>^2) lower bound 7.9004e-11 at (0, 0)
+   ==> interval [0.009900, 0.010100]: CERTIFIED (2.6s)
+total 3.2s

@@ -1,0 +1,76 @@
+m3_run_v1_9_3 item S4p8.4 LIM 540; script sha256 57991eb011023ae9a185423c375d42660eabe88607d207b1a535153a5d94ce5b; python 3.14.4
+STAGE-CPU C-HASH start 0.04 s
+C-HASH (9 modules, the kernel files, 12 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.12 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v11: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=) -> PASS
+PLANT-CALLER (m3_bar_v11 with one E2_combine call's plan= removed) -> FIRES
+C-SERIES (no *_series( call in 9 modules, the kernel files and this script) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-330.000000000 +/- 2.94e-12] overlaps the layer's [-330.000000000 +/- 2.64e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU S4 prep piece 8 start 0.13 s
+C-HANDOFF (m3_run_v1_9_3_S4p7.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-CACHE-CHAIN (S4 prep piece 8: piece 7's hand-off, done False; memo m3_run_v1_9_3_memo_S4_N4.jsonl: its first 17 lines have sha256 667e376d (recorded 667e376d), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+PLANT-CACHE (the memo head against its recorded sha256 with the last digit changed) -> FIRES
+C-GRAPH-LIST (S4: the columns ['free', 'int', 'int', 'free'] give V 12, 17 edges and F 19 (the list: [12, 17, 19]); pairs [(0, 1), (3, 4), (4, 5), (6, 7), (7, 8), (9, 10), (10, 11)] equal the list's) -> PASS
+PLANT-GRAPH-LIST (S4: the pair list without its first pair) -> FIRES
+C-RULE (S4: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 8.1e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (S4: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 12 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 1.5441322736127014, 1.542581433543126) -> PASS
+C-PREP-REF (S4: m3ref_v1_14_P16S4.4.p6_z9sym.out PREPJSON of family P16S4, N 4, J 300.0) -> PASS
+C-PREP-GRAPH (S4: the prep graph has V 12, F 12 and pairs [] (the family graph: F 19); against the family graph, V, N, S_gauge and the 17 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo (C-4)) -> PASS
+PLANT-PREP-EDGE (S4: the prep graph with its first edge ((0, 1), 1) dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (S4: the prep graph with its first edge's tag 1 changed to 'A', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (S4: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (S4: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+PREP16-START S4 piece 8: 17 norms finished before, 17 memo lines (0 adopted from capped pieces), budget factor 1.25
+TABLE16-LOADED u vertex forms D 16: 3.33 s; shadow_max 5.965e-04
+TABLE16 u vertex forms D 16: 36.56 s (hand-off a9de57ab)
+E2BLOCK u vertex forms D 16 1 of 4: 1499963784 pairs, 71.49 s
+E2BLOCK u vertex forms D 16 2 of 4: 1499963784 pairs, 71.00 s
+E2BLOCK u vertex forms D 16 3 of 4: 1499963784 pairs, 72.94 s
+E2BLOCK u vertex forms D 16 4 of 4: 25630632 pairs, 1.57 s
+E2-WIDTH u vertex forms D 16 u:nE4_2: 4525521984 pairs in 4 blocks, relative radius 3.767e-01
+NORM16 u:nE4_2 p 4: 253.69 s
+PREP16-REP S4 stage u: 21 scalars, certified upper end / float in [1.000000 (nE4[0]), 1.083205 (nE4[2])]; nE4[0] 1.000000; nE[0] 1.000000; rE_parts[t4|H4|] 1.000000; nE[1] 1.000000; rE_parts[t5 h5/120] 1.000000; nE4[1] 1.000000; rE_parts[t4 H2^2/2] 1.000000; rE_parts[t4|H1H3|] 1.000000; rE_parts[t5|H1H4|] 1.000000; rE_parts[t5|H2|h3/6] 1.000000; nE[2] 1.000000; rE_parts[t6|H1|h5/120] 1.000000; rE_parts[t6 h3^2/72] 1.000000; rE_parts[E2^3 term] 1.000006; rE_parts[t5|H1|h2^2/8] 1.000012; rE_parts[t4 H1^2|H2|/2] 1.000021; rE 1.000021; rE_parts[t5 H1^2 h3/12] 1.000104; nE4[3] 1.000369; nE[3] 1.000369; nE4[2] 1.083205
+NORM16 c:h2 p6 p 6: 0.06 s
+TABLE16-START c vertex forms D 16: state u16_1cea1fe05882a483d0d279c89ace9529_337e0788bf3a, state0 hand-off 00f5920b377098d71ee85f4a329438c30b98cd242a3ebac7bf944a6c491f7b21
+UNIT16 c vertex forms D 16 L1:0-1: {"asked": [1, 0, 1], "blocks": 1, "cand": 12, "check_ok": true, "cpu": 0.003, "end": 1, "k_max": 3, "level_done": true, "max_terms_ratio": 1.0, "pairs": 12, "shadow_max": 3.330669073875471e-16, "terms": 12, "tiny": 0, "unit": [1, 0, 1]}
+UNIT16 c vertex forms D 16 L2:0-1: {"asked": [2, 0, 1], "blocks": 1, "cand": 210, "check_ok": true, "cpu": 0.003, "end": 1, "k_max": 8, "level_done": true, "max_terms_ratio": 1.0, "pairs": 210, "shadow_max": 2.069246000352913e-15, "terms": 210, "tiny": 0, "unit": [2, 0, 1]}
+UNIT16 c vertex forms D 16 L3:0-1: {"asked": [3, 0, 1], "blocks": 1, "cand": 1948, "check_ok": true, "cpu": 0.003, "end": 1, "k_max": 14, "level_done": true, "max_terms_ratio": 1.0, "pairs": 1948, "shadow_max": 1.1831151871271877e-14, "terms": 1948, "tiny": 0, "unit": [3, 0, 1]}
+UNIT16 c vertex forms D 16 L4:0-1: {"asked": [4, 0, 1], "blocks": 1, "cand": 12651, "check_ok": true, "cpu": 0.007, "end": 1, "k_max": 21, "level_done": true, "max_terms_ratio": 1.0, "pairs": 12651, "shadow_max": 6.87513797081414e-14, "terms": 12651, "tiny": 0, "unit": [4, 0, 1]}
+UNIT16 c vertex forms D 16 L5:0-1: {"asked": [5, 0, 1], "blocks": 1, "cand": 64296, "check_ok": true, "cpu": 0.01, "end": 1, "k_max": 29, "level_done": true, "max_terms_ratio": 1.0, "pairs": 64296, "shadow_max": 4.3468348068803893e-13, "terms": 64296, "tiny": 0, "unit": [5, 0, 1]}
+UNIT16 c vertex forms D 16 L6:0-3: {"asked": [6, 0, 3], "blocks": 3, "cand": 271624, "check_ok": true, "cpu": 0.031, "end": 3, "k_max": 38, "level_done": true, "max_terms_ratio": 1.0, "pairs": 271624, "shadow_max": 2.966748988135614e-12, "terms": 271624, "tiny": 0, "unit": [6, 0, 3]}
+UNIT16 c vertex forms D 16 L7:0-7: {"asked": [7, 0, 7], "blocks": 7, "cand": 990936, "check_ok": true, "cpu": 0.106, "end": 7, "k_max": 48, "level_done": true, "max_terms_ratio": 1.0, "pairs": 990936, "shadow_max": 2.1049273310860408e-11, "terms": 990936, "tiny": 0, "unit": [7, 0, 7]}
+UNIT16 c vertex forms D 16 L8:0-16: {"asked": [8, 0, 16], "blocks": 16, "cand": 3205698, "check_ok": true, "cpu": 0.341, "end": 16, "k_max": 59, "level_done": true, "max_terms_ratio": 1.0, "pairs": 3205698, "shadow_max": 1.6010727872828403e-10, "terms": 3205698, "tiny": 0, "unit": [8, 0, 16]}
+UNIT16 c vertex forms D 16 L9:0-34: {"asked": [9, 0, 34], "blocks": 34, "cand": 9377600, "check_ok": true, "cpu": 0.986, "end": 34, "k_max": 71, "level_done": true, "max_terms_ratio": 1.0, "pairs": 9377600, "shadow_max": 1.1638396400110818e-09, "terms": 9377600, "tiny": 0, "unit": [9, 0, 34]}
+UNIT16 c vertex forms D 16 L10:0-71: {"asked": [10, 0, 71], "blocks": 71, "cand": 25181652, "check_ok": true, "cpu": 2.617, "end": 71, "k_max": 84, "level_done": true, "max_terms_ratio": 1.0, "pairs": 25181652, "shadow_max": 9.184304289000502e-09, "terms": 25181652, "tiny": 0, "unit": [10, 0, 71]}
+UNIT16 c vertex forms D 16 L11:0-142: {"asked": [11, 0, 142], "blocks": 142, "cand": 62815920, "check_ok": true, "cpu": 6.571, "end": 142, "k_max": 98, "level_done": true, "max_terms_ratio": 1.0, "pairs": 62815920, "shadow_max": 5.657469841417738e-08, "terms": 62815920, "tiny": 0, "unit": [11, 0, 142]}
+UNIT16 c vertex forms D 16 L12:0-271: {"asked": [12, 0, 271], "blocks": 271, "cand": 146969265, "check_ok": true, "cpu": 15.566, "end": 271, "k_max": 113, "level_done": true, "max_terms_ratio": 1.0, "pairs": 146969265, "shadow_max": 3.314542441702234e-07, "terms": 146969265, "tiny": 0, "unit": [12, 0, 271]}
+UNIT16 c vertex forms D 16 L13:0-500: {"asked": [13, 0, 500], "blocks": 500, "cand": 325076700, "check_ok": true, "cpu": 36.572, "end": 500, "k_max": 128, "level_done": true, "max_terms_ratio": 1.0, "pairs": 325076700, "shadow_max": 2.0811615093472883e-06, "terms": 325076700, "tiny": 0, "unit": [13, 0, 500]}
+FALLBACKS 0 (MAFallback recomputes in arb, INFO)
+PREP16 S4 piece 8: PARTIAL before table unit L14:0-892 of c vertex forms D 16 (about 171 s); 19 norms finished, memo 21 lines (head sha256 7c2bf12b); tables: u16_1cea1fe05882a483 13 units, u16_ccb6cb65b78cc931 finished a9de57ab; adopted 0, moved aside 0, memo hits 0; largest E2 relative radius 3.767e-01 at u:nE4_2, 1 over FALLBACK_REL; shadow_max u vertex forms D 16 5.965e-04
+HANDOFF m3_run_v1_9_3_S4p8.4.json 18eda7454d1cf977d854f1f2c985c01ba1838a7d9d35c9c02a039216d8578a76
+C-HANDOFF-RT (the hand-off decodes to exactly the values written) -> PASS
+PLANT-HANDOFF (body byte tampered in memory) -> FIRES
+PLANT-HANDOFF (header script sha tampered in memory) -> FIRES
+PLANT-HANDOFF (END checksum tampered in memory) -> FIRES
+PLANT-VERDICT (a producer record whose VERDICT line extends 'VERDICT VALID' must be refused) -> FIRES
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 351.49 s
+VERDICT VALID

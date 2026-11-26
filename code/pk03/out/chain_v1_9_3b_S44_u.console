@@ -1,0 +1,27 @@
+2026-11-08T05:09:18Z CHAIN start m3_run_v1_9_3 57991eb0, S4 at N4, mode u; run_chain_m3_run_v1_9_3b.sh 2d52af21; cap 8000 s; log chain_m3_run_v1_9_3b_S44_1.log
+2026-11-08T05:09:18Z MANIFEST_m3_run_v1_9_3b.sha256 0fef19f0 and the v1_9_3, v1_9_2, v1_9_1, v1_9 manifests OK (--strict)
+2026-11-08T05:09:18Z END pycheck rc 0 VERDICT VALID  out b370b31f
+2026-11-08T05:09:18Z PREFLIGHT: the H N4 replay check must pass before this chain runs
+2026-11-08T05:09:18Z REPLAY-H4 lines: REPLAY_REF 18, m3_run_v1_9_1 18 (self-test cmp rc 0), m3_run_v1_9_3 18 (cmp rc 0, 9f798728); PLANT-REPLAY cmp rc 1 (must be 1)
+2026-11-08T05:09:18Z REPLAY-H4 m3_run_v1_9_3 pieces: Hp1.4 3f210ddf Hp2.4 2a166181 Hp3.4 2f8fae36 Hp4.4 7daa1481 Hp5.4 2bd1213c
+2026-11-08T05:09:18Z REPLAY-H4 PASS (the 18 lines equal REPLAY_REF 4ce12eea byte for byte; PLANT-REPLAY FIRES)
+2026-11-08T05:09:18Z S4 has 18 entries in S8_ENTRY_LIST_v2
+2026-11-08T05:09:18Z SKIP S4a.4: done before (d397532f)
+2026-11-08T05:09:18Z START S4p1.4 LIM 540 (CPU so far 0.2 s of 8000)
+2026-11-08T05:13:57Z END S4p1.4 rc 0 CPU 278.4 s (total 278.6 s) VERDICT VALID  out fbdbc590 10249 bytes; err 0 bytes
+2026-11-08T05:13:57Z START S4p2.4 LIM 540 (CPU so far 278.6 s of 8000)
+2026-11-08T05:17:44Z END S4p2.4 rc 0 CPU 226.7 s (total 505.3 s) VERDICT VALID  out e882f0ff 6747 bytes; err 0 bytes
+2026-11-08T05:17:44Z START S4p3.4 LIM 540 (CPU so far 505.3 s of 8000)
+2026-11-08T05:23:01Z END S4p3.4 rc 0 CPU 316.5 s (total 821.8 s) VERDICT VALID  out eb58a1ce 6751 bytes; err 0 bytes
+2026-11-08T05:23:01Z START S4p4.4 LIM 540 (CPU so far 821.8 s of 8000)
+2026-11-08T05:29:28Z END S4p4.4 rc 0 CPU 384.4 s (total 1206.2 s) VERDICT VALID  out 0c800903 8026 bytes; err 0 bytes
+2026-11-08T05:29:28Z START S4p5.4 LIM 540 (CPU so far 1206.2 s of 8000)
+2026-11-08T05:34:19Z END S4p5.4 rc 0 CPU 290.8 s (total 1497.0 s) VERDICT VALID  out d3887be3 6787 bytes; err 0 bytes
+2026-11-08T05:34:19Z START S4p6.4 LIM 540 (CPU so far 1497.0 s of 8000)
+2026-11-08T05:39:47Z END S4p6.4 rc 0 CPU 327.6 s (total 1824.6 s) VERDICT VALID  out ac7580e8 6657 bytes; err 0 bytes
+2026-11-08T05:39:47Z START S4p7.4 LIM 540 (CPU so far 1824.6 s of 8000)
+2026-11-08T05:44:47Z END S4p7.4 rc 0 CPU 300.3 s (total 2124.9 s) VERDICT VALID  out a34c47d3 7091 bytes; err 0 bytes
+2026-11-08T05:44:47Z START S4p8.4 LIM 540 (CPU so far 2124.9 s of 8000)
+2026-11-08T05:50:39Z END S4p8.4 rc 0 CPU 351.6 s (total 2476.5 s) VERDICT VALID  out 0334c3e6 11269 bytes; err 0 bytes
+2026-11-08T05:50:39Z MEASURE: stage u done in S4p8.4; the chain stops (mode u)
+2026-11-08T05:50:39Z CHAIN end: CPU 2476.6 s of 8000

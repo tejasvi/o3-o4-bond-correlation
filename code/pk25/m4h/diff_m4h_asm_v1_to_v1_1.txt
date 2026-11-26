@@ -1,0 +1,59 @@
+--- m4h_asm_v1.py
++++ m4h_asm_v1_1.py
+@@ -1,5 +1,12 @@
+ #!/usr/bin/env python3
+-"""m4h_asm_v1.py -- pk25 (code/pk25/m4h/). A FORK of pk15/m4_asm_v1.py (sha256 e085f35d1761ca40dbeda89f4f23058b155418f3b2bd68dcf53d6a370744986e) for the h-row kinds h, h1,
++"""m4h_asm_v1_1.py -- pk25 (code/pk25/m4h/). REVISION of m4h_asm_v1.py (sha256 65e872b027e9117490b7b01d9b29a08aab902de143aa987843fd6def0f694259) after C5's first cert run
++(the approval, P0_LOG row 4263; output pk25/m4h/out/out_m4h_asm_v1.out): every gate passed and no record was written, because
++PLANT-SWAP did not fire. Its exchange of N4 h's and N4 h1's M1 (1.47e-4, 5.85e-4) moved h1's L(300) from +1.40% to about +0.4%
++over Q, inside C-LAW300's band, so the plant's condition (both kinds fail) did not hold. The plant now exchanges M0 (4.4e-17,
++4.30e-2); the condition is the parent's. Also: the reader is m4h_reader_v1_1 (sha256 e854fc13e6ae963034785d3aa91339178244bf405edafddc5fbe8b6d03b8ef6b), and the header line
++and usage name m4h_asm_v1_1. Nothing else changes (diff_m4h_asm_v1_to_v1_1.txt).
++m4h_asm_v1's docstring follows.
++m4h_asm_v1.py -- pk25 (code/pk25/m4h/). A FORK of pk15/m4_asm_v1.py (sha256 e085f35d1761ca40dbeda89f4f23058b155418f3b2bd68dcf53d6a370744986e) for the h-row kinds h, h1,
+ h3 (A_h, R^xi_e1, R^xi_e3; C5 of G5_PLAN_v1 sect. 3, ADD1_1 sect. 8): the evaluator that writes M4H_KV_v1 through m4h_reader_v1 (sha256
+ 868f6c0ab49a046ccf12004c5b0d8265c8ae5c59dfb5c7ec950c8607144d5817); made by pk25/m4h/make_m4h_v1.py with exact replacements of asserted counts
+ (diff_m4_asm_v1_to_m4h_asm_v1.txt). What changes, and nothing else:
+@@ -60,7 +67,7 @@
+ ctx.prec = 256
+ CODEDIR = '/mnt/g2/release/root/code'
+ OWN = CODEDIR + '/pk25/m4h'                       # m4h_asm_v1: the record M4H_KV_v1 and its mocks
+-READER, READER_SHA = 'pk25/m4h/m4h_reader_v1.py', '868f6c0ab49a046ccf12004c5b0d8265c8ae5c59dfb5c7ec950c8607144d5817'   # m4h_asm_v1
++READER, READER_SHA = 'pk25/m4h/m4h_reader_v1_1.py', 'e854fc13e6ae963034785d3aa91339178244bf405edafddc5fbe8b6d03b8ef6b'   # m4h_asm_v1_1
+ PIN_GROUPS = {   # m4h_asm_v1: the h-row records and their producers (PIN_KTCERT), x of h, h1, h3 (PIN_X); the other groups are m4_asm_v1's
+     'PIN_KTCERT': {
+         'pk02/kt_cert_v1_8.py': '2bd634d64511bf083a2104be0bdcffc7138a28a65125e4b50886245b5e2336f2',
+@@ -879,10 +886,10 @@
+ def plants(text0, text, v, kvd, hd, far_again, rec):
+     g = lines(kt_rel('g', 'h', 4))
+     fmt = 'FORMAT KT_CERT_RECORD_v1_9'
+-    sw = R._sub(R._sub(text0, 'N4_H_M1', kvd['N4_H1_M1']), 'N4_H1_M1', kvd['N4_H_M1'])
++    sw = R._sub(R._sub(text0, 'N4_H_M0', kvd['N4_H1_M0']), 'N4_H1_M0', kvd['N4_H_M0'])   # m4h_asm_v1_1: M0 (v1's M1 swap stayed in band)
+     rsw = R.parse_record(sw)
+     plant_gate('PLANT-SWAP', lambda: law300_ok(rsw, v, 4, 'h') or law300_ok(rsw, v, 4, 'h1'),
+-               'N4 h\'s and N4 h1\'s M1 exchanged: C-LAW300 on h or on h1')
++               'N4 h\'s and N4 h1\'s M0 exchanged: C-LAW300 on h or on h1')
+     plant_gate('PLANT-MONO-KAPPA', lambda: chernoff_ok(R.A_E_F, arb(0)), 'kappa_B := 0: the Chernoff rates')
+     plant_refused('PLANT-MONO-FAR', 'C-MONO-FAR4 N4 h oSS:', lambda: R.c_mono(R.parse_record(R._plant_far_c(text0, kvd))))
+     plant_refused('PLANT-MOCK', 'C-REC g.hn4: FORMAT', lambda: kt_lines(_swap_line(g, fmt, 'FORMAT KT_CERT_RECORD_v1_9 MOCK'), 'g', 'h', 4))
+@@ -934,17 +941,17 @@
+     global R
+     mode = argv[0] if argv else ''
+     if not ((mode == 'cert' and len(argv) == 1) or (mode == 'mock' and len(argv) == 2)):
+-        print('usage: m4h_asm_v1.py cert | mock <mock far kv under code/>')
++        print('usage: m4h_asm_v1_1.py cert | mock <mock far kv under code/>')
+         return 2
+     with open(os.path.abspath(__file__), 'rb') as fh:
+         own = sha(fh.read())
+     asm_rel = os.path.relpath(os.path.abspath(__file__), CODEDIR)
+-    print('m4h_asm_v1 sha256 %s MODE=%s; file %s; python %s; ctx.prec %d' % (own, mode, asm_rel, sys.version.split()[0], ctx.prec))
++    print('m4h_asm_v1_1 sha256 %s MODE=%s; file %s; python %s; ctx.prec %d' % (own, mode, asm_rel, sys.version.split()[0], ctx.prec))
+     out = OWN + ('/M4H_KV_v1.txt' if mode == 'cert' else '/mocks/out/M4H_KV_v1_MOCK_%s.txt' % os.path.splitext(os.path.basename(asm_rel))[0])
+     try:
+         np_, nm, ns = c_hash()
+         gate('C-HASH', True, '%d pinned files; the kt_cert run manifest\'s %d entries, %d of them pinned here too, equal' % (np_, nm, ns))
+-        R = module(READER, 'm4h_reader_v1')
++        R = module(READER, 'm4h_reader_v1_1')
+         if mode == 'mock':
+             R.FIXED['FORMAT'], R.CLAIM = 'M4H_KV_v1 MOCK', 'MOCK ' + R.CLAIM
+         src_check()

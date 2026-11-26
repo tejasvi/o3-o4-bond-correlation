@@ -1,0 +1,46 @@
+2,3c2,9
+< """check_m2_cols_v1.py (pk24; M2's certified run, MIDROW_M2_PLAN_v1_3 sect. 1, G6 v1_7 sect. 6): compares M2's MR_INSERT v5 with the certified
+< mr/v4b (pin 54691bc1) and M2's MR_EXACT v1_10 with the certified v1_9 (pin 98e4e01e), field strings row by row, before the engine:
+---
+> """check_m2_cols_v2.py (pk24; M2's certified run, MIDROW_M2_PLAN_v1_3 sect. 1, G6 v1_7 sect. 6). REVISION of check_m2_cols_v1.py (d220d3a7)
+> for pk25's MR_INSERT v5 (P4): on the last piece's h row of each N, vx_lo and vx_hi are refreshed to the floor-free hull
+> [min(0, t_1 xc_lo), max(0, t_1 xc_hi)], t_1 = 1/jlo, so they join the allowed fields there. Changes, and nothing else:
+>   (1) INSERT's allowed fields on that row: xc_lo, xc_hi, xf_hi, vx_lo, vx_hi (v1: the first three);
+>   (2) an INFO line per such row: the supplied [vx_lo, vx_hi] against the floor-free hull, in exact rationals of the printed decimals (contains,
+>       or the side that misses). It stops nothing: the engine's G-FACTX is the binding check.
+> Compares M2's MR_INSERT v5 with the certified mr/v4b (pin 54691bc1) and M2's MR_EXACT v1_10 with the certified v1_9 (pin 98e4e01e), field
+> strings row by row, before the engine:
+5,6c11,12
+<   INSERT  every field byte-identical except, on the last piece's h row (jhi = inf), xc_lo, xc_hi and xf_hi (Way A; exit 9 otherwise); that row
+<           has xf_hi = 0 (exit 11) and xc_lo > 0 (exit 12);
+---
+>   INSERT  every field byte-identical except, on the last piece's h row (jhi = inf), xc_lo, xc_hi, xf_hi, vx_lo and vx_hi (exit 9 otherwise);
+>           that row has xf_hi = 0 (exit 11) and xc_lo > 0 (exit 12);
+9c15
+< Prints the counts and the changed last-piece values. Usage: check_m2_cols_v1.py V4B V5 EXA19 EXA110"""
+---
+> Prints the counts and the changed last-piece values. Usage: check_m2_cols_v2.py V4B V5 EXA19 EXA110"""
+10a17
+> from fractions import Fraction
+30c37,47
+< def cmp(name, fa, ra, fb, rb, allow_keys, allow_fields, floor_f, lo_f):
+---
+> def vxhull(name, k, row, ix):
+>     """v2 (2): INFO only. The floor-free hull of v_x on the last piece from xc (X_DEFINITION with xf_hi = 0, p = 1 for h)."""
+>     jlo, xlo, xhi = Fraction(row[ix['jlo']]), Fraction(row[ix['xc_lo']]), Fraction(row[ix['xc_hi']])
+>     vlo, vhi = Fraction(row[ix['vx_lo']]), Fraction(row[ix['vx_hi']])
+>     hlo, hhi = min(Fraction(0), xlo / jlo), max(Fraction(0), xhi / jlo)
+>     miss = [s for s, ok in (('low side', vlo <= hlo), ('high side', vhi >= hhi)) if not ok]
+>     print('M2COLS %s VXHULL %s (INFO): vx [%s, %s] against the floor-free hull [%.17g, %.17g] -> %s' % (
+>         name, k, row[ix['vx_lo']], row[ix['vx_hi']], float(hlo), float(hhi), 'contains' if not miss else 'misses on the ' + ' and '.join(miss)))
+> 
+> 
+> def cmp(name, fa, ra, fb, rb, allow_keys, allow_fields, floor_f, lo_f, hull=False):
+50a68,69
+>             if hull:
+>                 vxhull(name, k, rb[k], ix)
+69c88,89
+<     r1 = cmp('INSERT', fa, ra, fb, rb, lambda k, jhi: k.endswith('_h') and jhi == 'inf', ('xc_lo', 'xc_hi', 'xf_hi'), 'xf_hi', 'xc_lo')
+---
+>     r1 = cmp('INSERT', fa, ra, fb, rb, lambda k, jhi: k.endswith('_h') and jhi == 'inf', ('xc_lo', 'xc_hi', 'xf_hi', 'vx_lo', 'vx_hi'), 'xf_hi',
+>              'xc_lo', hull=True)

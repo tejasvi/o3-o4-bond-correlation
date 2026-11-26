@@ -1,0 +1,25 @@
+SELF sha256 b0f40c890d4e4be4b389f4fc690916d99d57816369465503b3989a64b3657de7
+cs33h_1_rh_cert core 929ab8a0 engine c08d33c1 probe 13f53bf6 item coverB:3:172.5412711296355:200:0.01 CAP_S 540 NMODE 8 NCERT 6 K_S 4 K_F 4 PE {'th': 6, 'mh': 9, 'bh': 6, 'tv': 6, 'bv': 6} K_EX 2 NSUB 16 K_MAX 60
+Q N=3 L=111: 6328 blocks, max Davis-Kahan radius 7.052e-12 (gate 1e-09) (1.5 s)
+BUILD N=3 L=111 K=4 Kb=30 n1=331 sertail=7.736e-27; labels 0..222: sqrt TM on 146, g TM on 144 (crude elsewhere); max rem a~ 3.141e-12, E~ 4.346e-14, XE~ 4.210e-14; t=1.8 s
+NODE t=+0.824606 lam1=7.875904294307e-02 lam_s/lam1 s=2..10: 0.1460636 0.0798576 0.0436728 0.0213837 0.0117040 0.0064052 0.0063687 0.0035041 0.0031378 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (1.9 s)
+NODE t=+0.509634 lam1=7.918802495108e-02 lam_s/lam1 s=2..10: 0.1460639 0.0798578 0.0436730 0.0213839 0.0117041 0.0064053 0.0063687 0.0035041 0.0031378 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (4.0 s)
+NODE t=+0.000000 lam1=7.988875538114e-02 lam_s/lam1 s=2..10: 0.1460644 0.0798582 0.0436733 0.0213842 0.0117044 0.0064054 0.0063688 0.0035042 0.0031379 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (6.3 s)
+NODE t=-0.509634 lam1=8.059777789546e-02 lam_s/lam1 s=2..10: 0.1460649 0.0798587 0.0436737 0.0213844 0.0117046 0.0064056 0.0063688 0.0035043 0.0031380 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (8.5 s)
+NODE t=-0.824606 lam1=8.104017753722e-02 lam_s/lam1 s=2..10: 0.1460652 0.0798589 0.0436739 0.0213846 0.0117047 0.0064057 0.0063688 0.0035044 0.0031381 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (10.8 s)
+SPECTRAL N=3: eps/mu0 2.4e-10 5.1e-10 5.9e-10 9.2e-10 2.3e-09 3.4e-09 6.2e-09 3.4e-09; parities +1.000000000 +1.000000000 -1.000000000 +1.000000000 +1.000000000 -1.000000000 +1.000000000 +1.000000000; C-NODE excess -0.00e+00; |T^| <= 1.079468e-01 (37.9 s)
+SPEC N=3 b0=173.408312693101 part B: identification True; eps_T 4.883e-16 eps_e 8.955e-16; min gap/nu1 8.520e-01 1.021e-01 6.800e-02 2.221e-02 1.272e-02 4.737e-03; u_rem/nu2 <= 0.059159; mode sha8 (diagnostic) 2fd4089d 6cb3643a 3ae20d9e 7e197b61 999bc54a 27526469 e61b8849 5eb5b18a
+FAMILY base: p(t) coefficients 1.251741e+01 2.167058e-01 1.250562e-03 2.407120e-06 4.263146e-11 (sup 1.270624e+01, inf >= 1.232857e+01), centring th 0.996168143 mh 0.996762966 bh 0.996168143 tv 0.996835191 bv 0.996835191, |J_p| 7.553e-04 7.467e-04 7.465e-04 7.465e-04 7.465e-04 7.465e-04 7.465e-04 7.465e-04 7.465e-04 7.465e-04 (53.3 s)
+FAMILY common: 73 vectors (30.7 s)
+FAMILY part B: 111 vectors, max rho/norm 2.75e-04 (79.0 s)
+TRUNC N=3 b0=173.408312693101 part B: eps_T 4.883e-16 eps_e 8.955e-16 eps_W 1.477e-15 kappa 1.138 rho 2.808e+04 (TY_bv) c 1.3504 slack_f 3.499e-05 | rho by type I_bh 652.3 I_bv 2335 I_mh 575.7 I_th 652.3 I_tv 2335 J 1.027 P_bh 5250 P_bv 2.722e+04 P_mh 1.387e+04 P_th 5250 P_tv 2.722e+04 TY_bh 5094 TY_bv 2.808e+04 TY_mh 1.381e+04 TY_th 5094 TY_tv 2.808e+04 U 9.383 Y_bh 528.6 Y_bv 2296 Y_mh 519.2 Y_th 528.6 Y_tv 2296 seed 1.007
+CHECKS N=3 b0=173.408312693101 part B: NEAR 22832 min 1.123e-02 at (15,mh,8,bv,0,1,1.169e-02,9.086e-04) | FAR 0 k* <= 0 min - at - | fails 0 [] | negatives 0 [] | slack 3.50e-05 | controls {'cas': True, 'node': True, 'par': True, 'pos': True, 'slack': True, 'fin': True} | gram rows 470, per-pair 0, inner products 2242 (gram 1.6 s, checks 1.9 s)
+P6 flint: zero-centred ball (x > 0)=False (x < 0)=False contains(0)=True; ctx.prec=128 -> FIRED
+PLANTS N=3 b0=173.408312693101 part B: P6:FIRED P-CAS:FIRED P-NODE:FIRED P-NEAR:FIRED P-TR:FIRED P-DELTA:FIRED P-L:FIRED (P-NODE excess 1.00e-06)
+C-PROBE N=3 beta=174.23291822193363 L=111: lam_s/lam1 rel 2.74e-12 (gate 1e-8); c_mh/c_th cs30 2.9905817138e-03 here 2.9905817202e-03 rel 2.15e-09 (gate 1e-4): PASS
+IV N=3 part B K=4 b0=173.408312693101 h=0.8670415634655058 L=111 status CERTIFIED (220.6 s)
+LEDGER B N=3 lo=172.5412711296355041667994 hi=174.2753542565665156871546 b0hex=0x1.5ad10e5c7ed23p+7 hhex=0x1.bbecdf2eb6d00p-1 K=4
+COVER_STOP N=3 part B next_left=174.2753542565665 (time)
+VALID True
+VERDICT PARTIAL B [172.5412711296355, 174.2753542565665156871546]
+CPU 228.2 s maxrss_kb 4387800

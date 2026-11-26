@@ -1,0 +1,96 @@
+m3ref_v1_14 item P16H.3.p6 LIM 540; python 3.14.4
+C-COPY (12 pinned copies in /mnt/g2/release/root/code/pk03/pin) -> PASS
+PLANT-COPY (riglap2 bytes plus one byte) -> FIRES
+C-SRC (lapl2 l.63-79, vacmod2 l.8-9 and l.12-13, endw l.16-19, vacrig11f l.166-170, 173-175, 178-186, 196-197, 240-244, 247, 250-287, riglap5s l.22-34 (C-SRC-H) against this file; source shas) -> PASS
+PLANT-SRC (strip_graph text with one character changed) -> FIRES
+C-HASH (15 pk10 inputs and J = 170 records, 4 trial files and 4 S8 lists in pk11/out, 6 m3ref_v1_2 records) -> PASS
+PLANT-HASH (vacres_K3_N4 against a sha with its last digit changed) -> FIRES
+versions: numpy 2.5.3, scipy 1.18.1; engines from /mnt/g2/release/root/code/pk03/pin
+PLANT-NPGUARD (riglap5b's guarded NPoly product is installed and refuses x^3 times x^2 in base 4) -> FIRES
+TRIAL z9sym
+inputs: N = 3, kbar 0.5514259266145797 (m2_N3_J170.json.b), trial set ts_N3_S_z9sym_v1.json, vacres_K3_N3_sym_v1.json
+C-CACHE-CHAIN (piece 6: m3ref_v1_14_P16H.3.p5_z9sym.out has VERDICT lines ['VERDICT VALID'], one CACHE-STATE line and no P16-DONE; the memo (26 entries) and 3 tables have its sha256s) -> PASS
+PLANT-CACHE (the memo against its recorded sha256 with the last digit changed) -> FIRES
+P16 piece 6 of P16H N=3: disk table cache /mnt/g2/release/root/code/pk03/out/tab16, E2 memo s16memo_P16H_N3.jsonl (26 entries)
+family P16H N=3: V 12, F 16, pairs [(0, 1), (1, 2), (0, 2), (3, 4)], NPOLY_B 15, qcap 6, 8 keys: h,0, h,1, h,2, h,3, hX,0, hX,1, hX,2, hX,3
+C-NPB (npoly base 15 for F = 16 forms: 15**16 = 6568408355712890625, below 2**63 = 9223372036854775808) -> PASS
+STAGE-CPU graph 0.67 s
+C-GRAPH (the column specs of D (v1_1, v2), N, E2, FF and L (v2) give strip_graph(2), strip_graph(3), Emix, Efree and strip_graph(4) exactly) -> PASS
+PLANT-GRAPH (D with its T-B coupling times 1 + 1e-12) -> FIRES
+TABLE-LOADED 9c09763531746e1c3ecddf8c34d196e1.npz: D 16 F 12 moments 30421755 (cpu so far 14.5 s)
+TABLE-LOADED 000243712e5d99ed515a92b02e616c04.npz: D 14 F 12 moments 9657700 (cpu so far 16.3 s)
+TABLE-LOADED 143f9cc58b0b2cceaf41c6dcc9e2adcd.npz: D 16 F 12 moments 30421755 (cpu so far 18.6 s)
+STAGE-CPU prep J=300 37.93 s (ok True)
+PROFILE prep J=300 {"AllMom2.E2": [12, 9.11], "AllMom2.init": [5, 19.96], "NPoly.mul": [361, 0.03], "pmul": [377, 4.55]}
+C-THETA theta0 0.905 reproduces farbase 1.3679403055601233e-30: relative 0.0e+00 -> PASS
+PLANT-THETA (the base times 1 + 1e-9) -> FIRES
+PREPJSON {"family": "P16H", "N": 3, "J": 300.0, "rho": [0.38363489304180126, 0.34142750130335825, 0.38363489304180126, 0.3211682473179223, 0.26859446943139603, 0.3211682473179223, 0.32568626472687967, 0.2692217106040045, 0.32568626472687967, 0.41461439017078966, 0.35308484742363694, 0.4146143901707897], "a_v": [0.1471757311591943, 0.1165727386462547, 0.1471757311591943, 0.10314904308526611, 0.07214298900913314, 0.10314904308526611, 0.10607154303174715, 0.07248032946054636, 0.10607154303174715, 0.1719050925366958, 0.12466890948017298, 0.17190509253669584], "ap": 0.48999999999999994, "ok": true, "tree": [1.2637626158259734, 1.2637626158259734, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "theta0": 0.905, "logmain": -78.66920016786422, "cpu_prep": 37.93, "rE": 1.6861893583115245e-06, "rE_parts": {"t4|H4|": 5.6400012142346116e-08, "t5 h5/120": 3.930371999571826e-08, "t4 H2^2/2": 9.697690037201832e-08, "t6 h3^2/72": 7.2320565177084774e-09, "t4|H1H3|": 2.1618935640653698e-07, "t5|H1H4|": 8.838422256610921e-09, "t6|H1|h5/120": 8.26829764777821e-09, "t5|H2|h3/6": 4.973832533788264e-08, "t4 H1^2|H2|/2": 5.933162214990053e-07, "t5 H1^2 h3/12": 1.7349177336009165e-07, "t5|H1|h2^2/8": 3.640631975270772e-07, "E2^3 term": 7.237107524875046e-08}, "nE": [1.0, 2.452279396371141, 8.165342644259182, 49.98346246447556], "nE4": [1.0, 5.121697334736043, 103.71125632637626, 36437.94413660268], "nC8": 0.08759878901020271, "nC6": 0.08503189682141991, "Nc": 1.0195296824069162, "Np": 1.0251383030145738, "Pout": 5.0980251063499066e-17, "Pout_p": 5.93900699849369e-17, "farbase": 1.3679403055601233e-30}
+KEYJSON {"family": "P16H", "N": 3, "J": 300.0, "key": "h,0", "index": 0, "ak": [1.0, 1.3742669531618763, 1.4970625834223121, 1.5708365016646941], "B": {"rem": 3.925743301856298e-06, "tail": 7.327395695829183e-09, "ann": 7.91047758694828e-09, "far": 2.3092702656216537e-28}, "err": 3.940981175139075e-06, "cpu": 0.8, "refs": [], "rem_split": {"overflow": 1.8e-09, "F.R_E": 1.69e-06, "rho4": 2.24e-06, "rho4_C8": 2.5e-06, "rho4_C6": 2.24e-06, "R_F": 1.15e-09}}
+STAGE-CPU key h,0 J=300 0.80 s
+PROFILE after h,0 J=300 {"AllMom2.E": [1, 0.0], "AllMom2.E2": [31, 9.11], "AllMom2.init": [16, 20.51], "NPoly.mul": [2893, 0.19], "pmul": [700, 4.55]}
+KEYJSON {"family": "P16H", "N": 3, "J": 300.0, "key": "h,1", "index": 1, "ak": [0.0031056200146313273, -0.0499162352348298, -0.014911244004639057, 0.07363374843806447], "B": {"rem": 1.1079333621755171e-05, "tail": 2.029078002751535e-08, "ann": 4.640911547624051e-08, "far": 2.4059999239632427e-27}, "err": 1.1146033517258926e-05, "cpu": 1.23, "refs": [], "rem_split": {"overflow": 3.36e-08, "F.R_E": 4.43e-06, "rho4": 6.59e-06, "rho4_C8": 6.59e-06, "rho4_C6": 1.03e-05, "R_F": 2.72e-08}}
+STAGE-CPU key h,1 J=300 1.23 s
+PROFILE after h,1 J=300 {"AllMom2.E": [2, 0.0], "AllMom2.E2": [51, 9.12], "AllMom2.init": [28, 21.73], "NPoly.mul": [2909, 0.19], "pmul": [726, 4.55]}
+KEYJSON {"family": "P16H", "N": 3, "J": 300.0, "key": "h,2", "index": 2, "ak": [-2.1739699949690996e-16, -3.226398221453993e-16, 2.4550700439342953e-15, 8.812936791405742e-14], "B": {"rem": 1.498826416405883e-05, "tail": 2.745760092034579e-08, "ann": 4.986529727177143e-08, "far": 7.597730127326101e-27}, "err": 1.5065587062250946e-05, "cpu": 0.01, "refs": [], "rem_split": {"overflow": 4.78e-08, "F.R_E": 5.99e-06, "rho4": 8.9e-06, "rho4_C8": 8.9e-06, "rho4_C6": 1.25e-05, "R_F": 4.65e-08}}
+STAGE-CPU key h,2 J=300 0.01 s
+PROFILE after h,2 J=300 {"AllMom2.E": [3, 0.0], "AllMom2.E2": [71, 9.12], "AllMom2.init": [37, 21.73], "NPoly.mul": [2935, 0.19], "pmul": [763, 4.55]}
+KEYJSON {"family": "P16H", "N": 3, "J": 300.0, "key": "h,3", "index": 3, "ak": [8.265835167620139e-05, 0.911718067063598, 1.5171083220993582, 1.8534378723101685], "B": {"rem": 2.0301952029278807e-05, "tail": 3.7187228499455254e-08, "ann": 1.4318613146841573e-07, "far": 1.5024103295865262e-26}, "err": 2.0482325389246676e-05, "cpu": 0.01, "refs": [], "rem_split": {"overflow": 5.96e-08, "F.R_E": 8.1e-06, "rho4": 1.2e-05, "rho4_C8": 1.2e-05, "rho4_C6": 1.87e-05, "R_F": 1.07e-07}}
+STAGE-CPU key h,3 J=300 0.01 s
+PROFILE after h,3 J=300 {"AllMom2.E": [4, 0.0], "AllMom2.E2": [91, 9.13], "AllMom2.init": [38, 21.73], "NPoly.mul": [2971, 0.2], "pmul": [811, 4.55]}
+KEYJSON {"family": "P16H", "N": 3, "J": 300.0, "key": "hX,0", "index": 4, "ak": [0.5528813291382462, 0.8440518801373353, 1.0017839195836968, 1.1304685857609287], "B": {"rem": 3.3413976640476904e-06, "tail": 6.747228291451947e-09, "ann": 9.713247109118967e-09, "far": 1.3855621593729922e-25}, "err": 3.3578581394482612e-06, "cpu": 0.32, "refs": [], "rem_split": {"overflow": 2.55e-08, "F.R_E": 1.33e-06, "rho4": 1.97e-06, "rho4_C8": 1.97e-06, "rho4_C6": 4.89e-06, "R_F": 2.16e-08}}
+STAGE-CPU key hX,0 J=300 0.32 s
+PROFILE after hX,0 J=300 {"AllMom2.E": [14, 0.0], "AllMom2.E2": [120, 9.18], "AllMom2.init": [64, 21.91], "NPoly.mul": [2987, 0.2], "pmul": [885, 4.61]}
+KEYJSON {"family": "P16H", "N": 3, "J": 300.0, "key": "hX,1", "index": 5, "ak": [0.08852175764829484, 0.09714975231561196, 0.13306695526702206, 0.210443473080006], "B": {"rem": 1.0506622704468577e-05, "tail": 2.733180319712828e-08, "ann": 7.242607441368146e-08, "far": 1.4435999543779456e-24}, "err": 1.0606380582079387e-05, "cpu": 2.83, "refs": [], "rem_split": {"overflow": 3.52e-07, "F.R_E": 3.93e-06, "rho4": 5.85e-06, "rho4_C8": 5.85e-06, "rho4_C6": 4.29e-05, "R_F": 3.82e-07}}
+STAGE-CPU key hX,1 J=300 2.83 s
+PROFILE after hX,1 J=300 {"AllMom2.E": [19, 0.0], "AllMom2.E2": [141, 9.19], "AllMom2.init": [79, 24.74], "NPoly.mul": [2987, 0.2], "pmul": [931, 4.61]}
+KEYJSON {"family": "P16H", "N": 3, "J": 300.0, "key": "hX,2", "index": 6, "ak": [0.10894901348126798, 0.17204503793834572, 0.20941340829319793, 0.2477834508563339], "B": {"rem": 1.383334847071043e-05, "tail": 3.5945235429920957e-08, "ann": 8.367689761721197e-08, "far": 4.5586380763956605e-24}, "err": 1.3952970603757565e-05, "cpu": 0.01, "refs": [], "rem_split": {"overflow": 4.82e-07, "F.R_E": 5.16e-06, "rho4": 7.67e-06, "rho4_C8": 7.67e-06, "rho4_C6": 4.7e-05, "R_F": 5.19e-07}}
+STAGE-CPU key hX,2 J=300 0.01 s
+PROFILE after hX,2 J=300 {"AllMom2.E": [24, 0.0], "AllMom2.E2": [162, 9.19], "AllMom2.init": [91, 24.74], "NPoly.mul": [2987, 0.2], "pmul": [977, 4.61]}
+KEYJSON {"family": "P16H", "N": 3, "J": 300.0, "key": "hX,3", "index": 7, "ak": [0.06841691191504218, 0.6767048643285309, 1.1841701780655245, 1.5711455468895812], "B": {"rem": 1.86885944769755e-05, "tail": 4.8398628586793896e-08, "ann": 2.174830594296707e-07, "far": 9.014461977519158e-24}, "err": 1.8954476164991966e-05, "cpu": 0.01, "refs": [], "rem_split": {"overflow": 5.81e-07, "F.R_E": 6.77e-06, "rho4": 1.01e-05, "rho4_C8": 1.01e-05, "rho4_C6": 7.85e-05, "R_F": 1.28e-06}}
+STAGE-CPU key hX,3 J=300 0.01 s
+PROFILE after hX,3 J=300 {"AllMom2.E": [29, 0.0], "AllMom2.E2": [183, 9.2], "AllMom2.init": [92, 24.74], "NPoly.mul": [2987, 0.2], "pmul": [1023, 4.61]}
+keys done 8 of range 0-7
+C-ANALOG-REF (m3ref_v1_3_S8E3.3.all_z9sym.out: sha256 pinned, VERDICT lines ['VERDICT VALID']; TRIAL z9sym) -> PASS
+PLANT-ANALOG-REF (m3ref_v1_3_S8E3.3.all_z9sym.out against a sha with its last digit changed) -> FIRES
+ANALOG-INFO h,0: err 3.940981e-06, analog 2 x f,0 = 1.065984e-06, ratio 3.697
+ANALOG-INFO h,1: err 1.114603e-05, analog 2 x f,1 = 2.986344e-06, ratio 3.732
+ANALOG-INFO h,2: err 1.506559e-05, analog 2 x f,2 = 3.985657e-06, ratio 3.78
+ANALOG-INFO h,3: err 2.048233e-05, analog 2 x f,3 = 5.563347e-06, ratio 3.682
+ANALOG-INFO hX,0: err 3.357858e-06, analog 2 x fX,0 = 9.745468e-07, ratio 3.446
+ANALOG-INFO hX,1: err 1.060638e-05, analog 2 x fX,1 = 4.005337e-06, ratio 2.648
+ANALOG-INFO hX,2: err 1.395297e-05, analog 2 x fX,2 = 5.062353e-06, ratio 2.756
+ANALOG-INFO hX,3: err 1.895448e-05, analog 2 x fX,3 = 7.565798e-06, ratio 2.505
+ANALOG-MAX P16H N=3: largest err / analog 3.78 at h,2 (pk11 allows x4.4 at this N)
+C-REF12 (m3ref_v1_8_S8H.3.all_z9sym.out: sha256 pinned, VERDICT lines ['VERDICT VALID']) -> PASS
+PLANT-REF12 (m3ref_v1_8_S8H.3.all_z9sym.out against a sha with its last digit changed) -> FIRES
+DMAX16-INFO h,0: err 3.940981e-06 (dmaxH 12: 4.123323e-03), ratio 16/12 0.0009558; rem 0.0009521, tail 0.994, ann 1
+DMAX16-INFO h,1: err 1.114603e-05 (dmaxH 12: 1.083376e-02), ratio 16/12 0.001029; rem 0.001023, tail 0.983, ann 1
+DMAX16-INFO h,2: err 1.506559e-05 (dmaxH 12: 1.464763e-02), ratio 16/12 0.001029; rem 0.001023, tail 0.983, ann 1
+DMAX16-INFO h,3: err 2.048233e-05 (dmaxH 12: 1.981005e-02), ratio 16/12 0.001034; rem 0.001025, tail 0.983, ann 1
+DMAX16-INFO hX,0: err 3.357858e-06 (dmaxH 12: 3.241887e-03), ratio 16/12 0.001036; rem 0.001031, tail 0.9842, ann 1
+DMAX16-INFO hX,1: err 1.060638e-05 (dmaxH 12: 9.631515e-03), ratio 16/12 0.001101; rem 0.001091, tail 0.9662, ann 1
+DMAX16-INFO hX,2: err 1.395297e-05 (dmaxH 12: 1.264531e-02), ratio 16/12 0.001103; rem 0.001094, tail 0.9662, ann 1
+DMAX16-INFO hX,3: err 1.895448e-05 (dmaxH 12: 1.660424e-02), ratio 16/12 0.001142; rem 0.001126, tail 0.9669, ann 1
+DMAX16-MAX P16H N=3: err ratio 16/12 from 0.0009558 (h,0, rem 0.0009521) to 0.001142 (hX,3, rem 0.001126) over 8 keys
+P16-PART t4|H4|: dmaxH 16 5.640001e-08, dmaxH 12 5.640001e-08, ratio 16/12 1
+P16-PART t5 h5/120: dmaxH 16 3.930372e-08, dmaxH 12 3.930372e-08, ratio 16/12 1
+P16-PART t4 H2^2/2: dmaxH 16 9.697690e-08, dmaxH 12 9.697690e-08, ratio 16/12 1
+P16-PART t6 h3^2/72: dmaxH 16 7.232057e-09, dmaxH 12 1.777272e-06, ratio 16/12 0.004069
+P16-PART t4|H1H3|: dmaxH 16 2.161894e-07, dmaxH 12 2.161894e-07, ratio 16/12 1
+P16-PART t5|H1H4|: dmaxH 16 8.838422e-09, dmaxH 12 1.291804e-06, ratio 16/12 0.006842
+P16-PART t6|H1|h5/120: dmaxH 16 8.268298e-09, dmaxH 12 1.681462e-06, ratio 16/12 0.004917
+P16-PART t5|H2|h3/6: dmaxH 16 4.973833e-08, dmaxH 12 8.553851e-06, ratio 16/12 0.005815
+P16-PART t4 H1^2|H2|/2: dmaxH 16 5.933162e-07, dmaxH 12 2.435237e-03, ratio 16/12 0.0002436
+P16-PART t5 H1^2 h3/12: dmaxH 16 1.734918e-07, dmaxH 12 1.053000e-03, ratio 16/12 0.0001648
+P16-PART t5|H1|h2^2/8: dmaxH 16 3.640632e-07, dmaxH 12 5.959545e-04, ratio 16/12 0.0006109
+P16-PART E2^3 term: dmaxH 16 7.237108e-08, dmaxH 12 2.019158e-05, ratio 16/12 0.003584
+P16-PART rE: dmaxH 16 1.686189e-06, dmaxH 12 4.118097e-03, ratio 0.0004095
+P16-PART nC8: dmaxH 16 8.759879e-02, dmaxH 12 1.516961e+00, ratio 0.05775
+P16-PART nC6: dmaxH 16 8.503190e-02, dmaxH 12 8.503190e-02, ratio 1
+P16-PART nE[1] 2.452279e+00 (12: 2.452279e+00), nE4[1] 5.121697e+00 (12: 5.121697e+00)
+P16-PART nE[2] 8.165343e+00 (12: 8.165343e+00), nE4[2] 1.037113e+02 (12: 6.613928e+02)
+P16-PART nE[3] 4.998346e+01 (12: 4.998346e+01), nE4[3] 3.643794e+04 (12: 3.643794e+04)
+P16-DONE piece 6 of P16H N=3
+CACHE-STATE {"memo": "s16memo_P16H_N3.jsonl", "memo_entries": 26, "memo_sha": "c61be3ce392ed9f5d82b92ba46fbcd107709d9ccf538cdac4c8f0b9a922bc6a6", "tables": {"000243712e5d99ed515a92b02e616c04": ["000243712e5d99ed515a92b02e616c04.npz", "eee3f39fb8945deb5b0a6a341197bb56c427355d29f6fb3f26f98e65570d6c00", 154533160], "12a36cf002b1dcc230b615918cea3ca3": ["12a36cf002b1dcc230b615918cea3ca3.npz", "0d3272c63686eadb3c3069ae3aacbc28c09ac4c46fda13e8b28913e7567fdca9", 629156], "143f9cc58b0b2cceaf41c6dcc9e2adcd": ["143f9cc58b0b2cceaf41c6dcc9e2adcd.npz", "ace2a84211196fa6d0e4fa4be574f807458af5fc4cacb24e1e0900d7b60e7316", 486759024], "1e4a20a6433000cf827545de39d4fc42": ["1e4a20a6433000cf827545de39d4fc42.npz", "c7afc634acaea190e47a2bdd8915e63626c435259d27ded8ed9d2ed68fb169da", 1203788], "3229170b4cc2ee5ad78b05d795d89e83": ["3229170b4cc2ee5ad78b05d795d89e83.npz", "3a7a75389add04010d9d6cc19a844c66933f12673bbd794e4e2c216028d974f1", 25220], "40f80d61320f134ace58272fbc724945": ["40f80d61320f134ace58272fbc724945.npz", "8f59000ccfac6fc48beb1242416a87bec728a18036b005a30b628c07b8b48475", 12108], "4ee306472e96d2e68fa4511107638c5f": ["4ee306472e96d2e68fa4511107638c5f.npz", "c03f912382061006658ea9b6ce93f4e6b6caa965b72192d95e1eb71f45eb25f9", 1203788], "636be753e92833a174c9d742a251359c": ["636be753e92833a174c9d742a251359c.npz", "4c8c10e7b91707fe3ca6cd75732bcd5e29e572b7a1d0aa621e587823a9d35e56", 12108], "7b40eb00702e197f560cc12cffe0ae5c": ["7b40eb00702e197f560cc12cffe0ae5c.npz", "ab0a914e372a67d92ab55dda3e90f3c6f415e404a73b90dfce76e93e32b74066", 25220], "8963af04b670e60c0bd9d20e7d37f2f1": ["8963af04b670e60c0bd9d20e7d37f2f1.npz", "e063627f0fe20e99812ca4a1fc54cde05ac8ad6ff3431f41b6506ef05b492dba", 1203788], "9c09763531746e1c3ecddf8c34d196e1": ["9c09763531746e1c3ecddf8c34d196e1.npz", "b166b571af8ed32239bdddbb18f7fe678495fe153227f98240fe29fd66b93825", 486759024], "bad3e2f224c7cc9cdcab8fc3a4e69df7": ["bad3e2f224c7cc9cdcab8fc3a4e69df7.npz", "75ed1ede9cfcd950bc0d8eb97bdb40d4029517b35f24bb443db9f9b872616c6e", 12108], "e30f75af343fdc057c2f9b96b80f5e91": ["e30f75af343fdc057c2f9b96b80f5e91.npz", "2e32deac0c0aedc762bb4083c5811b01bd387cb08d583af5ecfe664869bd9861", 12108]}}
+STAGE-CPU total 44.00 s
+VERDICT VALID

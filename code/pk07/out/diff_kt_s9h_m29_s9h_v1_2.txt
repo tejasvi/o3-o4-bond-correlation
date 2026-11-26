@@ -1,0 +1,14 @@
+2,4c2,6
+< """kt_s9h_m29.py (MOCK snapshot m29 of the kt_s9h_v1_2 draft (SCRATCH_kt_s9h_v1_2.py): kt_s9h_v1_1 (7bcc32d2) + the C-VERT-ONLY,
+< with ONE change against the draft, M2B_MODE = 'mock', so that C-VERT-ONLY and its plants run before the
+< certified file is frozen; mock runs only) -- pk07.
+---
+> """kt_s9h_v1_2.py (FROZEN, the file for the VERTICAL mode's certified run (S_V first): kt_s9h_v1_1 (7bcc32d2: kt_s9h_v1 +
+> the v1 review points P-4, P-3, P-1; code = m28 a5adef9b) + the C-VERT-ONLY (tested in the mock snapshot m29 00a1c0b3, whose
+> only other change is M2B_MODE). Its vertical inputs (S4-U, S4-TRB, M2(b), M3) are all certified; the S_TB' inputs (t, joint, beta_H's
+> status) stay MOCK or FLOAT and the vertical mode reads none of them, gated. P-2 (the certified t and joint records) goes into a file
+> of a new name. Every run here needs the approval naming this file's sha8) -- pk07.
+2510c2512
+< M2B_MODE = 'mock'         # m29 ONLY (a mock test of C-VERT-ONLY; the v1_2 draft reads 'certified') -- 'mock': pk07's mock record (FLOAT vacscale keys) read by this file's KV port; 'certified': pk02's
+---
+> M2B_MODE = 'certified'    # 'mock': pk07's mock record (FLOAT vacscale keys) read by this file's KV port; 'certified': pk02's

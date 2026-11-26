@@ -1,0 +1,27 @@
+m3ref_v1 item free.4.all LIM 540; python 3.14.4
+C-COPY (12 pinned copies in /mnt/g2/release/root/code/pk03/pin) -> PASS
+PLANT-COPY (riglap2 bytes plus one byte) -> FIRES
+C-SRC (lapl2 l.63-79, vacmod2 l.8-9, endw l.16-19 against this file; source shas) -> PASS
+PLANT-SRC (strip_graph text with one character changed) -> FIRES
+C-HASH (14 inputs and J = 170 records in /mnt/g2/release/root/code/pk10/scratch) -> PASS
+PLANT-HASH (vacres_K3_N4 against a sha with its last digit changed) -> FIRES
+versions: numpy 2.5.3, scipy 1.18.1; engines from /mnt/g2/release/root/code/pk03/pin
+inputs: N = 4, kbar 0.8271394273441662 (m2_N4_J170.json.b), trial set ts_N4_J170_D_S.json, vacres_K3_N4.json
+family free N=4: V 6, F 6, pairs [], NPOLY_B 16, qcap 6, 1 keys: I_free
+STAGE-CPU graph 0.00 s
+C-RMAIN r_main 0.9654865604399132 at J = 300 vs endw_N4_J170 0.9654865604399132: relative 0.0e+00 -> PASS
+PLANT-RMAIN (the stored value times 1 + 1e-9) -> FIRES
+RMAINJSON {"N": 4, "r_main": 0.9654865604399132, "endw170": 0.9654865604399132}
+STAGE-CPU prep J=300 1.92 s (ok True)
+PROFILE prep J=300 {"AllMom2.E2": [30, 1.48], "AllMom2.init": [10, 0.29], "NPoly.mul": [207, 0.01], "pmul": [179, 0.11]}
+C-THETA theta0 0.9550000000000001 reproduces farbase 1.9680804845390194e-54: relative 0.0e+00 -> PASS
+PLANT-THETA (the base times 1 + 1e-9) -> FIRES
+PREPJSON {"family": "free", "N": 4, "J": 300.0, "rho": [0.3506607519568778, 0.26387426860084257, 0.3506607519568778, 0.3506607519568778, 0.2638742686008426, 0.3506607519568778], "a_v": [0.12296296296296297, 0.06962962962962961, 0.12296296296296297, 0.12296296296296297, 0.06962962962962964, 0.12296296296296297], "ap": 0.48999999999999994, "ok": true, "tree": [1.0, 1.0, 1.0, 1.0, 1.0], "theta0": 0.9550000000000001, "logmain": -47.96940062479845, "cpu_prep": 1.92, "rE": 5.112993517463008e-07, "rE_parts": {"t4|H4|": 2.478447395437313e-08, "t5 h5/120": 1.0599673938236011e-08, "t4 H2^2/2": 3.6870793266815554e-08, "t6 h3^2/72": 1.1309916141796406e-09, "t4|H1H3|": 8.666608323855857e-08, "t5|H1H4|": 2.690064843484724e-09, "t6|H1|h5/120": 1.471448877346194e-09, "t5|H2|h3/6": 1.2370830073830038e-08, "t4 H1^2|H2|/2": 2.1612669836319926e-07, "t5 H1^2 h3/12": 4.053717168366734e-08, "t5|H1|h2^2/8": 7.553586634671479e-08, "E2^3 term": 2.5152555458955593e-09}, "nE": [1.0, 1.6505793034680394, 4.86858367790712, 22.476835952342118], "nE4": [1.0, 4.237655672859851, 59.57939126591828, 16385.613409257403], "nC8": 0.05796234847352556, "nC6": 0.029107879045128876, "Nc": 1.0126404234443462, "Np": 1.0164182184864043, "Pout": 1.8415664917034417e-16, "Pout_p": 2.0530162556951466e-16, "farbase": 1.9680804845390194e-54}
+C-REP170 I_free vs endw_N4_J170 I_free: max|diff| 0.00e+00, max|a_k ref| 1.000e+00 -> PASS
+PLANT-REP170 (I_free: the largest reference coefficient times 1 + 1e-6) -> FIRES
+KEYJSON {"family": "free", "N": 4, "J": 300.0, "key": "I_free", "index": 0, "ak": [1.0, 0.04166666666666674, -0.08374305555555495, -0.12961115354938357], "B": {"rem": 5.415884444595766e-07, "tail": 1.3779341394851922e-08, "ann": 1.4563596401048835e-08, "far": 1.9680804845390194e-54}, "err": 5.699313822554774e-07, "cpu": 0.0, "refs": [{"record": "endw", "key": "I_free", "dmax_rel": 0.0, "err170": 8.742228843003924e-06, "kr4_ratio": 0.06519291504380739}]}
+STAGE-CPU key I_free J=300 0.00 s
+PROFILE after I_free J=300 {"AllMom2.E2": [36, 1.48], "AllMom2.init": [13, 0.29], "NPoly.mul": [207, 0.01], "pmul": [179, 0.11]}
+keys done 1 of range 0-0
+STAGE-CPU total 2.08 s
+VERDICT VALID

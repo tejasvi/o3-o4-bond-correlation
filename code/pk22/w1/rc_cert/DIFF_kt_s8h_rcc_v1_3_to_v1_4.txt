@@ -1,0 +1,129 @@
+5aad7ad77a5e2ff153d536e5eb2afaa42e83100b0e0516ebd37bdaa2be9cebbf  /mnt/g2/release/root/code/pk22/w1/rc_cert/kt_s8h_rcc_v1_3.py
+69180107dbe9da5d8ff33e446300b5f6894a810a9f842b8ab485002cbf086e58  /mnt/g2/release/root/code/pk22/w1/rc_cert/kt_s8h_rcc_v1_4.py
+2c2
+< """kt_s8h_rcc_v1_3.py -- pk22 (code/pk22/w1/rc_cert/). DRAFT. NE's certified RC engine (phase (iii), the approval to build from
+---
+> """kt_s8h_rcc_v1_4.py -- pk22 (code/pk22/w1/rc_cert/). DRAFT. NE's certified RC engine (phase (iii), the approval to build from
+8c8,10
+< v1_3 (the pins-only revision of v1_2, 1a04598f, by make_rcc_v1_3.py): CERT_PINS holds runner c3_1's records and asm outputs of
+---
+> v1_4 (this revision of v1_3, 5aad7ad7, by make_rcc_v1_4.py): the record writer writes strict S4U_KV_v1 (numbered keys, checked
+> by the strict reader before it writes: C-KV-FORMAT, PLANT-KV-DUP); nothing else changes. v1_3 (the pins-only revision of v1_2,
+> 1a04598f, by make_rcc_v1_3.py): CERT_PINS holds runner c3_1's records and asm outputs of
+70c72
+< Usage: kt_s8h_rcc_v1_3.py cert|dev smoke|chunk|final LIM N [a b] | cert|dev record LIM."""
+---
+> Usage: kt_s8h_rcc_v1_4.py cert|dev smoke|chunk|final LIM N [a b] | cert|dev record LIM."""
+77c79
+< USAGE = 'usage: kt_s8h_rcc_v1_3.py cert|dev smoke|final LIM N | cert|dev chunk LIM N a b | cert|dev record LIM   (LIM 10..540)'
+---
+> USAGE = 'usage: kt_s8h_rcc_v1_4.py cert|dev smoke|final LIM N | cert|dev chunk LIM N a b | cert|dev record LIM   (LIM 10..540)'
+102c104
+< LABEL = 'kt_s8h_rcc_v1_3'
+---
+> LABEL = 'kt_s8h_rcc_v1_4'
+2688,2690c2690,2696
+<     """both N's smoke and final outputs (this script's sha256 and mode, VERDICT VALID); cert mode writes the record: the claim, the code,
+<     the outputs by sha256, the chunks, per class and N the smallest headroom, the n = 5 keys, the coverage list, the pair map, the
+<     binding pieces' C-PIECE-H lines, the smokes' control lines, and every pin."""
+---
+>     """both N's smoke and final outputs (this script's sha256 and mode, VERDICT VALID); cert mode writes the record in S4U_KV_v1, one
+>     KEY = value per line, every key unique and of the form [A-Z][A-Z0-9_]* (v1_4; v1_3's writer repeated the key PIN and wrote output
+>     lines without ' = '): the claim, the code, the outputs by sha256, then under numbered keys the smokes' control lines, the chunks, per
+>     class and N the smallest headroom, the n = 5 keys, the coverage list, the pair map, the binding pieces and their C-PIECE-H lines,
+>     and every pin. C-KV-FORMAT: the rendered text parses with pk07's strict reader (s4u_kv_ref_v1.parse_s4u_kv, the S8 module's KVR,
+>     pinned there) into exactly its keys; PLANT-KV-DUP: the text with one key repeated must be refused. The record is written only when
+>     every gate has passed and every plant has fired."""
+2692c2698
+<     fin, smk, lines = {}, {}, []
+---
+>     fin, smk = {}, {}
+2704,2715c2710,2726
+<     lines = ['# NE_RC_RECORD_v1: written by %s (cert mode; every gate passed).' % LABEL, 'FORMAT = S4U_KV_v1', 'RECORD = NE_RC_RECORD_v1',
+<              'EXPORT_STATUS = CERTIFIED',
+<              'CLAIM = for N = 4 and every J >= 350, and for N = 3 and every J >= 300: Cov(s_e, s_f) > 0 for every pair of a top-row or '
+<              'bottom-row edge e with a horizontal or vertical edge f in NE\'s FLIP/SAME and MIXED classes on the horizontal chain: every '
+<              'two-sided class with n >= 5 (the 58 separated D0 pairs of P_3 x P_5 among them) and every class at infinity and far',
+<              'CODE = %s:%s' % (LABEL, own),
+<              'COVERAGE = per N and piece, the class keys of the COVER lines: FLIP/SAME H2 (dL, dR, kind), Hinf (dL, inf, kind), H1 (dL, far, '
+<              'kind) for dL, dR in DN = %s; MIXED M2 HV (iH, dV, kind), Minf HV (iH, inf, kind), M1 HV (iH, far, kind) for iH in 0..T_M, dV in '
+<              '-1..T_M - 1, and Minf VH (dV, inf, kind), M1 VH (dV, far, kind), T_M = 3 at N = 4 and 2 at N = 3; kinds flip and same; rows '
+<              'for m < m0 with n >= 5 (n = dL + dR + m + 3 and iH + dV + m + 3), the top-mode form from m0 on, every m0 <= %d (S8\'s KILL '
+<              'rule); the far rows by routes A and B; slots 0 and 1 from the exact entries, 2..7 and inf by RC; the bottom row as the parity '
+<              'mirror (F-a); every slot of DN (F-b)' % (DN, M0MAX)]
+---
+>     header = [('FORMAT', 'S4U_KV_v1'), ('RECORD', 'NE_RC_RECORD_v1'), ('EXPORT_STATUS', 'CERTIFIED'),
+>               ('CLAIM', 'for N = 4 and every J >= 350, and for N = 3 and every J >= 300: Cov(s_e, s_f) > 0 for every pair of a top-row or '
+>                         'bottom-row edge e with a horizontal or vertical edge f in NE\'s FLIP/SAME and MIXED classes on the horizontal chain: '
+>                         'every two-sided class with n >= 5 (the 58 separated D0 pairs of P_3 x P_5 among them) and every class at infinity and '
+>                         'far'),
+>               ('CODE', '%s:%s' % (LABEL, own)),
+>               ('COVERAGE', 'per N and piece, the class keys of the COVER rows: FLIP/SAME H2 (dL, dR, kind), Hinf (dL, inf, kind), H1 (dL, far, '
+>                            'kind) for dL, dR in DN = %s; MIXED M2 HV (iH, dV, kind), Minf HV (iH, inf, kind), M1 HV (iH, far, kind) for iH in '
+>                            '0..T_M, dV in -1..T_M - 1, and Minf VH (dV, inf, kind), M1 VH (dV, far, kind), T_M = 3 at N = 4 and 2 at N = 3; kinds '
+>                            'flip and same; rows for m < m0 with n >= 5 (n = dL + dR + m + 3 and iH + dV + m + 3), the top-mode form from m0 on, '
+>                            'every m0 <= %d (S8\'s KILL rule); the far rows by routes A and B; slots 0 and 1 from the exact entries, 2..7 and inf '
+>                            'by RC; the bottom row as the parity mirror (F-a); every slot of DN (F-b)' % (DN, M0MAX))]
+>     stags = ('BARS', 'C-REPRO-RC5', 'C-HARM-RCC', 'C-MIXED-REG', 'C-HARM-H', 'C-HARM-H-M', 'C-HARM-RC', 'C-REPRO-H', 'C-REPRO-M', 'C-UNIF-H',
+>              'C-MV-BAR-H', 'C-MV-SF-H')
+>     ftags = {'CHUNK': 'CHUNK', 'FINALCLASS': 'CLASS', 'FINALN5': 'N5', 'MIN': 'MIN', 'COVER': 'COVER', 'C-COVER-LIST': 'COVERLIST',
+>              'PAIRMAP': 'PAIRMAP', 'C-PAIRMAP': 'PAIRMAPGATE', 'BINDING': 'BINDING', 'C-PIECE-H': 'CPIECE'}
+>     rows = []
+2718c2729,2730
+<         lines.append('SMOKE_N%d = %s:%s' % (n, os.path.basename(p), h))
+---
+>         rows.append(('SMOKE_N%d' % n, '%s:%s' % (os.path.basename(p), h)))
+>         j = 0
+2720,2722c2732,2734
+<             if x.split(' ')[0] in ('BARS', 'C-REPRO-RC5', 'C-HARM-RCC', 'C-MIXED-REG', 'C-HARM-H', 'C-HARM-H-M', 'C-HARM-RC', 'C-REPRO-H',
+<                                    'C-REPRO-M', 'C-UNIF-H', 'C-MV-BAR-H', 'C-MV-SF-H'):
+<                 lines.append('N%d_SMOKE_%s' % (n, x.replace(' = ', ' : ')))
+---
+>             if x.split(' ')[0] in stags:
+>                 j += 1
+>                 rows.append(('N%d_SMOKE_%02d' % (n, j), x))
+2724c2736,2737
+<         lines.append('FINAL_N%d = %s:%s' % (n, os.path.basename(p), h))
+---
+>         rows.append(('FINAL_N%d' % n, '%s:%s' % (os.path.basename(p), h)))
+>         cnt = {}
+2726,2733c2739,2767
+<             if x.split(' ')[0] in ('CHUNK', 'FINALCLASS', 'FINALN5', 'MIN', 'COVER', 'PAIRMAP', 'BINDING', 'C-PIECE-H', 'C-COVER-LIST',
+<                                    'C-PAIRMAP'):
+<                 lines.append('N%d_%s' % (n, x.replace(' = ', ' : ')))
+<     for p in sorted(PINS):
+<         lines.append('PIN = %s:%s' % (os.path.relpath(p, CODEDIR), PINS[p]))
+<     for p in sorted(CERT_PINS):
+<         lines.append('PIN = %s:%s' % (os.path.relpath(p, CODEDIR), CERT_PINS[p]))
+<     txt = '\n'.join(lines) + '\nEND = NE_RC_RECORD_v1\n'
+---
+>             tg = ftags.get(x.split(' ')[0])
+>             if tg is None:
+>                 continue
+>             cnt[tg] = cnt.get(tg, 0) + 1
+>             rows.append(('N%d_%s_%03d' % (n, tg, cnt[tg]), x))
+>     allp = dict(PINS)
+>     allp.update(CERT_PINS)
+>     for j, p in enumerate(sorted(allp), 1):
+>         rows.append(('PIN_%02d' % j, '%s:%s' % (os.path.relpath(p, CODEDIR), allp[p])))
+>     body = ''.join('%s = %s\n' % kv for kv in header + rows)
+>     txt = '# NE_RC_RECORD_v1: written by %s (cert mode; every gate passed).\n' % LABEL + body + 'END = NE_RC_RECORD_v1\n'
+>     keys = [k for k, v in header + rows] + ['END']
+>     try:
+>         d = mod.KVR.parse_s4u_kv(txt)
+>         okkv = sorted(d) == sorted(keys) and len(set(keys)) == len(keys)
+>     except ValueError as e:
+>         okkv = False
+>         out('C-KV-FORMAT: the strict reader refuses the record (%s)' % e)
+>     out('C-KV-FORMAT: the record parses with the strict S4U_KV_v1 reader (s4u_kv_ref_v1, pinned in the S8 module) into exactly its %d '
+>         'keys, each unique -> %s' % (len(keys), gate('C-KV-FORMAT', okkv)))
+>     try:
+>         mod.KVR.parse_s4u_kv(txt.replace('\nEND = ', '\n%s = %s\nEND = ' % rows[0]))
+>         fired = False
+>     except ValueError:
+>         fired = True
+>     plant('PLANT-KV-DUP', fired, '(the record text with its row key %s written twice)' % rows[0][0])
+>     if FAILS or NOFIRE:
+>         out('RECORD NOT WRITTEN (%s)' % ', '.join(FAILS + ['%s did not fire' % x for x in NOFIRE]))
+>         return
+diff exit 1

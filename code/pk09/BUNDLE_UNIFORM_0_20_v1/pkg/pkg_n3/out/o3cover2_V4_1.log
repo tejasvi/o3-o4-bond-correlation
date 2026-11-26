@@ -1,0 +1,110 @@
+o3cert V4_1: L=16 I=6; 1341 states, 56415477 quadruples (max merged terms 17); structure 22.5s
+   residual coefficients (r0, r1, r2, r3) per mode: 2.1e-13 1.6e-09 1.1e-08 2.8e-01 ; 1.5e-13 1.1e-09 8.7e-09 2.2e-01 ; 1.4e-13 1.1e-09 8.0e-09 1.6e-01 ; 1.6e-13 1.2e-09 9.1e-09 1.9e-01; |Qc T1 Qc| <= 4.700e-02; |T2 + t T3| <= 3.714e-01; eF 9.2e-11 fF 2.5e-11; lam_min/lam_1 = -2.03e-16; min eig (S -+ T_X, S -+ T_XY)/lam_1 = -4.31e-17 -4.34e-17
+J in [2.649734, 2.676364] (J0=5996653106487697/2251799813685248, h=0.0133152): assembly 89.6s; parities +1 +1 -1 +1; |w_k| 0.31 0.57 0.47 0.56; gaps over I 8.352e-01 6.965e-02 4.125e-02 2.082e-02; rotation theta 1.41e-06 1.14e-05 1.55e-05 3.29e-05
+   (C1) ordering over I: True; (C2) min over I of (lam2+lam4-2lam3)/lam1 >= 0.02836 (scaled lam1 in [1.00000, 1.00004]); lam5/lam1 <= 3.2686e-02; lam2/lam1 <= 0.1648
+   classes: eps(0) <= 1.4172e-01; deep radii: horizontal 2.77e-04, vertical 6.15e-05; truncation: trel 6.00e-06, |dy| 1.29e-05; mode fuzz h 3.50e-05 v 8.59e-05, norm fuzz h 1.89e-04 v 8.59e-05 (Rq 1.06, Tq 0.78); frame Gram dev 3.3e-07; block angle 4.90e-05; r^2 k ratio above L <= 0.110
+      t@0    a2 -7.1182e-02 -7.0255e-02 a3 7.4419e-02 7.5319e-02 a4 -4.2113e-02 -4.1575e-02 |u~| 1.143e-01 |eps| 1.417e-01 |Q5 u~| 2.315e-02
+      bb@0   a2 -7.1182e-02 -7.0255e-02 a3 -7.5319e-02 -7.4419e-02 a4 -4.2113e-02 -4.1575e-02 |u~| 1.143e-01 |eps| 1.417e-01 |Q5 u~| 2.315e-02
+      h@0    a2 -3.1982e-02 -3.1001e-02 a3 -4.6715e-05 4.6715e-05 a4 -1.3799e-01 -1.3674e-01 |u~| 1.449e-01 |eps| 1.417e-01 |Q5 u~| 3.017e-02
+      a@1    a2 -4.6635e-02 -4.5775e-02 a3 4.9367e-02 5.0174e-02 a4 -2.7934e-02 -2.7463e-02 |u~| 7.392e-02 |eps| 2.226e-02 |Q5 u~| 1.638e-03
+      t@7    a2 -8.9651e-02 -8.8029e-02 a3 8.3532e-02 8.5027e-02 a4 -3.9056e-02 -3.8097e-02 |u~| 1.296e-01 |eps| 1.494e-05 |Q5 u~| 5.031e-03
+      a@7    a2 -4.2366e-02 -4.1420e-02 a3 4.5734e-02 4.6626e-02 a4 -2.6910e-02 -2.6325e-02 |u~| 6.852e-02 |eps| 1.494e-05 |Q5 u~| 4.390e-03
+   (C3) signs over I: a2 one-signed True, a4 one-signed True, a3 by side True
+   (C4) over I: min (p2 - p4) = 1.0043e-03 at (a@7, b@7); min F(0) = 3.0069e-04 at (a@7, b@7); same-side min 2.4082e-03 at (a@7, a@7)
+   (C5) over I: m0 = 0, safety factor >= 1.393e+00 at (t@0, bb@0) (ratios lam5/lam4 <= 0.6109, lam5/lam3 <= 0.3450, lam2^2/(lam1 lam4) <= 0.5075)
+   (C7) same-column over I: 64 position pairs, not certified > 0: 0; min (Cov Z^2 / <S>^2) lower bound 1.0724e-03 at (0, 0)
+   ==> interval [2.649734, 2.676364]: CERTIFIED (92.2s)
+   residual coefficients (r0, r1, r2, r3) per mode: 2.1e-13 1.6e-09 1.1e-08 3.2e-01 ; 1.5e-13 1.2e-09 8.7e-09 2.5e-01 ; 1.4e-13 1.1e-09 8.0e-09 1.8e-01 ; 1.6e-13 1.2e-09 9.1e-09 2.2e-01; |Qc T1 Qc| <= 4.716e-02; |T2 + t T3| <= 3.663e-01; eF 1.0e-10 fF 2.6e-11; lam_min/lam_1 = -4.29e-16; min eig (S -+ T_X, S -+ T_XY)/lam_1 = -7.94e-17 -3.47e-17
+J in [2.676055, 2.707007] (J0=3030394458785323/1125899906842624, h=0.0154763): assembly 74.5s; parities +1 +1 -1 +1; |w_k| 0.30 0.56 0.46 0.55; gaps over I 8.356e-01 6.956e-02 4.110e-02 2.066e-02; rotation theta 2.11e-06 1.77e-05 2.39e-05 5.19e-05
+   (C1) ordering over I: True; (C2) min over I of (lam2+lam4-2lam3)/lam1 >= 0.02841 (scaled lam1 in [1.00000, 1.00006]); lam5/lam1 <= 3.2675e-02; lam2/lam1 <= 0.1644
+   classes: eps(0) <= 1.4201e-01; deep radii: horizontal 2.71e-04, vertical 6.08e-05; truncation: trel 6.63e-06, |dy| 1.42e-05; mode fuzz h 3.87e-05 v 9.50e-05, norm fuzz h 2.07e-04 v 9.50e-05 (Rq 1.06, Tq 0.78); frame Gram dev 5.3e-07; block angle 8.13e-05; r^2 k ratio above L <= 0.112
+      t@0    a2 6.9304e-02 7.0366e-02 a3 -7.4531e-02 -7.3496e-02 a4 -4.1689e-02 -4.1061e-02 |u~| 1.131e-01 |eps| 1.420e-01 |Q5 u~| 2.330e-02
+      bb@0   a2 6.9304e-02 7.0366e-02 a3 7.3496e-02 7.4531e-02 a4 -4.1689e-02 -4.1061e-02 |u~| 1.131e-01 |eps| 1.420e-01 |Q5 u~| 2.330e-02
+      h@0    a2 3.0012e-02 3.1117e-02 a3 -5.7112e-05 5.7112e-05 a4 -1.3687e-01 -1.3542e-01 |u~| 1.436e-01 |eps| 1.420e-01 |Q5 u~| 2.990e-02
+      a@1    a2 4.5018e-02 4.5995e-02 a3 -4.9587e-02 -4.8667e-02 a4 -2.7683e-02 -2.7137e-02 |u~| 7.301e-02 |eps| 2.225e-02 |Q5 u~| 1.548e-03
+      t@7    a2 8.6937e-02 8.8717e-02 a3 -8.4217e-02 -8.2579e-02 a4 -3.8787e-02 -3.7752e-02 |u~| 1.284e-01 |eps| 1.632e-05 |Q5 u~| 5.225e-03
+      a@7    a2 4.0717e-02 4.1785e-02 a3 -4.6096e-02 -4.5086e-02 a4 -2.6691e-02 -2.6022e-02 |u~| 6.769e-02 |eps| 1.632e-05 |Q5 u~| 4.284e-03
+   (C3) signs over I: a2 one-signed True, a4 one-signed True, a3 by side True
+   (C4) over I: min (p2 - p4) = 9.5994e-04 at (a@7, b@7); min F(0) = 2.8321e-04 at (a@7, b@7); same-side min 2.3344e-03 at (b@7, b@7)
+   (C5) over I: m0 = 0, safety factor >= 1.337e+00 at (t@0, bb@0) (ratios lam5/lam4 <= 0.6126, lam5/lam3 <= 0.3460, lam2^2/(lam1 lam4) <= 0.5069)
+   (C7) same-column over I: 64 position pairs, not certified > 0: 0; min (Cov Z^2 / <S>^2) lower bound 1.0257e-03 at (0, 0)
+   ==> interval [2.676055, 2.707007]: CERTIFIED (76.6s)
+   residual coefficients (r0, r1, r2, r3) per mode: 2.1e-13 1.6e-09 1.1e-08 3.7e-01 ; 1.5e-13 1.2e-09 8.8e-09 2.9e-01 ; 1.4e-13 1.1e-09 8.1e-09 2.2e-01 ; 1.6e-13 1.2e-09 9.0e-09 2.5e-01; |Qc T1 Qc| <= 4.717e-02; |T2 + t T3| <= 3.610e-01; eF 1.2e-10 fF 2.6e-11; lam_min/lam_1 = -2.95e-16; min eig (S -+ T_X, S -+ T_XY)/lam_1 = -3.81e-17 -9.30e-17
+J in [2.706647, 2.742681] (J0=6135397362605703/2251799813685248, h=0.0180168): assembly 71.5s; parities +1 +1 -1 +1; |w_k| 0.30 0.55 0.46 0.54; gaps over I 8.360e-01 6.946e-02 4.094e-02 2.049e-02; rotation theta 3.36e-06 2.93e-05 3.95e-05 8.71e-05
+   (C1) ordering over I: True; (C2) min over I of (lam2+lam4-2lam3)/lam1 >= 0.02845 (scaled lam1 in [1.00000, 1.00008]); lam5/lam1 <= 3.2660e-02; lam2/lam1 <= 0.1640
+   classes: eps(0) <= 1.4232e-01; deep radii: horizontal 2.65e-04, vertical 6.01e-05; truncation: trel 7.42e-06, |dy| 1.59e-05; mode fuzz h 4.35e-05 v 1.07e-04, norm fuzz h 2.30e-04 v 1.07e-04 (Rq 1.06, Tq 0.79); frame Gram dev 8.3e-07; block angle 1.41e-04; r^2 k ratio above L <= 0.113
+      t@0    a2 6.8218e-02 6.9442e-02 a3 -7.3635e-02 -7.2437e-02 a4 -4.1207e-02 -4.0464e-02 |u~| 1.118e-01 |eps| 1.423e-01 |Q5 u~| 2.345e-02
+      bb@0   a2 6.8218e-02 6.9442e-02 a3 7.2437e-02 7.3635e-02 a4 -4.1207e-02 -4.0464e-02 |u~| 1.118e-01 |eps| 1.423e-01 |Q5 u~| 2.345e-02
+      h@0    a2 2.8908e-02 3.0156e-02 a3 -7.4180e-05 7.4180e-05 a4 -1.3559e-01 -1.3390e-01 |u~| 1.421e-01 |eps| 1.423e-01 |Q5 u~| 2.961e-02
+      a@1    a2 4.4161e-02 4.5280e-02 a3 -4.8928e-02 -4.7869e-02 a4 -2.7402e-02 -2.6758e-02 |u~| 7.199e-02 |eps| 2.225e-02 |Q5 u~| 1.468e-03
+      t@7    a2 8.5686e-02 8.7666e-02 a3 -8.3302e-02 -8.1482e-02 a4 -3.8487e-02 -3.7338e-02 |u~| 1.269e-01 |eps| 1.809e-05 |Q5 u~| 5.481e-03
+      a@7    a2 3.9917e-02 4.1144e-02 a3 -4.5507e-02 -4.4344e-02 a4 -2.6453e-02 -2.5663e-02 |u~| 6.677e-02 |eps| 1.809e-05 |Q5 u~| 4.203e-03
+   (C3) signs over I: a2 one-signed True, a4 one-signed True, a3 by side True
+   (C4) over I: min (p2 - p4) = 9.0987e-04 at (a@7, b@7); min F(0) = 2.6177e-04 at (a@7, b@7); same-side min 2.2511e-03 at (b@7, b@7)
+   (C5) over I: m0 = 0, safety factor >= 1.273e+00 at (t@0, bb@0) (ratios lam5/lam4 <= 0.6145, lam5/lam3 <= 0.3471, lam2^2/(lam1 lam4) <= 0.5062)
+   (C7) same-column over I: 64 position pairs, not certified > 0: 0; min (Cov Z^2 / <S>^2) lower bound 9.6783e-04 at (0, 0)
+   ==> interval [2.706647, 2.742681]: CERTIFIED (73.6s)
+   residual coefficients (r0, r1, r2, r3) per mode: 2.1e-13 1.6e-09 1.1e-08 4.3e-01 ; 1.5e-13 1.2e-09 8.9e-09 3.4e-01 ; 1.4e-13 1.1e-09 8.1e-09 2.6e-01 ; 1.5e-13 1.2e-09 9.0e-09 3.0e-01; |Qc T1 Qc| <= 4.722e-02; |T2 + t T3| <= 3.558e-01; eF 1.4e-10 fF 2.7e-11; lam_min/lam_1 = -3.81e-16; min eig (S -+ T_X, S -+ T_XY)/lam_1 = -2.51e-17 -1.01e-16
+J in [2.742260, 2.784286] (J0=6222338331837053/2251799813685248, h=0.021013): assembly 71.6s; parities +1 +1 -1 +1; |w_k| 0.29 0.54 0.45 0.53; gaps over I 8.364e-01 6.934e-02 4.076e-02 2.029e-02; rotation theta 5.67e-06 5.07e-05 6.90e-05 1.53e-04
+   (C1) ordering over I: True; (C2) min over I of (lam2+lam4-2lam3)/lam1 >= 0.02851 (scaled lam1 in [1.00000, 1.00010]); lam5/lam1 <= 3.2646e-02; lam2/lam1 <= 0.1636
+   classes: eps(0) <= 1.4266e-01; deep radii: horizontal 2.58e-04, vertical 5.94e-05; truncation: trel 8.45e-06, |dy| 1.81e-05; mode fuzz h 4.97e-05 v 1.22e-04, norm fuzz h 2.59e-04 v 1.22e-04 (Rq 1.06, Tq 0.79); frame Gram dev 1.3e-06; block angle 2.55e-04; r^2 k ratio above L <= 0.116
+      t@0    a2 6.6979e-02 6.8400e-02 a3 7.1224e-02 7.2622e-02 a4 -4.0664e-02 -3.9767e-02 |u~| 1.103e-01 |eps| 1.427e-01 |Q5 u~| 2.361e-02
+      bb@0   a2 6.6979e-02 6.8400e-02 a3 -7.2622e-02 -7.1224e-02 a4 -4.0664e-02 -3.9767e-02 |u~| 1.103e-01 |eps| 1.427e-01 |Q5 u~| 2.361e-02
+      h@0    a2 2.7680e-02 2.9100e-02 a3 -1.0350e-04 1.0350e-04 a4 -1.3413e-01 -1.3215e-01 |u~| 1.404e-01 |eps| 1.427e-01 |Q5 u~| 2.930e-02
+      a@1    a2 4.3189e-02 4.4489e-02 a3 4.6959e-02 4.8196e-02 a4 -2.7095e-02 -2.6312e-02 |u~| 7.085e-02 |eps| 2.224e-02 |Q5 u~| 1.416e-03
+      t@7    a2 8.4246e-02 8.6493e-02 a3 8.0212e-02 8.2280e-02 a4 -3.8161e-02 -3.6833e-02 |u~| 1.254e-01 |eps| 2.039e-05 |Q5 u~| 5.841e-03
+      a@7    a2 3.8999e-02 4.0448e-02 a3 4.3486e-02 4.4864e-02 a4 -2.6204e-02 -2.5229e-02 |u~| 6.575e-02 |eps| 2.039e-05 |Q5 u~| 4.190e-03
+   (C3) signs over I: a2 one-signed True, a4 one-signed True, a3 by side True
+   (C4) over I: min (p2 - p4) = 8.5247e-04 at (a@7, b@7); min F(0) = 2.3407e-04 at (a@7, b@7); same-side min 2.1561e-03 at (b@7, b@7)
+   (C5) over I: m0 = 0, safety factor >= 1.200e+00 at (t@0, bb@0) (ratios lam5/lam4 <= 0.6167, lam5/lam3 <= 0.3484, lam2^2/(lam1 lam4) <= 0.5055)
+   (C7) same-column over I: 64 position pairs, not certified > 0: 0; min (Cov Z^2 / <S>^2) lower bound 8.9292e-04 at (0, 0)
+   ==> interval [2.742260, 2.784286]: CERTIFIED (73.7s)
+   residual coefficients (r0, r1, r2, r3) per mode: 2.1e-13 1.6e-09 1.1e-08 5.1e-01 ; 1.5e-13 1.2e-09 9.1e-09 4.0e-01 ; 1.4e-13 1.1e-09 8.2e-09 3.2e-01 ; 1.5e-13 1.2e-09 9.0e-09 3.5e-01; |Qc T1 Qc| <= 4.756e-02; |T2 + t T3| <= 3.511e-01; eF 1.6e-10 fF 2.7e-11; lam_min/lam_1 = -7.99e-17; min eig (S -+ T_X, S -+ T_XY)/lam_1 = -2.43e-17 -1.62e-16
+J in [2.783795, 2.832913] (J0=6323851559809897/2251799813685248, h=0.0245591): assembly 71.1s; parities +1 +1 -1 +1; |w_k| 0.29 0.53 0.44 0.52; gaps over I 8.369e-01 6.921e-02 4.056e-02 2.005e-02; rotation theta 1.00e-05 9.16e-05 1.26e-04 2.82e-04
+   (C1) ordering over I: True; (C2) min over I of (lam2+lam4-2lam3)/lam1 >= 0.02856 (scaled lam1 in [0.99999, 1.00014]); lam5/lam1 <= 3.2645e-02; lam2/lam1 <= 0.1631
+   classes: eps(0) <= 1.4303e-01; deep radii: horizontal 2.51e-04, vertical 5.85e-05; truncation: trel 9.82e-06, |dy| 2.10e-05; mode fuzz h 5.79e-05 v 1.42e-04, norm fuzz h 2.97e-04 v 1.42e-04 (Rq 1.06, Tq 0.79); frame Gram dev 2.0e-06; block angle 4.77e-04; r^2 k ratio above L <= 0.118
+      t@0    a2 6.5563e-02 6.7237e-02 a3 -7.1486e-02 -6.9828e-02 a4 -4.0063e-02 -3.8948e-02 |u~| 1.086e-01 |eps| 1.430e-01 |Q5 u~| 2.379e-02
+      bb@0   a2 6.5563e-02 6.7237e-02 a3 6.9828e-02 7.1486e-02 a4 -4.0063e-02 -3.8948e-02 |u~| 1.086e-01 |eps| 1.430e-01 |Q5 u~| 2.379e-02
+      h@0    a2 2.6314e-02 2.7952e-02 a3 -1.5600e-04 1.5600e-04 a4 -1.3248e-01 -1.3011e-01 |u~| 1.385e-01 |eps| 1.430e-01 |Q5 u~| 2.900e-02
+      a@1    a2 4.2084e-02 4.3628e-02 a3 -4.7394e-02 -4.5916e-02 a4 -2.6769e-02 -2.5778e-02 |u~| 6.959e-02 |eps| 2.224e-02 |Q5 u~| 1.431e-03
+      t@7    a2 8.2574e-02 8.5207e-02 a3 -8.1157e-02 -7.8728e-02 a4 -3.7828e-02 -3.6199e-02 |u~| 1.236e-01 |eps| 2.344e-05 |Q5 u~| 6.398e-03
+      a@7    a2 3.7931e-02 3.9716e-02 a3 -4.4184e-02 -4.2481e-02 a4 -2.5965e-02 -2.4686e-02 |u~| 6.465e-02 |eps| 2.344e-05 |Q5 u~| 4.337e-03
+   (C3) signs over I: a2 one-signed True, a4 one-signed True, a3 by side True
+   (C4) over I: min (p2 - p4) = 7.8469e-04 at (a@7, b@7); min F(0) = 1.9554e-04 at (a@7, b@7); same-side min 2.0460e-03 at (a@7, a@7)
+   (C5) over I: m0 = 0, safety factor >= 1.111e+00 at (t@0, bb@0) (ratios lam5/lam4 <= 0.6194, lam5/lam3 <= 0.3500, lam2^2/(lam1 lam4) <= 0.5047)
+   (C7) same-column over I: 64 position pairs, not certified > 0: 0; min (Cov Z^2 / <S>^2) lower bound 7.8961e-04 at (0, 0)
+   ==> interval [2.783795, 2.832913]: CERTIFIED (73.2s)
+   residual coefficients (r0, r1, r2, r3) per mode: 2.1e-13 1.6e-09 1.2e-08 6.0e-01 ; 1.6e-13 1.2e-09 9.2e-09 4.7e-01 ; 1.4e-13 1.1e-09 8.3e-09 3.8e-01 ; 1.5e-13 1.2e-09 9.0e-09 4.2e-01; |Qc T1 Qc| <= 4.758e-02; |T2 + t T3| <= 3.472e-01; eF 2.0e-10 fF 2.7e-11; lam_min/lam_1 = -9.72e-17; min eig (S -+ T_X, S -+ T_XY)/lam_1 = -2.61e-17 -7.12e-17
+J in [2.832341, 2.889560] (J0=1610572066077761/562949953421312, h=0.0286095): assembly 72.5s; parities +1 +1 -1 +1; |w_k| 0.28 0.52 0.43 0.50; gaps over I 8.375e-01 6.906e-02 4.033e-02 1.979e-02; rotation theta 1.81e-05 1.67e-04 2.34e-04 5.22e-04
+   (C1) ordering over I: True; (C2) min over I of (lam2+lam4-2lam3)/lam1 >= 0.02862 (scaled lam1 in [0.99999, 1.00019]); lam5/lam1 <= 3.2639e-02; lam2/lam1 <= 0.1625
+   classes: eps(0) <= 1.4343e-01; deep radii: horizontal 2.43e-04, vertical 5.76e-05; truncation: trel 1.17e-05, |dy| 2.50e-05; mode fuzz h 6.89e-05 v 1.69e-04, norm fuzz h 3.47e-04 v 1.69e-04 (Rq 1.07, Tq 0.80); frame Gram dev 3.0e-06; block angle 8.97e-04; r^2 k ratio above L <= 0.121
+      t@0    a2 6.3948e-02 6.5954e-02 a3 6.8226e-02 7.0228e-02 a4 -3.9414e-02 -3.7982e-02 |u~| 1.068e-01 |eps| 1.435e-01 |Q5 u~| 2.401e-02
+      bb@0   a2 6.3948e-02 6.5954e-02 a3 -7.0228e-02 -6.8226e-02 a4 -3.9414e-02 -3.7982e-02 |u~| 1.068e-01 |eps| 1.435e-01 |Q5 u~| 2.401e-02
+      h@0    a2 2.4802e-02 2.6728e-02 a3 -2.4946e-04 2.4946e-04 a4 -1.3064e-01 -1.2775e-01 |u~| 1.364e-01 |eps| 1.435e-01 |Q5 u~| 2.873e-02
+      a@1    a2 4.0824e-02 4.2708e-02 a3 4.4715e-02 4.6533e-02 a4 -2.6442e-02 -2.5131e-02 |u~| 6.821e-02 |eps| 2.227e-02 |Q5 u~| 1.577e-03
+      t@7    a2 8.0620e-02 8.3833e-02 a3 7.6981e-02 7.9954e-02 a4 -3.7524e-02 -3.5387e-02 |u~| 1.217e-01 |eps| 2.754e-05 |Q5 u~| 7.306e-03
+      a@7    a2 3.6670e-02 3.8985e-02 a3 4.1286e-02 4.3496e-02 a4 -2.5773e-02 -2.3988e-02 |u~| 6.351e-02 |eps| 2.754e-05 |Q5 u~| 4.809e-03
+   (C3) signs over I: a2 one-signed True, a4 one-signed True, a3 by side True
+   (C4) over I: min (p2 - p4) = 7.0199e-04 at (a@7, b@7); min F(0) = 1.3905e-04 at (a@7, b@7); same-side min 1.9162e-03 at (a@7, a@7)
+   (C5) over I: m0 = 1, safety factor >= 9.999e-01 at (t@0, bb@0) (ratios lam5/lam4 <= 0.6224, lam5/lam3 <= 0.3517, lam2^2/(lam1 lam4) <= 0.5038)
+   (C7) same-column over I: 64 position pairs, not certified > 0: 0; min (Cov Z^2 / <S>^2) lower bound 5.4090e-04 at (7, 7)
+   (C6) direct evaluation below the dominance threshold: 2 pairs, max m = 1; 2 evaluations, not certified > 0: 0; min (A D - B C)/D^2 lower bound 2.7265e-04 at (t@0, bb@0, m=0)
+   ==> interval [2.832341, 2.889560]: CERTIFIED (74.6s)
+   residual coefficients (r0, r1, r2, r3) per mode: 2.1e-13 1.6e-09 1.2e-08 6.2e-01 ; 1.6e-13 1.2e-09 9.3e-09 4.8e-01 ; 1.4e-13 1.1e-09 8.3e-09 3.9e-01 ; 1.5e-13 1.2e-09 8.9e-09 4.3e-01; |Qc T1 Qc| <= 4.720e-02; |T2 + t T3| <= 3.360e-01; eF 2.5e-10 fF 2.8e-11; lam_min/lam_1 = -5.06e-17; min eig (S -+ T_X, S -+ T_XY)/lam_1 = -2.88e-17 -4.10e-17
+J in [2.888977, 2.947340] (J0=821388500675893/281474976710656, h=0.0291816): assembly 68.6s; parities +1 +1 -1 +1; |w_k| 0.27 0.51 0.42 0.49; gaps over I 8.381e-01 6.894e-02 4.013e-02 1.982e-02; rotation theta 1.97e-05 1.83e-04 2.58e-04 5.64e-04
+   (C1) ordering over I: True; (C2) min over I of (lam2+lam4-2lam3)/lam1 >= 0.02870 (scaled lam1 in [0.99998, 1.00019]); lam5/lam1 <= 3.2363e-02; lam2/lam1 <= 0.1619
+   classes: eps(0) <= 1.4377e-01; deep radii: horizontal 2.34e-04, vertical 5.65e-05; truncation: trel 1.36e-05, |dy| 2.92e-05; mode fuzz h 8.08e-05 v 1.98e-04, norm fuzz h 3.99e-04 v 1.98e-04 (Rq 1.07, Tq 0.80); frame Gram dev 3.0e-06; block angle 9.76e-04; r^2 k ratio above L <= 0.124
+      t@0    a2 -6.4451e-02 -6.2427e-02 a3 -6.8742e-02 -6.6712e-02 a4 -3.8586e-02 -3.7106e-02 |u~| 1.046e-01 |eps| 1.438e-01 |Q5 u~| 2.410e-02
+      bb@0   a2 -6.4451e-02 -6.2427e-02 a3 6.6712e-02 6.8742e-02 a4 -3.8586e-02 -3.7106e-02 |u~| 1.046e-01 |eps| 1.438e-01 |Q5 u~| 2.410e-02
+      h@0    a2 -2.5334e-02 -2.3436e-02 a3 -2.7891e-04 2.7891e-04 a4 -1.2843e-01 -1.2549e-01 |u~| 1.339e-01 |eps| 1.438e-01 |Q5 u~| 2.826e-02
+      a@1    a2 -4.1613e-02 -3.9675e-02 a3 -4.5495e-02 -4.3614e-02 a4 -2.5973e-02 -2.4573e-02 |u~| 6.661e-02 |eps| 2.224e-02 |Q5 u~| 1.551e-03
+      t@7    a2 -8.2118e-02 -7.8855e-02 a3 -7.8432e-02 -7.5403e-02 a4 -3.6967e-02 -3.4744e-02 |u~| 1.194e-01 |eps| 3.196e-05 |Q5 u~| 7.612e-03
+      a@7    a2 -3.8011e-02 -3.5598e-02 a3 -4.2571e-02 -4.0258e-02 a4 -2.5365e-02 -2.3455e-02 |u~| 6.206e-02 |eps| 3.196e-05 |Q5 u~| 4.731e-03
+   (C3) signs over I: a2 one-signed True, a4 one-signed True, a3 by side True
+   (C4) over I: min (p2 - p4) = 6.4445e-04 at (b@7, a@7); min F(0) = 1.1377e-04 at (b@7, a@7); same-side min 1.8129e-03 at (a@7, a@7)
+   (C5) over I: m0 = 1, safety factor >= 9.311e-01 at (t@0, bb@0) (ratios lam5/lam4 <= 0.6201, lam5/lam3 <= 0.3504, lam2^2/(lam1 lam4) <= 0.5025)
+   (C7) same-column over I: 64 position pairs, not certified > 0: 0; min (Cov Z^2 / <S>^2) lower bound 3.8199e-04 at (7, 7)
+   (C6) direct evaluation below the dominance threshold: 2 pairs, max m = 1; 2 evaluations, not certified > 0: 0; min (A D - B C)/D^2 lower bound 1.3772e-04 at (t@0, bb@0, m=0)
+   ==> interval [2.888977, 2.947340]: CERTIFIED (70.7s)
+adaptive cover: reached a = 2.947339743580286 (target 3.0), last q = 0.01
+total 557.6s

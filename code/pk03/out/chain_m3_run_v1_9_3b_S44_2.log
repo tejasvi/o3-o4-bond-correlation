@@ -1,0 +1,109 @@
+2026-11-08T05:51:07Z CHAIN start m3_run_v1_9_3 57991eb0, S4 at N4, mode all; run_chain_m3_run_v1_9_3b.sh 2d52af21; cap 5523 s; log chain_m3_run_v1_9_3b_S44_2.log
+2026-11-08T05:51:07Z MANIFEST_m3_run_v1_9_3b.sha256 0fef19f0 and the v1_9_3, v1_9_2, v1_9_1, v1_9 manifests OK (--strict)
+2026-11-08T05:51:08Z END pycheck rc 0 VERDICT VALID  out b370b31f
+2026-11-08T05:51:08Z PREFLIGHT: the H N4 replay check must pass before this chain runs
+2026-11-08T05:51:08Z REPLAY-H4 lines: REPLAY_REF 18, m3_run_v1_9_1 18 (self-test cmp rc 0), m3_run_v1_9_3 18 (cmp rc 0, 9f798728); PLANT-REPLAY cmp rc 1 (must be 1)
+2026-11-08T05:51:08Z REPLAY-H4 m3_run_v1_9_3 pieces: Hp1.4 3f210ddf Hp2.4 2a166181 Hp3.4 2f8fae36 Hp4.4 7daa1481 Hp5.4 2bd1213c
+2026-11-08T05:51:08Z REPLAY-H4 PASS (the 18 lines equal REPLAY_REF 4ce12eea byte for byte; PLANT-REPLAY FIRES)
+2026-11-08T05:51:08Z S4 has 18 entries in S8_ENTRY_LIST_v2
+2026-11-08T05:51:08Z SKIP S4a.4: done before (d397532f)
+2026-11-08T05:51:08Z SKIP S4p1.4: done before (fbdbc590)
+2026-11-08T05:51:08Z SKIP S4p2.4: done before (e882f0ff)
+2026-11-08T05:51:08Z SKIP S4p3.4: done before (eb58a1ce)
+2026-11-08T05:51:08Z SKIP S4p4.4: done before (0c800903)
+2026-11-08T05:51:08Z SKIP S4p5.4: done before (d3887be3)
+2026-11-08T05:51:08Z SKIP S4p6.4: done before (ac7580e8)
+2026-11-08T05:51:08Z SKIP S4p7.4: done before (a34c47d3)
+2026-11-08T05:51:08Z SKIP S4p8.4: done before (0334c3e6)
+2026-11-08T05:51:08Z START S4p9.4 LIM 540 (CPU so far 0.3 s of 5523)
+2026-11-08T05:56:26Z END S4p9.4 rc 0 CPU 318.0 s (total 318.3 s) VERDICT VALID  out a5c3886a 7722 bytes; err 0 bytes
+2026-11-08T05:56:26Z   S4p9.4: C-CACHE-CHAIN (S4 prep piece 9: piece 8's hand-off, done False; memo m3_run_v1_9_3_memo_S4_N4.jsonl: its first 21 lines have sha256 7c2bf12b (recorded 7c2bf12b), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T05:56:26Z   S4p9.4: C-PREP-GRAPH (S4: the prep graph has V 12, F 12 and pairs [] (the family graph: F 19); against the family graph, V, N, S_gauge and the 17 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_l
+2026-11-08T05:56:26Z   S4p9.4: PLANT-PREP-EDGE (S4: the prep graph with its first edge ((0, 1), 1) dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T05:56:26Z   S4p9.4: PLANT-PREP-TAG (S4: the prep graph with its first edge's tag 1 changed to 'A', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T05:56:26Z   S4p9.4: PLANT-PREP-GAUGE (S4: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T05:56:26Z   S4p9.4: PLANT-PREP-ULP (S4: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T05:56:26Z   S4p9.4: PREP16-START S4 piece 9: 19 norms finished before, 21 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T05:56:26Z   S4p9.4: PREP16-REP S4 stage u: 21 scalars, certified upper end / float in [1.000000 (nE4[0]), 1.083205 (nE4[2])]; nE4[0] 1.000000; nE[0] 1.000000; rE_parts[t4|H4|] 1.000000; nE[1] 1.000000; rE_parts[t5 h5/120] 1.000000; nE4[1] 1.000000; rE_parts[t4 H2^2/2] 1.000000; rE_parts[t4|H1H3|] 1.000000; rE_parts[t5|H1H4|] 1.000000; rE_parts[t5|H2|h3/6] 1.000000; nE[2] 1.000000; rE_parts[t6|H1|h5/120] 1.000000; rE_
+2026-11-08T05:56:26Z   S4p9.4: PREP16 S4 piece 9: PARTIAL before table unit L16:0-1222 of c vertex forms D 16 (about 250 s); 19 norms finished, memo 21 lines (head sha256 7c2bf12b); tables: u16_1cea1fe05882a483 16 units, u16_ccb6cb65b78cc931 finished a9de57ab; adopted 0, moved aside 0, memo hits 0; largest E2 relative radius 0.000e+00 at -, 0 over FALLBACK_REL; shadow_max -
+2026-11-08T05:56:26Z   S4p9.4: STAGE-CPU total 317.81 s
+2026-11-08T05:56:26Z START S4p10.4 LIM 540 (CPU so far 318.3 s of 5523)
+2026-11-08T05:59:40Z END S4p10.4 rc 0 CPU 193.6 s (total 511.9 s) VERDICT VALID  out 5798352a 7100 bytes; err 0 bytes
+2026-11-08T05:59:40Z   S4p10.4: C-CACHE-CHAIN (S4 prep piece 10: piece 9's hand-off, done False; memo m3_run_v1_9_3_memo_S4_N4.jsonl: its first 21 lines have sha256 7c2bf12b (recorded 7c2bf12b), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T05:59:40Z   S4p10.4: C-PREP-GRAPH (S4: the prep graph has V 12, F 12 and pairs [] (the family graph: F 19); against the family graph, V, N, S_gauge and the 17 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_l
+2026-11-08T05:59:40Z   S4p10.4: PLANT-PREP-EDGE (S4: the prep graph with its first edge ((0, 1), 1) dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T05:59:40Z   S4p10.4: PLANT-PREP-TAG (S4: the prep graph with its first edge's tag 1 changed to 'A', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T05:59:40Z   S4p10.4: PLANT-PREP-GAUGE (S4: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T05:59:40Z   S4p10.4: PLANT-PREP-ULP (S4: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T05:59:40Z   S4p10.4: PREP16-START S4 piece 10: 19 norms finished before, 21 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T05:59:40Z   S4p10.4: PREP16-REP S4 stage u: 21 scalars, certified upper end / float in [1.000000 (nE4[0]), 1.083205 (nE4[2])]; nE4[0] 1.000000; nE[0] 1.000000; rE_parts[t4|H4|] 1.000000; nE[1] 1.000000; rE_parts[t5 h5/120] 1.000000; nE4[1] 1.000000; rE_parts[t4 H2^2/2] 1.000000; rE_parts[t4|H1H3|] 1.000000; rE_parts[t5|H1H4|] 1.000000; rE_parts[t5|H2|h3/6] 1.000000; nE[2] 1.000000; rE_parts[t6|H1|h5/120] 1.000000; rE_
+2026-11-08T05:59:40Z   S4p10.4: PREP16 S4 piece 10: PARTIAL before table unit L16:1222-1941 of c vertex forms D 16 (about 250 s); 19 norms finished, memo 21 lines (head sha256 7c2bf12b); tables: u16_1cea1fe05882a483 17 units, u16_ccb6cb65b78cc931 finished a9de57ab; adopted 0, moved aside 0, memo hits 0; largest E2 relative radius 0.000e+00 at -, 0 over FALLBACK_REL; shadow_max -
+2026-11-08T05:59:40Z   S4p10.4: STAGE-CPU total 193.52 s
+2026-11-08T05:59:40Z START S4p11.4 LIM 540 (CPU so far 512.0 s of 5523)
+2026-11-08T06:05:47Z END S4p11.4 rc 0 CPU 366.1 s (total 878.1 s) VERDICT VALID  out 79e23a95 7842 bytes; err 0 bytes
+2026-11-08T06:05:47Z   S4p11.4: C-CACHE-CHAIN (S4 prep piece 11: piece 10's hand-off, done False; memo m3_run_v1_9_3_memo_S4_N4.jsonl: its first 21 lines have sha256 7c2bf12b (recorded 7c2bf12b), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T06:05:47Z   S4p11.4: C-PREP-GRAPH (S4: the prep graph has V 12, F 12 and pairs [] (the family graph: F 19); against the family graph, V, N, S_gauge and the 17 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_l
+2026-11-08T06:05:47Z   S4p11.4: PLANT-PREP-EDGE (S4: the prep graph with its first edge ((0, 1), 1) dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:05:47Z   S4p11.4: PLANT-PREP-TAG (S4: the prep graph with its first edge's tag 1 changed to 'A', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:05:47Z   S4p11.4: PLANT-PREP-GAUGE (S4: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:05:47Z   S4p11.4: PLANT-PREP-ULP (S4: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T06:05:47Z   S4p11.4: PREP16-START S4 piece 11: 19 norms finished before, 21 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T06:05:47Z   S4p11.4: PREP16-REP S4 stage u: 21 scalars, certified upper end / float in [1.000000 (nE4[0]), 1.083205 (nE4[2])]; nE4[0] 1.000000; nE[0] 1.000000; rE_parts[t4|H4|] 1.000000; nE[1] 1.000000; rE_parts[t5 h5/120] 1.000000; nE4[1] 1.000000; rE_parts[t4 H2^2/2] 1.000000; rE_parts[t4|H1H3|] 1.000000; rE_parts[t5|H1H4|] 1.000000; rE_parts[t5|H2|h3/6] 1.000000; nE[2] 1.000000; rE_parts[t6|H1|h5/120] 1.000000; rE_
+2026-11-08T06:05:47Z   S4p11.4: TABLE16-FINISHED c vertex forms D 16: hand-off handoff_table.json 3b9da16c05404a0551880b3b47265f719d81bc5da1cf0a4098796314de1adf6b
+2026-11-08T06:05:47Z   S4p11.4: TABLE16-LOADED c vertex forms D 16: 3.83 s; shadow_max 5.835e-04
+2026-11-08T06:05:47Z   S4p11.4: PREP16 S4 piece 11: PARTIAL before E2 block 1 of 4 on c vertex forms D 16 (about 180 s); 20 norms finished, memo 21 lines (head sha256 7c2bf12b); tables: u16_1cea1fe05882a483 finished 3b9da16c, u16_ccb6cb65b78cc931 finished a9de57ab; adopted 0, moved aside 0, memo hits 0; largest E2 relative radius 7.600e-05 at c:H1 p6, 0 over FALLBACK_REL; shadow_max c vertex forms D 16 5.835e-04
+2026-11-08T06:05:47Z   S4p11.4: STAGE-CPU total 365.91 s
+2026-11-08T06:05:47Z START S4p12.4 LIM 540 (CPU so far 878.1 s of 5523)
+2026-11-08T06:11:26Z END S4p12.4 rc 0 CPU 339.5 s (total 1217.6 s) VERDICT VALID  out 81807434 7372 bytes; err 0 bytes
+2026-11-08T06:11:26Z   S4p12.4: C-CACHE-CHAIN (S4 prep piece 12: piece 11's hand-off, done False; memo m3_run_v1_9_3_memo_S4_N4.jsonl: its first 21 lines have sha256 7c2bf12b (recorded 7c2bf12b), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T06:11:26Z   S4p12.4: C-PREP-GRAPH (S4: the prep graph has V 12, F 12 and pairs [] (the family graph: F 19); against the family graph, V, N, S_gauge and the 17 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_l
+2026-11-08T06:11:26Z   S4p12.4: PLANT-PREP-EDGE (S4: the prep graph with its first edge ((0, 1), 1) dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:11:26Z   S4p12.4: PLANT-PREP-TAG (S4: the prep graph with its first edge's tag 1 changed to 'A', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:11:26Z   S4p12.4: PLANT-PREP-GAUGE (S4: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:11:26Z   S4p12.4: PLANT-PREP-ULP (S4: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T06:11:26Z   S4p12.4: PREP16-START S4 piece 12: 20 norms finished before, 21 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T06:11:26Z   S4p12.4: PREP16-REP S4 stage u: 21 scalars, certified upper end / float in [1.000000 (nE4[0]), 1.083205 (nE4[2])]; nE4[0] 1.000000; nE[0] 1.000000; rE_parts[t4|H4|] 1.000000; nE[1] 1.000000; rE_parts[t5 h5/120] 1.000000; nE4[1] 1.000000; rE_parts[t4 H2^2/2] 1.000000; rE_parts[t4|H1H3|] 1.000000; rE_parts[t5|H1H4|] 1.000000; rE_parts[t5|H2|h3/6] 1.000000; nE[2] 1.000000; rE_parts[t6|H1|h5/120] 1.000000; rE_
+2026-11-08T06:11:26Z   S4p12.4: TABLE16-LOADED c vertex forms D 16: 3.45 s; shadow_max 5.835e-04
+2026-11-08T06:11:26Z   S4p12.4: PREP16 S4 piece 12: PARTIAL before E2 block 2 of 4 on c vertex forms D 16 (about 180 s); 21 norms finished, memo 26 lines (head sha256 c57533a3); tables: u16_1cea1fe05882a483 finished 3b9da16c, u16_ccb6cb65b78cc931 finished a9de57ab; adopted 0, moved aside 0, memo hits 0; largest E2 relative radius 1.379e-01 at c:H1 p8, 1 over FALLBACK_REL; shadow_max c vertex forms D 16 5.835e-04
+2026-11-08T06:11:26Z   S4p12.4: STAGE-CPU total 339.34 s
+2026-11-08T06:11:26Z START S4p13.4 LIM 540 (CPU so far 1217.7 s of 5523)
+2026-11-08T06:15:25Z END S4p13.4 rc 0 CPU 238.4 s (total 1456.1 s) VERDICT VALID  out 90bc974c 7580 bytes; err 0 bytes
+2026-11-08T06:15:25Z   S4p13.4: C-CACHE-CHAIN (S4 prep piece 13: piece 12's hand-off, done False; memo m3_run_v1_9_3_memo_S4_N4.jsonl: its first 26 lines have sha256 c57533a3 (recorded c57533a3), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T06:15:25Z   S4p13.4: C-PREP-GRAPH (S4: the prep graph has V 12, F 12 and pairs [] (the family graph: F 19); against the family graph, V, N, S_gauge and the 17 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_l
+2026-11-08T06:15:25Z   S4p13.4: PLANT-PREP-EDGE (S4: the prep graph with its first edge ((0, 1), 1) dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:15:25Z   S4p13.4: PLANT-PREP-TAG (S4: the prep graph with its first edge's tag 1 changed to 'A', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:15:25Z   S4p13.4: PLANT-PREP-GAUGE (S4: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:15:25Z   S4p13.4: PLANT-PREP-ULP (S4: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T06:15:25Z   S4p13.4: PREP16-START S4 piece 13: 21 norms finished before, 26 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T06:15:25Z   S4p13.4: PREP16-REP S4 stage u: 21 scalars, certified upper end / float in [1.000000 (nE4[0]), 1.083205 (nE4[2])]; nE4[0] 1.000000; nE[0] 1.000000; rE_parts[t4|H4|] 1.000000; nE[1] 1.000000; rE_parts[t5 h5/120] 1.000000; nE4[1] 1.000000; rE_parts[t4 H2^2/2] 1.000000; rE_parts[t4|H1H3|] 1.000000; rE_parts[t5|H1H4|] 1.000000; rE_parts[t5|H2|h3/6] 1.000000; nE[2] 1.000000; rE_parts[t6|H1|h5/120] 1.000000; rE_
+2026-11-08T06:15:25Z   S4p13.4: TABLE16-LOADED c vertex forms D 16: 3.66 s; shadow_max 5.835e-04
+2026-11-08T06:15:25Z   S4p13.4: PREP16-REP S4 stage c: 5 scalars, certified upper end / float in [1.000000 (farbase), 1.010508 (nC8)]; farbase 1.000000; nC6 1.000005; Pout 1.000149; Pout_p 1.000150; nC8 1.010508
+2026-11-08T06:15:25Z   S4p13.4: PREP16 S4 piece 13: DONE; 22 norms finished, memo 29 lines (head sha256 2be2b49c); tables: u16_1cea1fe05882a483 finished 3b9da16c, u16_ccb6cb65b78cc931 finished a9de57ab; adopted 0, moved aside 0, memo hits 1; largest E2 relative radius 7.443e-03 at c:hh p8, 1 over FALLBACK_REL; shadow_max c vertex forms D 16 5.835e-04
+2026-11-08T06:15:25Z   S4p13.4: STAGE-CPU total 238.32 s
+2026-11-08T06:15:25Z PREP DONE: S4 at N4 in piece 13
+2026-11-08T06:15:25Z START S4k1.4 LIM 540 (CPU so far 1456.2 s of 5523)
+2026-11-08T06:16:14Z END S4k1.4 rc 0 CPU 48.7 s (total 1504.9 s) VERDICT VALID  out 0b012259 46457 bytes; err 0 bytes
+2026-11-08T06:16:14Z   S4k1.4: C-PREP-CHAIN (S4: prep pieces [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with done false, piece 13 done) -> PASS
+2026-11-08T06:16:14Z   S4k1.4: PIECE-START S4 piece 1 resumes at entry 0 after 0 capped piece(s); stop factor 1.5
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,Z ak ['1', '0.898374226817', '0.600476000846', '0.324964428446'] err 1.152531672e-05 parts rem 1.148401880e-05 tail 1.975691610e-08 ann 2.154100119e-08 far 1.474833405e-23 rnd 2.284e-15 groups 0 Dn 6 forms 12
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,x,0,TM ak ['1.05776397516', '0.947960642491', '0.612090470763', '0.281495963642'] err 1.587047596e-05 parts rem 1.581173966e-05 tail 2.916949837e-08 ann 2.956678598e-08 far 8.849000429e-21 rnd 2.062e-14 groups 1 Dn 7 forms 13
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,x,1,MB ak ['0.852795031056', '0.893602710447', '0.70944376393', '0.495158864112'] err 1.273326955e-05 parts rem 1.268620546e-05 tail 2.326443562e-08 ann 2.379963871e-08 far 8.849000429e-21 rnd 1.649e-14 groups 1 Dn 7 forms 13
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,x,1,TM ak ['0.852795031056', '0.893602710447', '0.70944376393', '0.495158864112'] err 1.273326955e-05 parts rem 1.268620546e-05 tail 2.326443562e-08 ann 2.379963871e-08 far 8.849000429e-21 rnd 1.647e-14 groups 1 Dn 7 forms 13
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,x,2,MB ak ['0.852795031056', '0.893602710447', '0.70944376393', '0.495158864112'] err 1.273326955e-05 parts rem 1.268620546e-05 tail 2.326443562e-08 ann 2.379963871e-08 far 8.849000429e-21 rnd 1.647e-14 groups 1 Dn 7 forms 13
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,x,2,TM ak ['0.852795031056', '0.893602710447', '0.70944376393', '0.495158864112'] err 1.273326955e-05 parts rem 1.268620546e-05 tail 2.326443562e-08 ann 2.379963871e-08 far 8.849000429e-21 rnd 1.650e-14 groups 1 Dn 7 forms 13
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,x,3,MB ak ['1.05776397516', '0.947960642491', '0.612090470763', '0.281495963642'] err 1.587047596e-05 parts rem 1.581173966e-05 tail 2.916949837e-08 ann 2.956678598e-08 far 8.849000429e-21 rnd 2.075e-14 groups 1 Dn 7 forms 13
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,x,3,TM ak ['1.05776397516', '0.947960642491', '0.612090470763', '0.281495963642'] err 1.587047596e-05 parts rem 1.581173966e-05 tail 2.916949837e-08 ann 2.956678598e-08 far 8.849000429e-21 rnd 2.066e-14 groups 1 Dn 7 forms 13
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,xy,0,TM,1,TM ak ['0.96305376593', '1.02813111389', '0.81590922815', '0.540018821392'] err 2.091523508e-05 parts rem 2.079345929e-05 tail 5.479416779e-08 ann 6.698151564e-08 far 5.309400257e-18 rnd 1.086e-13 groups 2 Dn 8 forms 14
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,xy,0,TM,1,MB ak ['0.90404755475', '0.953715985105', '0.749965908324', '0.495633297357'] err 1.874148183e-05 parts rem 1.862427341e-05 tail 5.022679610e-08 ann 6.698151564e-08 far 5.309400257e-18 rnd 1.099e-13 groups 2 Dn 8 forms 14
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,xy,1,TM,2,TM ak ['0.767999562774', '0.937050443478', '0.870322177975', '0.736046968237'] err 1.594179487e-05 parts rem 1.584788534e-05 tail 3.999945679e-08 ann 5.390999187e-08 far 5.309400257e-18 rnd 8.690e-14 groups 2 Dn 8 forms 14
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,xy,1,TM,2,MB ak ['0.728248009979', '0.878508030979', '0.805797056082', '0.670191216425'] err 1.446682399e-05 parts rem 1.437601386e-05 tail 3.690004958e-08 ann 5.390999187e-08 far 5.309400257e-18 rnd 8.837e-14 groups 2 Dn 8 forms 14
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,xy,0,TM,2,TM ak ['0.908395380837', '0.954921538228', '0.746091454024', '0.486399554478'] err 1.890778899e-05 parts rem 1.879023108e-05 tail 5.057627908e-08 ann 6.698151564e-08 far 5.309400257e-18 rnd 1.101e-13 groups 2 Dn 8 forms 14
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,xy,0,TM,2,MB ak ['0.903426436737', '0.946427084531', '0.735770951632', '0.475419646122'] err 1.871729365e-05 parts rem 1.860013534e-05 tail 5.017668030e-08 ann 6.698151564e-08 far 5.309400257e-18 rnd 1.099e-13 groups 2 Dn 8 forms 14
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,xy,0,TM,3,TM ak ['1.12005388167', '1.00252554838', '0.626073886589', '0.235628908525'] err 2.422963176e-05 parts rem 2.407871988e-05 tail 6.768925762e-08 ann 8.322248404e-08 far 5.309400257e-18 rnd 1.377e-13 groups 2 Dn 8 forms 14
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,xy,0,TM,3,MB ak ['1.11943276365', '1.00131666015', '0.624464561922', '0.233815949808'] err 2.420566380e-05 parts rem 2.405480211e-05 tail 6.763906657e-08 ann 8.322248404e-08 far 5.309400257e-18 rnd 1.383e-13 groups 2 Dn 8 forms 14
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,xy,2,TM,3,TM ak ['0.96305376593', '1.02813111389', '0.81590922815', '0.540018821392'] err 2.091523508e-05 parts rem 2.079345929e-05 tail 5.479416779e-08 ann 6.698151564e-08 far 5.309400257e-18 rnd 1.087e-13 groups 2 Dn 8 forms 14
+2026-11-08T06:16:14Z   S4k1.4: ENTRY S4,xy,2,TM,3,MB ak ['0.90404755475', '0.953715985105', '0.749965908324', '0.495633297357'] err 1.874148183e-05 parts rem 1.862427341e-05 tail 5.022679610e-08 ann 6.698151564e-08 far 5.309400257e-18 rnd 1.101e-13 groups 2 Dn 8 forms 14
+2026-11-08T06:16:14Z   S4k1.4: C-PIECE (S4 piece 1: entries 0..17 of 18 done, next 18; 215 units computed) -> PASS
+2026-11-08T06:16:14Z   S4k1.4: STAGE-CPU total 48.73 s
+2026-11-08T06:16:14Z ENTRIES DONE: S4 at N4 in piece 1
+2026-11-08T06:16:14Z CHAIN end: CPU 1505.0 s of 5523

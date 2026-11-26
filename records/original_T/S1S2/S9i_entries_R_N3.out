@@ -1,0 +1,378 @@
+m3_run_r0b_v1_4 item asm.3 LIM 540; script sha256 8837ee03cee63988932fd90cc4c4d6b48a9bb75bebad834b7a8ca7d87d7ff7dc; python 3.14.4
+STAGE-CPU C-HASH start 0.03 s
+C-HASH (10 modules, the kernel files, 3 parts of this script, 20 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.12 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v16_1: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=; 6 layer calls in E2_ma/lp_moment_ma/lp_ma/pos_ma/E2_ball/e2, each with fallback=False, 6 wanted) -> PASS
+PLANT-CALLER (m3_bar_v16_1 with one E2_combine call's plan= removed) -> FIRES
+PLANT-CALLER-FLAG (m3_bar_v16_1 with pos_ma's fallback=False dropped) -> FIRES
+C-SERIES (no *_series( call in 10 modules, the kernel files, this script and its 3 parts) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-128.000000000 +/- 1.14e-12] overlaps the layer's [-128.000000000 +/- 1.27e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU asm start 0.16 s
+C-LIST (ROUTE0B 55dfd958, ROUTE0L0 44d4c44e, D4BULK 2633b1b9: certify + check keys W2 25 + 0, W3e 42 + 7, W3f 4 + 0, D4L0 12 + 0, D4ML0 16 + 0, FA 40 + 0; K 3; failing none) -> PASS
+PLANT-LIST (W2 without its first key) -> FIRES
+C-ENC (the four sample encodings give the conventions' tuples: True; every st beside p: True; pair forms outside the list pairs: none) -> PASS
+PLANT-ENC ([st, 0, 0] refused: True; W2 G,0,1 without [p, 0]: beside_p False) -> FIRES
+C-PARITY-SET (the keys whose factors pass C-ODD on their family graph: {'W2': ['G,0,2', 'G,1,2', 'G,2,3', 'K1,2'], 'W3e': ['M,0,2,00', 'M,1,2,00', 'M,2,3,00'], 'FA': ['1,2', '1,5', '1,8']}; ZERO and the marks equal: True) -> PASS
+PLANT-ODD (W2 G,0,2 with S[1][2] + 1e-12: a factor is neither exactly even nor exactly odd: [None, 'even', 'even']) -> FIRES
+C-ALIAS (identity and mirror aliases recomputed from the factor tuples equal ALIASES: True; not computed: W2 4, W3e 9, W3f 0, D4L0 0, D4ML0 0, FA 0) -> PASS
+PLANT-ALIAS (W2 KE,0 is CE's identity twin; with its bond moved to (2, 5) it must not be) -> FIRES
+C-SYM-MAP (the check keys {'W3e': ['M,1,0,e2', 'M,2,0,e2', 'M,2,1,e2', 'M,3,0,e2', 'M,3,1,e2', 'M,3,2,e2', 'ME1']} mirror their MIRRORS keys exactly, couplings and list pairs mirror-invariant; failing none) -> PASS
+PLANT-SYM-MAP (W3e M,1,0,e2 with S[0][1] + 1e-12: its mirror image must miss M,0,1,e1) -> FIRES
+C-RULE-OF (133 computed keys: std 36, col 63, colh 32, colb 2; RULE_TAB keys 34, all bonded computed keys: True) -> PASS
+PLANT-RULE-OF (W2 Z with [xi, [0, 3]] added: col; Z: std) -> FIRES
+PLANT-SPLIT (W3e with its segment of pieces 101..199 starting at entry 14: M,2,3,e1 claimed by two segments) -> FIRES
+PLANT-SPLIT-GAP (W3e with its segment of pieces 101..199 starting at entry 16: M,3,3,e1 claimed by none) -> FIRES
+PLANT-CLAIM-TWICE (W3e M,1,1,ee claimed a second time: refused and listed) -> FIRES
+PLANT-SRC-NAME (the hand-offs m3_run_r0b_v1_3_W3ek41.3 and m3_run_r0b_v1_4_W3ek40.3: refused [True, True]) -> FIRES
+PLANT-SRC-SHA (m3_run_r0b_v1_3_VNu.3.json with its header's script 9fceb247 (V13_SHA flipped) or 8837ee03 (this script's) in place of the pinned 9fceb247: refused [True, True]; unchanged: read True) -> FIRES
+PLANT-SRC-CAPPED (clean CAP-STOP first lines: m3_run_r0b_v1_3 k40 under V13_SHA and m3_run_r0b_v1_4 k41 under this script's sha accepted; V13_SHA flipped at k40, m3_run_r0b_v1_3 at k41, m3_run_r0b_v1_4 at k40 and this script's sha flipped at k41 refused: [True, True, False, False, False, False]) -> FIRES
+C-SPLIT (W2: segments (pieces: entries) 1..40: 0..20 over its 21 computed keys; the piece ranges disjoint, every key in exactly one segment, pieces 1..40 (m3_run_r0b_v1_3's) and entry 0 in the first) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W2k1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W2k1.3: entries 0..4 complete, 14 units of V,2 carried; segment entries 0..20) -> PASS
+PIECE-CAPPED W2k2.3: a clean CAP-STOP of m3_run_r0b_v1_3, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_3_W2k3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W2k3.3: entries 5..5 complete, 15 units of V,3 carried; segment entries 0..20) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W2k4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W2k4.3: entries 6..5 complete, 27 units of V,3 carried; segment entries 0..20) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W2k5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W2k5.3: entries 6..12 complete, 19 units of G,3,3 carried; segment entries 0..20) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W2k6.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W2k6.3: entries 13..20 complete; segment entries 0..20) -> PASS
+C-PIECES (the W2 pieces 1..40 cover its computed keys 0..20, in order, none left in progress) -> PASS
+C-CLAIM (W2: each of its 21 computed keys claimed by exactly one piece: 21 claimed; twice: none) -> PASS
+C-SPLIT (W3e: segments (pieces: entries) 1..99: 0..14, 101..199: 15..19, 201..299: 20..23, 301..399: 24..39 over its 40 computed keys; the piece ranges disjoint, every key in exactly one segment, pieces 1..40 (m3_run_r0b_v1_3's) and entry 0 in the first) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek1.3: entries 0..-1 complete, 14 units of M,1,1,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek2.3: entries 0..-1 complete, 15 units of M,1,1,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek3.3: entries 0..-1 complete, 26 units of M,1,1,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek4.3: entries 0..-1 complete, 27 units of M,1,1,ee carried; segment entries 0..14) -> PASS
+PIECE-CAPPED W3ek5.3: a clean CAP-STOP of m3_run_r0b_v1_3, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_3_W3ek6.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek6.3: entries 0..0 complete, 15 units of M,1,2,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek7.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek7.3: entries 1..0 complete, 26 units of M,1,2,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek8.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek8.3: entries 1..0 complete, 27 units of M,1,2,ee carried; segment entries 0..14) -> PASS
+PIECE-CAPPED W3ek9.3: a clean CAP-STOP of m3_run_r0b_v1_3, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_3_W3ek10.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek10.3: entries 1..1 complete, 15 units of M,1,3,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek11.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek11.3: entries 2..1 complete, 26 units of M,1,3,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek12.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek12.3: entries 2..1 complete, 27 units of M,1,3,ee carried; segment entries 0..14) -> PASS
+PIECE-CAPPED W3ek13.3: a clean CAP-STOP of m3_run_r0b_v1_3, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_3_W3ek14.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek14.3: entries 2..2 complete, 14 units of M,2,2,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek15.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek15.3: entries 3..2 complete, 15 units of M,2,2,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek16.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek16.3: entries 3..2 complete, 26 units of M,2,2,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek17.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek17.3: entries 3..2 complete, 27 units of M,2,2,ee carried; segment entries 0..14) -> PASS
+PIECE-CAPPED W3ek18.3: a clean CAP-STOP of m3_run_r0b_v1_3, no hand-off; skipped and kept
+PIECE-CAPPED W3ek19.3: a clean CAP-STOP of m3_run_r0b_v1_3, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_3_W3ek20.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek20.3: entries 3..3 complete, 15 units of M,2,3,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek21.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek21.3: entries 4..3 complete, 26 units of M,2,3,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek22.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek22.3: entries 4..3 complete, 27 units of M,2,3,ee carried; segment entries 0..14) -> PASS
+PIECE-CAPPED W3ek23.3: a clean CAP-STOP of m3_run_r0b_v1_3, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_3_W3ek24.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek24.3: entries 4..4 complete, 16 units of M,3,3,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek25.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek25.3: entries 5..4 complete, 26 units of M,3,3,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek26.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek26.3: entries 5..4 complete, 27 units of M,3,3,ee carried; segment entries 0..14) -> PASS
+PIECE-CAPPED W3ek27.3: a clean CAP-STOP of m3_run_r0b_v1_3, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_3_W3ek28.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek28.3: entries 5..5 complete, 27 units of M,0,1,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek29.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek29.3: entries 6..6 complete, 15 units of M,0,2,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek30.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek30.3: entries 7..6 complete, 27 units of M,0,2,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek31.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek31.3: entries 7..7 complete, 15 units of M,0,3,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek32.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek32.3: entries 8..7 complete, 27 units of M,0,3,ee carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek33.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek33.3: entries 8..9 complete, 14 units of M,1,1,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek34.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek34.3: entries 10..9 complete, 15 units of M,1,1,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek35.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek35.3: entries 10..9 complete, 26 units of M,1,1,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek36.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek36.3: entries 10..9 complete, 27 units of M,1,1,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek37.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek37.3: entries 10..10 complete, 15 units of M,1,2,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek38.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek38.3: entries 11..10 complete, 26 units of M,1,2,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3ek39.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3ek39.3: entries 11..10 complete, 27 units of M,1,2,e1 carried; segment entries 0..14) -> PASS
+PIECE-CAPPED W3ek40.3: a clean CAP-STOP of m3_run_r0b_v1_3, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_4_W3ek41.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek41.3: entries 11..11 complete, 15 units of M,1,3,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek42.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek42.3: entries 12..11 complete, 26 units of M,1,3,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek43.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek43.3: entries 12..11 complete, 27 units of M,1,3,e1 carried; segment entries 0..14) -> PASS
+PIECE-CAPPED W3ek44.3: a clean CAP-STOP of m3_run_r0b_v1_4, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_4_W3ek45.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek45.3: entries 12..12 complete, 14 units of M,2,2,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek46.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek46.3: entries 13..12 complete, 15 units of M,2,2,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek47.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek47.3: entries 13..12 complete, 26 units of M,2,2,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek48.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek48.3: entries 13..12 complete, 27 units of M,2,2,e1 carried; segment entries 0..14) -> PASS
+PIECE-CAPPED W3ek49.3: a clean CAP-STOP of m3_run_r0b_v1_4, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_4_W3ek50.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek50.3: entries 13..13 complete, 15 units of M,2,3,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek51.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek51.3: entries 14..13 complete, 26 units of M,2,3,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek52.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek52.3: entries 14..13 complete, 27 units of M,2,3,e1 carried; segment entries 0..14) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek53.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek53.3: entries 14..14 complete; segment entries 0..14) -> PASS
+C-PIECES (the W3e pieces 1..99 cover its computed keys 0..14, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek101.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek101.3: entries 15..14 complete, 14 units of M,3,3,e1 carried; segment entries 15..19) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek102.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek102.3: entries 15..14 complete, 15 units of M,3,3,e1 carried; segment entries 15..19) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek103.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek103.3: entries 15..14 complete, 26 units of M,3,3,e1 carried; segment entries 15..19) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek104.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek104.3: entries 15..14 complete, 27 units of M,3,3,e1 carried; segment entries 15..19) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek105.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek105.3: entries 15..15 complete, 15 units of M,0,1,e1 carried; segment entries 15..19) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek106.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek106.3: entries 16..15 complete, 27 units of M,0,1,e1 carried; segment entries 15..19) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek107.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek107.3: entries 16..16 complete, 15 units of M,0,2,e1 carried; segment entries 15..19) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek108.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek108.3: entries 17..16 complete, 27 units of M,0,2,e1 carried; segment entries 15..19) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek109.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek109.3: entries 17..17 complete, 15 units of M,0,3,e1 carried; segment entries 15..19) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek110.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek110.3: entries 18..17 complete, 27 units of M,0,3,e1 carried; segment entries 15..19) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek111.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek111.3: entries 18..19 complete; segment entries 15..19) -> PASS
+C-PIECES (the W3e pieces 101..199 cover its computed keys 15..19, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek201.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek201.3: entries 20..19 complete, 13 units of M,1,1,e2 carried; segment entries 20..23) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek202.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek202.3: entries 20..19 complete, 15 units of M,1,1,e2 carried; segment entries 20..23) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek203.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek203.3: entries 20..19 complete, 25 units of M,1,1,e2 carried; segment entries 20..23) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek204.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek204.3: entries 20..19 complete, 27 units of M,1,1,e2 carried; segment entries 20..23) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek205.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek205.3: entries 20..20 complete, 15 units of M,1,2,e2 carried; segment entries 20..23) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek206.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek206.3: entries 21..20 complete, 25 units of M,1,2,e2 carried; segment entries 20..23) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek207.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek207.3: entries 21..20 complete, 27 units of M,1,2,e2 carried; segment entries 20..23) -> PASS
+PIECE-CAPPED W3ek208.3: a clean CAP-STOP of m3_run_r0b_v1_4, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_4_W3ek209.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek209.3: entries 21..21 complete, 15 units of M,1,3,e2 carried; segment entries 20..23) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek210.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek210.3: entries 22..21 complete, 25 units of M,1,3,e2 carried; segment entries 20..23) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek211.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek211.3: entries 22..21 complete, 27 units of M,1,3,e2 carried; segment entries 20..23) -> PASS
+PIECE-CAPPED W3ek212.3: a clean CAP-STOP of m3_run_r0b_v1_4, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_4_W3ek213.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek213.3: entries 22..22 complete, 14 units of M,2,2,e2 carried; segment entries 20..23) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek214.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek214.3: entries 23..22 complete, 15 units of M,2,2,e2 carried; segment entries 20..23) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek215.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek215.3: entries 23..22 complete, 25 units of M,2,2,e2 carried; segment entries 20..23) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek216.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek216.3: entries 23..22 complete, 27 units of M,2,2,e2 carried; segment entries 20..23) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek217.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek217.3: entries 23..23 complete; segment entries 20..23) -> PASS
+C-PIECES (the W3e pieces 201..299 cover its computed keys 20..23, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek301.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek301.3: entries 24..23 complete, 13 units of M,2,3,e2 carried; segment entries 24..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek302.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek302.3: entries 24..23 complete, 15 units of M,2,3,e2 carried; segment entries 24..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek303.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek303.3: entries 24..23 complete, 25 units of M,2,3,e2 carried; segment entries 24..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek304.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek304.3: entries 24..23 complete, 27 units of M,2,3,e2 carried; segment entries 24..39) -> PASS
+PIECE-CAPPED W3ek305.3: a clean CAP-STOP of m3_run_r0b_v1_4, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_4_W3ek306.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek306.3: entries 24..24 complete, 17 units of M,3,3,e2 carried; segment entries 24..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek307.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek307.3: entries 25..24 complete, 25 units of M,3,3,e2 carried; segment entries 24..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek308.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek308.3: entries 25..24 complete, 27 units of M,3,3,e2 carried; segment entries 24..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek309.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek309.3: entries 25..25 complete, 15 units of M,0,1,e2 carried; segment entries 24..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek310.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek310.3: entries 26..25 complete, 27 units of M,0,1,e2 carried; segment entries 24..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek311.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek311.3: entries 26..26 complete, 15 units of M,0,2,e2 carried; segment entries 24..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek312.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek312.3: entries 27..26 complete, 27 units of M,0,2,e2 carried; segment entries 24..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek313.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek313.3: entries 27..27 complete, 15 units of M,0,3,e2 carried; segment entries 24..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek314.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek314.3: entries 28..27 complete, 27 units of M,0,3,e2 carried; segment entries 24..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_4_W3ek315.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+C-PIECES (W3ek315.3: entries 28..39 complete; segment entries 24..39) -> PASS
+C-PIECES (the W3e pieces 301..399 cover its computed keys 24..39, in order, none left in progress) -> PASS
+C-CLAIM (W3e: each of its 40 computed keys claimed by exactly one piece: 40 claimed; twice: none) -> PASS
+C-SPLIT (W3f: segments (pieces: entries) 1..40: 0..3 over its 4 computed keys; the piece ranges disjoint, every key in exactly one segment, pieces 1..40 (m3_run_r0b_v1_3's) and entry 0 in the first) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W3fk1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (W3fk1.3: entries 0..3 complete; segment entries 0..3) -> PASS
+C-PIECES (the W3f pieces 1..40 cover its computed keys 0..3, in order, none left in progress) -> PASS
+C-CLAIM (W3f: each of its 4 computed keys claimed by exactly one piece: 4 claimed; twice: none) -> PASS
+C-SPLIT (D4L0: segments (pieces: entries) 1..40: 0..11 over its 12 computed keys; the piece ranges disjoint, every key in exactly one segment, pieces 1..40 (m3_run_r0b_v1_3's) and entry 0 in the first) -> PASS
+PIECE-CAPPED D4L0k1.3: a clean CAP-STOP of m3_run_r0b_v1_3, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_3_D4L0k2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4L0k2.3: entries 0..-1 complete, 17 units of E112 carried; segment entries 0..11) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4L0k3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4L0k3.3: entries 0..-1 complete, 19 units of E112 carried; segment entries 0..11) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4L0k4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4L0k4.3: entries 0..-1 complete, 33 units of E112 carried; segment entries 0..11) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4L0k5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4L0k5.3: entries 0..-1 complete, 35 units of E112 carried; segment entries 0..11) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4L0k6.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4L0k6.3: entries 0..1 complete; segment entries 0..11) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4L0k7.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4L0k7.3: entries 2..3 complete, 29 units of E011 carried; segment entries 0..11) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4L0k8.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4L0k8.3: entries 4..5 complete; segment entries 0..11) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4L0k9.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4L0k9.3: entries 6..6 complete, 28 units of E101 carried; segment entries 0..11) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4L0k10.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4L0k10.3: entries 7..11 complete; segment entries 0..11) -> PASS
+C-PIECES (the D4L0 pieces 1..40 cover its computed keys 0..11, in order, none left in progress) -> PASS
+C-CLAIM (D4L0: each of its 12 computed keys claimed by exactly one piece: 12 claimed; twice: none) -> PASS
+C-SPLIT (D4ML0: segments (pieces: entries) 1..40: 0..15 over its 16 computed keys; the piece ranges disjoint, every key in exactly one segment, pieces 1..40 (m3_run_r0b_v1_3's) and entry 0 in the first) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4ML0k1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4ML0k1.3: entries 0..-1 complete, 14 units of S1111 carried; segment entries 0..15) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4ML0k2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4ML0k2.3: entries 0..-1 complete, 26 units of S1111 carried; segment entries 0..15) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4ML0k3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4ML0k3.3: entries 0..0 complete; segment entries 0..15) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4ML0k4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4ML0k4.3: entries 1..0 complete, 27 units of S1011 carried; segment entries 0..15) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4ML0k5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4ML0k5.3: entries 1..1 complete, 14 units of S1110 carried; segment entries 0..15) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4ML0k6.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4ML0k6.3: entries 2..2 complete; segment entries 0..15) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4ML0k7.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4ML0k7.3: entries 3..3 complete, 14 units of S0111 carried; segment entries 0..15) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4ML0k8.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4ML0k8.3: entries 4..3 complete, 26 units of S0111 carried; segment entries 0..15) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4ML0k9.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4ML0k9.3: entries 4..3 complete, 47 units of S0111 carried; segment entries 0..15) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_D4ML0k10.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (D4ML0k10.3: entries 4..15 complete; segment entries 0..15) -> PASS
+C-PIECES (the D4ML0 pieces 1..40 cover its computed keys 0..15, in order, none left in progress) -> PASS
+C-CLAIM (D4ML0: each of its 16 computed keys claimed by exactly one piece: 16 claimed; twice: none) -> PASS
+C-SPLIT (FA: segments (pieces: entries) 1..40: 0..39 over its 40 computed keys; the piece ranges disjoint, every key in exactly one segment, pieces 1..40 (m3_run_r0b_v1_3's) and entry 0 in the first) -> PASS
+PIECE-CAPPED FAk1.3: a clean CAP-STOP of m3_run_r0b_v1_3, no hand-off; skipped and kept
+C-HANDOFF (m3_run_r0b_v1_3_FAk2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (FAk2.3: entries 0..6 complete; segment entries 0..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_FAk3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (FAk3.3: entries 7..13 complete; segment entries 0..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_FAk4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (FAk4.3: entries 14..20 complete; segment entries 0..39) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_FAk5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PIECES (FAk5.3: entries 21..39 complete; segment entries 0..39) -> PASS
+C-PIECES (the FA pieces 1..40 cover its computed keys 0..39, in order, none left in progress) -> PASS
+C-CLAIM (FA: each of its 40 computed keys claimed by exactly one piece: 40 claimed; twice: none) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W2r1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_W2r2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-RESUME-CHAIN (W2 on V,1: part 1 cut ['ak', 'm0u', 'm0c'] resumed identical, PLANT-RESUME FIRES; part 2 cut after 15 of 48 units resumed identical) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_VNu.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_VNc.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PREP-STAGES (VN: VNu.3 and VNc.3, of VN and VN, scalars ['nE', 'nE4', 'rE', 'rE_parts'] and ['Pout', 'Pout_p', 'alpha_lo', 'farbase', 'nC6', 'nC8']) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_VDu.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_VDc.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PREP-STAGES (VD: VDu.3 and VDc.3, of VD and VD, scalars ['nE', 'nE4', 'rE', 'rE_parts'] and ['Pout', 'Pout_p', 'alpha_lo', 'farbase', 'nC6', 'nC8']) -> PASS
+C-G-PHI (M2B_KV_v1 13cc0d9a PIN_TRIAL tokens of N3: ['pk10/scratch/m2_N3_J170.json.b:55da99fdd7bf1719685203a10b2c76e0fafc1dbb62fe859f36fc3b04f9cd2af0', 'pk11/out/vacres_K3_N3_sym_v1.json:e5a9b49fde1896ff1d87de1d4a44571376eeeeb31b0ce4205faecdd2463115c0']; each file under code/ hashes to its token and to this run's pin) -> PASS
+PLANT-G-PHI (the second token with its sha256's last digit changed) -> FIRES
+PARITY-ZERO {'W2': ['G,0,2', 'G,1,2', 'G,2,3', 'K1,2'], 'W3e': ['M,0,2,00', 'M,1,2,00', 'M,2,3,00'], 'FA': ['1,2', '1,5', '1,8']}: written as exact zeros with parity zero (C-ODD and C-ODD-AK in their pieces)
+C-REP-AK (133 computed keys' a_k against their lists' ak_float: largest |certified mid - float| / max(1, |float|) 2.44e-12 at W3e M,1,3,ee) -> PASS
+PLANT-REPAK (the largest difference plus 1e-6) -> FIRES
+C-ALIAS-ASM (13 alias items carry their computed source's a_k, bars and parity exactly) -> PASS
+C-SYM-STRUCT: the lists' numeric C-SYM is replaced, for the 6 mirror check keys ['W3e M,1,0,e2', 'W3e M,2,0,e2', 'W3e M,2,1,e2', 'W3e M,3,0,e2', 'W3e M,3,1,e2', 'W3e M,3,2,e2'], by the exact structural test (C-SYM-MAP: couplings, tags, list pairs and factor data mirror-invariant; C-ALIAS-ASM: each item copied exactly from its mirror key); pk11 records the change in R6.5's list
+C-SYM (the check keys whose mirror pair has two computed sources, ['W3e ME1 / ME2']: every a_k ball overlaps its mirror key's, parities equal; largest |mid difference| 2.44e-15) -> PASS
+PLANT-SYM (W3e ME1 with its a_k moved by ten times both a_0 radii plus 1e-12: must miss ME2) -> FIRES
+C-SCOPE (the six records hold exactly their lists' certify and check keys: W2 25, W3e 49, W3f 4, D4L0 12, D4ML0 16, FA 40) -> PASS
+PLANT-SCOPE (W2 without one key) -> FIRES
+C-UHAT (every item carries role, factors, k, e_a, empty and alias_kind as the lists and ALIAS give them: W2 True, W3e True, W3f True, D4L0 True, D4ML0 True, FA True) -> PASS
+PLANT-UHAT (W3e with M,0,0,00 carrying k 2) -> FIRES
+C-PART-REC (the partition fields of the six records: every computed key with rule_of's rule, the groups recomputed from the list's encodings, G = len(groups), qcap >= QCAP0: W2 True, W3e True, W3f True, D4L0 True, D4ML0 True, FA True) -> PASS
+PLANT-PART-REC (W3e's field with M,1,1,ee's groups 0 and 1 swapped) -> FIRES
+C-FMT (m3_r0b_W2_N3_J300_v1.json: 25 keys read back exactly from the text by m3_reader_v6_3, the partition and u-hat fields with them; 41346 bytes; sha256 7a8f0eab02854de215b6cd46fb9ab096c74d57e481449646768237a9490a709b) -> PASS
+C-FMT (m3_r0b_W3e_N3_J300_v1.json: 49 keys read back exactly from the text by m3_reader_v6_3, the partition and u-hat fields with them; 94989 bytes; sha256 7f2d40a16548ef52942ebb33bf707753632886f0f75bd063d6771a5a11bb71fc) -> PASS
+C-FMT (m3_r0b_W3f_N3_J300_v1.json: 4 keys read back exactly from the text by m3_reader_v6_3, the partition and u-hat fields with them; 12192 bytes; sha256 a116ea136d73e5c09e0ee35195bb3f4ba3aa149e38cff874098cce9bd4223010) -> PASS
+C-FMT (m3_r0b_D4L0_N3_J300_v1.json: 12 keys read back exactly from the text by m3_reader_v6_3, the partition and u-hat fields with them; 26354 bytes; sha256 497e37531fb4bdb4382746895897d0f6a57e4db66a6d4f8b5cfc699e75e75ef8) -> PASS
+C-FMT (m3_r0b_D4ML0_N3_J300_v1.json: 16 keys read back exactly from the text by m3_reader_v6_3, the partition and u-hat fields with them; 33659 bytes; sha256 f04f5b6470551e9c37715603695634b60622f18877a2f127d5811585cb4cc5ab) -> PASS
+C-FMT (m3_r0b_FA_N3_J300_v1.json: 40 keys read back exactly from the text by m3_reader_v6_3, the partition and u-hat fields with them; 72544 bytes; sha256 f249db032d7ba3eb91035b5a80cd73095bec48db90542bd17dd60b9421007449) -> PASS
+PLANT-FMT (W2 copy without one rnd) -> FIRES
+PLANT-RND (W2 copy with G,3,3 rnd = 0; its ak_rad sum 1.3e-06) -> FIRES
+PLANT-READER-PRECERT (m3_reader_v6_3 refuses the mutated W2 copy: precert) -> FIRES
+PLANT-READER-KERNEL (m3_reader_v6_3 refuses the mutated W2 copy: kernel) -> FIRES
+PLANT-READER-PREC (m3_reader_v6_3 refuses the mutated W2 copy: prec) -> FIRES
+PLANT-LAYER-V1_1 (m3_reader_v6_3 refuses the mutated W2 copy: arbeng_ma_v1_1.py) -> FIRES
+PLANT-LAYER-V1_2 (m3_reader_v6_3 refuses the mutated W2 copy: arbeng_ma_v1_2.py) -> FIRES
+PLANT-LAYER-V1_4 (m3_reader_v6_3 refuses the mutated W2 copy: arbeng_ma_v1_4.py) -> FIRES
+PLANT-READER-MOCK (m3_reader_v6_3 refuses the mutated W2 copy: mock_arbeng_v1_4.py) -> FIRES
+PLANT-LAYER-MIX (m3_reader_v6_3 refuses the mutated W2 copy: mix) -> FIRES
+PLANT-VALREC (m3_reader_v6_3 refuses the mutated W2 copy: valrec) -> FIRES
+PLANT-CLAIM (m3_reader_v6_3 refuses the mutated W2 copy: claim) -> FIRES
+PLANT-ARBK (m3_reader_v6_3 refuses the mutated W2 copy: arbk) -> FIRES
+PLANT-ARBB (m3_reader_v6_3 refuses the mutated W2 copy: arbb) -> FIRES
+PLANT-JREF (m3_reader_v6_3 refuses the mutated W2 copy: expected J_REF 150) -> FIRES
+PLANT-N (m3_reader_v6_3 refuses the mutated W2 copy: expected N 4) -> FIRES
+PLANT-KIND (m3_reader_v6_3 refuses the mutated W2 copy: kind) -> FIRES
+PLANT-CLAIM-BALL (m3_reader_v6_3 refuses the mutated W2 copy: claimball) -> FIRES
+PLANT-CLAIM-BALL-MISSING (m3_reader_v6_3 refuses the mutated W2 copy: noclaimball) -> FIRES
+PLANT-PARZERO (m3_reader_v6_3 refuses the W2 copy with G,0,2 a_1 = 1e-30) -> FIRES
+C-BOUND-RT (m3_reader_v6_3.loads accepts the W2 text under an output that names it and ends VALID) -> PASS
+PLANT-BOUND-VERDICT (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-INVALID (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-TWO (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-SHA (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-NONE (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+C-PREC-ASM (flint ctx.prec 512 before the write) -> PASS
+PLANT-NOWRITE (write_records under a failed gate, an unfired plant and a PRECERT tag: 3 of 3 refused, 0 files opened) -> FIRES
+C-WRITE (m3_r0b_D4L0_N3_J300_v1.json holds exactly its C-FMT text) -> PASS
+RECORD m3_r0b_D4L0_N3_J300_v1.json 497e37531fb4bdb4382746895897d0f6a57e4db66a6d4f8b5cfc699e75e75ef8
+C-WRITE (m3_r0b_D4ML0_N3_J300_v1.json holds exactly its C-FMT text) -> PASS
+RECORD m3_r0b_D4ML0_N3_J300_v1.json f04f5b6470551e9c37715603695634b60622f18877a2f127d5811585cb4cc5ab
+C-WRITE (m3_r0b_FA_N3_J300_v1.json holds exactly its C-FMT text) -> PASS
+RECORD m3_r0b_FA_N3_J300_v1.json f249db032d7ba3eb91035b5a80cd73095bec48db90542bd17dd60b9421007449
+C-WRITE (m3_r0b_W2_N3_J300_v1.json holds exactly its C-FMT text) -> PASS
+RECORD m3_r0b_W2_N3_J300_v1.json 7a8f0eab02854de215b6cd46fb9ab096c74d57e481449646768237a9490a709b
+C-WRITE (m3_r0b_W3e_N3_J300_v1.json holds exactly its C-FMT text) -> PASS
+RECORD m3_r0b_W3e_N3_J300_v1.json 7f2d40a16548ef52942ebb33bf707753632886f0f75bd063d6771a5a11bb71fc
+C-WRITE (m3_r0b_W3f_N3_J300_v1.json holds exactly its C-FMT text) -> PASS
+RECORD m3_r0b_W3f_N3_J300_v1.json a116ea136d73e5c09e0ee35195bb3f4ba3aa149e38cff874098cce9bd4223010
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 0.27 s
+VERDICT VALID

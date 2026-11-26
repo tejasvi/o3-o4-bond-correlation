@@ -1,0 +1,9 @@
+JOINT_FLOAT_v1 freeze evidence (pk22, the P0_LOG row 4851), written by jobs/job310_joint_float_freeze.sh at 2026-11-23T20:59:27Z.
+1. The producer's bytes are those job157 ran: jobs/job157_joint_float.console line 1 is "AST OK e05632f685d3ed3c4d9d12a7384d171037483010e9e9fd7894ff495c96024154 /mnt/g2/release/root/code/pk22/midrow/g4/mrx/src/joint_float_v1.py", printed by
+   tools/astcheck_v1.py, which prints the sha256 of the bytes it read (hashlib.sha256 of the file); job157's script ran that check and then
+   the producer for N = 4 and 3. The producer's sha256 now: e05632f685d3ed3c4d9d12a7384d171037483010e9e9fd7894ff495c96024154 (equal).
+2. The two outputs are the text job157 printed: the console block after "RUN N=4 rc=0" has sha256 1a8a4890597b77336e7bd7b757e5096755808459baf0aa74157f2cef326e7e88, equal to joint_float_v1_n4.out's;
+   the block after "RUN N=3 rc=0" has sha256 bdefb6c5e03d9eeee783789aa11c8ab8f5991c8e7ca90da2641a5806be74f2f4, equal to joint_float_v1_n3.out's.
+3. Modification times (stat): producer 2026-11-21 05:06:51, job157 script 2026-11-21 05:06:51, n4 output 2026-11-21 05:06:53, n3 output 2026-11-21 05:06:55,
+   console 2026-11-21 05:06:55, astcheck_v1.py 2026-11-17 11:56:38: no listed file changed after job157's run.
+4. Use: MR_JOINT's C-FLOAT control (mrj_cert_v1.py's JF pins) reads the two outputs; no bound uses them.

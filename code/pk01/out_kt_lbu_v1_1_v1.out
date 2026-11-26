@@ -1,0 +1,227 @@
+kt_lbu_v1_1 mode v1 LIM 176 K 4 SET O4 | python 3.14.4 | python-flint 0.9.0 | prec 256
+CHECK C-SER PASS w row sums 1/4 to degree 8: True; symmetric: True
+ORBIT O1 (b0, b2): Delta 1/6, Delta^2 1/36 (table 1/36)
+ORBIT O2 (b0, b4): Delta 1/12, Delta^2 1/144 (table 1/144)
+ORBIT O3 (b0, sE): Delta -5/12, Delta^2 25/144 (table 25/144)
+ORBIT O4 (b0, sN): Delta -1/12, Delta^2 1/144 (table 1/144)
+ORBIT O5 (b0, sW): Delta 1/12, Delta^2 1/144 (table 1/144)
+CHECK C-GRAPH PASS L+ diag True; tau 192; Foster 8; Delta^2 match True
+TABLE tree N=3 fpc=2: n 2, caps {0: 10, 1: 10, 2: 10}, 1144 moments, cpu 0.00 s
+CHECK C-TREE N=3 PASS 1: ['1', '0', '0', '0', '0', '0'] | e: ['1', '0', '0', '0', '0', '0'] | ef: ['1', '0', '0', '0', '0', '0']
+TABLE tree N=3 fpc=3: n 2, caps {0: 10, 1: 10, 2: 10}, 1144 moments, cpu 0.00 s
+PLANT PLANT-FP N=3 FIRED FP coefficient n + 1 breaks the exact tree series
+TABLE tree N=4 fpc=3: n 3, caps {0: 10, 1: 10, 2: 10}, 1144 moments, cpu 0.00 s
+CHECK C-TREE N=4 PASS 1: ['1', '-3/4', '-3/32', '-15/128', '-405/2048', '-3465/8192'] | e: ['3/2', '-3/2', '-15/64', '-45/128', '-2835/4096', '-3465/2048'] | ef: ['9/4', '-45/16', '-45/128', '-315/512', '-11025/8192', '-116235/32768']
+TABLE tree N=4 fpc=4: n 3, caps {0: 10, 1: 10, 2: 10}, 1144 moments, cpu 0.00 s
+PLANT PLANT-FP N=4 FIRED FP coefficient n + 1 breaks the exact tree series
+SERIES P3xP3 N=3: K 4, terms per key {('1', 0): [1, 30, 403, 3196, 17410], ('e', 0): [1, 33, 487, 4237, 24976], ('f', 1): [1, 33, 487, 4237, 24976], ('ef', 1): [1, 36, 580, 5512, 35192]}, cpu 0.02 s
+TABLE P3xP3 N=3 T0: n 2, caps {0: 8, 1: 8, 2: 8}, 388960 moments, cpu 0.96 s
+RSS P3xP3 N=3 T0: peak 63 MB
+CHECK C-EXACT N=3 T0 PASS 40 of 40 monomials match the alpha-permanent
+CHECK C-EXACT N=3 X0^2 PASS E[X_0^2] 169/162, 4 per_{n/2} 169/162
+PLANT PLANT-MOM N=3 FIRED E[X_0^2] + 1e-20 against the same alpha-permanent
+CHECK C-GAUSS O1 N=3 PASS c2 = 1/144 = (N-1) Delta^2 / 8: True
+CHECK C-ROW0 O1 N=3 PASS A_ef(0) 293/576 (reference 293/576), c2 1/144 (1/144), c3 1/216 (1/216)
+R-SERIES O1 N=3: c2 1/144 (6.944444e-03), c3 1/216 (4.629630e-03), c4 19/3456 (5.497685e-03); a_k(1) ['1.000000e+00', '8.333333e-01', '6.427951e-01', '5.393880e-01', '5.108411e-01']
+CHECK C-GAUSS O2 N=3 PASS c2 = 1/576 = (N-1) Delta^2 / 8: True
+CHECK C-ROW0 O2 N=3 PASS A_ef(0) 145/288 (reference 145/288), c2 1/576 (1/576), c3 1/864 (1/864)
+R-SERIES O2 N=3: c2 1/576 (1.736111e-03), c3 1/864 (1.157407e-03), c4 119/73728 (1.614041e-03); a_k(1) ['1.000000e+00', '8.333333e-01', '6.427951e-01', '5.393880e-01', '5.108411e-01']
+CHECK C-GAUSS O3 N=3 PASS c2 = 25/576 = (N-1) Delta^2 / 8: True
+CHECK C-ROW0 O3 N=3 PASS A_ef(0) 263/576 (reference 263/576), c2 25/576 (25/576), c3 73/3456 (73/3456)
+R-SERIES O3 N=3: c2 25/576 (4.340278e-02), c3 73/3456 (2.112269e-02), c4 4787/221184 (2.164261e-02); a_k(1) ['1.000000e+00', '8.333333e-01', '6.427951e-01', '5.393880e-01', '5.108411e-01']
+CHECK C-GAUSS O4 N=3 PASS c2 = 1/576 = (N-1) Delta^2 / 8: True
+CHECK C-ROW0 O4 N=3 PASS A_ef(0) 239/576 (reference 239/576), c2 1/576 (1/576), c3 13/3456 (13/3456)
+R-SERIES O4 N=3: c2 1/576 (1.736111e-03), c3 13/3456 (3.761574e-03), c4 353/73728 (4.787869e-03); a_k(1) ['1.000000e+00', '8.333333e-01', '6.427951e-01', '5.393880e-01', '5.108411e-01']
+CHECK C-GAUSS O5 N=3 PASS c2 = 1/576 = (N-1) Delta^2 / 8: True
+CHECK C-ROW0 O5 N=3 PASS A_ef(0) 239/576 (reference 239/576), c2 1/576 (1/576), c3 13/3456 (13/3456)
+R-SERIES O5 N=3: c2 1/576 (1.736111e-03), c3 13/3456 (3.761574e-03), c4 353/73728 (4.787869e-03); a_k(1) ['1.000000e+00', '8.333333e-01', '6.427951e-01', '5.393880e-01', '5.108411e-01']
+R-SERIES M1 N=3: c2 1/144 (6.944444e-03), c3 1/216 (4.629630e-03), c4 19/3456 (5.497685e-03)
+R-SERIES M2 N=3: c2 1/576 (1.736111e-03), c3 1/864 (1.157407e-03), c4 119/73728 (1.614041e-03)
+CHECK C-ROW0 N=3 a_1, A_b(0), A_s(0) PASS a_1(F = 1) 5/6 (reference 5/6); A_b0(0) 17/24 (17n/48 = 17/24); spokes 7n/24
+CHECK C-ECON N=3 PASS a_k (k <= 4) of xi_x equal for b0 and ['b2', 'b4', 'b3', 'b5'], and for ['sE', 'sN', 'sW']
+SERIES R1 (b1, sE) N=3: K 4, terms per key {('1', 0): [1, 30, 403, 3196, 17410], ('e', 0): [1, 33, 487, 4237, 24976], ('f', 1): [1, 33, 487, 4231, 24888], ('ef', 1): [1, 36, 580, 5502, 35041]}, cpu 0.01 s
+TABLE R1 (b1, sE) N=3 T0: n 2, caps {0: 8, 1: 8, 2: 8}, 97240 moments, cpu 0.22 s
+RSS R1 (b1, sE) N=3 T0: peak 72 MB
+CHECK C-R1 N=3 PASS O4 = O5 True; O1 = M1 True; O2 = M2 True; O3 = (b1, sE) True (series to order 4)
+SERIES sym O1 (b2, b4) N=3: K 2, terms per key {('1', 0): [1, 30, 403], ('e', 0): [1, 33, 487], ('f', 1): [1, 33, 487], ('ef', 1): [1, 36, 580]}, cpu 0.00 s
+TABLE sym O1 (b2, b4) N=3 T0: n 2, caps {0: 4, 1: 4, 2: 4}, 2860 moments, cpu 0.02 s
+RSS sym O1 (b2, b4) N=3 T0: peak 72 MB
+CHECK C-SYM O1 N=3 PASS second member (b2, b4): a_k (k <= 2) equal
+SERIES sym O2 (b1, b5) N=3: K 2, terms per key {('1', 0): [1, 30, 403], ('e', 0): [1, 33, 487], ('f', 1): [1, 33, 487], ('ef', 1): [1, 36, 580]}, cpu 0.00 s
+TABLE sym O2 (b1, b5) N=3 T0: n 2, caps {0: 4, 1: 4, 2: 4}, 2860 moments, cpu 0.02 s
+RSS sym O2 (b1, b5) N=3 T0: peak 72 MB
+CHECK C-SYM O2 N=3 PASS second member (b1, b5): a_k (k <= 2) equal
+SERIES sym O3 (b6, sS) N=3: K 2, terms per key {('1', 0): [1, 30, 403], ('e', 0): [1, 33, 487], ('f', 1): [1, 33, 487], ('ef', 1): [1, 36, 580]}, cpu 0.00 s
+TABLE sym O3 (b6, sS) N=3 T0: n 2, caps {0: 4, 1: 4, 2: 4}, 2860 moments, cpu 0.02 s
+RSS sym O3 (b6, sS) N=3 T0: peak 72 MB
+CHECK C-SYM O3 N=3 PASS second member (b6, sS): a_k (k <= 2) equal
+SERIES sym O4 (b2, sW) N=3: K 2, terms per key {('1', 0): [1, 30, 403], ('e', 0): [1, 33, 487], ('f', 1): [1, 33, 487], ('ef', 1): [1, 36, 580]}, cpu 0.00 s
+TABLE sym O4 (b2, sW) N=3 T0: n 2, caps {0: 4, 1: 4, 2: 4}, 2860 moments, cpu 0.02 s
+RSS sym O4 (b2, sW) N=3 T0: peak 72 MB
+CHECK C-SYM O4 N=3 PASS second member (b2, sW): a_k (k <= 2) equal
+SERIES sym O5 (b2, sS) N=3: K 2, terms per key {('1', 0): [1, 30, 403], ('e', 0): [1, 33, 487], ('f', 1): [1, 33, 487], ('ef', 1): [1, 36, 580]}, cpu 0.00 s
+TABLE sym O5 (b2, sS) N=3 T0: n 2, caps {0: 4, 1: 4, 2: 4}, 2860 moments, cpu 0.02 s
+RSS sym O5 (b2, sS) N=3 T0: peak 72 MB
+CHECK C-SYM O5 N=3 PASS second member (b2, sS): a_k (k <= 2) equal
+PLANT PLANT-SYM N=3 FIRED O2 against O1 (different orbits) differ
+SERIES P3xP3 N=4: K 4, terms per key {('1', 0): [1, 30, 403, 3196, 17386], ('e', 0): [1, 33, 487, 4235, 24941], ('f', 1): [1, 33, 487, 4235, 24941], ('ef', 1): [1, 36, 580, 5508, 35137]}, cpu 0.02 s
+TABLE P3xP3 N=4 T0: n 3, caps {0: 8, 1: 8, 2: 8}, 388960 moments, cpu 1.08 s
+RSS P3xP3 N=4 T0: peak 77 MB
+CHECK C-EXACT N=4 T0 PASS 40 of 40 monomials match the alpha-permanent
+CHECK C-EXACT N=4 X0^2 PASS E[X_0^2] 845/432, 4 per_{n/2} 845/432
+PLANT PLANT-MOM N=4 FIRED E[X_0^2] + 1e-20 against the same alpha-permanent
+CHECK C-GAUSS O1 N=4 PASS c2 = 1/96 = (N-1) Delta^2 / 8: True
+CHECK C-ROW0 O1 N=4 PASS A_ef(0) 875/768 (reference 875/768), c2 1/96 (1/96), c3 245/36864 (245/36864)
+R-SERIES O1 N=4: c2 1/96 (1.041667e-02), c3 245/36864 (6.646050e-03), c4 269/49152 (5.472819e-03); a_k(1) ['1.000000e+00', '4.843750e-01', '1.814372e-01', '7.070965e-03', '-1.355719e-01']
+CHECK C-GAUSS O2 N=4 PASS c2 = 1/384 = (N-1) Delta^2 / 8: True
+CHECK C-ROW0 O2 N=4 PASS A_ef(0) 869/768 (reference 869/768), c2 1/384 (1/384), c3 17/9216 (17/9216)
+R-SERIES O2 N=4: c2 1/384 (2.604167e-03), c3 17/9216 (1.844618e-03), c4 655/294912 (2.221002e-03); a_k(1) ['1.000000e+00', '4.843750e-01', '1.814372e-01', '7.070965e-03', '-1.355719e-01']
+CHECK C-GAUSS O3 N=4 PASS c2 = 25/384 = (N-1) Delta^2 / 8: True
+CHECK C-ROW0 O3 N=4 PASS A_ef(0) 191/192 (reference 191/192), c2 25/384 (25/384), c3 1151/36864 (1151/36864)
+R-SERIES O3 N=4: c2 25/384 (6.510417e-02), c3 1151/36864 (3.122287e-02), c4 13015/589824 (2.206590e-02); a_k(1) ['1.000000e+00', '4.843750e-01', '1.814372e-01', '7.070965e-03', '-1.355719e-01']
+CHECK C-GAUSS O4 N=4 PASS c2 = 1/384 = (N-1) Delta^2 / 8: True
+CHECK C-ROW0 O4 N=4 PASS A_ef(0) 179/192 (reference 179/192), c2 1/384 (1/384), c3 311/36864 (311/36864)
+R-SERIES O4 N=4: c2 1/384 (2.604167e-03), c3 311/36864 (8.436415e-03), c4 6011/589824 (1.019118e-02); a_k(1) ['1.000000e+00', '4.843750e-01', '1.814372e-01', '7.070965e-03', '-1.355719e-01']
+CHECK C-GAUSS O5 N=4 PASS c2 = 1/384 = (N-1) Delta^2 / 8: True
+CHECK C-ROW0 O5 N=4 PASS A_ef(0) 179/192 (reference 179/192), c2 1/384 (1/384), c3 311/36864 (311/36864)
+R-SERIES O5 N=4: c2 1/384 (2.604167e-03), c3 311/36864 (8.436415e-03), c4 6011/589824 (1.019118e-02); a_k(1) ['1.000000e+00', '4.843750e-01', '1.814372e-01', '7.070965e-03', '-1.355719e-01']
+R-SERIES M1 N=4: c2 1/96 (1.041667e-02), c3 245/36864 (6.646050e-03), c4 269/49152 (5.472819e-03)
+R-SERIES M2 N=4: c2 1/384 (2.604167e-03), c3 17/9216 (1.844618e-03), c4 655/294912 (2.221002e-03)
+CHECK C-ROW0 N=4 a_1, A_b(0), A_s(0) PASS a_1(F = 1) 31/64 (reference 31/64); A_b0(0) 17/16 (17n/48 = 17/16); spokes 7n/24
+CHECK C-ECON N=4 PASS a_k (k <= 4) of xi_x equal for b0 and ['b2', 'b4', 'b3', 'b5'], and for ['sE', 'sN', 'sW']
+SERIES R1 (b1, sE) N=4: K 4, terms per key {('1', 0): [1, 30, 403, 3196, 17386], ('e', 0): [1, 33, 487, 4235, 24941], ('f', 1): [1, 33, 487, 4229, 24853], ('ef', 1): [1, 36, 580, 5498, 34994]}, cpu 0.01 s
+TABLE R1 (b1, sE) N=4 T0: n 3, caps {0: 8, 1: 8, 2: 8}, 97240 moments, cpu 0.25 s
+RSS R1 (b1, sE) N=4 T0: peak 83 MB
+CHECK C-R1 N=4 PASS O4 = O5 True; O1 = M1 True; O2 = M2 True; O3 = (b1, sE) True (series to order 4)
+SERIES sym O1 (b2, b4) N=4: K 2, terms per key {('1', 0): [1, 30, 403], ('e', 0): [1, 33, 487], ('f', 1): [1, 33, 487], ('ef', 1): [1, 36, 580]}, cpu 0.00 s
+TABLE sym O1 (b2, b4) N=4 T0: n 3, caps {0: 4, 1: 4, 2: 4}, 2860 moments, cpu 0.02 s
+RSS sym O1 (b2, b4) N=4 T0: peak 83 MB
+CHECK C-SYM O1 N=4 PASS second member (b2, b4): a_k (k <= 2) equal
+SERIES sym O2 (b1, b5) N=4: K 2, terms per key {('1', 0): [1, 30, 403], ('e', 0): [1, 33, 487], ('f', 1): [1, 33, 487], ('ef', 1): [1, 36, 580]}, cpu 0.00 s
+TABLE sym O2 (b1, b5) N=4 T0: n 3, caps {0: 4, 1: 4, 2: 4}, 2860 moments, cpu 0.02 s
+RSS sym O2 (b1, b5) N=4 T0: peak 83 MB
+CHECK C-SYM O2 N=4 PASS second member (b1, b5): a_k (k <= 2) equal
+SERIES sym O3 (b6, sS) N=4: K 2, terms per key {('1', 0): [1, 30, 403], ('e', 0): [1, 33, 487], ('f', 1): [1, 33, 487], ('ef', 1): [1, 36, 580]}, cpu 0.00 s
+TABLE sym O3 (b6, sS) N=4 T0: n 3, caps {0: 4, 1: 4, 2: 4}, 2860 moments, cpu 0.02 s
+RSS sym O3 (b6, sS) N=4 T0: peak 83 MB
+CHECK C-SYM O3 N=4 PASS second member (b6, sS): a_k (k <= 2) equal
+SERIES sym O4 (b2, sW) N=4: K 2, terms per key {('1', 0): [1, 30, 403], ('e', 0): [1, 33, 487], ('f', 1): [1, 33, 487], ('ef', 1): [1, 36, 580]}, cpu 0.00 s
+TABLE sym O4 (b2, sW) N=4 T0: n 3, caps {0: 4, 1: 4, 2: 4}, 2860 moments, cpu 0.02 s
+RSS sym O4 (b2, sW) N=4 T0: peak 83 MB
+CHECK C-SYM O4 N=4 PASS second member (b2, sW): a_k (k <= 2) equal
+SERIES sym O5 (b2, sS) N=4: K 2, terms per key {('1', 0): [1, 30, 403], ('e', 0): [1, 33, 487], ('f', 1): [1, 33, 487], ('ef', 1): [1, 36, 580]}, cpu 0.00 s
+TABLE sym O5 (b2, sS) N=4 T0: n 3, caps {0: 4, 1: 4, 2: 4}, 2860 moments, cpu 0.02 s
+RSS sym O5 (b2, sS) N=4 T0: peak 83 MB
+CHECK C-SYM O5 N=4 PASS second member (b2, sS): a_k (k <= 2) equal
+PLANT PLANT-SYM N=4 FIRED O2 against O1 (different orbits) differ
+CHECK C-H P3xP3 PASS T1 True, T2 True, T3 True
+PLANT PLANT-H FIRED kappa = 2 violates (H)
+PLANT PLANT-H-ANN FIRED annulus tilt with kappa_a = 2 at v1 violates (H)
+CHECK C-LIT-COPY PASS lbu_lit_v1 sha256 match: True
+CHECK C-LIT w PASS max |w exact - w reference| 0.00e+00
+SERIES lit N=4: K 3, terms per key {('1', 0): [1, 30, 403, 3196], ('e', 0): [1, 33, 487, 4235], ('f', 1): [1, 33, 487, 4235], ('ef', 1): [1, 36, 580, 5508]}, cpu 0.00 s
+TABLE lit N=4 T0: n 3, caps {0: 6, 1: 6, 2: 6}, 20020 moments, cpu 0.05 s
+RSS lit N=4 T0: peak 108 MB
+CHECK C-LIT series PASS max relative difference of (F e^H)_k (F = 1, k <= 3; xi_e xi_f, k <= 2): 1.50e-16
+CHECK C-LIT majorants PASS max relative difference of h_k, Dbar_4 (F = 1), xibar_l (b0): 1.23e-16
+CHECK C-LIT moments PASS a_k (F = 1, k <= 3): max relative difference 7.48e-12
+SERIES P3 N=3 K=4: K 4, terms per key {('1', 0): [1, 8, 29, 71, 141], ('e', 0): [1, 11, 47, 124, 256], ('f', 1): [1, 11, 47, 124, 256], ('ef', 1): [1, 14, 74, 213, 460]}, cpu 0.00 s
+TABLE P3 N=3 K=4 T0: n 2, caps {0: 8, 1: 8, 2: 8}, 660 moments, cpu 0.00 s
+RSS P3 N=3 K=4 T0: peak 123 MB
+CHECK C-H P3 N=3 K=4 T1 PASS tilt 49/640
+TABLE P3 N=3 K=4 T1: n 2, caps {0: 14, 1: 12, 2: 10}, 1876 moments, cpu 0.00 s
+RSS P3 N=3 K=4 T1: peak 123 MB
+CHECK C-EXACT P3 N=3 K=4 T1 PASS 10 of 10
+CHECK C-H P3 N=3 K=4 T2 v0 PASS lambda 18/25
+TABLE P3 N=3 K=4 T2 v0: n 2, caps {0: 8, 1: 8, 2: 8}, 660 moments, cpu 0.00 s
+CHECK C-EXACT P3 N=3 K=4 T2 v0 PASS 10 of 10
+CHECK C-H P3 N=3 K=4 T2 v1 PASS lambda 9/5
+TABLE P3 N=3 K=4 T2 v1: n 2, caps {0: 8, 1: 8, 2: 8}, 660 moments, cpu 0.00 s
+CHECK C-H P3 N=3 K=4 T2 v2 PASS lambda 18/25
+TABLE P3 N=3 K=4 T2 v2: n 2, caps {0: 8, 1: 8, 2: 8}, 660 moments, cpu 0.00 s
+RSS P3 N=3 K=4 T2: peak 123 MB
+CHECK C-H P3 N=3 K=4 T3 v0 PASS tilt 1/5 + kappa_a 1/2
+TABLE P3 N=3 K=4 T3 v0: n 2, caps {0: 4, 1: 2, 2: 0}, 56 moments, cpu 0.00 s
+CHECK C-EXACT P3 N=3 K=4 T3 v0 PASS 10 of 10
+CHECK C-H P3 N=3 K=4 T3 v1 PASS tilt 1/5 + kappa_a 1/2
+TABLE P3 N=3 K=4 T3 v1: n 2, caps {0: 4, 1: 2, 2: 0}, 56 moments, cpu 0.00 s
+CHECK C-H P3 N=3 K=4 T3 v2 PASS tilt 1/5 + kappa_a 1/2
+TABLE P3 N=3 K=4 T3 v2: n 2, caps {0: 4, 1: 2, 2: 0}, 56 moments, cpu 0.00 s
+BUILD P3 N=3 K=4 done, cpu 0.02 s, peak RSS 123 MB
+SIGMA P3 N=3 K=4 2: radii ['5.995483e-01', '4.433441e-01', '5.995483e-01'], max slope 7.632097e-01, Dbar terms {('1', 0): 246, ('e', 0): 805, ('f', 1): 805, ('ef', 1): 2314}, cpu 0.02 s, peak RSS 123 MB
+BOUND P3 N=3 K=4 J=10 F=1: A 1.000000e+00, E 3.384146e+02 (rem 2.662354e+02 tail 7.075899e+01 ann 1.377853e+00 far 4.243551e-02), truth 1.000000e+00, inside True
+BOUND P3 N=3 K=4 J=10 F=e: A 1.000000e+00, E 4.632184e+03 (rem 2.944032e+03 tail 1.571959e+03 ann 1.153440e+02 far 8.487102e-01), truth 1.000000e+00, inside True
+BOUND P3 N=3 K=4 J=10 F=ef: A 1.000000e+00, E 1.127349e+05 (rem 3.408274e+04 tail 2.672498e+04 ann 5.191016e+04 far 1.697420e+01), truth 9.999999e-01, inside True
+BOUND P3 N=3 K=4 J=20 F=1: A 1.000000e+00, E 8.480099e+00 (rem 8.319855e+00 tail 6.930727e-02 ann 9.091110e-02 far 2.505728e-05), truth 1.000000e+00, inside True
+BOUND P3 N=3 K=4 J=20 F=e: A 1.000000e+00, E 8.182376e+01 (rem 7.627743e+01 tail 1.447270e+00 ann 4.098065e+00 far 1.002291e-03), truth 1.000000e+00, inside True
+BOUND P3 N=3 K=4 J=20 F=ef: A 1.000000e+00, E 1.631362e+03 (rem 6.891930e+02 tail 2.395623e+01 ann 9.181727e+02 far 4.009165e-02), truth 1.000000e+00, inside True
+BOUND P3 N=3 K=4 J=40 F=1: A 1.000000e+00, E 2.604082e-01 (rem 2.599955e-01 tail 1.389644e-06 ann 4.113303e-04 far 2.184345e-12), truth 1.000000e+00, inside True
+BOUND P3 N=3 K=4 J=40 F=e: A 1.000000e+00, E 2.148294e+00 (rem 2.137989e+00 tail 2.118729e-05 ann 1.028453e-02 far 1.747476e-10), truth 1.000000e+00, inside True
+BOUND P3 N=3 K=4 J=40 F=ef: A 1.000000e+00, E 1.781964e+01 (rem 1.667301e+01 tail 3.173656e-04 ann 1.146312e+00 far 1.397981e-08), truth 1.000000e+00, inside True
+SERIES P3 N=4 K=4: K 4, terms per key {('1', 0): [1, 5, 26, 69, 139], ('e', 0): [1, 8, 41, 120, 253], ('f', 1): [1, 8, 41, 120, 253], ('ef', 1): [1, 11, 65, 205, 456]}, cpu 0.00 s
+TABLE P3 N=4 K=4 T0: n 3, caps {0: 8, 1: 8, 2: 8}, 660 moments, cpu 0.00 s
+RSS P3 N=4 K=4 T0: peak 123 MB
+CHECK C-H P3 N=4 K=4 T1 PASS tilt 49/640
+TABLE P3 N=4 K=4 T1: n 3, caps {0: 14, 1: 12, 2: 10}, 1876 moments, cpu 0.00 s
+RSS P3 N=4 K=4 T1: peak 123 MB
+CHECK C-EXACT P3 N=4 K=4 T1 PASS 10 of 10
+CHECK C-H P3 N=4 K=4 T2 v0 PASS lambda 18/25
+TABLE P3 N=4 K=4 T2 v0: n 3, caps {0: 8, 1: 8, 2: 8}, 660 moments, cpu 0.00 s
+CHECK C-EXACT P3 N=4 K=4 T2 v0 PASS 10 of 10
+CHECK C-H P3 N=4 K=4 T2 v1 PASS lambda 9/5
+TABLE P3 N=4 K=4 T2 v1: n 3, caps {0: 8, 1: 8, 2: 8}, 660 moments, cpu 0.00 s
+CHECK C-H P3 N=4 K=4 T2 v2 PASS lambda 18/25
+TABLE P3 N=4 K=4 T2 v2: n 3, caps {0: 8, 1: 8, 2: 8}, 660 moments, cpu 0.00 s
+RSS P3 N=4 K=4 T2: peak 123 MB
+CHECK C-H P3 N=4 K=4 T3 v0 PASS tilt 1/5 + kappa_a 1/2
+TABLE P3 N=4 K=4 T3 v0: n 3, caps {0: 4, 1: 2, 2: 0}, 56 moments, cpu 0.00 s
+CHECK C-EXACT P3 N=4 K=4 T3 v0 PASS 10 of 10
+CHECK C-H P3 N=4 K=4 T3 v1 PASS tilt 1/5 + kappa_a 1/2
+TABLE P3 N=4 K=4 T3 v1: n 3, caps {0: 4, 1: 2, 2: 0}, 56 moments, cpu 0.00 s
+CHECK C-H P3 N=4 K=4 T3 v2 PASS tilt 1/5 + kappa_a 1/2
+TABLE P3 N=4 K=4 T3 v2: n 3, caps {0: 4, 1: 2, 2: 0}, 56 moments, cpu 0.00 s
+BUILD P3 N=4 K=4 done, cpu 0.02 s, peak RSS 123 MB
+SIGMA P3 N=4 K=4 2: radii ['5.995483e-01', '4.433441e-01', '5.995483e-01'], max slope 7.632097e-01, Dbar terms {('1', 0): 246, ('e', 0): 805, ('f', 1): 805, ('ef', 1): 2314}, cpu 0.02 s, peak RSS 123 MB
+BOUND P3 N=4 K=4 J=10 F=1: A 9.239255e-01, E 1.536858e+03 (rem 1.059263e+03 tail 4.731188e+02 ann 4.325208e+00 far 1.507493e-01), truth 9.239196e-01, inside True
+BOUND P3 N=4 K=4 J=10 F=e: A 1.347235e+00, E 2.466113e+04 (rem 1.258766e+04 tail 1.140364e+04 ann 6.668241e+02 far 3.014986e+00), truth 1.347211e+00, inside True
+BOUND P3 N=4 K=4 J=10 F=ef: A 1.964485e+00, E 7.641155e+05 (rem 1.570716e+05 tail 2.110397e+05 ann 3.959438e+05 far 6.029971e+01), truth 1.964431e+00, inside True
+BOUND P3 N=4 K=4 J=20 F=1: A 9.622497e-01, E 3.383469e+01 (rem 3.310198e+01 tail 4.452639e-01 ann 2.872682e-01 far 1.780090e-04), truth 9.622496e-01, inside True
+BOUND P3 N=4 K=4 J=20 F=e: A 1.424366e+00, E 3.593601e+02 (rem 3.255284e+02 tail 1.034825e+01 ann 2.347626e+01 far 7.120361e-03), truth 1.424365e+00, inside True
+BOUND P3 N=4 K=4 J=20 F=ef: A 2.108411e+00, E 1.033941e+04 (rem 3.177384e+03 tail 1.877467e+02 ann 6.973992e+03 far 2.848144e-01), truth 2.108409e+00, inside True
+BOUND P3 N=4 K=4 J=40 F=1: A 9.811895e-01, E 1.035745e+00 (rem 1.034437e+00 tail 7.216215e-06 ann 1.300731e-03 far 3.103099e-11), truth 9.811895e-01, inside True
+BOUND P3 N=4 K=4 J=40 F=e: A 1.462348e+00, E 9.170914e+00 (rem 9.112829e+00 tail 1.430111e-04 ann 5.794132e-02 far 2.482479e-09), truth 1.462348e+00, inside True
+BOUND P3 N=4 K=4 J=40 F=ef: A 2.179458e+00, E 8.555204e+01 (rem 7.691280e+01 tail 2.430859e-03 ann 8.636818e+00 far 1.985983e-07), truth 2.179458e+00, inside True
+SERIES P3 N=4 K=0: K 0, terms per key {('1', 0): [1], ('e', 0): [1], ('f', 1): [1], ('ef', 1): [1]}, cpu 0.00 s
+TABLE P3 N=4 K=0 T0: n 3, caps {0: 0, 1: 0, 2: 0}, 4 moments, cpu 0.00 s
+RSS P3 N=4 K=0 T0: peak 123 MB
+CHECK C-H P3 N=4 K=0 T1 PASS tilt 49/640
+TABLE P3 N=4 K=0 T1: n 3, caps {0: 6, 1: 4, 2: 2}, 164 moments, cpu 0.00 s
+RSS P3 N=4 K=0 T1: peak 123 MB
+CHECK C-EXACT P3 N=4 K=0 T1 PASS 10 of 10
+CHECK C-H P3 N=4 K=0 T2 v0 PASS lambda 18/25
+TABLE P3 N=4 K=0 T2 v0: n 3, caps {0: 0, 1: 0, 2: 0}, 4 moments, cpu 0.00 s
+CHECK C-EXACT P3 N=4 K=0 T2 v0 PASS 10 of 10
+CHECK C-H P3 N=4 K=0 T2 v1 PASS lambda 9/5
+TABLE P3 N=4 K=0 T2 v1: n 3, caps {0: 0, 1: 0, 2: 0}, 4 moments, cpu 0.00 s
+CHECK C-H P3 N=4 K=0 T2 v2 PASS lambda 18/25
+TABLE P3 N=4 K=0 T2 v2: n 3, caps {0: 0, 1: 0, 2: 0}, 4 moments, cpu 0.00 s
+RSS P3 N=4 K=0 T2: peak 123 MB
+CHECK C-H P3 N=4 K=0 T3 v0 PASS tilt 1/5 + kappa_a 1/2
+TABLE P3 N=4 K=0 T3 v0: n 3, caps {0: 4, 1: 2, 2: 0}, 56 moments, cpu 0.00 s
+CHECK C-EXACT P3 N=4 K=0 T3 v0 PASS 10 of 10
+CHECK C-H P3 N=4 K=0 T3 v1 PASS tilt 1/5 + kappa_a 1/2
+TABLE P3 N=4 K=0 T3 v1: n 3, caps {0: 4, 1: 2, 2: 0}, 56 moments, cpu 0.00 s
+CHECK C-H P3 N=4 K=0 T3 v2 PASS tilt 1/5 + kappa_a 1/2
+TABLE P3 N=4 K=0 T3 v2: n 3, caps {0: 4, 1: 2, 2: 0}, 56 moments, cpu 0.00 s
+BUILD P3 N=4 K=0 done, cpu 0.00 s, peak RSS 123 MB
+SIGMA P3 N=4 K=0 2: radii ['5.995483e-01', '4.433441e-01', '5.995483e-01'], max slope 7.632097e-01, Dbar terms {('1', 0): 8, ('e', 0): 29, ('f', 1): 29, ('ef', 1): 95}, cpu 0.00 s, peak RSS 123 MB
+BOUND P3 N=4 K=0 J=40 F=1: A 1.000000e+00, E 1.301439e-03 (rem 0.000000e+00 tail 7.088032e-07 ann 1.300731e-03 far 3.103099e-11), truth 9.811895e-01, inside False
+BOUND P3 N=4 K=0 J=40 F=e: A 1.500000e+00, E 5.794451e-02 (rem 0.000000e+00 tail 3.189614e-06 ann 5.794132e-02 far 2.482479e-09), truth 1.462348e+00, inside True
+BOUND P3 N=4 K=0 J=40 F=ef: A 2.250000e+00, E 8.636833e+00 (rem 0.000000e+00 tail 1.477855e-05 ann 8.636818e+00 far 1.985983e-07), truth 2.179458e+00, inside True
+PLANT PLANT-BOUND FIRED K = 0 without B_rem at J = 40 misses 1 of 3
+CHECK C-BOUND PASS 0 violations in 18 enclosures
+PLANT PLANT-NEG FIRED planted dip: 46 negative cells, min -1.062500e-03
+READINGS R-SERIES: M1 N=3 c2 6.944444e-03 c3 4.629630e-03 c4 5.497685e-03; M1 N=4 c2 1.041667e-02 c3 6.646050e-03 c4 5.472819e-03; M2 N=3 c2 1.736111e-03 c3 1.157407e-03 c4 1.614041e-03; M2 N=4 c2 2.604167e-03 c3 1.844618e-03 c4 2.221002e-03; O1 N=3 c2 6.944444e-03 c3 4.629630e-03 c4 5.497685e-03; O1 N=4 c2 1.041667e-02 c3 6.646050e-03 c4 5.472819e-03; O2 N=3 c2 1.736111e-03 c3 1.157407e-03 c4 1.614041e-03; O2 N=4 c2 2.604167e-03 c3 1.844618e-03 c4 2.221002e-03; O3 N=3 c2 4.340278e-02 c3 2.112269e-02 c4 2.164261e-02; O3 N=4 c2 6.510417e-02 c3 3.122287e-02 c4 2.206590e-02; O4 N=3 c2 1.736111e-03 c3 3.761574e-03 c4 4.787869e-03; O4 N=4 c2 2.604167e-03 c3 8.436415e-03 c4 1.019118e-02; O5 N=3 c2 1.736111e-03 c3 3.761574e-03 c4 4.787869e-03; O5 N=4 c2 2.604167e-03 c3 8.436415e-03 c4 1.019118e-02
+CHECKS {'C-SER': True, 'C-GRAPH': True, 'C-TREE N=3': True, 'C-TREE N=4': True, 'C-EXACT N=3 T0': True, 'C-EXACT N=3 X0^2': True, 'C-GAUSS O1 N=3': True, 'C-ROW0 O1 N=3': True, 'C-GAUSS O2 N=3': True, 'C-ROW0 O2 N=3': True, 'C-GAUSS O3 N=3': True, 'C-ROW0 O3 N=3': True, 'C-GAUSS O4 N=3': True, 'C-ROW0 O4 N=3': True, 'C-GAUSS O5 N=3': True, 'C-ROW0 O5 N=3': True, 'C-ROW0 N=3 a_1, A_b(0), A_s(0)': True, 'C-ECON N=3': True, 'C-R1 N=3': True, 'C-SYM O1 N=3': True, 'C-SYM O2 N=3': True, 'C-SYM O3 N=3': True, 'C-SYM O4 N=3': True, 'C-SYM O5 N=3': True, 'C-EXACT N=4 T0': True, 'C-EXACT N=4 X0^2': True, 'C-GAUSS O1 N=4': True, 'C-ROW0 O1 N=4': True, 'C-GAUSS O2 N=4': True, 'C-ROW0 O2 N=4': True, 'C-GAUSS O3 N=4': True, 'C-ROW0 O3 N=4': True, 'C-GAUSS O4 N=4': True, 'C-ROW0 O4 N=4': True, 'C-GAUSS O5 N=4': True, 'C-ROW0 O5 N=4': True, 'C-ROW0 N=4 a_1, A_b(0), A_s(0)': True, 'C-ECON N=4': True, 'C-R1 N=4': True, 'C-SYM O1 N=4': True, 'C-SYM O2 N=4': True, 'C-SYM O3 N=4': True, 'C-SYM O4 N=4': True, 'C-SYM O5 N=4': True, 'C-H P3xP3': True, 'C-LIT-COPY': True, 'C-LIT w': True, 'C-LIT series': True, 'C-LIT majorants': True, 'C-LIT moments': True, 'C-H P3 N=3 K=4 T1': True, 'C-EXACT P3 N=3 K=4 T1': True, 'C-H P3 N=3 K=4 T2 v0': True, 'C-EXACT P3 N=3 K=4 T2 v0': True, 'C-H P3 N=3 K=4 T2 v1': True, 'C-H P3 N=3 K=4 T2 v2': True, 'C-H P3 N=3 K=4 T3 v0': True, 'C-EXACT P3 N=3 K=4 T3 v0': True, 'C-H P3 N=3 K=4 T3 v1': True, 'C-H P3 N=3 K=4 T3 v2': True, 'C-H P3 N=4 K=4 T1': True, 'C-EXACT P3 N=4 K=4 T1': True, 'C-H P3 N=4 K=4 T2 v0': True, 'C-EXACT P3 N=4 K=4 T2 v0': True, 'C-H P3 N=4 K=4 T2 v1': True, 'C-H P3 N=4 K=4 T2 v2': True, 'C-H P3 N=4 K=4 T3 v0': True, 'C-EXACT P3 N=4 K=4 T3 v0': True, 'C-H P3 N=4 K=4 T3 v1': True, 'C-H P3 N=4 K=4 T3 v2': True, 'C-H P3 N=4 K=0 T1': True, 'C-EXACT P3 N=4 K=0 T1': True, 'C-H P3 N=4 K=0 T2 v0': True, 'C-EXACT P3 N=4 K=0 T2 v0': True, 'C-H P3 N=4 K=0 T2 v1': True, 'C-H P3 N=4 K=0 T2 v2': True, 'C-H P3 N=4 K=0 T3 v0': True, 'C-EXACT P3 N=4 K=0 T3 v0': True, 'C-H P3 N=4 K=0 T3 v1': True, 'C-H P3 N=4 K=0 T3 v2': True, 'C-BOUND': True}
+PLANTS {'PLANT-FP N=3': True, 'PLANT-FP N=4': True, 'PLANT-MOM N=3': True, 'PLANT-SYM N=3': True, 'PLANT-MOM N=4': True, 'PLANT-SYM N=4': True, 'PLANT-H': True, 'PLANT-H-ANN': True, 'PLANT-BOUND': True, 'PLANT-NEG': True}
+SUMMARY mode v1: status DONE; checks 81/81; plants 10/10; VERDICT VALID; cpu 5.84 s; wall 5.81 s; peak RSS 123 MB

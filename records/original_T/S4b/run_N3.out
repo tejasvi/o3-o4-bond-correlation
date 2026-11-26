@@ -1,0 +1,71 @@
+px08_trbcert_v1 sha256 6baa4535825dc1b309fe392d80573699d3f9e99e4b754e61ea57b2f6eea0d8bd ITEM=n3 asm LIM=230 SIGC=0.5
+C-HASH PASS (9 sources)
+PARTITION N=3: nodes 0..32 once each, reflection yes, 72 G boxes tiling [0, 1] pi: PASS
+C-MULTISET N=3 (C-EVEN per node item, C-CONJ once, PLANT-DET per G item): PASS
+C-EVEN (partial item): PASS
+C-EVEN (partial item): PASS
+PLANT-DET (partial item): FIRED
+C-CONJ (partial item): PASS
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+C-COPY (every COPY block = its source lines, byte for byte): PASS, 19 blocks, 350 lines
+C-PROP N=3 (Q_t = Q - 2 T(1/300, 9/20), interval LDL^T): PASS, 32 al-intervals tiling [0, pi], hence all of [0, 2 pi) (k(2 pi - al) = P k(al) P with P = diag(1, -1) or diag(1, -1, 1), so each family at 2 pi - al is (I_3 (x) P)-similar to the one at al) and the reflection; smallest pivot >= 1.49162958280e-1 on x in [21/32, 11/16] pi (0.0 s)
+C-PROP N=3 (Q - 2 (lam_XT/theta2) B_XT, interval LDL^T): PASS, 42 al-intervals tiling [0, pi], hence all of [0, 2 pi) (k(2 pi - al) = P k(al) P with P = diag(1, -1) or diag(1, -1, 1), so each family at 2 pi - al is (I_3 (x) P)-similar to the one at al) and the reflection; smallest pivot >= 5.07275915190e-2 on x in [0, 1/32] pi (0.0 s)
+C-PROP N=3 (Q - 2 (lam_XB/theta2) B_XB, interval LDL^T): PASS, 42 al-intervals tiling [0, pi], hence all of [0, 2 pi) (k(2 pi - al) = P k(al) P with P = diag(1, -1) or diag(1, -1, 1), so each family at 2 pi - al is (I_3 (x) P)-similar to the one at al) and the reflection; smallest pivot >= 5.07275915190e-2 on x in [0, 1/32] pi (0.0 s)
+C-PROP N=3 (Q - 2 (lam_Z/theta2) B_Z, interval LDL^T): PASS, 123 al-intervals tiling [0, pi], hence all of [0, 2 pi) (k(2 pi - al) = P k(al) P with P = diag(1, -1) or diag(1, -1, 1), so each family at 2 pi - al is (I_3 (x) P)-similar to the one at al) and the reflection; smallest pivot >= 6.16539981569e-3 on x in [1/2, 33/64] pi (0.0 s)
+C-COVER N=3 Re det Q > 0 and Re det Q_t > 0 at sigma 0.5: PASS (9074 boxes)
+C-REFINE N=3 (every box of width pi/128 or within the caps): PASS
+G line N=3: Im al = 0.5 (the boundary line of the C-COVER strip), M = 64, 72 boxes
+C-HALF N=3: PASS
+  N=3 I[1] = [1.33018901674 +/- 1.01e-12]; G 2.45031058588e-1, TW error 6.20622778124e-15, error/|T_M| 1.08407758549e-13
+  N=3 I[FE0] = [0.937608398217 +/- 5.80e-13]; G 3.50906740454e-1, TW error 8.88788210680e-15, error/|T_M| 2.08236158157e-13
+  N=3 I[FE1] = [0.68176370773 +/- 6.12e-12]; G 1.15191528000e+1, TW error 2.91760916089e-13, error/|T_M| 9.23827740119e-12
+  N=3 I[FE2] = [0.672455972 +/- 8.19e-10]; G 1.10307786249e+3, TW error 2.79391213282e-11, error/|T_M| 9.16672263178e-10
+  N=3 I[F1^2] = [3.25391045304 +/- 7.24e-12]; G 1.03745260010e+1, TW error 2.62769429539e-13, error/|T_M| 1.65570361096e-12
+  N=3 I[F2^2] = [80.832195381 +/- 7.85e-10]; G 9.83024728415e+2, TW error 2.48983757990e-11, error/|T_M| 6.23484908012e-12
+  N=3 I[P2^2] = [80.32908 +/- 6.56e-6]; G 8.95033675068e+6, TW error 2.26697092662e-7, error/|T_M| 6.43718751158e-8
+  N=3 I[H1^2] = [4.099677744 +/- 5.62e-10]; G 3.44832985441e+2, TW error 8.73404402881e-12, error/|T_M| 4.82515049548e-11
+  N=3 I[F0^2] = [1.47067660729 +/- 2.44e-12]; G 1.14205213066e+0, TW error 2.89262744966e-14, error/|T_M| 4.17016131633e-13
+  N=3 I[F0^2 H1^2] = [42.58967541 +/- 6.54e-9]; G 1.80688066150e+4, TW error 4.57652716494e-10, error/|T_M| 2.24389878017e-10
+  N=3 I[F1^2 H1^2] = [572.899790 +/- 3.33e-7]; G 6.69722147837e+5, TW error 1.69629443042e-8, error/|T_M| 6.05872012297e-10
+  N=3 I[F0^4] = [13.0156418122 +/- 3.75e-11]; G 4.14981040038e+1, TW error 1.05107771816e-12, error/|T_M| 1.65570361096e-12
+  N=3 I[X_T hbar3] = [2337.90589572 +/- 8.65e-9]; G 1.21896145059e+4, TW error 3.08742592163e-10, error/|T_M| 2.82010450388e-12
+  N=3 I[X_T^2 hbar2^2] = [529045.87605 +/- 8.13e-6]; G 2.51548242301e+7, TW error 6.37129716816e-7, error/|T_M| 2.64137662861e-11
+  N=3 I[X_T hbar2^2] = [52869.250025 +/- 5.17e-7]; G 1.03680588560e+6, TW error 2.62605627549e-8, error/|T_M| 1.15019950062e-11
+  N=3 I[(E P2^2)^2] = [5e+3 +/- 6.03e+2]; G 9.09273947234e+14, TW error 2.30303915945e+1, error/|T_M| 9.09095919537e-2
+  N=3 I[X_T^4] = [463.674622024 +/- 1.93e-10]; G 5.75419349186e+2, TW error 1.45744117965e-11, error/|T_M| 6.82356603618e-13
+  N=3 I[H1^4] = [7291.20 +/- 6.38e-3]; G 5.79313160342e+9, TW error 1.46730355347e-4, error/|T_M| 5.14560243597e-7
+  N=3 I[hhat^4] = [2102.305949 +/- 4.29e-7]; G 8.46297918523e+5, TW error 2.14353138881e-8, error/|T_M| 2.88849924414e-10
+TARGET N=3 (TW error <= 1e-3 |T_M| for 1, FE0-FE2; <= 1e-1 |T_M| else): all within; misses, reported: none
+C-BLOCK N=3: PASS
+C-PORT N=3: PASS (worst 5.213e-16)
+C-SERIES (H1, H2, P2, FE against twlib): PASS (worst 0.000e+00)
+C-HBAR (per-degree scale): PASS (worst 7.153e-17)
+C-HHAT (N-b: hhat = the traded image of (t/2) hbar2): PASS (worst 0.000e+00)
+C-FLT ratios N=3 (largest |a - f|/|f| at al = 0.7, 2.3): 1 0.00e+00, FE0 1.44e-16, FE1 3.13e-15, FE2 1.15e-14, F1^2 4.16e-16, F2^2 7.44e-16, P2^2 3.43e-14, H1^2 1.52e-15, F0^2 1.86e-16, F0^2 H1^2 4.36e-15, F1^2 H1^2 1.47e-15, F0^4 4.16e-16, X_T hbar3 7.46e-16, X_T^2 hbar2^2 7.77e-16, X_T hbar2^2 5.73e-16, (E P2^2)^2 6.84e-14, X_T^4 0.00e+00, H1^4 1.41e-14, hhat^4 2.21e-16
+C-FLT N=3: PASS (worst 6.840e-14)
+C-SCAN N=3 (18 certified integrals against the dry run, worst 0.000e+00 <= 0.001; I[1] against twrig4 lead, 2.451e-09 <= 1e-08): PASS
+C-POS N=3 (every upper end J_i^+ > 0, before the roots of the reading): PASS
+C-SIGN N=3 (s1 = I[FE1]/I[FE0] = [0.72713055 +/- 2.73e-9] > 0, s2 = I[FE2]/I[FE0] = [0.71720344 +/- 4.53e-9] > 0; ADD2 M1: main increases in t): PASS
+C-RANK N=3 (B_v = E_vv (x) I_d for v = X_T, X_B, Z, so rank B_v = d = N - 1, as the Chernoff bound uses): PASS
+C-FAR N=3 (D1: far = PR 2J (2 far_one(a) + far_one(aZ)) ~ J^p e^{-c J}, p = 1.00, decreases for J >= 300 iff p/300 < c(a), c(aZ) = [0.13397460 +/- 3.79e-9]): PASS
+C-T2 N=3 (D2: certified TRB_3 <= 9.611071e-1): PASS; headroom >= 2.11292303831e-2
+REASON main: C-SIGN gives s1, s2 > 0, so main(t) = I[FE0] (1 + s1 t + s2 t^2) increases in t; its t = 1/300 value bounds every J >= 300
+REASON R3: t^3 and t^4 times untilted integrals of fixed polynomials (twlib hbar(j, a, aZ) has no t): nondecreasing in t
+REASON R_cub: Q_t(t') >= Q_t(1/300) in the Loewner order for t' <= 1/300 (the t-part t cfun(a_v) of the tilt is PSD), the integrands X_T^4, H1^4, hhat^4 are >= 0, hhat(t') <= hhat(1/300) monomialwise, and t^3 grows: nondecreasing in t
+REASON R_F: (t^3/6) E3(a) I_t[X_T^4], with I_t nondecreasing in t as for R_cub: nondecreasing in t
+REASON tail: e^{-lam_v J a_v} decreases in J; T_v <= (1 - theta2)^{-d/2} I[1] is free of J (C-PROP, C-RANK); L2 is 1, t, t^2 times untilted integrals: nonincreasing in J
+REASON far: C-FAR (p/J < c(a), c(aZ) for J >= 300), so J^p e^{-c J} decreases in J
+REASON PR: PR = pref_arb(N), a ratio of reduced Laplacian determinants of fixed strip graphs, does not depend on J
+REASON TW: every TW error sits inside the certified J = 300 enclosures; each reason compares exact J-bounds with the exact J = 300 bound, which the enclosure upper end majorizes
+REASON Z4: each J-bound is twrig4's at its own Omega(J) and tilt T(1/J) before the comparison, so the comparison is between valid bounds, pointwise in J
+CHECKS all PASS
+PLANTS PLANT-TILE:FIRED PLANT-MULTISET:FIRED PLANT-COPY:FIRED PLANT-PROP(t):FIRED PLANT-PROP(0):FIRED PLANT-PROP(1):FIRED PLANT-PROP(2):FIRED PLANT-STRIP:FIRED PLANT-REFINE:FIRED PLANT-BLOCK:FIRED PLANT-PORT:FIRED PLANT-PORT-T:FIRED PLANT-PORT-P:FIRED PLANT-SERIES:FIRED PLANT-HBAR:FIRED PLANT-HHAT:FIRED PLANT-FLT:FIRED PLANT-SCAN:FIRED PLANT-POS:FIRED PLANT-SIGN:FIRED PLANT-RANK:FIRED PLANT-FAR:FIRED PLANT-T2:FIRED
+READING N=3 (t = 1/300, every J >= 300; S4_TRB_DESIGN_v2 item 2): TRB_3 <= 9.39977769617e-1; main <= 9.39888415643e-1, R3 <= 2.40694032498e-5, R_cub <= 6.30160611561e-5, R_F <= 1.49267852587e-6, tail <= 7.75831677767e-7, far <= 7.91355623696e-14; PR <= 1.25437544346e+1; T_v <= 1.33018901674e+1
+VERDICT VALID
+CPU 12.3 s maxrss_kb 72768

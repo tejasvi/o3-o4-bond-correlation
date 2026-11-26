@@ -1,0 +1,30 @@
+kt_ma_val_v1_5 sha256 430b4b9cefce06bfa8f51b0979c6879fe4bab76b7cb6b0205beb6acab066ca9f PIECE=v3 LIM=540
+kt_cert_v1_5 sha256 dcda857a956834873163cfca715524ea7273d8219ef213ed57c7150fb39b134d ITEM=tA.e1n4 LIM=540 (RLIMIT_CPU soft 540, hard 545)
+C-HASH PASS (5 engine files, 1 own files, 10 predecessor outputs, 6 inputs)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+C-HASH PASS (kt_cert_v1_5, arbeng_ma_v1_3, arbeng_ma_v1_1, arbeng_ma_stub_v1_1, arbeng_ma_stub_v1)
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_3; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-TREE: m 1: 3 terms k 2 (want 2); merged with 3 terms k 3 (want 3; formula 3); m 2: 5 terms k 3 (want 3); merged with 3 terms k 4 (want 4; formula 3); m 3: 9 terms k 4 (want 4); merged with 3 terms k 5 (want 5; formula 4); m 5: 33 terms k 6 (want 6); merged with 3 terms k 7 (want 7; formula 6); m 8: 257 terms k 9 (want 9); merged with 3 terms k 10 (want 10; formula 9); m 12: 4097 terms k 13 (want 13); merged with 3 terms k 14 (want 14; formula 13) -> PASS
+C-CROSS (layer): 12 intervals (two with 136/134-bit ends at iv.dps 40): [-3.25, -1.5] ok; [-0.75, 1.25] ok; [-0.25, 0.25] ok; [0.0, 2.5] ok; [-2.5, 0.0] ok; [-1.607262910779401e+301, -5.357543035931337e+300] ok; [-8.289046e-317, -8.095e-320] ok; [8.095e-320, 2.54639494916e-313] ok; [-0.33333333333333337, -0.3333333333333333] ok; [-1.1235582092889474e+307, 8.691694759794e-311] ok; [-0.3333333333333333, -0.3333333333333333] ok; [-0.3571428571428571, -0.3571428571428571] ok; 7 balls through ball_to_in and back and through mp.iv and back, 0 not contained -> PASS
+C-CROSS (stub): 12 intervals (two with 136/134-bit ends at iv.dps 40): [-3.25, -1.5] ok; [-0.75, 1.25] ok; [-0.25, 0.25] ok; [0.0, 2.5] ok; [-2.5, 0.0] ok; [-1.607262910779401e+301, -5.357543035931337e+300] ok; [-8.289046e-317, -8.095e-320] ok; [8.095e-320, 2.54639494916e-313] ok; [-0.33333333333333337, -0.3333333333333333] ok; [-1.1235582092889474e+307, 8.691694759794e-311] ok; [-0.3333333333333333, -0.3333333333333333] ok; [-0.3571428571428571, -0.3571428571428571] ok; 7 balls through ball_to_in and back and through mp.iv and back, 0 not contained -> PASS
+PLANT-SIGN: arbeng_ma_stub_v1's unsigned mpi_to_arb misses the endpoints of 10 of 12 intervals -> FIRES
+C-TINY (Dc 6) table containment: 246961 M-a entries (0 without an arb entry), 0 arb-only entries; 0 M-a and 0 arb entries fail (no overlap, or a one-sided entry not containing 0); largest M-a relative width 9.05e+156 -> PASS
+C-TINY rule exercised: 101784 terms made error-only; C-UF: largest einsum allowance 1.897e-320, Smax 1.000e+00; 246961 entries (cpu 4.0 s) -> PASS
+PLANT-TINY: the same table under arbeng_ma_v1_1: a shadow product 5.563e-309 in the subnormal range -> FIRES
+C-ZMID: npoly_mul ok; npoly_pow k=2 ok; E2 ok; E2 two parts ok; lp_norm p=4 ok; condE ok; CondTable ok -> PASS
+C-FALLBACK: E2 of (0 +- 0.25) Y0 + 1 against Y0 with the default fallback (relative M-a error 0.5 > FALLBACK_REL 1e-03): MAFallback: E2: M-a error 5.00e-01 of 1.00e+00 -> PASS
+PLANT-ZMID: arbeng_ma_v1_1: npoly_mul lost; npoly_pow k=2 lost; E2 ok; E2 two parts ok; lp_norm p=4 lost; condE lost; CondTable lost -> FIRES
+C-COUNT: ma_add(normal k 3, error-only k 5): k 6 (want 6), sr 1.25 (want 1.25) -> PASS
+PLANT-COUNT: arbeng_ma_v1_1: k 3 -> FIRES
+C-FLOOR: npoly_mul((1e-200 +- 1e-210) x, same) -> {(2,): '[+/- 4.01e-292]'}; arb product [1.0000e-400 +/- 3e-409] -> PASS
+PLANT-FLOOR: without the floor (TWO_TINY := 0): {} -> FIRES
+C-INT64: 6^24 passes: True; 7^24 raises: True; MomTable F = 24, D = 6: MomTable: monomial codes would overflow int64 (7^24 >= 2^63): split the forms (cpu 0.00 s) -> PASS
+PLANT-INT64: numpy int64 7^24 = 7113790643470898241, exact 191581231380566414401 -> FIRES
+V3 n = 2, degree 8: 495 moments, zeroed 2, largest relative width so far 2.58e-11 (cpu 0.0 s); C-SHADOW 8.13e-12
+V3 n = 3, degree 8: 495 moments, zeroed 2, largest relative width so far 2.58e-11 (cpu 0.0 s); C-SHADOW 3.14e-12
+V3 n = 2, degree 12: 1820 moments, zeroed 2, largest relative width so far 2.71e-09 (cpu 0.1 s); C-SHADOW 8.72e-10
+C-AK exact moments: 2810 moments, 0 not contained; largest printed relative width 2.71e-09 -> PASS
+PLANT-MA-AK: 2810 of 2810 nonzero exact moments perturbed by 10 x 2.71e-09 relative fall outside -> FIRES
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_3; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+ITEM v3 cpu 4.2 s, peak resident memory 371 MiB
+VERDICT VALID

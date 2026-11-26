@@ -1,0 +1,125 @@
+kt_mr_assembly_v1_8_4 (abd48b2c94e0d64328ce631a21f8ab3c93c665f1de86e4abcdb190c3744df448): RECDIR pk24/mr_engine/v36/up_routev MODE STANDIN PLANT none NMAX 14 PIECES all
+C-CORE OK: mr_core_v1_3 b897451f512c69c3e08ac61d330f993634c105d42169dbd898dc91448554898a; 7 blocks and 3 constants equal to the prototype 5e3fc430d69a445487a449fd54faefdf540ba8a3298a52c7e5fd9cadb0bd76e6
+C-IV OK: 3000 operations (add, sub, mul, inv, sqrt; negation, amax, hull, pow, division with 50-digit endpoints) enclose or equal the exact rational results
+G-PIN MR_SPECTRAL.kv 2138851a7343480e3ee296b061f9a67ad9463a9e74855ad80aab038e9d316250 OK (PRODUCER pk25)
+G-PIN MR_INSERT.kv c2a6924c7ea425ca94739491c8e321606a94ea0a9a0faf0f0f4322079aa55154 OK (PRODUCER pk24)
+G-PIN MR_EXACT.kv 0e9f36fdb1adf768b34c6237f8e4698d7d801e31ada74889d9216eb60070ea66 OK (PRODUCER pk24)
+G-PIN MR_CRUDEX.kv 3db4eff5d130deac003e6b0a91026b133cad656c10603694863efad0cc1f76c2 OK (PRODUCER pk24) (CRUDEX_FORM split)
+G-PIN MR_JOINT.kv 30dfcde85ad37809703990e3f1522c2686b842d64f0e8252be279f34f79a7de7 OK (PRODUCER pk24)
+C-ORIENT OK: c_x(-1) > 0 and c_y(-1) > 0 on every MR_SPECTRAL row; t and a v_x > 0, h, t and a v_y > 0 on every MR_INSERT row; 6988 exact ends checked against the sign of their bulk x amplitude; ORIENT_CHECK on MR_SPECTRAL, MR_INSERT and MR_EXACT with the grid's piece counts
+A0X ON: the vertical end at d' = 0 is exact (MR_EXACT a0 rows on every piece)
+G-UNIF OK: N = 4 843 pieces, N = 3 904 pieces; every record on the same grid with every row; last piece to inf; decimal fields finite, lo <= hi, single upper bounds >= 0, the spectral data positive
+XMODE UNFACTORED: the rows of v1_6 (MR_INPUT_KV_v3, CRUDEX_FORM split)
+ROUTE V ON: MR_EXACT carries Pe_hi (the exact end's unwindowed flip-even |P_e a|), and the m = 1 rest takes the least of |P_e a_L| N'_R and N'_L |P_e a_R| over the ends that give |P_e a| (the row 4376)
+SUMMARY N=4 n=6: to-do orbits 25; channel classes 22, PASS 22; least headroom 1.013 at h3-bb4 (piece 61); reference 1.636; same-bond orbits 2, least H_J 17.64; FAIL 0
+CLASS N=4 n=6 h1-a3     chan-exact d=-1 k=0 dp=2 m=1: L 1.652895e-03 at piece 61, H 15.516 PASS 
+CLASS N=4 n=6 h1-a4     chan-exact d=-1 k=1 dp=1 m=2: L 6.857959e-05 at piece 61, H 9.041 PASS 
+CLASS N=4 n=6 h1-a5     chan-exact d=-1 k=2 dp=0 m=3: L 3.205268e-06 at piece 61, H 15.830 PASS 
+CLASS N=4 n=6 h1-a6     chan-exact d=-1 k=3 dp=-1 m=4: L 1.035346e-07 at piece 116, H 1.949 PASS 
+CLASS N=4 n=6 h1-bb2    chan-exact d=-1 k=-1 dp=2 m=1: L 2.105758e-03 at piece 61, H 4.061 PASS 
+CLASS N=4 n=6 h1-bb3    chan-exact d=-1 k=0 dp=1 m=2: L 9.783328e-05 at piece 61, H 5.080 PASS 
+CLASS N=4 n=6 h1-bb4    chan-exact d=-1 k=1 dp=0 m=3: L 3.073836e-06 at piece 61, H 2.385 PASS 
+CLASS N=4 n=6 h1-bb5    chan-exact d=-1 k=2 dp=-1 m=4: L 1.035346e-07 at piece 116, H 1.949 PASS 
+CLASS N=4 n=6 h1-h3     chan-crude d=-1 k=0 dp=1 m=2: L 4.440631e-04 at piece 61, H 11.423 PASS 
+CLASS N=4 n=6 h1-h4     chan-exact d=-1 k=1 dp=0 m=3: L 1.936118e-05 at piece 61, H 10.772 PASS 
+CLASS N=4 n=6 h2-a4     chan-exact d=0 k=0 dp=1 m=1: L 1.856262e-03 at piece 61, H 22.284 PASS 
+CLASS N=4 n=6 h2-a5     chan-exact d=0 k=1 dp=0 m=2: L 8.292469e-05 at piece 61, H 26.049 PASS 
+CLASS N=4 n=6 h2-a6     chan-exact d=0 k=2 dp=-1 m=3: L 3.461211e-06 at piece 61, H 2.833 PASS 
+CLASS N=4 n=6 h2-bb3    chan-exact d=0 k=-1 dp=1 m=1: L 2.731487e-03 at piece 61, H 9.063 PASS 
+CLASS N=4 n=6 h2-bb4    chan-exact d=0 k=0 dp=0 m=2: L 8.377157e-05 at piece 61, H 2.688 PASS 
+CLASS N=4 n=6 h2-bb5    chan-exact d=0 k=1 dp=-1 m=3: L 3.461211e-06 at piece 61, H 2.833 PASS 
+CLASS N=4 n=6 h3-a5     chan-crude d=1 k=0 dp=0 m=1: L 1.853732e-03 at piece 61, H 17.452 PASS 
+CLASS N=4 n=6 h3-a6     chan-crude d=1 k=1 dp=-1 m=2: L 9.005734e-05 at piece 61, H 3.821 PASS 
+CLASS N=4 n=6 h3-bb4    chan-crude d=1 k=-1 dp=0 m=1: L 3.982310e-05 at piece 61, H 1.013 PASS 
+CLASS N=4 n=6 h3-bb5    chan-crude d=1 k=0 dp=-1 m=2: L 9.005734e-05 at piece 61, H 3.821 PASS 
+CLASS N=4 n=6 h4-a6     chan-crude d=2 k=0 dp=-1 m=1: L 2.021497e-03 at piece 61, H 3.604 PASS 
+CLASS N=4 n=6 h4-bb5    chan-crude d=2 k=-1 dp=-1 m=1: L 2.021497e-03 at piece 61, H 3.604 PASS 
+SUMMARY N=4 n=7: to-do orbits 37; channel classes 34, PASS 34; least headroom 1.167 at h4-bb5 (piece 61); reference 1.961; same-bond orbits 2, least H_J 17.80; FAIL 0
+SUMMARY N=4 n=8: to-do orbits 52; channel classes 48, PASS 48; least headroom 1.190 at h5-bb6 (piece 61); reference 2.243; same-bond orbits 3, least H_J 17.82; FAIL 0
+SUMMARY N=4 n=9: to-do orbits 69; channel classes 65, PASS 65; least headroom 1.193 at h6-bb7 (piece 61); reference 2.388; same-bond orbits 3, least H_J 17.82; FAIL 0
+SUMMARY N=4 n=10: to-do orbits 89; channel classes 84, PASS 84; least headroom 1.194 at h7-bb8 (piece 61); reference 2.388; same-bond orbits 4, least H_J 17.82; FAIL 0
+SUMMARY N=4 n=11: to-do orbits 111; channel classes 106, PASS 106; least headroom 1.194 at h8-bb9 (piece 61); reference 2.388; same-bond orbits 4, least H_J 17.82; FAIL 0
+SUMMARY N=4 n=12: to-do orbits 136; channel classes 130, PASS 130; least headroom 1.194 at h9-bb10 (piece 61); reference 2.388; same-bond orbits 5, least H_J 17.82; FAIL 0
+SUMMARY N=4 n=13: to-do orbits 163; channel classes 157, PASS 157; least headroom 1.194 at h10-bb11 (piece 61); reference 2.388; same-bond orbits 5, least H_J 17.82; FAIL 0
+SUMMARY N=4 n=14: to-do orbits 193; channel classes 186, PASS 186; least headroom 1.194 at h11-bb12 (piece 61); reference 2.388; same-bond orbits 6, least H_J 17.82; FAIL 0
+SUMMARY N=3 n=6: to-do orbits 25; channel classes 22, PASS 22; least headroom 1.359 at h3-bb4 (piece 0); reference 3.107; same-bond orbits 2, least H_J 27.58; FAIL 0
+CLASS N=3 n=6 h1-a3     chan-exact d=-1 k=0 dp=2 m=1: L 1.139567e-03 at piece 0, H 28.674 PASS 
+CLASS N=3 n=6 h1-a4     chan-exact d=-1 k=1 dp=1 m=2: L 4.853587e-05 at piece 0, H 17.372 PASS 
+CLASS N=3 n=6 h1-a5     chan-exact d=-1 k=2 dp=0 m=3: L 2.206326e-06 at piece 0, H 29.473 PASS 
+CLASS N=3 n=6 h1-a6     chan-exact d=-1 k=3 dp=-1 m=4: L 1.042780e-07 at piece 116, H 3.727 PASS 
+CLASS N=3 n=6 h1-bb2    chan-exact d=-1 k=-1 dp=2 m=1: L 1.562393e-03 at piece 0, H 6.041 PASS 
+CLASS N=3 n=6 h1-bb3    chan-exact d=-1 k=0 dp=1 m=2: L 7.141290e-05 at piece 0, H 8.017 PASS 
+CLASS N=3 n=6 h1-bb4    chan-exact d=-1 k=1 dp=0 m=3: L 2.723252e-06 at piece 0, H 4.323 PASS 
+CLASS N=3 n=6 h1-bb5    chan-exact d=-1 k=2 dp=-1 m=4: L 1.042780e-07 at piece 116, H 3.727 PASS 
+CLASS N=3 n=6 h1-h3     chan-crude d=-1 k=0 dp=1 m=2: L 3.087521e-04 at piece 0, H 18.786 PASS 
+CLASS N=3 n=6 h1-h4     chan-exact d=-1 k=1 dp=0 m=3: L 1.363311e-05 at piece 0, H 22.850 PASS 
+CLASS N=3 n=6 h2-a4     chan-exact d=0 k=0 dp=1 m=1: L 1.264428e-03 at piece 0, H 41.474 PASS 
+CLASS N=3 n=6 h2-a5     chan-exact d=0 k=1 dp=0 m=2: L 5.642730e-05 at piece 0, H 55.796 PASS 
+CLASS N=3 n=6 h2-a6     chan-exact d=0 k=2 dp=-1 m=3: L 2.999509e-06 at piece 0, H 6.260 PASS 
+CLASS N=3 n=6 h2-bb3    chan-exact d=0 k=-1 dp=1 m=1: L 1.890225e-03 at piece 0, H 12.636 PASS 
+CLASS N=3 n=6 h2-bb4    chan-exact d=0 k=0 dp=0 m=2: L 7.137586e-05 at piece 0, H 5.020 PASS 
+CLASS N=3 n=6 h2-bb5    chan-exact d=0 k=1 dp=-1 m=3: L 2.999509e-06 at piece 0, H 6.260 PASS 
+CLASS N=3 n=6 h3-a5     chan-crude d=1 k=0 dp=0 m=1: L 1.262884e-03 at piece 0, H 25.583 PASS 
+CLASS N=3 n=6 h3-a6     chan-crude d=1 k=1 dp=-1 m=2: L 7.007569e-05 at piece 0, H 7.052 PASS 
+CLASS N=3 n=6 h3-bb4    chan-crude d=1 k=-1 dp=0 m=1: L 5.387546e-04 at piece 0, H 1.359 PASS 
+CLASS N=3 n=6 h3-bb5    chan-crude d=1 k=0 dp=-1 m=2: L 7.007569e-05 at piece 0, H 7.052 PASS 
+CLASS N=3 n=6 h4-a6     chan-crude d=2 k=0 dp=-1 m=1: L 1.550269e-03 at piece 0, H 5.791 PASS 
+CLASS N=3 n=6 h4-bb5    chan-crude d=2 k=-1 dp=-1 m=1: L 1.550269e-03 at piece 0, H 5.791 PASS 
+SUMMARY N=3 n=7: to-do orbits 37; channel classes 34, PASS 34; least headroom 1.544 at h4-bb5 (piece 0); reference 3.637; same-bond orbits 2, least H_J 27.75; FAIL 0
+SUMMARY N=3 n=8: to-do orbits 52; channel classes 48, PASS 48; least headroom 1.572 at h5-bb6 (piece 0); reference 4.064; same-bond orbits 3, least H_J 27.77; FAIL 0
+SUMMARY N=3 n=9: to-do orbits 69; channel classes 65, PASS 65; least headroom 1.576 at h6-bb7 (piece 0); reference 4.146; same-bond orbits 3, least H_J 27.78; FAIL 0
+SUMMARY N=3 n=10: to-do orbits 89; channel classes 84, PASS 84; least headroom 1.577 at h7-bb8 (piece 0); reference 4.147; same-bond orbits 4, least H_J 27.78; FAIL 0
+SUMMARY N=3 n=11: to-do orbits 111; channel classes 106, PASS 106; least headroom 1.577 at h8-bb9 (piece 0); reference 4.147; same-bond orbits 4, least H_J 27.78; FAIL 0
+SUMMARY N=3 n=12: to-do orbits 136; channel classes 130, PASS 130; least headroom 1.577 at h9-bb10 (piece 0); reference 4.147; same-bond orbits 5, least H_J 27.78; FAIL 0
+SUMMARY N=3 n=13: to-do orbits 163; channel classes 157, PASS 157; least headroom 1.577 at h10-bb11 (piece 0); reference 4.147; same-bond orbits 5, least H_J 27.78; FAIL 0
+SUMMARY N=3 n=14: to-do orbits 193; channel classes 186, PASS 186; least headroom 1.577 at h11-bb12 (piece 0); reference 4.147; same-bond orbits 6, least H_J 27.78; FAIL 0
+G-FLOAT INFO N4 n6: least headroom 1.0133, reference 1.6360 (differs)
+G-FLOAT INFO N4 n7: least headroom 1.1672, reference 1.9610 (differs)
+G-FLOAT INFO N4 n8: least headroom 1.1900, reference 2.2430 (differs)
+G-FLOAT INFO N4 n9: least headroom 1.1933, reference 2.3880 (differs)
+G-FLOAT INFO N4 n10: least headroom 1.1938, reference 2.3880 (differs)
+G-FLOAT INFO N4 n11: least headroom 1.1938, reference 2.3880 (differs)
+G-FLOAT INFO N4 n12: least headroom 1.1938, reference 2.3880 (differs)
+G-FLOAT INFO N4 n13: least headroom 1.1938, reference 2.3880 (differs)
+G-FLOAT INFO N4 n14: least headroom 1.1938, reference 2.3880 (differs)
+G-FLOAT INFO N3 n6: least headroom 1.3592, reference 3.1070 (differs)
+G-FLOAT INFO N3 n7: least headroom 1.5441, reference 3.6370 (differs)
+G-FLOAT INFO N3 n8: least headroom 1.5724, reference 4.0640 (differs)
+G-FLOAT INFO N3 n9: least headroom 1.5765, reference 4.1460 (differs)
+G-FLOAT INFO N3 n10: least headroom 1.5771, reference 4.1470 (differs)
+G-FLOAT INFO N3 n11: least headroom 1.5772, reference 4.1470 (differs)
+G-FLOAT INFO N3 n12: least headroom 1.5772, reference 4.1470 (differs)
+G-FLOAT INFO N3 n13: least headroom 1.5772, reference 4.1470 (differs)
+G-FLOAT INFO N3 n14: least headroom 1.5772, reference 4.1470 (differs)
+FAIL REASONS: classes failing at G-POS 0, at G-DELTA 0, on the margin alone 0 (same-bond failures count as margin)
+WARN BLOCK: 28 rows with float headroom H < 2 (design target 2; not an acceptance rule)
+WARN N4_n06_h3-bb4 H 1.01327 PASS
+WARN N4_n07_h4-bb5 H 1.16719 PASS
+WARN N4_n08_h5-bb6 H 1.19002 PASS
+WARN N4_n09_h6-bb7 H 1.19329 PASS
+WARN N4_n10_h7-bb8 H 1.19377 PASS
+WARN N4_n11_h8-bb9 H 1.19383 PASS
+WARN N4_n12_h9-bb10 H 1.19384 PASS
+WARN N4_n13_h10-bb11 H 1.19385 PASS
+WARN N4_n14_h11-bb12 H 1.19385 PASS
+WARN N3_n06_h3-bb4 H 1.35916 PASS
+WARN N3_n07_h4-bb5 H 1.5441 PASS
+WARN N3_n08_h5-bb6 H 1.57238 PASS
+WARN N3_n09_h6-bb7 H 1.57648 PASS
+WARN N3_n10_h7-bb8 H 1.57708 PASS
+WARN N3_n11_h8-bb9 H 1.57716 PASS
+WARN N3_n12_h9-bb10 H 1.57718 PASS
+WARN N3_n13_h10-bb11 H 1.57718 PASS
+WARN N3_n14_h11-bb12 H 1.57718 PASS
+WARN N4_n07_h3-bb4 H 1.82186 PASS
+WARN N4_n08_h4-bb5 H 1.8889 PASS
+WARN N4_n09_h5-bb6 H 1.89827 PASS
+WARN N4_n10_h6-bb7 H 1.89962 PASS
+WARN N4_n11_h7-bb8 H 1.89982 PASS
+WARN N4_n12_h8-bb9 H 1.89985 PASS
+WARN N4_n13_h9-bb10 H 1.89985 PASS
+WARN N4_n14_h10-bb11 H 1.89985 PASS
+WARN N4_n06_h1-a6 H 1.94902 PASS
+WARN N4_n06_h1-bb5 H 1.94902 PASS
+WROTE 2e1ba7d0 pk24/mr_engine/v38/MR_ASSEMBLY_routev.kv (1732 rows); FAIL rows 0; gate lines 0; WARN rows 28
+RUN_VERDICT STANDIN-VALID

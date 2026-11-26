@@ -1,0 +1,39 @@
+# RERUN_PARTS_release_N.tsv: the 37 parts in which rerun_m2.py checked release_N. Each part ran as python3 -I -B rerun_m2.py --runs <runs> from the root of a fresh copy of the package, except parts 35 and 36, which ran on the copy that the parts before them left (the three strip_ne parts, in level order on one copy). cpu_s: user plus system seconds of the part on one core. Columns: part, family, copy, runs, cpu_s
+part	family	copy	runs	cpu_s
+01	A2	fresh	a2_n3,a2_n4	284.7
+02	B4	fresh	tau	0.1
+03	P3xP3_strong	fresh	lbu_cert,lbu_v1	219.9
+04	P3xP4	fresh	g34_ctl,g34_n3_G01,g34_n3_G02,g34_n3_G03	395.6
+05	P3xP4	fresh	g34_n3_G04,g34_n3_G05,g34_n3_G06	354.9
+06	P3xP4	fresh	g34_n3_G07,g34_n3_G08,g34_n3_G09	349.5
+07	P3xP4	fresh	g34_n3_G10,g34_n3_G11,g34_n3_G12	352.4
+08	P3xP4	fresh	g34_n3_G13,g34_n3_G14,g34_n3_G15	352.9
+09	P3xP4	fresh	g34_n3_G16,g34_n3_G17,g34_n3_G18	348.9
+10	P3xP4	fresh	g34_n3_G19,g34_n4_G01,g34_n4_G02	320.6
+11	P3xP4	fresh	g34_n4_G03,g34_n4_G04,g34_n4_G05	312.1
+12	P3xP4	fresh	g34_n4_G06,g34_n4_G07,g34_n4_G08,g34_n4_G09	419.5
+13	P3xP4	fresh	g34_n4_G10,g34_n4_G11,g34_n4_G12,g34_n4_G13	414.9
+14	P3xP4	fresh	g34_n4_G14,g34_n4_G15,g34_n4_G16,g34_n4_G17	415.0
+15	P3xP4	fresh	g34_n4_G18,g34_n4_G19,g34_rob_G03	334.8
+16	P3xP4	fresh	g34_rob_G18	122.8
+17	S1S2	fresh	m3v17_3,m3v17_4,m3v181_3,m3v181_4,m3v182_3,m3v182_4,m3v193_3,m3v193_4,law11_3,law11_4,law12_3,law12_4,m3es_3,m3es_4,m3r0b_3,m3r0b_4	9.5
+18	S3a	fresh	rtr_3,rtr_4	25.1
+19	S3bd	fresh	m2b	0.1
+20	S4a	fresh	m2ba_3,m2ba_4,m2bb4_3	395.2
+21	S4a	fresh	m2bb4_4,m2bc3_4,m2bc4_3,px03_3,px03_4	108.9
+22	S4b	fresh	trb_3,trb_4	25.0
+23	S4d	fresh	trbh_3,trbh_4	7.5
+24	S5S7	fresh	s9h	105.4
+25	S8	fresh	cplus,s8f	46.4
+26	S9i	fresh	p212pre,p212fin	2.6
+27	W4free	fresh	w4free	0.4
+28	conjecture_U	fresh	u4A,u4B,u4C	2.2
+29	hub_cover	fresh	hub_3_20,hub_3_50,hub_4_20,hub_4_50,hub_union	170.8
+30	midrow	fresh	nM1,nM2	142.9
+31	route_H	fresh	rhU2,rhX2	0.2
+32	strip_a	fresh	mA_a3,mA_n1,mA_a4	0.6
+33	strip_cover	fresh	scN3hi,scN3lo,scN4hi,scN4lo	0.1
+34	strip_ne	fresh	mNE_c3_0000_0100,mNE_c3_0100_0200,mNE_c3_0200_0300,mNE_c3_0300_0400,mNE_c3_0400_0500,mNE_c3_0500_0600,mNE_c3_0600_0700,mNE_c3_0700_0800,mNE_c3_0800_0904,mNE_c4_0061_0141	403.8
+35	strip_ne	after part 34	mNE_c4_0141_0221,mNE_c4_0221_0301,mNE_c4_0301_0381,mNE_c4_0381_0461,mNE_c4_0461_0541,mNE_c4_0541_0621,mNE_c4_0621_0701,mNE_c4_0701_0781,mNE_c4_0781_0861,mNE_c4_0861_0904,mNE_smoke_n3,mNE_smoke_n4,mNE_final_n3	422.4
+36	strip_ne	after parts 34 and 35	mNE_final_n4,mNE_record	7.5
+37	weak_coupling	fresh	su14,su16,su29c	0.2

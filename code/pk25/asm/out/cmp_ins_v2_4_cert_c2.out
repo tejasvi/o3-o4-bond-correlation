@@ -1,0 +1,20 @@
+# job154 (pk25): option (B) MR_INSERT cert c2 against dry b1, written 2026-11-21T15:13:52Z
+CERT mr/v4b/MR_INSERT.kv sha256 46d3aeb5bd9f72cfc1ec8027711cd094e4f720862485562e6886fd3d442bfb7c lines 5259
+DRY asm/dry_b1/MR_INSERT.kv sha256 b822d42afcf1a0cdc6fa835df1583bf13de64ae1a6ae5fc28efc383b4a121a7f lines 5259
+ROWS cert 5241 dry 5241; cmp rc 0 (0 = byte-equal)
+HEADER lines that differ: 1,6,7 (expected 1,6,7: the comment line and the two STATUS lines)
+MU lines (OR_t, c_t, c~_h intervals, OR, C; main row 4534): 4 lines, cmp against the v4 cert run 1d0eaea6: rc 0 (0 = identical)
+OLD /mnt/g2/release/root/code/pk25/mr/v4/MR_INSERT.kv sha256 e372a2a674132e4f28203b814843c582004983243a643ccb734753ad3f5d9cde
+NEW mr/v4b/MR_INSERT.kv sha256 46d3aeb5bd9f72cfc1ec8027711cd094e4f720862485562e6886fd3d442bfb7c
+ROWS old 5241 new 5241, missing in old 0; fields other than Pev_hi and vp_hi differing 0 (Pevw_hi changed on 0 rows); Pev_hi raised 0; changed Pev_hi 3494, vp_hi 3494
+SIX-COLUMNS (vx, vy, mxx, mxy as _lo and _hi, Pevw_hi, PeBwux_hi; main row 4526): 1747 h rows compared, 0 differing -> BYTE-IDENTICAL
+PEV h: new Pev_hi from 0.4373 to 0.5356 (largest on N4_P0116_h)
+PEV a: new Pev_hi from 2.785e-07 to 0.004148 (largest on N4_P0061_a)
+PEV t: new Pev_hi from 0.3339 to 0.409 (largest on N4_P0116_t)
+COMPARE rc=0 (0 = only Pev_hi and vp_hi differ, the six h-row columns are byte-identical, and no Pev_hi rises)
+JOB153 rc 0
+INFO PEV MAX N=4 h: the largest certified Pev_hi is 5.3557483908821124e-01 on N4_P0116_h (the row 4520)
+INFO PEV MAX N=4 t: the largest certified Pev_hi is 4.0898579100019317e-01 on N4_P0116_t (the row 4520)
+INFO PEV MAX N=3 h: the largest certified Pev_hi is 4.3760240894707697e-01 on N3_P0903_h (the row 4520)
+INFO PEV MAX N=3 t: the largest certified Pev_hi is 3.3426607030573480e-01 on N3_P0903_t (the row 4520)
+POST PASS

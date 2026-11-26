@@ -1,0 +1,37 @@
+TEMPLATE e604fdf6, MAKER 2399870d
+TEMPLATE e604fdf61f2df9a35d892d6178372df5b193079581a924b1447a8b037ef9faf7 /mnt/g2/release/root/code/pk22/midrow/e3/src/e3_sq2_v2.tmpl.py
+PIN c10 29a4f3c67afc2b3e2611e37e3026def71d6ae819bcc2ee5ed34f678734bebb98 /mnt/g2/release/root/code/pk25/c10/C10_RECORD_v1.kv
+PIN c10man bf8df39779ec0d3a797f13a67d73fd83a01ff27b437add8f84d7ab0c9884c183 /mnt/g2/release/root/code/pk25/c10/MANIFEST_C10_V1_3_CERT_c1.sha256
+PIN m4asm_out 3680f37d6c21ba66676f58d0b4ddb780920ae40115061b96b0464328d904cae9 /mnt/g2/release/root/code/pk23/it3/m4xy/out/m4xy_asm_v1_1_cert.out
+PIN m4kv f697229931f7e8b9de870c9438a1fc94719e6784af9b996248d99e82c436e631 /mnt/g2/release/root/code/pk23/it3/m4xy/M4XY_KV_v1.txt
+PIN m4man 770f3f4d97ae8a56886a84320a4669caff24522ba30ca019ee76778614f64015 /mnt/g2/release/root/code/pk23/it3/m4xy/MANIFEST_M4XY_V1_1_v1.sha256
+PIN m4reader 52004e3da4f520cf7aa03ac9fe21358653aa1413035ee739ee86b9dadf6e9952 /mnt/g2/release/root/code/pk23/it3/m4xy/m4xy_reader_v1_1.py
+PIN spectral 4a609ccf717c0aedd9504ee4db47e7c98a679bc25df2ca2a187b415011470937 /mnt/g2/release/root/code/pk25/mr/v4/MR_SPECTRAL.kv
+PIN v18 7f6d0e0f799618285cbf66dd91b698971f6e4b797128bb4603a91773a8e0328a /mnt/g2/release/root/code/pk22/midrow/e3/kt/kt_cert_v1_8_xy_2.py
+PIN v18man 522f9bbf029f9bae1acaa6f01d371c9e4896bfaca84f55c1d3feab4b337a6fd7 /mnt/g2/release/root/code/pk22/midrow/e3/kt/MANIFEST_V1_8_XY_2_X_v1.sha256
+PIN x3 ce8160d9f080a417c03774eadc01b36079d0e849d5ad29f593742163e632d392 /mnt/g2/release/root/code/pk22/midrow/e3/kt/out_kt_cert_v1_8_xy_2_x.xyn3.out
+PIN x4 f79fa36e7cec4cf7e2113a11a425994c0dbc338190d5a6577c2a2a3c90d5d8f0 /mnt/g2/release/root/code/pk22/midrow/e3/kt/out_kt_cert_v1_8_xy_2_x.xyn4.out
+WROTE ca593466c1a566f9102c43f89991bb7ff667643aba2ba3e075152f862be3dc65 /mnt/g2/release/root/code/pk22/midrow/e3/src/e3_sq2_v2.py
+STATIC ast.parse OK /mnt/g2/release/root/code/pk22/midrow/e3/src/e3_sq2_v2.py
+RUN N=4 rc=0
+C-MANIFEST (M4XY_KV_v1, m4xy_reader_v1_1.py and the asm output are rows of MANIFEST_M4XY_V1_1_v1.sha256 with these sha256s) -> PASS
+C-LOAD (M4XY_KV_v1 through m4xy_reader_v1_1.load bound to its asm output, expected sha256 and the reader's own sha256 given: load passed) -> PASS
+C-LEMMA (C10_RECORD_v1.kv: FORMAT C10_KV_v1, STATUS CERTIFIED, CLAIM with C-SPAN and C-PURE10, a row of MANIFEST_C10_V1_3_CERT_c1.sha256; kt_cert_v1_8_xy_2 x records (first line naming 7f6d0e0f, VERDICT VALID, C-T0ZERO PASS, PLANT-T0ZERO FIRES, rows of MANIFEST_V1_8_XY_2_X_v1.sha256): x.xyn4 ok, x.xyn3 ok) -> PASS
+C-JMIN-GRID (the first piece's jlo 349.3562470527477 equals the record's N4_XY_JMIN 349.3562470527477 exactly: the law holds on every piece) -> PASS
+C-MONO-J (xy: the tail rates, the far items' (2 + w + p)/c <= 300 and gB's (d_max + 1)/rho_G <= 300, so J L'(J) is nonincreasing on J >= 300; failures []) -> PASS
+C-LIMIT (xy: the last piece's R_hat 3.0188053827802320e-01 is at least the t -> 0 limit 300 M_1/D = 3.0187932702581303e-01) -> PASS
+ROWS N=4 xy: first piece R_hat 4.4998765825297228e+00 (full 4.5111262739860466e+00), last piece R_hat 3.0188053827802320e-01; C0 = 300 M_1/D 3.0187932702581303e-01; engine t^0 M_0/D 0; J_MIN 349.3562470527477
+C-ROUND (every written c2_hi >= the written R_hat squared; failures 0) -> PASS
+RECORD /mnt/g2/release/root/code/pk22/midrow/e3/out/e3_sq2_v2_N4.json sha256 0b1b4ec7978e58d90cfcad3533b44e6adf9c95e40711abd5fd4b12f23f989ac2 pieces 843 kinds ['xy']
+VERDICT VALID
+RUN N=3 rc=0
+C-MANIFEST (M4XY_KV_v1, m4xy_reader_v1_1.py and the asm output are rows of MANIFEST_M4XY_V1_1_v1.sha256 with these sha256s) -> PASS
+C-LOAD (M4XY_KV_v1 through m4xy_reader_v1_1.load bound to its asm output, expected sha256 and the reader's own sha256 given: load passed) -> PASS
+C-LEMMA (C10_RECORD_v1.kv: FORMAT C10_KV_v1, STATUS CERTIFIED, CLAIM with C-SPAN and C-PURE10, a row of MANIFEST_C10_V1_3_CERT_c1.sha256; kt_cert_v1_8_xy_2 x records (first line naming 7f6d0e0f, VERDICT VALID, C-T0ZERO PASS, PLANT-T0ZERO FIRES, rows of MANIFEST_V1_8_XY_2_X_v1.sha256): x.xyn4 ok, x.xyn3 ok) -> PASS
+C-JMIN-GRID (the first piece's jlo 300.0 equals the record's N3_XY_JMIN 300.0 exactly: the law holds on every piece) -> PASS
+C-MONO-J (xy: the tail rates, the far items' (2 + w + p)/c <= 300 and gB's (d_max + 1)/rho_G <= 300, so J L'(J) is nonincreasing on J >= 300; failures []) -> PASS
+C-LIMIT (xy: the last piece's R_hat 2.7301746437209324e-01 is at least the t -> 0 limit 300 M_1/D = 2.7301654988302130e-01) -> PASS
+ROWS N=3 xy: first piece R_hat 3.6955898565418823e+00 (full 3.7048288311832370e+00), last piece R_hat 2.7301746437209324e-01; C0 = 300 M_1/D 2.7301654988302130e-01; engine t^0 M_0/D 0; J_MIN 300.0
+C-ROUND (every written c2_hi >= the written R_hat squared; failures 0) -> PASS
+RECORD /mnt/g2/release/root/code/pk22/midrow/e3/out/e3_sq2_v2_N3.json sha256 83251af95bf9e015a0fe6532c330ea3ad9d16b4086401b891b6b426a2e41fe06 pieces 904 kinds ['xy']
+VERDICT VALID

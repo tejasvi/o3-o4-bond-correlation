@@ -1,0 +1,173 @@
+m3_run_r0b_v1_4 item W3ek109.4 LIM 540; script sha256 8837ee03cee63988932fd90cc4c4d6b48a9bb75bebad834b7a8ca7d87d7ff7dc; python 3.14.4
+STAGE-CPU C-HASH start 0.03 s
+C-HASH (10 modules, the kernel files, 3 parts of this script, 20 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.12 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v16_1: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=; 6 layer calls in E2_ma/lp_moment_ma/lp_ma/pos_ma/E2_ball/e2, each with fallback=False, 6 wanted) -> PASS
+PLANT-CALLER (m3_bar_v16_1 with one E2_combine call's plan= removed) -> FIRES
+PLANT-CALLER-FLAG (m3_bar_v16_1 with pos_ma's fallback=False dropped) -> FIRES
+C-SERIES (no *_series( call in 10 modules, the kernel files, this script and its 3 parts) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-330.000000000 +/- 2.94e-12] overlaps the layer's [-330.000000000 +/- 2.64e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU W3e keys piece 109 start 0.16 s
+C-SPLIT (W3e: segments (pieces: entries) 1..99: 0..14, 101..199: 15..19, 201..299: 20..23, 301..399: 24..39 over its 40 computed keys; the piece ranges disjoint, every key in exactly one segment, pieces 1..40 (m3_run_r0b_v1_3's) and entry 0 in the first) -> PASS
+PLANT-SPLIT (W3e with its segment of pieces 101..199 starting at entry 14: M,2,3,e1 claimed by two segments) -> FIRES
+PLANT-SPLIT-GAP (W3e with its segment of pieces 101..199 starting at entry 16: M,3,3,e1 claimed by none) -> FIRES
+PLANT-CLAIM-TWICE (W3e M,1,1,ee claimed a second time: refused and listed) -> FIRES
+PLANT-SRC-NAME (the hand-offs m3_run_r0b_v1_3_W3ek41.4 and m3_run_r0b_v1_4_W3ek40.4: refused [True, True]) -> FIRES
+PLANT-SRC-SHA (m3_run_r0b_v1_3_VNu.4.json with its header's script 9fceb247 (V13_SHA flipped) or 8837ee03 (this script's) in place of the pinned 9fceb247: refused [True, True]; unchanged: read True) -> FIRES
+PLANT-SRC-CAPPED (clean CAP-STOP first lines: m3_run_r0b_v1_3 k40 under V13_SHA and m3_run_r0b_v1_4 k41 under this script's sha accepted; V13_SHA flipped at k40, m3_run_r0b_v1_3 at k41, m3_run_r0b_v1_4 at k40 and this script's sha flipped at k41 refused: [True, True, False, False, False, False]) -> FIRES
+C-GRAPH-LIST (W3e: the columns ['vac', 'int', 'vac'] give V 9 and 14 edges; the list's 8 pairs [(0, 1), (0, 2), (0, 3), (1, 2), (3, 6), (6, 7), (6, 8), (7, 8)], F 17 (the list: 17); the entries use 8 of them) -> PASS
+PLANT-GRAPH-LIST (W3e: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-HANDOFF (m3_run_r0b_v1_3_VNu.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_VNc.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 9fceb247) -> PASS
+C-PREP-STAGES (VN: VNu.4 and VNc.4, of VN and VN, scalars ['nE', 'nE4', 'rE', 'rE_parts'] and ['Pout', 'Pout_p', 'alpha_lo', 'farbase', 'nC6', 'nC8']) -> PASS
+PLANT-PART-DROP (M,1,1,ee: its first group without its first factor ['st', 1, 0]) -> FIRES
+PLANT-PART-DUP (M,1,1,ee with its first factor ['st', 1, 0] doubled) -> FIRES
+PLANT-PART-MOVE (M,1,1,ee with ['st', 1, 0] moved from group 0 to group 1: C-PART-ID passes, C-PART-RULE must fail) -> FIRES
+PLANT-NORM-REL (entry_moment at NORM_REL 0.02 on [0.97, 1.03] sqrt, [0.91, 1.09] p 6, [0.85, 1.15] p 6, [0.94, 1.06] sqrt and a MAFallback: ['ma', 'ma', 'fb', 'fb', 'fb']; ma, ma, fb, fb, fb wanted) -> FIRES
+PLANT-BIGRULE (declared set {kA}: kA on a 10-moment table with [0.97, 1.03] sqrt, [0.85, 1.15] p 6 and a MAFallback, kB on a 1e7-moment table with [0.85, 1.15] p 6: ['ma', 'big', 'fb', 'fb']; ma, big, fb, fb wanted; the big one's inflation 2.356707e-02 against 1.15^(1/6) - 1 = 2.356707e-02) -> FIRES
+PLANT-TABLE-COUNT (layer tables on 3 forms at D 4: 35 moments, and with the pair form capped at 1: 25; table_moments 35 and 25 wanted) -> FIRES
+PLANT-PARTLINE (part_lines on m0u 0.1, a barp 0.2, a c series norm 0.05 and an undefined u series norm: {'rem': 1.32825, 'tail': 1.265, 'ann': 1.38, 'far': 1.15}, {'rem': 1.32825, 'tail': 1.265, 'ann': 1.38, 'far': 1.15} wanted; part_ok refuses rem at its line x (1 + 1e-6) and a part without big-rule factors at 1.16) -> FIRES
+PLANT-PARTLINE-EXEMPT (an exempt factor of inflation 0.34 beside a non-exempt 0.0666: unwidened rem line 1.226590000, widened 1.643630600; a part at the unwidened line x (1 + 1e-6) must fail, the widened line would pass it) -> FIRES
+PLANT-BIGCAP (cap_over at a cap of 0.10 on inflations 0.05, 0.34 and undefined, with k2 exempt and without) -> FIRES
+PLANT-EXEMPT-E (exempt_over with declared e 4.795: e = 1.1 x 4.795 + 1 ulp refused, e = 1.1 x 4.795 passed; e 4.795 against a declared e lowered by 20%, and an undefined e, refused) -> FIRES
+PLANT-NORM-OK (norm_ok on radius 2.1e-2, midpoint 0 and radius 1.9e-2: [False, False, True]; [False, False, True] wanted) -> FIRES
+PLANT-BUDGET (budget_ok must refuse a norm radius 1.05 NORM_REL and rnd 0.11 x bar, and pass 0.95 NORM_REL with rnd 0.09 x bar) -> FIRES
+C-HANDOFF (m3_run_r0b_v1_4_W3ek108.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header with script 8837ee03) -> PASS
+PIECE-START W3e piece 109 resumes at entry 17 of 40 with 27 units of M,0,2,e1 restored after 0 capped piece(s); stop factor 1.5; LIM 540; segment pieces 101..199, entries 15..19
+C-RULE (VN: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 4.7e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (VN: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 9 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 2.241056025892169, 2.239486019390087) -> PASS
+C-PREP-REF (VN: m3ref_v1_10_V3N.4.all_z9sym.out PREPJSON of family V3N, N 4, J 300.0) -> PASS
+PARTITION M,0,2,e1 rule colh: G 3: {["st", 2, 0], ["p", 0]} | {["p", 2]} | {["xi", [0, 3]]}
+C-PART-ID (M,0,2,e1 rule colh: the 3 groups hold exactly the entry's 4 factors as a multiset, none empty; G 3) -> PASS
+C-PART-RULE (M,0,2,e1: the groups against the rule colh recomputed from the list's encodings: equal) -> PASS
+QCAP M,0,2,e1: the largest pair degree of its F_i 6; qcap 8 (the list's q_degree 8); qcap_of 2.97 s
+BIGRULE-SET M,0,2,e1: 44 norms declared; the big set []
+GDATA-CPU M,0,2,e1: 0.01 s (group series, majorants and F_i)
+TABLE c forms [9, 12] D 12 caps None: 0 exact zeros
+TABLE-CPU c forms [9, 12] D 12 caps None: 0.00 s
+UNIT M,0,2,e1 g|0|ser|0|12|c: 0.00 s
+UNIT M,0,2,e1 g|1|ser|0|12|c: 0.00 s
+TABLE c forms [11] D 12 caps None: 0 exact zeros
+TABLE-CPU c forms [11] D 12 caps None: 0.00 s
+UNIT M,0,2,e1 g|2|ser|0|12|c: 0.00 s
+TABLE c forms [0, 1, 2, 9, 10, 12] D 18 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 9, 10, 12] D 18 caps None: 0.43 s
+UNIT M,0,2,e1 g|0|bar|0|3|c: 0.50 s
+TABLE c forms [6, 7, 8, 14, 15, 16] D 12 caps None: 26 exact zeros
+TABLE-CPU c forms [6, 7, 8, 14, 15, 16] D 12 caps None: 0.05 s
+UNIT M,0,2,e1 g|1|bar|0|3|c: 0.05 s
+TABLE c forms [0, 3] D 15 caps None: 0 exact zeros
+TABLE-CPU c forms [0, 3] D 15 caps None: 0.00 s
+UNIT M,0,2,e1 g|2|bar|4|3|c: 0.00 s
+UNIT M,0,2,e1 g|1|bar|1|3|c: 0.00 s
+UNIT M,0,2,e1 g|2|bar|3|3|c: 0.00 s
+TABLE c forms [6, 7, 8, 14, 15, 16] D 15 caps None: 26 exact zeros
+TABLE-CPU c forms [6, 7, 8, 14, 15, 16] D 15 caps None: 0.14 s
+UNIT M,0,2,e1 g|1|bar|2|3|c: 0.16 s
+UNIT M,0,2,e1 g|2|bar|2|3|c: 0.00 s
+TABLE c forms [6, 7, 8, 14, 15, 16] D 18 caps None: 26 exact zeros
+TABLE-CPU c forms [6, 7, 8, 14, 15, 16] D 18 caps None: 0.38 s
+UNIT M,0,2,e1 g|1|bar|3|3|c: 0.48 s
+UNIT M,0,2,e1 g|2|bar|1|3|c: 0.00 s
+TABLE c forms [6, 7, 8, 14, 15, 16] D 21 caps None: 26 exact zeros
+TABLE-CPU c forms [6, 7, 8, 14, 15, 16] D 21 caps None: 0.97 s
+UNIT M,0,2,e1 g|1|bar|4|3|c: 1.14 s
+TABLE c forms [0, 3, 11] D 6 caps None: 1 exact zeros
+TABLE-CPU c forms [0, 3, 11] D 6 caps None: 0.00 s
+UNIT M,0,2,e1 g|2|bar|0|3|c: 0.00 s
+UNIT M,0,2,e1 g|0|bar|1|3|c: 0.06 s
+TABLE c forms [0, 1, 2, 9, 10, 12] D 21 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 9, 10, 12] D 21 caps None: 0.93 s
+UNIT M,0,2,e1 g|0|bar|2|3|c: 1.42 s
+TABLE c forms [0, 1, 2, 9, 10, 12] D 24 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 9, 10, 12] D 24 caps None: 2.11 s
+UNIT M,0,2,e1 g|0|bar|3|3|c: 3.71 s
+TABLE c forms [0, 1, 2, 9, 10, 12] D 27 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 9, 10, 12] D 27 caps None: 4.26 s
+UNIT M,0,2,e1 g|0|bar|4|3|c: 7.98 s
+TABLE p forms [0, 1, 2, 9, 10, 12] D 36 caps None: 26 exact zeros
+TABLE-CPU p forms [0, 1, 2, 9, 10, 12] D 36 caps None: 24.55 s
+UNIT M,0,2,e1 g|0|barp|0|6|p: 42.70 s
+TABLE p forms [6, 7, 8, 14, 15, 16] D 24 caps None: 26 exact zeros
+TABLE-CPU p forms [6, 7, 8, 14, 15, 16] D 24 caps None: 1.76 s
+UNIT M,0,2,e1 g|1|barp|0|6|p: 2.22 s
+TABLE p forms [0, 3, 11] D 12 caps None: 1 exact zeros
+TABLE-CPU p forms [0, 3, 11] D 12 caps None: 0.00 s
+UNIT M,0,2,e1 g|2|barp|0|6|p: 0.01 s
+NORM-RULE M,0,2,e1: 0 entry-level moments took v13's call (norm radius over NORM_REL 0.02 of its midpoint, or a MAFallback of the layer's other kinds; computed in this run, restored units not counted); 0 norms of the entry took the big-table rule (restored units and the group cache included; largest inflation 0.000e+00)
+C-PART-EXP (M,0,2,e1: G 3; 45 group norms at (kind, exponent) [('bar', 3), ('barp', 6), ('ser', 6), ('ser', 12)]; G x 1/q exactly 1/2, 1/4, 1 and 1/2 for ser 2G, ser 4G, bar G and barp 2G, every group with its barp) -> PASS
+PLANT-PART-EXP (M,0,2,e1: the same norms with exponents from G - 1 = 2) -> FIRES
+GDATA-CPU M,0,2,e1 (standard grouping, series only): 0.14 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 8 caps {1: 8}: 20387 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 8 caps {1: 8}: 11.05 s
+AK-TERMS M,0,2,e1 (standard grouping, series only): 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.07e-05); totals radius / |mid| ['5.13e-13', '6.12e-11', '7.87e-09', '1.19e-06']; every total passes
+UNIT M,0,2,e1 (standard grouping, series only) ak: 11.07 s
+AK-ONLY-INFO M,0,2,e1: forms equal to the partition run's, Dn 8 (the partition run: 8), tables 9 -> 10, 11.36 s
+C-AK-SAME (M,0,2,e1 rule colh: its a_k balls against the standard grouping's series-only a_k: overlap [True, True, True, True]; largest mid difference / max(1, |a_k|) 0.00e+00, INFO) -> PASS
+GDATA-CPU M,0,2,e1 (planted: ['st', 2, 0] dropped): 0.13 s (group series, majorants and F_i)
+AK-TERMS M,0,2,e1 (planted: ['st', 2, 0] dropped): 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 2.52e-07); totals radius / |mid| ['7.21e-15', '5.48e-13', '5.23e-11', '6.21e-09']; every total passes
+UNIT M,0,2,e1 (planted: ['st', 2, 0] dropped) ak: 0.02 s
+PLANT-AK-DROP (M,0,2,e1: its partition without the factor ['st', 2, 0]: overlap with the standard a_k [False, False, False, False]; 0.26 s) -> FIRES
+C-MONO-FAR M,0,2,e1: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 4.5850e-01 > 0 (m_F 4) -> PASS
+C-BUDGET M,0,2,e1: largest relative radius of a norm 1.011e-04 (<= NORM_REL 0.02; big-rule norms out), rnd 3.40e-13 <= 0.1 x bar 1.740e-05 -> PASS
+C-BIGCAP M,0,2,e1: big-rule inflations at most 0.1 (no exemption): over [] -> PASS
+BIGRULE-INFO M,0,2,e1: 0 norms by the big-table rule, largest inflation 0.000e+00
+C-AK-LIST M,0,2,e1: certified a_k mids against the list's ak_float: largest |mid - float| / max(1, |float|) 1.65e-13 (tol 1e-9) -> PASS
+AKRAD-INFO M,0,2,e1: largest relative radius of an a_k 1.21e-06
+ENTRY M,0,2,e1 ak ['0.270541134526', '0.457927881001', '0.658135629057', '0.842366669303'] err 1.740415854e-05 parts rem 1.645550895e-05 tail 4.635093858e-07 ann 4.851398631e-07 far 1.245661629e-38 rnd 3.396e-13 groups 3 Dn 8 forms 16
+STAGE-CPU entry M,0,2,e1 75.30 s (this piece; 27 units of the entry restored)
+PARTITION M,0,3,e1 rule colh: G 3: {["st", 3, 0], ["p", 0]} | {["p", 2]} | {["xi", [0, 3]]}
+C-PART-ID (M,0,3,e1 rule colh: the 3 groups hold exactly the entry's 4 factors as a multiset, none empty; G 3) -> PASS
+C-PART-RULE (M,0,3,e1: the groups against the rule colh recomputed from the list's encodings: equal) -> PASS
+QCAP M,0,3,e1: the largest pair degree of its F_i 6; qcap 8 (the list's q_degree 8); qcap_of 2.03 s
+BIGRULE-SET M,0,3,e1: 44 norms declared; the big set []
+GDATA-CPU M,0,3,e1: 0.01 s (group series, majorants and F_i)
+AK-TERMS M,0,3,e1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 3.90e-05); totals radius / |mid| ['3.01e-12', '3.72e-11', '3.03e-09', '3.34e-07']; every total passes
+UNIT M,0,3,e1 ak: 0.03 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 4 caps {1: 16}: 134 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 4 caps {1: 16}: 0.16 s
+UNIT M,0,3,e1 m0u: 0.17 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 4 caps {1: 16}: 134 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16] D 4 caps {1: 16}: 0.16 s
+UNIT M,0,3,e1 m0c: 0.17 s
+TABLE u forms [9, 10, 12] D 6 caps None: 1 exact zeros
+TABLE-CPU u forms [9, 10, 12] D 6 caps None: 0.00 s
+UNIT M,0,3,e1 g|0|ser|0|6|u: 0.00 s
+TABLE u forms [0, 1, 2, 9, 10, 12] D 18 caps None: 26 exact zeros
+TABLE-CPU u forms [0, 1, 2, 9, 10, 12] D 18 caps None: 0.37 s
+UNIT M,0,3,e1 g|0|ser|1|6|u: 0.48 s
+TABLE u forms [0, 1, 2, 9, 10, 12] D 24 caps None: 26 exact zeros
+TABLE-CPU u forms [0, 1, 2, 9, 10, 12] D 24 caps None: 1.78 s
+UNIT M,0,3,e1 g|0|ser|2|6|u: 38.65 s
+TABLE u forms [0, 1, 2, 9, 10, 12] D 30 caps None: 26 exact zeros
+TABLE-CPU u forms [0, 1, 2, 9, 10, 12] D 30 caps None: 6.78 s
+UNIT M,0,3,e1 g|0|ser|3|6|u: 386.51 s
+C-PIECE (W3e piece 109: entries 17..17 done, next 18 of 20; segment entries 15..19 of 40 computed keys; 28 units computed, 15 units of M,0,3,e1 carried) -> PASS
+FALLBACKS 2 (MAFallback recomputes in arb, INFO): u forms [0, 1, 2, 9, 10, 12] D 24 caps None: E2: M-a error 5.48e+12 of 1.22e+12; u forms [0, 1, 2, 9, 10, 12] D 30 caps None: E2: M-a error 2.23e+21 of 6.97e+17
+HANDOFF m3_run_r0b_v1_4_W3ek109.4.json ade40e6df80293067ec145b2d1a164ce545d8594ed48f0bc7e0f85be83d9ddb8
+C-HANDOFF-RT (the hand-off decodes to exactly the values written) -> PASS
+PLANT-HANDOFF (body byte tampered in memory) -> FIRES
+PLANT-HANDOFF (header script sha tampered in memory) -> FIRES
+PLANT-HANDOFF (END checksum tampered in memory) -> FIRES
+PLANT-VERDICT (a producer record whose VERDICT line extends 'VERDICT VALID' must be refused) -> FIRES
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 503.91 s
+VERDICT VALID

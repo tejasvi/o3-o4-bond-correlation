@@ -1,0 +1,4580 @@
+{
+ "list": "S8_ENTRY_LIST_v3",
+ "author": "pk11",
+ "route": "no 4-column entry: U9 and the end vectors on the 10-mode basis B by chain steps; the decision of 2026-11-07 (H, L and S4 are not used)",
+ "conventions": {
+  "vertex": "3*col + row (row 0 T, 1 M, 2 B); columns 0-indexed",
+  "horizontals": "1.0 between adjacent columns, rows T-T, M-M, B-B",
+  "column_types": {
+   "vac": "T-M A_EX, M-B A_EX, T-B B_EX; A_EX = (3+sqrt(21))/6, B_EX = (3*sqrt(5)-sqrt(21))/12 (vacmod2)",
+   "int": "T-M 1, M-B 1",
+   "free": "T-M 1, M-B 1, no T-B"
+  },
+  "cp": "[cp, a, col]: trial state a on column col; a = 0 the vacres polynomial p (q1, q2, q3) of vacres_K3_N*_sym_v1.json; a >= 1: S[0][a] + sum_beta S[beta][a] xi_beta over BASIS9 on that column, from ts_N*_z9sym_v1.json (states 4..9 have nonzero quadratic BASIS9 rows)",
+  "xi": "[xi, TM, col]: xi_TM = J(1 - sigma_T . sigma_M) on column col (riglap xi factor, c9 = e_TM)",
+  "K": "3 for every entry (a_0..a_3 plus the certified bar, Lemma U)",
+  "J_REF": 300,
+  "trial_set": {
+   "ts_N4": "ts_N4_J170_D_S_z9sym_v1.json:ea9d6c1bc72cdac5b6d55091766a908937c7ce2bf60257636824388ffe5b7b5d",
+   "ts_N3": "ts_N3_S_z9sym_v1.json:a298db655d832c0685a9aba093dd123d372698fa2fb7905a15f442bb0e35f8e6",
+   "vacres_N4": "vacres_K3_N4_sym_v1.json:b40859de2607f64cd127cb1834a04e9f33b3c2cbe4af9fe4f2bb80badaacd43e",
+   "vacres_N3": "vacres_K3_N3_sym_v1.json:e5a9b49fde1896ff1d87de1d4a44571376eeeeb31b0ce4205faecdd2463115c0"
+  },
+  "trial_set_field": "each record: trial_set = {ts: <name>:<full sha256>, vacres: <name>:<full sha256>} for its N (C-TRIAL)",
+  "N": [
+   3,
+   4
+  ]
+ },
+ "graphs": {
+  "D": {
+   "columns": [
+    "vac",
+    "vac"
+   ],
+   "pairs": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     3,
+     5
+    ]
+   ]
+  },
+  "N": {
+   "columns": [
+    "vac",
+    "int",
+    "vac"
+   ],
+   "pairs": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     3,
+     4
+    ]
+   ]
+  },
+  "E2": {
+   "columns": [
+    "vac",
+    "free"
+   ],
+   "pairs": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     4
+    ]
+   ]
+  },
+  "E3": {
+   "columns": [
+    "vac",
+    "int",
+    "free"
+   ],
+   "pairs": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     4
+    ]
+   ]
+  },
+  "FF": {
+   "columns": [
+    "free",
+    "free"
+   ],
+   "pairs": [
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     4
+    ]
+   ]
+  }
+ },
+ "entries": [
+  {
+   "key": "g,0,0",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     0,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "g,0,1",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     1,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "g,0,2",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     2,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": false
+  },
+  {
+   "key": "g,0,3",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     3,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "g,0,4",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     4,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,0,5",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     5,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,0,6",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     6,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,0,7",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     7,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,0,8",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     8,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,0,9",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     9,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,1,1",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     1,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "g,1,2",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     2,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": false
+  },
+  {
+   "key": "g,1,3",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     3,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "g,1,4",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     4,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,1,5",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     5,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,1,6",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     6,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,1,7",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     7,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,1,8",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     8,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,1,9",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     9,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,2,2",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     2,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "g,2,3",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     3,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": false
+  },
+  {
+   "key": "g,2,4",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     4,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,2,5",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     5,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,2,6",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     6,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,2,7",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     7,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,2,8",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     8,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,2,9",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     9,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,3,3",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     3,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "g,3,4",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     4,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,3,5",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     5,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,3,6",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     6,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,3,7",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     7,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,3,8",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     8,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,3,9",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     9,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,4,4",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     4,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,4,5",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     5,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,4,6",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     6,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,4,7",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     7,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,4,8",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     8,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,4,9",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     9,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,5,5",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "cp",
+     5,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,5,6",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "cp",
+     6,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,5,7",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "cp",
+     7,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,5,8",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "cp",
+     8,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,5,9",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "cp",
+     9,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,6,6",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "cp",
+     6,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,6,7",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "cp",
+     7,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,6,8",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "cp",
+     8,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,6,9",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "cp",
+     9,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,7,7",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ],
+    [
+     "cp",
+     7,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,7,8",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ],
+    [
+     "cp",
+     8,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,7,9",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ],
+    [
+     "cp",
+     9,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,8,8",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     8,
+     0
+    ],
+    [
+     "cp",
+     8,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "g,8,9",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     8,
+     0
+    ],
+    [
+     "cp",
+     9,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "g,9,9",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     9,
+     0
+    ],
+    [
+     "cp",
+     9,
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "DY,0",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     0,
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "DY,1",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     0,
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "DY,2",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     0,
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "DY,3",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     0,
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "DY,4",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     0,
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "DY,5",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "cp",
+     0,
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "DY,6",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "cp",
+     0,
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "DY,7",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ],
+    [
+     "cp",
+     0,
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "DY,8",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     8,
+     0
+    ],
+    [
+     "cp",
+     0,
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "DY,9",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     9,
+     0
+    ],
+    [
+     "cp",
+     0,
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "DYY",
+   "graph": "D",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "cp",
+     0,
+     1
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "T,0,0",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     0,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "T,0,1",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     1,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "T,0,2",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     2,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": false
+  },
+  {
+   "key": "T,0,3",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     3,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "T,0,4",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     4,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,0,5",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     5,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,0,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,0,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,0,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,0,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,1,1",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     1,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "T,1,2",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     2,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": false
+  },
+  {
+   "key": "T,1,3",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     3,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "T,1,4",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     4,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,1,5",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     5,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,1,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,1,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,1,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,1,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,2,2",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     2,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "T,2,3",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     3,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": false
+  },
+  {
+   "key": "T,2,4",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     4,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,2,5",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     5,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,2,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,2,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,2,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,2,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,3,3",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     3,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "T,3,4",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     4,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,3,5",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     5,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,3,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,3,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,3,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,3,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,4,4",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     4,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,4,5",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     5,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,4,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,4,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,4,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,4,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,5,5",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "cp",
+     5,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,5,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,5,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,5,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,5,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,6,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,6,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,6,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,6,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,7,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,7,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,7,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,8,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     8,
+     0
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "T,8,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     8,
+     0
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "T,9,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     9,
+     0
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,0,0",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     0,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "TX,0,1",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     1,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "TX,0,2",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     2,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "TX,0,3",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     3,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "TX,0,4",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     4,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,0,5",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     5,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,0,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,0,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,0,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,0,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,1,1",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     1,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "TX,1,2",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     2,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "TX,1,3",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     3,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "TX,1,4",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     4,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,1,5",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     5,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,1,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,1,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,1,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,1,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,2,2",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     2,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "TX,2,3",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     3,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "TX,2,4",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     4,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,2,5",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     5,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,2,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,2,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,2,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,2,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,3,3",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     3,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "TX,3,4",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     4,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,3,5",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     5,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,3,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,3,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,3,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,3,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,4,4",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     4,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,4,5",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     5,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,4,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,4,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,4,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,4,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,5,5",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     5,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,5,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,5,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,5,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,5,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,6,6",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     6,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,6,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,6,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,6,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,7,7",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     7,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,7,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,7,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,8,8",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     8,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     8,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,8,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     8,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "TX,9,9",
+   "graph": "N",
+   "factors": [
+    [
+     "cp",
+     9,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ],
+    [
+     "cp",
+     9,
+     2
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "e,0",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "eX,0",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "e,1",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "eX,1",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "e,2",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": false
+  },
+  {
+   "key": "eX,2",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "e,3",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "eX,3",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "e,4",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "eX,4",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "e,5",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "eX,5",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "e,6",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "eX,6",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "e,7",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "eX,7",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "e,8",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     8,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "eX,8",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     8,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "e,9",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     9,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "eX,9",
+   "graph": "E2",
+   "factors": [
+    [
+     "cp",
+     9,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "f,0",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "fX,0",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "f,1",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "fX,1",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "f,2",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": false
+  },
+  {
+   "key": "fX,2",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "f,3",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "fX,3",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "f,4",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "fX,4",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     4,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "f,5",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "fX,5",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     5,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "f,6",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "fX,6",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     6,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "f,7",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "fX,7",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     7,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "f,8",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     8,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "new": true
+  },
+  {
+   "key": "fX,8",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     8,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "f,9",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     9,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "fX,9",
+   "graph": "E3",
+   "factors": [
+    [
+     "cp",
+     9,
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": true
+  },
+  {
+   "key": "z",
+   "graph": "FF",
+   "factors": [],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "wXw",
+   "graph": "FF",
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  },
+  {
+   "key": "wXwX",
+   "graph": "FF",
+   "factors": [
+    [
+     "xi",
+     "TM",
+     0
+    ],
+    [
+     "xi",
+     "TM",
+     1
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "new": false
+  }
+ ],
+ "counts": {
+  "D": {
+   "entries": 66,
+   "parity_zero": 21,
+   "with a state >= 4": 51
+  },
+  "N": {
+   "entries": 110,
+   "parity_zero": 21,
+   "with a state >= 4": 90
+  },
+  "E2": {
+   "entries": 20,
+   "parity_zero": 3,
+   "with a state >= 4": 12
+  },
+  "E3": {
+   "entries": 20,
+   "parity_zero": 3,
+   "with a state >= 4": 12
+  },
+  "FF": {
+   "entries": 3,
+   "parity_zero": 0,
+   "with a state >= 4": 0
+  },
+  "total": {
+   "entries": 219,
+   "parity_zero": 48,
+   "with a state >= 4": 165,
+   "nonzero with a state >= 4": 125
+  }
+ }
+}

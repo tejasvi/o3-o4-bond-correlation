@@ -1,0 +1,91 @@
+kt_s8rf_v1 sha256 0912675c6b525bb6b7e59a4fe2293ff1e998cd8ca5b238a3da2b9fc4ace22a1e ITEM=n3 LIM=60 (RLIMIT_CPU soft 60, hard 65)
+C-HASH PASS (26 files)
+PART H (t = 0): harmonic strip 241 columns, n = 2, window left outer column c0 = 120
+C-GRAM-H: my E[s_a(c) s_b(c+1)] against S8's g,a,b / g,0,0 (V3D a_0, 55 entries): largest |difference| / max(1, |g|) 2.37e-12 (tolerance 1e-8) -> PASS
+C-PIN-H: the reflected formula for xi_TM with theta the half-step reflection 2.363207815653e-02 against the chain's harmonic pnorm2 = DYY/g00 - (DY,0/g00)^2 2.363207815653e-02 (relative 5.36e-14, tolerance 1e-9) -> PASS
+PLANT-PIN: the site reflection (Var xi_TM) 3.035278680851e-01 against pnorm2: relative 1.18e+01 -> FIRES
+C-PW-H: my W3 in-span part for xi_TM at the half-step plane 2.363207815652e-02 against the chain's |p_W|^2 at t = 0 (s8core Bt from DY,a, g,a,b) 2.363207815653e-02 (relative 1.26e-13, tolerance 1e-8) -> PASS
+C-SPAN10 xi_TM: the ten-state part 2.363207815652e-02 against pnorm2 2.363207815653e-02 (relative 1.26e-13, tolerance 1e-7) -> PASS
+C-LOOP-H N3 D3: theta := identity gives 2.053134535893e-01 against the window closed form E[X_c^2] 2.053134535893e-01 (relative 7.8e-15) -> PASS
+JH N3 D3 L0: ||Q0 X u||^2 2.249861e-05 (0q 1.5394e-05, 2q 1.7516e-05, 4q 4.9827e-06) | general engine relative 4.8e-13 (C-WICK PASS) | in-span W3 1.7516e-05 B4 2.2047e-05 B5 2.2296e-05 B6 2.2349e-05 ALL 2.249861e-05 (C-SPAN10 relative 5.1e-13 PASS; W3 / 2q - 1 = 4.1e-13) | rho = sqrt / pX(t=0) 0.01047 (C-CS-H PASS)
+C-JREF N3 D3 L0: against the review 2.2499e-05 (2q 1.752e-05, 4q 4.983e-06): relative 1.7e-05, 2.3e-04, 7.0e-05 -> PASS
+JH N3 D3 LH: ||Q0 X u||^2 2.589551e-06 (0q 1.5394e-05, 2q 2.4889e-06, 4q 1.0061e-07) | general engine relative 3.5e-12 (C-WICK PASS) | in-span W3 2.4889e-06 B4 2.5854e-06 B5 2.5883e-06 B6 2.5886e-06 ALL 2.589551e-06 (C-SPAN10 relative 2.4e-13 PASS; W3 / 2q - 1 = 1.1e-13) | rho = sqrt / pX(t=0) 0.00355 (C-CS-H PASS)
+JH N3 D3 L1: ||Q0 X u||^2 3.612294e-07 (0q 1.5394e-05, 2q 3.5913e-07, 4q 2.0946e-09) | general engine relative 2.5e-11 (C-WICK PASS) | in-span W3 3.5913e-07 B4 3.6119e-07 B5 3.6122e-07 B6 3.6122e-07 ALL 3.612294e-07 (C-SPAN10 relative 2.2e-12 PASS; W3 / 2q - 1 = 2.1e-12) | rho = sqrt / pX(t=0) 0.00133 (C-CS-H PASS)
+C-JREF N3 D3 L1: against the review 3.6123e-07 (2q 3.591e-07, 4q 2.095e-09): relative 1.7e-06, 9.7e-05, 1.8e-04 -> PASS
+JH N3 D3 R0: ||Q0 X u||^2 2.249861e-05 (0q 1.5394e-05, 2q 1.7516e-05, 4q 4.9827e-06) | general engine relative 6.2e-13 (C-WICK PASS) | in-span W3 1.7516e-05 B4 2.2047e-05 B5 2.2296e-05 B6 2.2349e-05 ALL 2.249861e-05 (C-SPAN10 relative 1.6e-13 PASS; W3 / 2q - 1 = -1.4e-13) | rho = sqrt / pX(t=0) 0.01047 (C-CS-H PASS)
+C-JREF N3 D3 R0: against the review 2.2499e-05 (2q 1.752e-05, 4q 4.983e-06): relative 1.7e-05, 2.3e-04, 7.0e-05 -> PASS
+JH N3 D3 RH: ||Q0 X u||^2 2.589551e-06 (0q 1.5394e-05, 2q 2.4889e-06, 4q 1.0061e-07) | general engine relative 4.3e-12 (C-WICK PASS) | in-span W3 2.4889e-06 B4 2.5854e-06 B5 2.5883e-06 B6 2.5886e-06 ALL 2.589551e-06 (C-SPAN10 relative 1.4e-13 PASS; W3 / 2q - 1 = 2.5e-14) | rho = sqrt / pX(t=0) 0.00355 (C-CS-H PASS)
+JH N3 D3 R1: ||Q0 X u||^2 3.612294e-07 (0q 1.5394e-05, 2q 3.5913e-07, 4q 2.0946e-09) | general engine relative 2.5e-11 (C-WICK PASS) | in-span W3 3.5913e-07 B4 3.6119e-07 B5 3.6122e-07 B6 3.6122e-07 ALL 3.612294e-07 (C-SPAN10 relative 2.0e-12 PASS; W3 / 2q - 1 = 2.0e-12) | rho = sqrt / pX(t=0) 0.00133 (C-CS-H PASS)
+C-JREF N3 D3 R1: against the review 3.6123e-07 (2q 3.591e-07, 4q 2.095e-09): relative 1.7e-06, 9.7e-05, 1.8e-04 -> PASS
+PLANT-THETA N3 D3: theta := identity (2.053135e-01) against the reflected L0 value (2.249861e-05) -> FIRES
+INFO JH N3 D3: pX^2(t=0) 2.052981e-01; S8's plane (LH) against L0: ratio of ||Q0 X u|| 0.3393 (L1 0.1267); right side LH / R0 0.3393
+C-LOOP-H N3 D4: theta := identity gives 1.391351644118e-01 against the window closed form E[X_c^2] 1.391351644118e-01 (relative 4.2e-15) -> PASS
+JH N3 D4 L0: ||Q0 X u||^2 4.215211e-03 (0q 7.2332e-06, 2q 3.3506e-04, 4q 3.8802e-03) | general engine relative 1.1e-13 (C-WICK PASS) | in-span W3 3.3506e-04 B4 1.7940e-03 B5 2.4958e-03 B6 2.6959e-03 ALL 4.215211e-03 (C-SPAN10 relative 7.7e-14 PASS; W3 / 2q - 1 = -8.0e-14) | rho = sqrt / pX(t=0) 0.17406 (C-CS-H PASS)
+C-JREF N3 D4 L0: against the review 4.2152e-03 (2q 3.351e-04, 4q 3.880e-03): relative 2.5e-06, 1.3e-04, 3.9e-05 -> PASS
+JH N3 D4 LH: ||Q0 X u||^2 8.577377e-05 (0q 7.2332e-06, 2q 3.7408e-05, 4q 4.8366e-05) | general engine relative 1.0e-14 (C-WICK PASS) | in-span W3 3.7408e-05 B4 6.8464e-05 B5 7.6627e-05 B6 7.7899e-05 ALL 8.577377e-05 (C-SPAN10 relative 9.6e-14 PASS; W3 / 2q - 1 = 2.4e-13) | rho = sqrt / pX(t=0) 0.02483 (C-CS-H PASS)
+JH N3 D4 L1: ||Q0 X u||^2 5.649114e-06 (0q 7.2332e-06, 2q 4.8396e-06, 4q 8.0952e-07) | general engine relative 7.3e-13 (C-WICK PASS) | in-span W3 4.8396e-06 B4 5.5007e-06 B5 5.5956e-06 B6 5.6037e-06 ALL 5.649114e-06 (C-SPAN10 relative 1.4e-13 PASS; W3 / 2q - 1 = 1.9e-13) | rho = sqrt / pX(t=0) 0.00637 (C-CS-H PASS)
+C-JREF N3 D4 L1: against the review 5.6491e-06 (2q 4.840e-06, 4q 8.095e-07): relative 2.6e-06, 8.4e-05, 2.4e-05 -> PASS
+JH N3 D4 R0: ||Q0 X u||^2 7.322873e-05 (0q 7.2332e-06, 2q 3.3783e-05, 4q 3.9446e-05) | general engine relative 8.8e-14 (C-WICK PASS) | in-span W3 3.3783e-05 B4 6.4839e-05 B5 6.5490e-05 B6 6.8215e-05 ALL 7.322873e-05 (C-SPAN10 relative 9.8e-14 PASS; W3 / 2q - 1 = -1.5e-13) | rho = sqrt / pX(t=0) 0.02294 (C-CS-H PASS)
+C-JREF N3 D4 R0: against the review 7.3229e-05 (2q 3.378e-05, 4q 3.945e-05): relative 3.7e-06, 8.4e-05, 1.0e-04 -> PASS
+JH N3 D4 RH: ||Q0 X u||^2 5.266318e-06 (0q 7.2332e-06, 2q 4.5506e-06, 4q 7.1572e-07) | general engine relative 4.9e-13 (C-WICK PASS) | in-span W3 4.5506e-06 B4 5.2117e-06 B5 5.2192e-06 B6 5.2366e-06 ALL 5.266318e-06 (C-SPAN10 relative 5.3e-13 PASS; W3 / 2q - 1 = -3.9e-13) | rho = sqrt / pX(t=0) 0.00615 (C-CS-H PASS)
+JH N3 D4 R1: ||Q0 X u||^2 6.611488e-07 (0q 7.2332e-06, 2q 6.4669e-07, 4q 1.4455e-08) | general engine relative 5.4e-12 (C-WICK PASS) | in-span W3 6.4669e-07 B4 6.6077e-07 B5 6.6085e-07 B6 6.6096e-07 ALL 6.611488e-07 (C-SPAN10 relative 6.1e-13 PASS; W3 / 2q - 1 = 6.3e-13) | rho = sqrt / pX(t=0) 0.00218 (C-CS-H PASS)
+C-JREF N3 D4 R1: against the review 6.6115e-07 (2q 6.467e-07, 4q 1.445e-08): relative 1.8e-06, 9.0e-06, 3.2e-04 -> PASS
+PLANT-THETA N3 D4: theta := identity (1.391352e-01) against the reflected L0 value (4.215211e-03) -> FIRES
+INFO JH N3 D4: pX^2(t=0) 1.391279e-01; S8's plane (LH) against L0: ratio of ||Q0 X u|| 0.1426 (L1 0.0366); right side LH / R0 0.2682
+C-LOOP-H N3 D4M: theta := identity gives 1.391351644118e-01 against the window closed form E[X_c^2] 1.391351644118e-01 (relative 2.0e-16) -> PASS
+JH N3 D4M L0: ||Q0 X u||^2 7.322873e-05 (0q 7.2332e-06, 2q 3.3783e-05, 4q 3.9446e-05) | general engine relative 3.7e-16 (C-WICK PASS) | in-span W3 3.3783e-05 B4 6.4839e-05 B5 6.5490e-05 B6 6.8215e-05 ALL 7.322873e-05 (C-SPAN10 relative 7.4e-15 PASS; W3 / 2q - 1 = -6.7e-14) | rho = sqrt / pX(t=0) 0.02294 (C-CS-H PASS)
+C-JREF N3 D4M L0: against the review 7.3229e-05 (2q 3.378e-05, 4q 3.945e-05): relative 3.7e-06, 8.4e-05, 1.0e-04 -> PASS
+JH N3 D4M LH: ||Q0 X u||^2 5.266318e-06 (0q 7.2332e-06, 2q 4.5506e-06, 4q 7.1572e-07) | general engine relative 1.9e-13 (C-WICK PASS) | in-span W3 4.5506e-06 B4 5.2117e-06 B5 5.2192e-06 B6 5.2366e-06 ALL 5.266318e-06 (C-SPAN10 relative 6.7e-14 PASS; W3 / 2q - 1 = 1.3e-13) | rho = sqrt / pX(t=0) 0.00615 (C-CS-H PASS)
+JH N3 D4M L1: ||Q0 X u||^2 6.611488e-07 (0q 7.2332e-06, 2q 6.4669e-07, 4q 1.4455e-08) | general engine relative 1.1e-12 (C-WICK PASS) | in-span W3 6.4669e-07 B4 6.6077e-07 B5 6.6085e-07 B6 6.6096e-07 ALL 6.611488e-07 (C-SPAN10 relative 3.4e-14 PASS; W3 / 2q - 1 = 8.1e-14) | rho = sqrt / pX(t=0) 0.00218 (C-CS-H PASS)
+C-JREF N3 D4M L1: against the review 6.6115e-07 (2q 6.467e-07, 4q 1.445e-08): relative 1.8e-06, 9.0e-06, 3.2e-04 -> PASS
+JH N3 D4M R0: ||Q0 X u||^2 4.215211e-03 (0q 7.2332e-06, 2q 3.3506e-04, 4q 3.8802e-03) | general engine relative 0.0e+00 (C-WICK PASS) | in-span W3 3.3506e-04 B4 1.7940e-03 B5 2.4958e-03 B6 2.6959e-03 ALL 4.215211e-03 (C-SPAN10 relative 1.2e-13 PASS; W3 / 2q - 1 = -5.1e-14) | rho = sqrt / pX(t=0) 0.17406 (C-CS-H PASS)
+C-JREF N3 D4M R0: against the review 4.2152e-03 (2q 3.351e-04, 4q 3.880e-03): relative 2.5e-06, 1.3e-04, 3.9e-05 -> PASS
+JH N3 D4M RH: ||Q0 X u||^2 8.577377e-05 (0q 7.2332e-06, 2q 3.7408e-05, 4q 4.8366e-05) | general engine relative 1.7e-14 (C-WICK PASS) | in-span W3 3.7408e-05 B4 6.8464e-05 B5 7.6627e-05 B6 7.7899e-05 ALL 8.577377e-05 (C-SPAN10 relative 1.3e-13 PASS; W3 / 2q - 1 = -5.1e-14) | rho = sqrt / pX(t=0) 0.02483 (C-CS-H PASS)
+JH N3 D4M R1: ||Q0 X u||^2 5.649114e-06 (0q 7.2332e-06, 2q 4.8396e-06, 4q 8.0952e-07) | general engine relative 4.6e-13 (C-WICK PASS) | in-span W3 4.8396e-06 B4 5.5007e-06 B5 5.5956e-06 B6 5.6037e-06 ALL 5.649114e-06 (C-SPAN10 relative 2.8e-14 PASS; W3 / 2q - 1 = -2.4e-14) | rho = sqrt / pX(t=0) 0.00637 (C-CS-H PASS)
+C-JREF N3 D4M R1: against the review 5.6491e-06 (2q 4.840e-06, 4q 8.095e-07): relative 2.6e-06, 8.4e-05, 2.4e-05 -> PASS
+PLANT-THETA N3 D4M: theta := identity (1.391352e-01) against the reflected L0 value (7.322873e-05) -> FIRES
+INFO JH N3 D4M: pX^2(t=0) 1.391279e-01; S8's plane (LH) against L0: ratio of ||Q0 X u|| 0.2682 (L1 0.0950); right side LH / R0 0.1426
+PART H cpu 0.0 s
+C-GRAPH D4-L0: V 9, edges 14, F 18 (want (9, 14, 18)) -> PASS; C-PACK: K 2 needs D 8, (D+1)^F = 1.5e+17 < 9e18 -> PASS; Q-degree 8 (series 0.1 s)
+MOMENTS D4-L0: D 8, Q-cap 8, 1081575 codes at the top degree, 12 entries (7.7 s)
+C-GRAPH D4M-L0: V 9, edges 14, F 17 (want (9, 14, 17)) -> PASS; C-PACK: K 2 needs D 8, (D+1)^F = 1.67e+16 < 9e18 -> PASS; Q-degree 8 (series 0.2 s)
+MOMENTS D4M-L0: D 8, Q-cap 8, 735471 codes at the top degree, 16 entries (4.6 s)
+C-PACK D3-L0 (probe, no moment): V 15, edges 24, F 25 (C-GRAPH PASS); degree needed for K = 0, 1, 2: 4, 6, 8; (D+1)^25 < 9e18 allows D <= 4, so K <= 0 (the t^0 term only, part H's exact harmonic value): no J = 300 FLOAT on amom2b. Top-degree codes a wider packing would hold at K = 2 (D 8): C(F - 1 + D, D) = 10518300, against D4-L0's 1081575 (0.1 s)
+C-SYM-F: D4-L0 E[xi_e xi_f^k] = E[xi_te xi_f^k] (k <= 2), largest relative 1.0e-13; D4M-L0 mirror subsets, largest relative 1.0e-13 (tolerance 1e-10) -> PASS
+C-H0 D4: a_0 of Cov(X_c, theta X_c) 4.215210551339e-03 against part H's L0 value 4.215210551339e-03 (relative 1.5e-13, tolerance 1e-7) -> PASS
+C-H0 D4M: a_0 of Cov(X_c, theta X_c) 7.322872817423e-05 against part H's L0 value 7.322872817435e-05 (relative 1.6e-12, tolerance 1e-7) -> PASS
+PLANT-H0: D4-L0's a_0 against part H's L1 value 5.649114e-06: relative 7.45e+02 -> FIRES
+C-SAME-W D4: the doubled window's Cov_w a_k 0.00268946155014 0.00483118873242 0.00517805471383 against pk15's SERIES 0.00268946155014 0.00483118873242 0.00517805471383 (largest relative 1.6e-12); m_e, m_f against its M4_10, M4_01 / M4_00 (largest relative 2.1e-14); tolerance 1e-7 -> PASS
+C-SAME-W D4M: the doubled window's Cov_w a_k 0.00268946155014 0.00483118873242 0.00517805471383 against pk15's SERIES 0.00268946155014 0.00483118873242 0.00517805471383 (largest relative 1.6e-12); m_e, m_f against its M4m_10, M4m_01 / M4m_00 (largest relative 2.1e-14); tolerance 1e-7 -> PASS
+SERIES D4-L0 N3 (t = 1/J; a_0 a_1 a_2; FLOAT): Cov(X_c, theta X_c) 0.00421521055134 0.00165441796271 0.001964792807; Cov_w 0.00268946155014 0.00483118873242 0.00517805471383
+SERIES D4M-L0 N3 (t = 1/J; a_0 a_1 a_2; FLOAT): Cov(X_c, theta X_c) 7.32287281742e-05 0.000114907710771 0.000144847197076; Cov_w 0.00268946155014 0.00483118873242 0.00517805471383
+INFO values-first at piece 0 (J_lo 300): D4-L0 4.220747e-03 against the series 4.220747e-03 (relative 8.6e-08); D4M-L0 7.361335e-05 against 7.361336e-05 (relative 2.2e-07)
+PIECE 0 J_lo 300: D4-L0 4.220747e-03 (a_1 t / a_0 +1.308e-03, a_2 t^2 / a_0 +5.179e-06; J_lo / t=0 1.0013) rho 0.17410; D4M-L0 7.361336e-05 (a_1 t / a_0 +5.231e-03, a_2 t^2 / a_0 +2.198e-05; J_lo / t=0 1.0053) rho 0.02299; D3-L0 (t = 0, H) rho 0.01047
+PIECE 1 J_lo 300.75: D4-L0 4.220733e-03 (a_1 t / a_0 +1.305e-03, a_2 t^2 / a_0 +5.153e-06; J_lo / t=0 1.0013) rho 0.17410; D4M-L0 7.361240e-05 (a_1 t / a_0 +5.217e-03, a_2 t^2 / a_0 +2.187e-05; J_lo / t=0 1.0052) rho 0.02299; D3-L0 (t = 0, H) rho 0.01047
+PIECE 10 J_lo 307.585: D4-L0 4.220610e-03 (a_1 t / a_0 +1.276e-03, a_2 t^2 / a_0 +4.927e-06; J_lo / t=0 1.0013) rho 0.17410; D4M-L0 7.360384e-05 (a_1 t / a_0 +5.102e-03, a_2 t^2 / a_0 +2.091e-05; J_lo / t=0 1.0051) rho 0.02299; D3-L0 (t = 0, H) rho 0.01047
+PIECE 40 J_lo 331.51: D4-L0 4.220219e-03 (a_1 t / a_0 +1.184e-03, a_2 t^2 / a_0 +4.241e-06; J_lo / t=0 1.0012) rho 0.17410; D4M-L0 7.357667e-05 (a_1 t / a_0 +4.733e-03, a_2 t^2 / a_0 +1.800e-05; J_lo / t=0 1.0048) rho 0.02299; D3-L0 (t = 0, H) rho 0.01047
+PIECE 150 J_lo 562.129: D4-L0 4.218160e-03 (a_1 t / a_0 +6.982e-04, a_2 t^2 / a_0 +1.475e-06; J_lo / t=0 1.0007) rho 0.17408; D4M-L0 7.343360e-05 (a_1 t / a_0 +2.791e-03, a_2 t^2 / a_0 +6.260e-06; J_lo / t=0 1.0028) rho 0.02297; D3-L0 (t = 0, H) rho 0.01047
+PIECE 250 J_lo 1520.46: D4-L0 4.216300e-03 (a_1 t / a_0 +2.581e-04, a_2 t^2 / a_0 +2.016e-07; J_lo / t=0 1.0003) rho 0.17407; D4M-L0 7.330437e-05 (a_1 t / a_0 +1.032e-03, a_2 t^2 / a_0 +8.556e-07; J_lo / t=0 1.0010) rho 0.02295; D3-L0 (t = 0, H) rho 0.01047
+PIECE 400 J_lo 6763.63: D4-L0 4.215455e-03 (a_1 t / a_0 +5.803e-05, a_2 t^2 / a_0 +1.019e-08; J_lo / t=0 1.0001) rho 0.17406; D4M-L0 7.324572e-05 (a_1 t / a_0 +2.320e-04, a_2 t^2 / a_0 +4.324e-08; J_lo / t=0 1.0002) rho 0.02294; D3-L0 (t = 0, H) rho 0.01047
+PIECE 600 J_lo 49482.8: D4-L0 4.215244e-03 (a_1 t / a_0 +7.932e-06, a_2 t^2 / a_0 +1.904e-10; J_lo / t=0 1.0000) rho 0.17406; D4M-L0 7.323105e-05 (a_1 t / a_0 +3.171e-05, a_2 t^2 / a_0 +8.078e-10; J_lo / t=0 1.0000) rho 0.02294; D3-L0 (t = 0, H) rho 0.01047
+PIECE 800 J_lo 362017: D4-L0 4.215215e-03 (a_1 t / a_0 +1.084e-06, a_2 t^2 / a_0 +3.557e-12; J_lo / t=0 1.0000) rho 0.17406; D4M-L0 7.322905e-05 (a_1 t / a_0 +4.334e-06, a_2 t^2 / a_0 +1.509e-11; J_lo / t=0 1.0000) rho 0.02294; D3-L0 (t = 0, H) rho 0.01047
+PIECE 903 J_lo 1.00886e+06: D4-L0 4.215212e-03 (a_1 t / a_0 +3.890e-07, a_2 t^2 / a_0 +4.580e-13; J_lo / t=0 1.0000) rho 0.17406; D4M-L0 7.322884e-05 (a_1 t / a_0 +1.555e-06, a_2 t^2 / a_0 +1.943e-12; J_lo / t=0 1.0000) rho 0.02294; D3-L0 (t = 0, H) rho 0.01047
+C-POS-F / C-CS-F: 0 < Cov(X_c, theta X_c) <= pX_hi^2 at every scan piece (10 pieces x 2 classes): failing none -> PASS
+PART F cpu 12.8 s
+C-TSV: with rho = 1 my rule reproduces the table's R_P, R_A (relative 1e-3) and marks, and the trick formula its printed trick (relative 5e-3), for 67 rows: differing none -> PASS
+WROTE TABLE_P2_12_JOINT_SCREEN_ROUTE0_kt_s8rf_v1_n3.tsv bffa65e7ca574dbdc4aa8331e87f9722c10caa201845a55d35b6511d42ef4f8f (67 rows)
+REREAD N3 (67 rows), best mark old -> new: pass 58 -> 61, theta-cut 5 -> 5, beyond-theta 1 -> 1, none 3 -> 0
+MOVED 3 D3 (1,1): none -> theta-cut (plain h 0.4199 need 15; route A h - need -; rho_L 0.01047 rho_R 0.01047 H); D3 keeps it up to rho 0.5575
+MOVED 3 D3 (1,2): theta-cut -> pass (plain h 3.636 need 132.1; route A h - need -; rho_L 0.01047 rho_R 0.01047 H); D3 keeps it up to rho 0.6481
+MOVED 3 D4 (1,1): none -> theta-cut (plain h 0.716 need 9.247; route A h - need -; rho_L 0.17410 rho_R 0.02299 F)
+MOVED 3 D4 (1,2): theta-cut -> pass (plain h 4.646 need 83.35; route A h - need -; rho_L 0.17410 rho_R 0.02299 F)
+MOVED 3 D4M (1,1): none -> theta-cut (plain h 0.716 need 9.247; route A h - need -; rho_L 0.02299 rho_R 0.17410 F)
+MOVED 3 D4M (1,2): theta-cut -> pass (plain h 5.805 need 88.57; route A h - need -; rho_L 0.02299 rho_R 0.17410 F)
+REMAINING 3 D3 (0,1): best beyond-theta; plain h 0.05235 need_P 1.77; route A h 0.103 need_A 2.852
+REMAINING 3 D3 (0,2): best theta-cut; plain h 0.4484 need_P 15.45; route A h 1.05 need_A 33.1; D3 rho_max 11.17
+REMAINING 3 D3 (1,1): best theta-cut; plain h 0.4199 need_P 15; route A h - need_A -; D3 rho_max 0.5575
+REMAINING 3 D4 (1,1): best theta-cut; plain h 0.716 need_P 9.247; route A h - need_A -
+REMAINING 3 D4M (0,2): best theta-cut; plain h 0.7016 need_P 8.871; route A h 1.792 need_A 25.44
+REMAINING 3 D4M (1,1): best theta-cut; plain h 0.716 need_P 9.247; route A h - need_A -
+ITEM n3 cpu 13.0 s, peak resident memory 448 MiB
+VERDICT VALID

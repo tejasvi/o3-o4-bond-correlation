@@ -1,0 +1,55 @@
+kt_s9h_ins_v2_2 sha256 f6b1e0763e81ee22f4ded680bab3133c623d618aa4b9e2c8894e032f1bcf5b91 MODE=dry TAG=d2 (MR_INSERT v4 producer: h rows from S9(c)-h, t and a rows, the G6 v1_6_2 sect. 6 header; DRY record to asm/dry_d2)
+C-HASH PASS (79 pinned files)
+C-CORE PASS: 94 copies equal R4 (f40a0d1e) and the C6a engine (1704af08), each defined once
+PLANT-CORE: refused (C-CORE: 1 of 94 copies differ or are defined twice: segments) -> FIRES
+C-LAW-READ: S8 D, E2, E3, FF with m3_lawcert_v1_1, S8 N with m3_lawcert_v1_2, pk25 NIH, NHT, DH with m3_lawcert_s9h_v1_1, through m3_reader_s9h_v1 (eeab1fa1), both N -> PASS
+C-ALIAS: the S8 entries for G, T and Dx carry the S9 records' ak (both N) -> PASS
+C-READ: M2B (13cc0d9a), M4 (e209c53f), M4H (56a3e9bf), the mu tool kt_mu_hw_v1_1.py (fe22057a) through their pinned files -> PASS
+C-R4-LG: S_eps, G_00, Phi_eps, Phi_eps,theta, NA-prime and kappa_max equal R4's certified run output (f5410931) -> PASS
+C-ORIENT-SIGNS: u~_x times -1 (N4), +1 (N3); u~_y times +1, +1 -> PASS
+C-MBG: M4_KV_v1's N<N>_E1_MG and E3_MG coefficients m_bg(t) (kt_cert's own m_g) from M4_KV_v1.txt (e209c53f) -> PASS
+PLANT-MBG-PIN: refused (C-MBG: M4_KV_v1 does not match its pin) -> FIRES
+C-LEMMAP: MR_LEMMAP v3 pk25/mr/v3/MR_LEMMAP.kv (3164b778) read, 1747 rows (cleared by the review 087868a8, main row 4401) -> PASS
+C-MEANS-SV: R4's means export (1120b129; c_t from D3, c_a = c_b from D4) and the S_V export (761084be; Bp_hi, vp2_hi) on R4's grid -> PASS
+C-DJ-READ: pk22's c3j DJ records (N4 bb596c64, N3 4e1c5279) through m3_reader_s9h_v1 -> PASS
+C-M1-TEXTS: MR_INSERT v4 FIELDS, X_POWER, X_DEFINITION, ORIENTATION and the ORIENT_CHECK pattern from pk24/mr_engine/kt_mr_assembly_v1_8_4.py (abd48b2c); TRIAL_SET from pk25/mr/v3/MR_SPECTRAL.kv (dae85be9) -> PASS
+BADPART N=4 Lam 60: normalised P_0 5.9265879189063620e-19, P_1 1.4980747288439883e-17, P_3 2.6370508534861418e-17; B_bc = X_bc + X_cb + F_bc (b, c in 1, 3): B_11 3.8084919834656747e-16, B_13 6.6912209863520903e-16, B_33 1.1755905899458014e-15 -> C-BAD-SMALL PASS
+BADPART N=3 Lam 60: normalised P_0 1.2166920549873196e-21, P_1 3.4089684301252955e-20, P_3 6.0211708017173847e-20; B_bc = X_bc + X_cb + F_bc (b, c in 1, 3): B_11 9.7456702300386205e-19, B_13 1.7098516808871239e-18, B_33 2.9997531674163236e-18 -> C-BAD-SMALL PASS
+PLANT-GBB: refused (C-GBB: halving G_11 raised Phi_1 (the bound reads G_bb)) -> FIRES
+MU-T N=4: c_t over the pieces in [1.0005162377905190e+00, 1.0013061909280738e+00] (exact ends); OR_t <= 5.7619268507532784e-01 at t <= 2.8624076667763572e-03 (9982 boxes); C_t = OR_t kappa_max^1/2 <= 3.8405154403192348e+00
+MU-T N=3: c_t over the pieces in [6.6718774192398389e-01, 6.6755417657816285e-01] (exact ends); OR_t <= 6.2610678357221672e-01 at t <= 3.3333333333333335e-03 (10234 boxes); C_t = OR_t kappa_max^1/2 <= 2.2174946612835638e+00
+MU N=4: c~_h over the pieces in [8.4534416691158931e-01, 8.4567623960776639e-01]; the interval [8.3534416691158941e-01, 8.5567623960776640e-01]; OR <= 6.6465583308841059e-01 at t <= 2.8624076667763572e-03 (100 boxes); C = OR kappa_max^1/2 <= 4.4301516759807038e+00
+MU N=3: c~_h over the pieces in [5.6356293045062722e-01, 5.6385233771517151e-01]; the interval [5.5356293045062721e-01, 5.7385233771517152e-01]; OR <= 5.9752367327545242e-01 at t <= 3.3333333333333335e-03 (10098 boxes); C = OR kappa_max^1/2 <= 2.1162612995807457e+00
+PLANT-MU-T: refused (C-MU-DOMAIN: the mu tool refused: MU-3 hypotheses fail (t [0.003355704697986577181208053691275167785234899328859060402684563758389261744966 +/- 4.53e-79], Y_max 20.00000000000000000000000000000000000000000000000000000000000000000000000000, K [-0.6363539617345154986780829962212694196141166013672011734069802044787641333743 +/- 2.21e-77], M0 [0.6646558330884105806735350321740768330198349165891880847859166823520154284588 +/- 1.06e-77])) -> FIRES
+PLANT-MU-C: refused (C-MU-DOMAIN: the mu tool refused: c_lo above c_hi) -> FIRES
+PLANT-ORIENT N=4: refused (C-ORIENT: after the flip u~_x is not along e1, u~_y not along e3, or u~_0 not along psi-hat) -> FIRES
+PLANT-ORIENT N=3: refused (C-ORIENT: after the flip u~_x is not along e1, u~_y not along e3, or u~_0 not along psi-hat) -> FIRES
+C-PIECE N=4: 843 of 843 pieces carry h (S9(c), the last by way B), t and a rows (C-ORIENT on every piece) -> PASS
+C-PIECE N=3: 904 of 904 pieces carry h (S9(c), the last by way B), t and a rows (C-ORIENT on every piece) -> PASS
+C-SIGN-S9C N=4: S9(c)'s v_x certainly signed on 842 of 842 pieces with t_lo > 0 -> PASS
+C-BAD-W N=4: the weighted bad parts at most 1.5072350974825967e-17 (piece 0116) <= 1e-10 -> PASS
+INFO WIDTH N=4: h row relative half-widths, largest: vx 1.919e-01 (piece 0061), xc 1.907e-01 (piece 0061); S9(c) v_x alone 1.914e-01
+WAYB-S9C N=4 last piece 0903: xc = [1.8232352914894101e-01, 2.8575335376518873e-01], xf = 1.3524173932003794e-11 (F0 1.3495598593456141e-11, 171 sub-pieces, ratio 11/10); the sign holds for J < 1.3481306145988560e+10
+C-SIGN-S9C N=3: S9(c)'s v_x certainly signed on 903 of 903 pieces with t_lo > 0 -> PASS
+C-BAD-W N=3: the weighted bad parts at most 3.4256815064510321e-20 (piece 0116) <= 1e-10 -> PASS
+INFO WIDTH N=3: h row relative half-widths, largest: vx 2.427e-01 (piece 0000), xc 2.415e-01 (piece 0000); S9(c) v_x alone 2.423e-01
+WAYB-S9C N=3 last piece 0903: xc = [9.3073129076734540e-02, 1.4098492382553610e-01], xf = 8.4537635035507779e-12 (F0 8.4396650096036502e-12, 171 sub-pieces, ratio 11/10); the sign holds for J < 1.1009667947020479e+10
+C-ROW-LEN: every row carries the 23 v4 fields -> PASS
+C-ANCHOR: t and a v_x > 0, h, t and a v_y > 0, h v_x > 0 off the last piece, on all 5241 rows -> PASS
+C-FACTX: h rows t xc -+ xf inside the amplitude at both ends, t and a rows xc = vx, floors only on the last h rows -> PASS
+PLANT-FACTX: refused (C-FACTX: row N4_P0061_h: t xc with the floor leaves the amplitude at t = 2.862408e-03) -> FIRES
+PLANT-ANCHOR: refused (C-ANCHOR: row N4_P0061_t has vx_lo <= 0) -> FIRES
+C-DER-FD N=4 piece 0061: the difference quotient [0.033367883 +/- 3.53e-10] against dM_R^c/dt [0.034 +/- 8.40e-4] -> PASS
+PLANT-DER: refused (C-DER-FD: the difference quotient [0.0333679 +/- 1.67e-8] is outside the derivative enclosure [-0.034 +/- 8.40e-4]) -> FIRES
+PLANT-IHT0: refused (C-IHT0: IhT_0 and Ih_0 do not meet (the reflection IhT_0 = Ih_0)) -> FIRES
+PLANT-HQ: refused (C-SIGN-S9C: v_x is not certainly signed with plant HQ) -> FIRES
+PLANT-RB: refused (C-SIGN-S9C: v_x is not certainly signed with plant RB) -> FIRES
+PLANT-BAD: refused (C-BAD-W: the weighted bad parts at Lam = 10 exceed 1e-10) -> FIRES
+C-ORIENT-LINE: C-ORIENT passed on every piece of the record (N4 843, N3 904), PLANT-ORIENT fired at both N, the line matches the M1 engine's ORIENT_RX -> PASS
+C-WRITE: the MR_INSERT v4 text read back by the M1 engine's rules (5241 rows) -> PASS
+PLANT-WRITE: refused (C-WRITE: FIELDS or rows differ from memory) -> FIRES
+PLANT-OCHK: refused (C-WRITE: ORIENT_CHECK missing or with other piece counts) -> FIRES
+PLANTS: 16 of 16 must-fire plants ran (not run or repeated: none); not firing: none
+RECORD pk25/asm/dry_d2/MR_INSERT.kv sha256 f2f41ef9d2550f60bd8f02277eeb818ee32022889bfef687c32e4c6e8066873b rows 5241
+RUN wall 80.6 s
+VERDICT VALID

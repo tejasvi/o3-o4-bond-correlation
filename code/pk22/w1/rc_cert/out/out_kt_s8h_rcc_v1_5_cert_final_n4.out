@@ -1,0 +1,316 @@
+kt_s8h_rcc_v1_5 sha256 e42435489ed535ba049c0d9ceb325cc8d98b01ad7e9c97ef17cbb66be48636ce MODE=cert ITEM=final LIM=540 final_n4; python 3.14.4
+C-HASH (28 pinned files: the S8 module copy, pk15's certified t export, the TRB_H rule, the M2(b) asm output, the float engine's tables and P2-13's outputs and list, the pair map, and the c3 records and asm outputs (cert)) -> PASS
+IMPORT: the S8 module copy in its cert chunk namespace c4_0000_0001 with tag r2 (a stray output in ne_cert/cert_out, not counted)
+C-STAGE-A: the S8 module's stage A (cert mode) with failing gates none -> PASS
+C-MHAT: cited from out_m2b_asm_v1.out, l.7 [C-MHAT N=4: m1..m3 = [0.4110342096146122, 0.21439445218778858, 0.13250737666638984] >= 0 exactly; MHAT_UP 1.00137250110031e+00 >= mhat(t) at t = 1/300, 1/600, 1/1200, 0 -> PASS] and l.19 [C-MHAT N=3: m1..m3 = [0.3639110188717423, 0.19020873542681713, 0.1312176314326442] >= 0 exactly; MHAT_UP 1.00121515501988e+00 >= mhat(t) at t = 1/300, 1/600, 1/1200, 0 -> PASS]; its RECORD line names S8's pinned M2(b) record M2B_KV_v1.txt with its sha256 01ffc2aacb0bf6b4 -> PASS
+C-GRID N=4: pk15's export and S8's pieces share every J_lo and J_hi (904 pieces): differing none -> PASS
+C-FMT N=4: runner c3's records ['m3_c3_CS4_N4_J300_c3.json', 'm3_c3_CE3_N4_J300_c3.json', 'm3_c3_H4T_N4_J300_c3.json'] through the bound reader, every needed key four spans with lo <= hi and a bar >= 0: failing none -> PASS
+PLANT-C3-KEYSWAP (each record: [True, True, True]) -> FIRES
+PLANT-C3-N (each record: [True, True, True]) -> FIRES
+INPUTS N=4: 10 horizontal entries from runner c3's records; TRB_H row T 263781/500000; c_N 19/8
+BARS N=4: largest fT/hT bar 6.202e-05 (target 1.0e-04), largest S4 HT bar 2.438e-05 (target 5.0e-05) -> within the targets
+C-COVER N=4: valid chunks [(61, 141), (141, 221), (221, 301), (301, 381), (381, 461), (461, 541), (541, 621), (621, 701), (701, 781), (781, 861), (861, 904)] cover [61, 904) without gap or overlap -> PASS
+C-CHUNKS N=4: 11 chunk outputs, 0 not valid ([]) -> PASS
+CHUNK out_kt_s8h_rcc_v1_5_cert_c4_0061_0141.out e9578906b3458fdb47c2378ce51ae5fd5d9bb40edfa0df7b52eacc67db847f4e valid
+CHUNK out_kt_s8h_rcc_v1_5_cert_c4_0141_0221.out 0b61d84d9bc510b8bf654208350be749985512b00f4184f26521f0cac35f1a74 valid
+CHUNK out_kt_s8h_rcc_v1_5_cert_c4_0221_0301.out 737e17e994949686d9d29cb2c2a6e5f428e097e2d60b1dc59c20c20d4d12e37c valid
+CHUNK out_kt_s8h_rcc_v1_5_cert_c4_0301_0381.out e2b77a79e8574d8b2c6e4ba249cecab68f5b1a0c173c8f3c0048d8b5dda26e60 valid
+CHUNK out_kt_s8h_rcc_v1_5_cert_c4_0381_0461.out f0707d7dc80885f5989fffee64931c096e9d729d66ab0e362eacce16f5ce2df5 valid
+CHUNK out_kt_s8h_rcc_v1_5_cert_c4_0461_0541.out 2d0f9548ee0b9b563f46b04ea9d28b5d54f96eb9f9907856cb91020a01d94151 valid
+CHUNK out_kt_s8h_rcc_v1_5_cert_c4_0541_0621.out 1f9614a21406723c16a9567609632183b4ee17c36903db2560806e263dca7fd2 valid
+CHUNK out_kt_s8h_rcc_v1_5_cert_c4_0621_0701.out 0f680bbca6ad09a6d360eaa01e0544764b54b8b817b5d5db8e665d09569664d1 valid
+CHUNK out_kt_s8h_rcc_v1_5_cert_c4_0701_0781.out d7f5cbe08dac75a62055026ebe8cf67857fc431e5d2bb526c2b64ffd175173f6 valid
+CHUNK out_kt_s8h_rcc_v1_5_cert_c4_0781_0861.out d7aef59fb9e0bed5b1627fa1af86603a83a0b5ef27ae4569f5dee4d3967158c9 valid
+CHUNK out_kt_s8h_rcc_v1_5_cert_c4_0861_0904.out 858ab1a3f1ed2afa08039adf543f98816cc565ecabc0edefd9da3c4b009822b9 valid
+FINALCLASS N=4 | ('H1', 0, 'far', 'flip') | 7.07739 | 61 | m 1 lo 6.949302e-04
+FINALCLASS N=4 | ('H1', 0, 'far', 'same') | 4.39136 | 61 | m 6 lo 5.973539e-08
+FINALCLASS N=4 | ('H1', 1, 'far', 'flip') | 7.57593 | 61 | m 1 lo 9.527570e-04
+FINALCLASS N=4 | ('H1', 1, 'far', 'same') | 4.86627 | 61 | m 6 lo 8.052797e-08
+FINALCLASS N=4 | ('H1', 2, 'far', 'flip') | 4.1596 | 61 | m 1 lo 8.623909e-04
+FINALCLASS N=4 | ('H2', 0, 0, 'flip') | 11.6639 | 61 | m 2 lo 9.213380e-05
+FINALCLASS N=4 | ('H2', 0, 0, 'same') | 17.4136 | 61 | m 2 lo 1.418315e-04
+FINALCLASS N=4 | ('H2', 0, 1, 'flip') | 18.4407 | 61 | m 1 lo 7.344410e-04
+FINALCLASS N=4 | ('H2', 0, 1, 'same') | 27.2936 | 61 | m 2 lo 1.871726e-04
+FINALCLASS N=4 | ('H2', 0, 2, 'flip') | 7.6315 | 61 | m 1 lo 6.995639e-04
+FINALCLASS N=4 | ('H2', 1, 0, 'flip') | 18.4407 | 61 | m 1 lo 7.344410e-04
+FINALCLASS N=4 | ('H2', 1, 0, 'same') | 27.2936 | 61 | m 2 lo 1.871726e-04
+FINALCLASS N=4 | ('H2', 1, 1, 'flip') | 33.3657 | 61 | m 2 lo 1.747932e-04
+FINALCLASS N=4 | ('H2', 1, 1, 'same') | 46.4826 | 61 | m 2 lo 2.457695e-04
+FINALCLASS N=4 | ('H2', 1, 2, 'flip') | 8.40776 | 61 | m 1 lo 9.622749e-04
+FINALCLASS N=4 | ('H2', 2, 0, 'flip') | 7.6315 | 61 | m 1 lo 6.995639e-04
+FINALCLASS N=4 | ('H2', 2, 1, 'flip') | 8.40776 | 61 | m 1 lo 9.622749e-04
+FINALCLASS N=4 | ('H2', 2, 2, 'flip') | 4.43733 | 61 | m 1 lo 8.751341e-04
+FINALCLASS N=4 | ('Hinf', 0, 'inf', 'flip') | 7.09365 | 61 | m 1 lo 6.951924e-04
+FINALCLASS N=4 | ('Hinf', 0, 'inf', 'same') | 8.95693 | 61 | m 3 lo 2.388021e-05
+FINALCLASS N=4 | ('Hinf', 1, 'inf', 'flip') | 7.59377 | 61 | m 1 lo 9.530973e-04
+FINALCLASS N=4 | ('Hinf', 1, 'inf', 'same') | 10.4085 | 61 | m 3 lo 3.162038e-05
+FINALCLASS N=4 | ('Hinf', 2, 'inf', 'flip') | 4.16518 | 61 | m 1 lo 8.627567e-04
+FINALCLASS N=4 | ('M1', 'HV', 0, 'far', 'flip') | 10.8868 | 61 | m 4 lo 7.605883e-06
+FINALCLASS N=4 | ('M1', 'HV', 0, 'far', 'same') | 13.9825 | 61 | m 4 lo 9.982790e-06
+FINALCLASS N=4 | ('M1', 'HV', 1, 'far', 'flip') | 14.555 | 61 | m 4 lo 1.035690e-05
+FINALCLASS N=4 | ('M1', 'HV', 1, 'far', 'same') | 18.2813 | 61 | m 4 lo 1.319729e-05
+FINALCLASS N=4 | ('M1', 'HV', 2, 'far', 'flip') | 3.53795 | 61 | m 1 lo 1.333214e-03
+FINALCLASS N=4 | ('M1', 'HV', 2, 'far', 'same') | 8.87314 | 61 | m 4 lo 1.263307e-05
+FINALCLASS N=4 | ('M1', 'HV', 3, 'far', 'flip') | 3.19749 | 61 | m 1 lo 1.287641e-03
+FINALCLASS N=4 | ('M1', 'HV', 3, 'far', 'same') | 8.36398 | 61 | m 4 lo 1.256929e-05
+FINALCLASS N=4 | ('M1', 'VH', -1, 'far', 'flip') | 3.39945 | 61 | m 1 lo 2.819013e-03
+FINALCLASS N=4 | ('M1', 'VH', -1, 'far', 'same') | 5.75103 | 61 | m 4 lo 2.220502e-05
+FINALCLASS N=4 | ('M1', 'VH', 0, 'far', 'flip') | 3.06714 | 61 | m 1 lo 1.465213e-03
+FINALCLASS N=4 | ('M1', 'VH', 0, 'far', 'same') | 6.99354 | 61 | m 4 lo 1.357649e-05
+FINALCLASS N=4 | ('M1', 'VH', 1, 'far', 'flip') | 2.8224 | 61 | m 1 lo 1.239431e-03
+FINALCLASS N=4 | ('M1', 'VH', 1, 'far', 'same') | 6.3353 | 61 | m 4 lo 1.221451e-05
+FINALCLASS N=4 | ('M1', 'VH', 2, 'far', 'flip') | 2.7735 | 61 | m 1 lo 1.203584e-03
+FINALCLASS N=4 | ('M1', 'VH', 2, 'far', 'same') | 6.92236 | 61 | m 4 lo 1.224688e-05
+FINALCLASS N=4 | ('M2', 'HV', 0, -1, 'flip') | 7.61952 | 61 | m 4 lo 1.410561e-05
+FINALCLASS N=4 | ('M2', 'HV', 0, -1, 'same') | 9.481 | 61 | m 4 lo 1.807277e-05
+FINALCLASS N=4 | ('M2', 'HV', 0, 0, 'flip') | 10.2889 | 61 | m 4 lo 8.474990e-06
+FINALCLASS N=4 | ('M2', 'HV', 0, 0, 'same') | 13.0631 | 61 | m 4 lo 1.100673e-05
+FINALCLASS N=4 | ('M2', 'HV', 0, 1, 'flip') | 5.02522 | 61 | m 1 lo 9.601921e-04
+FINALCLASS N=4 | ('M2', 'HV', 0, 1, 'same') | 11.0934 | 61 | m 4 lo 9.933144e-06
+FINALCLASS N=4 | ('M2', 'HV', 0, 2, 'flip') | 10.0393 | 61 | m 4 lo 7.559978e-06
+FINALCLASS N=4 | ('M2', 'HV', 0, 2, 'same') | 12.8832 | 61 | m 4 lo 9.939321e-06
+FINALCLASS N=4 | ('M2', 'HV', 1, -1, 'flip') | 9.25483 | 61 | m 4 lo 1.920066e-05
+FINALCLASS N=4 | ('M2', 'HV', 1, -1, 'same') | 11.2924 | 61 | m 4 lo 2.394146e-05
+FINALCLASS N=4 | ('M2', 'HV', 1, 0, 'flip') | 13.4553 | 61 | m 4 lo 1.153226e-05
+FINALCLASS N=4 | ('M2', 'HV', 1, 0, 'same') | 16.7212 | 61 | m 4 lo 1.455769e-05
+FINALCLASS N=4 | ('M2', 'HV', 1, 1, 'flip') | 10.8997 | 61 | m 4 lo 1.027485e-05
+FINALCLASS N=4 | ('M2', 'HV', 1, 1, 'same') | 13.6577 | 61 | m 4 lo 1.313897e-05
+FINALCLASS N=4 | ('M2', 'HV', 1, 2, 'flip') | 13.1356 | 61 | m 4 lo 1.030012e-05
+FINALCLASS N=4 | ('M2', 'HV', 1, 2, 'same') | 16.4844 | 61 | m 4 lo 1.314348e-05
+FINALCLASS N=4 | ('M2', 'HV', 2, -1, 'flip') | 3.99861 | 61 | m 1 lo 2.970379e-03
+FINALCLASS N=4 | ('M2', 'HV', 2, -1, 'same') | 6.70065 | 61 | m 4 lo 2.279436e-05
+FINALCLASS N=4 | ('M2', 'HV', 2, 0, 'flip') | 3.77092 | 61 | m 1 lo 1.583464e-03
+FINALCLASS N=4 | ('M2', 'HV', 2, 0, 'same') | 8.45518 | 61 | m 4 lo 1.392381e-05
+FINALCLASS N=4 | ('M2', 'HV', 2, 1, 'flip') | 3.40873 | 61 | m 1 lo 1.344011e-03
+FINALCLASS N=4 | ('M2', 'HV', 2, 1, 'same') | 7.55311 | 61 | m 4 lo 1.254391e-05
+FINALCLASS N=4 | ('M2', 'HV', 2, 2, 'flip') | 3.4135 | 61 | m 1 lo 1.318563e-03
+FINALCLASS N=4 | ('M2', 'HV', 2, 2, 'same') | 8.39884 | 61 | m 4 lo 1.257062e-05
+FINALCLASS N=4 | ('M2', 'HV', 3, -1, 'flip') | 3.78726 | 61 | m 1 lo 2.936102e-03
+FINALCLASS N=4 | ('M2', 'HV', 3, -1, 'same') | 6.3931 | 61 | m 4 lo 2.266387e-05
+FINALCLASS N=4 | ('M2', 'HV', 3, 0, 'flip') | 3.43593 | 61 | m 1 lo 1.539530e-03
+FINALCLASS N=4 | ('M2', 'HV', 3, 0, 'same') | 7.98808 | 61 | m 4 lo 1.385212e-05
+FINALCLASS N=4 | ('M2', 'HV', 3, 1, 'flip') | 3.15183 | 61 | m 1 lo 1.308969e-03
+FINALCLASS N=4 | ('M2', 'HV', 3, 1, 'same') | 7.17376 | 61 | m 4 lo 1.247636e-05
+FINALCLASS N=4 | ('M2', 'HV', 3, 2, 'flip') | 3.10297 | 61 | m 1 lo 1.274127e-03
+FINALCLASS N=4 | ('M2', 'HV', 3, 2, 'same') | 7.93825 | 61 | m 4 lo 1.250578e-05
+FINALCLASS N=4 | ('Minf', 'HV', 0, 'inf', 'flip') | 10.9914 | 61 | m 4 lo 7.613206e-06
+FINALCLASS N=4 | ('Minf', 'HV', 0, 'inf', 'same') | 14.1097 | 61 | m 4 lo 9.989726e-06
+FINALCLASS N=4 | ('Minf', 'HV', 1, 'inf', 'flip') | 14.729 | 61 | m 4 lo 1.036592e-05
+FINALCLASS N=4 | ('Minf', 'HV', 1, 'inf', 'same') | 18.4885 | 61 | m 4 lo 1.320585e-05
+FINALCLASS N=4 | ('Minf', 'HV', 2, 'inf', 'flip') | 3.55331 | 61 | m 1 lo 1.335483e-03
+FINALCLASS N=4 | ('Minf', 'HV', 2, 'inf', 'same') | 8.9285 | 61 | m 4 lo 1.264301e-05
+FINALCLASS N=4 | ('Minf', 'HV', 3, 'inf', 'flip') | 3.20884 | 61 | m 1 lo 1.289713e-03
+FINALCLASS N=4 | ('Minf', 'HV', 3, 'inf', 'same') | 8.41387 | 61 | m 4 lo 1.257941e-05
+FINALCLASS N=4 | ('Minf', 'VH', -1, 'inf', 'flip') | 3.75145 | 61 | m 1 lo 2.929250e-03
+FINALCLASS N=4 | ('Minf', 'VH', -1, 'inf', 'same') | 6.34294 | 61 | m 4 lo 2.264116e-05
+FINALCLASS N=4 | ('Minf', 'VH', 0, 'inf', 'flip') | 3.38381 | 61 | m 1 lo 1.531547e-03
+FINALCLASS N=4 | ('Minf', 'VH', 0, 'inf', 'same') | 7.91282 | 61 | m 4 lo 1.383965e-05
+FINALCLASS N=4 | ('Minf', 'VH', 1, 'inf', 'flip') | 3.1107 | 61 | m 1 lo 1.302462e-03
+FINALCLASS N=4 | ('Minf', 'VH', 1, 'inf', 'same') | 7.11224 | 61 | m 4 lo 1.246461e-05
+FINALCLASS N=4 | ('Minf', 'VH', 2, 'inf', 'flip') | 3.05485 | 61 | m 1 lo 1.266085e-03
+FINALCLASS N=4 | ('Minf', 'VH', 2, 'inf', 'same') | 7.86378 | 61 | m 4 lo 1.249444e-05
+FINALN5 N=4 | H2 (0, 0, 'flip', 2) | 11.6639 | 61 | lo 9.213380e-05
+FINALN5 N=4 | H2 (0, 0, 'same', 2) | 17.4136 | 61 | lo 1.418315e-04
+FINALN5 N=4 | H2 (0, 1, 'flip', 1) | 18.4407 | 61 | lo 7.344410e-04
+FINALN5 N=4 | H2 (0, 1, 'same', 1) | 36.0875 | 61 | lo 1.478459e-03
+FINALN5 N=4 | H2 (1, 0, 'flip', 1) | 18.4407 | 61 | lo 7.344410e-04
+FINALN5 N=4 | H2 (1, 0, 'same', 1) | 36.0875 | 61 | lo 1.478459e-03
+FINALN5 N=4 | M2 ('HV', 0, -1, 'flip', 3) | 8.52635 | 61 | lo 8.894408e-05
+FINALN5 N=4 | M2 ('HV', 0, -1, 'same', 3) | 12.7304 | 61 | lo 1.386398e-04
+FINALN5 N=4 | M2 ('HV', 0, 0, 'flip', 2) | 12.1158 | 61 | lo 2.925051e-04
+FINALN5 N=4 | M2 ('HV', 0, 0, 'same', 2) | 27.2042 | 61 | lo 6.898191e-04
+FINALN5 N=4 | M2 ('HV', 0, 1, 'flip', 1) | 5.02522 | 61 | lo 9.601921e-04
+FINALN5 N=4 | M2 ('HV', 0, 1, 'same', 1) | 24.763 | 61 | lo 5.672360e-03
+FINALN5 N=4 | M2 ('HV', 1, -1, 'flip', 2) | 10.8278 | 61 | lo 7.047431e-04
+FINALN5 N=4 | M2 ('HV', 1, -1, 'same', 2) | 21.1965 | 61 | lo 1.448732e-03
+FINALN5 N=4 | M2 ('HV', 1, 0, 'flip', 1) | 26.2158 | 61 | lo 1.916191e-03
+FINALN5 N=4 | M2 ('HV', 1, 0, 'same', 1) | 104.214 | 61 | lo 7.864336e-03
+FINALN5 N=4 | M2 ('HV', 2, -1, 'flip', 1) | 3.99861 | 61 | lo 2.970379e-03
+FINALN5 N=4 | M2 ('HV', 2, -1, 'same', 1) | 13.4045 | 61 | lo 1.229104e-02
+C-N5-FINAL N=4: every n = 5 key has a row on some piece (18 of 18) -> PASS
+MIN N=4: smallest headroom 2.7735 at piece 61, ('M1', 'VH', 2, 'far', 'flip')
+COVER N=4 | ('H2', 0, 0, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 3 | smallest headroom 11.6639 at piece 61
+COVER N=4 | ('H2', 0, 1, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 3 | smallest headroom 18.4407 at piece 61
+COVER N=4 | ('H2', 0, 2, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 7.6315 at piece 61
+COVER N=4 | ('Hinf', 0, 'inf', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 7.09365 at piece 61
+COVER N=4 | ('H1', 0, 'far', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 7.07739 at piece 61
+COVER N=4 | ('H2', 1, 0, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 3 | smallest headroom 18.4407 at piece 61
+COVER N=4 | ('H2', 1, 1, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 3 | smallest headroom 33.3657 at piece 61
+COVER N=4 | ('H2', 1, 2, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 8.40776 at piece 61
+COVER N=4 | ('Hinf', 1, 'inf', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 7.59377 at piece 61
+COVER N=4 | ('H1', 1, 'far', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 7.57593 at piece 61
+COVER N=4 | ('H2', 2, 0, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 7.6315 at piece 61
+COVER N=4 | ('H2', 2, 1, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 8.40776 at piece 61
+COVER N=4 | ('H2', 2, 2, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 4.43733 at piece 61
+COVER N=4 | ('Hinf', 2, 'inf', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 4.16518 at piece 61
+COVER N=4 | ('H1', 2, 'far', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 4.1596 at piece 61
+COVER N=4 | ('H2', 0, 0, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 3 | smallest headroom 17.4136 at piece 61
+COVER N=4 | ('H2', 0, 1, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 3 | smallest headroom 27.2936 at piece 61
+COVER N=4 | ('Hinf', 0, 'inf', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 8.95693 at piece 61
+COVER N=4 | ('H1', 0, 'far', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 7 | smallest headroom 4.39136 at piece 61
+COVER N=4 | ('H2', 1, 0, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 3 | smallest headroom 27.2936 at piece 61
+COVER N=4 | ('H2', 1, 1, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 3 | smallest headroom 46.4826 at piece 61
+COVER N=4 | ('Hinf', 1, 'inf', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 4 | smallest headroom 10.4085 at piece 61
+COVER N=4 | ('H1', 1, 'far', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 7 | smallest headroom 4.86627 at piece 61
+COVER N=4 | ('M2', 'HV', 0, -1, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 9.481 at piece 61
+COVER N=4 | ('M2', 'HV', 0, 0, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 13.0631 at piece 61
+COVER N=4 | ('M2', 'HV', 0, 1, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 11.0934 at piece 61
+COVER N=4 | ('M2', 'HV', 0, 2, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 12.8832 at piece 61
+COVER N=4 | ('Minf', 'HV', 0, 'inf', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 14.1097 at piece 61
+COVER N=4 | ('M1', 'HV', 0, 'far', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 13.9825 at piece 61
+COVER N=4 | ('M2', 'HV', 1, -1, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 11.2924 at piece 61
+COVER N=4 | ('M2', 'HV', 1, 0, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 16.7212 at piece 61
+COVER N=4 | ('M2', 'HV', 1, 1, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 13.6577 at piece 61
+COVER N=4 | ('M2', 'HV', 1, 2, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 16.4844 at piece 61
+COVER N=4 | ('Minf', 'HV', 1, 'inf', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 18.4885 at piece 61
+COVER N=4 | ('M1', 'HV', 1, 'far', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 18.2813 at piece 61
+COVER N=4 | ('M2', 'HV', 2, -1, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 6.70065 at piece 61
+COVER N=4 | ('M2', 'HV', 2, 0, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 8.45518 at piece 61
+COVER N=4 | ('M2', 'HV', 2, 1, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 7.55311 at piece 61
+COVER N=4 | ('M2', 'HV', 2, 2, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 8.39884 at piece 61
+COVER N=4 | ('Minf', 'HV', 2, 'inf', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 8.9285 at piece 61
+COVER N=4 | ('M1', 'HV', 2, 'far', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 8.87314 at piece 61
+COVER N=4 | ('M2', 'HV', 3, -1, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 6.3931 at piece 61
+COVER N=4 | ('M2', 'HV', 3, 0, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 7.98808 at piece 61
+COVER N=4 | ('M2', 'HV', 3, 1, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 7.17376 at piece 61
+COVER N=4 | ('M2', 'HV', 3, 2, 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 7.93825 at piece 61
+COVER N=4 | ('Minf', 'HV', 3, 'inf', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 8.41387 at piece 61
+COVER N=4 | ('M1', 'HV', 3, 'far', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 8.36398 at piece 61
+COVER N=4 | ('Minf', 'VH', -1, 'inf', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 6.34294 at piece 61
+COVER N=4 | ('M1', 'VH', -1, 'far', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 5.75103 at piece 61
+COVER N=4 | ('Minf', 'VH', 0, 'inf', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 7.91282 at piece 61
+COVER N=4 | ('M1', 'VH', 0, 'far', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 6.99354 at piece 61
+COVER N=4 | ('Minf', 'VH', 1, 'inf', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 7.11224 at piece 61
+COVER N=4 | ('M1', 'VH', 1, 'far', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 6.3353 at piece 61
+COVER N=4 | ('Minf', 'VH', 2, 'inf', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 7.86378 at piece 61
+COVER N=4 | ('M1', 'VH', 2, 'far', 'same') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 6.92236 at piece 61
+COVER N=4 | ('M2', 'HV', 0, -1, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 7.61952 at piece 61
+COVER N=4 | ('M2', 'HV', 0, 0, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 10.2889 at piece 61
+COVER N=4 | ('M2', 'HV', 0, 1, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 5.02522 at piece 61
+COVER N=4 | ('M2', 'HV', 0, 2, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 10.0393 at piece 61
+COVER N=4 | ('Minf', 'HV', 0, 'inf', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 10.9914 at piece 61
+COVER N=4 | ('M1', 'HV', 0, 'far', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 10.8868 at piece 61
+COVER N=4 | ('M2', 'HV', 1, -1, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 9.25483 at piece 61
+COVER N=4 | ('M2', 'HV', 1, 0, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 13.4553 at piece 61
+COVER N=4 | ('M2', 'HV', 1, 1, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 10.8997 at piece 61
+COVER N=4 | ('M2', 'HV', 1, 2, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 13.1356 at piece 61
+COVER N=4 | ('Minf', 'HV', 1, 'inf', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 14.729 at piece 61
+COVER N=4 | ('M1', 'HV', 1, 'far', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 14.555 at piece 61
+COVER N=4 | ('M2', 'HV', 2, -1, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.99861 at piece 61
+COVER N=4 | ('M2', 'HV', 2, 0, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.77092 at piece 61
+COVER N=4 | ('M2', 'HV', 2, 1, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.40873 at piece 61
+COVER N=4 | ('M2', 'HV', 2, 2, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.4135 at piece 61
+COVER N=4 | ('Minf', 'HV', 2, 'inf', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.55331 at piece 61
+COVER N=4 | ('M1', 'HV', 2, 'far', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.53795 at piece 61
+COVER N=4 | ('M2', 'HV', 3, -1, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.78726 at piece 61
+COVER N=4 | ('M2', 'HV', 3, 0, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.43593 at piece 61
+COVER N=4 | ('M2', 'HV', 3, 1, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.15183 at piece 61
+COVER N=4 | ('M2', 'HV', 3, 2, 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.10297 at piece 61
+COVER N=4 | ('Minf', 'HV', 3, 'inf', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.20884 at piece 61
+COVER N=4 | ('M1', 'HV', 3, 'far', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.19749 at piece 61
+COVER N=4 | ('Minf', 'VH', -1, 'inf', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.75145 at piece 61
+COVER N=4 | ('M1', 'VH', -1, 'far', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.39945 at piece 61
+COVER N=4 | ('Minf', 'VH', 0, 'inf', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.38381 at piece 61
+COVER N=4 | ('M1', 'VH', 0, 'far', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.06714 at piece 61
+COVER N=4 | ('Minf', 'VH', 1, 'inf', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.1107 at piece 61
+COVER N=4 | ('M1', 'VH', 1, 'far', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 2.8224 at piece 61
+COVER N=4 | ('Minf', 'VH', 2, 'inf', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 3.05485 at piece 61
+COVER N=4 | ('M1', 'VH', 2, 'far', 'flip') | pieces 843 of 843 | rows m < m0 with n >= 5, the top-mode form from m0; largest m0 over the pieces 5 | smallest headroom 2.7735 at piece 61
+C-COVER-LIST N=4: 87 class keys (DN {'flip': (0, 1, 2), 'same': (0, 1)}, NEAR_H (0, 1, 2, 3), NEAR_V (-1, 0, 1, 2), T_M 3, DF {'flip': 3, 'same': 2}, DF_V 3, DF_H 4, MM 16), each with an m0 on every piece of [61, 904): short none -> PASS
+PAIRMAP N=4 | a1,bb1 | orbit a1,bb1 (direct) | m 0 | box (35.12/39.43) | joint (no chain class)
+PAIRMAP N=4 | a5,bb4 | orbit a1,bb1 (reflection) | m 0 | box (35.12/39.43) | joint (no chain class)
+PAIRMAP N=4 | b1,t1 | orbit a1,bb1 (flip) | m 0 | box (35.12/39.43) | joint (no chain class)
+PAIRMAP N=4 | b5,t4 | orbit a1,bb1 (both) | m 0 | box (35.12/39.43) | joint (no chain class)
+PAIRMAP N=4 | a1,bb2 | orbit a1,bb2 (direct) | m 1 | box (12.17/13.66) | M2 ('HV', 2, -1, 'flip', 1) 3.99861 at piece 61
+PAIRMAP N=4 | a5,bb3 | orbit a1,bb2 (reflection) | m 1 | box (12.17/13.66) | M2 ('HV', 2, -1, 'flip', 1) 3.99861 at piece 61
+PAIRMAP N=4 | b1,t2 | orbit a1,bb2 (flip) | m 1 | box (12.17/13.66) | M2 ('HV', 2, -1, 'flip', 1) 3.99861 at piece 61
+PAIRMAP N=4 | b5,t3 | orbit a1,bb2 (both) | m 1 | box (12.17/13.66) | M2 ('HV', 2, -1, 'flip', 1) 3.99861 at piece 61
+PAIRMAP N=4 | a1,bb3 | orbit a1,bb3 (direct) | m 2 | box (2.42/2.72) | M2 ('HV', 1, -1, 'flip', 2) 10.8278 at piece 61
+PAIRMAP N=4 | a5,bb2 | orbit a1,bb3 (reflection) | m 2 | box (2.42/2.72) | M2 ('HV', 1, -1, 'flip', 2) 10.8278 at piece 61
+PAIRMAP N=4 | b1,t3 | orbit a1,bb3 (flip) | m 2 | box (2.42/2.72) | M2 ('HV', 1, -1, 'flip', 2) 10.8278 at piece 61
+PAIRMAP N=4 | b5,t2 | orbit a1,bb3 (both) | m 2 | box (2.42/2.72) | M2 ('HV', 1, -1, 'flip', 2) 10.8278 at piece 61
+PAIRMAP N=4 | a1,bb4 | orbit a1,bb4 (direct) | m 3 | NON-BOX (0.31/0.35) | M2 ('HV', 0, -1, 'flip', 3) 8.52635 at piece 61
+PAIRMAP N=4 | a5,bb1 | orbit a1,bb4 (reflection) | m 3 | NON-BOX (0.31/0.35) | M2 ('HV', 0, -1, 'flip', 3) 8.52635 at piece 61
+PAIRMAP N=4 | b1,t4 | orbit a1,bb4 (flip) | m 3 | NON-BOX (0.31/0.35) | M2 ('HV', 0, -1, 'flip', 3) 8.52635 at piece 61
+PAIRMAP N=4 | b5,t1 | orbit a1,bb4 (both) | m 3 | NON-BOX (0.31/0.35) | M2 ('HV', 0, -1, 'flip', 3) 8.52635 at piece 61
+PAIRMAP N=4 | a1,t2 | orbit a1,t2 (direct) | m 1 | box (41.87/47.01) | M2 ('HV', 2, -1, 'same', 1) 13.4045 at piece 61
+PAIRMAP N=4 | a5,t3 | orbit a1,t2 (reflection) | m 1 | box (41.87/47.01) | M2 ('HV', 2, -1, 'same', 1) 13.4045 at piece 61
+PAIRMAP N=4 | b1,bb2 | orbit a1,t2 (flip) | m 1 | box (41.87/47.01) | M2 ('HV', 2, -1, 'same', 1) 13.4045 at piece 61
+PAIRMAP N=4 | b5,bb3 | orbit a1,t2 (both) | m 1 | box (41.87/47.01) | M2 ('HV', 2, -1, 'same', 1) 13.4045 at piece 61
+PAIRMAP N=4 | a1,t3 | orbit a1,t3 (direct) | m 2 | box (4.74/5.33) | M2 ('HV', 1, -1, 'same', 2) 21.1965 at piece 61
+PAIRMAP N=4 | a5,t2 | orbit a1,t3 (reflection) | m 2 | box (4.74/5.33) | M2 ('HV', 1, -1, 'same', 2) 21.1965 at piece 61
+PAIRMAP N=4 | b1,bb3 | orbit a1,t3 (flip) | m 2 | box (4.74/5.33) | M2 ('HV', 1, -1, 'same', 2) 21.1965 at piece 61
+PAIRMAP N=4 | b5,bb2 | orbit a1,t3 (both) | m 2 | box (4.74/5.33) | M2 ('HV', 1, -1, 'same', 2) 21.1965 at piece 61
+PAIRMAP N=4 | a1,t4 | orbit a1,t4 (direct) | m 3 | NON-BOX (0.47/0.53) | M2 ('HV', 0, -1, 'same', 3) 12.7304 at piece 61
+PAIRMAP N=4 | a5,t1 | orbit a1,t4 (reflection) | m 3 | NON-BOX (0.47/0.53) | M2 ('HV', 0, -1, 'same', 3) 12.7304 at piece 61
+PAIRMAP N=4 | b1,bb4 | orbit a1,t4 (flip) | m 3 | NON-BOX (0.47/0.53) | M2 ('HV', 0, -1, 'same', 3) 12.7304 at piece 61
+PAIRMAP N=4 | b5,bb1 | orbit a1,t4 (both) | m 3 | NON-BOX (0.47/0.53) | M2 ('HV', 0, -1, 'same', 3) 12.7304 at piece 61
+PAIRMAP N=4 | a2,bb1 | orbit a2,bb1 (direct) | m 0 | box (5.94/6.67) | joint (no chain class)
+PAIRMAP N=4 | a4,bb4 | orbit a2,bb1 (reflection) | m 0 | box (5.94/6.67) | joint (no chain class)
+PAIRMAP N=4 | b2,t1 | orbit a2,bb1 (flip) | m 0 | box (5.94/6.67) | joint (no chain class)
+PAIRMAP N=4 | b4,t4 | orbit a2,bb1 (both) | m 0 | box (5.94/6.67) | joint (no chain class)
+PAIRMAP N=4 | a2,bb2 | orbit a2,bb2 (direct) | m 0 | box (15.95/17.91) | joint (no chain class)
+PAIRMAP N=4 | a4,bb3 | orbit a2,bb2 (reflection) | m 0 | box (15.95/17.91) | joint (no chain class)
+PAIRMAP N=4 | b2,t2 | orbit a2,bb2 (flip) | m 0 | box (15.95/17.91) | joint (no chain class)
+PAIRMAP N=4 | b4,t3 | orbit a2,bb2 (both) | m 0 | box (15.95/17.91) | joint (no chain class)
+PAIRMAP N=4 | a2,bb3 | orbit a2,bb3 (direct) | m 1 | box (6.21/6.97) | M2 ('HV', 1, 0, 'flip', 1) 26.2158 at piece 61
+PAIRMAP N=4 | a4,bb2 | orbit a2,bb3 (reflection) | m 1 | box (6.21/6.97) | M2 ('HV', 1, 0, 'flip', 1) 26.2158 at piece 61
+PAIRMAP N=4 | b2,t3 | orbit a2,bb3 (flip) | m 1 | box (6.21/6.97) | M2 ('HV', 1, 0, 'flip', 1) 26.2158 at piece 61
+PAIRMAP N=4 | b4,t2 | orbit a2,bb3 (both) | m 1 | box (6.21/6.97) | M2 ('HV', 1, 0, 'flip', 1) 26.2158 at piece 61
+PAIRMAP N=4 | a2,bb4 | orbit a2,bb4 (direct) | m 2 | NON-BOX (0.99/1.11) | M2 ('HV', 0, 0, 'flip', 2) 12.1158 at piece 61
+PAIRMAP N=4 | a4,bb1 | orbit a2,bb4 (reflection) | m 2 | NON-BOX (0.99/1.11) | M2 ('HV', 0, 0, 'flip', 2) 12.1158 at piece 61
+PAIRMAP N=4 | b2,t4 | orbit a2,bb4 (flip) | m 2 | NON-BOX (0.99/1.11) | M2 ('HV', 0, 0, 'flip', 2) 12.1158 at piece 61
+PAIRMAP N=4 | b4,t1 | orbit a2,bb4 (both) | m 2 | NON-BOX (0.99/1.11) | M2 ('HV', 0, 0, 'flip', 2) 12.1158 at piece 61
+PAIRMAP N=4 | a2,t3 | orbit a2,t3 (direct) | m 1 | box (24.77/27.81) | M2 ('HV', 1, 0, 'same', 1) 104.214 at piece 61
+PAIRMAP N=4 | a4,t2 | orbit a2,t3 (reflection) | m 1 | box (24.77/27.81) | M2 ('HV', 1, 0, 'same', 1) 104.214 at piece 61
+PAIRMAP N=4 | b2,bb3 | orbit a2,t3 (flip) | m 1 | box (24.77/27.81) | M2 ('HV', 1, 0, 'same', 1) 104.214 at piece 61
+PAIRMAP N=4 | b4,bb2 | orbit a2,t3 (both) | m 1 | box (24.77/27.81) | M2 ('HV', 1, 0, 'same', 1) 104.214 at piece 61
+PAIRMAP N=4 | a2,t4 | orbit a2,t4 (direct) | m 2 | box (2.23/2.50) | M2 ('HV', 0, 0, 'same', 2) 27.2042 at piece 61
+PAIRMAP N=4 | a4,t1 | orbit a2,t4 (reflection) | m 2 | box (2.23/2.50) | M2 ('HV', 0, 0, 'same', 2) 27.2042 at piece 61
+PAIRMAP N=4 | b2,bb4 | orbit a2,t4 (flip) | m 2 | box (2.23/2.50) | M2 ('HV', 0, 0, 'same', 2) 27.2042 at piece 61
+PAIRMAP N=4 | b4,bb1 | orbit a2,t4 (both) | m 2 | box (2.23/2.50) | M2 ('HV', 0, 0, 'same', 2) 27.2042 at piece 61
+PAIRMAP N=4 | a3,bb1 | orbit a3,bb1 (direct) | m 1 | box (3.73/4.19) | M2 ('HV', 0, 1, 'flip', 1) 5.02522 at piece 61
+PAIRMAP N=4 | a3,bb4 | orbit a3,bb1 (reflection) | m 1 | box (3.73/4.19) | M2 ('HV', 0, 1, 'flip', 1) 5.02522 at piece 61
+PAIRMAP N=4 | b3,t1 | orbit a3,bb1 (flip) | m 1 | box (3.73/4.19) | M2 ('HV', 0, 1, 'flip', 1) 5.02522 at piece 61
+PAIRMAP N=4 | b3,t4 | orbit a3,bb1 (both) | m 1 | box (3.73/4.19) | M2 ('HV', 0, 1, 'flip', 1) 5.02522 at piece 61
+PAIRMAP N=4 | a3,bb2 | orbit a3,bb2 (direct) | m 0 | box (11.79/13.24) | joint (no chain class)
+PAIRMAP N=4 | a3,bb3 | orbit a3,bb2 (reflection) | m 0 | box (11.79/13.24) | joint (no chain class)
+PAIRMAP N=4 | b3,t2 | orbit a3,bb2 (flip) | m 0 | box (11.79/13.24) | joint (no chain class)
+PAIRMAP N=4 | b3,t3 | orbit a3,bb2 (both) | m 0 | box (11.79/13.24) | joint (no chain class)
+PAIRMAP N=4 | a3,t1 | orbit a3,t1 (direct) | m 1 | box (18.43/20.69) | M2 ('HV', 0, 1, 'same', 1) 24.763 at piece 61
+PAIRMAP N=4 | a3,t4 | orbit a3,t1 (reflection) | m 1 | box (18.43/20.69) | M2 ('HV', 0, 1, 'same', 1) 24.763 at piece 61
+PAIRMAP N=4 | b3,bb1 | orbit a3,t1 (flip) | m 1 | box (18.43/20.69) | M2 ('HV', 0, 1, 'same', 1) 24.763 at piece 61
+PAIRMAP N=4 | b3,bb4 | orbit a3,t1 (both) | m 1 | box (18.43/20.69) | M2 ('HV', 0, 1, 'same', 1) 24.763 at piece 61
+PAIRMAP N=4 | bb1,bb3 | orbit bb1,bb3 (direct) | m 1 | box (4.74/5.33) | H2 (0, 1, 'same', 1) 36.0875 at piece 61; H2 (1, 0, 'same', 1) 36.0875 at piece 61
+PAIRMAP N=4 | bb2,bb4 | orbit bb1,bb3 (reflection) | m 1 | box (4.74/5.33) | H2 (0, 1, 'same', 1) 36.0875 at piece 61; H2 (1, 0, 'same', 1) 36.0875 at piece 61
+PAIRMAP N=4 | t1,t3 | orbit bb1,bb3 (flip) | m 1 | box (4.74/5.33) | H2 (0, 1, 'same', 1) 36.0875 at piece 61; H2 (1, 0, 'same', 1) 36.0875 at piece 61
+PAIRMAP N=4 | t2,t4 | orbit bb1,bb3 (both) | m 1 | box (4.74/5.33) | H2 (0, 1, 'same', 1) 36.0875 at piece 61; H2 (1, 0, 'same', 1) 36.0875 at piece 61
+PAIRMAP N=4 | bb1,t2 | orbit bb1,t2 (direct) | m 0 | box (12.17/13.66) | joint (no chain class)
+PAIRMAP N=4 | bb2,t1 | orbit bb1,t2 (flip) | m 0 | box (12.17/13.66) | joint (no chain class)
+PAIRMAP N=4 | bb3,t4 | orbit bb1,t2 (both) | m 0 | box (12.17/13.66) | joint (no chain class)
+PAIRMAP N=4 | bb4,t3 | orbit bb1,t2 (reflection) | m 0 | box (12.17/13.66) | joint (no chain class)
+PAIRMAP N=4 | bb1,t3 | orbit bb1,t3 (direct) | m 1 | box (2.42/2.72) | H2 (0, 1, 'flip', 1) 18.4407 at piece 61; H2 (1, 0, 'flip', 1) 18.4407 at piece 61
+PAIRMAP N=4 | bb2,t4 | orbit bb1,t3 (both) | m 1 | box (2.42/2.72) | H2 (0, 1, 'flip', 1) 18.4407 at piece 61; H2 (1, 0, 'flip', 1) 18.4407 at piece 61
+PAIRMAP N=4 | bb3,t1 | orbit bb1,t3 (flip) | m 1 | box (2.42/2.72) | H2 (0, 1, 'flip', 1) 18.4407 at piece 61; H2 (1, 0, 'flip', 1) 18.4407 at piece 61
+PAIRMAP N=4 | bb4,t2 | orbit bb1,t3 (reflection) | m 1 | box (2.42/2.72) | H2 (0, 1, 'flip', 1) 18.4407 at piece 61; H2 (1, 0, 'flip', 1) 18.4407 at piece 61
+PAIRMAP N=4 | bb1,t4 | orbit bb1,t4 (direct) | m 2 | NON-BOX (0.31/0.35) | H2 (0, 0, 'flip', 2) 11.6639 at piece 61
+PAIRMAP N=4 | bb4,t1 | orbit bb1,t4 (reflection) | m 2 | NON-BOX (0.31/0.35) | H2 (0, 0, 'flip', 2) 11.6639 at piece 61
+PAIRMAP N=4 | bb2,t3 | orbit bb2,t3 (direct) | m 0 | box (16.39/18.40) | joint (no chain class)
+PAIRMAP N=4 | bb3,t2 | orbit bb2,t3 (reflection) | m 0 | box (16.39/18.40) | joint (no chain class)
+C-PAIRMAP N=4: 80 pairs, 58 separated with an n = 5 class (each class with a row), 22 joint; pairs without an image or a row none -> PASS
+BINDING N=4: H2 4.43733 at piece 61; Hinf 4.16518 at piece 61; H1 4.1596 at piece 61; M2 3.10297 at piece 61; Minf 3.05485 at piece 61; M1 2.7735 at piece 61; C-PIECE-H and the thin checks at pieces [61, 903]
+C-PIECE-H N=4 piece 61 (halves with the parent's basis, vacuum, U and trial set): failing rows, m0 or gates 0 -> PASS; leaves (INFO): 7 of 150 outside the parent beyond inside_r's slack, up to inf of the parent's radius
+RPIECE 4 0061 ok=1 rows=313 bad=0 unc=0 gates_failing=- n5absent=0 cons=0 risk=0 hmin=2.7735 at M1 ('VH', 2, 'far', 'flip', 1) | tau' 3.182799e-02 alpha_lo 0.495886937 TRB' 0.527565 beta_H 0.527565 c_fix 125117581/125000000 pc_H 5.6156e-04 pn_SH4 1.2607e-01 rho2 2.6233e-03 rho3 2.9496e-03 rho_inf 3.0066e-03 | slots 76
+C-UNIF-H N=4 piece 61 (binding) (the ten entries' enclosures over the box against thin values at 9 t x END_MODES): failing none -> PASS; C-MV-H (zero bars, delta 0: the centred horizontal chain against thin point chains at 9 t x END_MODES): 150 leaves, failing 0 -> PASS
+C-MV-BAR-H N=4 piece 61 (binding) (the piece's centred horizontal chain against thin points at 9 t with every bar offset, coefficient, wrapped allowance and delta at its midpoint, upper or lower end; the stand-in met once in every chain): 150 leaves, failing 0 -> PASS
+C-MV-SF-H N=4 piece 61 (binding) (the class-level balls of the 3 FLIP/SAME and 3 MIXED pair-form rows of smallest headroom against the 27 thin chains): 6 classes, 6 active, 162 points, failing 0 -> PASS; C-TARGET-H (the box's C1 and dz against the pair form's own on the thin chains at 3 t x 3 modes: 108 checks, largest target/box 0.9998, failing 0; the rows' certified [lo, hi] against their centres' values at the 27 thin chains: 162 checks, failing 0) -> PASS
+C-TARGET-RC N=4 piece 61 (binding) (RC's radii rho and u-balls r_u of the box against rc_radii on the 27 thin chains, box >= target (1 - 1e-10)): 351 checks, largest target/box 1.0000, failing 0 -> PASS
+C-PIECE-H N=4 piece 903 (halves with the parent's basis, vacuum, U and trial set): failing rows, m0 or gates 0 -> PASS; leaves (INFO): 2 of 150 outside the parent beyond inside_r's slack, up to inf of the parent's radius
+RPIECE 4 0903 ok=1 rows=262 bad=0 unc=0 gates_failing=- n5absent=0 cons=0 risk=0 hmin=3.00524 at M1 ('VH', 2, 'far', 'flip', 1) | tau' 2.869458e-02 alpha_lo 0.498867472 TRB' 0.527562 beta_H 0.527562 c_fix 125106677/125000000 pc_H 5.4220e-08 pn_SH4 1.1971e-01 rho2 2.3634e-03 rho3 2.6625e-03 rho_inf 2.7126e-03 | slots 76
+C-UNIF-H N=4 piece 903 (binding) (the ten entries' enclosures over the box against thin values at 9 t x END_MODES): failing none -> PASS; C-MV-H (zero bars, delta 0: the centred horizontal chain against thin point chains at 9 t x END_MODES): 150 leaves, failing 0 -> PASS
+C-MV-BAR-H N=4 piece 903 (binding) (the piece's centred horizontal chain against thin points at 9 t with every bar offset, coefficient, wrapped allowance and delta at its midpoint, upper or lower end; the stand-in met once in every chain): 150 leaves, failing 0 -> PASS
+C-MV-SF-H N=4 piece 903 (binding) (the class-level balls of the 3 FLIP/SAME and 3 MIXED pair-form rows of smallest headroom against the 27 thin chains): 6 classes, 6 active, 162 points, failing 0 -> PASS; C-TARGET-H (the box's C1 and dz against the pair form's own on the thin chains at 3 t x 3 modes: 108 checks, largest target/box 1.0000, failing 0; the rows' certified [lo, hi] against their centres' values at the 27 thin chains: 162 checks, failing 0) -> PASS
+C-TARGET-RC N=4 piece 903 (binding) (RC's radii rho and u-balls r_u of the box against rc_radii on the 27 thin chains, box >= target (1 - 1e-10)): 351 checks, largest target/box 1.0000, failing 0 -> PASS
+PLANT-PIECE-H (N=4 piece 61 with the parent's box collapsed to its right end in J: C-PIECE-H fails on 295 rows, m0 or gates; on 129 leaves, INFO) -> FIRES
+ITEM cert final_n4 cpu 7.1 s, wall 7.1 s, peak resident memory 100 MiB
+VERDICT VALID

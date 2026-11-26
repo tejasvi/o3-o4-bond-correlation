@@ -1,0 +1,17 @@
+m3ref_v1_4 item OF3.3.all LIM 540; python 3.14.4
+C-COPY (12 pinned copies in /mnt/g2/release/root/code/pk03/pin) -> PASS
+PLANT-COPY (riglap2 bytes plus one byte) -> FIRES
+C-SRC (lapl2 l.63-79, vacmod2 l.8-9 and l.12-13, endw l.16-19, vacrig11f l.166-170, 173-175, 178-186, 196-197, 240-244, 247, 250-287, riglap5s l.22-34 (C-SRC-H) against this file; source shas) -> PASS
+PLANT-SRC (strip_graph text with one character changed) -> FIRES
+C-HASH (15 pk10 inputs and J = 170 records, 4 trial files and 2 S8 lists in pk11/out, 6 m3ref_v1_2 records) -> PASS
+PLANT-HASH (vacres_K3_N4 against a sha with its last digit changed) -> FIRES
+versions: numpy 2.5.3, scipy 1.18.1; engines from /mnt/g2/release/root/code/pk03/pin
+TRIAL z9sym
+inputs: N = 3, kbar 0.5514259266145797 (m2_N3_J170.json.b), trial set ts_N3_S_z9sym_v1.json, vacres_K3_N3_sym_v1.json
+OFJSON {"V": 9, "S": [3, 4, 5, 6, 7, 8], "pcols": [[0, 1, 2], [6, 7, 8]], "edges": [[[0, 1], 1.2637626158259734], [[1, 2], 1.2637626158259734], [[0, 2], 0.1771356864619608], [[6, 7], 1.2637626158259734], [[7, 8], 1.2637626158259734], [[6, 8], 0.1771356864619608], [[0, 3], 1.0], [[1, 4], 1.0], [[2, 5], 1.0], [[3, 6], 1.0], [[4, 7], 1.0], [[5, 8], 1.0], [[3, 4], 1.0], [[4, 5], 1.0]], "degP": 8, "qP": 4, "chart_per_lam": {"0.5": 1.294189880535143e-09, "1.0": 3.483565334581893e-19, "1.5": null}, "lam_star": 1.0, "chart": 3.483565334581893e-19, "farp": 3.224117913282404e-25, "theta_star": 0.91, "supp": 85.53631320303897, "far": 2.3589132573329168e-21, "value": 3.507154467155222e-19, "GS_diag": [0.6766431127893109, 0.5621452601573284, 0.6766431127893111, 0.34330977945597774, 0.22881192682399493, 0.34330977945597757, 0.34330977945597774, 0.2288119268239949, 0.34330977945597757], "r": 0.4913407984711484, "tree": [1.2637626158259734, 1.2637626158259734, 1.2637626158259734, 1.2637626158259734, 1.0, 1.0, 1.0, 1.0], "J": 150.0, "a_m": 0.30250000000000005, "A_P": 0.81, "C_P": 1.0251427202602783, "graph": "E3", "N": 3, "trial": "z9sym", "cpu_parts": 17.36, "cpu_ref": 17.78}
+C-OF-SAME (E3: outer_far_parts value np.float64(3.507154467155222e-19), vacrig11f.outer_far np.float64(3.507154467155222e-19)) -> PASS
+PLANT-OF-SAME (the parts value times 1 + 1e-12) -> FIRES
+C-OF-LAM (E3: lam* 1.0; chart per lam {"0.5": 1.294189880535143e-09, "1.0": 3.483565334581893e-19, "1.5": null}) -> PASS
+C-OF-LAW-INFO E3: lam* 1.0 (>= 0.5), r 4.913408e-01 against 0.5 a_m 1.512500e-01; chart 3.483565e-19, far 2.358913e-21 (theta* 0.91, supp 85.536313), value 3.507154e-19
+STAGE-CPU total 35.29 s
+VERDICT VALID

@@ -1,0 +1,18 @@
+# N = 4, J in [170, 171.7]: R_w 0.18957 rho1 0.15205 rho 0.08995 R+ 0.10191 |v+| 0.13468 |v-| 0.13275 nB+ 0.9121 nB- 0.4561 | q_x 0.14636 L2 0.06000 mu_x 0.14636 alpha^2 0.9347 |a_x| 0.10479 Dlt 5.21e-04 c_x 0.07901 r2 0.4099 ro 0.6160 simple True
+  flip d=4: own Jensen m<=17, mode m>=4, FULL | author's tests: Jensen m<=17, mode m>=4
+  flip d=8: own Jensen m<=36, mode m>=4, FULL | author's tests: Jensen m<=36, mode m>=4
+  same d=1: own Jensen m<=4, mode m>=4, FULL | author's tests: Jensen m<=4, mode m>=4
+  same d=2: own Jensen m<=14, mode m>=3, FULL | author's tests: Jensen m<=14, mode m>=3
+  flip d=3: own Jensen m<=0, mode m>=4, not full | author's tests: Jensen m<=0, mode m>=4
+# N = 4, J in [2e4, inf): R_w 0.18929 rho1 0.15163 rho 0.08957 R+ 0.10508 |v+| 0.13416 |v-| 0.13244 nB+ 0.9109 nB- 0.4554 | q_x 0.14572 L2 0.05943 mu_x 0.14572 alpha^2 0.9359 |a_x| 0.10446 Dlt 8.02e-10 c_x 0.07974 r2 0.4078 ro 0.6147 simple True
+  flip d=4: own Jensen m<=18, mode m>=4, FULL | author's tests: Jensen m<=18, mode m>=4
+  flip d=8: own Jensen m<=39, mode m>=4, FULL | author's tests: Jensen m<=39, mode m>=4
+  same d=1: own Jensen m<=5, mode m>=4, FULL | author's tests: Jensen m<=5, mode m>=4
+  same d=2: own Jensen m<=15, mode m>=3, FULL | author's tests: Jensen m<=15, mode m>=3
+  flip d=3: own Jensen m<=0, mode m>=4, not full | author's tests: Jensen m<=0, mode m>=4
+# distance to losing the claimed coverage (flip d>=4, same d>=1) on [170, 171.7]:
+  R_w x                1.162
+  ||B+||, ||B-|| x     1.162
+  c_x /                1.276
+  Cov_1 /              3.165
+  U raised by          1.032e-03 (absolute, on tr T^2/lambda_h^2)

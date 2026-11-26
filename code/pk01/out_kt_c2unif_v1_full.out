@@ -1,0 +1,74 @@
+kt_c2unif_v1 sha256 fc131b35ebc78850a12381828b5320f1803711b4e00cd026880344f18f3f3785 /mnt/g2/release/root/code/pk01/kt_c2unif_v1.py
+MODE=full LIM=30 (RLIMIT_CPU soft 30, hard 32); numpy 2.5.3; flint ctx.prec 256, ctx.cap 64; M_CAP 200; betas 0.001, 0.001778, 0.003162, 0.005623, 0.01, 0.01778, 0.03162, 0.05623, 0.1, 0.1778, 0.3162, 0.5623, 1, 1.778, 3.162, 5.623, 10, 17.78, 31.62, 56.23, 100, 150, 200
+TAB class b0-b1 (size 4): L_min 4, n_cyc 1, small beta 1 beta^2 N^-3; Delta^2 49/144, large beta (N-1) Delta^2/8 = 0.085069/beta^2 at N=3, 0.127604/beta^2 at N=4; flags SHARED
+TAB class b0-b2 (size 8): L_min 6, n_cyc 1, small beta 1 beta^4 N^-5; Delta^2 1/36, large beta (N-1) Delta^2/8 = 0.006944/beta^2 at N=3, 0.010417/beta^2 at N=4; flags none
+TAB class b0-b3 (size 4): L_min 6, n_cyc 1, small beta 1 beta^4 N^-5; Delta^2 1/36, large beta (N-1) Delta^2/8 = 0.006944/beta^2 at N=3, 0.010417/beta^2 at N=4; flags none
+TAB class b0-b4 (size 4): L_min 8, n_cyc 3, small beta 3 beta^6 N^-7; Delta^2 1/144, large beta (N-1) Delta^2/8 = 0.001736/beta^2 at N=3, 0.002604/beta^2 at N=4; flags none
+TAB class b0-b5 (size 4): L_min 8, n_cyc 3, small beta 3 beta^6 N^-7; Delta^2 1/144, large beta (N-1) Delta^2/8 = 0.001736/beta^2 at N=3, 0.002604/beta^2 at N=4; flags none
+TAB class b0-b7 (size 4): L_min 6, n_cyc 1, small beta 1 beta^4 N^-5; Delta^2 1/36, large beta (N-1) Delta^2/8 = 0.006944/beta^2 at N=3, 0.010417/beta^2 at N=4; flags SHARED
+TAB class b0-sE (size 8): L_min 4, n_cyc 1, small beta 1 beta^2 N^-3; Delta^2 25/144, large beta (N-1) Delta^2/8 = 0.043403/beta^2 at N=3, 0.065104/beta^2 at N=4; flags none
+TAB class b0-sN (size 8): L_min 6, n_cyc 1, small beta 1 beta^4 N^-5; Delta^2 1/144, large beta (N-1) Delta^2/8 = 0.001736/beta^2 at N=3, 0.002604/beta^2 at N=4; flags none
+TAB class b0-sS (size 8): L_min 4, n_cyc 1, small beta 1 beta^2 N^-3; Delta^2 25/144, large beta (N-1) Delta^2/8 = 0.043403/beta^2 at N=3, 0.065104/beta^2 at N=4; flags SHARED
+TAB class b0-sW (size 8): L_min 6, n_cyc 1, small beta 1 beta^4 N^-5; Delta^2 1/144, large beta (N-1) Delta^2/8 = 0.001736/beta^2 at N=3, 0.002604/beta^2 at N=4; flags none
+TAB class sE-sN (size 4): L_min 4, n_cyc 1, small beta 1 beta^2 N^-3; Delta^2 1/9, large beta (N-1) Delta^2/8 = 0.027778/beta^2 at N=3, 0.041667/beta^2 at N=4; flags SHARED
+TAB class sE-sW (size 2): L_min 6, n_cyc 2, small beta 2 beta^4 N^-5; Delta^2 1/36, large beta (N-1) Delta^2/8 = 0.006944/beta^2 at N=3, 0.010417/beta^2 at N=4; flags SHARED
+READINGS R-TAB: 66 pairs in 12 classes; simple cycles 13; Foster sum 8; class constancy True; c2 pair check True; SHARED pairs 22 (closed at N = 3, 4 by E10 Theorem 1); DELTA0 pairs 0: none; NOCYCLE pairs 0
+PLANTED PLANT-TAB (bowtie): cycles 2, Foster sum 6, cross pairs 16, all NOCYCLE and DELTA0: True
+C-REG K3 uniform 1 N=3 (arb KTN 86, LMAX 24, LCL 5; quadrature n 72): max |H - H_ref| 2.44e-15; l.104 formula miss 2.79e+00; tail 2.05e-73; C-REG2 F(1,1) max |F - F_ref| 6.83e-15; cpu 0.21 s
+C-REG K3 uniform 1 N=4 (arb KTN 86, LMAX 24, LCL 5; quadrature n 72): max |H - H_ref| 2.78e-17; l.104 formula miss 3.75e+00; tail 4.21e-74; C-REG2 F(1,1) max |F - F_ref| 8.88e-16; cpu 0.27 s
+PLANTED at beta 0.001 N=3: PLANT-M MONOTONE, PLANT-N NEITHER, PLANT-T THRESHOLD; PLANT-DNEG cov -3.333e-01 cor -1.0000; PLANT-DPOS cov 3.333e-01 cor 1.0000
+UNIF beta 0.001 N=3 n 72 sect 2 under 0 | D(J_f=beta) 3.703702e-08 cor 1.0000 | D(J_f=0) 3.703703e-08 cor 1.0000 | shape MONOTONE | R-SMALL 1.000000 | R-LARGE 0.000000 | cpu 0.01 s
+PLANTED at beta 0.001 N=4: PLANT-M MONOTONE, PLANT-N NEITHER, PLANT-T THRESHOLD; PLANT-DNEG cov -2.500e-01 cor -1.0000; PLANT-DPOS cov 2.500e-01 cor 1.0000
+UNIF beta 0.001 N=4 n 72 sect 2 under 0 | D(J_f=beta) 1.562500e-08 cor 1.0000 | D(J_f=0) 1.562500e-08 cor 1.0000 | shape MONOTONE | R-SMALL 1.000000 | R-LARGE 0.000000 | cpu 0.01 s
+UNIF beta 0.00177828 N=3 n 72 sect 2 under 0 | D(J_f=beta) 1.171212e-07 cor 1.0000 | D(J_f=0) 1.171213e-07 cor 1.0000 | shape MONOTONE | R-SMALL 0.999999 | R-LARGE 0.000000 | cpu 0.01 s
+UNIF beta 0.00177828 N=4 n 72 sect 2 under 0 | D(J_f=beta) 4.941055e-08 cor 1.0000 | D(J_f=0) 4.941057e-08 cor 1.0000 | shape MONOTONE | R-SMALL 0.999999 | R-LARGE 0.000000 | cpu 0.01 s
+UNIF beta 0.00316228 N=3 n 72 sect 2 under 0 | D(J_f=beta) 3.703688e-07 cor 1.0000 | D(J_f=0) 3.703695e-07 cor 1.0000 | shape MONOTONE | R-SMALL 0.999996 | R-LARGE 0.000000 | cpu 0.01 s
+UNIF beta 0.00316228 N=4 n 72 sect 2 under 0 | D(J_f=beta) 1.562496e-07 cor 1.0000 | D(J_f=0) 1.562498e-07 cor 1.0000 | shape MONOTONE | R-SMALL 0.999997 | R-LARGE 0.000000 | cpu 0.01 s
+UNIF beta 0.00562341 N=3 n 72 sect 2 under 0 | D(J_f=beta) 1.171198e-06 cor 1.0000 | D(J_f=0) 1.171206e-06 cor 1.0000 | shape MONOTONE | R-SMALL 0.999987 | R-LARGE 0.000000 | cpu 0.01 s
+UNIF beta 0.00562341 N=4 n 72 sect 2 under 0 | D(J_f=beta) 4.941017e-07 cor 1.0000 | D(J_f=0) 4.941036e-07 cor 1.0000 | shape MONOTONE | R-SMALL 0.999991 | R-LARGE 0.000000 | cpu 0.01 s
+UNIF beta 0.01 N=3 n 72 sect 2 under 0 | D(J_f=beta) 3.703547e-06 cor 1.0000 | D(J_f=0) 3.703621e-06 cor 1.0000 | shape MONOTONE | R-SMALL 0.999958 | R-LARGE 0.000000 | cpu 0.01 s
+UNIF beta 0.01 N=4 n 72 sect 2 under 0 | D(J_f=beta) 1.562458e-06 cor 1.0000 | D(J_f=0) 1.562477e-06 cor 1.0000 | shape MONOTONE | R-SMALL 0.999973 | R-LARGE 0.000000 | cpu 0.01 s
+UNIF beta 0.0177828 N=3 n 72 sect 2 under 0 | D(J_f=beta) 1.171058e-05 cor 1.0000 | D(J_f=0) 1.171132e-05 cor 1.0000 | shape MONOTONE | R-SMALL 0.999866 | R-LARGE 0.000000 | cpu 0.01 s
+UNIF beta 0.0177828 N=4 n 72 sect 2 under 0 | D(J_f=beta) 4.940636e-06 cor 1.0000 | D(J_f=0) 4.940831e-06 cor 1.0000 | shape MONOTONE | R-SMALL 0.999914 | R-LARGE 0.000000 | cpu 0.01 s
+UNIF beta 0.0316228 N=3 n 72 sect 3 under 0 | D(J_f=beta) 3.702140e-05 cor 1.0000 | D(J_f=0) 3.702881e-05 cor 1.0000 | shape MONOTONE | R-SMALL 0.999578 | R-LARGE 0.000001 | cpu 0.01 s
+UNIF beta 0.0316228 N=4 n 72 sect 2 under 0 | D(J_f=beta) 1.562077e-05 cor 1.0000 | D(J_f=0) 1.562272e-05 cor 1.0000 | shape MONOTONE | R-SMALL 0.999729 | R-LARGE 0.000000 | cpu 0.01 s
+UNIF beta 0.0562341 N=3 n 72 sect 3 under 0 | D(J_f=beta) 1.169650e-04 cor 1.0000 | D(J_f=0) 1.170391e-04 cor 1.0000 | shape MONOTONE | R-SMALL 0.998665 | R-LARGE 0.000009 | cpu 0.01 s
+UNIF beta 0.0562341 N=4 n 72 sect 3 under 0 | D(J_f=beta) 4.936827e-05 cor 1.0000 | D(J_f=0) 4.938781e-05 cor 1.0000 | shape MONOTONE | R-SMALL 0.999144 | R-LARGE 0.000002 | cpu 0.01 s
+UNIF beta 0.1 N=3 n 72 sect 3 under 0 | D(J_f=beta) 3.688059e-04 cor 1.0000 | D(J_f=0) 3.695478e-04 cor 1.0000 | shape MONOTONE | R-SMALL 0.995776 | R-LARGE 0.000085 | cpu 0.01 s
+UNIF beta 0.1 N=4 n 72 sect 3 under 0 | D(J_f=beta) 1.558268e-04 cor 1.0000 | D(J_f=0) 1.560223e-04 cor 1.0000 | shape MONOTONE | R-SMALL 0.997292 | R-LARGE 0.000024 | cpu 0.01 s
+UNIF beta 0.177828 N=3 n 72 sect 3 under 0 | D(J_f=beta) 1.155557e-03 cor 1.0000 | D(J_f=0) 1.162999e-03 cor 1.0000 | shape MONOTONE | R-SMALL 0.986632 | R-LARGE 0.000842 | cpu 0.01 s
+UNIF beta 0.177828 N=4 n 72 sect 3 under 0 | D(J_f=beta) 4.898740e-04 cor 1.0000 | D(J_f=0) 4.918313e-04 cor 1.0000 | shape MONOTONE | R-SMALL 0.991435 | R-LARGE 0.000238 | cpu 0.01 s
+UNIF beta 0.316228 N=3 n 72 sect 3 under 0 | D(J_f=beta) 3.546817e-03 cor 1.0000 | D(J_f=0) 3.621871e-03 cor 1.0000 | shape MONOTONE | R-SMALL 0.957641 | R-LARGE 0.008172 | cpu 0.01 s
+UNIF beta 0.316228 N=4 n 72 sect 3 under 0 | D(J_f=beta) 1.520191e-03 cor 1.0000 | D(J_f=0) 1.539838e-03 cor 1.0000 | shape MONOTONE | R-SMALL 0.972922 | R-LARGE 0.002335 | cpu 0.01 s
+UNIF beta 0.562341 N=3 n 72 sect 4 under 0 | D(J_f=beta) 1.014267e-02 cor 1.0000 | D(J_f=0) 1.090172e-02 cor 1.0000 | shape MONOTONE | R-SMALL 0.865996 | R-LARGE 0.073898 | cpu 0.01 s
+UNIF beta 0.562341 N=4 n 72 sect 4 under 0 | D(J_f=beta) 4.519151e-03 cor 1.0000 | D(J_f=0) 4.716889e-03 cor 1.0000 | shape MONOTONE | R-SMALL 0.914612 | R-LARGE 0.021951 | cpu 0.01 s
+UNIF beta 1 N=3 n 72 sect 4 under 0 | D(J_f=beta) 2.214170e-02 cor 0.9995 | D(J_f=0) 2.909154e-02 cor 0.9995 | shape MONOTONE | R-SMALL 0.597826 | R-LARGE 0.510145 | C-T1 n 72 vs 120: |dD| 3.85e-16, |dD0| 5.69e-16, ok | cpu 0.02 s
+UNIF beta 1 N=4 n 72 sect 4 under 0 | D(J_f=beta) 1.152634e-02 cor 0.9999 | D(J_f=0) 1.344543e-02 cor 0.9999 | shape MONOTONE | R-SMALL 0.737686 | R-LARGE 0.177045 | C-T1 n 72 vs 120: |dD| 3.47e-18, |dD0| 1.73e-18, ok | cpu 0.04 s
+UNIF beta 1.77828 N=3 n 72 sect 5 under 0 | D(J_f=beta) 1.892352e-02 cor 0.9946 | D(J_f=0) 4.758761e-02 cor 0.9938 | shape MONOTONE | R-SMALL 0.161572 | R-LARGE 1.378747 | cpu 0.01 s
+UNIF beta 1.77828 N=4 n 72 sect 5 under 0 | D(J_f=beta) 1.670710e-02 cor 0.9982 | D(J_f=0) 2.939096e-02 cor 0.9980 | shape MONOTONE | R-SMALL 0.338128 | R-LARGE 0.811507 | cpu 0.01 s
+UNIF beta 3.16228 N=3 n 74 sect 6 under 0 | D(J_f=beta) 5.402143e-03 cor 0.9958 | D(J_f=0) 2.454214e-02 cor 0.9853 | shape MONOTONE | R-SMALL 0.014586 | R-LARGE 1.244654 | cpu 0.01 s
+UNIF beta 3.16228 N=4 n 74 sect 6 under 0 | D(J_f=beta) 7.616100e-03 cor 0.9961 | D(J_f=0) 2.744323e-02 cor 0.9906 | shape MONOTONE | R-SMALL 0.048743 | R-LARGE 1.169833 | cpu 0.02 s
+UNIF beta 5.62341 N=3 n 80 sect 7 under 0 | D(J_f=beta) 1.519943e-03 cor 0.9992 | D(J_f=0) 7.695307e-03 cor 0.9956 | shape MONOTONE | R-SMALL 0.001298 | R-LARGE 1.107414 | cpu 0.02 s
+UNIF beta 5.62341 N=4 n 80 sect 7 under 0 | D(J_f=beta) 2.258358e-03 cor 0.9990 | D(J_f=0) 1.065425e-02 cor 0.9948 | shape MONOTONE | R-SMALL 0.004571 | R-LARGE 1.096943 | cpu 0.02 s
+UNIF beta 10 N=3 n 88 sect 9 under 0 | D(J_f=beta) 4.576490e-04 cor 0.9998 | D(J_f=0) 2.452027e-03 cor 0.9989 | shape MONOTONE | R-SMALL 0.000124 | R-LARGE 1.054423 | C-T1 n 88 vs 136: |dD| 1.04e-17, |dD0| 6.51e-18, ok | cpu 0.13 s
+UNIF beta 10 N=4 n 88 sect 9 under 0 | D(J_f=beta) 6.846063e-04 cor 0.9997 | D(J_f=0) 3.542189e-03 cor 0.9986 | shape MONOTONE | R-SMALL 0.000438 | R-LARGE 1.051555 | C-T1 n 88 vs 136: |dD| 8.67e-19, |dD0| 4.77e-18, ok | cpu 0.16 s
+UNIF beta 17.7828 N=3 n 98 sect 11 under 0 | D(J_f=beta) 1.412416e-04 cor 0.9999 | D(J_f=0) 7.813540e-04 cor 0.9997 | shape MONOTONE | R-SMALL 0.000012 | R-LARGE 1.029071 | cpu 0.08 s
+UNIF beta 17.7828 N=4 n 98 sect 11 under 0 | D(J_f=beta) 2.116583e-04 cor 0.9999 | D(J_f=0) 1.149235e-03 cor 0.9996 | shape MONOTONE | R-SMALL 0.000043 | R-LARGE 1.028079 | cpu 0.09 s
+UNIF beta 31.6228 N=3 n 112 sect 13 under 0 | D(J_f=beta) 4.409332e-05 cor 1.0000 | D(J_f=0) 2.483045e-04 cor 0.9999 | shape MONOTONE | R-SMALL 0.000001 | R-LARGE 1.015910 | cpu 0.13 s
+UNIF beta 31.6228 N=4 n 112 sect 13 under 0 | D(J_f=beta) 6.611403e-05 cor 1.0000 | D(J_f=0) 3.685150e-04 cor 0.9999 | shape MONOTONE | R-SMALL 0.000004 | R-LARGE 1.015512 | cpu 0.13 s
+UNIF beta 56.2341 N=3 n 131 sect 16 under 0 | D(J_f=beta) 1.384616e-05 cor 1.0000 | D(J_f=0) 7.875029e-05 cor 1.0000 | shape MONOTONE | R-SMALL 0.000000 | R-LARGE 1.008816 | cpu 0.22 s
+UNIF beta 56.2341 N=4 n 131 sect 16 under 0 | D(J_f=beta) 2.076556e-05 cor 1.0000 | D(J_f=0) 1.174346e-04 cor 1.0000 | shape MONOTONE | R-SMALL 0.000000 | R-LARGE 1.008637 | cpu 0.22 s
+UNIF beta 100 N=3 n 156 sect 20 under 0 | D(J_f=beta) 4.361620e-06 cor 1.0000 | D(J_f=0) 2.494498e-05 cor 1.0000 | shape MONOTONE | R-SMALL 0.000000 | R-LARGE 1.004917 | C-T1 n 156 vs 204: |dD| 3.94e-18, |dD0| 2.33e-18, ok | cpu 1.09 s
+UNIF beta 100 N=4 n 156 sect 20 under 0 | D(J_f=beta) 6.541862e-06 cor 1.0000 | D(J_f=0) 3.729558e-05 cor 1.0000 | shape MONOTONE | R-SMALL 0.000000 | R-LARGE 1.004830 | C-T1 n 156 vs 204: |dD| 4.57e-20, |dD0| 8.00e-19, ok | cpu 1.02 s
+UNIF beta 150 N=3 n 178 sect 23 under 0 | D(J_f=beta) 1.935314e-06 cor 1.0000 | D(J_f=0) 1.109475e-05 cor 1.0000 | shape MONOTONE | R-SMALL 0.000000 | R-LARGE 1.003267 | cpu 0.58 s
+UNIF beta 150 N=4 n 178 sect 23 under 0 | D(J_f=beta) 2.902814e-06 cor 1.0000 | D(J_f=0) 1.660613e-05 cor 1.0000 | shape MONOTONE | R-SMALL 0.000000 | R-LARGE 1.003212 | cpu 0.56 s
+UNIF beta 200 N=3 n 197 sect 26 under 0 | D(J_f=beta) 1.087723e-06 cor 1.0000 | D(J_f=0) 6.243084e-06 cor 1.0000 | shape MONOTONE | R-SMALL 0.000000 | R-LARGE 1.002446 | C-T1 n 197 vs 245: |dD| 2.09e-18, |dD0| 1.30e-17, ok | cpu 2.04 s
+UNIF beta 200 N=4 n 197 sect 26 under 0 | D(J_f=beta) 1.631521e-06 cor 1.0000 | D(J_f=0) 9.349465e-06 cor 1.0000 | shape MONOTONE | R-SMALL 0.000000 | R-LARGE 1.002406 | C-T1 n 197 vs 245: |dD| 2.19e-19, |dD0| 7.28e-20, ok | cpu 1.94 s
+READINGS R-D: 46 points; resolved negatives (G2 ALARM) 0; smallest D(J_f=beta) 1.562500e-08 at beta 0.001 N=4; smallest correlation 0.9946
+READINGS R-SHAPE: MONOTONE 46
+READINGS R-SMALL (beta <= 0.1): beta 0.001 N=3 1.000000; beta 0.001 N=4 1.000000; beta 0.001778 N=3 0.999999; beta 0.001778 N=4 0.999999; beta 0.003162 N=3 0.999996; beta 0.003162 N=4 0.999997; beta 0.005623 N=3 0.999987; beta 0.005623 N=4 0.999991; beta 0.01 N=3 0.999958; beta 0.01 N=4 0.999973; beta 0.01778 N=3 0.999866; beta 0.01778 N=4 0.999914; beta 0.03162 N=3 0.999578; beta 0.03162 N=4 0.999729; beta 0.05623 N=3 0.998665; beta 0.05623 N=4 0.999144; beta 0.1 N=3 0.995776; beta 0.1 N=4 0.997292
+READINGS R-LARGE (beta >= 10): beta 10 N=3 1.054423; beta 10 N=4 1.051555; beta 17.78 N=3 1.029071; beta 17.78 N=4 1.028079; beta 31.62 N=3 1.015910; beta 31.62 N=4 1.015512; beta 56.23 N=3 1.008816; beta 56.23 N=4 1.008637; beta 100 N=3 1.004917; beta 100 N=4 1.004830; beta 150 N=3 1.003267; beta 150 N=4 1.003212; beta 200 N=3 1.002446; beta 200 N=4 1.002406
+CHECKS {'C-TAB': True, 'C-REG': True, 'C-REG2': True, 'C-FIN': True, 'C-MTRUNC': True, 'C-T1': True, 'C-SMALL': True} | MUST-FIRE {'PLANT-TAB': True, 'REG-MISS': True, 'PLANT-N': True, 'PLANT-T': True, 'PLANT-M': True, 'PLANT-DNEG': True, 'PLANT-DPOS': True, 'PLANT-SMALL': True, 'PLANT-LARGE': True}
+VERDICT VALID
+RESULT G2 ALARM none
+SUMMARY full: CHECKS PASS; points reached 46 of 46; cpu 9.01 s

@@ -1,0 +1,61 @@
+# RV21_43 N = 3 package pkg_n3 (UNIF 9.20, 9.21), built 2026-10-30T19:37:45Z
+# run: bash code5/chain_o3v2.sh V "10 3 0.0099 0.62 0.01 0.04 3" "12 4 0.6 1.66 0.03 0.06 3" "14 6 1.65 2.66 0.015 0.035 4" "16 6 2.65 3.0 0.005 0.01 4"
+#      (from the scratch directory, with code5/ and code4/ as here; the O(3) tables are rebuilt in every job, no cache)
+# validation: bash code5/val_o3.sh -> out/val_o3.log; code5/o3check3.py 10 3000 1 and 14 400 2 -> out/o3check3.log; code5/test_o3c.sh -> out/test_o3c.log
+# v2 tails (MINOR-2 for N = 4): code4/cmp_tails.py o4 out/cover4_S*.ledger -> out/cmp_tails.txt
+# check: python3 code4/checkcover.py 1/100 3 out/o3cover2_V*.ledger  -> out/checkcover_output.txt
+# out/crosscheck_old_code: the same cover with o3cert.py (before v2.1): chain T stopped in segment 3 at J = 2.7057, chain U (L = 16) stopped at J = 2.758; see the chain logs
+# python 3.14.4; numpy 2.5.3; scipy 1.18.1; python-flint 0.9.0
+# sha256 of every file:
+ce73b7fb569982d692a826051a1000d611595e2da89807b14046f966d2e27c1a  ./code4/certint4.py
+38ea38e3d0f1e8bc49b490c9224526eae7d03aa20f3732dd56712ca5822d70ac  ./code4/certint5.py
+87e028c27c014cf2f38cb77362b62e2fcbc009f371fceb4c637dbc14c1512e38  ./code4/checkcover.py
+6beb68d76df1bcf9ccde43ac9ae821a0537c09940b324aa6b3e49cf38e85c788  ./code4/cmp_tails.py
+1e45678787bed4ab67122c3ac1b457f75069be343cbf19034b34527ef402774d  ./code4/sumledger.awk
+812541ea5ebca270675d439f819e452872ea9bb560915d59fed66e5293e5ab7b  ./code4/tm.py
+b7e353a0429df977f3969c2db4ad1669fa2ce5a462592278c4f9620edb43063e  ./code4/tm2.py
+808335328b3d90d64f0ec58745ad87294d84a4b68a9bf8522c696e8a061e995d  ./code4/versions.py
+e59b15403598b6edef765aea0fc3482eefcfd33109a62148b67e55d5646829a7  ./code5/chain_o3.sh
+482429a13bbb26cc559cb5c023c8c8caacdb6159976e613d8bd9ff0b926c035d  ./code5/chain_o3v2.sh
+c6616ee7674137e766e3bb476271138b9c20143cd255381ce5767cd049540d8f  ./code5/mkpkg_o3.sh
+768ec674e7579d286ea036efafa60a5dbe84661bb726158f64bddbc716831b42  ./code5/o3brute.py
+dacb8da96646d277f636e4796396db7ea9031e6b39f5afb66f34e7d4ae1b47ec  ./code5/o3cert.py
+7bdcc567d007d91e5c778aa98fb45c78db7a5f60a6cc04b5da21b77cdb2a22ca  ./code5/o3cert2.py
+c71ce5e9348be28ab0be5c45ed6875b565ea2f9c4fa94cbfcda60769a23e416a  ./code5/o3check.py
+b718dc715af516dac852056c0b4958363d0a2aafe3542c1a8cab3f2478690c8c  ./code5/o3check2.py
+f48e7c5158e48a0e87aacaa6c4437ab6e227ec701793d0ae0bcf3a1368058074  ./code5/o3check3.py
+6e692cec95245077f14ce5e7b7027c99ce37ab0e5c42305e31b25a6d9e0cc395  ./code5/o3lib3.py
+39923b69380de7e09b34e2c477c570e7469e278e9cd010dff1bb84ab299fa245  ./code5/o3sparse.py
+4ce4f7b19ba07c03412475b88ae89de16dca1de03a8f66e8f4e286a337ddb5bf  ./code5/o3struct.py
+3937982ea76c482c24de1a7e9eec3e3e948fd1b2e1d7fefd6da84fd7152787f1  ./code5/test_o3c.sh
+3392e340edda2c7b9db9f127d0cb2bf7b2558655385365014f4b8197b14f159a  ./code5/val_o3.sh
+7b98ac0b91ab0a771917a800407cd92da3931bba4a679e586fd9fa3b64bac835  ./out/chain_o3v2_V.log
+e744e4889800ec88afc4e360dff78a65b72300346b1526d64097567f67003caf  ./out/checkcover_output.txt
+ad2922866b984ffa60801e57a26b8236de3a26af874661673b86123004979f82  ./out/cmp_tails.txt
+87435487e470cf22c2087ec5ae8e404a7f23ee7a29d0202cc73b2bf63e6a7630  ./out/crosscheck_old_code/chain_o3_T.log
+d782ec1392b47245219f4d270463917e8871b70144dab84505c64b6d17629b1c  ./out/crosscheck_old_code/chain_o3_U.log
+a3bfc3d728a3e20f24e9ad4df5cf37c5547e0edc327a00a774aad5ad81ed7c50  ./out/crosscheck_old_code/o3cover_T1.ledger
+2e00df4871d9640fbf9557fb84d7a5ca2e4d0ef9c059166f62476d197bc3eb5d  ./out/crosscheck_old_code/o3cover_T2.ledger
+b6d52ca44f565b21cbddcc84d5e4c7a225f80a7eb66364ca3daebfed722194f6  ./out/crosscheck_old_code/o3cover_T3.ledger
+36789f1e80aacb85edfea5083b8c44b4409f5765aa3aaeeba6b4e945ef6449da  ./out/crosscheck_old_code/o3cover_U1.ledger
+d8b800227544a5384777de5dcd7c9c9729a47ef0704ce2452f5e52ba4fbd0933  ./out/ledger_summaries.txt
+dfb85519b04f91c4e23a799f25f37955e53b3e58b2268ec3191947862a3c0bb3  ./out/o3cert_o3t1.txt
+378799dcfaae7690af5702a987da69ba4e39e1ab70c89e27d9bd7e619cf61aa3  ./out/o3cert_o3t2.txt
+7f839a46e7f414e64d2ce9a7bde1f733e1e36587e31e0f5158ca27b73c72a7b2  ./out/o3cert_o3t3.txt
+c1ef1b03a7244f8bd3b3b189f127bca189e3e50274a966b38c12008ab256703e  ./out/o3cert_o3t4.txt
+7d0e4a7213b6fef52d8d6dd1a531ed610b4e0994e364e266c035ce970ed3952b  ./out/o3check3.log
+d0e3781e2570741dfaa59326a9628200aa4d7a55ff6f234b6279333678474e27  ./out/o3cover2_V1.ledger
+fd4404e690baee1df363cef3c45fec0f14076685450771deca5d2ca6b0ca8593  ./out/o3cover2_V1_1.log
+8e12507685a7bac14b34f9bf0020ac8a6da0bf4bec71b8cbdd03f1cee871d868  ./out/o3cover2_V2.ledger
+8b470180874ddf260322e2dbbf92e4f351aa9835f893373d28e1e7c8df8a3408  ./out/o3cover2_V2_1.log
+41e7adc44e70b7b6a2dcace79eb5daf41d4ee2ce9588d2a8fd6ec16f970f9599  ./out/o3cover2_V3.ledger
+2e840f19ca2a0c6cc3ec1709bf79807e777bbda701ab537b76c49a442b42ade7  ./out/o3cover2_V3_1.log
+303b554da865fe07e714db4bec51c5e599302e8c112a1613f9549443d74aec1f  ./out/o3cover2_V3_2.log
+b09c64f59939a5ffc52fe235b0f6ab205b3a984a195bf681d2cf9704209b9536  ./out/o3cover2_V4.ledger
+fff0a332e71fd36621e0bd46538828572238c76575b7ab56001713ec1bc7f7f9  ./out/o3cover2_V4_1.log
+ac61b661f80db934d08137db349c315e60ef1b761257aa0259f67c35a8d87537  ./out/o3cover2_V4_2.log
+d40f40eb0ff84d9de6792cc5a73bdc306a351d6f96d196e23fd971e0c0bf0c77  ./out/smoke_o3v21a.stdout
+c2dc7ca63420775ab1d38a27ecc4437eb874b8b8bfd8738fe19b894cc5252c41  ./out/smoke_v21.log
+5ba9b5cfeb108e552162ae49c0bea23aaf3bb05d02fd403a0bdec6059412e21e  ./out/smoke_v21a.stdout
+cc77365a2d56c6122a575ea9a35b134e24fd5f4fde362d3ecb9bc230f7061a1a  ./out/test_o3c.log
+fd201a830812a6a9c6545cd94cde3100e5fd685269a24db078ded4e2e097ce94  ./out/val_o3.log

@@ -1,0 +1,8 @@
+m2b_cert_v1_1 sha256 4b42e4f5b6c358b56f8c6d92779d4745e66655110963bad2478665c6a7e97ebd ITEM=tX2.n4 LIM=100 (RLIMIT_CPU soft 100, hard 105)
+C-HASH PASS (test)
+FORMAT M2B_PIECE_v1 CERTIFIED
+HANDOFF N=4 vac tX2: not written (a gate failed or the piece is incomplete)
+PLANT-NOWRITE N=4: the guarded writer with a failed gate opened 0 files -> FIRES
+HANDOFF N=4 vac tX2: hand_m2b_cert_v1_1_tX2.n4.txt sha256 06bf08464cdb29d65f7ab95abcdd8e476cf280111a1b4f08a19a4be8d3240af7 (671 bytes, 4 rows; cpu 1.0 s)
+ITEM tX2.n4 cpu 1.0 s, peak resident memory 10 MiB
+VERDICT VALID

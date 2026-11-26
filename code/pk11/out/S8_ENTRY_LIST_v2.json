@@ -1,0 +1,2791 @@
+{
+  "list": "S8_ENTRY_LIST_v2",
+  "author": "pk11",
+  "source": "S8_ENTRY_LIST_v1_1.json 8b4066f5 (its 61 entries unchanged) + the graphs of kt_s8f1_v1_1 (W3, W4, S2, S3, S4) and kt_s8f3c_v1_2 404e723c (D route B, H, L); float piece 3c VALID: out_kt_s8f3c_v1_2_n4.out 58390b0b, _n3.out db19b5ac",
+  "conventions": {
+    "vertex": "3*col + row (row 0 T, 1 M, 2 B); columns 0-indexed",
+    "horizontals": "1.0 between adjacent columns, rows T-T, M-M, B-B",
+    "column_types": {
+      "vac": "T-M A_EX, M-B A_EX, T-B B_EX; A_EX = (3+sqrt(21))/6, B_EX = (3*sqrt(5)-sqrt(21))/12 (vacmod2)",
+      "int": "T-M 1, M-B 1 (V)",
+      "free": "T-M 1, M-B 1, no T-B (the free end, w = K^(1/2) V 1)"
+    },
+    "cp": "[cp, a, col]: trial state a on column col; a = 0 the vacres polynomial p (q1, q2, q3) of vacres_K3_N*.json; a >= 1 cluster state a: S[0][a] + sum_beta S[beta][a] xi_beta over BASIS9 on that column (riglap3 xi factor)",
+    "xi": "[xi, TM|MB, col]: xi_uv = J(1 - sigma_u . sigma_v) on the T-M or M-B bond of column col (riglap xi factor, c9 = e_TM or e_MB)",
+    "K": "3 for every entry (a_0..a_3 plus the Lemma 19.1c remainder); every graph here is K = 3 under amom2b's guard ((D + 1)^F < 9e18 at D = 8)",
+    "trial_set": "certified z9sym_v1 (zero_states_v2_1 VALID): pk11/out/ts_N4_J170_D_S_z9sym_v1.json ea9d6c1b, ts_N3_S_z9sym_v1.json a298db65, vacres_K3_N4_sym_v1.json b40859de, vacres_K3_N3_sym_v1.json e5a9b49f; one set per run",
+    "N": [
+      3,
+      4
+    ],
+    "keys_s8f1": "on W3, W4, S2, S3, S4: '<graph>,Z' (no insertion), '<graph>,x,c,B' (one xi on bond B of column c), '<graph>,xy,c1,B1,c2,B2' (two), 'W4,xx,0,TM' (xi_TM twice on column 0: <w-hat, B_X^2 u>); on W3 and W4 the vacuum column carries ['cp', 0, col] = p (psi-hat)",
+    "pairs_rule": "a graph's pairs are the vertex pairs that carry factors: S8F1's run_graph order (insertion bonds by first use, then the three pairs of each vacuum column); F = V + number of pairs"
+  },
+  "graphs": {
+    "D": {
+      "columns": [
+        "vac",
+        "vac"
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ]
+    },
+    "N": {
+      "columns": [
+        "vac",
+        "int",
+        "vac"
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    "E2": {
+      "columns": [
+        "vac",
+        "free"
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    "E3": {
+      "columns": [
+        "vac",
+        "int",
+        "free"
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    "FF": {
+      "columns": [
+        "free",
+        "free"
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    "S4": {
+      "columns": [
+        "free",
+        "int",
+        "int",
+        "free"
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          11
+        ]
+      ],
+      "shape_V_edges_F": [
+        12,
+        17,
+        19
+      ]
+    },
+    "H": {
+      "columns": [
+        "vac",
+        "int",
+        "int",
+        "free"
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "shape_V_edges_F": [
+        12,
+        18,
+        16
+      ]
+    },
+    "L": {
+      "columns": [
+        "vac",
+        "int",
+        "int",
+        "vac"
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          9,
+          11
+        ]
+      ],
+      "shape_V_edges_F": [
+        12,
+        19,
+        18
+      ]
+    },
+    "W3": {
+      "columns": [
+        "free",
+        "int",
+        "vac"
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          8
+        ]
+      ],
+      "shape_V_edges_F": [
+        9,
+        13,
+        15
+      ]
+    },
+    "W4": {
+      "columns": [
+        "free",
+        "int",
+        "int",
+        "vac"
+      ],
+      "pairs": [
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          9,
+          11
+        ]
+      ],
+      "shape_V_edges_F": [
+        12,
+        18,
+        19
+      ]
+    },
+    "S2": {
+      "columns": [
+        "free",
+        "free"
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "shape_V_edges_F": [
+        6,
+        7,
+        9
+      ]
+    },
+    "S3": {
+      "columns": [
+        "free",
+        "int",
+        "free"
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          8
+        ]
+      ],
+      "shape_V_edges_F": [
+        9,
+        12,
+        14
+      ]
+    }
+  },
+  "entries": [
+    {
+      "key": "g,0,0",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          0,
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "g,0,1",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          1,
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "g,0,2",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          2,
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "g,0,3",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          3,
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "g,1,1",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "cp",
+          1,
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "g,1,2",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "cp",
+          2,
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "g,1,3",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "cp",
+          3,
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "g,2,2",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "cp",
+          2,
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "g,2,3",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "cp",
+          3,
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "g,3,3",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          3,
+          0
+        ],
+        [
+          "cp",
+          3,
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "T,0,0",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          0,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "T,0,1",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          1,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "T,0,2",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          2,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "T,0,3",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          3,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "T,1,1",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "cp",
+          1,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "T,1,2",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "cp",
+          2,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "T,1,3",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "cp",
+          3,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "T,2,2",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "cp",
+          2,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "T,2,3",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "cp",
+          3,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "T,3,3",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          3,
+          0
+        ],
+        [
+          "cp",
+          3,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TX,0,0",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "cp",
+          0,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TX,0,1",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "cp",
+          1,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TX,0,2",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "cp",
+          2,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TX,0,3",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "cp",
+          3,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TX,1,1",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "cp",
+          1,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TX,1,2",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "cp",
+          2,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TX,1,3",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "cp",
+          3,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TX,2,2",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "cp",
+          2,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TX,2,3",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "cp",
+          3,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TX,3,3",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          3,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "cp",
+          3,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TY,0,0",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          1
+        ],
+        [
+          "cp",
+          0,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TY,0,1",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          1
+        ],
+        [
+          "cp",
+          1,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TY,0,2",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          1
+        ],
+        [
+          "cp",
+          2,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TY,0,3",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          1
+        ],
+        [
+          "cp",
+          3,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TY,1,1",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          1
+        ],
+        [
+          "cp",
+          1,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TY,1,2",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          1
+        ],
+        [
+          "cp",
+          2,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TY,1,3",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          1
+        ],
+        [
+          "cp",
+          3,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TY,2,2",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          1
+        ],
+        [
+          "cp",
+          2,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TY,2,3",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          1
+        ],
+        [
+          "cp",
+          3,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TY,3,3",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          3,
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          1
+        ],
+        [
+          "cp",
+          3,
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "T,1,0",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "cp",
+          0,
+          2
+        ]
+      ],
+      "K": 3,
+      "note": "mirror check of T,0,1"
+    },
+    {
+      "key": "TX,1,0",
+      "graph": "N",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "cp",
+          0,
+          2
+        ]
+      ],
+      "K": 3,
+      "note": "mirror check of TX,0,1"
+    },
+    {
+      "key": "e,0",
+      "graph": "E2",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "e,1",
+      "graph": "E2",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "e,2",
+      "graph": "E2",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "e,3",
+      "graph": "E2",
+      "factors": [
+        [
+          "cp",
+          3,
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "eX,0",
+      "graph": "E2",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "eX,1",
+      "graph": "E2",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "eX,2",
+      "graph": "E2",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "eX,3",
+      "graph": "E2",
+      "factors": [
+        [
+          "cp",
+          3,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "f,0",
+      "graph": "E3",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "f,1",
+      "graph": "E3",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "f,2",
+      "graph": "E3",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "f,3",
+      "graph": "E3",
+      "factors": [
+        [
+          "cp",
+          3,
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "fX,0",
+      "graph": "E3",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "fX,1",
+      "graph": "E3",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "fX,2",
+      "graph": "E3",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "fX,3",
+      "graph": "E3",
+      "factors": [
+        [
+          "cp",
+          3,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "z",
+      "graph": "FF",
+      "factors": [],
+      "K": 3
+    },
+    {
+      "key": "wXw",
+      "graph": "FF",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "wXwX",
+      "graph": "FF",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "DY,0",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          0,
+          1
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "DY,1",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "cp",
+          0,
+          1
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "DY,2",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "cp",
+          0,
+          1
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "DY,3",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          3,
+          0
+        ],
+        [
+          "cp",
+          0,
+          1
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "DYY",
+      "graph": "D",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          0
+        ],
+        [
+          "cp",
+          0,
+          1
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,Z",
+      "graph": "S4",
+      "factors": [],
+      "K": 3
+    },
+    {
+      "key": "S4,x,0,TM",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,x,1,MB",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "MB",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,x,1,TM",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,x,2,MB",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "MB",
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,x,2,TM",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,x,3,MB",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "MB",
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,x,3,TM",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,xy,0,TM,1,TM",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,xy,0,TM,1,MB",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,xy,1,TM,2,TM",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "xi",
+          "TM",
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,xy,1,TM,2,MB",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          1
+        ],
+        [
+          "xi",
+          "MB",
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,xy,0,TM,2,TM",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,xy,0,TM,2,MB",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          2
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,xy,0,TM,3,TM",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,xy,0,TM,3,MB",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          0
+        ],
+        [
+          "xi",
+          "MB",
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,xy,2,TM,3,TM",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          2
+        ],
+        [
+          "xi",
+          "TM",
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "S4,xy,2,TM,3,MB",
+      "graph": "S4",
+      "factors": [
+        [
+          "xi",
+          "TM",
+          2
+        ],
+        [
+          "xi",
+          "MB",
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "h,0",
+      "graph": "H",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "h,1",
+      "graph": "H",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "h,2",
+      "graph": "H",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "h,3",
+      "graph": "H",
+      "factors": [
+        [
+          "cp",
+          3,
+          0
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "hX,0",
+      "graph": "H",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "hX,1",
+      "graph": "H",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "hX,2",
+      "graph": "H",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "hX,3",
+      "graph": "H",
+      "factors": [
+        [
+          "cp",
+          3,
+          0
+        ],
+        [
+          "xi",
+          "TM",
+          1
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TT,0,0",
+      "graph": "L",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          0,
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TT,0,1",
+      "graph": "L",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          1,
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TT,0,2",
+      "graph": "L",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          2,
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TT,0,3",
+      "graph": "L",
+      "factors": [
+        [
+          "cp",
+          0,
+          0
+        ],
+        [
+          "cp",
+          3,
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TT,1,1",
+      "graph": "L",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "cp",
+          1,
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TT,1,2",
+      "graph": "L",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "cp",
+          2,
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TT,1,3",
+      "graph": "L",
+      "factors": [
+        [
+          "cp",
+          1,
+          0
+        ],
+        [
+          "cp",
+          3,
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TT,2,2",
+      "graph": "L",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "cp",
+          2,
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TT,2,3",
+      "graph": "L",
+      "factors": [
+        [
+          "cp",
+          2,
+          0
+        ],
+        [
+          "cp",
+          3,
+          3
+        ]
+      ],
+      "K": 3
+    },
+    {
+      "key": "TT,3,3",
+      "graph": "L",
+      "factors": [
+        [
+          "cp",
+          3,
+          0
+        ],
+        [
+          "cp",
+          3,
+          3
+        ]
+      ],
+      "K": 3
+    }
+  ],
+  "entries_added_in_v2": {
+    "D (route B for |p_perp|; TM only, MB follows by exact parity)": [
+      "DY,0",
+      "DY,1",
+      "DY,2",
+      "DY,3",
+      "DYY"
+    ],
+    "S4 (the n = 4 strip: S8-3, and Z4 = S4,Z, X1 = S4,x,1,TM, X1X2 = S4,xy,1,TM,2,TM for |B_X w-hat|^2 at d = 0)": 18,
+    "H (the d = 1 end graph [vac a | V xi | V | free])": [
+      "h,0",
+      "h,1",
+      "h,2",
+      "h,3",
+      "hX,0",
+      "hX,1",
+      "hX,2",
+      "hX,3"
+    ],
+    "L (the leakage graph [vac a | V | V | vac b], for eta)": [
+      "TT,0,0",
+      "TT,0,1",
+      "TT,0,2",
+      "TT,0,3",
+      "TT,1,1",
+      "TT,1,2",
+      "TT,1,3",
+      "TT,2,2",
+      "TT,2,3",
+      "TT,3,3"
+    ]
+  },
+  "conditional_entries": {
+    "window route (PLAN_S8_CERT_v2 table: W3 at d = -1 m = 1; W4 at d = 0 m = 1 and d = -1 m = 2; the review ADD1 s.2). SPEC_S8_CERT_v1 will propose the chain route there instead (3a: |a_perp||p_perp| clears 40-1400x; 3c: R-b headroom >= 48), which needs neither; W4 is a 4-column prep, so hold it until the SPEC review; W3 is light": [
+      {
+        "key": "W3,Z",
+        "graph": "W3",
+        "factors": [
+          [
+            "cp",
+            0,
+            2
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W3,x,0,TM",
+        "graph": "W3",
+        "factors": [
+          [
+            "cp",
+            0,
+            2
+          ],
+          [
+            "xi",
+            "TM",
+            0
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W3,x,1,MB",
+        "graph": "W3",
+        "factors": [
+          [
+            "cp",
+            0,
+            2
+          ],
+          [
+            "xi",
+            "MB",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W3,x,1,TM",
+        "graph": "W3",
+        "factors": [
+          [
+            "cp",
+            0,
+            2
+          ],
+          [
+            "xi",
+            "TM",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W3,xy,0,TM,1,TM",
+        "graph": "W3",
+        "factors": [
+          [
+            "cp",
+            0,
+            2
+          ],
+          [
+            "xi",
+            "TM",
+            0
+          ],
+          [
+            "xi",
+            "TM",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W3,xy,0,TM,1,MB",
+        "graph": "W3",
+        "factors": [
+          [
+            "cp",
+            0,
+            2
+          ],
+          [
+            "xi",
+            "TM",
+            0
+          ],
+          [
+            "xi",
+            "MB",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W4,Z",
+        "graph": "W4",
+        "factors": [
+          [
+            "cp",
+            0,
+            3
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W4,x,0,TM",
+        "graph": "W4",
+        "factors": [
+          [
+            "cp",
+            0,
+            3
+          ],
+          [
+            "xi",
+            "TM",
+            0
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W4,x,1,TM",
+        "graph": "W4",
+        "factors": [
+          [
+            "cp",
+            0,
+            3
+          ],
+          [
+            "xi",
+            "TM",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W4,x,2,MB",
+        "graph": "W4",
+        "factors": [
+          [
+            "cp",
+            0,
+            3
+          ],
+          [
+            "xi",
+            "MB",
+            2
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W4,x,2,TM",
+        "graph": "W4",
+        "factors": [
+          [
+            "cp",
+            0,
+            3
+          ],
+          [
+            "xi",
+            "TM",
+            2
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W4,xy,1,TM,2,TM",
+        "graph": "W4",
+        "factors": [
+          [
+            "cp",
+            0,
+            3
+          ],
+          [
+            "xi",
+            "TM",
+            1
+          ],
+          [
+            "xi",
+            "TM",
+            2
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W4,xy,1,TM,2,MB",
+        "graph": "W4",
+        "factors": [
+          [
+            "cp",
+            0,
+            3
+          ],
+          [
+            "xi",
+            "TM",
+            1
+          ],
+          [
+            "xi",
+            "MB",
+            2
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W4,xy,0,TM,2,TM",
+        "graph": "W4",
+        "factors": [
+          [
+            "cp",
+            0,
+            3
+          ],
+          [
+            "xi",
+            "TM",
+            0
+          ],
+          [
+            "xi",
+            "TM",
+            2
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W4,xy,0,TM,2,MB",
+        "graph": "W4",
+        "factors": [
+          [
+            "cp",
+            0,
+            3
+          ],
+          [
+            "xi",
+            "TM",
+            0
+          ],
+          [
+            "xi",
+            "MB",
+            2
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W4,xy,0,TM,1,TM",
+        "graph": "W4",
+        "factors": [
+          [
+            "cp",
+            0,
+            3
+          ],
+          [
+            "xi",
+            "TM",
+            0
+          ],
+          [
+            "xi",
+            "TM",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "W4,xx,0,TM",
+        "graph": "W4",
+        "factors": [
+          [
+            "cp",
+            0,
+            3
+          ],
+          [
+            "xi",
+            "TM",
+            0
+          ],
+          [
+            "xi",
+            "TM",
+            0
+          ]
+        ],
+        "K": 3
+      }
+    ],
+    "short strips n = 2, 3 (only if main does not cite Theorem 1.5(i) for n = 3 and the ladder results for n = 2; the review ADD1: the call, light graphs)": [
+      {
+        "key": "S2,Z",
+        "graph": "S2",
+        "factors": [],
+        "K": 3
+      },
+      {
+        "key": "S2,x,0,TM",
+        "graph": "S2",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            0
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S2,x,1,MB",
+        "graph": "S2",
+        "factors": [
+          [
+            "xi",
+            "MB",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S2,x,1,TM",
+        "graph": "S2",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S2,xy,0,TM,1,TM",
+        "graph": "S2",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            0
+          ],
+          [
+            "xi",
+            "TM",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S2,xy,0,TM,1,MB",
+        "graph": "S2",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            0
+          ],
+          [
+            "xi",
+            "MB",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S3,Z",
+        "graph": "S3",
+        "factors": [],
+        "K": 3
+      },
+      {
+        "key": "S3,x,0,TM",
+        "graph": "S3",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            0
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S3,x,1,MB",
+        "graph": "S3",
+        "factors": [
+          [
+            "xi",
+            "MB",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S3,x,1,TM",
+        "graph": "S3",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S3,x,2,MB",
+        "graph": "S3",
+        "factors": [
+          [
+            "xi",
+            "MB",
+            2
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S3,x,2,TM",
+        "graph": "S3",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            2
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S3,xy,0,TM,1,TM",
+        "graph": "S3",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            0
+          ],
+          [
+            "xi",
+            "TM",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S3,xy,0,TM,1,MB",
+        "graph": "S3",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            0
+          ],
+          [
+            "xi",
+            "MB",
+            1
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S3,xy,1,TM,2,TM",
+        "graph": "S3",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            1
+          ],
+          [
+            "xi",
+            "TM",
+            2
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S3,xy,1,TM,2,MB",
+        "graph": "S3",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            1
+          ],
+          [
+            "xi",
+            "MB",
+            2
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S3,xy,0,TM,2,TM",
+        "graph": "S3",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            0
+          ],
+          [
+            "xi",
+            "TM",
+            2
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "key": "S3,xy,0,TM,2,MB",
+        "graph": "S3",
+        "factors": [
+          [
+            "xi",
+            "TM",
+            0
+          ],
+          [
+            "xi",
+            "MB",
+            2
+          ]
+        ],
+        "K": 3
+      }
+    ]
+  },
+  "excluded": {
+    "AL [vac a | V xi | V xi | vac b] (AA,a,b)": "K = 1 under amom2b's guard (F = 20). The SPEC bounds the residual after an A_X step by |B_X||eps_d| + |kappa_d||S eps_d| with |eps_d| <= R_w rho1^d (the review ADD1 s.3), so eta_A is not needed",
+    "the 10-state entries (D10, N10, E210, E310)": "K = 1; 3c used them as a float comparison only; the 4-state route closes d = 2 (13.6x / 18.5x at the 3e-3 floor)",
+    "B4, W5a, W5b": "K = 2; the bulk comes from P2's certified item",
+    "one-integral residual entries (offered in my 12:2xZ note)": "dropped: the review R-a's quadratic form is a fixed linear combination of DYY, DY,a and g,a,b (|p_perp|^2 <= (DYY - 2 sum_a gamma_a DY,a + sum_ab gamma_a gamma_b g,a,b)/g00 for any fixed gamma), so its t^0 and t^1 orders cancel exactly in the a_k and its bar is the sum of the entries' bars. A single-integrand version would need a sum-of-products factor type and helps only if your remainder bars shrink with the integrand's L2 size"
+  },
+  "shared_with_m3_s5s7": {
+    "g,a,b": "b5 g,a,b",
+    "T,a,b": "clT T,a,b (parity-allowed)",
+    "TX,a,0": "b5 A,a",
+    "e,0": "endw I_mix",
+    "z": "endw I_free"
+  },
+  "parity_note": "with an exactly symmetrized trial set (states 0, 1, 3 even, 2 odd): g, T, e and f vanish exactly when the parities differ (g,0,2 g,1,2 g,2,3 T,0,2 T,1,2 T,2,3 e,2 f,2); TX, eX and fX do not (xi_TM has even and odd parts); TY,a,b = pi_a pi_b TX,a,b, so the TY family is a check family only. Added in v2: TT,a,b and h,a vanish exactly when the parities differ (TT,0,2 TT,1,2 TT,2,3 h,2); DY,a and hX,a do not (xi_TM); on W3, W4, S2, S3, S4 (symmetric columns, p even) x,c,MB equals x,c,TM exactly, so the MB singles are check entries",
+  "counts": {
+    "entries": 102,
+    "v1_1": 61,
+    "added_required": 41,
+    "conditional_window": 17,
+    "conditional_short": 18
+  },
+  "supersedes": "S8_ENTRY_LIST_v1_1.json 8b4066f5: v2 keeps its 61 entries and adds the rest"
+}

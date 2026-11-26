@@ -1,0 +1,24 @@
+m2b_cert_v1_1 sha256 4b42e4f5b6c358b56f8c6d92779d4745e66655110963bad2478665c6a7e97ebd ITEM=x.n4 LIM=400 (RLIMIT_CPU soft 400, hard 405)
+C-HASH PASS (2 engine files, 2 trial-vacuum files, 2 kbar files, 5 validation records of the M-a layer)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+FORMAT M2B_PIECE_v1 CERTIFIED
+KERNEL arbeng_c2b_v2.py fb8cd1b5162930b1e9ff83c35fb652575a9f2ff1649f733c5d45bdf7f7762993 ctx.prec 512
+LAYER arbeng_ma_v1_3.py 075e35864a272e29014d2259e0bfc37eaf7a1d0b5a9a101ae78ee9d4ed8f6a15 prec 512 validation 5ccbb6d006f5365f219eb6221b7e66b76e7e7799e977148df94f34b0c3d86216 a61d893e6424b9ea524d944e40f625c934de04a2faeaa741e3fd333e97f48817 d613fe804a030be397fefa46ed1424063f794400b7d9618e12db8af046e09d93 2ad13ec3cac14ef919f5e34fa19664f70eece05c3c3f208dcfec36a93cdd4473 a8a5e8d020d2d1e1127c3ee8f400496011ddbd022af83180025ac3185ba22f95
+C-IMPORT N=4: arbeng_c2b_v2 from /mnt/g2/release/root/code/pk02/arbeng_c2b_v2.py, arbeng_ma_v1_3 from /mnt/g2/release/root/code/pk02/arbeng_ma_v1_3.py -> PASS
+BOUND N=4: a_m 6135428905104631294035961535529/20282409603651670423947251286016 a_e 29206669829258403248756220714025/81129638414606681695789005144064 a_pp 1163787714069855263078269343481/1267650600228229401496703205376 RHO_PP_HEX 0x1.ea93ad4bd8e58p-1 (a_pp >= sin^2(asin rho_m + delta) = 0.91806662960623806742) -> PASS
+C-TILT (a) N=4: c_m 0.59545911617622549 >= -log(1 - a)/(2a) = 0.595459116176, c_e 0.61984319809502719 >= -log(1 - a)/(2a) = 0.619843198095, c_pp 1.3625639128541667 >= -log(1 - a)/(2a) = 1.36256391285; Chernoff lambdas 0.3 0.45 0.6 0.45 > 0, tailX/ann lambdas >= 0.3 (LAW v1) -> PASS
+PLANT-TILT N=4: c_m (1 - 1e-9) passes the rate test: False; a lambda = 1e3 tilt certified positive definite: False -> FIRES
+HANDOFF N=4 vac x: not written (a gate failed or the piece is incomplete)
+PLANT-NOWRITE N=4: the guarded writer with a failed gate opened 0 files -> FIRES
+STAGE-CPU N=4 x: series to order 4 (L1 terms [1, 26, 301, 2054, 9223], L0 terms [1, 15, 93, 358, 871]) done at cpu 0.1 s
+STAGE-CPU N=4 x: conditional expectations to Dc 8 done at cpu 34.6 s
+C-R0 N=4: r_0 = E[L1_0 | s] - L0_0 has 0 terms (must be the exact zero polynomial) -> PASS
+PLANT-R0 N=4: m_0 = 1 + 2^-52 leaves r_0 with 1 terms -> FIRES
+RESIDUALS N=4: r_1..r_4 terms [28, 210, 924, 3003], degrees [2, 4, 6, 8]
+STAGE-CPU N=4 x: nP, R1 at J1 done at cpu 37.7 s
+STAGE-CPU N=4 x: nPM, R1 weighted at J0 done at cpu 76.3 s
+EXPLICIT-V N=4: nP 2.674377108e-06 +- 2.9e-151 (rel 1.1e-145) | R1 9.019130306e-17 +- 2.0e-153 (rel 2.2e-137) | at J0 = 170: nPM_wt 3.471200281e-06 +- 1.9e-150 (rel 5.4e-145) R1_wt 1.014771776e-16 +- 8.5e-153 (rel 8.4e-137) | nPM_dl 2.473280672e-06 +- 6.9e-151 (rel 2.8e-145) R1_dl 7.963479438e-17 +- 2.1e-153 (rel 2.6e-137) (kbar 0.8271394273441662)
+C-TILT (b) N=4: 2 positive-definiteness tests (G1 J0, G1 J1), all certified: True; smallest leading minor lower end 8.480e+00 -> PASS
+HANDOFF N=4 vac x: hand_m2b_cert_v1_1_x.n4.txt sha256 851a89dbbab49d8b1fc53711c628c58aa23ed3ffdaa19f20bc32cde5c37e4c36 (358304 bytes, 4172 rows; cpu 76.3 s)
+ITEM x.n4 cpu 76.3 s, peak resident memory 1146 MiB
+VERDICT VALID

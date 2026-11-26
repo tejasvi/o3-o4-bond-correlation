@@ -1,0 +1,56 @@
+start 2026-11-21T17:00:08Z
+ast rc=0
+AST OK 8f1ed1c7d79b06842185a5ed3d22bdbb9765d2dbce722e8fb7e93cdf373d97b3 /mnt/g2/release/root/code/pk24/tools/check_m2_cols_v2.py
+AST OK 60718732fa1a2f9c4f18b0892c71b468d0e6c6592071581291f9e1922f4a071e /mnt/g2/release/root/code/pk24/tools/make_vx_refresh_standin_v1.py
+stand-ins rc=0
+VXREF vxref N3_P0903_h: vx [0, 1.1893576403826425E-7] (hull of xc [0.11185698068700729, 0.11998946539359169] at jlo 1008859.4155328119)
+VXREF vxref N4_P0903_h: vx [0, 2.3823650598995358E-7] (hull of xc [0.22296676033176482, 0.2403471421916038] at jlo 1008859.4155328119)
+VXREF FILE 5171b86eb00307f78555718b2cef6a265bdfcf03b11788ad9d2396343c38b88b pk24/mr_engine/vxref_test_v1/vxref/MR_INSERT.kv
+VXREF plant_other N3_P0903_h: vx [0, 1.1893576403826425E-7] (hull of xc [0.11185698068700729, 0.11998946539359169] at jlo 1008859.4155328119)
+VXREF plant_other N4_P0903_h: vx [0, 2.3823650598995358E-7] (hull of xc [0.22296676033176482, 0.2403471421916038] at jlo 1008859.4155328119)
+VXREF plant_other N4_P0061_h: vx_hi -> 0.0011873132148750246
+VXREF FILE 813b03962b9f6548069b8357b483915f1e4f4e4eff3e248ad51358fddc462aa6 pk24/mr_engine/vxref_test_v1/plant_other/MR_INSERT.kv
+VXREF plant_low N3_P0903_h: vx [0, 1.1893576403826425E-7] (hull of xc [0.11185698068700729, 0.11998946539359169] at jlo 1008859.4155328119)
+VXREF plant_low N4_P0903_h: vx [0, 2.38236E-7] (hull of xc [0.22296676033176482, 0.2403471421916038] at jlo 1008859.4155328119)
+VXREF FILE 0cb8b23baff8b015f80728c11cd333b60f9fcd59d31ad41ad8bb854b60a386e1 pk24/mr_engine/vxref_test_v1/plant_low/MR_INSERT.kv
+CASE reh check_m2_cols_v2: rc 0 (expected 0) -> AS-EXPECTED
+M2COLS INSERT VXHULL N3_P0903_h (INFO): vx [-8.4540710855081688e-12, 1.3975530249701541e-07] against the floor-free hull [0, 1.1893576403826424e-07] -> contains
+M2COLS INSERT VXHULL N4_P0903_h (INFO): vx [-1.3524704817050890e-11, 2.8325750237466216e-07] against the floor-free hull [0, 2.3823650598995358e-07] -> contains
+M2COLS INSERT: rows 5241, fields 23; outside the allowed last-piece fields 0 differ; allowed changes 6
+M2COLS EXACT: rows 6988, fields 12; outside the allowed last-piece fields 0 differ; allowed changes 12
+M2COLS OK: v5 is v4b and v1_10 is v1_9 outside the last piece's Way A fields
+CASE vxref check_m2_cols_v2: rc 0 (expected 0) -> AS-EXPECTED
+M2COLS INSERT VXHULL N3_P0903_h (INFO): vx [0, 1.1893576403826425E-7] against the floor-free hull [0, 1.1893576403826424e-07] -> contains
+M2COLS INSERT VXHULL N4_P0903_h (INFO): vx [0, 2.3823650598995358E-7] against the floor-free hull [0, 2.3823650598995358e-07] -> contains
+M2COLS INSERT: rows 5241, fields 23; outside the allowed last-piece fields 0 differ; allowed changes 10
+M2COLS INSERT CHANGED N3_P0903_h vx_lo: -8.4540710855081688e-12 -> 0
+M2COLS INSERT CHANGED N3_P0903_h vx_hi: 1.3975530249701541e-07 -> 1.1893576403826425E-7
+M2COLS INSERT CHANGED N4_P0903_h vx_lo: -1.3524704817050890e-11 -> 0
+M2COLS INSERT CHANGED N4_P0903_h vx_hi: 2.8325750237466216e-07 -> 2.3823650598995358E-7
+M2COLS EXACT: rows 6988, fields 12; outside the allowed last-piece fields 0 differ; allowed changes 12
+M2COLS OK: v5 is v4b and v1_10 is v1_9 outside the last piece's Way A fields
+CASE vxref check_m2_cols_v1: rc 9 (expected 9) -> AS-EXPECTED
+M2COLS INSERT: rows 5241, fields 23; outside the allowed last-piece fields 4 differ (e.g. N3_P0903_h vx_lo, N3_P0903_h vx_hi, N4_P0903_h vx_lo); allowed changes 6
+M2COLS EXACT: rows 6988, fields 12; outside the allowed last-piece fields 0 differ; allowed changes 12
+M2COLS STOP rc 9
+CASE plant_other check_m2_cols_v2: rc 9 (expected 9) -> AS-EXPECTED
+M2COLS INSERT VXHULL N3_P0903_h (INFO): vx [0, 1.1893576403826425E-7] against the floor-free hull [0, 1.1893576403826424e-07] -> contains
+M2COLS INSERT VXHULL N4_P0903_h (INFO): vx [0, 2.3823650598995358E-7] against the floor-free hull [0, 2.3823650598995358e-07] -> contains
+M2COLS INSERT: rows 5241, fields 23; outside the allowed last-piece fields 1 differ (e.g. N4_P0061_h vx_hi); allowed changes 10
+M2COLS INSERT CHANGED N3_P0903_h vx_lo: -8.4540710855081688e-12 -> 0
+M2COLS INSERT CHANGED N3_P0903_h vx_hi: 1.3975530249701541e-07 -> 1.1893576403826425E-7
+M2COLS INSERT CHANGED N4_P0903_h vx_lo: -1.3524704817050890e-11 -> 0
+M2COLS INSERT CHANGED N4_P0903_h vx_hi: 2.8325750237466216e-07 -> 2.3823650598995358E-7
+M2COLS EXACT: rows 6988, fields 12; outside the allowed last-piece fields 0 differ; allowed changes 12
+M2COLS STOP rc 9
+CASE plant_low check_m2_cols_v2: rc 0 (expected 0) -> AS-EXPECTED
+M2COLS INSERT VXHULL N3_P0903_h (INFO): vx [0, 1.1893576403826425E-7] against the floor-free hull [0, 1.1893576403826424e-07] -> contains
+M2COLS INSERT VXHULL N4_P0903_h (INFO): vx [0, 2.38236E-7] against the floor-free hull [0, 2.3823650598995358e-07] -> misses on the high side
+M2COLS INSERT: rows 5241, fields 23; outside the allowed last-piece fields 0 differ; allowed changes 10
+M2COLS INSERT CHANGED N3_P0903_h vx_lo: -8.4540710855081688e-12 -> 0
+M2COLS INSERT CHANGED N3_P0903_h vx_hi: 1.3975530249701541e-07 -> 1.1893576403826425E-7
+M2COLS INSERT CHANGED N4_P0903_h vx_lo: -1.3524704817050890e-11 -> 0
+M2COLS INSERT CHANGED N4_P0903_h vx_hi: 2.8325750237466216e-07 -> 2.38236E-7
+M2COLS EXACT: rows 6988, fields 12; outside the allowed last-piece fields 0 differ; allowed changes 12
+M2COLS OK: v5 is v4b and v1_10 is v1_9 outside the last piece's Way A fields
+end 2026-11-21T17:00:44Z

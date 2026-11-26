@@ -1,0 +1,59 @@
+C-PINS (pk25/mr/v3/MR_LEMMAP.kv sha256 3164b778c2ffe1bb, expected 3164b778) -> PASS
+C-PINS (pk25/mr/v4b/MR_INSERT.kv sha256 54691bc11e5c8a00, expected 54691bc1) -> PASS
+C-PINS (pk25/mr/v4/MR_SPECTRAL.kv sha256 0e4d817729c6f735, expected 0e4d8177) -> PASS
+C-PINS (pk25/p2/v3f2/MR_LEMMAP_V3F.kv sha256 47cef0dd45c88d10, expected 47cef0dd) -> PASS
+C-PINS (pk22/midrow/g4/mrc/out/cert/MR_JOINT_CERT_v1.kv sha256 80bc8d81739118bd, expected 80bc8d81) -> PASS
+C-PINS (pk23/pev/m3_reader_cw_v1_1.py sha256 c1331e0436244a1f, expected c1331e04) -> PASS
+C-PINS (pk22/m3/m3_lawcert_c3k_v2.py sha256 69730e387a039525, expected 69730e38) -> PASS
+C_H DRY: kt_rb CERT300C |Q v_h| x 300 = 0.262575 (N4), 0.099838 (N3); S9(b)-h float 0.2359 (N4), 0.1718 (N3); used 0.262575, 0.171800
+LAWCERT hl N=4: m3_lawcert_hl_v1_1_N4.json (m3_lawcert_hl_v1_1.py), 6 entries
+LAWCERT s8 N=4: m3_lawcert_v1_1_N4.json (m3_lawcert_v1_1.py), 109 entries
+LAWCERT s8n N=4: m3_lawcert_v1_2_N4.json (m3_lawcert_v1_2.py), 65 entries
+LAWCERT c3k N=4: m3_lawcert_c3k_v1_N4.json (m3_lawcert_c3k_v1.py), 11 entries
+LAWCERT cw N=4: m3_lawcert_cw_v1_N4.json (m3_lawcert_cw_v1.py), 4 entries
+LAWCERT c3kp N=4: m3_lawcert_c3k_v2_N4.json (m3_lawcert_c3k_v2.py), 11 entries; records m3_c3kp_E4D_N4_J300_c3kp.json 8d78414717faf123, m3_c3kp_E4N_N4_J300_c3kp.json 906534d900e8c053
+C-PIN-10P (N=4: psixy_exact_d_v2_n4.json sha256 2bbe3906bb1bc0d7 is its row in pk22's MANIFEST_PSIXY_10P_v1) -> PASS
+C-10P (N=4: the c3kp records' trial set ts_N4_J170_D_S_z9symxyp_v1.json:04cd774b561c7baf is the one psixy_exact_d_v2 names, so their 10' is c'(t)'s 10') -> PASS
+PLANT-10P (N=4: state 10's trial set ts_N4_J170_D_S_z9symxy_v1.json:909b20bfa30a4b95c in place of 10's must fail C-10P) -> FIRES
+C-UHAT0 (N=4: P2's UHAT0 gives uhat_0(0) = (1, 0, 0) and uhat_x3(0) = 0 exactly; P2 and MR_LEMMAP v3 have the same 843 pieces) -> PASS
+C-MIRROR (N=4: Cx1,1,1 against C1x,1,1, largest |a_k difference| 2.56e-12; certified laws) -> PASS
+C-ROWS (N=4: T10,b and G10,10 from S8 laws times the exact c(t) of state 10: t^0 and t^1 against e12_comb_v1, largest difference 1.56e-11; the same code builds the rows of state 10p) -> PASS
+C-T0 (N=4: N11(0) 1.154042444844e-05 against s_x0^2 m_y^2 s_y0^2 1.154042444927e-05 (difference 8.3e-16); c_h'(0) [0.84534632929202 +/- 8.94e-15] against c_h0 0.845346329292023 (difference 0.0e+00)) -> PASS
+PLANT-SQ2 (N=4: Cxx,1,1 with a_0 moved by 1e-6 must fail C-SQ2 on the first piece: t^0 ball [1.00e-6 +/- 9.6e-12]) -> FIRES
+PLANT-FINITE (N=4: TT00 with a_1 = -a_0/t_mid makes 1 + eps of its inverse hold 0 over the first piece (1 + eps [+/- 1.28e-3]), and C-FINITE must refuse the piece: x1t_hi nan, c_h' [nan, nan]) -> FIRES
+C-MONO-LAST2 (N=4: on the last piece from jlo 1008859.4, J^2 B(J) is non-increasing for every one of the 69 laws (rate jlo >= 2; 4/kappa <= jlo for tail and ann); failing: none) -> PASS
+PLANT-MONO (N=4: Cxx,1,1 with a far rate of 1e-7 must fail C-MONO-LAST2 at jlo 1008859.4) -> FIRES
+C-SQ2 (N=4 STATE 10p: X11's t^0 and t^1 balls hold 0 on all 843 pieces, the last [1008859.4, inf) included) -> PASS
+C-FINITE (N=4: x1t_hi and [chp_lo, chp_hi] are finite on all 843 pieces, so every inverse 1/(y0 (1 + eps)) of the T2 class stayed away from 0 over the piece's ball T (the condition on N-2; its plant is PLANT-FINITE)) -> PASS
+C-CH N=4: c_h' (comb) and MR_JOINT's c_h intervals overlap on 843 of 843 pieces; at the J_s piece N4_P0310 c_h' [0.845382103046, 0.845382464007], ch [0.845370323415, 0.845394243988] (no gate)
+X1T N=4 STATE 10p: x1t_hi 1.284644 at the J_s piece [2762.2, 2789.8]; at most 1.284644 from J_s (at jlo 2762.2); 0.169069 on the last piece [1008859.4, inf); C-KAPPA share of (R + corr) at most 4.00e-07; 843 pieces from jlo 349.36
+DRY QF N=4 JS 2750: worst |Q f|/t 0.3131 at jlo 2762.2 (mu_x <= sx_hi 0.14592 times: (1,1) 1.2846, psi-hat 4.48e-05, e3 0.1452, c_h 1.91e-06; plus r_x 0.1045, mu_pe 0.7374); against KC3's room 0.8082 -> inside; against the hard C-SIGN room 2.957 -> inside
+DRY QF N=4 last piece [1008859.4, inf): |Q f|/t 0.1379 (mu_x <= 0.14590 times: (1,1) 0.1691, psi-hat 6.54e-07, e3 0.0680, c_h 5.54e-07; plus r_x 0.1033)
+LAWCERT hl N=3: m3_lawcert_hl_v1_1_N3.json (m3_lawcert_hl_v1_1.py), 6 entries
+LAWCERT s8 N=3: m3_lawcert_v1_1_N3.json (m3_lawcert_v1_1.py), 109 entries
+LAWCERT s8n N=3: m3_lawcert_v1_2_N3.json (m3_lawcert_v1_2.py), 65 entries
+LAWCERT c3k N=3: m3_lawcert_c3k_v1_N3.json (m3_lawcert_c3k_v1.py), 11 entries
+LAWCERT cw N=3: m3_lawcert_cw_v1_N3.json (m3_lawcert_cw_v1.py), 4 entries
+LAWCERT c3kp N=3: m3_lawcert_c3k_v2_N3.json (m3_lawcert_c3k_v2.py), 11 entries; records m3_c3kp_E4D_N3_J300_c3kp.json 6bd4ea3300279a0e, m3_c3kp_E4N_N3_J300_c3kp.json cb6ee7711fb53f55
+C-PIN-10P (N=3: psixy_exact_d_v2_n3.json sha256 4b5263d447c8d05f is its row in pk22's MANIFEST_PSIXY_10P_v1) -> PASS
+C-10P (N=3: the c3kp records' trial set ts_N3_S_z9symxyp_v1.json:51e25c2fb2cfbcd5a98b6a7 is the one psixy_exact_d_v2 names, so their 10' is c'(t)'s 10') -> PASS
+PLANT-10P (N=3: state 10's trial set ts_N3_S_z9symxy_v1.json:d6b2ab93d086831e2423eed5 in place of 10's must fail C-10P) -> FIRES
+C-UHAT0 (N=3: P2's UHAT0 gives uhat_0(0) = (1, 0, 0) and uhat_x3(0) = 0 exactly; P2 and MR_LEMMAP v3 have the same 904 pieces) -> PASS
+C-MIRROR (N=3: Cx1,1,1 against C1x,1,1, largest |a_k difference| 4.55e-13; certified laws) -> PASS
+C-ROWS (N=3: T10,b and G10,10 from S8 laws times the exact c(t) of state 10: t^0 and t^1 against e12_comb_v1, largest difference 2.57e-12; the same code builds the rows of state 10p) -> PASS
+C-T0 (N=3: N11(0) 7.693616299330e-06 against s_x0^2 m_y^2 s_y0^2 7.693616299510e-06 (difference 1.8e-16); c_h'(0) [0.56356421952802 +/- 8.74e-15] against c_h0 0.563564219528015 (difference 0.0e+00)) -> PASS
+PLANT-SQ2 (N=3: Cxx,1,1 with a_0 moved by 1e-6 must fail C-SQ2 on the first piece: t^0 ball [1.00e-6 +/- 5.6e-12]) -> FIRES
+PLANT-FINITE (N=3: TT00 with a_1 = -a_0/t_mid makes 1 + eps of its inverse hold 0 over the first piece (1 + eps [+/- 1.28e-3]), and C-FINITE must refuse the piece: x1t_hi nan, c_h' [nan, nan]) -> FIRES
+C-MONO-LAST2 (N=3: on the last piece from jlo 1008859.4, J^2 B(J) is non-increasing for every one of the 69 laws (rate jlo >= 2; 4/kappa <= jlo for tail and ann); failing: none) -> PASS
+PLANT-MONO (N=3: Cxx,1,1 with a far rate of 1e-7 must fail C-MONO-LAST2 at jlo 1008859.4) -> FIRES
+C-SQ2 (N=3 STATE 10p: X11's t^0 and t^1 balls hold 0 on all 904 pieces, the last [1008859.4, inf) included) -> PASS
+C-FINITE (N=3: x1t_hi and [chp_lo, chp_hi] are finite on all 904 pieces, so every inverse 1/(y0 (1 + eps)) of the T2 class stayed away from 0 over the piece's ball T (the condition on N-2; its plant is PLANT-FINITE)) -> PASS
+C-CH N=3: c_h' (comb) and MR_JOINT's c_h intervals overlap on 904 of 904 pieces; at the J_s piece N3_P0300 c_h' [0.563594026442, 0.563594326207], ch [0.563586903070, 0.563601451461] (no gate)
+X1T N=3 STATE 10p: x1t_hi 0.969407 at the J_s piece [2500.6, 2525.6]; at most 0.969407 from J_s (at jlo 2500.6); 0.082960 on the last piece [1008859.4, inf); C-KAPPA share of (R + corr) at most 5.21e-07; 904 pieces from jlo 300.00
+DRY QF N=3 JS 2500: worst |Q f|/t 0.1779 at jlo 2500.6 (mu_x <= sx_hi 0.14592 times: (1,1) 0.9694, psi-hat 4.93e-06, e3 0.0502, c_h 7.00e-07; plus r_x 0.0291, mu_pe 0.3472); against KC3's room 1.2274 -> inside; against the hard C-SIGN room 2.889 -> inside
+DRY QF N=3 last piece [1008859.4, inf): |Q f|/t 0.0436 (mu_x <= 0.14590 times: (1,1) 0.0830, psi-hat 2.80e-07, e3 0.0189, c_h 1.80e-07; plus r_x 0.0288)
+SUMMARY N=4 STATE 10p: x1t_hi 1.2846 at J_s, at most 1.2846 from J_s, 0.1691 on the last piece; DRY |Q f|/t worst 0.3131 at jlo 2762.2, 0.1379 on the last piece
+SUMMARY N=3 STATE 10p: x1t_hi 0.9694 at J_s, at most 0.9694 from J_s, 0.0830 on the last piece; DRY |Q f|/t worst 0.1779 at jlo 2500.6, 0.0436 on the last piece
+RECORD CW_X11_v2_2.kv f9dd6a79f1499ae5be5116148a8e415b603ecb6aa897e07a0184cdf68998b94e
+VERDICT VALID
+STATUS CERTIFIED (DRY inputs: none)

@@ -1,0 +1,52 @@
+--- m4h_reader_v1.py
++++ m4h_reader_v1_1.py
+@@ -1,5 +1,9 @@
+ #!/usr/bin/env python3
+-"""m4h_reader_v1.py -- pk25 (code/pk25/m4h/). A FORK of pk15/m4_reader_v1.py (sha256 d3f82819b4275805c1072af8226c56658574b43c4e35ff5ec7239d7aaf7c21c1) for the h-row kinds h,
++"""m4h_reader_v1_1.py -- pk25 (code/pk25/m4h/). REVISION of m4h_reader_v1.py (sha256 868f6c0ab49a046ccf12004c5b0d8265c8ae5c59dfb5c7ec950c8607144d5817) with m4h_asm_v1_1 (C5's
++first cert run: every gate passed, PLANT-SWAP did not fire; the asm's plant now exchanges M0): only the names move to v1_1, the
++PIN_CODE names (READER_REL, ASM_REL), the binding's first-line producer m4h_asm_v1_1 and the script-mode header and usage.
++m4h_reader_v1's docstring follows.
++m4h_reader_v1.py -- pk25 (code/pk25/m4h/). A FORK of pk15/m4_reader_v1.py (sha256 d3f82819b4275805c1072af8226c56658574b43c4e35ff5ec7239d7aaf7c21c1) for the h-row kinds h,
+ h1, h3 (A_h, R^xi_e1, R^xi_e3; C5 of G5_PLAN_v1 sect. 3, ADD1_1 sect. 8), the one sha-pinned reader of the record M4H_KV_v1 that
+ m4h_asm_v1 writes; made by pk25/m4h/make_m4h_v1.py with exact replacements of asserted counts (diff_m4_reader_v1_to_m4h_reader_v1.txt).
+ What changes, and nothing else:
+@@ -60,7 +64,7 @@
+ 
+ ctx.prec = 256
+ CODEDIR = '/mnt/g2/release/root/code'
+-READER_REL, ASM_REL = 'pk25/m4h/m4h_reader_v1.py', 'pk25/m4h/m4h_asm_v1.py'   # m4h_reader_v1: the PIN_CODE names (paths under code/)
++READER_REL, ASM_REL = 'pk25/m4h/m4h_reader_v1_1.py', 'pk25/m4h/m4h_asm_v1_1.py'   # m4h_reader_v1: the PIN_CODE names (paths under code/)
+ CLAIM = ('for N in {3, 4}, k in {h, h1, h3} and every J >= 300 (t = 1/J in (0, 1/300], t -> 0 included), the amplitude Q_k(J) that '
+          'kt_cert bounds (A_h: the engine bound over sqrt(Z_psi); R^xi_e1, R^xi_e3: the engine bound over sqrt(Z_e1), sqrt(Z_e3), the hook '
+          'kinds having no lambda~_0), with kt_cert\'s decomposition constants (Lambda, the radii, lambda = 0.45, the 40 deg cones), which do not '
+@@ -387,7 +391,7 @@
+     lines = asm_out_text.splitlines()
+     if [ln for ln in lines if ln.startswith('VERDICT')] != ['VERDICT VALID']:
+         raise ValueError('asm output: VERDICT lines are not exactly [VERDICT VALID]')
+-    mt = re.match(r'm4h_asm_v1 sha256 ([0-9a-f]{64}) ', lines[0] if lines else '')   # m4h_reader_v1
++    mt = re.match(r'm4h_asm_v1_1 sha256 ([0-9a-f]{64}) ', lines[0] if lines else '')   # m4h_reader_v1
+     if mt is None or mt.group(1) != parse(record_text).get('ASM_SHA256'):
+         raise ValueError('asm output: the first line does not name the record ASM_SHA256')
+     rl = [ln for ln in lines if ln.startswith('RECORD ')]
+@@ -429,7 +433,7 @@
+     if code.get(READER_REL) != own:
+         raise ValueError('C-PINS: PIN_CODE does not name this reader sha256')
+     if code.get(ASM_REL) != rec['kv']['ASM_SHA256']:
+-        raise ValueError('C-PINS: PIN_CODE does not name m4h_asm_v1.py at ASM_SHA256')
++        raise ValueError('C-PINS: PIN_CODE does not name m4h_asm_v1_1.py at ASM_SHA256')
+     return rec
+ 
+ 
+@@ -503,9 +507,9 @@
+ 
+ if __name__ == '__main__':
+     if len(sys.argv) not in (3, 4):
+-        print('usage: m4h_reader_v1.py <record> <asm output> [expected sha256]')
++        print('usage: m4h_reader_v1_1.py <record> <asm output> [expected sha256]')
+         sys.exit(2)
+     with open(os.path.abspath(__file__), 'rb') as fh:
+-        print('m4h_reader_v1 sha256 %s; record %s; asm output %s' % (sha(fh.read()), os.path.basename(sys.argv[1]),
++        print('m4h_reader_v1_1 sha256 %s; record %s; asm output %s' % (sha(fh.read()), os.path.basename(sys.argv[1]),
+                                                                   os.path.basename(sys.argv[2])))
+     script(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) == 4 else None)

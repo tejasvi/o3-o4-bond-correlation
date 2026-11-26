@@ -1,0 +1,37 @@
+a3_bulk_checks_v1 sha256 bce02e7cd75d66ad0c58668607c711dad5814b21dcdedd1fec04259af699d77c
+INPUT T pk15/out/export_p2_t_cert_kt_p2_assembly_v1_37_1.kv sha256 b05b09ad648368d9e61700a88bf38680de3592a8f235a845b1bcb65b9c142924 -> PIN OK
+INPUT SV pk07/out/export_kt_s9h_v1_2_vsweep.kv sha256 761084be2333dfe0525c47e5294d62daaa702dcd101312ea5a182cf23574c2c8 -> PIN OK
+INPUT JX pk15/out/export_p2_14_joint_cert_kt_p2_assembly_v1_37_1.kv sha256 5586a81d3bed04b8d5473d068b9d7b194956dbbd1e69551267da38446c0bacb8 -> PIN OK
+INPUT CR pk15/out/out_kt_p2_assembly_v1_37_1_cert.out sha256 f5410931d9efce5614f196e71bf166434895bd47a7d7fbcb52de927cfe30de79 -> PIN OK
+CR KT-MARGINS N=4: smallest s_x,low - tau_up 6.1450707616678445e-02, g_below 6.0191701074595851e-02 (lower ends over the 904 port rows)
+CR KT-MARGINS N=3: smallest s_x,low - tau_up 6.1714795365126737e-02, g_below 6.1126071021702505e-02 (lower ends over the 904 port rows)
+N=4: 904 pieces (t and S_V grids identical)
+  min j_a           lower end 4.1135050910e-03 at N4_P0000 [300.0, 300.75]
+  min j_b           lower end 4.1135050910e-03 at N4_P0000 [300.0, 300.75]
+  min g_ratio       lower end 3.0130144045e+00 at N4_P0000 [300.0, 300.75]
+  min g_flip        lower end 1.0601616371e-03 at N4_P0000 [300.0, 300.75]
+  min d1            lower end 3.5441013886e-03 at N4_P0000 [300.0, 300.75]
+  min e1            lower end 2.2161103501e-03 at N4_P0000 [300.0, 300.75]
+  min f0            lower end 6.1230540998e-04 at N4_P0000 [300.0, 300.75]
+  min f0R           lower end 6.1270923465e-04 at N4_P0000 [300.0, 300.75]
+  min one_minus_r2  lower end 6.4630579440e-01 at N4_P0000 [300.0, 300.75]
+  min one_minus_ro  lower end 4.2151501568e-01 at N4_P0000 [300.0, 300.75]
+  joint D3  904 pieces: min Cov_inf_lo 4.4382159204841565e-03 at N4_D3_P0116; nonpositive 0
+  joint D4  904 pieces: min Cov_inf_lo 3.1109269630542669e-03 at N4_D4_P0116; nonpositive 0
+  joint D4M 904 pieces: min Cov_inf_lo 3.1109269630542669e-03 at N4_D4M_P0116; nonpositive 0
+N=3: 904 pieces (t and S_V grids identical)
+  min j_a           lower end 2.7712523531e-03 at N3_P0000 [300.0, 300.75]
+  min j_b           lower end 2.7712523531e-03 at N3_P0000 [300.0, 300.75]
+  min g_ratio       lower end 3.1553481029e+00 at N3_P0000 [300.0, 300.75]
+  min g_flip        lower end 7.3470536213e-04 at N3_P0000 [300.0, 300.75]
+  min d1            lower end 2.4254153310e-03 at N3_P0000 [300.0, 300.75]
+  min e1            lower end 1.5384159017e-03 at N3_P0000 [300.0, 300.75]
+  min f0            lower end 4.9856607312e-04 at N3_P0000 [300.0, 300.75]
+  min f0R           lower end 4.9861100974e-04 at N3_P0000 [300.0, 300.75]
+  min one_minus_r2  lower end 6.4903151210e-01 at N3_P0000 [300.0, 300.75]
+  min one_minus_ro  lower end 4.2317306339e-01 at N3_P0000 [300.0, 300.75]
+  joint D3  904 pieces: min Cov_inf_lo 3.6290409889135444e-03 at N3_D3_P0116; nonpositive 0
+  joint D4  904 pieces: min Cov_inf_lo 2.4832709501796070e-03 at N3_D4_P0116; nonpositive 0
+  joint D4M 904 pieces: min Cov_inf_lo 2.4832709501796070e-03 at N3_D4M_P0116; nonpositive 0
+NONPOSITIVE COUNT 0
+VERDICT ALL POSITIVE

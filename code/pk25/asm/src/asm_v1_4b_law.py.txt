@@ -1,0 +1,218 @@
+def load_rdr(pins=None):
+    """v3: pk25's reader fork m3_reader_s9h_v1 (pinned), imported once (C6b's load_rdr)."""
+    pins = PINS if pins is None else pins
+    if pins.get(RDR) is None or sha_file(RDR) != pins[RDR]:
+        raise Refused('C-LAW-READ: the reader fork does not match its pin')
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('m3_reader_s9h_v1', RDR)
+    mod = importlib.util.module_from_spec(spec)
+    p0 = ctx.prec
+    spec.loader.exec_module(mod)
+    ctx.prec = p0
+    return mod
+
+
+def load_laws_c6a(RD, N, pins=None):
+    """v3: the records and law certificates the Ritz problem and c(-1) take, through the reader fork: S8's D, E2, E3, FF (certificate
+    m3_lawcert_v1_1) and S8's N (v1_2); every record and job output pinned, check_s9_trial on every record. Returns {family: (record,
+    certificate)} (C6b's load_laws without pk25's h records)."""
+    pins = PINS if pins is None else pins
+    out_ = {}
+    for fams, cp, co in ((('D', 'E2', 'E3', 'FF'),) + S8CERT[N]['v1_1'], (('N',),) + S8CERT[N]['v1_2']):
+        recs = {}
+        for F in fams:
+            rp, ap = S8REC[N][F]
+            for p in (rp, ap):
+                if pins.get(p) is None or sha_file(p) != pins[p]:
+                    raise Refused('C-LAW-READ: %s does not match its pin' % os.path.basename(p))
+            with open(rp) as fh:
+                check_s9_trial(json.load(fh), N, pins)
+            try:
+                recs[F] = RD.load(rp, ap, 300, N)
+            except Exception as e:
+                raise Refused('C-LAW-READ: load %s: %s' % (os.path.basename(rp), e))
+        for p in (cp, co):
+            if pins.get(p) is None or sha_file(p) != pins[p]:
+                raise Refused('C-LAW-READ: %s does not match its pin' % os.path.basename(p))
+        try:
+            cert = RD.load_lawcert(cp, co, 300, N, recs)
+        except Exception as e:
+            raise Refused('C-LAW-READ: load_lawcert %s: %s' % (os.path.basename(cp), e))
+        for F in fams:
+            out_[F] = (recs[F], cert)
+    return out_
+
+
+def chi2_tail(n, s):
+    """Prob(chi^2_n > s) for n = 2 (e^(-s/2)) and n = 3 (erfc(sqrt(s/2)) + sqrt(2 s/pi) e^(-s/2)), as arb balls."""
+    if n == 2:
+        return (-s / 2).exp()
+    if n == 3:
+        return (s / 2).sqrt().erfc() + (2 * s / arb.pi()).sqrt() * (-s / 2).exp()
+    raise Refused('chi2_tail: n = %r' % n)
+
+
+def law_err(E, J):
+    """LAWCERT_CLAIM's right side without the ak_rad term, at J >= 300 (an arb upper value): rem (300/J)^4 + tail (P(J)/P(300))^1/2 + ann
+    (P(J)/P(300))^1/2 + far e^(-far_rate (J - 300)), the P-ratios with P(J) at its upper end over P(300) at its lower end."""
+    if E.get('laws') is None:
+        return arb(0)
+    L, parts = E['laws'], E['parts']
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    j0 = arb(300)
+    J = q2arb(J) if isinstance(J, Fraction) else (J if isinstance(J, arb) else arb(J))
+    if not (J >= j0):
+        raise Refused('law_err: J below J_REF')
+    tot = q(parts['rem']) * (j0 / J) ** 4
+    for part in ('tail', 'ann'):
+        g = L[part]
+        P = lambda JJ: sum((chi2_tail(g['n'], JJ * q(a) / q(G)) for a, G in g['a_G']), arb(0))
+        r = P(J).upper() / P(j0).lower()
+        tot = tot + q(parts[part]) * r.sqrt()
+    tot = tot + q(parts['far']) * (-q(L['far_rate']) * (J - j0)).exp()
+    return tot.upper()
+
+
+def entry_law_piece(E, tb, t_hi, J_lo):
+    """an entry over the piece by LAWCERT_CLAIM's form: sum_k ak[k] t^k on the t-ball plus [-r, r], r = sum_k ak_rad[k] t_hi^k + law_err(J_lo)."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    s = arb(0)
+    for a in reversed(E['ak']):
+        s = s * tb + q(a)
+    r = law_err(E, J_lo)
+    tp = arb(1)
+    for ar in E['ak_rad']:
+        r = r + q(ar) * tp
+        tp = tp * t_hi
+    return s + r.upper() * arb(0, 1)
+
+
+def law_bp(IN, N, tb, t_hi, J_lo):
+    """v3: the 18 RITZ_KEYS balls on the piece with law-based bars: G,b,c from S8 D's g,b,c, T,b,c from S8 N's T,b,c and Dx,b from S8 D's
+    DY,b (the S9 entries' aliases, C-ALIAS) by entry_law_piece; Iht,b stays the S9 record's (entry_piece), since only ritz_piece's t
+    amplitudes take it and no row uses them."""
+    LW, RD = IN['LW'][N], IN['RD']
+    B = {}
+    for k in RITZ_KEYS:
+        fam, key = k.split(',', 1)
+        if fam == 'Iht':
+            B[k] = entry_piece(IN['RE'][N][k], tb)
+            continue
+        F, kk = {'G': ('D', 'g,'), 'T': ('N', 'T,'), 'Dx': ('D', 'DY,')}[fam]
+        B[k] = entry_law_piece(RD.entry_law(LW[F][1], F, kk + key), tb, t_hi, J_lo)
+    return B
+
+
+def law_e2ff(IN, N, tb, t_hi, J_lo):
+    """v3: E2's e,b (b in REVEN) and FF's z on the piece with law-based bars (m3_lawcert_v1_1)."""
+    LW, RD = IN['LW'][N], IN['RD']
+    e = [entry_law_piece(RD.entry_law(LW['E2'][1], 'E2', 'e,%d' % b), tb, t_hi, J_lo) for b in REVEN]
+    z = entry_law_piece(RD.entry_law(LW['FF'][1], 'FF', 'z'), tb, t_hi, J_lo)
+    return e, z
+
+
+def check_alias3(IN, tamper=False):
+    """C-ALIAS (v3): the law certificates' midpoints ak lie in the records' coefficient balls, entry by entry: G, T and Dx against the S9
+    records (load_ritz; S8 D's g and DY and S8 N's T are the S9 entries' aliases), E2's e,b and FF's z against the S8 records (load_e2ff), at
+    both N. tamper (PLANT-ALIAS) moves the first ak of N = 4 by 1e-6."""
+    q = lambda x: arb(x.numerator) / arb(x.denominator)
+    bad = []
+    for N in (4, 3):
+        cd, cn = IN['LW'][N]['D'][1], IN['LW'][N]['N'][1]
+        pairs = []
+        for k in RITZ_KEYS:
+            fam, key = k.split(',', 1)
+            if fam == 'Iht':
+                continue
+            F, kk = {'G': ('D', 'g,'), 'T': ('N', 'T,'), 'Dx': ('D', 'DY,')}[fam]
+            pairs.append(('N%d %s' % (N, k), cn if F == 'N' else cd, F, kk + key, IN['RE'][N][k][0]))
+        for b in REVEN:
+            pairs.append(('N%d E2 e,%d' % (N, b), cd, 'E2', 'e,%d' % b, IN['E2'][N]['E2']['e,%d' % b][0]))
+        pairs.append(('N%d FF z' % N, cd, 'FF', 'z', IN['E2'][N]['FF']['z'][0]))
+        for j, (lab, cert, F, kk, mine) in enumerate(pairs):
+            ent = cert['entries'].get('%s:%s' % (F, kk))
+            if ent is None:
+                bad.append(lab + ' (missing)')
+                continue
+            ak = [q(a) for a in ent['ak']]
+            if tamper and N == 4 and j == 0:
+                ak[0] = ak[0] + arb('1e-6')
+            if len(ak) != len(mine) or any(not (a.lower() >= m.lower() - arb('1e-30') and a.upper() <= m.upper() + arb('1e-30'))
+                                           for a, m in zip(ak, mine)):
+                bad.append(lab)
+    if bad:
+        raise Refused('C-ALIAS: %d entries differ from the records: %s' % (len(bad), ' '.join(bad[:6])))
+    return True
+
+
+class Iv(object):
+    """an exact closed interval [lo, hi] with arb points as ends, offering an arb ball's lower(), upper() and mid(): the intersected fields
+    keep their exact ends, since an arb radius has a 30-bit mantissa and a ball rebuilt from the ends can be wider than either input."""
+
+    def __init__(self, lo, hi):
+        self.lo, self.hi = lo, hi
+
+    def lower(self):
+        return self.lo
+
+    def upper(self):
+        return self.hi
+
+    def mid(self):
+        return (self.lo + self.hi) / 2
+
+
+def isect(a, b, what):
+    """the intersection of two certified enclosures (arb balls) of one quantity, [the larger lower end, the smaller upper end], as an exact
+    interval Iv; C-COMBINE refuses an empty one."""
+    lo = a.lower() if a.lower() > b.lower() else b.lower()
+    hi = a.upper() if a.upper() < b.upper() else b.upper()
+    if not (lo <= hi):
+        raise Refused('C-COMBINE: the record and law enclosures of %s do not meet' % what)
+    return Iv(lo, hi)
+
+
+def lmax(a, b):
+    """the larger of two lower bounds (exact points)."""
+    return a if a > b else b
+
+
+def umin(a, b):
+    """the smaller of two upper bounds (exact points)."""
+    return a if a < b else b
+
+
+def combine(Dr, Dl):
+    """v3: a piece's written quantities from the record computation Dr (v2's, byte for byte) and the law computation Dl: the s, mu and c(-1)
+    enclosures and the unit-basis coefficients intersected, rho, L_k and L3's q and eps the smaller upper bounds (both computations bound the
+    same exact quantities, so each intersection is certified); RC, LA, A, Qw, Dl, sv, tau_hi, er, Rb12 from Dl (the INFO lines and the float
+    twin)."""
+    D = dict(Dl)
+    D['s_lo'] = [arb(1)] + [lmax(Dr['s_lo'][i], Dl['s_lo'][i]) for i in (1, 2)]
+    D['s_hi'] = [arb(1)] + [umin(Dr['s_hi'][i], Dl['s_hi'][i]) for i in (1, 2)]
+    D['mu_lo'] = [lmax(Dr['mu_lo'][i], Dl['mu_lo'][i]) for i in range(3)]
+    D['mu_hi'] = [Dl['mu_hi'][0]] + [umin(Dr['mu_hi'][i], Dl['mu_hi'][i]) for i in (1, 2)]
+    D['rho'] = [umin(Dr['rho'][i], Dl['rho'][i]) for i in range(3)]
+    D['Lk'] = [umin(Dr['Lk'][i], Dl['Lk'][i]) for i in range(3)]
+    L3 = {}
+    for a in range(3):
+        qr, er_ = Dr['L3'][a][0], Dr['L3'][a][1]
+        ql, el_ = Dl['L3'][a][0], Dl['L3'][a][1]
+        L3[a] = (umin(qr.upper(), ql.upper()), dict((k, umin(er_[k].upper(), el_[k].upper())) for k in el_)) + tuple(Dl['L3'][a][2:])
+    D['L3'] = L3
+    D['uhat'] = [[isect(Dr['uhat'][k][i], Dl['uhat'][k][i], 'u%s%s' % (KNAME[k], BNAME[i])) for i in range(3)] for k in range(3)]
+    D['cx'] = isect(Dr['cx'], Dl['cx'], 'c_x(-1)')
+    D['cy'] = isect(Dr['cy'], Dl['cy'], 'c_y(-1)')
+    for i in (1, 2):
+        if not (D['s_lo'][i] < D['s_hi'][i] and D['mu_lo'][i] < D['mu_hi'][i]):
+            raise Refused('C-COMBINE: the s or mu enclosures do not meet')
+    wid = lambda x: (x.upper() - x.lower()).upper()
+    D['wr'] = (float((wid(D['uhat'][1][2]) / wid(Dr['uhat'][1][2])).upper()), float(((D['s_hi'][2] - D['s_lo'][2]) / (Dr['s_hi'][2] - Dr['s_lo'][2])).upper()))
+    return D
+
+
+def piece_both(N, idx, jlo, jhi, IN, plant=None):
+    """v3: piece_compute with the records' entries (v2's computation) and with the law certificates, combined field by field (combine)."""
+    Dr = piece_compute(N, idx, jlo, jhi, IN, plant, 'rec')
+    Dl = piece_compute(N, idx, jlo, jhi, IN, plant, 'law')
+    return combine(Dr, Dl)

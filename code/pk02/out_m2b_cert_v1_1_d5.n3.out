@@ -1,0 +1,21 @@
+m2b_cert_v1_1 sha256 4b42e4f5b6c358b56f8c6d92779d4745e66655110963bad2478665c6a7e97ebd ITEM=d5.n3 LIM=540 (RLIMIT_CPU soft 540, hard 545)
+C-HASH PASS (2 engine files, 2 trial-vacuum files, 2 kbar files, 5 validation records of the M-a layer)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+FORMAT M2B_PIECE_v1 CERTIFIED
+KERNEL arbeng_c2b_v2.py fb8cd1b5162930b1e9ff83c35fb652575a9f2ff1649f733c5d45bdf7f7762993 ctx.prec 512
+LAYER arbeng_ma_v1_3.py 075e35864a272e29014d2259e0bfc37eaf7a1d0b5a9a101ae78ee9d4ed8f6a15 prec 512 validation 5ccbb6d006f5365f219eb6221b7e66b76e7e7799e977148df94f34b0c3d86216 a61d893e6424b9ea524d944e40f625c934de04a2faeaa741e3fd333e97f48817 d613fe804a030be397fefa46ed1424063f794400b7d9618e12db8af046e09d93 2ad13ec3cac14ef919f5e34fa19664f70eece05c3c3f208dcfec36a93cdd4473 a8a5e8d020d2d1e1127c3ee8f400496011ddbd022af83180025ac3185ba22f95
+C-IMPORT N=3: arbeng_c2b_v2 from /mnt/g2/release/root/code/pk02/arbeng_c2b_v2.py, arbeng_ma_v1_3 from /mnt/g2/release/root/code/pk02/arbeng_ma_v1_3.py -> PASS
+BOUND N=3: a_m 6135428905104631294035961535529/20282409603651670423947251286016 a_e 29206669829258403248756220714025/81129638414606681695789005144064 a_pp 1163787714069855263078269343481/1267650600228229401496703205376 RHO_PP_HEX 0x1.ea93ad4bd8e58p-1 (a_pp >= sin^2(asin rho_m + delta) = 0.91806662960623806742) -> PASS
+C-TILT (a) N=3: c_m 0.59545911617622549 >= -log(1 - a)/(2a) = 0.595459116176, c_e 0.61984319809502719 >= -log(1 - a)/(2a) = 0.619843198095, c_pp 1.3625639128541667 >= -log(1 - a)/(2a) = 1.36256391285; Chernoff lambdas 0.3 0.45 0.6 0.45 > 0, tailX/ann lambdas >= 0.3 (LAW v1) -> PASS
+PLANT-TILT N=3: c_m (1 - 1e-9) passes the rate test: False; a lambda = 1e3 tilt certified positive definite: False -> FIRES
+HANDOFF N=3 vac d5: not written (a gate failed or the piece is incomplete)
+PLANT-NOWRITE N=3: the guarded writer with a failed gate opened 0 files -> FIRES
+STAGE-CPU N=3 d5: D5 (48962 terms, deg2 11, Q degree 2, total 11) done at cpu 0.4 s
+STAGE-CPU N=3 d5: CondTable (arbeng_ma_v1_3; Dc 11, 15176954 entries, chunk 40000000) done at cpu 262.5 s
+STAGE-CPU N=3 d5: conditional expectation of D5 (12376 g-monomials, largest count 521) done at cpu 270.9 s
+C-RAD-MA N=3: nD 5.200687402e-05 +- 3.5e-15 (rel 6.8e-11), relative width 6.78e-11 (<= 1e-5); the M-a part 3.53e-15 (radius with the M-a radii minus without) -> PASS
+D5-V N=3 J=150: D5 5.200687402e-05 +- 3.5e-15 (rel 6.8e-11) | D5 48962 terms, deg2 11, Q degree 2, total 11; CondTable 15176954 entries; ED 12376 g-monomials
+C-TILT (b) N=3: 2 positive-definiteness tests (A - 2 c_e t I, G2 J150), all certified: True; smallest leading minor lower end 2.433e+00 -> PASS
+HANDOFF N=3 vac d5: hand_m2b_cert_v1_1_d5.n3.txt sha256 145ea2d50a2768036ed3380cb664399a4bf9e6079c34a2f1a412884d3bba386c (490 bytes, 2 rows; cpu 326.4 s)
+ITEM d5.n3 cpu 326.4 s, peak resident memory 6440 MiB
+VERDICT VALID

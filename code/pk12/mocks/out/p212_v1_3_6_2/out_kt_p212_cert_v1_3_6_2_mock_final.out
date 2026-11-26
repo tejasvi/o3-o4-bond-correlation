@@ -1,0 +1,211 @@
+kt_p212_cert_v1_3_6_2 sha256 44add3bd4876a3f07b75f5d03368eacf03c397b4765da3ebbd26604a6958e448 MODE=mock ITEM=final LIM=300
+C-HASH PASS (71 files)
+IMPORT: kt_s8_cert_v1_14_3 in its cert namespace, chunk c4_0000_0001 with tag r95 (the first free of r50..r99; a stray, not counted by S8's final)
+INPUTS dd39c9079cfb8003a286e5cdea1c69d012d16b697840ae77410c76e2409bf3e8
+CLAIM (v1_3_1): a row passes iff lo_lo > 0 at every evaluated piece; the headroom and lo_lo/Cov_hi are INFO; break-evens at lo = 0 (be) and at h = 1.2 (be12, INFO)
+C-S8-STAGEA (v1_3_2): run_A's stage-A lists come back empty (failing none, not firing none) -> PASS
+PLANT-S8-STAGEA: one injected stage-A failure must be refused -> FIRES
+MOCK INPUTS: the u-hat records N4 2eee13f5, N3 14173bee (pk02's kt_uhat_asm_v1_5, EXPORT_STATUS MOCK, interface v1_4); tau_1 reads the certified kappa_max and Phi_eps in both modes (v1_3_5_4, C-TAU1); the d_L <= 0 base is Cov_main from pk04's MOCK E_main records N4 D3 d_L -1 84699114, N4 D3 d_L 0 93198257, N4 D4 d_L -1 06aa5e47, N4 D4 d_L 0 895ed476, N4 D4M d_L -1 0a04850d, N4 D4M d_L 0 1be0744b, with R_e and R_f in under the MOCK stand-ins none, and the t = 0 Cov (stand-in) at the rows without a record; every other input certified
+FINAL inputs: 1 pre, 2 chunk, 0 grid outputs; not matching (sha, digest or VERDICT): none
+C-PRE: exactly one pre output, VALID, same sha256 and INPUTS digest -> PASS
+C-NOKILL: KILL lines in the chunk outputs: 0 [] -> PASS
+C-ROWMIN-PARSE (v1_3_1): ROWMIN lines parsed 190 of 190; rows found N4 104, N3 86 against the inputs' 104 and 86 (an N with no chunk is C-COVER's) -> PASS
+C-COVER: N4 COMPLETE, N3 COMPLETE -> PASS
+C-FINAL-REPRO (v1_3_1: the margin lo_lo/Cov_hi): the binding pieces of the three tightest rows per N reproduce their chunk margin (N4 D4 (1,2) 0.281417/0.281417; N4 D4M (1,2) 0.306609/0.306609; N4 D3 (1,2) 0.354329/0.354329; N3 D4 (1,1) 0.0931477/0.0931477; N3 D4M (1,1) 0.0931477/0.0931477; N3 D3 (1,1) 0.284958/0.284958) -> PASS
+ROWS N=4: out 2, pass 100, wait-W 2; failing (min lo_lo/Cov_hi at piece) none
+ROWS N=3: pass 86; failing (min lo_lo/Cov_hi at piece) none
+ROWBE N=3 D3 (-1,2) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=3 D3 (-1,3) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=3 D3 (-1,4) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=3 D3 (-1,5) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=3 D3 (-1,6) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=3 D3 (-1,far) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=3 D3 (-1,inf) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=3 D3 (0,1) TD pass: lo = 0: U_D3 rec 800974e-6 at piece 0 | INFO h = 1.2: U_D3 rec 639314e-6 at piece 0
+ROWBE N=3 D3 (0,2) TD pass: lo = 0: U_D3 rec 116039e-4 at piece 0 | INFO h = 1.2: U_D3 rec 962334e-5 at piece 0
+ROWBE N=3 D3 (0,3) TD pass: lo = 0: U_D3 rec 887631e-4 at piece 0 | INFO h = 1.2: U_D3 rec 737945e-4 at piece 0
+ROWBE N=3 D3 (0,4) TD pass: lo = 0: U_D3 rec 444777e-3 at piece 0 | INFO h = 1.2: U_D3 rec 369881e-3 at piece 0
+ROWBE N=3 D3 (0,5) TD pass: lo = 0: U_D3 rec 102801e-2 at piece 0 | INFO h = 1.2: U_D3 rec 854941e-3 at piece 0
+ROWBE N=3 D3 (0,6) TD pass: lo = 0: U_D3 rec 127155e-2 at piece 0 | INFO h = 1.2: U_D3 rec 105748e-2 at piece 0
+ROWBE N=3 D3 (0,far) TD pass: lo = 0: U_D3 rec 121795e-2 at piece 0 | INFO h = 1.2: U_D3 rec 101290e-2 at piece 0
+ROWBE N=3 D3 (0,inf) TD pass: lo = 0: U_D3 rec 132564e-2 at piece 0 | INFO h = 1.2: U_D3 rec 110247e-2 at piece 0
+ROWBE N=3 D3 (1,1) B3 pass: lo = 0: U_D3 rec 371150e-7 at piece 0 | INFO h = 1.2: U_D3 rec 243374e-7 at piece 0
+ROWBE N=3 D3 (1,2) B3 pass: lo = 0: U_D3 rec 119953e-6 at piece 0 | INFO h = 1.2: U_D3 rec 973039e-7 at piece 0
+ROWBE N=3 D3 (1,3) B3 pass: lo = 0: U_D3 rec 141872e-6 at piece 0 | INFO h = 1.2: U_D3 rec 116602e-6 at piece 0
+ROWBE N=3 D3 (1,4) B3 pass: lo = 0: U_D3 rec 145440e-6 at piece 0 | INFO h = 1.2: U_D3 rec 119743e-6 at piece 0
+ROWBE N=3 D3 (1,5) B3 pass: lo = 0: U_D3 rec 145970e-6 at piece 0 | INFO h = 1.2: U_D3 rec 120209e-6 at piece 0
+ROWBE N=3 D3 (1,6) B3 pass: lo = 0: U_D3 rec 146048e-6 at piece 0 | INFO h = 1.2: U_D3 rec 120278e-6 at piece 0
+ROWBE N=3 D3 (1,far) B3 pass: lo = 0: U_D3 rec 146057e-6 at piece 0 | INFO h = 1.2: U_D3 rec 120286e-6 at piece 0
+ROWBE N=3 D3 (1,inf) B3 pass: lo = 0: U_D3 rec 146061e-6 at piece 0 | INFO h = 1.2: U_D3 rec 120289e-6 at piece 0
+ROWBE N=3 D3 (2,2) B3 pass: lo = 0: U_D3 rec 530564e-6 at piece 0 | INFO h = 1.2: U_D3 rec 434388e-6 at piece 116
+ROWBE N=3 D3 (2,3) B3 pass: lo = 0: U_D3 rec 934214e-6 at piece 116 | INFO h = 1.2: U_D3 rec 765898e-6 at piece 116
+ROWBE N=3 D3 (2,4) B3 pass: lo = 0: U_D3 rec 104848e-5 at piece 116 | INFO h = 1.2: U_D3 rec 859756e-6 at piece 116
+ROWBE N=3 D3 (2,5) B3 pass: lo = 0: U_D3 rec 106748e-5 at piece 116 | INFO h = 1.2: U_D3 rec 875370e-6 at piece 116
+ROWBE N=3 D3 (2,6) B3 pass: lo = 0: U_D3 rec 107032e-5 at piece 116 | INFO h = 1.2: U_D3 rec 877696e-6 at piece 116
+ROWBE N=3 D3 (2,far) B3 pass: lo = 0: U_D3 rec 107065e-5 at piece 116 | INFO h = 1.2: U_D3 rec 877967e-6 at piece 116
+ROWBE N=3 D3 (2,inf) B3 pass: lo = 0: U_D3 rec 107080e-5 at piece 116 | INFO h = 1.2: U_D3 rec 878095e-6 at piece 116
+ROWBE N=3 D4 (0,2) TC pass: lo = 0: D4ML0 rec 102247e-4 at piece 0; tol 102247e-4 at piece 0 | INFO h = 1.2: D4ML0 rec 837950e-5 at piece 0; tol 837950e-5 at piece 0
+ROWBE N=3 D4 (0,3) TC pass: lo = 0: D4ML0 rec 829007e-4 at piece 0; tol 829007e-4 at piece 0 | INFO h = 1.2: D4ML0 rec 689428e-4 at piece 0; tol 689428e-4 at piece 0
+ROWBE N=3 D4 (0,4) TC pass: lo = 0: D4ML0 rec 418237e-3 at piece 0; tol 418237e-3 at piece 0 | INFO h = 1.2: D4ML0 rec 348390e-3 at piece 0; tol 348390e-3 at piece 0
+ROWBE N=3 D4 (0,5) TC pass: lo = 0: D4ML0 rec 967598e-3 at piece 0; tol 967598e-3 at piece 0 | INFO h = 1.2: D4ML0 rec 806190e-3 at piece 0; tol 806190e-3 at piece 0
+ROWBE N=3 D4 (0,6) TC pass: lo = 0: D4ML0 rec 119699e-2 at piece 0; tol 119699e-2 at piece 0 | INFO h = 1.2: D4ML0 rec 997354e-3 at piece 0; tol 997354e-3 at piece 0
+ROWBE N=3 D4 (0,far) TC pass: lo = 0: D4ML0 rec 114650e-2 at piece 0; tol 114650e-2 at piece 0 | INFO h = 1.2: D4ML0 rec 955282e-3 at piece 0; tol 955282e-3 at piece 0
+ROWBE N=3 D4 (0,inf) TC pass: lo = 0: D4ML0 rec 124794e-2 at piece 0; tol 124794e-2 at piece 0 | INFO h = 1.2: D4ML0 rec 103981e-2 at piece 0; tol 103981e-2 at piece 0
+ROWBE N=3 D4 (1,1) A2 pass: lo = 0: D4ML0 rec 243599e-7 at piece 0; tol 121928e-7 at piece 0; alt D4L0 187009e-6 at piece 0; T_v 120277e-7 at piece 0 | INFO h = 1.2: D4ML0 rec 608478e-8 at piece 0; tol -608237e-8 at piece 0; alt D4L0 654763e-7 at piece 0; T_v -948189e-8 at piece 0
+ROWBE N=3 D4 (1,2) A2 pass: lo = 0: D4ML0 rec 577722e-6 at piece 0; tol 488542e-6 at piece 0; alt D4L0 630423e-6 at piece 0; T_v 905057e-7 at piece 0 | INFO h = 1.2: D4ML0 rec 441922e-6 at piece 0; tol 352742e-6 at piece 0; alt D4L0 507211e-6 at piece 0; T_v 686989e-7 at piece 0
+ROWBE N=3 D4 (1,3) A2 pass: lo = 0: D4ML0 rec 438052e-5 at piece 0; tol 376127e-5 at piece 0; alt D4L0 689613e-6 at piece 0; T_v 100981e-6 at piece 0 | INFO h = 1.2: D4ML0 rec 343564e-5 at piece 0; tol 281639e-5 at piece 0; alt D4L0 566151e-6 at piece 0; T_v 791305e-7 at piece 0
+ROWBE N=3 D4 (1,4) A2 pass: lo = 0: D4ML0 rec 304264e-4 at piece 0; tol 261765e-4 at piece 0; alt D4L0 698105e-6 at piece 0; T_v 102484e-6 at piece 0 | INFO h = 1.2: D4ML0 rec 239398e-4 at piece 0; tol 196899e-4 at piece 0; alt D4L0 574607e-6 at piece 0; T_v 806270e-7 at piece 0
+ROWBE N=3 D4 (1,5) A2 pass: lo = 0: D4ML0 rec 208739e-3 at piece 0; tol 179633e-3 at piece 0; alt D4L0 699342e-6 at piece 0; T_v 102703e-6 at piece 0 | INFO h = 1.2: D4ML0 rec 164313e-3 at piece 0; tol 135207e-3 at piece 0; alt D4L0 575838e-6 at piece 0; T_v 808449e-7 at piece 0
+ROWBE N=3 D4 (1,6) A2 pass: lo = 0: D4ML0 rec 142938e-2 at piece 0; tol 123012e-2 at piece 0; alt D4L0 699522e-6 at piece 0; T_v 102735e-6 at piece 0 | INFO h = 1.2: D4ML0 rec 112524e-2 at piece 0; tol 925989e-3 at piece 0; alt D4L0 576018e-6 at piece 0; T_v 808767e-7 at piece 0
+ROWBE N=3 D4 (1,far) A2 pass: lo = 0: D4ML0 rec 448963e-2 at piece 0; tol 386379e-2 at piece 0; alt D4L0 699543e-6 at piece 0; T_v 102738e-6 at piece 0 | INFO h = 1.2: D4ML0 rec 353437e-2 at piece 0; tol 290853e-2 at piece 0; alt D4L0 576039e-6 at piece 0; T_v 808804e-7 at piece 0
+ROWBE N=3 D4 (1,inf) A2 pass: lo = 0: D4L0 rec 699553e-6 at piece 0; T_v 102740e-6 at piece 0 | INFO h = 1.2: D4L0 rec 576049e-6 at piece 0; T_v 808822e-7 at piece 0
+ROWBE N=3 D4 (2,2) A2 pass: lo = 0: D4ML0 rec 719835e-6 at piece 116; tol 713445e-6 at piece 116; alt D4L0 805163e-5 at piece 0; T_v 766209e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 587062e-6 at piece 116; tol 580671e-6 at piece 116; alt D4L0 659336e-5 at piece 0; T_v 622050e-6 at piece 116
+ROWBE N=3 D4 (2,3) A2 pass: lo = 0: D4ML0 rec 502292e-5 at piece 116; tol 497877e-5 at piece 116; alt D4L0 826695e-5 at piece 0; T_v 787106e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 410367e-5 at piece 116; tol 405952e-5 at piece 116; alt D4L0 680569e-5 at piece 0; T_v 642651e-6 at piece 116
+ROWBE N=3 D4 (2,4) A2 pass: lo = 0: D4ML0 rec 344983e-4 at piece 116; tol 341954e-4 at piece 116; alt D4L0 829780e-5 at piece 0; T_v 790117e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 281917e-4 at piece 116; tol 278889e-4 at piece 116; alt D4L0 683610e-5 at piece 0; T_v 645620e-6 at piece 116
+ROWBE N=3 D4 (2,5) A2 pass: lo = 0: D4ML0 rec 236344e-3 at piece 116; tol 234270e-3 at piece 116; alt D4L0 830229e-5 at piece 0; T_v 790556e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 193145e-3 at piece 116; tol 191071e-3 at piece 116; alt D4L0 684053e-5 at piece 0; T_v 646052e-6 at piece 116
+ROWBE N=3 D4 (2,6) A2 pass: lo = 0: D4ML0 rec 161850e-2 at piece 116; tol 160430e-2 at piece 116; alt D4L0 830294e-5 at piece 0; T_v 790620e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 132268e-2 at piece 116; tol 130848e-2 at piece 116; alt D4L0 684118e-5 at piece 0; T_v 646115e-6 at piece 116
+ROWBE N=3 D4 (2,far) A2 pass: lo = 0: D4ML0 rec 504767e-2 at piece 116; tol 500337e-2 at piece 116; alt D4L0 830302e-5 at piece 0; T_v 790627e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 412509e-2 at piece 116; tol 408079e-2 at piece 116; alt D4L0 684125e-5 at piece 0; T_v 646122e-6 at piece 116
+ROWBE N=3 D4 (2,inf) A2 pass: lo = 0: D4L0 rec 830306e-5 at piece 0; T_v 790631e-6 at piece 116 | INFO h = 1.2: D4L0 rec 684129e-5 at piece 0; T_v 646126e-6 at piece 116
+ROWBE N=3 D4M (0,2) TC pass: lo = 0: D4L0 rec 722254e-5 at piece 0 | INFO h = 1.2: D4L0 rec 592453e-5 at piece 0
+ROWBE N=3 D4M (0,3) TC pass: lo = 0: D4L0 rec 579090e-4 at piece 0 | INFO h = 1.2: D4L0 rec 481633e-4 at piece 0
+ROWBE N=3 D4M (0,4) TC pass: lo = 0: D4L0 rec 291730e-3 at piece 0 | INFO h = 1.2: D4L0 rec 243014e-3 at piece 0
+ROWBE N=3 D4M (0,5) TC pass: lo = 0: D4L0 rec 674781e-3 at piece 0 | INFO h = 1.2: D4L0 rec 562223e-3 at piece 0
+ROWBE N=3 D4M (0,6) TC pass: lo = 0: D4L0 rec 834731e-3 at piece 0 | INFO h = 1.2: D4L0 rec 695515e-3 at piece 0
+ROWBE N=3 D4M (0,far) TC pass: lo = 0: D4L0 rec 799521e-3 at piece 0 | INFO h = 1.2: D4L0 rec 666174e-3 at piece 0
+ROWBE N=3 D4M (0,inf) TC pass: lo = 0: D4L0 rec 870258e-3 at piece 0 | INFO h = 1.2: D4L0 rec 725120e-3 at piece 0
+ROWBE N=3 D4M (1,1) A2 pass: lo = 0: D4ML0 rec 243599e-7 at piece 0; tol 121928e-7 at piece 0; alt D4L0 187009e-6 at piece 0; T_v 120277e-7 at piece 0 | INFO h = 1.2: D4ML0 rec 608478e-8 at piece 0; tol -608237e-8 at piece 0; alt D4L0 654763e-7 at piece 0; T_v -948189e-8 at piece 0
+ROWBE N=3 D4M (1,2) A2 pass: lo = 0: D4ML0 rec 914653e-7 at piece 0; tol 904730e-7 at piece 0; alt D4L0 642368e-5 at piece 0; T_v 612816e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 738282e-7 at piece 0; tol 728359e-7 at piece 0; alt D4L0 498555e-5 at piece 0; T_v 470648e-6 at piece 116
+ROWBE N=3 D4M (1,3) A2 pass: lo = 0: D4ML0 rec 994279e-7 at piece 0; tol 993041e-7 at piece 0; alt D4L0 558944e-4 at piece 0; T_v 461004e-5 at piece 116 | INFO h = 1.2: D4ML0 rec 818852e-7 at piece 0; tol 817615e-7 at piece 0; alt D4L0 444213e-4 at piece 0; T_v 364082e-5 at piece 116
+ROWBE N=3 D4M (1,4) A2 pass: lo = 0: D4ML0 rec 100540e-6 at piece 0; tol 100522e-6 at piece 0; alt D4L0 397033e-3 at piece 0; T_v 319812e-4 at piece 116 | INFO h = 1.2: D4ML0 rec 830116e-7 at piece 0; tol 829939e-7 at piece 0; alt D4L0 316502e-3 at piece 0; T_v 253463e-4 at piece 116
+ROWBE N=3 D4M (1,5) A2 pass: lo = 0: D4ML0 rec 100701e-6 at piece 0; tol 100699e-6 at piece 0; alt D4L0 271963e-2 at piece 0; T_v 219489e-3 at piece 116 | INFO h = 1.2: D4ML0 rec 831749e-7 at piece 0; tol 831723e-7 at piece 0; alt D4L0 216895e-2 at piece 0; T_v 174041e-3 at piece 116
+ROWBE N=3 D4M (1,6) A2 pass: lo = 0: D4ML0 rec 100725e-6 at piece 0; tol 100724e-6 at piece 0; alt D4L0 185129e-1 at piece 0; T_v 150404e-2 at piece 116 | INFO h = 1.2: D4ML0 rec 831988e-7 at piece 0; tol 831984e-7 at piece 0; alt D4L0 147653e-1 at piece 0; T_v 119269e-2 at piece 116
+ROWBE N=3 D4M (1,far) A2 pass: lo = 0: D4ML0 rec 100725e-6 at piece 0; tol 100724e-6 at piece 0; alt D4L0 435735e-2 at piece 116; T_v inf | INFO h = 1.2: D4ML0 rec 831993e-7 at piece 0; tol 831977e-7 at piece 0; alt D4L0 345538e-2 at piece 116; T_v inf
+ROWBE N=3 D4M (1,inf) A2 pass: lo = 0: D4ML0 rec 100729e-6 at piece 0; tol 100729e-6 at piece 0; alt D4L0 inf; T_v inf | INFO h = 1.2: D4ML0 rec 832028e-7 at piece 0; tol 832028e-7 at piece 0; alt D4L0 inf; T_v inf
+ROWBE N=3 D4M (2,2) A2 pass: lo = 0: D4ML0 rec 719835e-6 at piece 116; tol 713445e-6 at piece 116; alt D4L0 805163e-5 at piece 0; T_v 766209e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 587062e-6 at piece 116; tol 580671e-6 at piece 116; alt D4L0 659336e-5 at piece 0; T_v 622050e-6 at piece 116
+ROWBE N=3 D4M (2,3) A2 pass: lo = 0: D4ML0 rec 730963e-6 at piece 116; tol 730125e-6 at piece 116; alt D4L0 648578e-4 at piece 0; T_v 533450e-5 at piece 116 | INFO h = 1.2: D4ML0 rec 598897e-6 at piece 116; tol 598059e-6 at piece 116; alt D4L0 532237e-4 at piece 0; T_v 435167e-5 at piece 116
+ROWBE N=3 D4M (2,4) A2 pass: lo = 0: D4ML0 rec 732426e-6 at piece 116; tol 732306e-6 at piece 116; alt D4L0 455870e-3 at piece 0; T_v 366210e-4 at piece 116 | INFO h = 1.2: D4ML0 rec 600464e-6 at piece 116; tol 600344e-6 at piece 116; alt D4L0 374208e-3 at piece 0; T_v 298930e-4 at piece 116
+ROWBE N=3 D4M (2,5) A2 pass: lo = 0: D4ML0 rec 732636e-6 at piece 116; tol 732619e-6 at piece 116; alt D4L0 311790e-2 at piece 0; T_v 250952e-3 at piece 116 | INFO h = 1.2: D4ML0 rec 600689e-6 at piece 116; tol 600672e-6 at piece 116; alt D4L0 255949e-2 at piece 0; T_v 204866e-3 at piece 116
+ROWBE N=3 D4M (2,6) A2 pass: lo = 0: D4ML0 rec 732667e-6 at piece 116; tol 732665e-6 at piece 116; alt D4L0 212192e-1 at piece 0; T_v 171926e-2 at piece 116 | INFO h = 1.2: D4ML0 rec 600722e-6 at piece 116; tol 600720e-6 at piece 116; alt D4L0 174190e-1 at piece 0; T_v 140354e-2 at piece 116
+ROWBE N=3 D4M (2,far) A2 pass: lo = 0: D4ML0 rec 732654e-6 at piece 116; tol 732642e-6 at piece 116; alt D4L0 498073e-2 at piece 116; T_v inf | INFO h = 1.2: D4ML0 rec 600710e-6 at piece 116; tol 600698e-6 at piece 116; alt D4L0 406611e-2 at piece 116; T_v inf
+ROWBE N=3 D4M (2,inf) A2 pass: lo = 0: D4ML0 rec 732672e-6 at piece 116; tol 732672e-6 at piece 116; alt D4L0 inf; T_v inf | INFO h = 1.2: D4ML0 rec 600728e-6 at piece 116; tol 600728e-6 at piece 116; alt D4L0 inf; T_v inf
+ROWBE N=4 D3 (-1,2) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=4 D3 (-1,3) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=4 D3 (-1,4) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=4 D3 (-1,5) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=4 D3 (-1,6) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=4 D3 (-1,far) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=4 D3 (-1,inf) TB pass: lo = 0: U_D3 rec inf | INFO h = 1.2: U_D3 rec inf
+ROWBE N=4 D3 (0,2) TD pass: lo = 0: U_D3 rec 122566e-5 at piece 61 | INFO h = 1.2: U_D3 rec 986123e-6 at piece 61
+ROWBE N=4 D3 (0,3) TD pass: lo = 0: U_D3 rec 935333e-5 at piece 61 | INFO h = 1.2: U_D3 rec 771752e-5 at piece 61
+ROWBE N=4 D3 (0,4) TD pass: lo = 0: U_D3 rec 625554e-4 at piece 61 | INFO h = 1.2: U_D3 rec 517800e-4 at piece 61
+ROWBE N=4 D3 (0,5) TD pass: lo = 0: U_D3 rec 340006e-3 at piece 61 | INFO h = 1.2: U_D3 rec 281568e-3 at piece 61
+ROWBE N=4 D3 (0,6) TD pass: lo = 0: U_D3 rec 960804e-3 at piece 61 | INFO h = 1.2: U_D3 rec 795718e-3 at piece 61
+ROWBE N=4 D3 (0,far) TD pass: lo = 0: U_D3 rec 125730e-2 at piece 61 | INFO h = 1.2: U_D3 rec 104127e-2 at piece 61
+ROWBE N=4 D3 (0,inf) TD pass: lo = 0: U_D3 rec 139687e-2 at piece 61 | INFO h = 1.2: U_D3 rec 115687e-2 at piece 61
+ROWBE N=4 D3 (1,2) B3 pass: lo = 0: U_D3 rec 104293e-6 at piece 116 | INFO h = 1.2: U_D3 rec 762930e-7 at piece 116
+ROWBE N=4 D3 (1,3) B3 pass: lo = 0: U_D3 rec 138930e-6 at piece 116 | INFO h = 1.2: U_D3 rec 107643e-6 at piece 116
+ROWBE N=4 D3 (1,4) B3 pass: lo = 0: U_D3 rec 144594e-6 at piece 116 | INFO h = 1.2: U_D3 rec 112769e-6 at piece 116
+ROWBE N=4 D3 (1,5) B3 pass: lo = 0: U_D3 rec 145436e-6 at piece 116 | INFO h = 1.2: U_D3 rec 113531e-6 at piece 116
+ROWBE N=4 D3 (1,6) B3 pass: lo = 0: U_D3 rec 145559e-6 at piece 116 | INFO h = 1.2: U_D3 rec 113643e-6 at piece 116
+ROWBE N=4 D3 (1,far) B3 pass: lo = 0: U_D3 rec 145573e-6 at piece 116 | INFO h = 1.2: U_D3 rec 113656e-6 at piece 116
+ROWBE N=4 D3 (1,inf) B3 pass: lo = 0: U_D3 rec 145580e-6 at piece 116 | INFO h = 1.2: U_D3 rec 113662e-6 at piece 116
+ROWBE N=4 D3 (2,2) B3 pass: lo = 0: U_D3 rec 512281e-6 at piece 116 | INFO h = 1.2: U_D3 rec 396393e-6 at piece 116
+ROWBE N=4 D3 (2,3) B3 pass: lo = 0: U_D3 rec 915302e-6 at piece 116 | INFO h = 1.2: U_D3 rec 712554e-6 at piece 116
+ROWBE N=4 D3 (2,4) B3 pass: lo = 0: U_D3 rec 102908e-5 at piece 116 | INFO h = 1.2: U_D3 rec 801809e-6 at piece 116
+ROWBE N=4 D3 (2,5) B3 pass: lo = 0: U_D3 rec 104800e-5 at piece 116 | INFO h = 1.2: U_D3 rec 816652e-6 at piece 116
+ROWBE N=4 D3 (2,6) B3 pass: lo = 0: U_D3 rec 105082e-5 at piece 116 | INFO h = 1.2: U_D3 rec 818864e-6 at piece 116
+ROWBE N=4 D3 (2,far) B3 pass: lo = 0: U_D3 rec 105115e-5 at piece 116 | INFO h = 1.2: U_D3 rec 819123e-6 at piece 116
+ROWBE N=4 D3 (2,inf) B3 pass: lo = 0: U_D3 rec 105130e-5 at piece 116 | INFO h = 1.2: U_D3 rec 819244e-6 at piece 116
+ROWBE N=4 D3 (3,3) B3 pass: lo = 0: U_D3 rec 363900e-5 at piece 116 | INFO h = 1.2: U_D3 rec 283462e-5 at piece 116
+ROWBE N=4 D3 (3,4) B3 pass: lo = 0: U_D3 rec 635475e-5 at piece 116 | INFO h = 1.2: U_D3 rec 495049e-5 at piece 116
+ROWBE N=4 D3 (3,5) B3 pass: lo = 0: U_D3 rec 712993e-5 at piece 116 | INFO h = 1.2: U_D3 rec 555444e-5 at piece 116
+ROWBE N=4 D3 (3,6) B3 pass: lo = 0: U_D3 rec 725926e-5 at piece 116 | INFO h = 1.2: U_D3 rec 565520e-5 at piece 116
+ROWBE N=4 D3 (3,far) B3 pass: lo = 0: U_D3 rec 727463e-5 at piece 116 | INFO h = 1.2: U_D3 rec 566718e-5 at piece 116
+ROWBE N=4 D3 (3,inf) B3 pass: lo = 0: U_D3 rec 728186e-5 at piece 116 | INFO h = 1.2: U_D3 rec 567281e-5 at piece 116
+ROWBE N=4 D4 (0,2) TC pass: lo = 0: D4ML0 rec 116066e-4 at piece 61; tol 116066e-4 at piece 61 | INFO h = 1.2: D4ML0 rec 950903e-5 at piece 61; tol 950903e-5 at piece 61
+ROWBE N=4 D4 (0,3) TC pass: lo = 0: D4ML0 rec 938469e-4 at piece 61; tol 938469e-4 at piece 61 | INFO h = 1.2: D4ML0 rec 781182e-4 at piece 61; tol 781182e-4 at piece 61
+ROWBE N=4 D4 (0,4) TC pass: lo = 0: D4ML0 rec 466808e-3 at piece 61; tol 466808e-3 at piece 61 | INFO h = 1.2: D4ML0 rec 389262e-3 at piece 61; tol 389262e-3 at piece 61
+ROWBE N=4 D4 (0,5) TC pass: lo = 0: D4ML0 rec 105707e-2 at piece 61; tol 105707e-2 at piece 61 | INFO h = 1.2: D4ML0 rec 881693e-3 at piece 61; tol 881693e-3 at piece 61
+ROWBE N=4 D4 (0,6) TC pass: lo = 0: D4ML0 rec 129660e-2 at piece 61; tol 129660e-2 at piece 61 | INFO h = 1.2: D4ML0 rec 108152e-2 at piece 61; tol 108152e-2 at piece 61
+ROWBE N=4 D4 (0,far) TC pass: lo = 0: D4ML0 rec 125109e-2 at piece 61; tol 125109e-2 at piece 61 | INFO h = 1.2: D4ML0 rec 104355e-2 at piece 61; tol 104355e-2 at piece 61
+ROWBE N=4 D4 (0,inf) TC pass: lo = 0: D4ML0 rec 134934e-2 at piece 61; tol 134934e-2 at piece 61 | INFO h = 1.2: D4ML0 rec 112552e-2 at piece 61; tol 112552e-2 at piece 61
+ROWBE N=4 D4 (1,2) A2 pass: lo = 0: D4ML0 rec 315901e-6 at piece 61; tol 501869e-6 at piece 116; alt D4L0 537911e-6 at piece 61; T_v 451557e-7 at piece 61 | INFO h = 1.2: D4ML0 rec 151079e-6 at piece 61; tol 336231e-6 at piece 116; alt D4L0 394627e-6 at piece 61; T_v 184331e-7 at piece 61
+ROWBE N=4 D4 (1,3) A2 pass: lo = 0: D4ML0 rec 308723e-5 at piece 61; tol 435006e-5 at piece 116; alt D4L0 677709e-6 at piece 61; T_v 711595e-7 at piece 116 | INFO h = 1.2: D4ML0 rec 194023e-5 at piece 61; tol 320046e-5 at piece 116; alt D4L0 534135e-6 at piece 61; T_v 443818e-7 at piece 116
+ROWBE N=4 D4 (1,4) A2 pass: lo = 0: D4ML0 rec 220595e-4 at piece 61; tol 306966e-4 at piece 116; alt D4L0 697757e-6 at piece 61; T_v 748343e-7 at piece 116 | INFO h = 1.2: D4ML0 rec 141750e-4 at piece 116; tol 228097e-4 at piece 116; alt D4L0 554141e-6 at piece 61; T_v 480487e-7 at piece 116
+ROWBE N=4 D4 (1,5) A2 pass: lo = 0: D4ML0 rec 151886e-3 at piece 61; tol 211012e-3 at piece 116; alt D4L0 700678e-6 at piece 61; T_v 753698e-7 at piece 116 | INFO h = 1.2: D4ML0 rec 979015e-4 at piece 116; tol 157016e-3 at piece 116; alt D4L0 557055e-6 at piece 61; T_v 485830e-7 at piece 116
+ROWBE N=4 D4 (1,6) A2 pass: lo = 0: D4ML0 rec 104020e-2 at piece 61; tol 144499e-2 at piece 116; alt D4L0 701104e-6 at piece 61; T_v 754480e-7 at piece 116 | INFO h = 1.2: D4ML0 rec 670879e-3 at piece 116; tol 107544e-2 at piece 116; alt D4L0 557480e-6 at piece 61; T_v 486610e-7 at piece 116
+ROWBE N=4 D4 (1,far) A2 pass: lo = 0: D4ML0 rec 325941e-2 at piece 116; tol 452671e-2 at piece 116; alt D4L0 701154e-6 at piece 61; T_v 754571e-7 at piece 116 | INFO h = 1.2: D4ML0 rec 210181e-2 at piece 116; tol 336911e-2 at piece 116; alt D4L0 557530e-6 at piece 61; T_v 486701e-7 at piece 116
+ROWBE N=4 D4 (1,inf) A2 pass: lo = 0: D4L0 rec 701177e-6 at piece 61; T_v 754614e-7 at piece 116 | INFO h = 1.2: D4L0 rec 557553e-6 at piece 61; T_v 486744e-7 at piece 116
+ROWBE N=4 D4 (2,2) A2 pass: lo = 0: D4ML0 rec 695042e-6 at piece 116; tol 711411e-6 at piece 116; alt D4L0 745207e-5 at piece 116; T_v 723988e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 535158e-6 at piece 116; tol 551528e-6 at piece 116; alt D4L0 571178e-5 at piece 116; T_v 547930e-6 at piece 116
+ROWBE N=4 D4 (2,3) A2 pass: lo = 0: D4ML0 rec 493482e-5 at piece 116; tol 504820e-5 at piece 116; alt D4L0 799185e-5 at piece 116; T_v 778595e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 382512e-5 at piece 116; tol 393851e-5 at piece 116; alt D4L0 624799e-5 at piece 116; T_v 602176e-6 at piece 116
+ROWBE N=4 D4 (2,4) A2 pass: lo = 0: D4ML0 rec 339639e-4 at piece 116; tol 347415e-4 at piece 116; alt D4L0 806944e-5 at piece 116; T_v 786445e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 263507e-4 at piece 116; tol 271283e-4 at piece 116; alt D4L0 632506e-5 at piece 116; T_v 609973e-6 at piece 116
+ROWBE N=4 D4 (2,5) A2 pass: lo = 0: D4ML0 rec 232639e-3 at piece 116; tol 237962e-3 at piece 116; alt D4L0 808074e-5 at piece 116; T_v 787589e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 180516e-3 at piece 116; tol 185840e-3 at piece 116; alt D4L0 633628e-5 at piece 116; T_v 611109e-6 at piece 116
+ROWBE N=4 D4 (2,6) A2 pass: lo = 0: D4ML0 rec 159226e-2 at piece 116; tol 162869e-2 at piece 116; alt D4L0 808240e-5 at piece 116; T_v 787756e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 123554e-2 at piece 116; tol 127197e-2 at piece 116; alt D4L0 633792e-5 at piece 116; T_v 611274e-6 at piece 116
+ROWBE N=4 D4 (2,far) A2 pass: lo = 0: D4ML0 rec 498774e-2 at piece 116; tol 510187e-2 at piece 116; alt D4L0 808259e-5 at piece 116; T_v 787775e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 387032e-2 at piece 116; tol 398445e-2 at piece 116; alt D4L0 633811e-5 at piece 116; T_v 611294e-6 at piece 116
+ROWBE N=4 D4 (2,inf) A2 pass: lo = 0: D4L0 rec 808268e-5 at piece 116; T_v 787784e-6 at piece 116 | INFO h = 1.2: D4L0 rec 633820e-5 at piece 116; T_v 611303e-6 at piece 116
+ROWBE N=4 D4 (3,3) A2 pass: lo = 0: D4ML0 rec 508282e-5 at piece 116; tol 509745e-5 at piece 116; alt D4L0 617585e-4 at piece 116; T_v 549644e-5 at piece 116 | INFO h = 1.2: D4ML0 rec 397903e-5 at piece 116; tol 399366e-5 at piece 116; alt D4L0 483118e-4 at piece 116; T_v 429394e-5 at piece 116
+ROWBE N=4 D4 (3,4) A2 pass: lo = 0: D4ML0 rec 348778e-4 at piece 116; tol 349781e-4 at piece 116; alt D4L0 621802e-4 at piece 116; T_v 553416e-5 at piece 116 | INFO h = 1.2: D4ML0 rec 273051e-4 at piece 116; tol 274054e-4 at piece 116; alt D4L0 487295e-4 at piece 116; T_v 433130e-5 at piece 116
+ROWBE N=4 D4 (3,5) A2 pass: lo = 0: D4ML0 rec 238794e-3 at piece 116; tol 239481e-3 at piece 116; alt D4L0 622417e-4 at piece 116; T_v 553965e-5 at piece 116 | INFO h = 1.2: D4ML0 rec 186949e-3 at piece 116; tol 187636e-3 at piece 116; alt D4L0 487903e-4 at piece 116; T_v 433674e-5 at piece 116
+ROWBE N=4 D4 (3,6) A2 pass: lo = 0: D4ML0 rec 163429e-2 at piece 116; tol 163899e-2 at piece 116; alt D4L0 622507e-4 at piece 116; T_v 554045e-5 at piece 116 | INFO h = 1.2: D4ML0 rec 127946e-2 at piece 116; tol 128416e-2 at piece 116; alt D4L0 487992e-4 at piece 116; T_v 433753e-5 at piece 116
+ROWBE N=4 D4 (3,far) A2 pass: lo = 0: D4ML0 rec 511935e-2 at piece 116; tol 513407e-2 at piece 116; alt D4L0 622517e-4 at piece 116; T_v 554055e-5 at piece 116 | INFO h = 1.2: D4ML0 rec 400788e-2 at piece 116; tol 402260e-2 at piece 116; alt D4L0 488003e-4 at piece 116; T_v 433763e-5 at piece 116
+ROWBE N=4 D4 (3,inf) A2 pass: lo = 0: D4L0 rec 622522e-4 at piece 116; T_v 554059e-5 at piece 116 | INFO h = 1.2: D4L0 rec 488008e-4 at piece 116; T_v 433767e-5 at piece 116
+ROWBE N=4 D4M (0,2) TC pass: lo = 0: D4L0 rec 857660e-5 at piece 61 | INFO h = 1.2: D4L0 rec 710104e-5 at piece 61
+ROWBE N=4 D4M (0,3) TC pass: lo = 0: D4L0 rec 660743e-4 at piece 61 | INFO h = 1.2: D4L0 rec 550921e-4 at piece 61
+ROWBE N=4 D4M (0,4) TC pass: lo = 0: D4L0 rec 326767e-3 at piece 61 | INFO h = 1.2: D4L0 rec 272682e-3 at piece 61
+ROWBE N=4 D4M (0,5) TC pass: lo = 0: D4L0 rec 739348e-3 at piece 61 | INFO h = 1.2: D4L0 rec 617046e-3 at piece 61
+ROWBE N=4 D4M (0,6) TC pass: lo = 0: D4L0 rec 906773e-3 at piece 61 | INFO h = 1.2: D4L0 rec 756788e-3 at piece 61
+ROWBE N=4 D4M (0,far) TC pass: lo = 0: D4L0 rec 874955e-3 at piece 61 | INFO h = 1.2: D4L0 rec 730231e-3 at piece 61
+ROWBE N=4 D4M (0,inf) TC pass: lo = 0: D4L0 rec 943642e-3 at piece 61 | INFO h = 1.2: D4L0 rec 787561e-3 at piece 61
+ROWBE N=4 D4M (1,2) A2 pass: lo = 0: D4ML0 rec 777847e-7 at piece 116; tol 800525e-7 at piece 116; alt D4L0 345330e-5 at piece 116; T_v 319449e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 559408e-7 at piece 116; tol 582086e-7 at piece 116; alt D4L0 173704e-5 at piece 116; T_v 145821e-6 at piece 116
+ROWBE N=4 D4M (1,3) A2 pass: lo = 0: D4ML0 rec 978611e-7 at piece 116; tol 981536e-7 at piece 116; alt D4L0 370001e-4 at piece 116; T_v 328238e-5 at piece 116 | INFO h = 1.2: D4ML0 rec 761342e-7 at piece 116; tol 764267e-7 at piece 116; alt D4L0 237667e-4 at piece 116; T_v 209895e-5 at piece 116
+ROWBE N=4 D4M (1,4) A2 pass: lo = 0: D4ML0 rec 100689e-6 at piece 116; tol 100731e-6 at piece 116; alt D4L0 268252e-3 at piece 116; T_v 235340e-4 at piece 116 | INFO h = 1.2: D4ML0 rec 789797e-7 at piece 116; tol 790216e-7 at piece 116; alt D4L0 176046e-3 at piece 116; T_v 154357e-4 at piece 116
+ROWBE N=4 D4M (1,5) A2 pass: lo = 0: D4ML0 rec 101100e-6 at piece 116; tol 101106e-6 at piece 116; alt D4L0 184075e-2 at piece 116; T_v 162212e-3 at piece 116 | INFO h = 1.2: D4ML0 rec 793931e-7 at piece 116; tol 793992e-7 at piece 116; alt D4L0 121160e-2 at piece 116; T_v 106761e-3 at piece 116
+ROWBE N=4 D4M (1,6) A2 pass: lo = 0: D4ML0 rec 101160e-6 at piece 116; tol 101161e-6 at piece 116; alt D4L0 125208e-1 at piece 116; T_v 111188e-2 at piece 116 | INFO h = 1.2: D4ML0 rec 794534e-7 at piece 116; tol 794544e-7 at piece 116; alt D4L0 824494e-2 at piece 116; T_v 732160e-3 at piece 116
+ROWBE N=4 D4M (1,far) A2 pass: lo = 0: D4ML0 rec 101161e-6 at piece 116; tol 101165e-6 at piece 116; alt D4L0 319923e-2 at piece 116; T_v inf | INFO h = 1.2: D4ML0 rec 794550e-7 at piece 116; tol 794585e-7 at piece 116; alt D4L0 210677e-2 at piece 116; T_v inf
+ROWBE N=4 D4M (1,inf) A2 pass: lo = 0: D4ML0 rec 101170e-6 at piece 116; tol 101170e-6 at piece 116; alt D4L0 inf; T_v inf | INFO h = 1.2: D4ML0 rec 794638e-7 at piece 116; tol 794638e-7 at piece 116; alt D4L0 inf; T_v inf
+ROWBE N=4 D4M (2,2) A2 pass: lo = 0: D4ML0 rec 695042e-6 at piece 116; tol 711411e-6 at piece 116; alt D4L0 745207e-5 at piece 116; T_v 723988e-6 at piece 116 | INFO h = 1.2: D4ML0 rec 535158e-6 at piece 116; tol 551528e-6 at piece 116; alt D4L0 571178e-5 at piece 116; T_v 547930e-6 at piece 116
+ROWBE N=4 D4M (2,3) A2 pass: lo = 0: D4ML0 rec 731211e-6 at piece 116; tol 733323e-6 at piece 116; alt D4L0 588230e-4 at piece 116; T_v 523392e-5 at piece 116 | INFO h = 1.2: D4ML0 rec 572179e-6 at piece 116; tol 574291e-6 at piece 116; alt D4L0 454038e-4 at piece 116; T_v 403389e-5 at piece 116
+ROWBE N=4 D4M (2,4) A2 pass: lo = 0: D4ML0 rec 735979e-6 at piece 116; tol 736281e-6 at piece 116; alt D4L0 411218e-3 at piece 116; T_v 360904e-4 at piece 116 | INFO h = 1.2: D4ML0 rec 577071e-6 at piece 116; tol 577374e-6 at piece 116; alt D4L0 317718e-3 at piece 116; T_v 278785e-4 at piece 116
+ROWBE N=4 D4M (2,5) A2 pass: lo = 0: D4ML0 rec 736664e-6 at piece 116; tol 736708e-6 at piece 116; alt D4L0 280720e-2 at piece 116; T_v 247392e-3 at piece 116 | INFO h = 1.2: D4ML0 rec 577775e-6 at piece 116; tol 577819e-6 at piece 116; alt D4L0 216922e-2 at piece 116; T_v 191162e-3 at piece 116
+ROWBE N=4 D4M (2,6) A2 pass: lo = 0: D4ML0 rec 736764e-6 at piece 116; tol 736771e-6 at piece 116; alt D4L0 190803e-1 at piece 116; T_v 169439e-2 at piece 116 | INFO h = 1.2: D4ML0 rec 577878e-6 at piece 116; tol 577884e-6 at piece 116; alt D4L0 147443e-1 at piece 116; T_v 130934e-2 at piece 116
+ROWBE N=4 D4M (2,far) A2 pass: lo = 0: D4ML0 rec 736736e-6 at piece 116; tol 736762e-6 at piece 116; alt D4L0 487482e-2 at piece 116; T_v inf | INFO h = 1.2: D4ML0 rec 577850e-6 at piece 116; tol 577876e-6 at piece 116; alt D4L0 376703e-2 at piece 116; T_v inf
+ROWBE N=4 D4M (2,inf) A2 pass: lo = 0: D4ML0 rec 736781e-6 at piece 116; tol 736781e-6 at piece 116; alt D4L0 inf; T_v inf | INFO h = 1.2: D4ML0 rec 577896e-6 at piece 116; tol 577896e-6 at piece 116; alt D4L0 inf; T_v inf
+ROWBE N=4 D4M (3,3) A2 pass: lo = 0: D4ML0 rec 508282e-5 at piece 116; tol 509745e-5 at piece 116; alt D4L0 617585e-4 at piece 116; T_v 549644e-5 at piece 116 | INFO h = 1.2: D4ML0 rec 397903e-5 at piece 116; tol 399366e-5 at piece 116; alt D4L0 483118e-4 at piece 116; T_v 429394e-5 at piece 116
+ROWBE N=4 D4M (3,4) A2 pass: lo = 0: D4ML0 rec 510109e-5 at piece 116; tol 510319e-5 at piece 116; alt D4L0 430435e-3 at piece 116; T_v 377781e-4 at piece 116 | INFO h = 1.2: D4ML0 rec 399817e-5 at piece 116; tol 400027e-5 at piece 116; alt D4L0 336742e-3 at piece 116; T_v 295493e-4 at piece 116
+ROWBE N=4 D4M (3,5) A2 pass: lo = 0: D4ML0 rec 510369e-5 at piece 116; tol 510400e-5 at piece 116; alt D4L0 293709e-2 at piece 116; T_v 258840e-3 at piece 116 | INFO h = 1.2: D4ML0 rec 400089e-5 at piece 116; tol 400120e-5 at piece 116; alt D4L0 229780e-2 at piece 116; T_v 202495e-3 at piece 116
+ROWBE N=4 D4M (3,6) A2 pass: lo = 0: D4ML0 rec 510407e-5 at piece 116; tol 510411e-5 at piece 116; alt D4L0 199619e-1 at piece 116; T_v 177267e-2 at piece 116 | INFO h = 1.2: D4ML0 rec 400129e-5 at piece 116; tol 400134e-5 at piece 116; alt D4L0 156170e-1 at piece 116; T_v 138683e-2 at piece 116
+ROWBE N=4 D4M (3,far) A2 pass: lo = 0: D4ML0 rec 510384e-5 at piece 116; tol 510402e-5 at piece 116; alt D4L0 510001e-2 at piece 116; T_v inf | INFO h = 1.2: D4ML0 rec 400106e-5 at piece 116; tol 400124e-5 at piece 116; alt D4L0 398995e-2 at piece 116; T_v inf
+ROWBE N=4 D4M (3,inf) A2 pass: lo = 0: D4ML0 rec 510414e-5 at piece 116; tol 510414e-5 at piece 116; alt D4L0 inf; T_v inf | INFO h = 1.2: D4ML0 rec 400136e-5 at piece 116; tol 400136e-5 at piece 116; alt D4L0 inf; T_v inf
+BE-MIN N=4 lo = 0 D4M-L0 q*, D4-L0 at its record value: 777847e-7 at piece 116, row D4M (1,2)
+BE-MIN N=4 lo = 0 D4M-L0 q*, D4-L0 at ADD10's q_tol: 800525e-7 at piece 116, row D4M (1,2)
+BE-MIN N=4 lo = 0 D4-L0 q*, joint A2 rows, D4M-L0 at its record value: 537911e-6 at piece 61, row D4 (1,2)
+BE-MIN N=4 lo = 0 U_D3*: 104293e-6 at piece 116, row D3 (1,2)
+BE-MIN N=4 lo = 0 D4-L0 q*, rows that read only D4-L0: 701177e-6 at piece 61, row D4 (1,inf)
+BE-MIN N=4 lo = 0 T_v*, A2 rows: 451557e-7 at piece 61, row D4 (1,2)
+BE-MIN N=4 INFO h = 1.2 D4M-L0 q*, D4-L0 at its record value: 559408e-7 at piece 116, row D4M (1,2)
+BE-MIN N=4 INFO h = 1.2 D4M-L0 q*, D4-L0 at ADD10's q_tol: 582086e-7 at piece 116, row D4M (1,2)
+BE-MIN N=4 INFO h = 1.2 D4-L0 q*, joint A2 rows, D4M-L0 at its record value: 394627e-6 at piece 61, row D4 (1,2)
+BE-MIN N=4 INFO h = 1.2 U_D3*: 762930e-7 at piece 116, row D3 (1,2)
+BE-MIN N=4 INFO h = 1.2 D4-L0 q*, rows that read only D4-L0: 557553e-6 at piece 61, row D4 (1,inf)
+BE-MIN N=4 INFO h = 1.2 T_v*, A2 rows: 184331e-7 at piece 61, row D4 (1,2)
+BE-MIN N=3 lo = 0 D4M-L0 q*, D4-L0 at its record value: 243599e-7 at piece 0, row D4 (1,1)
+BE-MIN N=3 lo = 0 D4M-L0 q*, D4-L0 at ADD10's q_tol: 121928e-7 at piece 0, row D4 (1,1)
+BE-MIN N=3 lo = 0 D4-L0 q*, joint A2 rows, D4M-L0 at its record value: 187009e-6 at piece 0, row D4 (1,1)
+BE-MIN N=3 lo = 0 U_D3*: 371150e-7 at piece 0, row D3 (1,1)
+BE-MIN N=3 lo = 0 D4-L0 q*, rows that read only D4-L0: 699553e-6 at piece 0, row D4 (1,inf)
+BE-MIN N=3 lo = 0 T_v*, A2 rows: 120277e-7 at piece 0, row D4 (1,1)
+BE-MIN N=3 INFO h = 1.2 D4M-L0 q*, D4-L0 at its record value: 608478e-8 at piece 0, row D4 (1,1)
+BE-MIN N=3 INFO h = 1.2 D4M-L0 q*, D4-L0 at ADD10's q_tol: -608237e-8 at piece 0, row D4 (1,1)
+BE-MIN N=3 INFO h = 1.2 D4-L0 q*, joint A2 rows, D4M-L0 at its record value: 654763e-7 at piece 0, row D4 (1,1)
+BE-MIN N=3 INFO h = 1.2 U_D3*: 243374e-7 at piece 0, row D3 (1,1)
+BE-MIN N=3 INFO h = 1.2 D4-L0 q*, rows that read only D4-L0: 576049e-6 at piece 0, row D4 (1,inf)
+BE-MIN N=3 INFO h = 1.2 T_v*, A2 rows: -948189e-8 at piece 0, row D4 (1,1)
+COMPARE INFO N=4 (v1_3_2; ADD11 sect. 7, this run's lo = 0 minima): U_D3 (max over rows) 0.0447656 against 104293e-6 (ratio 2.33); D4M-L0 q_use 0.0375995 against 777847e-7 (ratio 2.069); D4-L0 q_use 0.295975 against 537911e-6 (ratio 1.817); T_v 3.46589e-05 against 451557e-7 (ratio 1303)
+COMPARE INFO N=3 (v1_3_2; ADD11 sect. 7, this run's lo = 0 minima): U_D3 (max over rows) 0.0152686 against 371150e-7 (ratio 2.431); D4M-L0 q_use 0.0141462 against 243599e-7 (ratio 1.722); D4-L0 q_use 0.119086 against 187009e-6 (ratio 1.57); T_v 6.32448e-06 against 120277e-7 (ratio 1902)
+JOINT-RECORD: prepared (190 row lines, FAILING_ROWS 0); written only after the last gate with VERDICT VALID
+C-PREC: flint ctx.prec 256 at the end, the cert module's PREC 256 -> PASS
+ITEM final cpu 1.0 s, peak resident memory 90 MiB
+GATES: failing none; PLANTS: not firing none
+RECORD P2_12_JOINT_RECORD_v1_MOCK_kt_p212_cert_v1_3_6_2.kv sha256 a3b84eb176c25982d37fc7222b370609788fdf20e1945346dced06653a72c7d4
+JOINT-RECORD P2_12_JOINT_RECORD_v1_MOCK_kt_p212_cert_v1_3_6_2.kv: 190 row lines
+VERDICT VALID

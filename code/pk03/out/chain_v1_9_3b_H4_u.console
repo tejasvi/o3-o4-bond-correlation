@@ -1,0 +1,20 @@
+2026-11-08T04:40:41Z CHAIN start m3_run_v1_9_3 57991eb0, H at N4, mode u; run_chain_m3_run_v1_9_3b.sh 2d52af21; cap 5400 s; log chain_m3_run_v1_9_3b_H4_1.log
+2026-11-08T04:40:41Z MANIFEST_m3_run_v1_9_3b.sha256 0fef19f0 and the v1_9_3, v1_9_2, v1_9_1, v1_9 manifests OK (--strict)
+2026-11-08T04:40:41Z END pycheck rc 0 VERDICT VALID  out b370b31f
+2026-11-08T04:40:41Z H has 8 entries in S8_ENTRY_LIST_v2
+2026-11-08T04:40:41Z SKIP Ha.4: done before (9662acdf)
+2026-11-08T04:40:41Z START Hp1.4 LIM 540 (CPU so far 0.1 s of 5400)
+2026-11-08T04:47:00Z END Hp1.4 rc 0 CPU 376.9 s (total 377.0 s) VERDICT VALID  out 3f210ddf 13830 bytes; err 0 bytes
+2026-11-08T04:47:00Z START Hp2.4 LIM 540 (CPU so far 377.1 s of 5400)
+2026-11-08T04:52:36Z END Hp2.4 rc 0 CPU 335.7 s (total 712.8 s) VERDICT VALID  out 2a166181 6672 bytes; err 0 bytes
+2026-11-08T04:52:36Z START Hp3.4 LIM 540 (CPU so far 712.8 s of 5400)
+2026-11-08T04:58:12Z END Hp3.4 rc 0 CPU 336.0 s (total 1048.8 s) VERDICT VALID  out 2f8fae36 6615 bytes; err 0 bytes
+2026-11-08T04:58:12Z START Hp4.4 LIM 540 (CPU so far 1048.8 s of 5400)
+2026-11-08T05:03:48Z END Hp4.4 rc 0 CPU 335.8 s (total 1384.6 s) VERDICT VALID  out 7daa1481 7048 bytes; err 0 bytes
+2026-11-08T05:03:48Z START Hp5.4 LIM 540 (CPU so far 1384.6 s of 5400)
+2026-11-08T05:07:55Z END Hp5.4 rc 0 CPU 246.4 s (total 1631.0 s) VERDICT VALID  out 2bd1213c 11538 bytes; err 0 bytes
+2026-11-08T05:07:55Z REPLAY-H4 lines: REPLAY_REF 18, m3_run_v1_9_1 18 (self-test cmp rc 0), m3_run_v1_9_3 18 (cmp rc 0, 9f798728); PLANT-REPLAY cmp rc 1 (must be 1)
+2026-11-08T05:07:55Z REPLAY-H4 m3_run_v1_9_3 pieces: Hp1.4 3f210ddf Hp2.4 2a166181 Hp3.4 2f8fae36 Hp4.4 7daa1481 Hp5.4 2bd1213c
+2026-11-08T05:07:55Z REPLAY-H4 PASS (the 18 lines equal REPLAY_REF 4ce12eea byte for byte; PLANT-REPLAY FIRES)
+2026-11-08T05:07:56Z MEASURE: stage u done in Hp5.4; the chain stops (mode u)
+2026-11-08T05:07:56Z CHAIN end: CPU 1631.1 s of 5400

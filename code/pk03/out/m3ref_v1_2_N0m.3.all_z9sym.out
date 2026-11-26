@@ -1,0 +1,33 @@
+m3ref_v1_1 item N0m.3.all LIM 540; python 3.14.4
+C-COPY (12 pinned copies in /mnt/g2/release/root/code/pk03/pin) -> PASS
+PLANT-COPY (riglap2 bytes plus one byte) -> FIRES
+C-SRC (lapl2 l.63-79, vacmod2 l.8-9, endw l.16-19 against this file; source shas) -> PASS
+PLANT-SRC (strip_graph text with one character changed) -> FIRES
+C-HASH (14 inputs and J = 170 records in /mnt/g2/release/root/code/pk10/scratch) -> PASS
+PLANT-HASH (vacres_K3_N4 against a sha with its last digit changed) -> FIRES
+versions: numpy 2.5.3, scipy 1.18.1; engines from /mnt/g2/release/root/code/pk03/pin
+TRIAL z9sym
+inputs: N = 3, kbar 0.5514259266145797 (m2_N3_J170.json.b), trial set ts_N3_S.json, vacres_K3_N3.json
+family N0m N=3: V 9, F 15, pairs [(0, 1), (1, 2), (0, 2), (6, 7), (7, 8), (6, 8)], NPOLY_B 12, qcap 6, 3 keys: I3p, I3m, I3c
+STAGE-CPU graph 0.00 s
+STAGE-CPU prep J=300 176.39 s (ok True)
+PROFILE prep J=300 {"AllMom2.E2": [30, 132.97], "AllMom2.init": [10, 42.09], "NPoly.mul": [305, 0.02], "pmul": [305, 1.11]}
+C-THETA theta0 0.9500000000000001 reproduces farbase 1.6349818530335018e-55: relative 0.0e+00 -> PASS
+PLANT-THETA (the base times 1 + 1e-9) -> FIRES
+PREPJSON {"family": "N0m", "N": 3, "J": 300.0, "rho": [0.3445428396422637, 0.2969461359352778, 0.34454283964226357, 0.2984629603805553, 0.2419656546232602, 0.29846296038055525, 0.34454283964226357, 0.2969461359352778, 0.3445428396422635], "a_v": [0.11870976834875462, 0.08817700764689249, 0.11870976834875455, 0.08908013871912493, 0.05854737801726284, 0.0890801387191249, 0.11870976834875455, 0.08817700764689249, 0.1187097683487545], "ap": 0.48999999999999994, "ok": true, "tree": [1.2637626158259734, 1.2637626158259734, 1.2637626158259734, 1.2637626158259734, 1.0, 1.0, 1.0, 1.0], "theta0": 0.9500000000000001, "logmain": -57.462250902323056, "cpu_prep": 176.39, "rE": 2.710545760252355e-07, "rE_parts": {"t4|H4|": 1.3529665895823966e-08, "t5 h5/120": 5.151054700595979e-09, "t4 H2^2/2": 2.0614986177611624e-08, "t6 h3^2/72": 5.35481527836666e-10, "t4|H1H3|": 4.6841250244083875e-08, "t5|H1H4|": 1.3658428337832783e-09, "t6|H1|h5/120": 6.799955308259704e-10, "t5|H2|h3/6": 6.3363873494410516e-09, "t4 H1^2|H2|/2": 1.1690937149480945e-07, "t5 H1^2 h3/12": 2.0379104232176145e-08, "t5|H1|h2^2/8": 3.751830723172054e-08, "E2^3 term": 1.1931288065269785e-09}, "nE": [1.0, 1.5592765318512838, 3.3861320624255202, 12.819318191046664], "nE4": [1.0, 3.3087399405099904, 43.29540066953181, 9345.282961273018], "nC8": 0.0493881595191427, "nC6": 0.023825331663297512, "Nc": 1.0117941683623615, "Np": 1.0153897325631966, "Pout": 3.823518829762436e-17, "Pout_p": 4.248939172607561e-17, "farbase": 1.6349818530335018e-55}
+C-REP170 I3p vs m2_N3_J170 I3p (tol 1e-10): max|diff| 3.55e-15, max|a_k ref| 2.529e-02 -> PASS
+PLANT-REP170 (I3p: the largest reference coefficient times 1 + 1e-6) -> FIRES
+KEYJSON {"family": "N0m", "N": 3, "J": 300.0, "key": "I3p", "index": 0, "ak": [0.001267862026853861, 0.002721642992879622, 0.011605250683542519, 0.025292539312391116], "B": {"rem": 1.8026014329153497e-07, "tail": 3.011702160803642e-09, "ann": 1.1955606382489263e-08, "far": 1.680461537964845e-45}, "err": 1.952274518348279e-07, "cpu": 7.17, "refs": [{"record": "m2", "key": "I3p", "dmax_rel": 1.4046488709259356e-13, "err170": 2.956874020335802e-06, "kr4_ratio": 0.06602494745875462}]}
+STAGE-CPU key I3p J=300 7.17 s
+PROFILE after I3p J=300 {"AllMom2.E": [10, 0.02], "AllMom2.E2": [62, 134.32], "AllMom2.init": [41, 45.69], "NPoly.mul": [10649, 0.63], "pmul": [1059, 2.36]}
+C-REP170 I3m vs m2_N3_J170 I3m (tol 1e-10): max|diff| 2.84e-15, max|a_k ref| 4.073e-03 -> PASS
+KEYJSON {"family": "N0m", "N": 3, "J": 300.0, "key": "I3m", "index": 1, "ak": [0.0009303396335182401, 0.001805345635789512, 0.002784805667838036, 0.004072763856427548], "B": {"rem": 1.2692509950542974e-07, "tail": 2.65374503933231e-09, "ann": 5.788189923538069e-09, "far": 1.6773769573744538e-45}, "err": 1.3536703446830013e-07, "cpu": 3.15, "refs": [{"record": "m2", "key": "I3m", "dmax_rel": 6.981037637713532e-13, "err170": 2.069766292659466e-06, "kr4_ratio": 0.0654020866744165}]}
+STAGE-CPU key I3m J=300 3.15 s
+PROFILE after I3m J=300 {"AllMom2.E": [20, 0.04], "AllMom2.E2": [94, 135.37], "AllMom2.init": [41, 45.69], "NPoly.mul": [20993, 1.26], "pmul": [1813, 3.48]}
+C-REP170 I3c vs m2_N3_J170 I3c (tol 1e-10): max|diff| 3.22e-15, max|a_k ref| 2.255e-01 -> PASS
+KEYJSON {"family": "N0m", "N": 3, "J": 300.0, "key": "I3c", "index": 2, "ak": [-0.0004922935106120852, 0.08276669797465175, 0.1556149540236076, 0.22553352584319125], "B": {"rem": 1.8056486976241327e-07, "tail": 3.138719353689632e-09, "ann": 8.907077383807572e-09, "far": 2.798197565465762e-48}, "err": 1.926106664999105e-07, "cpu": 0.39, "refs": [{"record": "m2", "key": "I3c", "dmax_rel": 1.4275690318660034e-14, "err170": 2.8431999682215195e-06, "kr4_ratio": 0.06774432634099685}]}
+STAGE-CPU key I3c J=300 0.39 s
+PROFILE after I3c J=300 {"AllMom2.E": [25, 0.04], "AllMom2.E2": [113, 135.42], "AllMom2.init": [48, 45.74], "NPoly.mul": [23525, 1.41], "pmul": [2168, 3.54]}
+keys done 3 of range 0-2
+STAGE-CPU total 187.26 s
+VERDICT VALID

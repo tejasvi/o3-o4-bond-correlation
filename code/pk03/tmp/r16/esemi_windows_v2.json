@@ -1,0 +1,1975 @@
+{
+ "list": "ESEMI_WINDOWS_v2 (hand, pk03 t_esemi_list_v2)",
+ "orientation": "S8 E3 (vac column 0 with cp_k; free column last); free-left vertex 3c + r maps to 3(ncols - 1 - c) + r",
+ "graphs": {
+  "ES9": {
+   "columns": [
+    "vac",
+    "int",
+    "free"
+   ],
+   "pairs": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     7,
+     8
+    ]
+   ]
+  },
+  "ES12A": {
+   "columns": [
+    "vac",
+    "int",
+    "int",
+    "free"
+   ],
+   "pairs": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     7,
+     8
+    ]
+   ]
+  },
+  "ES12B": {
+   "columns": [
+    "vac",
+    "int",
+    "int",
+    "free"
+   ],
+   "pairs": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     6
+    ]
+   ]
+  },
+  "ES12C": {
+   "columns": [
+    "vac",
+    "int",
+    "int",
+    "free"
+   ],
+   "pairs": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     6,
+     9
+    ]
+   ]
+  }
+ },
+ "entries": [
+  {
+   "key": "W1,0",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E000 cp_0",
+    "D4M d_L 0 S0000 cp_0",
+    "D3 d_L -1 1 cp_0",
+    "D3 d_L 0 1 cp_0"
+   ]
+  },
+  {
+   "key": "W1,1",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E000 cp_1",
+    "D4M d_L 0 S0000 cp_1",
+    "D3 d_L -1 1 cp_1",
+    "D3 d_L 0 1 cp_1"
+   ]
+  },
+  {
+   "key": "W1,2",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E000 cp_2",
+    "D4M d_L 0 S0000 cp_2",
+    "D3 d_L -1 1 cp_2",
+    "D3 d_L 0 1 cp_2"
+   ]
+  },
+  {
+   "key": "W1,3",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E000 cp_3",
+    "D4M d_L 0 S0000 cp_3",
+    "D3 d_L -1 1 cp_3",
+    "D3 d_L 0 1 cp_3"
+   ]
+  },
+  {
+   "key": "x3_6,0",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E100 cp_0",
+    "D4M d_L 0 S1000 cp_0",
+    "D3 d_L 0 xi_t cp_0"
+   ]
+  },
+  {
+   "key": "x3_6,1",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E100 cp_1",
+    "D4M d_L 0 S1000 cp_1",
+    "D3 d_L 0 xi_t cp_1"
+   ]
+  },
+  {
+   "key": "x3_6,2",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E100 cp_2",
+    "D4M d_L 0 S1000 cp_2",
+    "D3 d_L 0 xi_t cp_2"
+   ]
+  },
+  {
+   "key": "x3_6,3",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E100 cp_3",
+    "D4M d_L 0 S1000 cp_3",
+    "D3 d_L 0 xi_t cp_3"
+   ]
+  },
+  {
+   "key": "x3_6x4_5,0",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L 0 S1100 cp_0"
+   ]
+  },
+  {
+   "key": "x3_6x4_5,1",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L 0 S1100 cp_1"
+   ]
+  },
+  {
+   "key": "x3_6x4_5,2",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L 0 S1100 cp_2"
+   ]
+  },
+  {
+   "key": "x3_6x4_5,3",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L 0 S1100 cp_3"
+   ]
+  },
+  {
+   "key": "x3_6x7_8,0",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E101 cp_0"
+   ]
+  },
+  {
+   "key": "x3_6x7_8,1",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E101 cp_1"
+   ]
+  },
+  {
+   "key": "x3_6x7_8,2",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E101 cp_2"
+   ]
+  },
+  {
+   "key": "x3_6x7_8,3",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E101 cp_3"
+   ]
+  },
+  {
+   "key": "x4_5,0",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L 0 S0100 cp_0"
+   ]
+  },
+  {
+   "key": "x4_5,1",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L 0 S0100 cp_1"
+   ]
+  },
+  {
+   "key": "x4_5,2",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L 0 S0100 cp_2"
+   ]
+  },
+  {
+   "key": "x4_5,3",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L 0 S0100 cp_3"
+   ]
+  },
+  {
+   "key": "x7_8,0",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E001 cp_0"
+   ]
+  },
+  {
+   "key": "x7_8,1",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E001 cp_1"
+   ]
+  },
+  {
+   "key": "x7_8,2",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E001 cp_2"
+   ]
+  },
+  {
+   "key": "x7_8,3",
+   "graph": "ES12A",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L 0 E001 cp_3"
+   ]
+  },
+  {
+   "key": "x2_5,0",
+   "graph": "ES12B",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      2,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L 0 xi_bb cp_0"
+   ]
+  },
+  {
+   "key": "x2_5,1",
+   "graph": "ES12B",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      2,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L 0 xi_bb cp_1"
+   ]
+  },
+  {
+   "key": "x2_5,2",
+   "graph": "ES12B",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      2,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L 0 xi_bb cp_2"
+   ]
+  },
+  {
+   "key": "x2_5,3",
+   "graph": "ES12B",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      2,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L 0 xi_bb cp_3"
+   ]
+  },
+  {
+   "key": "x2_5x3_6,0",
+   "graph": "ES12B",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      2,
+      5
+     ]
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L 0 xi_t xi_bb cp_0"
+   ]
+  },
+  {
+   "key": "x2_5x3_6,1",
+   "graph": "ES12B",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      2,
+      5
+     ]
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L 0 xi_t xi_bb cp_1"
+   ]
+  },
+  {
+   "key": "x2_5x3_6,2",
+   "graph": "ES12B",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      2,
+      5
+     ]
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L 0 xi_t xi_bb cp_2"
+   ]
+  },
+  {
+   "key": "x2_5x3_6,3",
+   "graph": "ES12B",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      2,
+      5
+     ]
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L 0 xi_t xi_bb cp_3"
+   ]
+  },
+  {
+   "key": "x5_8,0",
+   "graph": "ES12C",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      5,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L -1 xi_bb cp_0"
+   ]
+  },
+  {
+   "key": "x5_8,1",
+   "graph": "ES12C",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      5,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L -1 xi_bb cp_1"
+   ]
+  },
+  {
+   "key": "x5_8,2",
+   "graph": "ES12C",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      5,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L -1 xi_bb cp_2"
+   ]
+  },
+  {
+   "key": "x5_8,3",
+   "graph": "ES12C",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      5,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L -1 xi_bb cp_3"
+   ]
+  },
+  {
+   "key": "x5_8x6_9,0",
+   "graph": "ES12C",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      5,
+      8
+     ]
+    ],
+    [
+     "xi",
+     [
+      6,
+      9
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L -1 xi_t xi_bb cp_0"
+   ]
+  },
+  {
+   "key": "x5_8x6_9,1",
+   "graph": "ES12C",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      5,
+      8
+     ]
+    ],
+    [
+     "xi",
+     [
+      6,
+      9
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L -1 xi_t xi_bb cp_1"
+   ]
+  },
+  {
+   "key": "x5_8x6_9,2",
+   "graph": "ES12C",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      5,
+      8
+     ]
+    ],
+    [
+     "xi",
+     [
+      6,
+      9
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L -1 xi_t xi_bb cp_2"
+   ]
+  },
+  {
+   "key": "x5_8x6_9,3",
+   "graph": "ES12C",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      5,
+      8
+     ]
+    ],
+    [
+     "xi",
+     [
+      6,
+      9
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L -1 xi_t xi_bb cp_3"
+   ]
+  },
+  {
+   "key": "x6_9,0",
+   "graph": "ES12C",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      6,
+      9
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L -1 xi_t cp_0"
+   ]
+  },
+  {
+   "key": "x6_9,1",
+   "graph": "ES12C",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      6,
+      9
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L -1 xi_t cp_1"
+   ]
+  },
+  {
+   "key": "x6_9,2",
+   "graph": "ES12C",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      6,
+      9
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L -1 xi_t cp_2"
+   ]
+  },
+  {
+   "key": "x6_9,3",
+   "graph": "ES12C",
+   "shape": "V12",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      6,
+      9
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D3 d_L -1 xi_t cp_3"
+   ]
+  },
+  {
+   "key": "W1,0",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": "m3_s8v3_E3_N<N>_J300_v1_8_1.json f,0",
+   "uses": [
+    "D4 d_L -1 E000 cp_0",
+    "D4M d_L -1 S0000 cp_0"
+   ]
+  },
+  {
+   "key": "W1,1",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": "m3_s8v3_E3_N<N>_J300_v1_8_1.json f,1",
+   "uses": [
+    "D4 d_L -1 E000 cp_1",
+    "D4M d_L -1 S0000 cp_1"
+   ]
+  },
+  {
+   "key": "W1,2",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": true,
+   "s8_copy": "m3_s8v3_E3_N<N>_J300_v1_8_1.json f,2",
+   "uses": [
+    "D4 d_L -1 E000 cp_2",
+    "D4M d_L -1 S0000 cp_2"
+   ]
+  },
+  {
+   "key": "W1,3",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": "m3_s8v3_E3_N<N>_J300_v1_8_1.json f,3",
+   "uses": [
+    "D4 d_L -1 E000 cp_3",
+    "D4M d_L -1 S0000 cp_3"
+   ]
+  },
+  {
+   "key": "x3_6,0",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L -1 E100 cp_0",
+    "D4M d_L -1 S1000 cp_0"
+   ]
+  },
+  {
+   "key": "x3_6,1",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L -1 E100 cp_1",
+    "D4M d_L -1 S1000 cp_1"
+   ]
+  },
+  {
+   "key": "x3_6,2",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L -1 E100 cp_2",
+    "D4M d_L -1 S1000 cp_2"
+   ]
+  },
+  {
+   "key": "x3_6,3",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L -1 E100 cp_3",
+    "D4M d_L -1 S1000 cp_3"
+   ]
+  },
+  {
+   "key": "x3_6x4_5,0",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L -1 S1100 cp_0"
+   ]
+  },
+  {
+   "key": "x3_6x4_5,1",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L -1 S1100 cp_1"
+   ]
+  },
+  {
+   "key": "x3_6x4_5,2",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L -1 S1100 cp_2"
+   ]
+  },
+  {
+   "key": "x3_6x4_5,3",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L -1 S1100 cp_3"
+   ]
+  },
+  {
+   "key": "x3_6x7_8,0",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L -1 E101 cp_0"
+   ]
+  },
+  {
+   "key": "x3_6x7_8,1",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L -1 E101 cp_1"
+   ]
+  },
+  {
+   "key": "x3_6x7_8,2",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L -1 E101 cp_2"
+   ]
+  },
+  {
+   "key": "x3_6x7_8,3",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L -1 E101 cp_3"
+   ]
+  },
+  {
+   "key": "x4_5,0",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L -1 S0100 cp_0"
+   ]
+  },
+  {
+   "key": "x4_5,1",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L -1 S0100 cp_1"
+   ]
+  },
+  {
+   "key": "x4_5,2",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L -1 S0100 cp_2"
+   ]
+  },
+  {
+   "key": "x4_5,3",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      4,
+      5
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4M d_L -1 S0100 cp_3"
+   ]
+  },
+  {
+   "key": "x7_8,0",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     0,
+     0
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L -1 E001 cp_0"
+   ]
+  },
+  {
+   "key": "x7_8,1",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     1,
+     0
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L -1 E001 cp_1"
+   ]
+  },
+  {
+   "key": "x7_8,2",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     2,
+     0
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L -1 E001 cp_2"
+   ]
+  },
+  {
+   "key": "x7_8,3",
+   "graph": "ES9",
+   "shape": "V9",
+   "factors": [
+    [
+     "cp",
+     3,
+     0
+    ],
+    [
+     "xi",
+     [
+      7,
+      8
+     ]
+    ]
+   ],
+   "K": 3,
+   "parity_zero": false,
+   "s8_copy": null,
+   "uses": [
+    "D4 d_L -1 E001 cp_3"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,423 @@
+m3_run_r0b_v1_3 item W2k6.4 LIM 540; script sha256 9fceb2477ba8c474ca0c517c94fcc21f9fe4a7b91d11071a4f0d6d076aeec5cf; python 3.14.4
+STAGE-CPU C-HASH start 0.05 s
+C-HASH (10 modules, the kernel files, 19 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.14 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v16_1: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=; 6 layer calls in E2_ma/lp_moment_ma/lp_ma/pos_ma/E2_ball/e2, each with fallback=False, 6 wanted) -> PASS
+PLANT-CALLER (m3_bar_v16_1 with one E2_combine call's plan= removed) -> FIRES
+PLANT-CALLER-FLAG (m3_bar_v16_1 with pos_ma's fallback=False dropped) -> FIRES
+C-SERIES (no *_series( call in 10 modules, the kernel files and this script) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-330.000000000 +/- 2.94e-12] overlaps the layer's [-330.000000000 +/- 2.64e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU W2 keys piece 6 start 0.16 s
+C-GRAPH-LIST (W2: the columns ['vac', 'vac'] give V 6 and 9 edges; the list's 8 pairs [(0, 1), (0, 2), (0, 3), (1, 2), (2, 5), (3, 4), (3, 5), (4, 5)], F 14 (the list: 14); the entries use 8 of them) -> PASS
+PLANT-GRAPH-LIST (W2: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-HANDOFF (m3_run_r0b_v1_3_VDu.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_r0b_v1_3_VDc.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PREP-STAGES (VD: VDu.4 and VDc.4, of VD and VD, scalars ['nE', 'nE4', 'rE', 'rE_parts'] and ['Pout', 'Pout_p', 'alpha_lo', 'farbase', 'nC6', 'nC8']) -> PASS
+PLANT-PART-DROP (KE,1: its first group without its first factor ['p', 0]) -> FIRES
+PLANT-PART-DUP (KE,1 with its first factor ['p', 0] doubled) -> FIRES
+PLANT-PART-MOVE (KE,1 with ['p', 0] moved from group 0 to group 1: C-PART-ID passes, C-PART-RULE must fail) -> FIRES
+PLANT-NORM-REL (entry_moment at NORM_REL 0.02 on [0.97, 1.03] sqrt, [0.91, 1.09] p 6, [0.85, 1.15] p 6, [0.94, 1.06] sqrt and a MAFallback: ['ma', 'ma', 'fb', 'fb', 'fb']; ma, ma, fb, fb, fb wanted) -> FIRES
+PLANT-BIGRULE (declared set {kA}: kA on a 10-moment table with [0.97, 1.03] sqrt, [0.85, 1.15] p 6 and a MAFallback, kB on a 1e7-moment table with [0.85, 1.15] p 6: ['ma', 'big', 'fb', 'fb']; ma, big, fb, fb wanted; the big one's inflation 2.356707e-02 against 1.15^(1/6) - 1 = 2.356707e-02) -> FIRES
+PLANT-TABLE-COUNT (layer tables on 3 forms at D 4: 35 moments, and with the pair form capped at 1: 25; table_moments 35 and 25 wanted) -> FIRES
+PLANT-PARTLINE (part_lines on m0u 0.1, a barp 0.2, a c series norm 0.05 and an undefined u series norm: {'rem': 1.32825, 'tail': 1.265, 'ann': 1.38, 'far': 1.15}, {'rem': 1.32825, 'tail': 1.265, 'ann': 1.38, 'far': 1.15} wanted; part_ok refuses rem at its line x (1 + 1e-6) and a part without big-rule factors at 1.16) -> FIRES
+PLANT-PARTLINE-EXEMPT (an exempt factor of inflation 0.34 beside a non-exempt 0.0666: unwidened rem line 1.226590000, widened 1.643630600; a part at the unwidened line x (1 + 1e-6) must fail, the widened line would pass it) -> FIRES
+PLANT-BIGCAP (cap_over at a cap of 0.10 on inflations 0.05, 0.34 and undefined, with k2 exempt and without) -> FIRES
+PLANT-EXEMPT-E (exempt_over with declared e 4.795: e = 1.1 x 4.795 + 1 ulp refused, e = 1.1 x 4.795 passed; e 4.795 against a declared e lowered by 20%, and an undefined e, refused) -> FIRES
+PLANT-NORM-OK (norm_ok on radius 2.1e-2, midpoint 0 and radius 1.9e-2: [False, False, True]; [False, False, True] wanted) -> FIRES
+PLANT-BUDGET (budget_ok must refuse a norm radius 1.05 NORM_REL and rnd 0.11 x bar, and pass 0.95 NORM_REL with rnd 0.09 x bar) -> FIRES
+C-HANDOFF (m3_run_r0b_v1_3_W2k5.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+PIECE-START W2 piece 6 resumes at entry 6 of 21 with 27 units of V,3 restored after 0 capped piece(s); stop factor 1.5; LIM 540
+C-RULE (VD: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 4.5e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (VD: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 6 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 2.9079446291720417, 2.9064250871702875) -> PASS
+C-PREP-REF (VD: m3ref_v1_10_V3D.4.0-32_z9sym.out PREPJSON of family V3D, N 4, J 300.0) -> PASS
+PARTITION V,3 rule colh: G 3: {["st", 3, 0], ["p", 0]} | {["p", 1]} | {["xi", [2, 5]]}
+C-PART-ID (V,3 rule colh: the 3 groups hold exactly the entry's 4 factors as a multiset, none empty; G 3) -> PASS
+C-PART-RULE (V,3: the groups against the rule colh recomputed from the list's encodings: equal) -> PASS
+QCAP V,3: the largest pair degree of its F_i 6; qcap 8 (the list's q_degree 8); qcap_of 2.78 s
+BIGRULE-SET V,3: 44 norms declared; the big set []
+GDATA-CPU V,3: 0.01 s (group series, majorants and F_i)
+TABLE c forms [6, 7, 9] D 12 caps None: 1 exact zeros
+TABLE-CPU c forms [6, 7, 9] D 12 caps None: 0.00 s
+UNIT V,3 g|0|ser|0|12|c: 0.01 s
+UNIT V,3 g|1|ser|0|12|c: 0.00 s
+TABLE c forms [10] D 12 caps None: 0 exact zeros
+TABLE-CPU c forms [10] D 12 caps None: 0.00 s
+UNIT V,3 g|2|ser|0|12|c: 0.00 s
+TABLE c forms [0, 1, 2, 6, 7, 9] D 18 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 6, 7, 9] D 18 caps None: 0.44 s
+UNIT V,3 g|0|bar|0|3|c: 0.52 s
+TABLE c forms [3, 4, 5, 11, 12, 13] D 12 caps None: 26 exact zeros
+TABLE-CPU c forms [3, 4, 5, 11, 12, 13] D 12 caps None: 0.05 s
+UNIT V,3 g|1|bar|0|3|c: 0.05 s
+TABLE c forms [2, 5] D 15 caps None: 0 exact zeros
+TABLE-CPU c forms [2, 5] D 15 caps None: 0.00 s
+UNIT V,3 g|2|bar|4|3|c: 0.00 s
+UNIT V,3 g|1|bar|1|3|c: 0.00 s
+UNIT V,3 g|2|bar|3|3|c: 0.00 s
+TABLE c forms [3, 4, 5, 11, 12, 13] D 15 caps None: 26 exact zeros
+TABLE-CPU c forms [3, 4, 5, 11, 12, 13] D 15 caps None: 0.14 s
+UNIT V,3 g|1|bar|2|3|c: 0.16 s
+UNIT V,3 g|2|bar|2|3|c: 0.00 s
+TABLE c forms [3, 4, 5, 11, 12, 13] D 18 caps None: 26 exact zeros
+TABLE-CPU c forms [3, 4, 5, 11, 12, 13] D 18 caps None: 0.38 s
+UNIT V,3 g|1|bar|3|3|c: 0.47 s
+UNIT V,3 g|2|bar|1|3|c: 0.00 s
+TABLE c forms [3, 4, 5, 11, 12, 13] D 21 caps None: 26 exact zeros
+TABLE-CPU c forms [3, 4, 5, 11, 12, 13] D 21 caps None: 0.95 s
+UNIT V,3 g|1|bar|4|3|c: 1.13 s
+TABLE c forms [2, 5, 10] D 6 caps None: 1 exact zeros
+TABLE-CPU c forms [2, 5, 10] D 6 caps None: 0.00 s
+UNIT V,3 g|2|bar|0|3|c: 0.00 s
+UNIT V,3 g|0|bar|1|3|c: 0.07 s
+TABLE c forms [0, 1, 2, 6, 7, 9] D 21 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 6, 7, 9] D 21 caps None: 0.91 s
+UNIT V,3 g|0|bar|2|3|c: 1.46 s
+TABLE c forms [0, 1, 2, 6, 7, 9] D 24 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 6, 7, 9] D 24 caps None: 1.96 s
+UNIT V,3 g|0|bar|3|3|c: 3.76 s
+TABLE c forms [0, 1, 2, 6, 7, 9] D 27 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 6, 7, 9] D 27 caps None: 4.25 s
+UNIT V,3 g|0|bar|4|3|c: 8.14 s
+TABLE p forms [0, 1, 2, 6, 7, 9] D 36 caps None: 26 exact zeros
+TABLE-CPU p forms [0, 1, 2, 6, 7, 9] D 36 caps None: 24.34 s
+UNIT V,3 g|0|barp|0|6|p: 42.16 s
+TABLE p forms [3, 4, 5, 11, 12, 13] D 24 caps None: 26 exact zeros
+TABLE-CPU p forms [3, 4, 5, 11, 12, 13] D 24 caps None: 1.80 s
+UNIT V,3 g|1|barp|0|6|p: 2.27 s
+TABLE p forms [2, 5, 10] D 12 caps None: 1 exact zeros
+TABLE-CPU p forms [2, 5, 10] D 12 caps None: 0.00 s
+UNIT V,3 g|2|barp|0|6|p: 0.01 s
+NORM-RULE V,3: 0 entry-level moments took v13's call (norm radius over NORM_REL 0.02 of its midpoint, or a MAFallback of the layer's other kinds; computed in this run, restored units not counted); 0 norms of the entry took the big-table rule (restored units and the group cache included; largest inflation 0.000e+00)
+C-PART-EXP (V,3: G 3; 45 group norms at (kind, exponent) [('bar', 3), ('barp', 6), ('ser', 6), ('ser', 12)]; G x 1/q exactly 1/2, 1/4, 1 and 1/2 for ser 2G, ser 4G, bar G and barp 2G, every group with its barp) -> PASS
+PLANT-PART-EXP (V,3: the same norms with exponents from G - 1 = 2) -> FIRES
+GDATA-CPU V,3 (standard grouping, series only): 0.14 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13] D 8 caps {1: 8}: 5299 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13] D 8 caps {1: 8}: 1.69 s
+AK-TERMS V,3 (standard grouping, series only): 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.05e-06); totals radius / |mid| ['2.85e-12', '1.64e-11', '7.17e-10', '3.72e-08']; every total passes
+UNIT V,3 (standard grouping, series only) ak: 1.72 s
+AK-ONLY-INFO V,3: forms equal to the partition run's, Dn 8 (the partition run: 8), tables 9 -> 10, 1.97 s
+C-AK-SAME (V,3 rule colh: its a_k balls against the standard grouping's series-only a_k: overlap [True, True, True, True]; largest mid difference / max(1, |a_k|) 2.99e-15, INFO) -> PASS
+GDATA-CPU V,3 (planted: ['st', 3, 0] dropped): 0.12 s (group series, majorants and F_i)
+AK-TERMS V,3 (planted: ['st', 3, 0] dropped): 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 7.17e-09); totals radius / |mid| ['7.21e-15', '3.45e-13', '1.58e-11', '8.64e-10']; every total passes
+UNIT V,3 (planted: ['st', 3, 0] dropped) ak: 0.01 s
+PLANT-AK-DROP (V,3: its partition without the factor ['st', 3, 0]: overlap with the standard a_k [False, False, False, False]; 0.19 s) -> FIRES
+C-MONO-FAR V,3: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 6.5033e-01 > 0 (m_F 4) -> PASS
+C-BUDGET V,3: largest relative radius of a norm 4.539e-05 (<= NORM_REL 0.02; big-rule norms out), rnd 5.46e-13 <= 0.1 x bar 1.062e-05 -> PASS
+C-BIGCAP V,3: big-rule inflations at most 0.1 (no exemption): over [] -> PASS
+BIGRULE-INFO V,3: 0 norms by the big-table rule, largest inflation 0.000e+00
+C-AK-LIST V,3: certified a_k mids against the list's ak_float: largest |mid - float| / max(1, |float|) 1.93e-14 (tol 1e-9) -> PASS
+AKRAD-INFO V,3: largest relative radius of an a_k 3.76e-08
+ENTRY V,3 ak ['0.133630620949', '1.91013398649', '3.42936104236', '5.33887414264'] err 1.061932951e-05 parts rem 9.222628246e-06 tail 4.042677062e-07 ann 9.924330101e-07 far 5.695372079e-66 rnd 5.464e-13 groups 3 Dn 8 forms 13
+STAGE-CPU entry V,3 65.39 s (this piece; 27 units of the entry restored)
+PARTITION CF rule col: G 2: {["p", 0], ["xi", [2, 5]]} | {["p", 1]}
+C-PART-ID (CF rule col: the 2 groups hold exactly the entry's 3 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (CF: the groups against the rule col recomputed from the list's encodings: equal) -> PASS
+QCAP CF: the largest pair degree of its F_i 5; qcap 8 (the list's q_degree 8); qcap_of 1.87 s
+BIGRULE-SET CF: 29 norms declared; the big set []
+GDATA-CPU CF: 0.01 s (group series, majorants and F_i)
+AK-TERMS CF: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 7.17e-09); totals radius / |mid| ['7.21e-15', '3.42e-13', '1.57e-11', '8.62e-10']; every total passes
+UNIT CF ak: 0.01 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13] D 2 caps {1: 16}: 0 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13] D 2 caps {1: 16}: 0.00 s
+UNIT CF m0u: 0.01 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13] D 2 caps {1: 16}: 0 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13] D 2 caps {1: 16}: 0.00 s
+UNIT CF m0c: 0.00 s
+TABLE u forms [10] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [10] D 4 caps None: 0.00 s
+UNIT CF g|0|ser|0|4|u: 0.00 s
+TABLE u forms [11, 12, 13] D 8 caps None: 1 exact zeros
+TABLE-CPU u forms [11, 12, 13] D 8 caps None: 0.00 s
+UNIT CF g|1|ser|1|4|u: 0.00 s
+TABLE u forms [2, 5, 6, 7, 9, 10] D 12 caps None: 15 exact zeros
+TABLE-CPU u forms [2, 5, 6, 7, 9, 10] D 12 caps None: 0.05 s
+UNIT CF g|0|ser|1|4|u: 0.06 s
+UNIT CF g|1|ser|0|4|u: 0.00 s
+TABLE u forms [3, 4, 5, 11, 12, 13] D 12 caps None: 26 exact zeros
+TABLE-CPU u forms [3, 4, 5, 11, 12, 13] D 12 caps None: 0.05 s
+UNIT CF g|1|ser|2|4|u: 0.06 s
+TABLE u forms [0, 1, 2, 5, 6, 7, 9, 10] D 16 caps None: 128 exact zeros
+TABLE-CPU u forms [0, 1, 2, 5, 6, 7, 9, 10] D 16 caps None: 3.86 s
+UNIT CF g|0|ser|2|4|u: 3.97 s
+TABLE u forms [3, 4, 5, 11, 12, 13] D 16 caps None: 26 exact zeros
+TABLE-CPU u forms [3, 4, 5, 11, 12, 13] D 16 caps None: 0.19 s
+UNIT CF g|1|ser|3|4|u: 0.31 s
+TABLE u forms [0, 1, 2, 5, 6, 7, 9, 10] D 20 caps None: 128 exact zeros
+TABLE-CPU u forms [0, 1, 2, 5, 6, 7, 9, 10] D 20 caps None: 20.89 s
+UNIT CF g|0|ser|3|4|u: 25.96 s
+TABLE c forms [10] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [10] D 4 caps None: 0.00 s
+UNIT CF g|0|ser|0|4|c: 0.00 s
+TABLE c forms [11, 12, 13] D 8 caps None: 1 exact zeros
+TABLE-CPU c forms [11, 12, 13] D 8 caps None: 0.00 s
+UNIT CF g|1|ser|1|4|c: 0.00 s
+TABLE c forms [2, 5, 6, 7, 9, 10] D 12 caps None: 15 exact zeros
+TABLE-CPU c forms [2, 5, 6, 7, 9, 10] D 12 caps None: 0.05 s
+UNIT CF g|0|ser|1|4|c: 0.06 s
+UNIT CF g|1|ser|0|4|c: 0.00 s
+TABLE c forms [3, 4, 5, 11, 12, 13] D 12 caps None: 26 exact zeros
+TABLE-CPU c forms [3, 4, 5, 11, 12, 13] D 12 caps None: 0.05 s
+UNIT CF g|1|ser|2|4|c: 0.06 s
+TABLE c forms [0, 1, 2, 5, 6, 7, 9, 10] D 16 caps None: 128 exact zeros
+TABLE-CPU c forms [0, 1, 2, 5, 6, 7, 9, 10] D 16 caps None: 4.06 s
+UNIT CF g|0|ser|2|4|c: 4.17 s
+TABLE c forms [3, 4, 5, 11, 12, 13] D 16 caps None: 26 exact zeros
+TABLE-CPU c forms [3, 4, 5, 11, 12, 13] D 16 caps None: 0.19 s
+UNIT CF g|1|ser|3|4|c: 0.31 s
+TABLE c forms [0, 1, 2, 5, 6, 7, 9, 10] D 20 caps None: 128 exact zeros
+TABLE-CPU c forms [0, 1, 2, 5, 6, 7, 9, 10] D 20 caps None: 20.52 s
+UNIT CF g|0|ser|3|4|c: 25.59 s
+TABLE c forms [10] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [10] D 8 caps None: 0.00 s
+UNIT CF g|0|ser|0|8|c: 0.00 s
+UNIT CF g|1|ser|0|8|c: 0.00 s
+UNIT CF g|0|bar|0|2|c: 0.01 s
+UNIT CF g|1|bar|4|2|c: 0.01 s
+UNIT CF g|0|bar|1|2|c: 0.01 s
+UNIT CF g|1|bar|3|2|c: 0.01 s
+UNIT CF g|0|bar|2|2|c: 0.05 s
+UNIT CF g|1|bar|2|2|c: 0.01 s
+UNIT CF g|0|bar|3|2|c: 0.14 s
+UNIT CF g|1|bar|1|2|c: 0.00 s
+UNIT CF g|0|bar|4|2|c: 0.39 s
+UNIT CF g|1|bar|0|2|c: 0.00 s
+TABLE p forms [0, 1, 2, 5, 6, 7, 9, 10] D 24 caps None: 128 exact zeros
+TABLE-CPU p forms [0, 1, 2, 5, 6, 7, 9, 10] D 24 caps None: 79.90 s
+UNIT CF g|0|barp|0|4|p: 81.33 s
+TABLE p forms [3, 4, 5, 11, 12, 13] D 16 caps None: 26 exact zeros
+TABLE-CPU p forms [3, 4, 5, 11, 12, 13] D 16 caps None: 0.20 s
+UNIT CF g|1|barp|0|4|p: 0.24 s
+NORM-RULE CF: 0 entry-level moments took v13's call (norm radius over NORM_REL 0.02 of its midpoint, or a MAFallback of the layer's other kinds; computed in this run, restored units not counted); 0 norms of the entry took the big-table rule (restored units and the group cache included; largest inflation 0.000e+00)
+C-PART-EXP (CF: G 2; 30 group norms at (kind, exponent) [('bar', 2), ('barp', 4), ('ser', 4), ('ser', 8)]; G x 1/q exactly 1/2, 1/4, 1 and 1/2 for ser 2G, ser 4G, bar G and barp 2G, every group with its barp) -> PASS
+GDATA-CPU CF (standard grouping, series only): 0.12 s (group series, majorants and F_i)
+AK-TERMS CF (standard grouping, series only): 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 7.03e-09); totals radius / |mid| ['6.54e-15', '3.27e-13', '1.53e-11', '8.47e-10']; every total passes
+UNIT CF (standard grouping, series only) ak: 0.01 s
+AK-ONLY-INFO CF: forms equal to the partition run's, Dn 7 (the partition run: 7), tables 15 -> 15, 0.19 s
+C-AK-SAME (CF rule col: its a_k balls against the standard grouping's series-only a_k: overlap [True, True, True, True]; largest mid difference / max(1, |a_k|) 0.00e+00, INFO) -> PASS
+C-MONO-FAR CF: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 6.5366e-01 > 0 (m_F 3) -> PASS
+C-BUDGET CF: largest relative radius of a norm 2.099e-05 (<= NORM_REL 0.02; big-rule norms out), rnd 8.82e-15 <= 0.1 x bar 2.518e-07 -> PASS
+C-BIGCAP CF: big-rule inflations at most 0.1 (no exemption): over [] -> PASS
+BIGRULE-INFO CF: 0 norms by the big-table rule, largest inflation 0.000e+00
+C-AK-LIST CF: certified a_k mids against the list's ak_float: largest |mid - float| / max(1, |float|) 1.37e-15 (tol 1e-9) -> PASS
+AKRAD-INFO CF: largest relative radius of an a_k 8.62e-10
+ENTRY CF ak ['1.0009263857', '1.20355385139', '1.58093252089', '1.94065059483'] err 2.518285266e-07 parts rem 2.031668777e-07 tail 2.197275325e-08 ann 2.668888690e-08 far 6.349676466e-70 rnd 8.819e-15 groups 2 Dn 7 forms 13
+STAGE-CPU entry CF 144.96 s
+PARTITION G,1,1 rule std: G 2: {["st", 1, 0], ["st", 1, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,1,1 rule std: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,1,1: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+QCAP G,1,1: the largest pair degree of its F_i 6; qcap 8 (the list's q_degree 8); qcap_of 1.88 s
+BIGRULE-SET G,1,1: 29 norms declared; the big set []
+GDATA-CPU G,1,1: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 8 caps {1: 8}: 2609 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 8 caps {1: 8}: 0.89 s
+AK-TERMS G,1,1: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 3.74e-06); totals radius / |mid| ['5.95e-14', '7.42e-12', '3.96e-10', '3.24e-08']; every total passes
+UNIT G,1,1 ak: 0.91 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 4 caps {1: 16}: 86 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 4 caps {1: 16}: 0.04 s
+UNIT G,1,1 m0u: 0.04 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 4 caps {1: 16}: 86 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 4 caps {1: 16}: 0.04 s
+UNIT G,1,1 m0c: 0.04 s
+TABLE u forms [7] D 8 caps None: 0 exact zeros
+TABLE-CPU u forms [7] D 8 caps None: 0.00 s
+UNIT G,1,1 g|0|ser|0|4|u: 0.00 s
+TABLE u forms [0, 2, 6, 7, 9] D 16 caps None: 8 exact zeros
+TABLE-CPU u forms [0, 2, 6, 7, 9] D 16 caps None: 0.05 s
+UNIT G,1,1 g|0|ser|1|4|u: 0.06 s
+TABLE u forms [0, 1, 2, 6, 7, 9] D 20 caps None: 26 exact zeros
+TABLE-CPU u forms [0, 1, 2, 6, 7, 9] D 20 caps None: 0.63 s
+UNIT G,1,1 g|0|ser|2|4|u: 0.93 s
+TABLE u forms [0, 1, 2, 6, 7, 9] D 24 caps None: 26 exact zeros
+TABLE-CPU u forms [0, 1, 2, 6, 7, 9] D 24 caps None: 1.74 s
+UNIT G,1,1 g|0|ser|3|4|u: 6.22 s
+TABLE c forms [7] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [7] D 8 caps None: 0.00 s
+UNIT G,1,1 g|0|ser|0|4|c: 0.00 s
+TABLE c forms [0, 2, 6, 7, 9] D 16 caps None: 8 exact zeros
+TABLE-CPU c forms [0, 2, 6, 7, 9] D 16 caps None: 0.05 s
+UNIT G,1,1 g|0|ser|1|4|c: 0.06 s
+TABLE c forms [0, 1, 2, 6, 7, 9] D 20 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 6, 7, 9] D 20 caps None: 0.65 s
+UNIT G,1,1 g|0|ser|2|4|c: 0.96 s
+TABLE c forms [0, 1, 2, 6, 7, 9] D 24 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 6, 7, 9] D 24 caps None: 1.80 s
+UNIT G,1,1 g|0|ser|3|4|c: 5.96 s
+TABLE c forms [7] D 16 caps None: 0 exact zeros
+TABLE-CPU c forms [7] D 16 caps None: 0.00 s
+UNIT G,1,1 g|0|ser|0|8|c: 0.01 s
+UNIT G,1,1 g|0|bar|0|2|c: 0.02 s
+UNIT G,1,1 g|0|bar|1|2|c: 0.02 s
+UNIT G,1,1 g|0|bar|2|2|c: 0.09 s
+UNIT G,1,1 g|0|bar|3|2|c: 0.17 s
+UNIT G,1,1 g|0|bar|4|2|c: 0.33 s
+TABLE p forms [0, 1, 2, 6, 7, 9] D 32 caps None: 26 exact zeros
+TABLE-CPU p forms [0, 1, 2, 6, 7, 9] D 32 caps None: 9.43 s
+UNIT G,1,1 g|0|barp|0|4|p: 11.96 s
+NORM-RULE G,1,1: 0 entry-level moments took v13's call (norm radius over NORM_REL 0.02 of its midpoint, or a MAFallback of the layer's other kinds; computed in this run, restored units not counted); 0 norms of the entry took the big-table rule (restored units and the group cache included; largest inflation 0.000e+00)
+C-PART-EXP (G,1,1: G 2; 30 group norms at (kind, exponent) [('bar', 2), ('barp', 4), ('ser', 4), ('ser', 8)]; G x 1/q exactly 1/2, 1/4, 1 and 1/2 for ser 2G, ser 4G, bar G and barp 2G, every group with its barp) -> PASS
+C-MONO-FAR G,1,1: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 6.5033e-01 > 0 (m_F 4) -> PASS
+C-BUDGET G,1,1: largest relative radius of a norm 1.042e-04 (<= NORM_REL 0.02; big-rule norms out), rnd 5.31e-13 <= 0.1 x bar 1.203e-05 -> PASS
+C-BIGCAP G,1,1: big-rule inflations at most 0.1 (no exemption): over [] -> PASS
+BIGRULE-INFO G,1,1: 0 norms by the big-table rule, largest inflation 0.000e+00
+C-AK-LIST G,1,1: certified a_k mids against the list's ak_float: largest |mid - float| / max(1, |float|) 1.03e-13 (tol 1e-9) -> PASS
+AKRAD-INFO G,1,1: largest relative radius of an a_k 3.24e-08
+ENTRY G,1,1 ak ['6.85410196616', '3.77843028527', '5.1403689158', '5.0419586508'] err 1.202841982e-05 parts rem 9.254262906e-06 tail 9.539017876e-07 ann 1.820254594e-06 far 2.185809043e-66 rnd 5.306e-13 groups 2 Dn 8 forms 12
+STAGE-CPU entry G,1,1 29.85 s
+PARTITION G,1,2 rule std: G 2: {["st", 1, 0], ["st", 2, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,1,2 rule std: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,1,2: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+QCAP G,1,2: the largest pair degree of its F_i 6; qcap 8 (the list's q_degree 8); qcap_of 1.90 s
+C-ODD G,1,2: one exactly odd factor, the rest exactly even (['even', 'odd', 'even', 'even']), T <-> B an automorphism of W2 -> PASS
+GDATA-CPU G,1,2: 0.01 s (group series, majorants and F_i)
+AK-TERMS G,1,2: 10 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| inf); totals radius / |mid| ['inf', '7.41e+03', '5.26e+04', '7.61e+06']; parity zero: no total test (C-ODD-AK)
+UNIT G,1,2 ak: 0.02 s
+C-ODD-AK G,1,2: every a_k ball contains 0 (widest 5.8e-07) -> PASS
+C-AK-LIST G,1,2: certified a_k mids against the list's ak_float [-1.7040407494469235e-15, -1.9185990816605264e-14, -6.590560417857577e-14, -2.257208982125302e-13]: 1.87e-13 (tol 1e-9) -> PASS
+STAGE-CPU entry G,1,2 2.03 s (parity zero)
+PARTITION G,1,3 rule std: G 2: {["st", 1, 0], ["st", 3, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,1,3 rule std: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,1,3: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+QCAP G,1,3: the largest pair degree of its F_i 6; qcap 8 (the list's q_degree 8); qcap_of 1.93 s
+BIGRULE-SET G,1,3: 29 norms declared; the big set []
+GDATA-CPU G,1,3: 0.01 s (group series, majorants and F_i)
+AK-TERMS G,1,3: 1 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 4.97e-02); totals radius / |mid| ['2.95e-02', '2.87e-11', '1.81e-09', '1.03e-07']; recomputed in arb: a_k for k in [0]
+UNIT G,1,3 ak: 1.72 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 4 caps {1: 16}: 86 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 4 caps {1: 16}: 0.04 s
+UNIT G,1,3 m0u: 0.04 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 4 caps {1: 16}: 86 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 4 caps {1: 16}: 0.04 s
+UNIT G,1,3 m0c: 0.04 s
+TABLE u forms [6, 7, 9] D 8 caps None: 1 exact zeros
+TABLE-CPU u forms [6, 7, 9] D 8 caps None: 0.00 s
+UNIT G,1,3 g|0|ser|0|4|u: 0.01 s
+TABLE u forms [0, 1, 2, 6, 7, 9] D 16 caps None: 26 exact zeros
+TABLE-CPU u forms [0, 1, 2, 6, 7, 9] D 16 caps None: 0.19 s
+UNIT G,1,3 g|0|ser|1|4|u: 0.22 s
+TABLE u forms [0, 1, 2, 6, 7, 9] D 20 caps None: 26 exact zeros
+TABLE-CPU u forms [0, 1, 2, 6, 7, 9] D 20 caps None: 0.62 s
+UNIT G,1,3 g|0|ser|2|4|u: 1.64 s
+TABLE u forms [0, 1, 2, 6, 7, 9] D 24 caps None: 26 exact zeros
+TABLE-CPU u forms [0, 1, 2, 6, 7, 9] D 24 caps None: 1.74 s
+UNIT G,1,3 g|0|ser|3|4|u: 46.08 s
+TABLE c forms [6, 7, 9] D 8 caps None: 1 exact zeros
+TABLE-CPU c forms [6, 7, 9] D 8 caps None: 0.00 s
+UNIT G,1,3 g|0|ser|0|4|c: 0.01 s
+TABLE c forms [0, 1, 2, 6, 7, 9] D 16 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 6, 7, 9] D 16 caps None: 0.19 s
+UNIT G,1,3 g|0|ser|1|4|c: 0.23 s
+TABLE c forms [0, 1, 2, 6, 7, 9] D 20 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 6, 7, 9] D 20 caps None: 0.63 s
+UNIT G,1,3 g|0|ser|2|4|c: 1.63 s
+TABLE c forms [0, 1, 2, 6, 7, 9] D 24 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 6, 7, 9] D 24 caps None: 1.73 s
+UNIT G,1,3 g|0|ser|3|4|c: 47.08 s
+TABLE c forms [6, 7, 9] D 16 caps None: 1 exact zeros
+TABLE-CPU c forms [6, 7, 9] D 16 caps None: 0.00 s
+UNIT G,1,3 g|0|ser|0|8|c: 0.02 s
+UNIT G,1,3 g|0|bar|0|2|c: 0.03 s
+UNIT G,1,3 g|0|bar|1|2|c: 0.03 s
+UNIT G,1,3 g|0|bar|2|2|c: 0.14 s
+UNIT G,1,3 g|0|bar|3|2|c: 0.34 s
+UNIT G,1,3 g|0|bar|4|2|c: 0.72 s
+TABLE p forms [0, 1, 2, 6, 7, 9] D 32 caps None: 26 exact zeros
+TABLE-CPU p forms [0, 1, 2, 6, 7, 9] D 32 caps None: 10.20 s
+UNIT G,1,3 g|0|barp|0|4|p: 14.88 s
+NORM-RULE G,1,3: 2 entry-level moments took v13's call (norm radius over NORM_REL 0.02 of its midpoint, or a MAFallback of the layer's other kinds; computed in this run, restored units not counted); 0 norms of the entry took the big-table rule (restored units and the group cache included; largest inflation 0.000e+00)
+C-PART-EXP (G,1,3: G 2; 30 group norms at (kind, exponent) [('bar', 2), ('barp', 4), ('ser', 4), ('ser', 8)]; G x 1/q exactly 1/2, 1/4, 1 and 1/2 for ser 2G, ser 4G, bar G and barp 2G, every group with its barp) -> PASS
+C-MONO-FAR G,1,3: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 6.5033e-01 > 0 (m_F 4) -> PASS
+C-BUDGET G,1,3: largest relative radius of a norm 9.180e-04 (<= NORM_REL 0.02; big-rule norms out), rnd 1.39e-12 <= 0.1 x bar 2.701e-05 -> PASS
+C-BIGCAP G,1,3: big-rule inflations at most 0.1 (no exemption): over [] -> PASS
+BIGRULE-INFO G,1,3: 0 norms by the big-table rule, largest inflation 0.000e+00
+C-AK-LIST G,1,3: certified a_k mids against the list's ak_float: largest |mid - float| / max(1, |float|) 1.71e-13 (tol 1e-9) -> PASS
+AKRAD-INFO G,1,3: largest relative radius of an a_k 2.95e-02
+ENTRY G,1,3 ak ['-3.11569580998e-11', '-3.71623213757', '-4.38551214564', '-6.13921110206'] err 2.701370424e-05 parts rem 2.124498935e-05 tail 7.477856213e-07 ann 5.020927876e-06 far 1.364196048e-65 rnd 1.388e-12 groups 2 Dn 8 forms 12
+STAGE-CPU entry G,1,3 117.05 s
+PARTITION G,2,2 rule std: G 2: {["st", 2, 0], ["st", 2, 0], ["p", 0]} | {["p", 1]}
+C-PART-ID (G,2,2 rule std: the 2 groups hold exactly the entry's 4 factors as a multiset, none empty; G 2) -> PASS
+C-PART-RULE (G,2,2: the groups against the rule std recomputed from the list's encodings: equal) -> PASS
+QCAP G,2,2: the largest pair degree of its F_i 6; qcap 8 (the list's q_degree 8); qcap_of 1.96 s
+BIGRULE-SET G,2,2: 29 norms declared; the big set []
+GDATA-CPU G,2,2: 0.01 s (group series, majorants and F_i)
+AK-TERMS G,2,2: 0 of 10 terms over FALLBACK_REL 0.001 (largest term radius / |mid| 1.68e-07); totals radius / |mid| ['6.54e-14', '4.58e-12', '2.76e-10', '1.79e-08']; every total passes
+UNIT G,2,2 ak: 0.02 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 4 caps {1: 16}: 86 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 4 caps {1: 16}: 0.04 s
+UNIT G,2,2 m0u: 0.04 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 4 caps {1: 16}: 86 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 4 caps {1: 16}: 0.04 s
+UNIT G,2,2 m0c: 0.04 s
+TABLE u forms [6, 9] D 8 caps None: 0 exact zeros
+TABLE-CPU u forms [6, 9] D 8 caps None: 0.00 s
+UNIT G,2,2 g|0|ser|0|4|u: 0.00 s
+TABLE u forms [0, 1, 2, 6, 7, 9] D 16 caps None: 26 exact zeros
+TABLE-CPU u forms [0, 1, 2, 6, 7, 9] D 16 caps None: 0.19 s
+UNIT G,2,2 g|0|ser|1|4|u: 0.20 s
+TABLE u forms [0, 1, 2, 6, 7, 9] D 20 caps None: 26 exact zeros
+TABLE-CPU u forms [0, 1, 2, 6, 7, 9] D 20 caps None: 0.63 s
+UNIT G,2,2 g|0|ser|2|4|u: 1.11 s
+TABLE u forms [0, 1, 2, 6, 7, 9] D 24 caps None: 26 exact zeros
+TABLE-CPU u forms [0, 1, 2, 6, 7, 9] D 24 caps None: 1.73 s
+UNIT G,2,2 g|0|ser|3|4|u: 9.22 s
+TABLE c forms [6, 9] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [6, 9] D 8 caps None: 0.00 s
+UNIT G,2,2 g|0|ser|0|4|c: 0.00 s
+TABLE c forms [0, 1, 2, 6, 7, 9] D 16 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 6, 7, 9] D 16 caps None: 0.19 s
+UNIT G,2,2 g|0|ser|1|4|c: 0.20 s
+TABLE c forms [0, 1, 2, 6, 7, 9] D 20 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 6, 7, 9] D 20 caps None: 0.63 s
+UNIT G,2,2 g|0|ser|2|4|c: 1.11 s
+TABLE c forms [0, 1, 2, 6, 7, 9] D 24 caps None: 26 exact zeros
+TABLE-CPU c forms [0, 1, 2, 6, 7, 9] D 24 caps None: 1.74 s
+UNIT G,2,2 g|0|ser|3|4|c: 9.22 s
+TABLE c forms [6, 9] D 16 caps None: 0 exact zeros
+TABLE-CPU c forms [6, 9] D 16 caps None: 0.00 s
+UNIT G,2,2 g|0|ser|0|8|c: 0.00 s
+UNIT G,2,2 g|0|bar|0|2|c: 0.03 s
+UNIT G,2,2 g|0|bar|1|2|c: 0.03 s
+UNIT G,2,2 g|0|bar|2|2|c: 0.13 s
+UNIT G,2,2 g|0|bar|3|2|c: 0.27 s
+UNIT G,2,2 g|0|bar|4|2|c: 0.63 s
+TABLE p forms [0, 1, 2, 6, 7, 9] D 32 caps None: 26 exact zeros
+TABLE-CPU p forms [0, 1, 2, 6, 7, 9] D 32 caps None: 9.97 s
+UNIT G,2,2 g|0|barp|0|4|p: 14.27 s
+NORM-RULE G,2,2: 0 entry-level moments took v13's call (norm radius over NORM_REL 0.02 of its midpoint, or a MAFallback of the layer's other kinds; computed in this run, restored units not counted); 0 norms of the entry took the big-table rule (restored units and the group cache included; largest inflation 0.000e+00)
+C-PART-EXP (G,2,2: G 2; 30 group norms at (kind, exponent) [('bar', 2), ('barp', 4), ('ser', 4), ('ser', 8)]; G x 1/q exactly 1/2, 1/4, 1 and 1/2 for ser 2G, ser 4G, bar G and barp 2G, every group with its barp) -> PASS
+C-MONO-FAR G,2,2: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 6.5033e-01 > 0 (m_F 4) -> PASS
+C-BUDGET G,2,2: largest relative radius of a norm 3.824e-03 (<= NORM_REL 0.02; big-rule norms out), rnd 1.16e-12 <= 0.1 x bar 1.923e-05 -> PASS
+C-BIGCAP G,2,2: big-rule inflations at most 0.1 (no exemption): over [] -> PASS
+BIGRULE-INFO G,2,2: 0 norms by the big-table rule, largest inflation 0.000e+00
+C-AK-LIST G,2,2: certified a_k mids against the list's ak_float: largest |mid - float| / max(1, |float|) 9.62e-15 (tol 1e-9) -> PASS
+AKRAD-INFO G,2,2: largest relative radius of an a_k 1.79e-08
+ENTRY G,2,2 ak ['12.5437544345', '16.3639795777', '22.5599787058', '28.8148170212'] err 1.923269402e-05 parts rem 1.561534988e-05 tail 1.156080978e-06 ann 2.461262014e-06 far 2.176419070e-65 rnd 1.157e-12 groups 2 Dn 8 forms 12
+STAGE-CPU entry G,2,2 38.71 s
+C-PIECE (W2 piece 6: entries 6..11 done, next 12 of 21; 109 units computed) -> PASS
+FALLBACKS 3 (MAFallback recomputes in arb, INFO): u forms [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13] D 8 caps {1: 8}: the a_0 total of G,1,3 fails FALLBACK_REL (radius / |mid| 4.97e-02); u forms [0, 1, 2, 6, 7, 9] D 24 caps None: E2: M-a error 8.67e+12 of 9.09e+13; c forms [0, 1, 2, 6, 7, 9] D 24 caps None: E2: M-a error 8.98e+12 of 9.50e+13
+HANDOFF m3_run_r0b_v1_3_W2k6.4.json 7872c33cccbdf8d214d91b8011e9dda976078298b2758ca23aba7ab332713765
+C-HANDOFF-RT (the hand-off decodes to exactly the values written) -> PASS
+PLANT-HANDOFF (body byte tampered in memory) -> FIRES
+PLANT-HANDOFF (header script sha tampered in memory) -> FIRES
+PLANT-HANDOFF (END checksum tampered in memory) -> FIRES
+PLANT-VERDICT (a producer record whose VERDICT line extends 'VERDICT VALID' must be refused) -> FIRES
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 398.31 s
+VERDICT VALID

@@ -1,0 +1,47 @@
+m3_lawcert_cw_v1 N static LIM 540; script sha256 9087afc244749905432cfe72f5b656257d6552154d363a02e99441674f2fa6c5; python 3.14.4
+STAGE-CPU C-HASH start 0.03 s
+C-HASH (13 pinned files) -> PASS
+PLANT-HASH (m3_bar_v11 against its sha256 with the last digit changed) -> FIRES
+PRECISION iv.prec 136 (m3_scal_v2.setup, as the run)
+STAGE-CPU C-LAW-REM start 0.10 s
+C-LAW-REM (m3_bar_v11 Prep.bound: B_rem = overflow + nFle3 rE + rho4 + t^4 Nc EF4/24, each term a polynomial in t with nonnegative coefficients fixed at J_REF and valuation >= 4; l2 a polynomial of valuation >= 0; term valuations [4, 4, 4, 4], l2 valuation 0) -> PASS
+PLANT-LAW-REM (T(4) -> T(3) in the EF4 term: valuations [4, 4, 4, 3]) -> FIRES
+PLANT-LAW-REM (the overflow filter >= 3: valuations [3, 4, 4, 4]) -> FIRES
+PLANT-LAW-REM (nC8 without its factor t: valuations [4, 4, 0, 4]) -> FIRES
+PLANT-LAW-REM (rE's 't4|H4|' part with T(3): valuations [4, 3, 4, 4]) -> FIRES
+PLANT-LAW-REM (a '- nF0' term in B_rem: refused: Prep.bound: operator Sub refused) -> FIRES
+PLANT-LAW-REM (an unknown name in rho4: refused: Prep.bound: zeta must have exactly one binding, a direct statement with a value (bindings 0)) -> FIRES
+PLANT-LAW-REM (a second binding of overflow (condition 2): refused: Prep.bound: overflow must have exactly one binding, a direct statement with a value (bindings 2)) -> FIRES
+PLANT-LAW-REM (nFle3 allow-listed with a pinned text that is not its definition: refused: Prep.bound: nFle3 has bindings outside its pinned definition) -> FIRES
+PLANT-LAW-REM (a t-dependent name allow-listed with its own definition: refused: Prep.bound: allow-listed nFle3 mentions T) -> FIRES
+STAGE-CPU C-PREP16 start 0.66 s
+C-PREP16 (m3_bar_v11: R(Prep16.stage_u16) and R(Prep16.stage_c16) equal Prep.stage_u and Prep.stage_c statement by statement once the pinned setup, N2 and cleanup statements are left out, and every stage result is assigned in exactly those two methods; the runner and the prep producer (m3_run_v1_9_3_cw_v1.py, m3_run_v1_9_3_hl_v1.py) build BAR.Prep16 and BAR.Prep only in make_prep with stages=(), run stage_u16, stage_c16 and scalars_out only in run_prep16, never stage_u or stage_c, and store into the bar module only BAR.ARB['kern'] and BAR.FALLBACKS[:]) -> PASS
+PLANT-PREP16 (R(stage_u16) with T(3) in the 't4|H4|' part must be refused: R(Prep16.stage_u16) differs from Prep.stage_u) -> FIRES
+PLANT-PREP16 (stage_c16's nC8 without its factor t must be refused: R(Prep16.stage_c16) differs from Prep.stage_c) -> FIRES
+PLANT-PREP16 (stage_c16's 'hh p8' at p 6 must be refused: R(Prep16.stage_c16) differs from Prep.stage_c) -> FIRES
+PLANT-PREP16 (self.rE assigned in Prep16.h2sq must be refused: self.rE assigned in ['Prep.stage_u', 'Prep16.h2sq', 'Prep16.stage_u16']) -> FIRES
+PLANT-PREP16 (c1's make_prep calling BAR.Prep16 with stages ('u', 'c') must be refused: calls [('Prep', [('make_prep', True)]), ('Prep16', [('make_prep', False)]), ('scalars_out', [('run_prep16', True), ('run) -> FIRES
+PLANT-PREP16 (a store BAR.Prep16.stage_c16 = BAR.Prep.stage_c in c1 must be refused: l.1736 uses BAR.Prep16 other than as a call; l.1736 uses BAR.Prep other than as a call; stores rooted at BAR ["BAR.ARB[') -> FIRES
+PLANT-PREP16 (a call of pr.stage_u in c1's run_prep16 must be refused: l.1276 calls .stage_u) -> FIRES
+STAGE-CPU C-PREP-BAR start 1.26 s
+C-PREP-BAR (m3_bar_v11, the premises of C-LAW-REM's and C-PREP16's reading of classes Prep and Prep16, with the N-1: classes Prep, Prep16 at module level with bases Prep [], Prep16 ['Prep']; 3 uses of their names, each a class base or a call <name>.<method>(...); no attribute named Prep or Prep16, no star import; 1 setattr/delattr calls, each in a method of theirs on its first parameter; no other binding and no other reflection) -> PASS
+PLANT-PREP-BAR (Prep = Prep16 at module level must be refused: l.1040 binds or deletes Prep; l.1040 uses Prep16 other than as a class base or in a call Prep16.<method>(...)) -> FIRES
+PLANT-PREP-BAR (an attribute of Prep assigned must be refused: l.1040 uses Prep other than as a class base or in a call Prep.<method>(...)) -> FIRES
+PLANT-PREP-BAR (setattr on Prep must be refused: l.1040 setattr outside a method of Prep/Prep16 or not on its first parameter; l.1040 uses Prep other than as a class bas) -> FIRES
+PLANT-PREP-BAR (a base for class Prep must be refused: class Prep has bases ['object'], keywords or decorators) -> FIRES
+PLANT-PREP-BAR (globals() rebinding Prep must be refused: l.1040 uses Prep16 other than as a class base or in a call Prep16.<method>(...); l.1040 calls globals) -> FIRES
+PLANT-PREP-BAR (an alias of Prep must be refused: l.1040 uses Prep other than as a class base or in a call Prep.<method>(...)) -> FIRES
+PLANT-PREP-BAR (the module attribute Prep rebound through a self-import (N-1) must be refused: l.1041 an attribute named Prep; l.1041 uses Prep16 other than as a class base or in a call Prep16.<method>(...)) -> FIRES
+PLANT-PREP-BAR (a star import (N-1) must be refused: a star import) -> FIRES
+PLANT-PREP-BAR (a method's code replaced through Prep.<method> (N-1) must be refused: l.1040 uses __code__; l.1040 uses __code__; l.1040 uses Prep other than as a class base or in a call Prep.<method>(...);) -> FIRES
+PLANT-PREP-BAR (setattr on a parameter named self outside the classes (N-1) must be refused: l.1042 setattr outside a method of Prep/Prep16 or not on its first parameter) -> FIRES
+PLANT-PREP-BAR (Prep16 = Prep at module level must be refused: l.1040 binds or deletes Prep16; l.1040 uses Prep other than as a class base or in a call Prep.<method>(...)) -> FIRES
+PLANT-PREP-BAR (a second base for class Prep16 must be refused: class Prep16 has bases ['Prep', 'object'], keywords or decorators) -> FIRES
+STAGE-CPU C-LAW-SHAPE start 1.62 s
+C-LAW-SHAPE (42 pinned texts of m3_lawcert_c3h_v1_pins, as ASTs, in their places: the tail, ann and far statements, sup_F, norm_any, chi_tail_up, ive1, logtree, logmain, far_base, the bound's return, Prep.UK/CK, __init__'s t, rates, tilts and restore, laws_of, compute_entry's law lines, entry_record, Prep16's lazy, h, hh16, h2sq and norm16, and the statements C-PREP16 leaves out) -> PASS
+PLANT-LAW-SHAPE (B_tail without sqrt_nn must be missed) -> FIRES
+PLANT-LAW-SHAPE (alpha_lo taking .b must be missed) -> FIRES
+PLANT-LAW-SHAPE (sup_F's m_F without '- i' must be missed) -> FIRES
+STATIC item: C-HASH on the static pins, C-LAW-REM, C-PREP16, C-PREP-BAR and C-LAW-SHAPE; no records, no certificate
+STAGE-CPU total 1.83 s
+VERDICT VALID

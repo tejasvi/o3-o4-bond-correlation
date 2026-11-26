@@ -1,0 +1,25 @@
+# MOCK_HS_INV_NORMX_v1 (mocks): a MOCK record in the form of SPEC_HS_INV_NORMX_v1_2 sect. 6, for kt_p2_assembly_v1_35's normX_HS reader tests only.
+# COEF values are pk08's hand sizes of 07:55Z (N4 D3 44.4, N3 D3 9.0), not a bound; never a C-REP reference.
+RECORD = HS_INV_NORMX_v1
+FORMAT = S4U_KV_v1 MOCK
+TAG = MOCK HS_INV_NORMX_v1 hand sizes
+EXPORT_STATUS = MOCK
+CLAIM = MOCK lemma-form D3 rows for the reader tests; not a bound
+RUN_VERDICT = VALID
+PRODUCER = pk15 (MOCK of the pk08 record)
+INTERFACE = CENTRED_HS2_BOX
+TRACE = HAAR_TWISTED_ON_H
+NORMALIZATION = HS2_TR_XC_STAR_XC
+LEMMA_NOTE = pk08/HS_NORMX_LEMMA_NOTE_v1.md:ffd98fc1946714e36e86359c338c38a6b89af31eb7f707306a0a59f3f281493b
+OPERATOR_D3 = Z = K^(1/2) V^(1/2); G_t = V^(1/2) (K_t - c_t K) V^(1/2); G_bb = V^(1/2) (K_bb - c_bb K) V^(1/2); lambda_0^3 X_c = Z G_t G_bb Z*; w = 3; t = gap-0 top horizontal, bb = gap-1 bottom horizontal; HS2 = tr_H(X_c* X_c) <= COEF (lambda_h/lambda_0)^2, lambda_0 by its certified lower end
+LAMBDA_POWER_D3 = 2
+LAMBDA_H_DEF = MOCK: the lambda_h of S4-U equals exp(logmain_N - logmain_D) at the same J
+J_CLAIM = UNIFORM-J PER-ROW: every row holds for every J in [jlo, jhi]; jhi = inf includes t = 0
+FIELDS = jlo jhi ce_lo ce_hi cf_lo cf_hi COEF
+N4_D3_ROWS = 1
+N4_D3_R000 = 300 inf 0.94 1.06 0.94 1.06 44.4
+N4_D3_METHOD = LEMMA
+N3_D3_ROWS = 1
+N3_D3_R000 = 300 inf 0.62 0.72 0.62 0.72 9.0
+N3_D3_METHOD = LEMMA
+END = HS_INV_NORMX_v1

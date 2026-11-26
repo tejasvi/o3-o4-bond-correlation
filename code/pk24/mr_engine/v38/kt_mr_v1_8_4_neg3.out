@@ -1,0 +1,16 @@
+TAIL ARGUMENT 3:3: D0 3, M0 3, n0 = 2 D0 + M0 + 1 = 10
+kt_mr_assembly_v1_8_4 (abd48b2c94e0d64328ce631a21f8ab3c93c665f1de86e4abcdb190c3744df448): RECDIR pk24/mr_engine/v36/up_v3s MODE STANDIN PLANT none NMAX 10 PIECES all
+C-CORE OK: mr_core_v1_3 b897451f512c69c3e08ac61d330f993634c105d42169dbd898dc91448554898a; 7 blocks and 3 constants equal to the prototype 5e3fc430d69a445487a449fd54faefdf540ba8a3298a52c7e5fd9cadb0bd76e6
+C-IV OK: 3000 operations (add, sub, mul, inv, sqrt; negation, amax, hull, pow, division with 50-digit endpoints) enclose or equal the exact rational results
+G-PIN MR_SPECTRAL.kv cda98933237fcf01126aab745e75d86a7f74afecdec24ea69303567eda0cda85 OK (PRODUCER pk24)
+G-PIN MR_INSERT.kv 3841c0c6325d23b4f0bc055050e21f17ed429546cec191dfe6442f3feab8ec79 OK (PRODUCER pk24)
+G-PIN MR_EXACT.kv 1425f9a0814035390c3d79a570f1113a580f90d831a170fad4a3c5db9fb3a211 OK (PRODUCER pk24)
+G-PIN MR_CRUDEX.kv 28183e3a41e476db2b65736160e77fe91864819511caa725fc6e62ef8e1bb5e7 OK (PRODUCER pk24) (CRUDEX_FORM split)
+G-PIN MR_JOINT.kv 5146b7584c8ad11c9b2c4647c6fe57e4384ba98c4eed7dfbe6a2fdd15cac8468 OK (PRODUCER pk24)
+C-ORIENT OK: c_x(-1) > 0 and c_y(-1) > 0 on every MR_SPECTRAL row; t and a v_x > 0, h, t and a v_y > 0 on every MR_INSERT row; 36 exact ends checked against the sign of their bulk x amplitude; ORIENT_CHECK on MR_SPECTRAL, MR_INSERT and MR_EXACT with the grid's piece counts
+A0X OFF: no MR_EXACT a0 rows
+G-UNIF OK: N = 4 6 pieces, N = 3 6 pieces; every record on the same grid with every row; last piece to inf; decimal fields finite, lo <= hi, single upper bounds >= 0, the spectral data positive
+XMODE UNFACTORED: the rows of v1_6 (MR_INPUT_KV_v3, CRUDEX_FORM split)
+ROUTE V OFF: MR_EXACT has no Pe_hi; the m = 1 rest uses the crude ends' |P_e a| only
+STOP G-TAIL: the tail section needs the factored mode (MR_INPUT_KV_v4 with a factored MR_CRUDEX)
+RUN_VERDICT STOPPED

@@ -1,0 +1,27 @@
+TAU check of the existing entries: {(2, 3): 15, (2, 4): 56, (3, 3): 192, (3, 4): 2415, (3, 5): 30305} -> PASS
+TAU (3, 6) = 380160, (3, 7) = 4768673
+R1: 1 match(es)
+R2: 1 match(es)
+R3: 1 match(es)
+R4: 1 match(es)
+WROTE /mnt/g2/release/root/code/pk23/o5/kt_lbu_g37_v1.py sha256 8677a368f47e8c25b2924ac8f4927a537afbdb0c233e369dff2133c79268f2a3
+--- kt_lbu_g35_pk21_v1.py
++++ kt_lbu_g37_v1.py
+@@ -2 +2,6 @@
+-"""kt_lbu_g35_pk21_v1.py -- pk21 (code/pk21/p2/), Phase 2 item 2 pilot (P_3 x P_5). A copy of pk06/kt_lbu_g34_pk06_v1.py
++"""kt_lbu_g37_v1.py -- pk23 (code/pk23/o5/): the CANDIDATE certificate copy for O5 (P_3 x P_6, P_3 x P_7, N = 4) on a
++large-memory box; no run of it counts before the review of this copy and the approval. A copy of pk21/p2/kt_lbu_g35_pk21_v1.py
++(sha8 9231dcbb) with four PK23 CHANGES only, made by pk23/o5/make_g37_v1.py: this banner, grid COLS up to 7 (was 5),
++TAU_GRID[(3, 6)] = 380160 and TAU_GRID[(3, 7)] = 4768673 (matrix-tree counts computed by the maker, which reproduces the five existing
++entries), and grid LIM up to 43200 s (was 3600). pk21 docstring:
++kt_lbu_g35_pk21_v1.py -- pk21 (code/pk21/p2/), Phase 2 item 2 pilot (P_3 x P_5). A copy of pk06/kt_lbu_g34_pk06_v1.py
+@@ -117 +122 @@
+-MODES = {'v1': (20, 300), 'v2': (60, 900), 'cert': (60, 3000), 'grid': (30, 3600)}
++MODES = {'v1': (20, 300), 'v2': (60, 900), 'cert': (60, 3000), 'grid': (30, 43200)}   # PK23 grid LIM up to 43200 (was 3600)
+@@ -137 +142 @@
+-    if not (3 <= KCERT <= 5 and 2 <= G_ROWS <= 3 and 3 <= G_COLS <= 5 and G_N in (3, 4) and 50 <= G_J1 <= 2000  # PK21 COLS <= 5
++    if not (3 <= KCERT <= 5 and 2 <= G_ROWS <= 3 and 3 <= G_COLS <= 7 and G_N in (3, 4) and 50 <= G_J1 <= 2000  # PK23 COLS <= 7 (PK21 5)
+@@ -1420 +1425 @@
+-TAU_GRID = {(2, 3): 15, (2, 4): 56, (3, 3): 192, (3, 4): 2415, (3, 5): 30305}  # PK21 (3, 5)
++TAU_GRID = {(2, 3): 15, (2, 4): 56, (3, 3): 192, (3, 4): 2415, (3, 5): 30305, (3, 6): 380160, (3, 7): 4768673}  # PK21 (3, 5); PK23 (3, 6), (3, 7)
+VERDICT DONE

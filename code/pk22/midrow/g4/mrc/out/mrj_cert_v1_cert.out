@@ -1,0 +1,24 @@
+C-SRC (MANIFEST_C6A_CERT_v3.sha256 2621a32a, MANIFEST_MR_V4_CERT_v1.sha256 6ac308d7, joint_float_v1_n4.out 9e106d42, joint_float_v1_n3.out 66d73e10, m3_s9_N4_J300_v1_8_3.json c14756e9, m3_c3j_DJ_N4_J300_c3j.json bb596c64, m3_s9h_DH_N4_J300_v1.json 3f8157f5, m3_s9_N3_J300_v1_8_3.json 4f05913c, m3_c3j_DJ_N3_J300_c3j.json 4e1c5279, m3_s9h_DH_N3_J300_v1.json 291a7c41) -> PASS
+C-MANIFEST (mr/v3 MR_LEMMAP.kv 3164b778c2ffe1bb by MANIFEST_C6A_CERT_v3; mr/v4 MR_SPECTRAL.kv 0e4d817729c6f735, MR_INSERT.kv 21e888435b2597b0 and the MR_INSERT cert run output 1d0eaea600e80456 by MANIFEST_MR_V4_CERT_v1) -> PASS
+C-HEADERS (MR_LEMMAP, MR_SPECTRAL and MR_INSERT: FORMAT, RECORD, PRODUCER pk25, EXPORT_STATUS CERTIFIED, RUN_VERDICT VALID, ORIENTATION, FIELDS; one TRIAL_SET; MR_INSERT's LEMMAP_SHA256 is MR_LEMMAP's) -> PASS
+C-KEYS (1747 keys, the same in MR_LEMMAP, MR_SPECTRAL and MR_INSERT (h, t), with the same jlo, jhi strings) -> PASS
+C-MU-PRINT (pk25's MR_INSERT cert run prints, per N, c_t's range, OR_t and C_t, and c_h's mu interval, OR and C; the printed C and C_t are exactly MR_INSERT's h and t C_hi on every piece: N4 OR_t 5.761927e-01 OR_h 6.646558e-01 C_t 3.8405154403192348e+00 C_h 4.4301516759807038e+00; N3 OR_t 6.261068e-01 OR_h 5.975237e-01 C_t 2.2174946612835638e+00 C_h 2.1162612995807457e+00) -> PASS
+PLANT-MU-PRINT (a printed C doubled must fail the tie to MR_INSERT's C_hi) -> FIRES
+C-SH-POS (the Sh,b entries certainly positive on every piece) -> PASS
+C-CH-HULL (c_h's interval inside the mu tool's on every piece, so OR_h and C_h hold for the true c_h; failures 0, first []) -> PASS
+C-CT-RANGE (c_t's interval from the DHT entries meets the range of R4's means export on which OR_t and C_t were formed; failures 0, first []) -> PASS
+C-MIRROR (the control JTHr,1,0 overlaps JTH,0,1 on every piece; failures 0) -> PASS
+PLANT-MIRROR (JTHr,1,0 offered JTH,0,3 must miss on some piece: overlaps on 0 of 1747) -> FIRES
+C-FINITE (every row finite; 1747 of 1747 pieces; failures []) -> PASS
+PLANT-CH-HULL (N3_P0000: c_h shifted by 0.02 must leave the mu tool's interval) -> FIRES
+C-ROUND (every written lo <= the exact lower end, every hi >= the upper end, single upper bounds >= 0; failures 0) -> PASS
+PLANT-ROUND (Cb_lo of N3_P0000 written one part in 1e15 above its rounded-down value) -> FIRES
+C-FLOAT (joint_float_v1's Ritz-level values at J = 350 (N4) and 300 (N3) inside the certified intervals: N4 N4_P0061: c_t 1.001013614 in [1.000960455, 1.001066880] True; c_h 0.845632025 in [0.845561394, 0.845702998] True; C_bulk 7.149276432e-02 in [7.133737175e-02, 7.164823121e-02] True; w_J,x 4.6429e-05 in [-2.9540e-03, 3.0469e-03] True; w_J,y -0.11659 in [-0.13866, -0.09451] True; N3 N3_P0000: c_t 0.667487953 in [0.667453961, 0.667521441] True; c_h 0.563815677 in [0.563767038, 0.563863689] True; C_bulk 4.768012581e-02 in [4.760268770e-02, 4.775740939e-02] True; w_J,x 3.0816e-05 in [-1.9293e-03, 1.9908e-03] True; w_J,y -0.09523 in [-0.11039, -0.08006] True) -> PASS
+PLANT-FLOAT (C_bulk's float moved by ten half-widths must leave the interval) -> FIRES
+C-TOL (G6 v1_1 sect. 5's crude tolerances, each alone, for H_J >= 10, and C_bulk certainly positive: N4: Wc 2.5526 (tol 3627/1000), jfw max 1.6061e-01 (tol 3723/500), C_bulk relative half-width max 3.734e-03 (tol 921/10000), C_bulk lo min 7.121741e-02; N3: Wc 1.3250 (tol 979/250), jfw max 8.1979e-02 (tol 7601/1000), C_bulk relative half-width max 1.900e-03 (tol 233/2500), C_bulk lo min 4.757395e-02) -> PASS
+JLOW N=4 N4_P0061: Cb [7.133737175e-02, 7.164823121e-02] (A~ 0.917982187, ct0 ch0 0.846489386, error 1.554e-04); c_t [1.000960455, 1.001066880] (dt 1.68e-05); c_h [0.845561394, 0.845702998] (dh 1.94e-05); w_J,x [-2.9540e-03, +3.0469e-03], w_J,y [-0.13866, -0.09451]; wJw x 4.451e-04 y 6.174e-03; Wc 2.5526; jfw 1.6061e-01; A0 0.9183; bh 2.4738e-01 bt 2.1445e-01; PewJw 7.0713e-02; kappa 1.000e+00 2.621e+00 4.798e+00; delta 3.799e-06 6.438e-03 5.676e-02
+LAST N=4 N4_P0903: Cb [7.141669380e-02, 7.144046889e-02]; w_J,x [-3.9572e-05, +3.9587e-05], w_J,y [-0.11672, -0.11657]
+JLOW N=3 N3_P0000: Cb [4.760268770e-02, 4.775740939e-02] (A~ 0.424019869, ct0 ch0 0.376339821, error 7.736e-05); c_t [0.667453961, 0.667521441] (dt 7.75e-06); c_h [0.563767038, 0.563863689] (dh 7.40e-06); w_J,x [-1.9293e-03, +1.9908e-03], w_J,y [-0.11039, -0.08006]; wJw x 2.908e-04 y 4.888e-03; Wc 1.3250; jfw 8.1979e-02; A0 0.4241; bh 1.1811e-01 bt 1.2376e-01; PewJw 3.5672e-02; kappa 1.000e+00 2.620e+00 4.798e+00; delta 2.726e-06 4.489e-03 4.011e-02
+LAST N=3 N3_P0903: Cb [4.761491280e-02, 4.762320057e-02]; w_J,x [-1.5716e-05, +1.5725e-05], w_J,y [-0.09527, -0.09521]
+RECORD /mnt/g2/release/root/code/pk22/midrow/g4/mrc/out/cert/MR_JOINT_CERT_v1.kv sha256 b0331e560bd8fec7e5cdbefca83beb91651ed4f7820c145f205a26cd83b705db rows 1747
+VERDICT VALID

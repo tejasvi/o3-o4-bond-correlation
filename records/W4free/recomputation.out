@@ -1,0 +1,34 @@
+[cpu    0.00s] start
+V1 trees vs product formula: comparisons 64, mismatches 0
+V2 cycles C3..C6 vs Legendre formula (Rem 4.3): comparisons 48, mismatches 0
+[cpu    0.01s] V2 done
+V3 K4 latitude (each frozen vertex) vs Gaussian method: comparisons 296, mismatches 0
+[cpu    0.02s] V3 done
+V4 W4 latitude (each frozen vertex) vs Gaussian method: comparisons 60, mismatches 0
+[cpu    0.02s] V4 done
+V5 U_dp (several frozen vertices) vs U on K4, W4, K4+K4, K4+C4, chain3K4: comparisons 58, mismatches 0
+[cpu    0.04s] V5 done
+A degrees of rho in (x, y): (5, 4); paper: (5, 4)
+A rho(0,y) coefficients: ['1/252', '-2/315', '1/525', '1/1050', '-1/2800'] equal to paper: True
+A d_x rho(0,y) coefficients: ['-1/420', '29/525', '-59/700', '13/350', '-11/2800'] equal to paper: True
+A rho(0,1) = 1/8400, d_y = -1/900, d_x = 1/560, d_xy = -37/2100 (paper: 1/8400, -1/900, 1/560, -37/2100)
+A d_x d_y log rho at (0,1) = -8 (paper: -8)
+A displayed minor = -10524303486251/30240000000000000000000000; equal to paper value: True
+A moments of rho vs U_W4 with rim vertex 1 frozen (n,k <= 5): comparisons 36, mismatches 0
+[cpu    0.06s] A done
+B at (x,y) = (0,1), x = u_12, y = u_41: rho' = 1/69300, d_x d_y log rho' = -32/3
+B at (x,y) = (1,0), x = u_12, y = u_41: rho' = 1/14850, d_x d_y log rho' = 4
+B paper: rho'(0,1) = 1/69300, d_x d_y log rho'(0,1) = -32/3
+B moments of rho' vs U_W4 with hub 0 frozen: comparisons 42, mismatches 0
+[cpu    0.09s] B done
+C minor of tau_g at (97/100,99/100)x(1/100,3/100): negative; relative to tau_g(v1,w1)tau_g(v2,w2): -2.6662e-03; relative to tau_g(v1,w2)tau_g(v2,w1): -2.6591e-03
+C tau_M minors negative for M in: [] (paper: none for M <= 40); paper relative size: -2.66e-3
+[cpu    0.12s] C done
+D1 K4+K4 (glued edge kept), all 55 pairs, 10 base points in {0,1,2}^11 incl. 0 and 1: inequalities 550, violations 0, min relative margin 0.000e+00
+D2 K4+K4 cross pairs (25, one edge in each K4, glued edge excluded), 6 base points in {0..4}^11: inequalities 150, violations 0, min relative margin 0.000e+00
+[cpu    0.24s] D2 done
+D3 K4+C4 (glued edge kept), all 36 pairs, 10 base points in {0..3}^9 incl. 0 and 1: inequalities 360, violations 0, min relative margin 0.000e+00
+[cpu    0.33s] D3 done
+D4 chain of three K4 (glue edges 23 and 45), end-to-end pairs (25), 5 base points: inequalities 125, violations 0, min relative margin 0.000e+00
+[cpu    0.35s] D4 done
+END

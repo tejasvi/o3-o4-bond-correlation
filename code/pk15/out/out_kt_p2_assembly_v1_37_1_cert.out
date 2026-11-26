@@ -1,0 +1,336 @@
+kt_p2_assembly_v1_37_1 sha256 f40a0d1e8f936da2b4da692c5f68927c5275a5d99f541c368385436bca62f6e3 ITEM=cert LIM=60 (RLIMIT_CPU soft 60, hard 65)
+C-HASH PASS (90 pinned files)
+C-GRID: 904 + 904 pieces from export_kt_s67_cert_v2_2_sweep.kv (FLOAT grid: jlo, jhi only, copied string for string; first jlo >= J_MIN 300), first [300.0, 300.75], last jhi inf -> PASS
+C-GRID-EXACT: the pieces tile [300, inf) exactly at N = 4 and 3 (first jlo exactly 300, each jhi string the next jlo, binary64 repr ends, last jhi inf): exact -> PASS
+PLANT-GRID-GAP: refused (C-GRID-EXACT N=4 piece 5: jhi 304.52821892626156 is not the next jlo 304.528218925957) -> FIRES
+C-GRID-HULL: on every piece at N = 4 and 3 the raw t ends hold 1/J for both readings (decimal and binary64) of both ends: yes -> PASS
+PLANT-GRID-DEC: refused (C-GRID-HULL N=4 piece 0001: t_lo misses a reading of jhi 301.501875) -> FIRES
+PLANT-GRID-START: refused (the first piece at N=4 starts below J = 300 (jlo 299.0)) -> FIRES
+PLANT-A-REAL-AS-MOCK out_kt_cert_v1_7_g.amn3.out: refused (header) -> FIRES
+PLANT-A-REAL-AS-MOCK out_kt_cert_v1_7_g.amn4.out: refused (header) -> FIRES
+PLANT-A-REAL-AS-MOCK out_kt_cert_v1_7_g.tn3.out: refused (header) -> FIRES
+PLANT-A-REAL-AS-MOCK out_kt_cert_v1_7_g.tn4.out: refused (header) -> FIRES
+C-FLOATIN: the four kt_cert_v1_7 records and the assembly own list give the certified-path status CERTIFIED_GIVEN_FLOAT_IN with FLOAT-IN g.amn3: far eps_r Z; g.amn4: far eps_r Z; g.tn3: far logR gBb eps_r Z; g.tn4: far logR gBb eps_r Z -> PASS
+C-FLOATIN-EMPTY: empty FLOAT-IN lists give CERTIFIED (FLOAT_IN none) -> PASS
+C-FLOATIN-OWN: with the four record lists empty, the t export own FLOAT list is empty from v1_35 (tz by the odd Ritz route), so it reads CERTIFIED (FLOAT_IN none) -> PASS
+PLANT-FLOATIN-OWN: refused (FLOAT-IN inputs (kt_p2_assembly: tz), open conditions (none): the export cannot be tagged CERTIFIED) -> FIRES
+C-FLOATIN-JT: the joint export own FLOAT list is empty (eps_r and s come from the certified M2B record), so with the four record lists empty it reads CERTIFIED -> PASS
+C-OPEN: with every FLOAT-IN list empty, the open condition C1 still gives CERTIFIED_GIVEN_OPEN_CONDITIONS -> PASS
+PLANT-OPEN-C1: refused (FLOAT-IN inputs (none), open conditions (C1): the export cannot be tagged CERTIFIED) -> FIRES
+C-C1: a CLAIM line holding the agreed 41-byte |g| string exactly once clears C1 (unit test), and the pinned M2B record M2B_KV_v1.txt (13cc0d9a) has one CLAIM line holding it exactly once, so C1 is cleared and the exports carry OPEN_CONDITIONS none (live) -> PASS
+PLANT-C1-NOSPACE: refused (the M2B record CLAIM does not state the |g| form exactly once (C1)) -> FIRES
+PLANT-C1-TWICE: refused (the M2B record CLAIM does not state the |g| form exactly once (C1)) -> FIRES
+PLANT-C1-LIVE-NOSPACE: refused (the M2B record CLAIM does not state the |g| form exactly once (C1)) -> FIRES
+PLANT-M2B-PIN: refused (M2(b) file M2B_KV_v1.txt does not match its pin) -> FIRES
+PLANT-M2B-ASM-PIN: refused (M2(b) file out_m2b_asm_v1.out does not match its pin) -> FIRES
+PLANT-M2B-READER-PIN: refused (M2(b) file m2b_reader_v1.py does not match its pin) -> FIRES
+PLANT-M2B-MOCKFORMAT: refused (m2b_reader_v1: FORMAT = 'M2B_KV_v1 MOCK' (must be 'M2B_KV_v1')) -> FIRES
+PLANT-M2B-BIND: refused (m2b_reader_v1: asm output: RECORD lines ['RECORD M2B_KV_v1.txt 13cc0d9abe16af02865763b44a28cc167c689f83ad0a028644b84c7045c'] do not bind M2B_KV_v1.txt eb85da10) -> FIRES
+PLANT-M2B-INF: refused (M2(b) law_v1 gave no finite eps_r and s) -> FIRES
+PLANT-FLOATIN-CERT: refused (FLOAT-IN inputs (g.amn3: far eps_r Z; g.amn4: far eps_r Z; g.tn3: far logR gBb eps_r Z; g.tn4: far logR gBb eps_r Z), open conditions (none): the export cannot be tagged CERTIFIED) -> FIRES
+INFO C-A-BIND N=4 NTB: record 62d417d5, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=4 DT: record 23d0b142, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=4 NIT: record d4b0f118, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=4 NIB: record 045366b5, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=4 NIH: record 45d30507, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=4 NBT: record 759f14e1, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=4 NTT: record 8496872e, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=3 NTB: record 4aa85019, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=3 DT: record 0a00a0b8, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=3 NIT: record fcf160b9, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=3 NIB: record d6bd56ec, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=3 NIH: record 1d392597, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=3 NBT: record 60ab8174, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+INFO C-A-BIND N=3 NTT: record b17c0fa1, kernel_file arbeng_ma_v1_4_1.py, kernel sha256 4126e83e, claim_ball present
+C-M2B: M2B_KV_v1.txt (13cc0d9a) through m2b_reader_v1 (3580bce7; binding to out_m2b_asm_v1.out, record checks, C-PINS): law_v1 at J = 300 equals N*_EPS_R_300 and N*_S_300 within 1e-9, decreases from J = 300 to 600, 3000 and 10^6, and ASM_SHA256 is the pinned m2b_asm_v1.py -> PASS
+C-M2B-TRIAL: the record PIN_TRIAL names the vacres files the assembly pins for S_eps with their full sha256 (b40859de, e5a9b49f) -> PASS
+PLANT-M2B-TRIAL: refused (the M2B record PIN_TRIAL does not name vacres_K3_N4_sym_v1.json with its pinned sha256) -> FIRES
+C-M2B-PREC: reader calls run at ctx.prec 256 whatever the caller sets: law_v1 at J = 300 called from ctx.prec 64 equals the run value at both N, and the caller precision is restored -> PASS
+PLANT-M2B-PREC: refused (a reader call changed ctx.prec to 64) -> FIRES
+PLANT-TP-MHAT-SRC: refused (the M2B asm output has no single passing C-MHAT line for N=4) -> FIRES
+PLANT-A-BIND-PIN: refused (C-A-BIND: m3_p2_NTB_N4_J300_v1_10_4.json is not pinned (R4) or does not match its pin) -> FIRES
+PLANT-A-BIND-ASM-PIN: refused (C-A-BIND: m3_run_v1_10_4_asm.4.out is not pinned (R4) or does not match its pin) -> FIRES
+PLANT-MOCK-C mock_s9b_inputs_v1_1.kv: refused (C-CERT-NOI: MOCK_S9B_INPUTS (I[N]) is not loaded in cert mode) -> FIRES
+PLANT-CERT-NOI: refused (C-CERT-NOI: MOCK_S9B_INPUTS (I[N]) is not loaded in cert mode) -> FIRES
+C-A-LIST: P2_RUN_LIST_v1_10 (75feecdf) holds exactly the 23 keys; MOCK_M3_ENTRIES_v2 is built on it; each certified record must name it in entry_list (C-A-BIND path) -> PASS
+C-A-COUNT: mock_m3_entries_v2.kv carries exactly the 23 run-list keys at both N (no other N_ key) -> PASS
+PLANT-A-DROP: refused (C-A-COUNT: entry Y4 missing at N=4) -> FIRES
+PLANT-A-EXTRA: refused (C-A-COUNT: extra keys ['N4_UL3'] or entry count at N=4) -> FIRES
+C-A-MAP: every slot of the key map against the pinned run list (graph, end factors, i T-factors, j B- or MB-factors, nothing else; each slot once; Sets C and W by graph and factor list) -> PASS
+PLANT-A-MAP-SWAP: refused (C-A-MAP: SM4,2,0 (DT) does not fit slot M4_02) -> FIRES
+C-A-MIRROR: M4M_ij is M4_ij (the same object) for every ij at both N, and no record key carries M4M -> PASS
+C-A-V63: S7 g,0,0 through m3_reader_v6_3 (628d2059) equals m3_reader_v4_4 ball for ball at both N (the certified path control) -> PASS
+PLANT-A-BIND-PRECERT: refused (C-A-BIND: m3_b5_N3_J300_v1_7.json: the writing job's VERDICT lines are not exactly ['VERDICT VALID']) -> FIRES
+PLANT-A-LAYER: refused (C-A-BIND: m3_b5_N3_J300_v1_7.json carries the layer 'arbeng_ma_v1_3.py', not arbeng_ma_v1_4_1.py) -> FIRES
+PLANT-A-COUNT-FAM: refused (C-A-COUNT: the NTB key set does not carry exactly the run-list keys of DT) -> FIRES
+C-A-PERREC (controls): each family's own run-list key set passes check_setac_count, the seven sets cover the 23 keys once, and a top naming the pinned run list passes check_setac_list -> PASS
+INFO C-A-BIND/C-A-TRIAL/A-PARTITION: the certified path of reader (b2) (seven records per N through m3_reader_v6_3, layer arbeng_ma_v1_4_1.py 4126e83e) reads only the v1_10_4 files pinned at R4 and refuses one that fails its pin (PLANT-A-BIND-PIN, PLANT-A-BIND-ASM-PIN); the MOCK records carry no partition field
+C-C-TRIAL: the four S8 records (D: 29cbb2a2 c3c367f3; N: 49b25063 7b8a1d0c) name the pinned ts and vacres files with their full sha256 -> PASS
+PLANT-C-TRIAL: refused (C-C-TRIAL: trial_set ts is not the pinned ts_N4_J170_D_S_z9sym_v1.json) -> FIRES
+PLANT-A-LIST-S8: refused (C-A-LIST: entry_list 'S8_ENTRY_LIST_v3.json:aa7cc0c938c23fcf4ba3510fdc0333055d3059b71a4147cc8f0de49c2b04cf00' is not the pinned run list) -> FIRES
+INFO ROW2 N=4: S8 g,2,2 1.00136, T,2,2 0.0801 at J = 300; mu_z = T,2,2/g,2,2 0.0799 (m3_s8v3 D 29cbb2a2, N 49b25063)
+INFO ROW2 N=3: S8 g,2,2 1.00257, T,2,2 0.0801 at J = 300; mu_z = T,2,2/g,2,2 0.0799 (m3_s8v3 D c3c367f3, N 7b8a1d0c)
+C-ZFLIP: IhZb = -IhZ (each coefficient ball of IhZb + IhZ contains 0) at both N -> PASS
+C-ZPAR: IhZh is an exact parity zero (every coefficient and the bar exactly 0) at both N -> PASS
+C-G22-POS: g,2,2 certainly > 0 at J = 300, both N (and per piece in tz_odd) -> PASS
+PLANT-G22-POS: refused (C-G22-POS: g,2,2, G_00 or lambda~_0,low is not certainly positive) -> FIRES
+C-ALIAS-MIRROR N=4: IhTt,0 = [cp0 col 0, xia [3,0,1], cp0 col 2] is the exact mirror image of S9 Iht,0 [['cp', 0, 0], ['xia', [3, 6, 7]], ['cp', 0, 2]] (c_mirror on N) -> PASS
+C-ALIAS-FLIP N=4: Tb [['cp', 0, 0], ['xi', 'MB', 1], ['cp', 0, 2]] = S7 A,0 [['cp', 0, 'L'], ['xia', 'M'], ['pv', 'R']] under T <-> B ((i) automorphism, (ii) even ends, (iii) PERM9 on the middle c9, (iv) main_N) -> PASS
+C-ALIAS-MIRROR N=3: IhTt,0 = [cp0 col 0, xia [3,0,1], cp0 col 2] is the exact mirror image of S9 Iht,0 [['cp', 0, 0], ['xia', [3, 6, 7]], ['cp', 0, 2]] (c_mirror on N) -> PASS
+C-ALIAS-FLIP N=3: Tb [['cp', 0, 0], ['xi', 'MB', 1], ['cp', 0, 2]] = S7 A,0 [['cp', 0, 'L'], ['xia', 'M'], ['pv', 'R']] under T <-> B ((i) automorphism, (ii) even ends, (iii) PERM9 on the middle c9, (iv) main_N) -> PASS
+PLANT-ALIAS-MIDROW: refused (C-ALIAS-MIRROR: factor lists differ under the mirror) -> FIRES
+PLANT-ALIAS-CP1: refused (C-ALIAS-MIRROR: factor lists differ under the mirror) -> FIRES
+PLANT-ALIAS-QSHIFT: refused (C-ALIAS-FLIP (ii): an end factor is not exactly even) -> FIRES
+PLANT-ALIAS-TB: refused (C-ALIAS-FLIP (iii): the middle factors differ under PERM9) -> FIRES
+INFO G00-S7 N=4: m3_b5_N4_J300_v1_7.json g,0,0 through m3_reader_v4_4: a0_exact 1, err 1.4628735374677895e-07; lower end over every J >= 300 (t in [0, 1/300]) 9.9999125803962763e-01; at J = 300 1.00392367374 (value_ref 1.003923673740873)
+INFO G00-S7 N=3: m3_b5_N3_J300_v1_7.json g,0,0 through m3_reader_v4_4: a0_exact 1, err 6.5862971507535670e-08; lower end over every J >= 300 (t in [0, 1/300]) 9.9999559810059524e-01; at J = 300 1.00275201431 (value_ref 1.0027520143118114)
+C-G00-S7: the S7 certified g,0,0 matches the normalization pin, and its lower end over every J >= 300 lies within 5% of 1 at both N (Phi takes this lower end) -> PASS
+C-G00-TRIAL: each S7 record trial_set names the vacres file the assembly pins for S_eps (vacres_K3_N4_sym_v1.json:b40859de; vacres_K3_N3_sym_v1.json:e5a9b49f); g00_s7 checks it too -> PASS
+PLANT-G00-TRIAL: refused (S7 record trial_set vacres 'vacres_K3_N3_sym_v1.json:e5a9b49f' is not the pinned vacres_K3_N4_sym_v1.json:b40859de) -> FIRES
+PLANT-G00-A0EXACT: refused (G,0,0 normalization does not match the pin (claim, a0_exact or a_0)) -> FIRES
+PLANT-G00-A0BALL: refused (G,0,0 normalization does not match the pin (claim, a0_exact or a_0)) -> FIRES
+PLANT-G00-NORM: refused (G,0,0 normalization does not match the pin (claim, a0_exact or a_0)) -> FIRES
+PLANT-G00-CLAIM: refused (G,0,0 normalization does not match the pin (claim, a0_exact or a_0)) -> FIRES
+PHI-EPS N=4 (Lemma T-prime, eps 0.25, S7 certified G_00): S_eps <= 1.0235980510203004e+00, G_00 >= 9.9999125803962763e-01, Phi_eps <= 4.3136391792956488e+01, Phi_eps,theta <= 1.5976441404798697e+03
+PHI-EPS N=3 (Lemma T-prime, eps 0.25, S7 certified G_00): S_eps <= 1.0205289728446973e+00, G_00 >= 9.9999559810059524e-01, Phi_eps <= 1.2417666771697814e+01, Phi_eps,theta <= 1.3797407524108681e+02
+C-SEPS: S_eps (G3, z9sym q, t = 1/300) below supp0 on the same q and within 2e-6 of seps_v1 FLOAT, both N -> PASS
+C-JPOW: jfac = k1_lim^3 (2 pi/J)^(-3n/2) at J = 3000 against J = 300 below 1e-40, and k1_lim^3 main_T/main_D for the three weight sets below 1e-12 (A, B hulls), both N (the J-powers cancel) -> PASS
+C-K1-LIM: k1 < k1_lim at N = 4, J = 300 and 3000 (I_1 series; N = 3 exact) -> PASS
+PLANT-GBADP-LEVEL: refused (Lemma G level Lam below 1) -> FIRES
+PLANT-ABADP-LEVEL: refused (Lemma G level Lam_a below max(1/2, 1/(2 theta (1 - eps) A)), or theta outside (0, 1)) -> FIRES
+PLANT-SEPS-EPS: refused (Lemma G eps outside (0, 1)) -> FIRES
+C-M4-READ: M4_KV_v1.txt (e209c53f) with out_m4_asm_v1.out (d3ed95bb) through m4_reader_v1 (d3f82819): the binding, the record checks and C-PINS -> PASS
+PLANT-M4-PIN: refused (M4 file M4_KV_v1.txt does not match its pin) -> FIRES
+PLANT-M4-READER-PIN: refused (M4 file m4_reader_v1.py does not match its pin) -> FIRES
+C-TAU-READ: export_kt_s9h_v1_2_vsweep.kv (761084be) with out_kt_s9h_v1_2_vsweep.out (f18072f4) through kt_s67_export_reader_v2_1 (b0a23237): rule V2, EXPORT_STATUS CERTIFIED, the same grid -> PASS
+INFO TAU N=4: rho_hi 8.4346440411200013e-02 .. 8.4491039414400004e-02 (S units) over 904 pieces; kt_rb FLOAT TAU_R 0.983 (for C-LA300 only)
+INFO TAU N=3: rho_hi 8.4109647975700003e-02 .. 8.4209983701600002e-02 (S units) over 904 pieces; kt_rb FLOAT TAU_R 0.769 (for C-LA300 only)
+PLANT-TAU-PIN: refused (S67 file export_kt_s9h_v1_2_vsweep.kv does not match its pin) -> FIRES
+PLANT-TAU-READER-PIN: refused (S67 file kt_s67_export_reader_v2_1.py does not match its pin) -> FIRES
+PLANT-TAU-GRID: refused (the S67 export grid differs at N=4 piece 0007) -> FIRES
+C-TAU-TRIAL: out_kt_s9h_v1_2_vsweep.out line 1 names kt_s9h_v1_2 by full sha256 = the pinned kt_s9h_v1_2.py (848d7376); its TRIAL_SET equals the pinned ts and vacres files (N4 ea9d6c1b b40859de, N3 a298db65 e5a9b49f); the C-TRIAL and C-TRIAL chain lines read PASS (checked inside load_tau) -> PASS
+PLANT-TAU-TRIAL: refused (C-TAU-TRIAL: kt_s9h TRIAL_SET differs from the pinned ts and vacres files) -> FIRES
+C-TAU-N: every tau row is the export line of its own N (the N4_P and N3_P labels read beside the reader; rho_hi equal as exact decimals on every row) -> PASS
+PLANT-TAU-N: refused (C-TAU-N: the tau row for N=4 piece 0000 is not the export line N4_P0000) -> FIRES
+C-RITZ-READ: mock_ritz_entries_v1.kv (d28e28e2) and the pinned S9 records give the 18 S9 keys at both N; the port runs on the S9 entries -> PASS
+PLANT-RITZ-MOCK-CERT: refused (certified FORMAT/TAG) -> FIRES
+PLANT-RITZ-S9-PIN: refused (S9 file m3_s9_N4_J300_v1_8_3.json does not match its pin) -> FIRES
+PLANT-RITZ-MISSING: refused (mock Ritz entries at N=4 are not the 18 S9 keys) -> FIRES
+PLANT-S9-TRIAL: refused (S9 record trial_set ts is not the pinned ts_N4_J170_D_S_z9sym_v1.json) -> FIRES
+C-GAP: the Ritz problem and Lemma A on every piece (interval Cholesky, disjoint enclosures, Davis-Kahan gaps, Kato-Temple, C-SX, C-SIGN0): N4 904 of 904, N3 904 of 904 pieces -> PASS
+INFO KT-MARGINS N=4: over the 904 good port rows the smallest s_x,low - tau_up 6.1450707616678445e-02, g_below 6.0191701074595851e-02, 1 - 2 c-bar - s_x,high 8.5130960483722073e-01 (lower ends)
+INFO KT-MARGINS N=3: over the 904 good port rows the smallest s_x,low - tau_up 6.1714795365126737e-02, g_below 6.1126071021702505e-02, 1 - 2 c-bar - s_x,high 8.5274936200449869e-01 (lower ends)
+C-Z-LEVEL: NH = Lam + Hbad-prime(Lam) and GP = Lam (mhat/lt0) eps_r + Gbad-prime(Lam) at one Lam = LAM_T = 40 on every port piece (nh_gp; Hbad-prime 3.5135794748623465e-12 at N4) -> PASS
+PLANT-Z-LEVEL: refused (C-Z-LEVEL: NH and GP are not at one Lam (Hbad-prime at 40, Gbad-prime at 20, the dict at 40.00)) -> FIRES
+C-RITZ300 N=4: form S9 records, overlap and the lower leg: the first piece lambda_0 1.001, s_x 0.146, mu_y 0.044 against the kt_rb CERT300 lines, and |a^_k| 0.827 0.10 0.08 against its bars 0.82703529 0.10608264 0.08500228 -> PASS
+INFO RITZ300 N=4: every hard leg holds; midpoints lambda_0 [1.00137078834508 +/- 4.87e-15], s_x [0.146066205343232 +/- 4.42e-16], mu_y [0.0436638526152819 +/- 3.96e-17]; the kt_rb midpoint: lambda_0 holds s_x holds mu_y holds; kt_rb bar minus the |a^_k| upper end: [-4.15e-6 +/- 4.92e-10] [2.87e-5 +/- 1.43e-8] [2.28e-5 +/- 4.11e-8]
+C-RITZ300 N=3: form S9 records, overlap and the lower leg: the first piece lambda_0 1.0012, s_x 0.1460, mu_y 0.0436 against the kt_rb CERT300 lines, and |a^_k| 0.551 0.086 0.068 against its bars 0.55128442 0.08596204 0.06878558 -> PASS
+INFO RITZ300 N=3: every hard leg holds; midpoints lambda_0 [1.00121364076427 +/- 6.63e-16], s_x [0.145993860904127 +/- 3.60e-16], mu_y [0.0436256398097612 +/- 3.63e-18]; the kt_rb midpoint: lambda_0 holds s_x holds mu_y holds; kt_rb bar minus the |a^_k| upper end: [-8.28e-6 +/- 2.34e-9] [-2.20e-5 +/- 2.06e-8] [-2.68e-5 +/- 3.98e-8]
+PLANT-RITZ300-SWAP: refused (C-RITZ300: lambda_0 does not meet the kt_rb CERT300 interval) -> FIRES
+INFO RITZ300-SWAP-GAP: the swapped lambda_0 ball lies [0.00513 +/- 1.08e-6] from the kt_rb CERT300 interval (positive: they do not meet)
+INFO RITZ300-NOTE-SWAP: the note G,0,1/G,1,3 swap at N4 is accepted: the swap stays inside the enclosures and bars
+PLANT-RITZ-BAR: refused (interval Gram block not positive definite) -> FIRES
+PLANT-KT0: refused (C-KT0: 1 - 2 c-bar - s_x,high (the m0lo denominator) is not certainly positive) -> FIRES
+PLANT-DK0: refused (C-DK0: mhat - mu_x,high is not certainly positive) -> FIRES
+PLANT-SP: refused (C-SP: 1 - s'^2 is not certainly positive) -> FIRES
+PLANT-GRAM: refused (C-GRAM: the Ritz-vector Gram G is not certainly positive definite (Gershgorin row 0)) -> FIRES
+C-LA300 N=4: Lemma A on the first piece with the kt_rb FLOAT eps_r 1.038562e-05, R_e1 7.1312351e-04, R_e3 1.0288750e-03 and TAU_R 0.983 gives rho, c-bar, q, eps_0 and eps_y within 7.00e-04 of its CBAR line (1e-2: the piece widening) -> PASS
+C-LA300 N=3: Lemma A on the first piece with the kt_rb FLOAT eps_r 1.972867e-06, R_e1 3.7393687e-04, R_e3 4.6615717e-04 and TAU_R 0.769 gives rho, c-bar, q, eps_0 and eps_y within 1.60e-03 of its CBAR line (1e-2: the piece widening) -> PASS
+C-NA N=4: NA-prime (Lemma B) = 6.4739306859233583e+00 at L = 5.2500 with kappa_max 4.4426648317795376e+01; L >= 1 and NA-prime >= the largest |a^_00| over the pieces 8.2689280342310678e-01 -> PASS
+C-NA N=3: NA-prime (Lemma B) = 4.8236325796005000e+00 at L = 3.3750 with kappa_max 1.2543777659551829e+01; L >= 1 and NA-prime >= the largest |a^_00| over the pieces 5.5123938247561455e-01 -> PASS
+PLANT-NA: refused (FLOAT-IN inputs (kt_p2_assembly: beta_r), open conditions (none): the export cannot be tagged CERTIFIED) -> FIRES
+C-PT-PORT: the C-PT identity (Pt^2 <= V_t - A_t^2 + dtx^2 + Gram terms) and A_t > 0 on every port row: N4 904, N3 904 of 904 -> PASS
+C-PD-DK: on every piece the per-direction and the uniform Davis-Kahan Ritz vectors overlap componentwise (both hold c_k): N4 904, N3 904 of 904 -> PASS
+PLANT-PD-DK: refused (C-PD-DK: c_0[0] of the two bounds do not overlap) -> FIRES
+PLANT-PD-GAP: refused (per-direction bound: the u_0 component is not certainly positive) -> FIRES
+C-PD-CONTROL: on the ball diag(1, 0.5, 0.2) +- 1e-6 the per-direction and the Davis-Kahan vectors contain e_k, and every per-direction bar is at most the Davis-Kahan bar (largest 5.7735605452080563e-06 against 1.5708120542967663e-05) -> PASS
+PLANT-PD-ZEROGAP: refused (control: eigenvalue enclosures overlap (no gap)) -> FIRES
+INFO PD-BARS N=4: the first piece t^_x radius 4.7907378757372499e-05 per-direction against 1.2772792251780631e-03 Davis-Kahan, a^_x radius 9.3765789642930031e-05 against 1.2363842688500883e-03; the corner L of the port rows 1.0149253217408463e+00 per-direction against 1.0476565277778320e+00 Davis-Kahan; budgets 1.027 at d^h = 3, 1.033 at d^h + 1
+INFO PD-BARS N=3: the first piece t^_x radius 1.8790509784594182e-05 per-direction against 4.4998139492236078e-04 Davis-Kahan, a^_x radius 3.8652273360639811e-05 against 4.4962647370994096e-04; the corner L of the port rows 1.0064945142559882e+00 per-direction against 1.0222126394141489e+00 Davis-Kahan; budgets 1.008 at d^h = 2, 1.030 at d^h + 1
+C-WIDTH-PORT N=4: the corner ratio of the port rows (smallest At_lo and Aa_lo over the pieces) within the budget at d^h + 1: L 1.0149253217408463e+00 supports the mixed d^h = 3 -> PASS
+C-WIDTH-PORT N=3: the corner ratio of the port rows (smallest At_lo and Aa_lo over the pieces) within the budget at d^h + 1: L 1.0064945142559882e+00 supports the mixed d^h = 2 -> PASS
+PLANT-WIDTH-DK: refused (corner ratio 1.0476565277778320e+00 above even the budget 1.033 at d^h + 1 = 4: stop and ask) -> FIRES
+INFO PORT-RANGE N=4: over the 904 port rows min At_lo 3.9371890942075348e-02, min Aa_lo 1.0448847685983033e-01, min Xta_lo 4.1135050909539153e-03, max dtx_hi 3.8554245595540287e-05, max Qvt_hi 9.6757366994626871e-04
+INFO PORT-RANGE N=3: over the 904 port rows min At_lo 3.2439655483600900e-02, min Aa_lo 8.5381380978088048e-02, min Xta_lo 2.7712523531103457e-03, max dtx_hi 6.9568642404471124e-06, max Qvt_hi 3.6488818279223871e-04
+C-PX3: px_from on a positive, a negative and a straddling Cov ball gives cmin = 1/256, 1/256, 0 and pX = (E2 - cmin^2)^(1/2) -> PASS
+PLANT-PX-NEG: refused (E2_hi - cmin^2 is not >= 0) -> FIRES
+PLANT-MOCK-E mock_p2_8_c4_v1.kv: refused (certified FORMAT/TAG) -> FIRES
+C-GAMMA: the closed form Gamma(3/2, 5) = 0.0164538091490 agrees with flint's gamma_upper as arb(5).gamma_upper(3/2) -> PASS
+C-GAMMA2: the closed forms of Gamma(5/2, L) and Gamma(7/2, L) at the 15 levels in use (3 4 6 6.5 8 8.5 9 11.5 14 15 20 20.5 25 26.5 27.5) and gamma(3/2, 300) = 0.886226925453 against flint's gamma_upper and gamma_lower: all agree -> PASS
+C-E1-RHO: e_1 with rho_phi = 1.5 exceeds e_1 with the run rho_phi at both N -> PASS
+PLANT-E2-LEVEL: refused (a Lemma E level below c+ + 2) -> FIRES
+PLANT-E2-VLEVEL: refused (a vertical Lemma E level below c+ + m/A (v1_14 (1))) -> FIRES
+C-THETA: Abad-prime and Lemma E-prime use one theta = 0.7 at both N -> PASS
+PLANT-THETA: refused (Abad-prime and Lemma E-prime use different theta (0.7, 0.9)) -> FIRES
+INFO TRACE N=4 eps: Lemma T exact ||W||^2 at J = 300 2.3872954195377898e-09, Z_T 9.9917900420499028e-01; Lemma T-prime bound 3.4613544115806882e-09, factor 1.4487158253892825e+00 over main_T
+INFO TRACE N=4 theta: Lemma T exact ||W||^2 at J = 300 4.7580257031535618e-08, Z_T 9.9856384804590326e-01; Lemma T-prime bound 1.2819831154002550e-07, factor 2.6904898643054644e+00 over main_T
+INFO TRACE N=4 theta_b: Lemma T exact ||W||^2 at J = 300 1.0322553134822945e-08, Z_T 9.9862402615374368e-01; Lemma T-prime bound 2.1065132119364044e-08, factor 2.0378821764099047e+00 over main_T
+INFO TRACE N=3 eps: Lemma T exact ||W||^2 at J = 300 6.0384734310229484e-07, Z_T 1.0001504230081173e+00; Lemma T-prime bound 7.7300797230400009e-07, factor 1.2803306321040175e+00 over main_T
+INFO TRACE N=3 theta: Lemma T exact ||W||^2 at J = 300 4.4433000102168524e-06, Z_T 1.0007334449105230e+00; Lemma T-prime bound 8.5889774700444447e-06, factor 1.9344354403467248e+00 over main_T
+INFO TRACE N=3 theta_b: Lemma T exact ||W||^2 at J = 300 1.6035464527309006e-06, Z_T 1.0003182858140161e+00; Lemma T-prime bound 2.5766932410133333e-06, factor 1.6073830362253712e+00 over main_T
+C-PHIT-FORM: Lemma T-prime closed form against its k1_lim form at J = 300 and 3000, three triangles, both N, relative below 1e-12 -> PASS
+C-TRACE: the exact Lemma T trace lies below the Lemma T-prime bound for the three triangles at J = 300, both N -> PASS
+C-TRACE-REC: the recurrence lambda_0 of the L = 600 chain agrees with k1 (I_1 series at N = 4, closed form at N = 3) -> PASS
+C-G00-FLOAT: the G_00 lower end lies within 5% of 1 at both N (S7 certified lower end) -> PASS
+PLANT-G00-NONPOS: refused (G_00 lower end not certainly positive) -> FIRES
+PLANT-G00-PIN: refused (S7 g,0,0 file m3_b5_N4_J300_v1_7.json does not match its pin) -> FIRES
+PLANT-G00-PIN-ASM: refused (S7 g,0,0 file m3_run_v1_7_asm.4.out does not match its pin) -> FIRES
+PLANT-TRACE-L: refused (Lemma T tail ratio R_L not below 1/2 (L = 10)) -> FIRES
+C-E2-VLEVEL-EDGE: the vertical level bound c+ + 2/A_theta = 3.9144298951539813e+00 (c+ 0.9): a level 2^-20 above it passes -> PASS
+PLANT-E2-VLEVEL-EDGE: refused (a vertical Lemma E level below c+ + m/A (v1_14 (1))) -> FIRES
+INFO RHO N=4 (Lemma R, eps 0.25): q_L 7.7861696577353101e-04, q_Q 8.7239633601605558e-05, r0 102.69435, r* 127.62941, sigma_eps 1.8271394396009847e-03, Phi_W 4.1170383693393568e+01; rho_phi <= 1.0234473704528904e+00
+INFO RHO N=3 (Lemma R, eps 0.25): q_L 5.0034607439767024e-04, q_Q 8.7240462834817359e-05, r0 104.23417, r* 129.17041, sigma_eps 1.7059315998276237e-03, Phi_W 1.1923103767116269e+01; rho_phi <= 1.0117811116386912e+00
+C-RHO: 1 <= rho_phi <= 1.1 and within 1e-4 of rho_float_v1 at both N -> PASS
+C-RHO-GRID: no grid value of h on [r0, 50 r0] (2001 points) above sigma_eps at both N -> PASS
+PLANT-RHO-SIGMA: refused (sigma_eps below rho_h at r = 105.210) -> FIRES
+C-E-LOWER: Lemma E ends min(R, (1 - sp^2) R) on R = -1, 1 and max(R, 0) on R = -1, 2 with 1 - sp^2 = 0.5 -> PASS
+PLANT-E-LOWER: refused (a Lemma E lower end above min(R, (1 - sp^2) R)) -> FIRES
+C-KAPPA-GE1: kappa >= 1 certainly at both N (N4 4.4426648317795291e+01, N3 1.2543777659551813e+01): the w = 2 s-part of c_b dominates Lemma S at w = 1 (ADD1 sect. 2) -> PASS
+C-MEAN-PARTS: on every piece the c_t (w = 2, double trick) and c_b (w = 1, Tb) balls hold main -+ (gg box + gg tail + s-part) over G_00 lambda~_0^w: 0 failures -> PASS
+INFO MEAN-PARTS N=4: first piece gg box 1.0593057469674267e-09, gg tail 1.5846306437217678e-10, s-part c_t 1.9861345383523574e-04 (level 12), s-part c_b 1.6764280013932640e-04 (level 10), normalization relative width 8.9901560046845005e-05; c_t main 1.001, c_b main 0.8268; largest gg box 1.0593057469674267e-09
+INFO MEAN-PARTS N=3: first piece gg box 1.3712539045734318e-10, gg tail 3.9675693503339080e-13, s-part c_t 4.5080697341964455e-05 (level 7), s-part c_b 4.4286839209897479e-05 (level 7), normalization relative width 4.7767294958622710e-05; c_t main 0.6675, c_b main 0.5512; largest gg box 1.3712539045734318e-10
+PLANT-MEAN-NOSPART: refused (C-MEAN-PARTS: a mean ball without its gg part or its s-part) -> FIRES
+PLANT-MEAN-SIGN: refused (C-MEAN-SIGN: a relative correction e_1 > 0 on a ratio ball that is not certainly positive) -> FIRES
+C-HS-SRC: HS_INV_NORMX_v1_d3d4b.kv (f8e3d5e0) under its run output px08_hsd3b_export_v1_1_run.out (b8b7f8b7), rule V2: both pinned, VERDICT lines exactly [VERDICT VALID], one RECORD line with the record sha256, EXPORT_STATUS and FORMAT certified, no MOCK token -> PASS
+PLANT-HS-SRC: refused (C-HS-SRC: HS_INV_NORMX_v1_d3d4b.kv does not match its pin) -> FIRES
+PLANT-HS-SRC-RUN: refused (C-HS-SRC: px08_hsd3b_export_v1_1_run.out does not match its pin) -> FIRES
+C-HS-RECORD: C-HS-NOTE (LEMMA_NOTE = the pinned HS_NORMX_LEMMA_NOTE_v1 1340a52c), C-HS-OP (OPERATOR_D3, OPERATOR_D4, OPERATOR_D4M exact; NORMALIZATION HS2_TR_XC_STAR_XC), C-HS-INV, C-HS-LAMBDA (p = 2 for D3, 1 for D4 and D4M), C-HS-J (METHOD in LEMMA/T_SERIES_REMAINDER/J_BALL/MONOTONE_IN_J, ranges), C-HS-MIRROR (MIRROR_D4M = ADJOINT_OF_D4, the D4M row keys = the D4 ones): COEF N4_D3 44.3756314989, N4_D4 22.2243186684, N4_D4M 22.2243186684, N3_D3 9.03928047080, N3_D4 5.78580139379, N3_D4M 5.78580139379 -> PASS
+C-HS-D3-SAME: every key of the D3 record HS_INV_NORMX_v1.kv (6b82dc63) but CODE and END is unchanged in the combined record (ADD1 sect. 2) -> PASS
+PLANT-HS-D3-SAME: refused (C-HS-D3-SAME: 1 keys of the D3 record differ (first N4_D3_R000)) -> FIRES
+C-HS-OP-SPEC: HS_OP_D4 and HS_OP_D4M equal OPERATOR_D4 and OPERATOR_D4M of SPEC_HS_INV_NORMX_v1_2_ADD1.md (f2ad58c9) line for line -> PASS
+PLANT-HS-OP-SPEC: refused (C-HS-OP-SPEC: OPERATOR_D4 differs from ADD1 sect. 1) -> FIRES
+PLANT-HS-NOTE: refused (C-HS-NOTE: LEMMA_NOTE 'pk08/HS_NORMX_LEMMA_NOTE_v1.md:1340a52c4edab4e726691a5e150ab55bfdd0fa87fed2b7b34caa1f2d00000000' is not the pinned HS_NORMX_LEMMA_NOTE_v1.md) -> FIRES
+PLANT-HS-OP-W2: refused (C-HS-OP: OPERATOR_D3 is not the exact string of the spec (v1_2 sect. 6, ADD1 sect. 1)) -> FIRES
+PLANT-HS-OP-D4: refused (C-HS-OP: OPERATOR_D4 is not the exact string of the spec (v1_2 sect. 6, ADD1 sect. 1)) -> FIRES
+PLANT-HS-OP-NORM2: refused (C-HS-OP: NORMALIZATION 'HS2_TR_XC_STAR_XC_OVER_LAMBDA0_2W' is not HS2_TR_XC_STAR_XC) -> FIRES
+PLANT-HS-LAMBDA: refused (C-HS-LAMBDA: LAMBDA_POWER_D3 '1' is not 2) -> FIRES
+PLANT-HS-LAMBDA-D4: refused (C-HS-LAMBDA: LAMBDA_POWER_D4 '2' is not 1) -> FIRES
+PLANT-HS-J-POINT: refused (C-HS-J: N4_D3_METHOD 'POINT') -> FIRES
+PLANT-HS-J-JLOJHI: refused (C-HS-J: the N4_D3 row is a point value) -> FIRES
+PLANT-HS-MIRROR: refused (C-HS-MIRROR: MIRROR_D4M or a D4M row key differs from its D4 key) -> FIRES
+PLANT-HS-CBOX: refused (C-HS-CBOX: a mean ball outside the row box) -> FIRES
+PLANT-HS-COV: refused (C-HS-COV: normX_HS below the Cov_inf_lo lower end) -> FIRES
+C-RHO-R: Lemma R at eps_R = 0.85 in (0, 1) (Lemma G keeps eps 0.25): r* >= r0 (the closed form branch) and no grid value of h on [r0, 50 r0] above sigma_R, both N; sigma_R N4 9.0791881139142766e-09, N3 7.1969161869380270e-09; Phi_W,R N4 5.1462979616741959e+03, N3 2.9807759417790669e+02 -> PASS
+PLANT-RHO-SIGMA-R: refused (sigma_eps below rho_h at r = 105.210) -> FIRES
+INFO RHO-R N=4: eps_R 0.85: sigma_R 9.0791881139142766e-09, r0 102.69435, r* 109.54161, Phi_W,R 5.1462979616741959e+03 (Lemma G eps 0.25: sigma 1.8271394396009847e-03, Phi_W 4.1170383693393568e+01)
+INFO RHO-R N=3: eps_R 0.85: sigma_R 7.1969161869380270e-09, r0 104.23417, r* 111.08154, Phi_W,R 2.9807759417790669e+02 (Lemma G eps 0.25: sigma 1.7059315998276237e-03, Phi_W 1.1923103767116269e+01)
+PLANT-RHO-PAIR: refused (C-RHO-R: sigma at eps 0.85 with Phi_W at eps 0.25) -> FIRES
+INFO ROUTE-TERMS N=3 D3: e_11 2.1435107124318236e-03 (level 23), s-part 4.2004137321946045e-04 (level 8), DOUBLE gg 4.9057464680283266e-09 (level 37); ecs_rho constant R8 8.7877853844793927e-05
+INFO ROUTE-TERMS N=3 D4: e_11 3.0169154459546554e-03 (level 27), s-part 1.8059772176162519e-04 (level 5), DOUBLE gg 8.1396878646517066e-08 (level 40)
+INFO ROUTE-TERMS N=3 D4M: e_11 3.0169154459546554e-03 (level 27), s-part 1.8059772176162519e-04 (level 5), DOUBLE gg 8.1396878646517066e-08 (level 40)
+INFO ROUTE-TERMS N=4 D3: e_11 9.6852630102341221e-03 (level 29), s-part 3.3280885160251908e-03 (level 14), DOUBLE gg 6.4421737357646922e-08 (level 40); ecs_rho constant R8 5.7013957863473463e-03
+INFO ROUTE-TERMS N=4 D4: e_11 1.0479328191869702e-02 (level 30), s-part 1.2691153170258816e-03 (level 8), DOUBLE gg 1.7903096401075639e-06 (level 40)
+INFO ROUTE-TERMS N=4 D4M: e_11 1.0479328191869702e-02 (level 30), s-part 1.2691153170258816e-03 (level 8), DOUBLE gg 1.7903096401075639e-06 (level 40)
+C-MEAN-DT: on every row the double-trick means (c_t; c_bb = c_t; c_b = Tb) meet the single-trick Lemma E-prime balls (a sanity check) -> PASS
+C-E2: E2_hi (Lemma E) >= the uncorrected SM value on every row -> PASS
+C-ROUTE: on every row the exported route is admissible for its class (ROUTE_OK) and Cov_inf_lo is the largest admissible route value -> PASS
+PLANT-ROUTE-D3-DOUBLE: refused (C-ROUTE: route DOUBLE is not admissible for D3) -> FIRES
+PLANT-ROUTE-ABOVE: refused (C-ROUTE: the exported Cov_inf_lo is not route DOUBLE value) -> FIRES
+C-COV-PROD: on every row both mean balls the routes multiply (c_e, c_f) are certainly positive at their lower ends (cov_from's test) -> PASS
+PLANT-COV-PROD: refused (C-COV-PROD: a mean ball whose lower end is not certainly positive) -> FIRES
+PLANT-ROUTE-LARGER: refused (C-ROUTE: an admissible route is larger than the exported one) -> FIRES
+C-COV-ORDER: on every row Cov_inf_lo <= Cov_inf_hi, both finite decimals (Cov_inf_hi = min over the admissible routes of E11_hi - c_e,lo c_f,lo; the means export carries both) -> PASS
+PLANT-COV-ORDER: refused (C-COV-ORDER: Cov_inf_lo 7.5040087407604377e-03, Cov_inf_hi 4.5574374020865378e-03) -> FIRES
+INFO ROUTES N=4 D3: SINGLE 0, CS 904; smallest Cov_inf_lo 4.438216e-03 at piece 0116
+INFO ROUTES N=4 D4: SINGLE 0, DOUBLE 904; smallest Cov_inf_lo 3.110927e-03 at piece 0116
+INFO ROUTES N=4 D4M: SINGLE 0, DOUBLE 904; smallest Cov_inf_lo 3.110927e-03 at piece 0116
+INFO ROUTES N=3 D3: SINGLE 0, CS 904; smallest Cov_inf_lo 3.629041e-03 at piece 0116
+INFO ROUTES N=3 D4: SINGLE 0, DOUBLE 904; smallest Cov_inf_lo 2.483271e-03 at piece 0116
+INFO ROUTES N=3 D4M: SINGLE 0, DOUBLE 904; smallest Cov_inf_lo 2.483271e-03 at piece 0116
+C-ECS-PHI: the CS route uses rho_(phi,ij)^2 by its Q-form bound 1 + R8 G_00,hi/M_ij,lo (R8 N4 5.7013957863473463e-03, N3 8.7877853844793927e-05): rho^2 in [1.003, 1.003] (N4), [1, 1] (N3) -> PASS
+PLANT-ECS-PHI: refused (C-ECS-PHI: rho_(phi,ij) below its Q-form bound) -> FIRES
+PLANT-M-POS: refused (C-M-POS: M_ij lower end not certainly positive) -> FIRES
+C-ECS-LEVEL: each CS box term and the tail term it joins come from one level, in the g-part (Sigma_tails) and in the s-part (the S-prime tail rows) -> PASS
+PLANT-ECS-LEVEL: refused (C-ECS-LEVEL: box level 10 with tail level 12) -> FIRES
+C-ECS-E2/C-D4S-LEVEL (sanity): E2_t (Lemma E-prime, m = 2) is at least the trial ratio M_20/M_00 on every piece (E2_bb = E2_t by the flip); sigma_D4 takes the b-tail at its own split level -> PASS
+PLANT-D4S-LEVEL: refused (C-D4S-LEVEL: the split level 10 is not the b-tail level 12) -> FIRES
+PLANT-D4S-E2: refused (C-ECS-E2: E2_t below the trial ratio M_20/M_00) -> FIRES
+C-RHO-F1: rho_phi = 1 + 2 sigma_eps sqrt(Phi_W) from Lemma R with Lemma T-prime and the S7 certified G_00 lower end: N4 1.0234473704528904e+00, N3 1.0117811116386912e+00 -> PASS
+PLANT-RHO-F1: refused (C-RHO-F1: rho_phi with G_00 from G00_MOCK) -> FIRES
+C-HS-CBOX/C-HS-J (per piece): every piece of D3, D4 and D4M inside its HS row J range and its mean balls inside the row box: 0 refusals -> PASS
+C-HS-COV: normX_HS >= max(Cov_inf_lo, 0) on every piece served (D3, D4, D4M): 0 failures -> PASS
+INFO C-HS-MIN: normX_hi = min(Lemma S-prime, normX_HS) per piece and class (both valid upper bounds); HS smaller on N4_D3 904, N4_D4 904, N4_D4M 904, N3_D3 904, N3_D4 904, N3_D4M 904 of 904 pieces each
+C-HS-SPOT (a control): HS2_hi on the first piece of each class is at least the float spot value 2 Cov(X_c, theta X_c) + Cov^2 at the half-step plane from kt_s8rf_v1 (outputs a2edc1d7 070ddd44): N3_D3 9.0174402659324784e+00 vs 2.057310e-05; N3_D4 5.7788075015006584e+00 vs 1.787807e-04; N3_D4M 5.7788075015006584e+00 vs 1.776584e-05; N4_D3 4.4254829140092177e+01 vs 4.248230e-05; N4_D4 2.2194047777926748e+01 vs 3.253094e-04; N4_D4M 2.2194047777926748e+01 vs 3.268188e-05 -> PASS
+PLANT-HS-SPOT: refused (C-HS-SPOT: N4_D3_SPOT does not name the pinned kt_s8rf_v1 output) -> FIRES
+PLANT-HS-SPOT-D4: refused (C-HS-SPOT: N4_D4_SPOT does not name the pinned kt_s8rf_v1 output) -> FIRES
+ROUTE-TSV routes_kt_p2_assembly_v1_37_1_cert.tsv sha256 513e67e4e81ad11c1b0f199b8e4438e60f6e66416bbb3a34a2e4d202c9125d51 rows 5424
+E2 N=3 D3: Delta_E2 0.6714 on the first piece (e_f 6.6037390793982442e-01, s-part 9.9160832148860473e-03) against e2_bound_v4's 0.6716: relative 3.29e-04
+E2 N=3 D4: Delta_E2 0.6103 on the first piece (e_f 6.0863316817222402e-01, s-part 9.7991927813204701e-04) against e2_bound_v4's 0.6110: relative 1.16e-03
+E2 N=4 D3: Delta_E2 5.4670 on the first piece (e_f 5.1699669364225960e+00, s-part 2.8524768690577973e-01) against e2_bound_v4's 5.4667: relative 6.29e-05
+E2 N=4 D4: Delta_E2 3.5433 on the first piece (e_f 3.5083650929196364e+00, s-part 2.7587372631908379e-02) against e2_bound_v4's 3.5477: relative 1.24e-03
+C-E2-FLOAT: Delta_E2 against e2_bound_v4 (theta 0.7, Lemma T-prime, rho_phi with it, certified eps_r and s) within 30% (Lemma E-prime: the same Phi_eps, S-prime, A_theta and levels; the means +-1% there) -> PASS
+INFO MEANS N=4: c_t over every piece and class in [1.0005162377905192e+00, 1.0013061909280736e+00] (the double-trick means); for SH4 (N - 1)/2 - c_t,hi = 4.9869380907192645e-01; largest relative width of c_t 0.0008
+INFO MEANS N=3: c_t over every piece and class in [6.6718774192398400e-01, 6.6755417657816274e-01] (the double-trick means); for SH4 (N - 1)/2 - c_t,hi = 3.3244582342183732e-01; largest relative width of c_t 0.0004
+C-MEANS: 5424 rows; every mean ball ordered and positive, and every first piece contains the J = 300 FLOAT mean (t and bb 1.00102816, b 0.82681845 at N4) -> PASS
+INFO CE-T N=4: c_t per piece (intersection over the classes): min ce_lo 1.0005162377905192e+00, max ce_hi 1.0013061909280736e+00; SH4 gate (N - 1)/2 - c_N/300 = 1.4920833333333332e+00; pk07 binding ce_lo >= 0.9724
+INFO CE-T N=3: c_t per piece (intersection over the classes): min ce_lo 6.6718774192398400e-01, max ce_hi 6.6755417657816274e-01; SH4 gate (N - 1)/2 - c_N/300 = 9.9333333333333329e-01; pk07 binding ce_lo >= 0.6444
+C-CE-T: the intersection of the three classes c_t balls is non-empty on every piece, both N -> PASS
+INFO CE-CLASS N=4: c_t ball per class, first piece mid (width), then the mid range and the largest width over the pieces: D3 1.000957 (6.33e-04), [1.000853, 1.000957], 7.90e-04; D4 1.000957 (6.33e-04), [1.000853, 1.000957], 7.90e-04; D4M 1.000957 (6.33e-04), [1.000853, 1.000957], 7.90e-04
+INFO CE-CLASS N=3: c_t ball per class, first piece mid (width), then the mid range and the largest width over the pieces: D3 0.667463 (1.83e-04), [0.667260, 0.667463], 2.73e-04; D4 0.667463 (1.83e-04), [0.667260, 0.667463], 2.73e-04; D4M 0.667463 (1.83e-04), [0.667260, 0.667463], 2.73e-04
+C-C1-SOURCE: the pinned SPEC_M2B_CERT_v1_ADD3.md holds C1_CLAIM once and kt_s9h_m21.py holds C1_NOSPACE once -> PASS
+NORMX N=3 D3: normX_hi 7.2167588300823581e+01 at levels 8 8 (Lemma S') against float_check_schur_v2's 73.1116: relative 1.29e-02
+NORMX N=3 D4: normX_hi 2.8586064156303568e+01 at levels 4 6 (Lemma S') against float_check_schur_v2's 28.9355: relative 1.21e-02
+NORMX N=3 D4M: normX_hi 2.8586064156303568e+01 at levels 4 6 (Lemma S') against float_check_schur_v2's 28.9355: relative 1.21e-02
+NORMX N=4 D3: normX_hi 2.0059873113212075e+02 at levels 14 14 (Lemma S') against float_check_schur_v2's 201.2190: relative 3.08e-03
+NORMX N=4 D4: normX_hi 7.8276533684541377e+01 at levels 9 8.5 (Lemma S') against float_check_schur_v2's 78.4732: relative 2.51e-03
+NORMX N=4 D4M: normX_hi 7.8276533684541377e+01 at levels 9 8.5 (Lemma S') against float_check_schur_v2's 78.4732: relative 2.51e-03
+C-NORMX-FLOAT: worst relative 1.29e-02 (2e-2) -> PASS
+C-NORMX-BOX: at levels 29.0 28.5 the tails are 2.098e-10 of the box (at most 1e-9) -> PASS
+PLANT-NORMX-LEVEL: refused (a level below c+ + 1) -> FIRES
+PLANT-NORMX-HLEVEL D3: refused (a horizontal Lemma S-prime level below c+ (v1_11 (2))) -> FIRES
+PLANT-NORMX-HLEVEL D4: refused (a horizontal Lemma S-prime level below c+ (v1_11 (2))) -> FIRES
+C-S9H-LOAD: kt_s9h_v1_3_readers.py (610af315) read once, checked against its full sha256 pin and run from those bytes; rlimits, the SIGXCPU handler, argv, cwd and the flint and mpmath precisions unchanged -> PASS
+PLANT-S9H-PIN: refused (C-S9H-LOAD: kt_s9h_v1_3_readers.py does not match its pin) -> FIRES
+C-S9H-GRID: the readers' joint_grid (v2_2's pinned export) equals this run's grid string for string (904 pieces) -> PASS
+INFO C-CERT-EXISTS/PART: this run's temporary names end in .20261108T183638Z_3877244.part; .part files that earlier refused cert writes left in pk15/out (harmless; nothing here deletes, move them aside by hand): none
+C-COV-POS: Cov_inf_lo > 0 exactly on every joint row as printed (the consumer's C-SRC-J needs it) -> PASS
+PLANT-COV-POS: refused (C-COV-POS: row N4_D3_P0000 has a field of Cov_inf_lo that is not a decimal > 0) -> FIRES
+INFO JUNIF: the joint and means exports' certified-path triple from status_junif: status CERTIFIED, FLOAT_IN none, J_UNIFORMITY J_UNIF_PP; C-JUNIF-STATUS after the writes tests it, the t triple and the pairs as written
+PLANT-JUNIF-STATUS: refused (C-JUNIF-STATUS: the per-piece J_UNIFORMITY with status CERTIFIED_GIVEN_FLOAT_IN and FLOAT_IN x: y) -> FIRES
+C-T-POS: At_lo, Aa_lo and Xta_lo > 0 exactly on every t row as printed (the consumer's SIGN test) -> PASS
+PLANT-T-POS: refused (C-T-POS: row N4_P0000 has a field of At_lo, Aa_lo, Xta_lo that is not a decimal > 0) -> FIRES
+C-JUNIF: J_UNIF_PP is the string pinned with pk07 (120 chars, sha256 7aba90d5c6b9411b...); the joint and means exports carry it, the t export carries J_UNIF_PP while its M4 inputs are EPS_M2B CERTIFIED, LAW_A_T_A_AM CERTIFIED, NA_LEMMA_B CERTIFIED, R_E1_R_E3 CERTIFIED, S9_RITZ_PIECES CERTIFIED, TAU_R CERTIFIED, TZ_P2_3 CERTIFIED (each with MSFX in a MOCK export) -> PASS
+PLANT-JUNIF-T: refused (J_UNIFORMITY PER-PIECE on a t export whose M4 inputs are not all certified) -> FIRES
+C-READBACK: each written export reads back key for key and string for string (header, rows, END) -> PASS
+C-JUNIF-STATUS: the per-piece J_UNIFORMITY only beside EXPORT_STATUS CERTIFIED and FLOAT_IN none, in the three exports as written (EXPORT_STATUS CERTIFIED, CERTIFIED, CERTIFIED) and in status_junif's triples (joint and means CERTIFIED with J_UNIF_PP, t CERTIFIED with J_UNIF_PP) -> PASS
+PLANT-JUNIF-MOCKPAIR: refused (C-JUNIF-STATUS: the per-piece J_UNIFORMITY with status MOCK and FLOAT_IN none) -> FIRES
+C-COV-SAME: the means export Cov_inf_lo equals the joint export Cov_inf_lo string for string on every row (5424 rows) -> PASS
+PLANT-COV-SAME: refused (C-COV-SAME: row N4_D3_P0000 differs between the means and the joint export) -> FIRES
+PLANT-CERT-REWRITE: refused (C-READBACK: the EXPORT_P2_14_JOINT_v1 lines do not read back as written) -> FIRES
+PLANT-CERT-PATH: refused (C-CERT-PATH: a certified export outside pk15/out) -> FIRES
+PLANT-CERT-MOCKTOKEN: refused (C-CERT-MOCKTOKEN: MOCK in CLAIM) -> FIRES
+PLANT-CERT-READER: refused (C-CERT-READER: no reader for EXPORT_P2_14_JOINT_v1 in the readers dict; no certified export is written) -> FIRES
+PLANT-CERT-EXISTS: refused (C-CERT-EXISTS: export_p2_14_joint_float_v1_2.kv exists) -> FIRES
+PLANT-CERT-HEADER: refused (C-CERT-HEADER: not a certified header) -> FIRES
+PLANT-CERT-JUNIF: refused (C-CERT-HEADER: FLOAT_IN, OPEN_CONDITIONS or J_UNIFORMITY is not the certified value (none, none, J_UNIF_PP)) -> FIRES
+PLANT-CERT-RECORD: refused (C-CERT-READER: no reader for EXPORT_P2_T_v1 in the readers dict; no certified export is written) -> FIRES
+PLANT-CERT-PART: refused (C-CERT-EXISTS: the temporary file plant_cert_part_kt_p2_assembly_v1_37_1.kv.20261108T183638Z_3877244.part exists) -> FIRES
+C-CERT-NOFILE: no cert plant left a file or a temporary file (7 names checked) -> PASS
+EXPORT export_p2_14_joint_cert_kt_p2_assembly_v1_37_1.kv sha256 5586a81d3bed04b8d5473d068b9d7b194956dbbd1e69551267da38446c0bacb8
+INFO EXPORT export_p2_14_joint_cert_kt_p2_assembly_v1_37_1.kv: 5424 rows, FORMAT S4U_KV_v1, EXPORT_STATUS CERTIFIED, J_UNIFORMITY J_UNIF_PP
+C-S9H-READ export_p2_14_joint_cert_kt_p2_assembly_v1_37_1.kv: after C-READBACK, kt_s9h_v1_3 joint_read reads it as CERTIFIED and s9h_ident compares FORMAT, RECORD, END, EXPORT_STATUS, TAG and RUN_VERDICT (no problems) -> PASS
+EXPORT export_p2_t_cert_kt_p2_assembly_v1_37_1.kv sha256 b05b09ad648368d9e61700a88bf38680de3592a8f235a845b1bcb65b9c142924
+INFO EXPORT export_p2_t_cert_kt_p2_assembly_v1_37_1.kv: 1808 rows, FORMAT S4U_KV_v1, EXPORT_STATUS CERTIFIED, J_UNIFORMITY J_UNIF_PP
+C-S9H-READ export_p2_t_cert_kt_p2_assembly_v1_37_1.kv: after C-READBACK, kt_s9h_v1_3 t_read reads it as CERTIFIED and s9h_ident compares FORMAT, RECORD, END, EXPORT_STATUS, TAG and RUN_VERDICT (no problems) -> PASS
+EXPORT export_p2_14_means_cert_kt_p2_assembly_v1_37_1.kv sha256 1120b12996a649b639ce9c5097bc81ce8b1791b493e410967db4f3911166e34b
+INFO EXPORT export_p2_14_means_cert_kt_p2_assembly_v1_37_1.kv: 5424 rows, FORMAT S4U_KV_v1, EXPORT_STATUS CERTIFIED, J_UNIFORMITY J_UNIF_PP
+C-S9H-READ export_p2_14_means_cert_kt_p2_assembly_v1_37_1.kv: after C-READBACK, means_check reads it as CERTIFIED and s9h_ident compares FORMAT, RECORD, END, EXPORT_STATUS, TAG and RUN_VERDICT (no problems) -> PASS
+C-S9H-CERTCOPY EXPORT_P2_14_JOINT_v1: in memory, with the certified header (certify_header), it passes the cert writer's refusals before any file operation, C-READBACK, then kt_s9h_v1_3 joint_read as CERTIFIED with s9h_ident (no problems) -> PASS
+C-S9H-CERTCOPY EXPORT_P2_T_v1: in memory, with the certified header (certify_header), it passes the cert writer's refusals before any file operation, C-READBACK, then kt_s9h_v1_3 t_read as CERTIFIED with s9h_ident (no problems) -> PASS
+C-S9H-CERTCOPY EXPORT_P2_14_MEANS_v1: in memory, with the certified header (certify_header), it passes the cert writer's refusals before any file operation, C-READBACK, then means_check as CERTIFIED with s9h_ident (no problems) -> PASS
+PLANT-S9H-CENTRING: refused (C-S9H-JOINT: joint_read finds 1 problems (first: certified requirement CENTRING)) -> FIRES
+PLANT-S9H-JOINT-T: refused (C-S9H-JOINT: joint_read finds 5439 problems (first: header CLASSES; header WX_D3; header WX_D4)) -> FIRES
+C-S9H-BIND (a test): rule V2's bound_ok accepts a synthetic run output in this run's EXPORT line form with VERDICT VALID for export_p2_14_joint_cert_kt_p2_assembly_v1_37_1.kv (accepted); the binding to this run's own VERDICT is the consumer's -> PASS
+PLANT-S9H-BIND-SHA: refused (C-S9H-BIND: bound_ok refuses export_p2_14_joint_cert_kt_p2_assembly_v1_37_1.kv with sha256 5586a81d...) -> FIRES
+PLANT-CERT-STAGE2: refused (C-S9H-T: t_read finds 1 problems (first: C-FLIP declaration XTB_SOURCE 'COMPUTED')) -> FIRES
+C-CERT-ALLORNONE: after PLANT-CERT-STAGE2 the store holds no final name, only the two staged temporary files, and nothing of it is on disk -> PASS
+C-CERT-DRY (control): in a memory store the three exports with their certified headers are staged, checked and renamed, and the store then holds exactly the three final names with their bytes (as expected) -> PASS
+C-SRCJ export_p2_14_joint_cert_kt_p2_assembly_v1_37_1.kv: pk07's C-SRC-J, pX_hi^2 >= E2_hi - Cov_inf_lo^2 exactly on the printed decimals (5424 rows) -> PASS
+PLANT-SRCJ: refused (row N4_D3_P0000: pX_hi^2 < E2_hi - Cov_inf_lo^2) -> FIRES
+C-FLIP export_p2_t_cert_kt_p2_assembly_v1_37_1.kv: XTB_SOURCE = FLIP_OF_XTA and Xtb_lo equal to Xta_lo string for string (1808 rows) -> PASS
+PLANT-FLIP-ROW: refused (row N4_P0000: Xtb_lo 4.1135050909539154e-03, Xta_lo 4.1135050909539153e-03) -> FIRES
+PLANT-FLIP-DECL: refused (XTB_SOURCE None) -> FIRES
+PLANT-FLIP-SRC: refused (XTB_SOURCE 'COMPUTED') -> FIRES
+PLANT-CERTOUT: the writer with a certified FORMAT raised before opening a file -> FIRES
+ITEM cert cpu 9.1 s, peak resident memory 107 MiB
+VERDICT VALID

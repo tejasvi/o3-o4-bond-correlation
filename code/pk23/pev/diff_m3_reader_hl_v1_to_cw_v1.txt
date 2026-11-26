@@ -1,0 +1,41 @@
+--- m3_reader_hl_v1.py
++++ m3_reader_cw_v1.py
+@@ -1,5 +1,15 @@
+ #!/usr/bin/env python3
+-"""m3_reader_hl_v1.py -- pk23 (code/pk23/pev/). pk22's m3_reader_c3h_v1_2.py (sha256 bff8344c2ecfaaa7c87b831dc1679a420b1ab665b9a99f7e80183a7a1601009b) with one more producer (the
++"""m3_reader_cw_v1.py -- pk23 (code/pk23/pev/). pk23's m3_reader_hl_v1.py (sha256 1fefb14743d62f245321449868103b82c08d5361376fcf6da3b23d311bb69d2b) with one more producer (the
++P0_LOG rows 4589 and 4610: the certified J-laws of pk23's C_w record LC for C_w's second-order comb), made by
++pk23/pev/make_m3_reader_cw_v1.py with exact replacements of asserted counts. What changes, and nothing else
++(pk23/pev/diff_m3_reader_hl_v1_to_cw_v1.txt):
++- the producer allow-list PRODUCERS gains m3_lawcert_cw_v1 (sha256 9087afc244749905432cfe72f5b656257d6552154d363a02e99441674f2fa6c5), which certifies exactly the one record
++  m3_cw_LC_N<N>_J300_cw.json (m3_run_v1_9_3_cw_v1's asmc.N); PRODUCER_RE names it; PRODUCER_RECORDS gives it the prefix m3_cw_, the
++  suffix _J300_cw.json and the family LC.
++Every earlier producer stays as it is. Consumers call load and load_lawcert, never _bound or _parse_lawcert alone, and pass the certificate with
++its own job output m3_lawcert_cw_v1_<N>.out. The check job pk23/pev/m3_reader_cw_check_v1.py runs load_lawcert on both N, with plants.
++m3_reader_hl_v1's docstring follows.
++m3_reader_hl_v1.py -- pk23 (code/pk23/pev/). pk22's m3_reader_c3h_v1_2.py (sha256 bff8344c2ecfaaa7c87b831dc1679a420b1ab665b9a99f7e80183a7a1601009b) with one more producer (the
+ P0_LOG row 4589: the certified J-laws of pk23's Pev records for C_w's second-order comb), made by pk23/pev/make_m3_reader_hl_v1.py with
+ exact replacements of asserted counts. What changes, and nothing else (pk23/pev/diff_m3_reader_c3h_v1_2_to_hl_v1.txt):
+ - the producer allow-list PRODUCERS gains m3_lawcert_hl_v1_1 (sha256 8d5fe3c797b7861fa3ea6da836e0b7d5341d8aea8a693c553bf3805b650c9fd0), which certifies exactly the three records
+@@ -174,7 +184,8 @@
+              'm3_lawcert_c3h_v1.py': '89725ecadc70e167fea5b6a6147861ba43b025c5abeaded1bdb4eef5911d966e',   # m3_reader_c3h_v1: the two c3h records
+              'm3_lawcert_c3h_v1_1.py': '554fa9d3b61762352489c095bb0956b3c395d9027da9600e3e208ea88c5812cc',   # m3_reader_c3h_v1_1: the three c3h records
+              'm3_lawcert_c3k_v1.py': '8b96d81a41bd172ef26e940bece4f43bdc17c5ce039953f900b5660ca96fa6f3',   # m3_reader_c3h_v1_2: the two c3k records
+-             'm3_lawcert_hl_v1_1.py': '8d5fe3c797b7861fa3ea6da836e0b7d5341d8aea8a693c553bf3805b650c9fd0'}   # m3_reader_hl_v1: pk23's three Pev records
++             'm3_lawcert_hl_v1_1.py': '8d5fe3c797b7861fa3ea6da836e0b7d5341d8aea8a693c553bf3805b650c9fd0',   # m3_reader_hl_v1: pk23's three Pev records
++             'm3_lawcert_cw_v1.py': '9087afc244749905432cfe72f5b656257d6552154d363a02e99441674f2fa6c5'}   # m3_reader_cw_v1: pk23's C_w record LC
+ PRODUCER_RECORDS = {'m3_lawcert_v1.py': ('m3_s8v3_', '_J300_v1_8.json', ('D', 'N', 'E2', 'E3', 'FF')),
+                     'm3_lawcert_v1_1.py': ('m3_s8v3_', '_J300_v1_8_1.json', ('D', 'E2', 'E3', 'FF')),
+                     'm3_lawcert_v1_2.py': ('m3_s8v3_', '_J300_v1_8_2.json', ('N',)),
+@@ -182,8 +193,9 @@
+                     'm3_lawcert_c3h_v1.py': ('m3_c3h_', '_J300_c3h.json', ('CE3H', 'CS4H')),   # m3_reader_c3h_v1
+                     'm3_lawcert_c3h_v1_1.py': ('m3_c3h_', '_J300_c3h.json', ('CE3H', 'CS4H', 'H4TH')),   # m3_reader_c3h_v1_1
+                     'm3_lawcert_c3k_v1.py': ('m3_c3k_', '_J300_c3k.json', ('E4D', 'E4N')),   # m3_reader_c3h_v1_2
+-                    'm3_lawcert_hl_v1_1.py': ('m3_hl_', '_J300_hl.json', ('L', 'LH', 'LT'))}   # m3_reader_hl_v1
+-PRODUCER_RE = re.compile(r'(m3_lawcert_v1|m3_lawcert_v1_1|m3_lawcert_v1_2|m3_lawcert_s9h_v1_1|m3_lawcert_c3h_v1|m3_lawcert_c3h_v1_1|m3_lawcert_c3k_v1|m3_lawcert_hl_v1_1) N ([0-9]+) LIM ([0-9]+); script sha256 ([0-9a-f]{64}); python (\S+)')
++                    'm3_lawcert_hl_v1_1.py': ('m3_hl_', '_J300_hl.json', ('L', 'LH', 'LT')),   # m3_reader_hl_v1
++                    'm3_lawcert_cw_v1.py': ('m3_cw_', '_J300_cw.json', ('LC',))}   # m3_reader_cw_v1
++PRODUCER_RE = re.compile(r'(m3_lawcert_v1|m3_lawcert_v1_1|m3_lawcert_v1_2|m3_lawcert_s9h_v1_1|m3_lawcert_c3h_v1|m3_lawcert_c3h_v1_1|m3_lawcert_c3k_v1|m3_lawcert_hl_v1_1|m3_lawcert_cw_v1) N ([0-9]+) LIM ([0-9]+); script sha256 ([0-9a-f]{64}); python (\S+)')
+ CERT_ENTRY_KEYS = {'parity', 'law_claim', 'laws'}
+ HEX64 = re.compile('[0-9a-f]{64}')
+ RAT = re.compile('-?[0-9]+(/[0-9]+)?')

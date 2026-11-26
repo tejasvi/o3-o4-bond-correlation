@@ -1,0 +1,132 @@
+N = 4, all J in (0, 1/100]
+entries (section 5 "Entry bounds"):
+  (h- - 1)/J^2                       [0.124996, 0.125005] 
+  (h+ - 1)/J^2                       [0.625000, 0.625009] 
+  (h1 - 1)/J^2                       [0.249999, 0.250004] 
+  (k0^5 - 1)/J^2                     [0.625000, 0.625018] 
+  omega/J                            [0.353553, 0.353565] 
+  a/J^2                              [0.176777, 0.176786] 
+  b/J^3                              [0.031250, 0.031252] 
+  a^2/(kappa1 J^2)                   [0.500000, 0.500040] 
+  kappa1/J^2                         [0.062500, 0.062502] 
+Lemma 5.1:
+  (a) (mu1 - 1)/J^2                  [0.625000, 0.625021] 
+      (uses ||M'|| <= kappa1 (h+ + omega) <= 2 kappa1: h+ + omega <= 1.003598)
+  p/J^2 (z in kappa1[1 +- 0.6J])     [0.124957, 0.125040] 
+  s/J^2                              [0.249997, 0.250004] 
+  q/J                                [0.353545, 0.353565] 
+  (c) (mu2^ - 1)/J                   [0.353545, 0.355441] 
+      (mu4^ - 1)/J                   [-0.353566, -0.351669] 
+  (b) (mu3^ - 1)/J^2                 [0.124996, 0.125005] 
+      self-consistency: cluster eigenvalues inside kappa1[1 +- 0.6J]: True
+  (d) gap (mu2^ - mu3^)/J            [0.352295, 0.355441] 
+      gap (mu3^ - mu4^)/J            [0.351669, 0.354816] 
+  (d) convexity (mu2^+mu4^-2mu3^)/J^2 [0.124945, 0.125053] 
+      ||M(z)-M(z')|| / J^6 (|z/k1-1|<=0.6J) [0.000000, 0.000023] x J^7 (bound)
+Lemma 5.2:
+  beta / (leading beta0 J^2)         [0.999869, 1.000129] (beta0 = sqrt(N)/N^2)
+  gamma / (leading gamma0 J^3)       [0.999869, 1.000138] (gamma0 = sqrt(N)/N^3)
+  tan(2 eps)/J                       [0.176710, 0.176848] 
+  eps/J                              [0.088355, 0.088424] 
+  |psi_k(0)|/J^2 (k = 2, 4) <=       [0.000000, 0.176788] 
+  u_beta = (beta/beta0 - 1)/J^2      [-0.020870, -0.020797] 
+  u_rho = (J rho - 1)/J^2            [-0.083337, -0.083329] 
+Lemma 5.3 / (E5), t and bb (unit sqrt(N) J/(2N^2)), deep 4-state model:
+  (delta2 - delta4)/J                [0.529774, 0.530883] 
+  (delta2 + delta4)/J                [-0.002232, 0.000695] 
+  delta2/J                           [0.263771, 0.265789] 
+  delta4/J                           [-0.266557, -0.264540] 
+  delta3/J (t; bb: same with sign)   [-0.001474, 0.000000] 
+h (unit as above):
+  delta2^h/J                         [-0.179010, -0.176708] 
+  delta4^h/J                         [0.174545, 0.176848] 
+  f(0) deep t-bb / (N J^4/N^6)       [0.999621, 1.000350] (leading J^4/1024 at N=4, J^4/243 at N=3)
+  beta_b/beta0                       [0.999975, 1.000017] 
+  gamma_b/gamma0                     [0.999963, 1.000025] 
+verticals, deep 4-state model (A4 / Lemma 5.3):
+  u^a(110) / (leading sqrt(N) J/N^2) [0.999912, 1.000071] 
+  u^a(101) / (leading sqrt(N) J^2/N^3) [0.999912, 1.000073] 
+  u^a(0) / (leading -J^3/N^3)        [0.999394, 1.000594] 
+  u^a(011) / J^5                     [-0.001468, -0.001461] 
+  (u^a - u^t)(110) / J^3             [-0.007826, -0.007799] 
+  (u^a - u^t)(101) / J^4             [-0.003911, -0.003902] 
+  (u^a - u^t)(0) / J^3               [-0.000014, 0.000014] 
+  (delta2^a - delta2^t)/J            [-0.000630, 0.000000] 
+  (delta4^a - delta4^t)/J            [-0.000627, 0.000004] 
+   (these are (a^a_k - a^t_k)/(u0 J) with u0 = J beta0/2; each term carries an explicit power of J)
+  delta2^a/J                         [0.263140, 0.265789] 
+  delta4^a/J                         [-0.267184, -0.264535] 
+  (delta2^a - delta4^a)/J            [0.529139, 0.531509] 
+top-bottom pairings f(0)/(gamma0^2 J^4), deep 4-state vectors and the exact boundary-dressed b4 (gamma0^2 = 1/1024 at N=4, 1/243 at N=3):
+  t - bb (deep)                      [0.999621, 1.000350] 
+  t0 - bb (end, deep)                [0.999715, 1.000238] 
+  t0 - bb0 (both ends)               [0.999808, 1.000125] 
+  a - bb (deep)                      [0.999704, 1.000260] 
+  a - b (deep)                       [0.999787, 1.000171] 
+  t0 - b (end, deep vertical)        [0.999798, 1.000148] 
+N = 3, all J in (0, 1/100]
+entries (section 5 "Entry bounds"):
+  (h- - 1)/J^2                       [0.133327, 0.133341] 
+  (h+ - 1)/J^2                       [0.800000, 0.800014] 
+  (h1 - 1)/J^2                       [0.333331, 0.333341] 
+  (k0^5 - 1)/J^2                     [0.833333, 0.833365] 
+  omega/J                            [0.471405, 0.471423] 
+  a/J^2                              [0.272166, 0.272185] 
+  b/J^3                              [0.064150, 0.064154] 
+  a^2/(kappa1 J^2)                   [0.666667, 0.666736] 
+  kappa1/J^2                         [0.111111, 0.111115] 
+Lemma 5.1:
+  (a) (mu1 - 1)/J^2                  [0.833333, 0.833373] 
+      (uses ||M'|| <= kappa1 (h+ + omega) <= 2 kappa1: h+ + omega <= 1.004794)
+  p/J^2 (z in kappa1[1 +- 0.6J])     [0.133257, 0.133403] 
+  s/J^2                              [0.333327, 0.333341] 
+  q/J                                [0.471389, 0.471423] 
+  (c) (mu2^ - 1)/J                   [0.471389, 0.473758] 
+      (mu4^ - 1)/J                   [-0.471424, -0.469055] 
+  (b) (mu3^ - 1)/J^2                 [0.133327, 0.133341] 
+      self-consistency: cluster eigenvalues inside kappa1[1 +- 0.6J]: True
+  (d) gap (mu2^ - mu3^)/J            [0.470055, 0.473758] 
+      gap (mu3^ - mu4^)/J            [0.469055, 0.472758] 
+  (d) convexity (mu2^+mu4^-2mu3^)/J^2 [0.199902, 0.200091] 
+      ||M(z)-M(z')|| / J^6 (|z/k1-1|<=0.6J) [0.000000, 0.000099] x J^7 (bound)
+Lemma 5.2:
+  beta / (leading beta0 J^2)         [0.999822, 1.000176] (beta0 = sqrt(N)/N^2)
+  gamma / (leading gamma0 J^3)       [0.999822, 1.000191] (gamma0 = sqrt(N)/N^3)
+  tan(2 eps)/J                       [0.212043, 0.212229] 
+  eps/J                              [0.106021, 0.106114] 
+  |psi_k(0)|/J^2 (k = 2, 4) <=       [0.000000, 0.272188] 
+  u_beta = (beta/beta0 - 1)/J^2      [-0.022295, -0.022150] 
+  u_rho = (J rho - 1)/J^2            [-0.133339, -0.133326] 
+Lemma 5.3 / (E5), t and bb (unit sqrt(N) J/(2N^2)), deep 4-state model:
+  (delta2 - delta4)/J                [0.729787, 0.731563] 
+  (delta2 + delta4)/J                [-0.003319, 0.001094] 
+  delta2/J                           [0.363234, 0.366329] 
+  delta4/J                           [-0.367441, -0.364346] 
+  delta3/J (t; bb: same with sign)   [-0.002201, 0.000000] 
+h (unit as above):
+  delta2^h/J                         [-0.215454, -0.212039] 
+  delta4^h/J                         [0.208813, 0.212229] 
+  f(0) deep t-bb / (N J^4/N^6)       [0.999491, 1.000476] (leading J^4/1024 at N=4, J^4/243 at N=3)
+  beta_b/beta0                       [0.999967, 1.000020] 
+  gamma_b/gamma0                     [0.999950, 1.000030] 
+verticals, deep 4-state model (A4 / Lemma 5.3):
+  u^a(110) / (leading sqrt(N) J/N^2) [0.999883, 1.000090] 
+  u^a(101) / (leading sqrt(N) J^2/N^3) [0.999883, 1.000094] 
+  u^a(0) / (leading -J^3/N^3)        [0.999184, 1.000798] 
+  u^a(011) / J^5                     [-0.004768, -0.004736] 
+  (u^a - u^t)(110) / J^3             [-0.021421, -0.021345] 
+  (u^a - u^t)(101) / J^4             [-0.014275, -0.014236] 
+  (u^a - u^t)(0) / J^3               [-0.000044, 0.000045] 
+  (delta2^a - delta2^t)/J            [-0.001124, 0.000000] 
+  (delta4^a - delta4^t)/J            [-0.001114, 0.000011] 
+   (these are (a^a_k - a^t_k)/(u0 J) with u0 = J beta0/2; each term carries an explicit power of J)
+  delta2^a/J                         [0.362110, 0.366329] 
+  delta4^a/J                         [-0.368556, -0.364336] 
+  (delta2^a - delta4^a)/J            [0.728653, 0.732678] 
+top-bottom pairings f(0)/(gamma0^2 J^4), deep 4-state vectors and the exact boundary-dressed b4 (gamma0^2 = 1/1024 at N=4, 1/243 at N=3):
+  t - bb (deep)                      [0.999491, 1.000476] 
+  t0 - bb (end, deep)                [0.999619, 1.000315] 
+  t0 - bb0 (both ends)               [0.999747, 1.000153] 
+  a - bb (deep)                      [0.999607, 1.000349] 
+  a - b (deep)                       [0.999722, 1.000222] 
+  t0 - b (end, deep vertical)        [0.999734, 1.000188] 

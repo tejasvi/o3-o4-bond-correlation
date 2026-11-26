@@ -1,0 +1,47 @@
+px08_m2bc3 sha256 16de53b1cc8512611a0373e44a5ec82451210854abcac5705b94bf1cd330da53 ITEM=n4 asm LIM=230 SIGC=0.5
+C-HASH PASS (6 sources)
+PARTITION N=4: nodes 0..32 once each, reflection no, 58 G boxes tiling [0, 1] pi, 4 sub-boxes tiling each: PASS
+C-EVEN (partial item): PASS
+C-EVEN (partial item): PASS
+C-EVEN (partial item): PASS
+C-EVEN (partial item): PASS
+PLANT-DET (partial item): FIRED
+C-CONJ (partial item): PASS
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+PLANT-DET (partial item): FIRED
+C-CORE N=4 (shared core = s4c_m2bb.py lines 84-636 and 638-836): PASS, block lines [553, 199]
+C-PROP N=4 (Q_c = Q - 2 T(1/300), interval LDL^T): PASS, 79 al-intervals tiling [0, pi]; smallest pivot >= 1.02146784206e-3 on x in [43/64, 11/16] pi (0.0 s)
+C-COVER N=4 Re det Q_c at sigma 0.5: PASS (29508 boxes)
+C-REFINE-C N=4 (every box of width pi/128 or within the caps H1^4 1.77417920444e+15, h_lo^4 2.52737820072e+25): PASS
+G line N=4: Im al = 0.5 (the boundary line of the C-COVER strip), M = 64, 58 boxes, 4 sub-boxes each
+C-HALF N=4: PASS
+  N=4 I_c[H1^4] = [4e+2 +/- 68.7]; G 7.59507233329e+14, TW error 1.92370506773e+1, error/|T_M| 4.28089356153e-2
+  N=4 I_c[h_lo^4] = [6e+12 +/- 8.31e+11]; G 1.69467628366e+25, TW error 4.29233220168e+11, error/|T_M| 6.70527380182e-2
+  N=4 I_c[X1^16] = [5.5567879816e+12 +/- 62.5]; G 9.58282150415e+14, TW error 2.42716875912e+1, error/|T_M| 4.36793479820e-12
+  N=4 I_c[X1^20] = [1.9298590875e+18 +/- 3.60e+7]; G 1.28239649787e+21, TW error 3.24809630970e+7, error/|T_M| 1.68307433986e-11
+  N=4 I_c[X2^16] = [5.5567879816e+12 +/- 62.2]; G 9.45317418425e+14, TW error 2.39433125668e+1, error/|T_M| 4.30884040311e-12
+  N=4 I_c[X2^20] = [1.9298590875e+18 +/- 3.54e+7]; G 1.26166555879e+21, TW error 3.19558830082e+7, error/|T_M| 1.65586613112e-11
+  N=4 I_c[X3^16] = [1.47658912606e+15 +/- 7.31e+3]; G 1.18225976196e+17, TW error 2.99446666950e+3, error/|T_M| 2.02796202184e-12
+  N=4 I_c[X3^20] = [1.9871821992e+21 +/- 3.48e+10]; G 5.13177448030e+23, TW error 1.29979283159e+10, error/|T_M| 6.54088403227e-12
+  N=4 I_c[X5^16] = [1.47658912606e+15 +/- 7.24e+3]; G 1.15342252124e+17, TW error 2.92142675141e+3, error/|T_M| 1.97849672591e-12
+  N=4 I_c[X5^20] = [1.9871821992e+21 +/- 3.44e+10]; G 4.96999088258e+23, TW error 1.25881574629e+10, error/|T_M| 6.33467704577e-12
+  N=4 I_c[Z^16] = [6.3431703973e+18 +/- 8.12e+7]; G 2.51580923942e+21, TW error 6.37212493957e+7, error/|T_M| 1.00456467988e-11
+  N=4 I_c[Z^20] = [8.869356685e+25 +/- 6.62e+15]; G 1.32718965709e+29, TW error 3.36154990649e+15, error/|T_M| 3.79007184624e-11
+TARGET N=4 (TW error <= 1/10 |T_M|): all within; misses, reported: none
+C-BLOCK-T N=4: PASS
+C-PORT N=4: worst 8.565e-17: PASS
+C-HBAR (U1, per-degree scale): worst 2.305e-16: PASS
+C-FLT-T N=4: worst 5.671e-14: PASS
+C-SPLIT: PASS
+C-COVERS: needed degrees [(10, 8), (6, 12), (1, 20)] against {10: 8, 6: 12, 1: 20}: PASS
+C-POS N=4 (U4: every upper end J_i^+ > 0, before the logs and roots of the reading): PASS
+CHECKS all PASS
+PLANTS PLANT-TILE:FIRED PLANT-CORE:FIRED PLANT-PROP:FIRED PLANT-STRIP:FIRED PLANT-REFINE-C:FIRED PLANT-BLOCK-T:FIRED PLANT-PORT:FIRED PLANT-PORT-T:FIRED PLANT-HBAR:FIRED PLANT-FLT-T:FIRED PLANT-SPLIT:FIRED PLANT-COVERS:FIRED PLANT-POS:FIRED
+READING N=4 (t = 1/300, every J >= 300; S4_M2C_DESIGN_v1): pref^2 rho4 <= 3.50513088259e-5; N4_c <= 1.80758160988e+3; I_c[H1^4] <= 4.68607033918e+2; pref^2 <= 1.97370676688e+3
+VERDICT VALID
+CPU 33.4 s maxrss_kb 458064

@@ -1,0 +1,10 @@
+kt_mr_assembly_v1_8_4 (abd48b2c94e0d64328ce631a21f8ab3c93c665f1de86e4abcdb190c3744df448): RECDIR pk24/mr_engine/v36/up_v4f MODE STANDIN PLANT ENVR NMAX 10 PIECES all
+C-CORE OK: mr_core_v1_3 b897451f512c69c3e08ac61d330f993634c105d42169dbd898dc91448554898a; 7 blocks and 3 constants equal to the prototype 5e3fc430d69a445487a449fd54faefdf540ba8a3298a52c7e5fd9cadb0bd76e6
+C-IV OK: 3000 operations (add, sub, mul, inv, sqrt; negation, amax, hull, pow, division with 50-digit endpoints) enclose or equal the exact rational results
+G-PIN MR_SPECTRAL.kv 6a2ba9b6983837a83f84396f8b4a1ba4cdcd79a28be4480e185a3971e2a9ce26 OK (PRODUCER pk24)
+G-PIN MR_INSERT.kv 41214f1b1e6ca25103dd915155785b9ba82dc35442901bb963226b290484ebec OK (PRODUCER pk24)
+G-PIN MR_EXACT.kv 95600663058460309a76242e8da80d833eb96d7ab9d2735298ea0f5d4ba90e72 OK (PRODUCER pk24)
+G-PIN MR_CRUDEX.kv 0a0c131fa66ff67e0a94e12a1fb92b1d144f1ee4e6342ec578c2c65da40429b4 OK (PRODUCER pk24) (CRUDEX_FORM factored)
+G-PIN MR_JOINT.kv a58fd097ac3d8512ce085b0032e8ff4fbd7b71c6c0887c3a810ec9a7df416f50 OK (PRODUCER pk24)
+STOP G-FACTX: MR_CRUDEX ENV_R_HI = 1 at N3_P0000 must lie in (0, 1)
+PLANT ENVR: FIRED

@@ -1,0 +1,32 @@
+m2b_asm_v1 sha256 6acd83d3aefd3792f1b216090dbf9d66a399ca8508a48cbc37880b9c9079ce0b (cert v1_1 4b42e4f5, cert v1_4 e1cecb52, rep v1_5 0916e04a, reader 3580bce7)
+C-HASH: 74 pinned files -> PASS
+C-REP N=4: m2b_rep_v1_5 output out_m2b_rep_v1_5_n4.out (sha256 81f3b08e): C-REP, C-REP-BOUND, C-ANCHOR and plants -> PASS
+C-BOUND N=4: the ten hand-off HEADs carry one rho_pp_hex (0x1.ea93ad4bd8e58p-1), equal to RHO_PP_HEX_PIN; a_m = every VAC_OF law.a_m = Fraction(0.55)^2; a_e = Fraction(0.6)^2; a_pp = Fraction(rho_pp)^2 >= sin^2(asin rho_m + delta) -> PASS
+PLANT-BOUND N=4: a near boundary of 0.3025 against law.a_m -> FIRES
+C-M3-MANIFEST N=4: pk03's asm manifest names the record and the asm output with their pinned sha256 -> PASS
+C-MHAT N=4: m1..m3 = [0.4110342096146122, 0.21439445218778858, 0.13250737666638984] >= 0 exactly; MHAT_UP 1.00137250110031e+00 >= mhat(t) at t = 1/300, 1/600, 1/1200, 0 -> PASS
+PLANT-MHAT N=4: m2 := -m2 fails the sign test -> FIRES
+PLANT-PRECERT N=4: FIRES
+PLANT-KIND N=4: FIRES
+PLANT-MF N=4: FIRES
+PLANT-LAYER N=4: FIRES
+PLANT-JREF N=4: FIRES
+PLANT-VERDICT N=4: FIRES
+C-REP N=3: m2b_rep_v1_5 output out_m2b_rep_v1_5_n3.out (sha256 aafe55f4): C-REP, C-REP-BOUND, C-ANCHOR and plants -> PASS
+C-BOUND N=3: the ten hand-off HEADs carry one rho_pp_hex (0x1.ea93ad4bd8e58p-1), equal to RHO_PP_HEX_PIN; a_m = every VAC_OF law.a_m = Fraction(0.55)^2; a_e = Fraction(0.6)^2; a_pp = Fraction(rho_pp)^2 >= sin^2(asin rho_m + delta) -> PASS
+PLANT-BOUND N=3: a near boundary of 0.3025 against law.a_m -> FIRES
+C-M3-MANIFEST N=3: pk03's asm manifest names the record and the asm output with their pinned sha256 -> PASS
+C-MHAT N=3: m1..m3 = [0.3639110188717423, 0.19020873542681713, 0.1312176314326442] >= 0 exactly; MHAT_UP 1.00121515501988e+00 >= mhat(t) at t = 1/300, 1/600, 1/1200, 0 -> PASS
+PLANT-MHAT N=3: m2 := -m2 fails the sign test -> FIRES
+PLANT-PRECERT N=3: FIRES
+PLANT-KIND N=3: FIRES
+PLANT-MF N=3: FIRES
+PLANT-LAYER N=3: FIRES
+PLANT-JREF N=3: FIRES
+PLANT-VERDICT N=3: FIRES
+C-BOUND both N: rho_pp_hex 0x1.ea93ad4bd8e58p-1 at N = 4 and 3 -> PASS
+C-LAW N=4: LAW v1 eps_r at J = 300, 600, 1200: [5.14608e-6 +/- 4.86e-12], [3.06875e-7 +/- 4.51e-13], [4.61537e-8 +/- 4.01e-14] -> PASS
+C-LAW N=3: LAW v1 eps_r at J = 300, 600, 1200: [1.85151e-6 +/- 3.24e-12], [1.20267e-7 +/- 4.42e-13], [1.93805e-8 +/- 2.21e-16] -> PASS
+C-FMT (read back through m2b_reader_v1.check): the record passes every reader check, C-MONO and LAW v1 at J = 300 -> PASS
+RECORD M2B_KV_v1.txt 13cc0d9abe16af02865763b44a28cc167c689f83ad0a028644b84c7045c429f5
+VERDICT VALID

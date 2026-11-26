@@ -1,0 +1,86 @@
+2,7c2,11
+< """kt_s9h_v1_1.py (the certified snapshot's second file, FROZEN for the VERTICAL mode's certified run (S_V first): kt_s9h_v1
+< (0cc5b670) + the v1 review points P-4 (S4_U_CERTIFIED_v3), P-3 (the beta_H provider, the
+< delta form of erratum e48d0812) and (pk02's certified M2B_KV_v1 13cc0d9a, side manifest 797c7a59, reader
+< 3580bce7, with C-TRIAL M2B); code = m28 a5adef9b. Its vertical inputs (S4-U, S4-TRB, M2(b), M3) are all certified; the S_TB' inputs
+< (t, joint, beta_H's status) stay MOCK or FLOAT and the vertical mode reads none of them. P-2 (the certified t and joint records) goes
+< into a file of a new name. Every run here needs the approval naming this file's sha8) -- pk07.
+---
+> """kt_s9h_v1_2.py (FROZEN, the file for the VERTICAL mode's certified run (S_V first): kt_s9h_v1_1 (7bcc32d2: kt_s9h_v1 +
+> the v1 review points P-4, P-3, P-1; code = m28 a5adef9b) + the C-VERT-ONLY (tested in the mock snapshot m29 00a1c0b3, whose
+> only other change is M2B_MODE). Its vertical inputs (S4-U, S4-TRB, M2(b), M3) are all certified; the S_TB' inputs (t, joint, beta_H's
+> status) stay MOCK or FLOAT and the vertical mode reads none of them, gated. P-2 (the certified t and joint records) goes into a file
+> of a new name. Every run here needs the approval naming this file's sha8) -- pk07.
+>   - v1_2, C-VERT-ONLY: in the vertical mode no S_TB' provider runs (provide_sh1, provide_joint, provide_tin and provide_bh each
+>     record themselves in STB_READS on entry), the module-level C-HASH leaves FILES_STB (SH1's outputs and reference parser, KT-S9B's
+>     FLOAT bars, the TRB_H record and its asm outputs) unopened, and SH1, the joint and the t inputs do not exist; a gate after the
+>     providers and again at the end, with PLANT-VERT-ONLY's three cases (a record of provide_tin having run, t inputs present, one
+>     FILES_STB file opened). The full mode prints the providers that ran as INFO.
+324a329,334
+> FILES_STB = frozenset(('pk15/out/out_kt_sh1_v1_n4.out', 'pk15/out/out_kt_sh1_v1_n3.out', 'pk07/sh1_entry_ref_v1.py',
+>                        'pk01/out_kt_s9b_v2_n4.out', 'pk01/out_kt_s9b_v2_n3.out', 'pk08/S4_TRBH_CERTIFIED_v1.md',
+>                        'pk08/out/px08_trbhcert_v2_n4_asm.out', 'pk08/out/px08_trbhcert_v2_n3_asm.out'))
+> #                         v1_2: the S_TB' inputs among FILES (SH1's outputs and reference parser, KT-S9B's FLOAT bars, the TRB_H
+> #                         record and its asm outputs); the vertical mode leaves them unread, C-VERT-ONLY gates it
+> STB_READS = []            # v1_2: the S_TB' providers that ran (each appends its name on entry); C-VERT-ONLY needs it empty
+406,407c416,420
+< _bad = [n for n in sorted(FILES) if sha_file(os.path.join(CODEDIR, n))[:8] != FILES[n]]
+< out('C-HASH %s (%d files)%s' % ('PASS' if not _bad else 'FAIL', len(FILES), (': ' + ', '.join(_bad)) if _bad else ''))
+---
+> STB_UNREAD = FILES_STB if VERT else frozenset()       # v1_2: the vertical mode does not open the S_TB' files
+> _bad = [n for n in sorted(FILES) if n not in STB_UNREAD and sha_file(os.path.join(CODEDIR, n))[:8] != FILES[n]]
+> out('C-HASH %s (%d files%s)%s' % ('PASS' if not _bad else 'FAIL', len(FILES) - len(STB_UNREAD),
+>                                   '; the %d S_TB\' files left unread in the vertical mode' % len(STB_UNREAD) if STB_UNREAD else '',
+>                                   (': ' + ', '.join(_bad)) if _bad else ''))
+1710c1723,1724
+<                  'm2b_trial_bad')                                          # v1_1 P-1: C-TRIAL on the certified M2(b) record
+---
+>                  'm2b_trial_bad',                                          # v1_1 P-1: C-TRIAL on the certified M2(b) record
+>                  'vert_only_bad', 'c_vert_only')                           # v1_2: C-VERT-ONLY
+3513a3528
+>     STB_READS.append('provide_sh1')                             # v1_2: C-VERT-ONLY
+3781a3797
+>     STB_READS.append('provide_tin')                             # v1_2: C-VERT-ONLY
+4012a4029
+>     STB_READS.append('provide_bh')                              # v1_2: C-VERT-ONLY
+4619a4637
+>     STB_READS.append('provide_joint')                           # v1_2: C-VERT-ONLY
+5681a5700,5731
+> # ------------------------------------------------------------------ C-VERT-ONLY (v1_2, the certified vertical mode reads no S_TB' input)
+> def vert_only_bad(reads, unread, sh1, jin, tin):
+>     """C-VERT-ONLY: in the VERTICAL mode no S_TB' provider ran (reads: STB_READS), the module-level C-HASH left every FILES_STB file
+>     unopened (unread: STB_UNREAD), and SH1, the joint inputs and the t inputs do not exist. Returns the failures."""
+>     bad = ['%s ran' % r for r in reads]
+>     bad += ['%s opened' % f for f in sorted(FILES_STB) if f not in unread]
+>     return bad + ['%s present' % n for n, v in (('SH1', sh1), ('joint inputs', jin), ('t inputs', tin)) if v is not None]
+> 
+> 
+> def c_vert_only(sh1, jin, tin, fails, fires, when):
+>     """C-VERT-ONLY (v1_2) and PLANT-VERT-ONLY's three cases (a record of provide_tin having run, t inputs present, one FILES_STB
+>     file opened); in the full mode an INFO line naming the S_TB' providers that ran."""
+>     if not VERT:
+>         out('INFO C-VERT-ONLY %s (full mode): the S_TB\' providers run: %s' % (when, ', '.join(STB_READS) or 'none'))
+>         return
+>     bad = vert_only_bad(STB_READS, STB_UNREAD, sh1, jin, tin)
+>     one = sorted(FILES_STB)[0]
+>     pl = (('provide_tin ran', vert_only_bad(STB_READS + ['provide_tin'], STB_UNREAD, sh1, jin, tin)),
+>           ('t inputs present', vert_only_bad(STB_READS, STB_UNREAD, sh1, jin, {'planted': True})),
+>           ('%s opened' % one, vert_only_bad(STB_READS, STB_UNREAD - {one}, sh1, jin, tin)))
+>     fired = all(len(b) > len(bad) for _, b in pl)
+>     out('C-VERT-ONLY %s (the certified vertical mode reads no S_TB\' input): S_TB\' providers run: %s; the %d FILES_STB files left '
+>         'unopened by C-HASH: %s; SH1, joint and t inputs: %s -> %s; PLANT-VERT-ONLY (%s) -> %s' % (
+>             when, ', '.join(STB_READS) or 'none', len(FILES_STB), 'yes' if FILES_STB <= STB_UNREAD else 'NO',
+>             'none' if (sh1 is None and jin is None and tin is None) else 'PRESENT', 'PASS' if not bad else 'FAIL (%s)' % ', '.join(bad),
+>             '; '.join(lab for lab, _ in pl), 'FIRES' if fired else 'DOES NOT FIRE'))
+>     if bad:
+>         fails.append('C-VERT-ONLY %s' % when)
+>     if not fired:
+>         fires.append('PLANT-VERT-ONLY %s' % when)
+> 
+> 
+5712a5763,5764
+>         STAGE[0] = 'C-VERT-ONLY'
+>         c_vert_only(SH1, JIN, TIN, fails, fires, 'after the providers')     # v1_2: no S_TB' read in the vertical mode
+5740a5793,5794
+>         STAGE[0] = 'C-VERT-ONLY end'
+>         c_vert_only(SH1, JIN, TIN, fails, fires, 'at the end')             # v1_2: still none after the item

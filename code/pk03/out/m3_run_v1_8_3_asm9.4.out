@@ -1,0 +1,64 @@
+m3_run_v1_8_3 item asm9.4 LIM 540; script sha256 9660d018336a0f9826a3da85c9b91ce3b8e509d60faf8f198f04a847f218d69d; python 3.14.4
+STAGE-CPU C-HASH start 0.03 s
+C-HASH (10 modules, the kernel files, 37 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_3 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.11 s
+C-VALIDATED (layer arbeng_ma_v1_3:075e3586; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-SERIES (no *_series( call in 10 modules, the kernel files and this script) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_3; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-330.000000000 +/- 2.94e-12] overlaps the layer's [-330.000000000 +/- 2.64e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU asm9 start 0.12 s
+PIECE-CAPPED I9k1.4: a clean CAP-STOP of this script, no hand-off; skipped and kept
+C-HANDOFF (m3_run_v1_8_3_I9k2.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (I9k2.4: entries 0..2 complete) -> PASS
+C-PIECES (the I9 pieces cover all 3 I9 entries, in order, none left in progress) -> PASS
+C-HASH-REF (m3ref_v1_15_V9I.4.all_z9sym.out, sha256 038d6415e6954ac56a8a980f6e770f0745a934be648c8171d3df9fc3fc0d939f: VERDICT lines exactly [VERDICT VALID], TRIAL lines exactly [TRIAL z9sym]) -> PASS
+C-SRC (m3_s8v3_D_N4_J300_v1_8_1.json, sha256 29cbb2a2913cec904222c1165afc8a8e421682f066b4c9ac8282d16146019574: m3_reader_v4_4.load under m3_run_v1_8_1_asmP.4.out: accepted) -> PASS
+C-SRC (m3_s8v3_N_N4_J300_v1_8_2.json, sha256 49b2506305d98c0d737901a7c77be71dca727c6a9fa67d541e05121f2ab54df1: m3_reader_v4_4.load under m3_run_v1_8_2_asmN.4.out: accepted) -> PASS
+C-COPY-DEF (15 copies: graph, factors, parity and K in S9_ENTRY_LIST_v1 equal S8_ENTRY_LIST_v3's for the source key) -> PASS
+C-SCOPE (the S9 record holds exactly the list's 18 keys: 15 copies and 3 new) -> PASS
+PLANT-SCOPE (the S9 record without one key) -> FIRES
+C-REP-B (12 bar parts against m3ref_v1_15 z9sym: certified/float in [1.000000000 (Iht,0 far), 1.000116 (Iht,1 tail)]) -> PASS
+PLANT-REPB (the smallest ratio times 0.5) -> FIRES
+C-REP-AK (12 a_k against m3ref_v1_15 z9sym: largest |certified mid - float| / max(1, |float|) 2.95e-13 at Iht,1 a_3) -> PASS
+PLANT-REPAK (the largest difference plus 1e-6) -> FIRES
+C-FMT (m3_s9_N4_J300_v1_8_3.json: 18 keys read back exactly from the text by m3_reader_v4_4; 30498 bytes; sha256 bcc6434c6a03eecb232f10504b63f1ce10a94a489d5a2ba9cf3fe09c8018b831) -> PASS
+C-COPY (15 copies in the S9 text equal their source items byte for byte apart from alias_of, which names the source record, key and sha256) -> PASS
+PLANT-COPY (G,0,0 with a_1 times 1 + 2^-40) -> FIRES
+PLANT-FMT (S9 copy without one rnd) -> FIRES
+PLANT-RND (S9 copy with T,3,3 rnd = 0; its ak_rad sum 3.0e-05) -> FIRES
+PLANT-READER-PRECERT (m3_reader_v4_4 refuses the mutated S9 copy: precert) -> FIRES
+PLANT-READER-KERNEL (m3_reader_v4_4 refuses the mutated S9 copy: kernel) -> FIRES
+PLANT-READER-PREC (m3_reader_v4_4 refuses the mutated S9 copy: prec) -> FIRES
+PLANT-LAYER-V1_1 (m3_reader_v4_4 refuses the mutated S9 copy: arbeng_ma_v1_1.py) -> FIRES
+PLANT-LAYER-V1_2 (m3_reader_v4_4 refuses the mutated S9 copy: arbeng_ma_v1_2.py) -> FIRES
+PLANT-CLAIM (m3_reader_v4_4 refuses the mutated S9 copy: claim) -> FIRES
+PLANT-ARBK (m3_reader_v4_4 refuses the mutated S9 copy: arbk) -> FIRES
+PLANT-ARBB (m3_reader_v4_4 refuses the mutated S9 copy: arbb) -> FIRES
+PLANT-JREF (m3_reader_v4_4 refuses the mutated S9 copy: expected J_REF 150) -> FIRES
+PLANT-N (m3_reader_v4_4 refuses the mutated S9 copy: expected N 3) -> FIRES
+PLANT-KIND (m3_reader_v4_4 refuses the mutated S9 copy: kind) -> FIRES
+C-BOUND-RT (m3_reader_v4_4.loads accepts the S9 text under an output that names it and ends VALID) -> PASS
+PLANT-BOUND-VERDICT (m3_reader_v4_4.loads refuses this asm output) -> FIRES
+PLANT-BOUND-INVALID (m3_reader_v4_4.loads refuses this asm output) -> FIRES
+PLANT-BOUND-TWO (m3_reader_v4_4.loads refuses this asm output) -> FIRES
+PLANT-BOUND-SHA (m3_reader_v4_4.loads refuses this asm output) -> FIRES
+PLANT-BOUND-NONE (m3_reader_v4_4.loads refuses this asm output) -> FIRES
+C-PREC-ASM (flint ctx.prec 512 before the write) -> PASS
+PLANT-NOWRITE (write_records under a failed gate, an unfired plant and a PRECERT tag: 3 of 3 refused, 0 files opened) -> FIRES
+C-WRITE (m3_s9_N4_J300_v1_8_3.json holds exactly its C-FMT text) -> PASS
+RECORD m3_s9_N4_J300_v1_8_3.json bcc6434c6a03eecb232f10504b63f1ce10a94a489d5a2ba9cf3fe09c8018b831
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 0.14 s
+VERDICT VALID

@@ -1,0 +1,59 @@
+kt_mr_assembly_v1_8_4 (abd48b2c94e0d64328ce631a21f8ab3c93c665f1de86e4abcdb190c3744df448): RECDIR pk24/mr_engine/v36/up_v4f MODE STANDIN PLANT XSIGN NMAX 10 PIECES all
+C-CORE OK: mr_core_v1_3 b897451f512c69c3e08ac61d330f993634c105d42169dbd898dc91448554898a; 7 blocks and 3 constants equal to the prototype 5e3fc430d69a445487a449fd54faefdf540ba8a3298a52c7e5fd9cadb0bd76e6
+C-IV OK: 3000 operations (add, sub, mul, inv, sqrt; negation, amax, hull, pow, division with 50-digit endpoints) enclose or equal the exact rational results
+G-PIN MR_SPECTRAL.kv 6a2ba9b6983837a83f84396f8b4a1ba4cdcd79a28be4480e185a3971e2a9ce26 OK (PRODUCER pk24)
+G-PIN MR_INSERT.kv 41214f1b1e6ca25103dd915155785b9ba82dc35442901bb963226b290484ebec OK (PRODUCER pk24)
+G-PIN MR_EXACT.kv 95600663058460309a76242e8da80d833eb96d7ab9d2735298ea0f5d4ba90e72 OK (PRODUCER pk24)
+G-PIN MR_CRUDEX.kv 0a0c131fa66ff67e0a94e12a1fb92b1d144f1ee4e6342ec578c2c65da40429b4 OK (PRODUCER pk24) (CRUDEX_FORM factored)
+G-PIN MR_JOINT.kv a58fd097ac3d8512ce085b0032e8ff4fbd7b71c6c0887c3a810ec9a7df416f50 OK (PRODUCER pk24)
+G-FACTX OK: 72 x-coefficient rows inside their amplitudes with their floors (power 1) or equal to them (power 0); 0 rows with a Way B floor (last piece, h); one envelope per piece with 0 < env_r < 1
+C-ORIENT OK: c_x(-1) > 0 and c_y(-1) > 0 on every MR_SPECTRAL row; t and a v_x > 0, h, t and a v_y > 0 on every MR_INSERT row; 36 exact ends checked against the sign of their bulk x amplitude; ORIENT_CHECK on MR_SPECTRAL, MR_INSERT and MR_EXACT with the grid's piece counts
+A0X OFF: no MR_EXACT a0 rows
+G-UNIF OK: N = 4 6 pieces, N = 3 6 pieces; every record on the same grid with every row; last piece to inf; decimal fields finite, lo <= hi, single upper bounds >= 0, the spectral data positive
+XMODE FACTORED: x signs read on the coefficient intervals (MR_INPUT_KV_v4, factored MR_CRUDEX, D_MAX 30)
+ROUTE V OFF: MR_EXACT has no Pe_hi; the m = 1 rest uses the crude ends' |P_e a| only
+C-SIGN OK: 12 pieces, e-hat(d) for d = 1..30 and the envelope at 31 against the modulus of h's coefficient
+SUMMARY N=4 n=6: to-do orbits 25; channel classes 22, PASS 22; least headroom 1.636 at h2-a5 (piece 0); reference 1.636; same-bond orbits 2, least H_J 15.77; FAIL 0
+SUMMARY N=4 n=7: to-do orbits 37; channel classes 34, PASS 34; least headroom 1.961 at h2-a6 (piece 0); reference 1.961; same-bond orbits 2, least H_J 15.90; FAIL 0
+SUMMARY N=4 n=8: to-do orbits 52; channel classes 48, PASS 48; least headroom 2.139 at h3-a7 (piece 0); reference 2.243; same-bond orbits 3, least H_J 15.91; FAIL 0
+SUMMARY N=4 n=9: to-do orbits 69; channel classes 65, PASS 65; least headroom 1.030 at h3-a9 (piece 0); reference 2.388; same-bond orbits 3, least H_J 15.92; FAIL 0
+SUMMARY N=4 n=10: to-do orbits 89; channel classes 84, PASS 80; least headroom 0.331 at h3-a10 (piece 0); reference 2.388; same-bond orbits 4, least H_J 15.92; FAIL 4
+CLASS N=4 n=10 h3-a10    chan-crude d=1 k=5 dp=-1 m=6: L -9.108145e-10 at piece 0, H 0.331 FAIL 
+CLASS N=4 n=10 h3-a9     chan-crude d=1 k=4 dp=0 m=5: L -1.925915e-09 at piece 0, H 0.789 FAIL 
+CLASS N=4 n=10 h3-bb8    chan-crude d=1 k=3 dp=0 m=5: L -3.306365e-09 at piece 0, H 0.773 FAIL 
+CLASS N=4 n=10 h3-bb9    chan-crude d=1 k=4 dp=-1 m=6: L -9.108145e-10 at piece 0, H 0.331 FAIL 
+SUMMARY N=3 n=6: to-do orbits 25; channel classes 22, PASS 22; least headroom 3.107 at h2-a5 (piece 0); reference 3.107; same-bond orbits 2, least H_J 24.31; FAIL 0
+SUMMARY N=3 n=7: to-do orbits 37; channel classes 34, PASS 34; least headroom 3.637 at h2-a6 (piece 0); reference 3.637; same-bond orbits 2, least H_J 24.44; FAIL 0
+SUMMARY N=3 n=8: to-do orbits 52; channel classes 48, PASS 48; least headroom 3.611 at h3-a7 (piece 0); reference 4.064; same-bond orbits 3, least H_J 24.46; FAIL 0
+SUMMARY N=3 n=9: to-do orbits 69; channel classes 65, PASS 65; least headroom 1.495 at h3-a9 (piece 0); reference 4.146; same-bond orbits 3, least H_J 24.46; FAIL 0
+SUMMARY N=3 n=10: to-do orbits 89; channel classes 84, PASS 82; least headroom 0.473 at h3-a10 (piece 0); reference 4.147; same-bond orbits 4, least H_J 24.46; FAIL 2
+CLASS N=3 n=10 h3-a10    chan-crude d=1 k=5 dp=-1 m=6: L -3.351484e-10 at piece 0, H 0.473 FAIL 
+CLASS N=3 n=10 h3-bb9    chan-crude d=1 k=4 dp=-1 m=6: L -3.351484e-10 at piece 0, H 0.473 FAIL 
+FACTORED SIGN FALLBACK: 506 class-piece evaluations had no certified sign for the product of the two x coefficients, so X took v1_6's form there (the v1_7 N-2)
+FAIL REASONS: classes failing at G-POS 0, at G-DELTA 0, on the margin alone 6 (same-bond failures count as margin)
+WARN BLOCK: 23 rows with float headroom H < 2 (design target 2; not an acceptance rule)
+WARN N4_n10_h3-a10 H 0.331432 FAIL
+WARN N4_n10_h3-bb9 H 0.331432 FAIL
+WARN N3_n10_h3-a10 H 0.472573 FAIL
+WARN N3_n10_h3-bb9 H 0.472573 FAIL
+WARN N4_n10_h3-bb8 H 0.772939 FAIL
+WARN N4_n10_h3-a9 H 0.789236 FAIL
+WARN N4_n09_h3-a9 H 1.03028 PASS
+WARN N4_n09_h3-bb8 H 1.03028 PASS
+WARN N4_n10_h4-a10 H 1.04168 PASS
+WARN N4_n10_h4-bb9 H 1.04168 PASS
+WARN N3_n10_h3-bb8 H 1.14705 PASS
+WARN N3_n10_h3-a9 H 1.23572 PASS
+WARN N3_n09_h3-a9 H 1.49516 PASS
+WARN N3_n09_h3-bb8 H 1.49516 PASS
+WARN N3_n10_h4-a10 H 1.50741 PASS
+WARN N3_n10_h4-bb9 H 1.50741 PASS
+WARN N4_n09_h3-a8 H 1.55907 PASS
+WARN N4_n10_h4-a9 H 1.58362 PASS
+WARN N4_n06_h2-a5 H 1.63643 PASS
+WARN N4_n06_h1-a5 H 1.80404 PASS
+WARN N4_n09_h3-bb7 H 1.86643 PASS
+WARN N4_n10_h4-bb8 H 1.89362 PASS
+WARN N4_n07_h2-a6 H 1.96095 PASS
+WROTE 0076f431 pk24/mr_engine/v38/MR_ASSEMBLY_XSIGN.kv (534 rows); FAIL rows 6; gate lines 0; WARN rows 23
+PLANT XSIGN: FIRED on its own failure MARGIN (classes failing at G-POS 0, at G-DELTA 0, on the margin alone 6; FAIL rows 6, gate lines 0)

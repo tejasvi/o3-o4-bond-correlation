@@ -1,0 +1,208 @@
+kt_s9h_v1_2 sha256 848d737688040ca9408b9c06d39cde853132fbbe9b2461a48f5daa2bfa5b1bd9 ITEM=vscan LIM=60 (RLIMIT_CPU soft 60, hard 65) TAG=''
+C-HASH PASS (45 files; the 8 S_TB' files left unread in the vertical mode)
+C-BLOCK PASS (author slices by sha256)
+C-ENV start: PASS (numpy 2.5.3, mpmath 1.3.0, python 3.14.4)
+MODE vscan: VERTICAL only (the Q2): the S5-S7 providers alone (S4-U, S4-TRB, M2(b), M3); no t, A_a, beta_H or joint provider is called, and the sweep writes EXPORT_KT_S67_v1 only
+C-HASH S4-U (full sha256 of the bytes read here): record pk08/S4_U_CERTIFIED_v3.md matches, reference parser pk07/s4u_kv_ref_v1.py matches, s4c_m2ba outputs match, the 6 asm outputs match -> PASS
+C-FMT S4-U (format S4U_KV_v1): 181 keys; the port's reader against the reference parser (pk07/s4u_kv_ref_v1.py, sha256 ce0ba6f4): identical; the 63 keys the port uses present: yes; header keys FORMAT, RECORD, END, AUTHOR, J_MIN, TARGET_U_MINUS_FLOAT, TARGET_QUAD as pinned: yes; marked PRECERT or STUB (T48): False -> PASS
+C-SRC S4-U: N*_LEAD and N*_C1..C3 against the C-NORM and C-C123 lines of pk05/out/s4c_m2ba_n4.out and pk05/out/s4c_m2ba_n3.out (C-POS PASS and VERDICT VALID there), COEF_OUTPUT and U3_CODE, the 16 _LO/_HI ends as mid -+ rad exactly; D-1: N*_PREF2_RE, N*_PREF2_RHO4 and N*_M3_SUM against the READING lines of pk08/out/px08_px03_v4_n3_asm.out, pk08/out/px08_m2bb4_n3_asm.out, pk08/out/px08_m2bc4_n3_asm.out, pk08/out/px08_px03_v4_n4_asm.out, pk08/out/px08_m2bb4_n4_asm.out, pk08/out/px08_m2bc3_n4_asm.out (CHECKS all PASS and VERDICT VALID there), their _OUTPUT and _CODE tokens, R_CERT = PREF2_RE + PREF2_RHO4 + M3_SUM exactly, QUAD_TW_PART_EXACT = 0.071 (PREF2_RE + PREF2_RHO4) + M3_SUM + 1e-11 exactly and QUAD_TW_PART = it rounded up at 3 digits -> PASS
+C-POS S4-U: N*_LEAD_LO, N*_C1_LO, N*_C2_LO, N*_C3_LO > 0 exactly, so the HI ends bound U3 from above for t > 0 -> PASS
+PLANT-FMT-S4U (the port reads a copy with N4_C1_HI and N4_C2_HI swapped, the reference parser reads the record): C-FMT differs -> FIRES
+PLANT-KEYSWAP (both readers read the swapped copy): they agree: True; C-SRC fails on N4_C1_HI, N4_C2_HI -> FIRES
+PLANT-RSRC (D-1: N4_PREF2_RE set to 1.31803364015e-5 in a copy): C-SRC fails on N4_PREF2_RE against its READING, N4_R_CERT (R_CERT_RULE), N4_QUAD_TW_PART_EXACT (QUAD_TW_PART_RULE) -> FIRES
+PLANT-POS (N4_C1_LO negated in a copy): C-POS flags N4_C1_LO -> FIRES
+PLANT-PRECERT-S4U (T48: a copy of the record with its CLAIM marked PRECERT, and a copy of s4c_m2ba_n4.out reading VERDICT VALID-PRECERT): record refused True, output refused True -> FIRES
+INFO S4-U N=4: the port's U at t = 1/300 is [1.03320068444201876908548781088, 1.03320068444201876908548796597], below the record's U_EXACT 1.033200684442025426: True; as t -> 0 it tends to LEAD_HI + R_CERT = [1.03028792776580658599999997181, 1.03028792776580658600000002351]
+INFO S4-U N=3: the port's U at t = 1/300 is [1.0328091438788189826908777509, 1.032809143878818982690877906], below the record's U_EXACT 1.032809143878833869: True; as t -> 0 it tends to LEAD_HI + R_CERT = [1.03025316903914502899999995699, 1.03025316903914502900000000869]
+S4-U provider: tag 'CERTIFIED pk08 e870cbe5' (reads certified: True)
+C-HASH S4-TRB (full sha256 of the bytes read here): record pk08/S4_TRB_CERTIFIED_v1.md matches, reference parser pk07/s4u_kv_ref_v1.py matches, the 2 asm outputs match -> PASS
+C-FMT S4-TRB (format S4U_KV_v1): 89 keys; the port's reader against the reference parser (pk07/s4u_kv_ref_v1.py, sha256 ce0ba6f4): identical; the 32 keys the port uses present: yes; header keys FORMAT, RECORD, END, AUTHOR, J_MIN, TARGET_T2 as pinned: yes; marked PRECERT or STUB (T48): False -> PASS
+C-SRC S4-TRB: N*_TRB, N*_TRB_MAIN .. N*_TRB_FAR, N*_PR and N*_TV against the READING lines of pk08/out/px08_trbcert_v1_1_n4_asm.out and pk08/out/px08_trbcert_v1_1_n3_asm.out (CHECKS all PASS and VERDICT VALID there, the header's code sha8 = the record's CODE), N*_ASM_OUTPUT, N*_VERDICT VALID, N*_T2_RESULT PASS -> PASS
+PLANT-FMT-S4T (the port reads a copy with N4_TRB and N3_TRB swapped, the reference parser reads the record): C-FMT differs -> FIRES
+PLANT-TSRC (N4_TRB set to 1.30797171128e+0 in a copy): C-SRC fails on N4_TRB against its READING -> FIRES
+PLANT-PRECERT-S4T (T48: a copy of the record with FORMAT S4U_KV_v1-STUB, and a copy of the N4 asm output reading VERDICT VALID-PRECERT): record refused True, output refused True -> FIRES
+INFO S4-TRB N=4: certified TRB 1.30797171127e+0, enclosed as [1.30797171126999999999999999201, 1.30797171127000000000000001786], for every J >= 300 (CONSTANT_PER_N); the FLOAT TRB of PARAMS was 1.312607
+INFO S4-TRB N=3: certified TRB 9.39977769617e-1, enclosed as [0.939977769616999999999999988899, 0.939977769617000000000000001824], for every J >= 300 (CONSTANT_PER_N); the FLOAT TRB of PARAMS was 0.942262
+S4-TRB provider: tag 'CERTIFIED pk08 91109301' (reads certified: True)
+C-HASH M2B (certified mode; full sha256 of the bytes read here): the record pk02/M2B_KV_v1.txt, its asm output pk02/out/out_m2b_asm_v1.out and its reader pk02/m2b_reader_v1.py -> PASS
+C-M2B-LOCAL (the C1): the record's FORMAT = M2B_KV_v1 and VERDICT = VALID lines, its one CLAIM line holding the |g| form once; the asm output's exact VERDICT VALID and its RECORD line for M2B_KV_v1.txt -> PASS; PLANT-M2B-LOCAL: record VERDICT = VALID-PRECERT fires; record CLAIM without the |g| form fires; a second CLAIM line fires; asm output without its RECORD line fires
+C-TRIAL M2B (the C-TRIAL, v1_1 P-1): the record's PIN_TRIAL names TRIAL_SET's vacres vacres_K3_N4_sym_v1.json:b40859de and vacres_K3_N3_sym_v1.json:e5a9b49f once each and no other vacres -> PASS; PLANT-M2B-TRIAL (N4's vacres sha256 changed in a copy) -> FIRES
+PLANT-M2B-MOCK (the reader's loads on pk07's mock record with the certified asm output) -> FIRES
+C-FMT M2B (certified mode): LAW v1, J1 150, J0 170, J_MIN 300, CXI 0.6594, A_M and A_E the exact binary64 squares; the 19 keys per N (WT, DL lists of 3) and the 6 J = 300 values, finite decimals >= 0; the 12 global keys (KAPPA_B a lower end); sect. 3a's ends (the reader's) -> PASS
+C-VACMONO (LAW v1 terms nonincreasing in J for J >= 300, so the piece's left end bounds the piece): N=4 yes, N=3 yes -> PASS; PLANT-VACMONO (AE = 0.02) -> FIRES
+C-LAW300 (this file's mp.iv LAW v1 at J = 300 against the record's six values per N, each within 1e-09 relative): N=4 agree, N=3 agree -> PASS; PLANT-M2B-SWAP (N4's NP and D5 exchanged) -> FIRES
+INFO M2B N=4 at J = 300, LAW v1 upper end / vac_float (FLOAT): eps_r 0.865456, s 0.864158, eps_a 0.865456, eps_ds5 0.865456, eps_w 1.00727, eps_d 0.941451
+INFO M2B N=3 at J = 300, LAW v1 upper end / vac_float (FLOAT): eps_r 0.93856, s 0.937777, eps_a 0.93856, eps_ds5 0.93856, eps_w 1.08932, eps_d 1.01451
+C-HASH M3 (certified mode: N=4 certified, N=3 certified; full sha256 of the bytes read here): the loader pk03/m3_reader_v4_4.py, 10 records and the certified N's asm outputs -> PASS
+C-FMT M3 (certified mode): every record through m3_reader_v4_4.py (N=4 load, N=3 load); every FLOAT entry name present; kbar_exact = kbar exactly; 296 ball ends converted to mp.iv and contained; the test balls (negative, straddling, symmetric 0 +- 1/4, zero ends) contained: yes -> PASS
+PLANT-M3CONV (a converter that drops the sign, on the negative test ball): refused True -> FIRES
+PLANT-M3-BIND, PLANT-M3-SHA (N=4, m3_m2_N4_J300_v1_7.json through the loader's loads with its asm output m3_run_v1_7_asm.4.out; the unchanged pair accepted): PLANT-M3-BIND FIRES; PLANT-M3-SHA FIRES
+PLANT-M3-BIND, PLANT-M3-SHA (N=3, m3_m2_N3_J300_v1_7.json through the loader's loads with its asm output m3_run_v1_7_asm.3.out; the unchanged pair accepted): PLANT-M3-BIND FIRES; PLANT-M3-SHA FIRES
+C-HASH TRIAL (full sha256 of the bytes read here): pk11/out/ts_N4_J170_D_S_z9sym_v1.json, pk11/out/vacres_K3_N4_sym_v1.json, pk11/out/ts_N3_S_z9sym_v1.json, pk11/out/vacres_K3_N3_sym_v1.json -> PASS
+C-TRIAL: every certified S7 record (N=4: 5 records, N=3: 5 records) names the pinned trial set, trial_set = N=4 ts_N4_J170_D_S_z9sym_v1.json:ea9d6c1b, vacres_K3_N4_sym_v1.json:b40859de; N=3 ts_N3_S_z9sym_v1.json:a298db65, vacres_K3_N3_sym_v1.json:e5a9b49f; this file's m-hat reads the same vacres; mock records carry none (none) -> PASS; PLANT-TRIAL (the record loop on a copy whose N=4 M2 record has its vacres sha8 changed) -> FIRES
+C-TRIAL chain (pk03): pk03/m3_run_v1_7.py sha256 e55c5de1; for N = 4, 3 every record's engine.m3_run_v1_7 and the asm output's line-1 script sha256 equal it, one C-HASH ... -> PASS line in each asm output; the script's INPUTS pin the four TRIAL_SET files by the same full sha256 -> PASS; PLANT-TRIAL-ENGINE FIRES; PLANT-TRIAL-SCRIPT FIRES
+C-VERT-ONLY after the providers (the certified vertical mode reads no S_TB' input): S_TB' providers run: none; the 8 FILES_STB files left unopened by C-HASH: yes; SH1, joint and t inputs: none -> PASS; PLANT-VERT-ONLY (provide_tin ran; t inputs present; pk01/out_kt_s9b_v2_n3.out opened) -> FIRES
+C-REPRO N=4 [170, 171.7]: author lines m2_unif3 identical, endpairs4 J = 170 identical, assemble_unif4 identical; reference coverage lines (5) match; path B (naive, author forms) vs A: worst relative 5.20e-14 (S7 Rw), coverage tables (26 pairs) identical; production forms never better than A: yes -> PASS
+INFO N=4: S5 at [170, 171.7] by path A 1.1765e-04; the J >= 170 values: author (FLOAT Cov_1) 1.1765e-04, RV13_1 outward-endpoint arb 1.1735e-4
+PLANT-S2UP N=4 (S2_even from the upper ends of the diagonal): production bounds beat path A on R+, rho, rho1, c_x -> FIRES
+PLANT-PATHB N=4 (path B with sp = 0): worst relative B-A 9.64e-01 (S7 Dlt) -> FIRES
+C-REPRO N=3 [170, 171.7]: author lines m2_unif3 identical, endpairs4 J = 170 identical, assemble_unif4 identical; reference coverage lines (5) match; path B (naive, author forms) vs A: worst relative 1.63e-13 (S7 Rw), coverage tables (26 pairs) identical; production forms never better than A: yes -> PASS
+INFO N=3: S5 at [170, 171.7] by path A 2.2043e-04; the J >= 170 values: author (FLOAT Cov_1) 2.2043e-04, RV13_1 outward-endpoint arb 2.2036e-4
+PLANT-S2UP N=3 (S2_even from the upper ends of the diagonal): production bounds beat path A on R+, rho, rho1, c_x -> FIRES
+PLANT-PATHB N=3 (path B with sp = 0): worst relative B-A 9.58e-01 (S7 Dlt) -> FIRES
+C-C2 N=4 (certified entries): T = 0.01709310824, c2 = (N-1)T^2/2 = 0.000438261524; even - odd at t = 0 with the bars: [0.0004314910304, 0.0004450328672] (relative width 3.1e-02), c2 inside: True; central: 0.000438261524, largest relative distance 4.8e-10 (within 1e-8) -> PASS
+PLANT-ODDSIGN N=4: C-C2 with the odd part added -> FIRES
+C-C2 N=3 (certified entries): T = 0.01709310824, c2 = (N-1)T^2/2 = 0.0002921743493; even - odd at t = 0 with the bars: [0.0002897607157, 0.0002945881384] (relative width 1.7e-02), c2 inside: True; central: 0.0002921743493, largest relative distance 3.8e-10 (within 1e-8) -> PASS
+PLANT-ODDSIGN N=3: C-C2 with the odd part added -> FIRES
+PLANT-T (N=4): C-C2 against the transfer current with mode 2 weight +3/2 -> FIRES
+C-HARM N=4: r_main by matrix-tree 0.9654865604399 vs stored 0.965486560440 (relative 8.7e-17); q^2(t=0) 0.965486560440 (relative 0.0e+00); vacmod2 closed forms match -> PASS
+PLANT-HARM N=4 (v2_2: the conductances A_EX and B_EX swapped in the matrix-tree value): relative 3.8e-01 against the stored r_main -> FIRES
+INFO-HARM N=4: trial R+ at t = 0, I3p_0/N_w_0 = 0.10600 (harmonic 0.61 x 0.146 + 0.39 x 0.044 = 0.1062)
+C-HARM N=3: r_main by matrix-tree 0.9768566151942 vs stored 0.976856615194 (relative 6.3e-17); q^2(t=0) 0.976856615194 (relative 0.0e+00); vacmod2 closed forms match -> PASS
+PLANT-HARM N=3 (v2_2: the conductances A_EX and B_EX swapped in the matrix-tree value): relative 2.7e-01 against the stored r_main -> FIRES
+INFO-HARM N=3: trial R+ at t = 0, I3p_0/N_w_0 = 0.10599 (harmonic 0.61 x 0.146 + 0.39 x 0.044 = 0.1062)
+C-IP3 N=4: I_p3 - m-hat N_w a_0 0.00e+00, a_1 1.11e-16, a_2 -5.19e-15 (tolerance 1e-12) -> PASS; INFO a_3 2.214e-04; at J = 170 4.506e-11
+C-IP3 N=3: I_p3 - m-hat N_w a_0 0.00e+00, a_1 -2.57e-16, a_2 -1.33e-15 (tolerance 1e-12) -> PASS; INFO a_3 -7.024e-05; at J = 170 -1.430e-11
+C-KBAR N=4 (v2_2: k-bar a free centering constant): kbar = 0.8271394273441662, m2's own (pk10/scratch/m2_N4_J170.json.b, the constant its N_w, I3p, I_p3 and A_0w integrate w~ = xi+ - kbar with); kbar >= 0: True; on [300, 303] the S6 centering term |k_n - kbar g00|/g00 <= 0.000357562 lies inside u_h <= 0.000358594: True; S7: E_w <= 0.000327797 and t1 = (kbar + E_w)(1 + eps_r) <= 0.827471, >= kbar (1 + eps_r): True -> PASS; PLANT-KBAR (kbar negated) must fail the sign gate -> FIRES
+C-KBAR N=3 (v2_2: k-bar a free centering constant): kbar = 0.5514259266145797, m2's own (pk10/scratch/m2_N3_J170.json.b, the constant its N_w, I3p, I_p3 and A_0w integrate w~ = xi+ - kbar with); kbar >= 0: True; on [300, 303] the S6 centering term |k_n - kbar g00|/g00 <= 0.00023171 lies inside u_h <= 0.000232013: True; S7: E_w <= 0.000217435 and t1 = (kbar + E_w)(1 + eps_r) <= 0.551644, >= kbar (1 + eps_r): True -> PASS; PLANT-KBAR (kbar negated) must fail the sign gate -> FIRES
+C-PARITY N=4 (a gate, the N's records are certified): the cross-parity Gram entries g,0,2, g,1,2, g,2,3: max |a_k| = 0.00e+00, and a_k, ak_rad, B, Bp and err all exactly zero; clT's T,0,2, T,1,2, T,2,3 absent or all zero: yes; control, a symmetrized copy -> PASS; PLANT-PARITY (one nonzero part in that copy: a_0 fires, ak_rad_0 fires, bar B.rem fires, err fires, err dropped fires, B.rem None fires, B.rem False fires, a present clT T,0,2 with a_1 = 1e-12 fires) -> FIRES
+C-PARITY N=3 (a gate, the N's records are certified): the cross-parity Gram entries g,0,2, g,1,2, g,2,3: max |a_k| = 0.00e+00, and a_k, ak_rad, B, Bp and err all exactly zero; clT's T,0,2, T,1,2, T,2,3 absent or all zero: yes; control, a symmetrized copy -> PASS; PLANT-PARITY (one nonzero part in that copy: a_0 fires, ak_rad_0 fires, bar B.rem fires, err fires, err dropped fires, B.rem None fires, B.rem False fires, a present clT T,0,2 with a_1 = 1e-12 fires) -> FIRES
+C-MODULE: 108 verdict-path functions and classes against 10 forbidden patterns: none -> PASS
+PLANT-MODULE: a libm sqrt planted in quantities -> FIRES
+C-TAG: wording control (control pins: all certified -> CERTIFIED, a failed verdict -> FAIL, one FLOAT tag -> FLOAT-PASS; this run's tags -> CERTIFIED exactly when every input has a pin, here CERTIFIED: every input has a pin) -> PASS; PLANT-TAG (F1), each with every other tag certified, must not read CERTIFIED: FLOAT tags -> FLOAT-PASS -> FIRES; S4 TRB = "S4-TRB, pending" -> FLOAT-PASS -> FIRES; S4 U = CERTIFIED with a wrong sha8 -> FLOAT-PASS -> FIRES
+C-FMT N=4: 37 stored entries, the port's reader against the author's item() over [300, 303]: worst difference 1.1e-21 (B4 I_N) -> PASS
+PLANT-FMT N=4 (the port reads a copy with the g,0,1 and g,1,1 coefficient lists swapped): worst difference 2.0e+00 (B5 g,0,1) -> FIRES
+C-FMT N=3: 37 stored entries, the port's reader against the author's item() over [300, 303]: worst difference 4.1e-23 (B4 I_N) -> PASS
+PLANT-FMT N=3 (the port reads a copy with the g,0,1 and g,1,1 coefficient lists swapped): worst difference 2.0e+00 (B5 g,0,1) -> FIRES
+controls done at cpu 1.0 s
+SCAN [300, 303] 19.1c bars, all                      part M3 : S5 N4 65.22; S6 N4 196.9; S7 N4 30.23; S5 N3 122.9; S6 N3 419; S7 N3 76.52
+SCAN [300, 303] 19.1c bars, Ritz (B5 Gram, CT)       part M3 : S5 N4 772.7; S6 N4 482.4; S7 N4 182; S5 N3 1966; S6 N3 999.3; S7 N3 854.1
+SCAN [300, 303] 19.1c bars, amplitudes A_a           part M3 : S5 N4 108.5; S6 N4 never (cap); S7 N4 51.26; S5 N3 200.6; S6 N3 never (cap); S7 N3 127.3
+SCAN [300, 303] 19.1c bar I3p                        part M3 : S6 N4 569; S7 N4 634.1; S6 N3 1321; S7 N3 1480
+SCAN [300, 303] 19.1c bar Ip3                        part M3 : S6 N4 1417; S7 N4 never (cap); S6 N3 never (cap); S7 N3 never (cap)
+SCAN [300, 303] 19.1c bar N_w                        part M3 : S6 N4 never (cap); S7 N4 never (cap); S6 N3 never (cap); S7 N3 never (cap)
+SCAN [300, 303] 19.1c bar N_delta                    part M3 : S5 N4 never (cap); S7 N4 1550; S5 N3 never (cap); S7 N3 never (cap)
+SCAN [300, 303] 19.1c bar I_N                        part M3 : S5 N4 217; S7 N4 102.5; S5 N3 393.7; S7 N3 249.8
+SCAN [300, 303] 19.1c bars endw (I_mix, I_free)      part M3 : S7 N4 never (cap); S7 N3 never (cap)
+SCAN [300, 303] central I3p lowered (relative)       part M3 : S6 N4 0.1973; S7 N4 0.22; S6 N3 0.2014; S7 N3 0.2258
+SCAN [300, 303] central Ip3 raised (relative)        part M3 : S6 N4 0.1231; S7 N4 0.3159; S6 N3 0.1263; S7 N3 0.3294
+SCAN [300, 303] central N_w lowered (relative)       part M3 : S6 N4 0.2461; S7 N4 0.6319; S6 N3 0.2523; S7 N3 0.6588
+SCAN [300, 303] vacuum, all                          part M2 : S5 N4 25.84; S6 N4 603.9; S7 N4 14.91; S5 N3 67.38; S6 N3 1645; S7 N3 49.62
+SCAN [300, 303] vacuum D5                            part M2 : S5 N4 30.07; S6 N4 744; S7 N4 17.35; S5 N3 81.66; S6 N3 never (cap); S7 N3 59.97
+SCAN [300, 303] vacuum gB                            part M2 : S5 N4 never (cap); S6 N4 never (cap); S7 N4 never (cap); S5 N3 never (cap); S6 N3 never (cap); S7 N3 never (cap)
+SCAN [300, 303] vacuum Z2 (divided by; LAW v1 only)  part M2 : S5 N4 665.8; S6 N4 never (cap); S7 N4 222.4; S5 N3 never (cap); S6 N3 never (cap); S7 N3 never (cap)
+SCAN [300, 303] vacuum Rtr (LAW v1 only)             part M2 : S5 N4 1.493; S6 N4 1.505; S7 N4 1.481; S5 N3 1.501; S6 N3 1.505; S7 N3 1.501
+SCAN [300, 303] eps_delta of S5 (wres c_xi J/2, J)   part M2 : S5 N4 40.83; S7 N4 28.02; S5 N3 93.5; S7 N3 74.48
+SCAN [300, 303] eps_a (wres c_xi J, 2J)              part M2 : S5 N4 never (cap); S6 N4 never (cap); S7 N4 653.3; S5 N3 never (cap); S6 N3 never (cap); S7 N3 never (cap)
+SCAN [300, 303] Lemma 19.5w eps_w, eps_d             part P3 : S6 N4 never (cap); S7 N4 1769; S6 N3 never (cap); S7 N3 never (cap)
+SCAN [300, 303] Lemma 19.4 rem                       part S4 : S6 N4 83.67; S7 N4 41.5; S6 N3 295.5; S7 N3 272.4
+SCAN [300, 303] U raised by (absolute)               part S4 : S6 N4 0.004025; S7 N4 0.001969; S6 N3 0.004088; S7 N3 0.003762
+SCAN [300, 303] TRB (beta)                           part S4 : S5 N4 114.6; S6 N4 669.4; S7 N4 1.628; S5 N3 365; S6 N3 never (cap); S7 N3 2.055
+SCAN [300, 303] joint: bars, vacuum, eps_w, rem      part all: S5 N4 20.09; S6 N4 41.95; S7 N4 10.6; S5 N3 48.42; S6 N3 86.44; S7 N3 32.88
+SCAN [300, 303] R_w                                  part S7 : S7 N4 1.501; S7 N3 2.175
+SCAN [300, 303] ||B+-||                              part S7 : S7 N4 1.501; S7 N3 2.187
+SCAN [300, 303] c_x (divided by)                     part S7 : S7 N4 1.936; S7 N3 3.318
+SCAN [300, 303] C_1 = c5 (divided by)                part S5 : S7 N4 1.889; S7 N3 2.731
+INFO SCAN base: these distances, here and on the last piece, are measured from the certified S4 values: 'Lemma 19.4 rem' and the joint group scale R_CERT (not rem(170)), 'U raised by (absolute)' adds to the certified U(t), 'TRB (beta)' scales the certified TRB; the M3 and M2 inputs are their providers' (TAGS: CERTIFIED pk03 e55c5de1, CERTIFIED pk02 13cc0d9a), M2 through LAW v1, which alone reads the Z2 and Rtr hooks. They read as headroom over those values.
+SCAN last piece [1008859.42, inf]: joint: bars, vacuum, eps_w, rem S5 N4 65.05; joint: bars, vacuum, eps_w, rem S5 N3 121.6; joint: bars, vacuum, eps_w, rem S6 N4 59.33; joint: bars, vacuum, eps_w, rem S6 N3 172.9; joint: bars, vacuum, eps_w, rem S7 N4 27.57; joint: bars, vacuum, eps_w, rem S7 N3 72.88; 19.1c bars, all S6 N4 201.7; 19.1c bars, all S6 N3 425.9; U raised by (absolute) S6 N4 0.0041; U raised by (absolute) S6 N3 0.00415; TRB (beta) S6 N4 never (cap); TRB (beta) S6 N3 never (cap)
+INFO margin plants (S1, D2): F is the scan's flip on [300, 303]: bracket [1, 2] doubled up to 2048 (factors) or [0, 1e-4] doubled up to 1.0 (U, additive), then bisection to relative 0.4% (hi/lo <= 1.004, or hi - lo <= 0.004 hi); each plant needs a hold at F / 1.1 and a loss at 1.1 F
+PLANT-U N=4 ([300, 303], S7 claimed coverage, U raised by (absolute)): flip F = 0.001969; holds at F / 1.1 and is lost at 1.1 F -> FIRES
+PLANT-RW N=4 ([300, 303], S7 claimed coverage, R_w): flip F = 1.501; holds at F / 1.1 and is lost at 1.1 F -> FIRES
+PLANT-TRB N=4 ([300, 303], S7 claimed coverage, TRB (beta)): flip F = 1.628; holds at F / 1.1 and is lost at 1.1 F -> FIRES
+PLANT-U N=3 ([300, 303], S7 claimed coverage, U raised by (absolute)): flip F = 0.003762; holds at F / 1.1 and is lost at 1.1 F -> FIRES
+PLANT-RW N=3 ([300, 303], S7 claimed coverage, R_w): flip F = 2.175; holds at F / 1.1 and is lost at 1.1 F -> FIRES
+PLANT-TRB N=3 ([300, 303], S7 claimed coverage, TRB (beta)): flip F = 2.055; holds at F / 1.1 and is lost at 1.1 F -> FIRES
+PLANT-D3-C1 (N=4, [300, 303], C_1 = c5 (divided by)): flip F = 1.889 of the claim flip d>=3, same d>=1; the claim holds at F / 1.1 and the pair flip d=3 is lost at 1.1 F -> FIRES
+PLANT-D3-BARS (N=4, [300, 303], 19.1c bars, all): flip F = 30.23 of the claim flip d>=3, same d>=1; the claim holds at F / 1.1 and the pair flip d=3 is lost at 1.1 F -> FIRES
+PLANT-S5 bar_Ndel N=4 ([300, 303] on the FLOAT M3 copy (the certified N_delta bar never flips S5 below the cap)): S5 holds at 229.1 / 1.1 and fails at x 1.1 -> FIRES
+PLANT-S5 TRB N=4 ([300, 303]): S5 holds at 114.6 / 1.1 and fails at x 1.1 -> FIRES
+PLANT-S5 bar_Ndel N=3 ([300, 303] on the FLOAT M3 copy (the certified N_delta bar never flips S5 below the cap)): S5 holds at 584.6 / 1.1 and fails at x 1.1 -> FIRES
+PLANT-S5 TRB N=3 ([300, 303]): S5 holds at 365 / 1.1 and fails at x 1.1 -> FIRES
+  C-FLIP170 N=4 S6 eps_w x                                       reference 4.828, mine 4.835 -> ok
+  C-FLIP170 N=4 S6 D5 (eps_r, s) x                               reference 27.76, mine 27.8 -> ok
+  C-FLIP170 N=4 S6 gB (eps_r and eps_w bad-bond part) x          reference 8.788, mine 8.795 -> ok
+  C-FLIP170 N=4 S6 all Lemma 19.1c error bars (M2, B5, CT) x     reference 8.387, mine 8.4 -> ok
+  C-FLIP170 N=4 S6 Ritz error bars (B5 Gram + CT T) x            reference 17.27, mine 17.31 -> ok
+  C-FLIP170 N=4 S6 I3p error bar x                               reference 22.96, mine 23 -> ok
+  C-FLIP170 N=4 S6 Ip3 error bar x                               reference 50.21, mine 50.3 -> ok
+  C-FLIP170 N=4 S6 Nw error bar x                                reference > 1000, mine 1049 -> ok
+  C-FLIP170 N=4 S6 Lemma 19.4 remainder rem x                    reference 4.517, mine 4.518 -> ok
+  C-FLIP170 N=4 S6 TRB x                                         reference 20.97, mine 20.98 -> ok
+  C-FLIP170 N=4 S6 U raised by (absolute)                        reference 0.002289, mine 0.002294 -> ok
+  C-FLIP170 N=4 S6 I3p central lowered by (relative)             reference 0.1149, mine 0.115 -> ok
+  C-FLIP170 N=4 S6 Ip3 central raised by (relative)              reference 0.06675, mine 0.06688 -> ok
+  C-FLIP170 N=4 S6 Nw central lowered by (relative)              reference 0.1335, mine 0.1336 -> ok
+  C-FLIP170 N=4 S7 R_w x                                         reference 1.162, mine 1.164 -> ok
+  C-FLIP170 N=4 S7 ||B+||, ||B-|| x                              reference 1.162, mine 1.164 -> ok
+  C-FLIP170 N=4 S7 c_x /                                         reference 1.276, mine 1.279 -> ok
+  C-FLIP170 N=4 S7 Cov_1 /                                       reference 3.165, mine 3.169 -> ok
+  C-FLIP170 N=4 S7 U raised by                                   reference 1.032e-03, mine 0.001034 -> ok
+C-FLIP170 N=4 (the claim flip d>=4, same d>=1, C_1 = Cov_1): 19 distances to flip against the reference values -> PASS
+  C-FLIP170 N=3 S6 eps_w x                                       reference 10.96, mine 10.98 -> ok
+  C-FLIP170 N=3 S6 D5 (eps_r, s) x                               reference 121, mine 121.3 -> ok
+  C-FLIP170 N=3 S6 gB (eps_r and eps_w bad-bond part) x          reference 13.28, mine 13.31 -> ok
+  C-FLIP170 N=3 S6 all Lemma 19.1c error bars (M2, B5, CT) x     reference 23.06, mine 23.06 -> ok
+  C-FLIP170 N=3 S6 Ritz error bars (B5 Gram + CT T) x            reference 50.56, mine 50.57 -> ok
+  C-FLIP170 N=3 S6 I3p error bar x                               reference 72.24, mine 72.29 -> ok
+  C-FLIP170 N=3 S6 Ip3 error bar x                               reference 143.3, mine 143.4 -> ok
+  C-FLIP170 N=3 S6 Nw error bar x                                reference > 1000, mine never (cap) -> ok
+  C-FLIP170 N=3 S6 Lemma 19.4 remainder rem x                    reference 21.93, mine 21.96 -> ok
+  C-FLIP170 N=3 S6 TRB x                                         reference > 100, mine 101.1 -> ok
+  C-FLIP170 N=3 S6 U raised by (absolute)                        reference 0.003333, mine 0.003338 -> ok
+  C-FLIP170 N=3 S6 I3p central lowered by (relative)             reference 0.1667, mine 0.1669 -> ok
+  C-FLIP170 N=3 S6 Ip3 central raised by (relative)              reference 0.1015, mine 0.1016 -> ok
+  C-FLIP170 N=3 S6 Nw central lowered by (relative)              reference 0.203, mine 0.2031 -> ok
+  C-FLIP170 N=3 S7 R_w x                                         reference 1.918, mine 1.92 -> ok
+  C-FLIP170 N=3 S7 ||B+||, ||B-|| x                              reference 1.924, mine 1.926 -> ok
+  C-FLIP170 N=3 S7 c_x /                                         reference 3.060, mine 3.068 -> ok
+  C-FLIP170 N=3 S7 Cov_1 /                                       reference 2.005, mine 2.005 -> ok
+  C-FLIP170 N=3 S7 U raised by                                   reference 3.282e-03, mine 0.003288 -> ok
+C-FLIP170 N=3 (the claim flip d>=3, same d>=1, C_1 = Cov_1): 19 distances to flip against the reference values -> PASS
+INFO C-FLIP170 d=3 (D1): S7 N=4 under the production claim flip d>=3, same d>=1, distances to flip now, measured from the certified S4 values (N-d), against NOTE1_d3's recorded run (pk11/out/out_kt_s67_cert_v1_1_scan_d3.out, sha8 6c81ac61, all inputs FLOAT then; differences from this change of base are expected and are not a C-FLIP170 failure): 19.1c bars, all 30.23 (recorded 1.785); joint: bars, vacuum, eps_w, rem 10.6 (recorded 1.65); C_1 = c5 (divided by) 1.889 (recorded 1.362); vacuum, all 14.91 (recorded 6.874); U raised by (absolute) 0.001969 (recorded 0.001172); TRB (beta) 1.628 (recorded 1.395); R_w 1.501 (recorded 1.232); ||B+-|| 1.501 (recorded 1.232); c_x (divided by) 1.936 (recorded 1.589); last piece joint: bars, vacuum, eps_w, rem 27.57 (recorded 1.747)
+C-TARGETS lambda=1.00 N=3 (every FLOAT input at lambda x its v1_2 target excess, every certified input at its certified value: bars certified (M3), vacuum and eps_w certified (M2), U certified (S4-U, U3(t) + R_CERT, no target added), TRB certified (S4-TRB); every piece): naive enclosures fail on 0 pieces; with the production forms there ALL HOLD; min c5 0.000289623 on [1008859.42, inf], min R+/rho 1.25409 on [400.78, 404.79]
+C-TARGETS lambda=1.00 N=4 (every FLOAT input at lambda x its v1_2 target excess, every certified input at its certified value: bars certified (M3), vacuum and eps_w certified (M2), U certified (S4-U, U3(t) + R_CERT, no target added), TRB certified (S4-TRB); every piece): naive enclosures fail on 0 pieces; with the production forms there ALL HOLD; min c5 0.000431172 on [1008859.42, inf], min R+/rho 1.2486 on [400.78, 404.79]
+C-TARGETS lambda=1.25 N=3 (every FLOAT input at lambda x its v1_2 target excess, every certified input at its certified value: bars certified (M3), vacuum and eps_w certified (M2), U certified (S4-U, U3(t) + R_CERT, no target added), TRB certified (S4-TRB); every piece): naive enclosures fail on 0 pieces; with the production forms there ALL HOLD; min c5 0.000289623 on [1008859.42, inf], min R+/rho 1.25409 on [400.78, 404.79]
+C-TARGETS lambda=1.25 N=4 (every FLOAT input at lambda x its v1_2 target excess, every certified input at its certified value: bars certified (M3), vacuum and eps_w certified (M2), U certified (S4-U, U3(t) + R_CERT, no target added), TRB certified (S4-TRB); every piece): naive enclosures fail on 0 pieces; with the production forms there ALL HOLD; min c5 0.000431172 on [1008859.42, inf], min R+/rho 1.2486 on [400.78, 404.79]
+TARGETS v1_2 (SPEC sect. 3, the set T2, every input at its target at once): M3 bars, M2 vacuum and P3 eps_w <= x1.186; S4 U: certified U - float U <= 0.00078 (rem included; S4-U from its provider here, see KR4); S4-TRB: certified TRB <= x1.02 (N=4 1.338859, N=3 0.961107; S4-TRB from its provider here, see KR4); S5: computed here
+INFO headroom (single input, smallest over the scanned verdicts and pieces) 19.1c bars, all                      part M3  : 30.23
+INFO headroom (single input, smallest over the scanned verdicts and pieces) 19.1c bars, Ritz (B5 Gram, CT)       part M3  : 182
+INFO headroom (single input, smallest over the scanned verdicts and pieces) 19.1c bars, amplitudes A_a           part M3  : 51.26
+INFO headroom (single input, smallest over the scanned verdicts and pieces) 19.1c bar I3p                        part M3  : 569
+INFO headroom (single input, smallest over the scanned verdicts and pieces) 19.1c bar Ip3                        part M3  : 1417
+INFO headroom (single input, smallest over the scanned verdicts and pieces) 19.1c bar N_w                        part M3  : never (cap)
+INFO headroom (single input, smallest over the scanned verdicts and pieces) 19.1c bar N_delta                    part M3  : 1550
+INFO headroom (single input, smallest over the scanned verdicts and pieces) 19.1c bar I_N                        part M3  : 102.5
+INFO headroom (single input, smallest over the scanned verdicts and pieces) 19.1c bars endw (I_mix, I_free)      part M3  : never (cap)
+INFO headroom (single input, smallest over the scanned verdicts and pieces) central I3p lowered (relative)       part M3  : 0.1973
+INFO headroom (single input, smallest over the scanned verdicts and pieces) central Ip3 raised (relative)        part M3  : 0.1231
+INFO headroom (single input, smallest over the scanned verdicts and pieces) central N_w lowered (relative)       part M3  : 0.2461
+INFO headroom (single input, smallest over the scanned verdicts and pieces) vacuum, all                          part M2  : 14.91
+INFO headroom (single input, smallest over the scanned verdicts and pieces) vacuum D5                            part M2  : 17.35
+INFO headroom (single input, smallest over the scanned verdicts and pieces) vacuum gB                            part M2  : never (cap)
+INFO headroom (single input, smallest over the scanned verdicts and pieces) vacuum Z2 (divided by; LAW v1 only)  part M2  : 222.4
+INFO headroom (single input, smallest over the scanned verdicts and pieces) vacuum Rtr (LAW v1 only)             part M2  : 1.481
+INFO headroom (single input, smallest over the scanned verdicts and pieces) eps_delta of S5 (wres c_xi J/2, J)   part M2  : 28.02
+INFO headroom (single input, smallest over the scanned verdicts and pieces) eps_a (wres c_xi J, 2J)              part M2  : 653.3
+INFO headroom (single input, smallest over the scanned verdicts and pieces) Lemma 19.5w eps_w, eps_d             part P3  : 1769
+INFO headroom (single input, smallest over the scanned verdicts and pieces) Lemma 19.4 rem                       part S4  : 41.5
+INFO headroom (single input, smallest over the scanned verdicts and pieces) U raised by (absolute)               part S4  : 0.001969
+INFO headroom (single input, smallest over the scanned verdicts and pieces) TRB (beta)                           part S4  : 1.628
+INFO headroom (single input, smallest over the scanned verdicts and pieces) joint: bars, vacuum, eps_w, rem      part all : 10.6
+INFO headroom (single input, smallest over the scanned verdicts and pieces) R_w                                  part S7  : 1.501
+INFO headroom (single input, smallest over the scanned verdicts and pieces) ||B+-||                              part S7  : 1.501
+INFO headroom (single input, smallest over the scanned verdicts and pieces) c_x (divided by)                     part S7  : 1.936
+INFO headroom (single input, smallest over the scanned verdicts and pieces) C_1 = c5 (divided by)                part S5  : 1.889
+KILL KR2 (N = 4 headroom in R_w and ||B+-|| >= 1.05 at [300, 303]): 1.501, 1.501 -> PASS
+INFO S4-U N=4 (F2): certified U(t) - float U(t) (float U = lead(1 + c1 t + c2 t^2 + c3 t^3) + rem(170), T2's baseline) over the 904 pieces: at most -0.0006022751 (on [300.00, 300.75]), at least -0.00060227633 (on [1008859.42, inf]); beside it the record's own key N4_U_MINUS_FLOAT = 2.0084443e-5 (its constant U minus S4's float U at J = 300, rem(170) not in it)
+INFO S4-U N=3 (F2): certified U(t) - float U(t) (float U = lead(1 + c1 t + c2 t^2 + c3 t^3) + rem(170), T2's baseline) over the 904 pieces: at most -0.00014533506 (on [1008859.42, inf]), at least -0.00014533597 (on [300.00, 300.75]); beside it the record's own key N3_U_MINUS_FLOAT = 5.643879e-6 (its constant U minus S4's float U at J = 300, rem(170) not in it)
+KILL KR3 (v1_2 form, pk08's quadrature error <= U_t/2 = 3.9e-4; a gate): N=4 3.82e-6, N=3 1.18e-6 (S4_U_CERTIFIED_v3 N*_QUAD_TW_PART, exact decimals; S4-U tag certified: True) -> PASS
+KILL KR4 (joint form, a gate: a certified input looser than its T2 target stops the port): S4 U (part pk08): certified U - float U <= 7.8e-4 on every piece: N=4 at most -0.0006022751, N=3 at most -0.00014533506 -> PASS; S4 TRB (part pk08, v2_1): certified TRB <= 1.02 x the FLOAT TRB, exact decimals: N=4 1.30797171127e+0 against 1.02 x 1.312607, N=3 9.39977769617e-1 against 1.02 x 0.942262 (S4-TRB tag certified: True) -> PASS; M3 entries, M2 vacuum: FLOAT, not applicable -> PASS
+KILL KR5a, scan part (S5 joint headroom >= 1.5 at [300, 303]): N=4 20.09, N=3 48.42 -> PASS (the c5 > 0 part is in the sweep item)
+KILL KR-J (C-TARGETS holds at lambda = 1 and 1.25 on every piece, both N): PASS
+KILL RULE, scan part: no kill (KR2, KR3, KR4, KR5a part, KR-J pass)
+C-VERT-ONLY at the end (the certified vertical mode reads no S_TB' input): S_TB' providers run: none; the 8 FILES_STB files left unopened by C-HASH: yes; SH1, joint and t inputs: none -> PASS; PLANT-VERT-ONLY (provide_tin ran; t inputs present; pk01/out_kt_s9b_v2_n3.out opened) -> FIRES
+C-ENV end: PASS
+TAGS: M3 entries = CERTIFIED pk03 e55c5de1 (certified); M2 vacuum = CERTIFIED pk02 13cc0d9a (certified); S4 U = CERTIFIED pk08 e870cbe5 (certified); S4 TRB = CERTIFIED pk08 91109301 (certified)
+ITEM vscan cpu 37.8 s, peak resident memory 99 MiB
+NOTE the VERDICT line below is run validity (controls, plants and completeness); results read CERTIFIED only when every input tag is certified, FLOAT-PASS otherwise
+VERDICT VALID

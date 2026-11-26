@@ -1,0 +1,39 @@
+CODE MANIFEST 04595178 verified
+RUN N=4 rc=0
+C-WAYA-IN (P2's MR_LEMMAP_V3F 47cef0dd, C10 7090c13a, C13 7542c2da, each a row of its pk25 manifest; P2 CERTIFIED, its SOURCE naming MR_LEMMAP v3 3164b778 and C10; UHAT0 equal; C13 states C-BH0 exactly: loaded) -> PASS
+PLANT-WAYA-PIN (a wrong pin for P2's record must be refused) -> FIRES
+C-WAYA-RUN (Way A on N4_P0903 and N4_P0902 for h-1 and h0: no refusal (C-WAYA-IN at use, C-A0, C-MONO-TAIL, C-MONO-FAR); failures []) -> PASS
+C-WAYA-T0 (T0 = X1(0) D0 - N0 X2(0) holds 0 for both ends; F(0) = 0 exactly by C13's C-GAMMA and C-BH0 with P1's C-SPAN: h-1: T0 [+/- 1.17e-13] (X1(0) [0.0227818 +/- 4.92e-9], X2(0) [0.0260702 +/- 8.69e-9], N0 [0.873864 +/- 4.58e-7], D0 1.00000); h0: T0 [+/- 1.13e-13] (X1(0) [0.00322008 +/- 2.37e-9], X2(0) [0.00380359 +/- 2.19e-9], N0 [0.846589 +/- 4.40e-7], D0 1.00000)) -> PASS
+PLANT-WAYA-ZERO (u_y(0) in place of u_x(0) in h-1's T0: [0.0212998 +/- 3.42e-8] must leave 0) -> FIRES
+C-WAYA-CONT (the control on N4_P0902 [998870.7084483285, 1008859.4155328119], a piece with t_lo > 0: Way A's A_x/t overlaps v1_9's direct Ax/T (P2's /t fields are crude there, X_hi jhi): h-1: Way A [+/- 0.581], direct Ax/T [0.2 +/- 0.0964]; h0: Way A [+/- 0.618], direct Ax/T [0.2 +/- 0.0936]) -> PASS
+C-WAYA-JOIN (A_x/t is continuous at J = 1008859.4155328119: the last piece's Way A Axc overlaps the direct Ax/T of the piece before it: h-1: last piece Way A [0.224269, 0.272732], the piece before, direct Ax/T [0.201129, 0.296345]; h0: last piece Way A [0.160364, 0.309621], the piece before, direct Ax/T [0.177025, 0.293537]) -> PASS
+C-WAYA (the last piece N4_P0903 of variant C: h-1 and h0 rows with Axf 0 and a finite Way A Axc: h-1: Axc [2.2426880360580980e-01, 2.7273213933221996e-01] (positive), Axf 0, Ax [-4.0396848390855667e-06, 4.2862644988872490e-06]; h0: Axc [1.6036420478485524e-01, 3.0962054640986026e-01] (positive), Axf 0, Ax [-3.8773919612822283e-06, 4.1103617718363239e-06]) -> PASS
+RECORD /mnt/g2/release/root/code/pk22/midrow/g4/mrc/out/cert/MR_EXACT_PART_v1_10_U_N4.kv sha256 5d23901d8aa8559d52600d79989e0e359e78bb75ae7ee0743935369c3c9776c8 rows 3372
+RECORD /mnt/g2/release/root/code/pk22/midrow/g4/mrc/out/cert/MR_EXACT_PART_v1_10_C_N4.kv sha256 50ca14c20898d4c8f0373c0f8fe79b8c729a072c23555b4211c51c70d490ce0c rows 3372
+VERDICT VALID
+RUN N=3 rc=0
+C-WAYA-IN (P2's MR_LEMMAP_V3F 47cef0dd, C10 7090c13a, C13 7542c2da, each a row of its pk25 manifest; P2 CERTIFIED, its SOURCE naming MR_LEMMAP v3 3164b778 and C10; UHAT0 equal; C13 states C-BH0 exactly: loaded) -> PASS
+PLANT-WAYA-PIN (a wrong pin for P2's record must be refused) -> FIRES
+C-WAYA-RUN (Way A on N3_P0903 and N3_P0902 for h-1 and h0: no refusal (C-WAYA-IN at use, C-A0, C-MONO-TAIL, C-MONO-FAR); failures []) -> PASS
+C-WAYA-T0 (T0 = X1(0) D0 - N0 X2(0) holds 0 for both ends; F(0) = 0 exactly by C13's C-GAMMA and C-BH0 with P1's C-SPAN: h-1: T0 [+/- 7.37e-14] (X1(0) [0.0124008 +/- 4.39e-8], X2(0) [0.0212862 +/- 3.63e-8], N0 [0.582576 +/- 3.06e-7], D0 1.00000); h0: T0 [+/- 6.91e-14] (X1(0) [0.00175279 +/- 1.75e-9], X2(0) [0.00310562 +/- 1.53e-11], N0 [0.564392 +/- 3.74e-7], D0 1.00000)) -> PASS
+PLANT-WAYA-ZERO (u_y(0) in place of u_x(0) in h-1's T0: [0.0173912 +/- 4.18e-8] must leave 0) -> FIRES
+C-WAYA-CONT (the control on N3_P0902 [998870.7084483285, 1008859.4155328119], a piece with t_lo > 0: Way A's A_x/t overlaps v1_9's direct Ax/T (P2's /t fields are crude there, X_hi jhi): h-1: Way A [+/- 0.271], direct Ax/T [0.1 +/- 0.0384]; h0: Way A [+/- 0.281], direct Ax/T [0.1 +/- 0.0372]) -> PASS
+C-WAYA-JOIN (A_x/t is continuous at J = 1008859.4155328119: the last piece's Way A Axc overlaps the direct Ax/T of the piece before it: h-1: last piece Way A [0.113850, 0.131993], the piece before, direct Ax/T [0.107689, 0.138306]; h0: last piece Way A [0.092986, 0.141613], the piece before, direct Ax/T [0.097685, 0.137110]) -> PASS
+C-WAYA (the last piece N3_P0903 of variant C: h-1 and h0 rows with Axf 0 and a finite Way A Axc: h-1: Axc [1.1384996969718486e-01, 1.3199260050896556e-01] (positive), Axf 0, Ax [-1.2235983044561750e-06, 1.3454122074207931e-06]; h0: Axc [9.2985620489344000e-02, 1.4161343360319734e-01] (positive), Axf 0, Ax [-1.2540967784246960e-06, 1.3703853820601353e-06]) -> PASS
+RECORD /mnt/g2/release/root/code/pk22/midrow/g4/mrc/out/cert/MR_EXACT_PART_v1_10_U_N3.kv sha256 112c17ad32d280de70ccb29abe15cb7e878a91864f67e94793267800c434e77b rows 3616
+RECORD /mnt/g2/release/root/code/pk22/midrow/g4/mrc/out/cert/MR_EXACT_PART_v1_10_C_N3.kv sha256 8b0fd59c91242e8fa5882069cbd959f63e21c3570e1d9eba253cdf16c1e7aa01 rows 3616
+VERDICT VALID
+COMBINE rc=0
+mrx_combine_v1_10; script sha256 83e76eec40de995149ba70ee85281f702cb9930f4690b60cf699540c096ddfe8; mrx_cert_v1_10 sha256 a75a48a692aceede40e5c6861468e35670a36d8ae0fd9c749c11bea94eff90c8; python 3.14.4
+C-SRC (MIDROW_G6_SPEC_v1_6_2.md 1e570ab7, kt_mr_assembly_v1_8_4.py abd48b2c, MANIFEST_MR_V4_CERT_v1.sha256 6ac308d7, MANIFEST_MRX_CERT_v1_9.sha256 b853b266) -> PASS
+C-SPECTRAL-PIN (mr/v4 MR_SPECTRAL.kv 0e4d817729c6f735 as MANIFEST_MR_V4_CERT_v1 lists it) -> PASS
+C-RUNS (N4 mrx_cert_v1_10_cert_n4.out d721ef8f: ['VERDICT VALID'], C-ORIENT on 843 pieces, PLANT-ORIENT fired, Way A gates 6 of 6 PASS, plants 2 of 2 FIRE; N3 mrx_cert_v1_10_cert_n3.out 91d40b99: ['VERDICT VALID'], C-ORIENT on 904 pieces, PLANT-ORIENT fired, Way A gates 6 of 6 PASS, plants 2 of 2 FIRE; each names its two part files with their sha256s on RECORD lines) -> PASS
+C-PARTS (4 parts: RECORD MR_EXACT_PART, STATUS CERTIFIED, RUN_VERDICT VALID, CODE mrx_cert_v1_10 a75a48a6; FIELDS, X_POWER, TRIAL_SET, LEMMAP_SHA256, ORIENTATION equal; TRIAL_SET equal to MR_SPECTRAL's; rows: each base key and its jlo, jhi exactly MR_SPECTRAL's, N4 843 and N3 904 pieces, four ends each) -> PASS
+C-WAYA-ROWS (the last piece of each N, variant C: h-1 and h0 rows with Axf 0, Axc_lo <= Axc_hi and t Axc inside [Ax_lo, Ax_hi] at t = 0 and 1/jlo: N4_P0903_h-1 Axc [2.2426880360580980e-01, 2.7273213933221996e-01] Axf 0; N4_P0903_h0 Axc [1.6036420478485524e-01, 3.0962054640986026e-01] Axf 0; N3_P0903_h-1 Axc [1.1384996969718486e-01, 1.3199260050896556e-01] Axf 0; N3_P0903_h0 Axc [9.2985620489344000e-02, 1.4161343360319734e-01] Axf 0) -> PASS
+PLANT-WAYA-ROWS (the first such row with Axc_hi = 2 jlo Ax_hi, so that t Axc_hi leaves the amplitude at t = 1/jlo, must fail the row test) -> FIRES
+C-SAME-V1_9 (every row of the C parts but the last piece's h-1 and h0 equals the row of v1_9's certified C part (MANIFEST_MRX_CERT_v1_9 b853b266), with the same keys in the same order: 6984 rows of 6984) -> PASS
+C-TEXT (X_DEFINITION and ORIENT_CHECK copied from MIDROW_G6_SPEC_v1_6_2.md sect. 6: X_DEFINITION equals engine v1_8_4's XDEF[MR_EXACT]; ORIENT_CHECK matches its ORIENT_RX with N4 843, N3 904, the record grid's counts; FIELDS equal its FIELDS4[MR_EXACT] + Pe_hi, X_POWER its XPOW[MR_EXACT]) -> PASS
+PLANT-TEXT (X_DEFINITION with its first <= changed to < must fail C-TEXT) -> FIRES
+PLANT-COUNT (ORIENT_CHECK with N4 843 - 1 pieces must fail the engine's count rule) -> FIRES
+RECORD /mnt/g2/release/root/code/pk22/midrow/g4/mrc/out/cert/MR_EXACT_CERT_v1_10_C.kv sha256 d0e208ae505d2d015fb21df1be4e7a8100d60009cb55d33a2c9d6cb43411a971 rows 6988
+VERDICT VALID

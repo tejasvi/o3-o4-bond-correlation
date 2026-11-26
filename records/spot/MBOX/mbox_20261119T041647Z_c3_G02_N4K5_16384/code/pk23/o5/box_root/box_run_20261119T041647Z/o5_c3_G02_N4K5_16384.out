@@ -1,0 +1,104 @@
+kt_lbu_g34_pk06_v1 mode grid LIM 600 K 5 SET grid | python 3.14.4 | python-flint 0.9.0 | prec 256 | sha256 679e02eee07c892251eb435bc6cb48969ca9ad7cab033b4559f01c9a7fadf7ca
+ARGS grid: K 5, P_3 x P_3, N 4, J1 350 (t in (0, 1/350]), ORBS G02, SIGS 1/4, CONTROLS none, MEMSTOP 7800 MB
+SCAN ncell 16384 (RV83: t-cells of the lower-bound scan; g37lzd uses 64)
+CHECK C-GRAPH-G PASS P_3 x P_3: tau 192 (expected 192); Foster 8 (V - 1 = 8); L+ invariant under both reflections True
+ENUM P_3 x P_3: pairs 30, orbits 8, orbits with a middle-row edge 3 (no reference count)
+CHECK C-ORBIT-DELTA PASS Delta^2 equal over every orbit: True
+ORBIT G01 (h00, h10): size 4, middle-row True, distance 1, Delta -5/12, Delta^2 25/144, c2(N=4) 25/384 (6.510417e-02); members (h00, h10) (h01, h11) (h10, h20) (h11, h21)
+ORBIT G02 (h00, h11): size 4, middle-row True, distance 1, Delta -1/12, Delta^2 1/144, c2(N=4) 1/384 (2.604167e-03); members (h00, h11) (h01, h10) (h10, h21) (h11, h20)
+ORBIT G03 (h00, h21): size 2, middle-row False, distance 2, Delta -1/12, Delta^2 1/144, c2(N=4) 1/384 (2.604167e-03); members (h00, h21) (h01, h20)
+ORBIT G04 (h00, v02): size 4, middle-row False, distance 1, Delta 1/6, Delta^2 1/36, c2(N=4) 1/96 (1.041667e-02); members (h00, v02) (h01, v00) (h20, v12) (h21, v10)
+ORBIT G05 (h00, v10): size 4, middle-row False, distance 1, Delta -1/6, Delta^2 1/36, c2(N=4) 1/96 (1.041667e-02); members (h00, v10) (h01, v12) (h20, v00) (h21, v02)
+ORBIT G06 (h00, v11): size 4, middle-row False, distance 1, Delta 1/12, Delta^2 1/144, c2(N=4) 1/384 (2.604167e-03); members (h00, v11) (h01, v11) (h20, v01) (h21, v01)
+ORBIT G07 (h00, v12): size 4, middle-row False, distance 2, Delta 1/12, Delta^2 1/144, c2(N=4) 1/384 (2.604167e-03); members (h00, v12) (h01, v10) (h20, v02) (h21, v00)
+ORBIT G08 (h10, v02): size 4, middle-row True, distance 1, Delta -1/12, Delta^2 1/144, c2(N=4) 1/384 (2.604167e-03); members (h10, v02) (h10, v12) (h11, v00) (h11, v10)
+SELECT G02 (h00, h11)
+SERIES series G02 (h00, h11) N=4 K=5: K 5, terms per key {('1', 0): [1, 30, 403, 3196, 17386, 72055], ('e', 0): [1, 33, 487, 4235, 24941, 109991], ('f', 1): [1, 33, 487, 4229, 24853, 109541], ('ef', 1): [1, 36, 580, 5502, 35030, 164772]}, cpu 0.05 s
+TABLE series G02 (h00, h11) N=4 K=5 T0: n 3, caps {0: 10, 1: 10, 2: 10}, 369512 moments, cpu 0.60 s
+RSS series G02 (h00, h11) N=4 K=5 T0: peak 84 MB
+CHECK C-GAUSS G02 (h00, h11) N=4 K=5 PASS c2 = 1/384 = (N-1) Delta^2 / 8: True
+R-SERIES G02 (h00, h11) N=4 K=5: c2 1/384 (2.604167e-03), c3 311/36864 (8.436415e-03), c4 6011/589824 (1.019118e-02); central value at t = 1/350 2.628354e-03 = 1.009288e+00 c2
+CHECK C-EXACT G02 (h00, h11) N=4 K=5 T0 PASS 10 of 10
+PLANT PLANT-MOM G02 (h00, h11) N=4 K=5 T0 FIRED one moment + 1e-20: 1 of 10 differ
+PLANT PLANT-FALSE-MOM G02 (h00, h11) N=4 K=5 E=0 FIRED A_ef(0) - 2 c2, zero errors: 16384 negative cells, min -2.604347e-03
+SERIES sym G02 (h01, h10) N=4: K 2, terms per key {('1', 0): [1, 30, 403], ('e', 0): [1, 33, 487], ('f', 1): [1, 33, 487], ('ef', 1): [1, 36, 580]}, cpu 0.00 s
+TABLE sym G02 (h01, h10) N=4 T0: n 3, caps {0: 4, 1: 4, 2: 4}, 2860 moments, cpu 0.00 s
+RSS sym G02 (h01, h10) N=4 T0: peak 113 MB
+CHECK C-SYM G02 (h00, h11) N=4 K=5 PASS second member (h01, h10): a_k (k <= 2) equal
+SERIES cert G02 (h00, h11) N=4 K=5: K 5, terms per key {('1', 0): [1, 30, 403, 3196, 17386, 72055], ('e', 0): [1, 33, 487, 4235, 24941, 109991], ('f', 1): [1, 33, 487, 4229, 24853, 109541], ('ef', 1): [1, 36, 580, 5502, 35030, 164772]}, cpu 0.04 s
+TABLE cert G02 (h00, h11) N=4 K=5 T0: n 3, caps {0: 10, 1: 10, 2: 10}, 369512 moments, cpu 0.59 s
+RSS cert G02 (h00, h11) N=4 K=5 T0: peak 113 MB
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T1 PASS tilt 7/3200
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=1: 12 terms, cpu 0.02 s, peak RSS 120 MB; next 64 terms, predicted peak 142 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=2: 76 terms, cpu 0.02 s, peak RSS 120 MB; next 264 terms, predicted peak 134 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=3: 340 terms, cpu 0.02 s, peak RSS 120 MB; next 870 terms, predicted peak 131 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=4: 1210 terms, cpu 0.02 s, peak RSS 120 MB; next 2442 terms, predicted peak 129 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=5: 3652 terms, cpu 0.02 s, peak RSS 120 MB; next 6072 terms, predicted peak 127 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=6: 9724 terms, cpu 0.03 s, peak RSS 120 MB; next 13728 terms, predicted peak 126 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=7: 23452 terms, cpu 0.05 s, peak RSS 120 MB; next 28743 terms, predicted peak 125 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=8: 52195 terms, cpu 0.10 s, peak RSS 120 MB; next 56485 terms, predicted peak 125 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=9: 108680 terms, cpu 0.22 s, peak RSS 120 MB; next 105248 terms, predicted peak 124 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=10: 213928 terms, cpu 0.47 s, peak RSS 125 MB; next 187408 terms, predicted peak 139 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=11: 401336 terms, cpu 1.00 s, peak RSS 161 MB; next 320892 terms, predicted peak 289 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=12: 722228 terms, cpu 2.06 s, peak RSS 217 MB; next 531012 terms, predicted peak 502 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=13: 1253240 terms, cpu 4.20 s, peak RSS 331 MB; next 852720 terms, predicted peak 905 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=14: 2105960 terms, cpu 7.89 s, peak RSS 505 MB; next 1129854 terms, predicted peak 1331 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=15: 3235814 terms, cpu 12.20 s, peak RSS 754 MB; next 735471 terms, predicted peak 1330 MB
+MOMDEG cert G02 (h00, h11) N=4 K=5 T1 k=16: 3971285 terms, cpu 14.70 s, peak RSS 1150 MB; next 2042975 terms, predicted peak 1150 MB
+TABLE cert G02 (h00, h11) N=4 K=5 T1: n 3, caps {0: 16, 1: 14, 2: 12}, 3971285 moments, cpu 14.70 s
+RSS cert G02 (h00, h11) N=4 K=5 T1: peak 1150 MB
+CHECK C-EXACT cert G02 (h00, h11) N=4 K=5 T1 PASS 10 of 10
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T2 v0 PASS lambda 48/65
+TABLE cert G02 (h00, h11) N=4 K=5 T2 v0: n 3, caps {0: 10, 1: 10, 2: 10}, 369512 moments, cpu 0.94 s
+CHECK C-EXACT cert G02 (h00, h11) N=4 K=5 T2 v0 PASS 10 of 10
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T2 v1 PASS lambda 72/65
+TABLE cert G02 (h00, h11) N=4 K=5 T2 v1: n 3, caps {0: 10, 1: 10, 2: 10}, 369512 moments, cpu 1.04 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T2 v2 PASS lambda 48/65
+TABLE cert G02 (h00, h11) N=4 K=5 T2 v2: n 3, caps {0: 10, 1: 10, 2: 10}, 369512 moments, cpu 0.94 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T2 v3 PASS lambda 72/65
+TABLE cert G02 (h00, h11) N=4 K=5 T2 v3: n 3, caps {0: 10, 1: 10, 2: 10}, 369512 moments, cpu 0.94 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T2 v4 PASS lambda 9/5
+TABLE cert G02 (h00, h11) N=4 K=5 T2 v4: n 3, caps {0: 10, 1: 10, 2: 10}, 369512 moments, cpu 0.72 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T2 v5 PASS lambda 72/65
+TABLE cert G02 (h00, h11) N=4 K=5 T2 v5: n 3, caps {0: 10, 1: 10, 2: 10}, 369512 moments, cpu 0.99 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T2 v6 PASS lambda 48/65
+TABLE cert G02 (h00, h11) N=4 K=5 T2 v6: n 3, caps {0: 10, 1: 10, 2: 10}, 369512 moments, cpu 1.02 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T2 v7 PASS lambda 72/65
+TABLE cert G02 (h00, h11) N=4 K=5 T2 v7: n 3, caps {0: 10, 1: 10, 2: 10}, 369512 moments, cpu 0.93 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T2 v8 PASS lambda 48/65
+TABLE cert G02 (h00, h11) N=4 K=5 T2 v8: n 3, caps {0: 10, 1: 10, 2: 10}, 369512 moments, cpu 0.96 s
+RSS cert G02 (h00, h11) N=4 K=5 T2: peak 1166 MB
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T3 v0 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G02 (h00, h11) N=4 K=5 T3 v0: n 3, caps {0: 4, 1: 2, 2: 0}, 826 moments, cpu 0.01 s
+CHECK C-EXACT cert G02 (h00, h11) N=4 K=5 T3 v0 PASS 10 of 10
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T3 v1 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G02 (h00, h11) N=4 K=5 T3 v1: n 3, caps {0: 4, 1: 2, 2: 0}, 826 moments, cpu 0.01 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T3 v2 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G02 (h00, h11) N=4 K=5 T3 v2: n 3, caps {0: 4, 1: 2, 2: 0}, 826 moments, cpu 0.01 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T3 v3 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G02 (h00, h11) N=4 K=5 T3 v3: n 3, caps {0: 4, 1: 2, 2: 0}, 826 moments, cpu 0.01 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T3 v4 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G02 (h00, h11) N=4 K=5 T3 v4: n 3, caps {0: 4, 1: 2, 2: 0}, 826 moments, cpu 0.01 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T3 v5 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G02 (h00, h11) N=4 K=5 T3 v5: n 3, caps {0: 4, 1: 2, 2: 0}, 826 moments, cpu 0.01 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T3 v6 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G02 (h00, h11) N=4 K=5 T3 v6: n 3, caps {0: 4, 1: 2, 2: 0}, 826 moments, cpu 0.01 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T3 v7 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G02 (h00, h11) N=4 K=5 T3 v7: n 3, caps {0: 4, 1: 2, 2: 0}, 826 moments, cpu 0.01 s
+CHECK C-H cert G02 (h00, h11) N=4 K=5 T3 v8 PASS tilt 1/175 + kappa_a 1/2
+TABLE cert G02 (h00, h11) N=4 K=5 T3 v8: n 3, caps {0: 4, 1: 2, 2: 0}, 826 moments, cpu 0.01 s
+BUILD cert G02 (h00, h11) N=4 K=5 done, cpu 40.61 s, peak RSS 1166 MB
+SIGMA cert G02 (h00, h11) N=4 K=5 1/4: radii ['1.284027e-01', '8.409119e-02', '1.284027e-01', '8.409119e-02', '5.393982e-02', '8.409119e-02', '1.284027e-01', '8.409119e-02', '1.284027e-01'], max slope 5.351436e-01, Dbar terms {('1', 0): 243946, ('e', 0): 859031, ('f', 1): 852225, ('ef', 1): 2708955}, cpu 70.26 s, peak RSS 1951 MB
+POINT G02 (h00, h11) N=4 K=5 J1 350 sigma 1/4: L 2.603821e-03 mono True neg 0 | 1 rem 3.570213e-09 tail 5.950076e-13 ann 3.112217e-08 far 5.987274e-112 (th 77/80); e rem 8.390876e-09 tail 1.015706e-12 ann 3.961892e-08 far 4.191091e-109 (th 77/80); f rem 4.386151e-09 tail 8.926846e-13 ann 3.259755e-08 far 4.191091e-109 (th 77/80); ef rem 1.002772e-08 tail 1.512166e-12 ann 4.179588e-08 far 2.933764e-106 (th 77/80)
+CHECK C-CELLS G02 (h00, h11) N=4 K=5 PASS per-cell minimum 2.603821e-03, phi_scan 2.603821e-03; negative cells 0
+R-CERT G02 (h00, h11) N=4 K=5 J1 350: certified True; sigma 1/4; L 2.603821e-03; c2 2.604167e-03; L / c2 9.998674e-01; E {'1': '3.469298e-08', 'e': '4.801081e-08', 'f': '3.698460e-08', 'ef': '5.182511e-08'}; terms (rem, tail, ann, far) {'1': ['3.570213e-09', '5.950076e-13', '3.112217e-08', '5.987274e-112'], 'e': ['8.390876e-09', '1.015706e-12', '3.961892e-08', '4.191091e-109'], 'f': ['4.386151e-09', '8.926846e-13', '3.259755e-08', '4.191091e-109'], 'ef': ['1.002772e-08', '1.512166e-12', '4.179588e-08', '2.933764e-106']}
+CELLS G02: 16384 cells, digest sha256 e5cf56cf152541ae1c461ff4bc4645e3a79b9819f8d700563421ccf8a6231c12 of the 16384 CELL lines; worst cell 0 (Phi_lo 2.603821e-03); failing cells 0
+CELL G02 00 t [0.000000e+00, 1.743862e-07]: Phi_lo 2.603821e-03, Phi_lo / c2 9.998674e-01, series at mid 2.604167e-03, pass True
+CELL G02 16383 t [2.856968e-03, 2.857143e-03]: Phi_lo 2.628007e-03, Phi_lo / c2 1.009155e+00, series at mid 2.628353e-03, pass True
+PLANT PLANT-FALSE-MOM G02 (h00, h11) N=4 K=5 FIRED A_ef(0) - 2 c2 with the errors at sigma 1/4: 16384 negative cells, min -2.604512e-03
+PLANT PLANT-MOM G02 (h00, h11) N=4 K=5 T1 FIRED one T1 moment + 1e-20: 1 of 10 differ
+CPU G02 (h00, h11) N=4 K=5: 113.89 s; peak RSS 1951 MB
+READINGS CERT P_3 x P_3 N=4 K=5 J1 350: G02 certified True L/c2 9.998674e-01
+CHECKS {'C-GRAPH-G': True, 'C-ORBIT-DELTA': True, 'C-GAUSS G02 (h00, h11) N=4 K=5': True, 'C-EXACT G02 (h00, h11) N=4 K=5 T0': True, 'C-SYM G02 (h00, h11) N=4 K=5': True, 'C-H cert G02 (h00, h11) N=4 K=5 T1': True, 'C-EXACT cert G02 (h00, h11) N=4 K=5 T1': True, 'C-H cert G02 (h00, h11) N=4 K=5 T2 v0': True, 'C-EXACT cert G02 (h00, h11) N=4 K=5 T2 v0': True, 'C-H cert G02 (h00, h11) N=4 K=5 T2 v1': True, 'C-H cert G02 (h00, h11) N=4 K=5 T2 v2': True, 'C-H cert G02 (h00, h11) N=4 K=5 T2 v3': True, 'C-H cert G02 (h00, h11) N=4 K=5 T2 v4': True, 'C-H cert G02 (h00, h11) N=4 K=5 T2 v5': True, 'C-H cert G02 (h00, h11) N=4 K=5 T2 v6': True, 'C-H cert G02 (h00, h11) N=4 K=5 T2 v7': True, 'C-H cert G02 (h00, h11) N=4 K=5 T2 v8': True, 'C-H cert G02 (h00, h11) N=4 K=5 T3 v0': True, 'C-EXACT cert G02 (h00, h11) N=4 K=5 T3 v0': True, 'C-H cert G02 (h00, h11) N=4 K=5 T3 v1': True, 'C-H cert G02 (h00, h11) N=4 K=5 T3 v2': True, 'C-H cert G02 (h00, h11) N=4 K=5 T3 v3': True, 'C-H cert G02 (h00, h11) N=4 K=5 T3 v4': True, 'C-H cert G02 (h00, h11) N=4 K=5 T3 v5': True, 'C-H cert G02 (h00, h11) N=4 K=5 T3 v6': True, 'C-H cert G02 (h00, h11) N=4 K=5 T3 v7': True, 'C-H cert G02 (h00, h11) N=4 K=5 T3 v8': True, 'C-CELLS G02 (h00, h11) N=4 K=5': True}
+PLANTS {'PLANT-MOM G02 (h00, h11) N=4 K=5 T0': True, 'PLANT-FALSE-MOM G02 (h00, h11) N=4 K=5 E=0': True, 'PLANT-FALSE-MOM G02 (h00, h11) N=4 K=5': True, 'PLANT-MOM G02 (h00, h11) N=4 K=5 T1': True}
+SUMMARY mode grid: status DONE; checks 28/28; plants 4/4; VERDICT VALID; cpu 113.98 s; wall 113.95 s; peak RSS 1951 MB

@@ -1,0 +1,24 @@
+# o5_jobs_v7.txt (pk23 O5 box kit v7, stage 1 of the n = 5 statement): PHASE TAG CAP_GB GUARD_CAP_COREH LIM ENGINE
+# REF K ROWS COLS N J1 ORBIT SIGMA CONTROLS MEMSTOP NCELL. ENGINE is the kit's one engine (the g37fs); REF is - or a ref_*.out file of
+# the kit, which o5_job_v3.sh compares with the job's output (o5_control_cmp_v2.sh, masked, the CELLS digest kept) into <TAG>.cmp; NCELL is
+# g37fs's twelfth argument. Phase C: the g37fs n = 4 control at NCELL 64 against pk06's run, and two fine-scan controls against the review's
+# local outputs (P_3 x P_3: N3 K4 at the production setting SIGS 1/4,1/3 and NCELL 65536; N4 K5 at NCELL 16384); the driver's gate
+# needs all three at rc 0 with 0 lines. Phase B: the 14 K3/K4 jobs of the n5jobs_v1_9orbits (orbits G04 G08 G11 G16 G20 G32 G36 of
+# P_3 x P_5 at N4 and N3), at the interim caps (memk5_v1 adcbb4b7: N4 K4 90G, N3 K4 110G, N3 K3 24G); 970G in all, so two waves.
+C c_G02_n4_fs64 8 0.10 600 kt_lbu_g37fs_v1.py ref_pk06_full_n4_G02_s14_v1.out 3 3 4 4 350 G02 1/4 none 0 64
+C c3_G02_N3K4_s1413_65536 8 0.10 600 kt_lbu_g37fs_v1.py ref_n3_N3_K4_G02_sig14_13_ncell65536.out 4 3 3 3 300 G02 1/4,1/3 none 7800 65536
+C c3_G02_N4K5_16384 8 0.10 600 kt_lbu_g37fs_v1.py ref_n3_N4_K5_G02_ncell16384.out 5 3 3 4 350 G02 1/4 none 7800 16384
+B G08_n5_N3_K4 110 4.10 14400 kt_lbu_g37fs_v1.py - 4 3 5 3 300 G08 1/4,1/3 none 0 65536
+B G16_n5_N3_K4 110 4.10 14400 kt_lbu_g37fs_v1.py - 4 3 5 3 300 G16 1/4,1/3 none 0 65536
+B G04_n5_N4_K4 90 3.60 12600 kt_lbu_g37fs_v1.py - 4 3 5 4 350 G04 1/4,1/3 none 0 65536
+B G08_n5_N4_K4 90 3.60 12600 kt_lbu_g37fs_v1.py - 4 3 5 4 350 G08 1/4,1/3 none 0 65536
+B G11_n5_N4_K4 90 3.60 12600 kt_lbu_g37fs_v1.py - 4 3 5 4 350 G11 1/4,1/3 none 0 65536
+B G16_n5_N4_K4 90 3.60 12600 kt_lbu_g37fs_v1.py - 4 3 5 4 350 G16 1/4,1/3 none 0 65536
+B G20_n5_N4_K4 90 3.60 12600 kt_lbu_g37fs_v1.py - 4 3 5 4 350 G20 1/4,1/3 none 0 65536
+B G32_n5_N4_K4 90 3.60 12600 kt_lbu_g37fs_v1.py - 4 3 5 4 350 G32 1/4,1/3 none 0 65536
+B G04_n5_N3_K3 24 1.10 3600 kt_lbu_g37fs_v1.py - 3 3 5 3 300 G04 1/4,1/3 none 0 65536
+B G11_n5_N3_K3 24 1.10 3600 kt_lbu_g37fs_v1.py - 3 3 5 3 300 G11 1/4,1/3 none 0 65536
+B G36_n5_N4_K4 90 3.60 12600 kt_lbu_g37fs_v1.py - 4 3 5 4 350 G36 1/4,1/3 none 0 65536
+B G20_n5_N3_K3 24 1.10 3600 kt_lbu_g37fs_v1.py - 3 3 5 3 300 G20 1/4,1/3 none 0 65536
+B G32_n5_N3_K3 24 1.10 3600 kt_lbu_g37fs_v1.py - 3 3 5 3 300 G32 1/4,1/3 none 0 65536
+B G36_n5_N3_K3 24 1.10 3600 kt_lbu_g37fs_v1.py - 3 3 5 3 300 G36 1/4,1/3 none 0 65536

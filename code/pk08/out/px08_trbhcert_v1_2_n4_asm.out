@@ -1,0 +1,106 @@
+px08_trbhcert_v1_2 sha256 7c96a87d6759c50eef726f17687d872363f61fcc1ebc2b1c14f1a7c1ab36327e ITEM=n4 asm LIM=230 SIGC=0.5
+C-HASH PASS (28 sources)
+PARTITION N=4: nodes 0..32 once each, reflection no; G boxes tiling [0, 1] pi: P 72, D 127, T 71: PASS
+C-MULTISET N=4 (C-EVEN per node item, C-CONJ per group, PLANT-DET per G item): PASS
+COV N=4 (the cov item's 16 CHECK lines: C-PROP P/D/T, C-COVER, C-PORT, C-BLOCK, C-GFM, C-FLT and their plants): PASS; certified sigma 0.5, this run 0.5
+C-COPY (every COPY block = its source lines, byte for byte): PASS, 28 blocks, 685 lines
+C-ITEMCODE (v1 and v1_1 each byte-identical to this file from GPARTS to the asm part, except the lines named per producer): PASS, px08_trbhcert_v1.py l.44-1591 against this file l.57-1604, 3 lines differ (l.65, l.135, l.166): output header 1, G constants 1, LIM ceiling 1; px08_trbhcert_v1_1.py l.53-1600 against this file l.57-1604, 2 lines differ (l.65, l.135): output header 1, LIM ceiling 1
+PRODUCERS N=4 (script, sha256: the parts read from it): px08_trbhcert_v1 a403d2c443f8d7cf5be114babb2df8a861004bd417aaeca939f1102b8f952b9a: cov gP0 nodes0 nodes1 nodes2 nodes3 nodes4 nodes5 nodes6 nodes7 nodes8; px08_trbhcert_v1_1 d66ad2e82e8c667ac57ad1c5cd5fdba16ad0cb928c34ff93196c32af208e687d: gP1 gP2 gP3 gP4 gP5 gP6 gP7; px08_trbhcert_v1_2 7c96a87d6759c50eef726f17687d872363f61fcc1ebc2b1c14f1a7c1ab36327e: gD0 gD1 gD2 gD3 gD4 gD5 gD6 gD7 gT0 gT1 gT2 gT3 gT4 gT5 gT6 gT7
+C-REFINE N=4 (every box of width pi/128 or within the caps): PASS
+G line N=4: Im al = 0.5 (the boundary line of the C-COVER strip), M = 64
+C-HALF N=4: PASS
+  N=4 I[P:1] = [1.03023930410 +/- 3.25e-12]; G 9.43564377867e-4, TW error 2.38989109751e-17, error/|T_M| 4.57849376592e-14
+  N=4 I[P:E1] = [0.87162507409 +/- 9.44e-12]; G 1.71039542378e-1, TW error 4.33214616023e-15, error/|T_M| 9.80970654206e-12
+  N=4 I[P:E2] = [0.65886519 +/- 9.12e-9]; G 1.26449336958e+2, TW error 3.20275067361e-12, error/|T_M| 9.59420947755e-9
+  N=4 I[P:E3] = [0.51403 +/- 8.48e-6]; G 1.32045123645e+5, TW error 3.34448261156e-9, error/|T_M| 1.28416705988e-5
+  N=4 I[P:fT0] = [0.526805749834 +/- 4.30e-13]; G 3.06893841793e-3, TW error 7.77310883691e-17, error/|T_M| 2.91223805281e-13
+  N=4 I[P:fT1] = [-0.263293871 +/- 3.42e-10]; G 3.19435547737e+0, TW error 8.09076931761e-14, error/|T_M| 6.06501248195e-10
+  N=4 I[P:fT2] = [-0.315659 +/- 3.40e-7]; G 3.35501081088e+3, TW error 8.49768246560e-11, error/|T_M| 5.31331040484e-7
+  N=4 I[P:fT3] = [-0.268 +/- 3.13e-4]; G 5.02016804757e+6, TW error 1.27152478478e-7, error/|T_M| 9.36637624886e-4
+  N=4 I[P:fM0] = [0.679035470881 +/- 3.35e-13]; G 1.05354375516e-3, TW error 2.66845050571e-17, error/|T_M| 7.75620574481e-14
+  N=4 I[P:fM1] = [-0.2185102746 +/- 9.32e-11]; G 9.11257137737e-1, TW error 2.30806225002e-14, error/|T_M| 2.08477065373e-10
+  N=4 I[P:fM2] = [-0.3693987 +/- 5.79e-8]; G 9.03636037395e+2, TW error 2.28875927474e-11, error/|T_M| 1.22289001658e-7
+  N=4 I[P:fM3] = [-0.384 +/- 3.25e-4]; G 1.22408889473e+6, TW error 3.10041288191e-8, error/|T_M| 1.59247607050e-4
+  N=4 I[D:1] = [1.51610996301 +/- 2.77e-12]; G 1.33032024913e-3, TW error 3.36947917366e-17, error/|T_M| 4.38646536739e-14
+  N=4 I[D:H1^2] = [34.81995977 +/- 5.80e-9]; G 6.31089641456e+1, TW error 1.59844473915e-12, error/|T_M| 9.06049639113e-11
+  N=4 I[D:H1^4] = [35872.3 +/- 0.0481]; G 3.17938422333e+8, TW error 8.05284962967e-6, error/|T_M| 4.43071062492e-7
+  N=4 I[D:H2^2] = [2650.516875 +/- 5.36e-7]; G 3.24756573476e+3, TW error 8.22554201931e-11, error/|T_M| 6.12514792701e-11
+  N=4 I[D:H3^2] = [408774.7108 +/- 3.62e-5]; G 6.10852287455e+5, TW error 1.54718689888e-8, error/|T_M| 7.47035756177e-11
+  N=4 I[D:E2^2] = [3385.79 +/- 7.03e-3]; G 7.99108965318e+7, TW error 2.02400964572e-6, error/|T_M| 1.17987174536e-6
+  N=4 I[D:hbar4] = [901093.49036 +/- 5.12e-6]; G 2.57798866918e+4, TW error 6.52961505803e-10, error/|T_M| 1.43021179966e-12
+  N=4 I[D:hbar3^2] = [3.953480969e+9 +/- 0.270]; G 4.25443078695e+9, TW error 1.07757631607e-4, error/|T_M| 5.37961276020e-11
+  N=4 I[D:hbar2^2] = [1984849.7842 +/- 1.38e-5]; G 1.54264967354e+5, TW error 3.90727416999e-9, error/|T_M| 3.88533859375e-12
+  N=4 I[D:h_lo^4] = [5.14130793e+14 +/- 7.21e+5]; G 1.33892888605e+16, TW error 3.39128341428e+2, error/|T_M| 1.30188642922e-9
+  N=4 I[D:X1^16] = [4.1526213e+15 +/- 5.59e+7]; G 9.38588533526e+17, TW error 2.37728811422e+4, error/|T_M| 1.12990550040e-8
+  N=4 I[D:X1^20] = [1.489671e+21 +/- 8.51e+14]; G 1.08052482616e+25, TW error 2.73678905566e+11, error/|T_M| 3.62604759996e-7
+  N=4 I[D:X2^16] = [2.7755050e+15 +/- 3.37e+7]; G 6.08146746677e+17, TW error 1.54033421561e+4, error/|T_M| 1.09535672284e-8
+  N=4 I[D:X2^20] = [8.99904e+20 +/- 4.97e+14]; G 6.31678562753e+24, TW error 1.59993637851e+11, error/|T_M| 3.50904610137e-7
+  N=4 I[D:X3^16] = [1.82315235e+18 +/- 2.33e+9]; G 2.57920364836e+19, TW error 6.53269239753e+5, error/|T_M| 7.07215674188e-10
+  N=4 I[D:X3^20] = [2.8747566e+24 +/- 3.86e+16]; G 6.27577732146e+26, TW error 1.58954965897e+13, error/|T_M| 1.09132888884e-8
+  N=4 I[D:X5^16] = [9.3153550e+17 +/- 5.05e+9]; G 1.22351433985e+19, TW error 3.09895763031e+5, error/|T_M| 6.56596943009e-10
+  N=4 I[D:X5^20] = [1.2502230e+24 +/- 4.14e+16]; G 2.46191892444e+26, TW error 6.23562976551e+12, error/|T_M| 9.84408777420e-9
+  N=4 I[D:Z^16] = [9.852661172e+19 +/- 7.12e+9]; G 4.98827210514e+19, TW error 1.26344607487e+6, error/|T_M| 2.53096297958e-11
+  N=4 I[D:Z^20] = [5.013246747e+26 +/- 7.33e+16]; G 1.25726018364e+27, TW error 3.18443022076e+13, error/|T_M| 1.25370479301e-10
+  N=4 I[D:pT0_2] = [1.48891491559 +/- 5.96e-12]; G 4.38699337738e-2, TW error 1.11115220788e-15, error/|T_M| 1.47294422854e-12
+  N=4 I[D:pT1_2] = [6.385314352 +/- 4.38e-10]; G 7.25416868578e+0, TW error 1.83735986316e-13, error/|T_M| 5.67929689161e-11
+  N=4 I[D:pT2_2] = [109.58820621 +/- 8.63e-9]; G 1.43986780210e+2, TW error 3.64694484292e-12, error/|T_M| 6.56822477867e-11
+  N=4 I[D:pT3_2] = [8576.45246 +/- 4.64e-6]; G 1.69528048035e+4, TW error 4.29386253104e-10, error/|T_M| 9.88150470058e-11
+  N=4 I[D:pT0_4] = [5.69442310 +/- 1.55e-9]; G 2.99006046657e+1, TW error 7.57332415009e-13, error/|T_M| 2.62494037765e-10
+  N=4 I[D:pT1_4] = [583.936 +/- 5.27e-4]; G 5.84854513592e+6, TW error 1.48133887646e-7, error/|T_M| 5.00693122769e-7
+  N=4 I[D:pT2_4] = [4.26185e+6 +/- 4.25]; G 2.85936374270e+10, TW error 7.24229116053e-4, error/|T_M| 3.35398208044e-7
+  N=4 I[D:pT3_4] = [3.69639e+11 +/- 2.94e+5]; G 4.34066177885e+15, TW error 1.09941718720e+2, error/|T_M| 5.87039676679e-7
+  N=4 I[D:pbarT_2] = [17784645.812 +/- 7.88e-4]; G 1.26203549999e+7, TW error 3.19652530012e-7, error/|T_M| 3.54744406050e-11
+  N=4 I[D:pM0_2] = [1.39107388969 +/- 2.30e-12]; G 2.63531198534e-3, TW error 6.67480545117e-17, error/|T_M| 9.47045932222e-14
+  N=4 I[D:pM1_2] = [5.61521168765 +/- 4.96e-13]; G 6.55307782904e-3, TW error 1.65978524967e-16, error/|T_M| 5.83402649987e-14
+  N=4 I[D:pM2_2] = [9.77990668475 +/- 3.62e-12]; G 1.87435533297e-2, TW error 4.74742924692e-16, error/|T_M| 9.58090248907e-14
+  N=4 I[D:pM3_2] = [155.827963315 +/- 2.50e-10]; G 7.71227011607e-1, TW error 1.95338931019e-14, error/|T_M| 2.47415009336e-13
+  N=4 I[D:pM0_4] = [3.60913579128 +/- 4.37e-12]; G 7.82530870146e-2, TW error 1.98202009737e-15, error/|T_M| 1.08389562058e-12
+  N=4 I[D:pM1_4] = [88.0191601627 +/- 3.44e-11]; G 1.68691980104e-1, TW error 4.27268632568e-15, error/|T_M| 9.58090249683e-14
+  N=4 I[D:pM2_4] = [2509.00276709 +/- 5.32e-9]; G 3.36181137720e+1, TW error 8.51490716513e-13, error/|T_M| 6.69825083956e-13
+  N=4 I[D:pM3_4] = [7409442.7144 +/- 6.78e-5]; G 7.64864861010e+5, TW error 1.93727504451e-8, error/|T_M| 5.16045944614e-12
+  N=4 I[D:pbarM_2] = [11276.7263017 +/- 5.37e-8]; G 1.51096791697e+2, TW error 3.82702956796e-12, error/|T_M| 6.69825085156e-13
+  N=4 I[D:(E H2^2)^2] = [4.77345e+6 +/- 2.71]; G 2.13623946109e+10, TW error 5.41073803754e-4, error/|T_M| 2.23721080841e-7
+  N=4 I[D:(E H1^2)^3] = [1.8e+4 +/- 5.08e+2]; G 1.02149572592e+12, TW error 2.58727819613e-2, error/|T_M| 2.76686709984e-3
+  N=4 I[D:(E H1^2)^4] = [+/- 6.95e+6]; G 1.30501019654e+17, TW error 3.30537303444e+3, error/|T_M| 1.53163241809e+1 TARGET-MISS
+  N=4 I[D:(E H3^2)^2] = [1.242729e+11 +/- 4.98e+4]; G 7.61671829299e+14, TW error 1.92918762807e+1, error/|T_M| 3.06394259493e-7
+  N=4 I[D:(E H1^2)^2 (E H2^2)^2] = [+/- 2.01e+10]; G 3.48662015224e+20, TW error 8.83102696294e+6, error/|T_M| 6.72687225349e+0 TARGET-MISS
+  N=4 I[D:(E H1^2)^6] = [+/- 1.07e+17]; G 2.12994607181e+27, TW error 5.39479793280e+13, error/|T_M| 4.67076940513e+8 TARGET-MISS
+  N=4 I[T:H1^4] = [3.899e+6 +/- 1.81e+2]; G 2.36398787954e+12, TW error 5.98758677251e-2, error/|T_M| 3.03091870295e-5
+  N=4 I[T:h_lo^4] = [2.3678e+16 +/- 1.88e+11]; G 2.21397622154e+21, TW error 5.60763227827e+7, error/|T_M| 4.67429079279e-6
+  N=4 I[T:X1^16] = [1.061e+17 +/- 2.98e+13]; G 3.89708900439e+23, TW error 9.87067606222e+9, error/|T_M| 1.83599775467e-4
+  N=4 I[T:X1^20] = [5e+22 +/- 5.87e+21]; G 8.74371252123e+31, TW error 2.21463645766e+18, error/|T_M| 9.01175425744e-2
+  N=4 I[T:X2^16] = [6.91e+16 +/- 4.97e+13]; G 1.93982112522e+23, TW error 4.91324317306e+9, error/|T_M| 1.40256029875e-4
+  N=4 I[T:X2^20] = [3e+22 +/- 3.49e+21]; G 3.69222420415e+31, TW error 9.35178771313e+17, error/|T_M| 6.50810201550e-2
+  N=4 I[T:X3^16] = [3.7969e+19 +/- 8.84e+14]; G 1.67867656620e+25, TW error 4.25180758755e+11, error/|T_M| 2.21017451028e-5
+  N=4 I[T:X3^20] = [7.4e+25 +/- 7.59e+23]; G 9.06087764603e+33, TW error 2.29496909059e+20, error/|T_M| 6.14648482801e-3
+  N=4 I[T:X5^16] = [1.7718e+19 +/- 4.09e+14]; G 6.84407420716e+24, TW error 1.73348977580e+11, error/|T_M| 1.93103812003e-5
+  N=4 I[T:X5^20] = [2.8e+25 +/- 6.27e+23]; G 2.77396602928e+33, TW error 7.02599300447e+19, error/|T_M| 4.86776025085e-3
+  N=4 I[T:Z^16] = [1.777e+22 +/- 2.47e+18]; G 1.59179683830e+28, TW error 4.03175573615e+14, error/|T_M| 4.47847666058e-5
+  N=4 I[T:Z^20] = [1.9e+29 +/- 5.40e+27]; G 3.25543427464e+37, TW error 8.24547171764e+23, error/|T_M| 8.73866328037e-3
+TARGET N=4 (TW error <= 1e-3 |T_M| for group P, <= 1e-1 |T_M| else): 3 of 68 miss; misses, reported: D:(E H1^2)^4, D:(E H1^2)^2 (E H2^2)^2, D:(E H1^2)^6
+C-SERIES-H (H1..H3 against twlib2): PASS (worst 9.252e-18)
+C-SERIES-P (the insertion series, exact and float): PASS (worst 9.606e-01)
+C-HBAR (per-degree scale): PASS (worst 2.305e-16)
+C-MAJ (|p| <= (N-1)/2 + alpha1 e^{delta Y} on Omega, floats): PASS (worst 6.575e-01)
+C-FAR-H N=4 (kappa >= 1/(N - 1 + 300) + p/300; lam_min 179809/1000000 over 36 lam lines of U's m3, 36 of them parsed, 24 of its 24 families; kappa_af >= lam_min/5; equator 1 - cos 0.685): PASS
+C-REPRO N=4 (group P against S4_U_CERTIFIED_v2: I[1] [1.0302393041032 +/- 4.84e-14] vs LEAD, I[E_j]/I[1] [0.8460413718 +/- 4.39e-11], [0.63952636 +/- 6.83e-9], [0.4989 +/- 5.06e-5] vs C1..C3): PASS
+C-PL0 N=4 (lead_p/lead_U against the dry run px08_trbhscan_v2, M = 32 floats, <= 1e-9): T [0.511343090616 +/- 6.42e-13] vs 0.511343090616, M [0.659104606256 +/- 3.95e-13] vs 0.659104606256: PASS
+C-POS N=4 (every upper end > 0 for the families under a root or a log in the reading): PASS
+C-TOL N=4 (the consumer tolerance: R_cert(r) <= TOL(r) = (1/4) (U3_p(r)(1/300) - h_r), both rows): FAIL; R/TOL [1.878 +/- 1.30e-4] (T), [1.877 +/- 1.68e-4] (M)
+REASON U3_p: an exact cubic in t, the (P) form; the consumer evaluates it at its t
+REASON R_cross and R_ins: t^m (m >= 4) times J-free integrals on group D's measure, which majorizes the plain one: nondecreasing in t
+REASON R_main: ((N-1)/2) U's R_E + rho4 (nonincreasing in J by U's reasons) plus alpha1 times the U chain on Q - 2 delta B_Y and Q - 2 T(t) - 2 delta B_Y, with hbar_j at t = 1/300 (majorizing every t' <= t) and the matrices Loewner-decreasing in t (the t-part of T is PSD, delta B_Y is J-free): nondecreasing in t
+REASON tail: t-powers times J-free norms, times U's Chernoff sum (nonincreasing in J by U's reasons)
+REASON off-Omega: ((N-1)/2 + J/2) times U's annulus, far and equator J-bounds, nonincreasing for J >= 300 by C-FAR-H
+REASON PR: PR = pref_arb(N), a ratio of reduced Laplacian determinants of fixed strip graphs, does not depend on J
+REASON TW: every TW error sits inside the certified J = 300 enclosures; each reason compares exact J-bounds with the exact J = 300 bound, which the enclosure upper end majorizes
+REASON Z4: each J-bound is the chain at its own Omega(J) and tilt T(1/J) before the comparison, so the comparison is between valid bounds, pointwise in J
+CHECKS FAIL: C-TOL
+PLANTS PLANT-TILE:FIRED PLANT-MULTISET:FIRED PLANT-COPY:FIRED PLANT-ITEMCODE:FIRED PLANT-REFINE:FIRED PLANT-SERIES-H:FIRED PLANT-SERIES-P:FIRED PLANT-HBAR:FIRED PLANT-MAJ:FIRED PLANT-FAR-H:FIRED PLANT-FAR-FMT:FIRED PLANT-FAR-FAM:FIRED PLANT-REPRO:FIRED PLANT-PL:FIRED PLANT-POS:FIRED PLANT-TOL:FIRED
+R_U^(delta) N=4: R_E^(delta) <= 3.48523634707e-5 (N4_D <= 5.40686176519e+3), rho4^(delta) <= 1.10378041652e-4 (N4_T <= 1.41741484331e+4); alpha1 T 3.06566200977e+0, M 1.53283100489e+0; PR <= 4.44264196945e+1; Chern <= 1.48344070050e-13
+U3_P N=4 row T: d_0 [0.526805749834 +/- 4.30e-13], d_1 [-0.263293871 +/- 3.42e-10], d_2 [-0.315659 +/- 3.40e-7], d_3 [-0.268 +/- 3.13e-4]; U3_p(1/300) [0.5259245864 +/- 5.94e-11]
+READING N=4 row T (t = 1/300, every J >= 300): R_cert <= 1.25932758600e-2; R_main <= 5.17574803488e-4, R_cross <= 1.17934473436e-4, R_ins <= 6.58822290493e-7, tail <= 1.19556164068e-2 (L2^(p) <= 6.98707752694e+2), off-Omega <= 1.49135403614e-6; TOL >= 6.70614658515e-3
+U3_P N=4 row M: d_0 [0.6790354708807 +/- 7.11e-14], d_1 [-0.2185102746 +/- 9.32e-11], d_2 [-0.3693987 +/- 5.79e-8], d_3 [-0.384 +/- 3.25e-4]; U3_p(1/300) [0.67830298464 +/- 6.26e-12]
+READING N=4 row M (t = 1/300, every J >= 300): R_cert <= 1.10747099064e-2; R_main <= 2.94961135665e-4, R_cross <= 1.09427445005e-4, R_ins <= 1.65896488787e-8, tail <= 1.06688133820e-2 (L2^(p) <= 6.23504666629e+2), off-Omega <= 1.49135403614e-6; TOL >= 5.90074615843e-3
+VERDICT INVALID
+CPU 3.8 s maxrss_kb 67896

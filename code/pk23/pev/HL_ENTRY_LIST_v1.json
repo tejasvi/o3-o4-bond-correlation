@@ -1,0 +1,45 @@
+{
+ "author": "pk23",
+ "conventions": {
+  "task": "the P0_LOG rows 4409, 4422, 4435: option B Pev entries <psi_0, T M_e^k T psi_0> / lambda_0^2, k = 0, 1, 2, e = h (4,7) and t (3,6), N = 4 and 3, J_REF 300",
+  "template": "pk22/m3/E5_ENTRY_LIST_v1_1.json (0a04fbf5); handover pk22/midrow/pev/HANDOVER_PEV_pk23_v1.md (13d4039c)",
+  "cp": "[cp, a, col]: trial state a on the vac column col, as S8_ENTRY_LIST_v2 (a = 0: psi_0)",
+  "xia": "[xia, [u, v, v]]: m3_entries_v3's xia factor, xi_uv = J(1 - sigma_u . sigma_v) on the pair (u, v); k = 2 repeats the factor",
+  "grouping": "split (one group per factor, m3_bar_v11.split_groups), as E5",
+  "graph_L": "S8's L (pk11/out/S8_ENTRY_LIST_v2.json, graph L): [vac, int, int, vac], the vac columns' pairs; the prep family",
+  "graph_LH": "L plus the middle-row middle bond (4,7) (h); reads L's prep",
+  "graph_LT": "L plus the top-row middle bond (3,6) (t); reads L's prep",
+  "graph_LB": "L plus the bottom-row middle bond (5,8), the top-bottom mirror of (3,6); float control only (rtwin), not certified",
+  "trial_set": "z9sym: pk11/out/ts_N4_J170_D_S_z9sym_v1.json (ea9d6c1b) and ts_N3_S_z9sym_v1.json (a298db65), pk25's mr/v3 TRIAL_SET",
+  "vertex": "3*col + row (row 0 T, 1 M, 2 B); columns 0-indexed",
+  "parity": "state 0 is even (z9sym); h and t are flip-even or map to their mirrors, so no entry is a parity zero"
+ },
+ "counts": {
+  "L": 1,
+  "LH": 3,
+  "LT": 2,
+  "LB": 1
+ },
+ "graphs": {
+  "L": {"columns": ["vac", "int", "int", "vac"], "pairs": [[0, 1], [1, 2], [0, 2], [9, 10], [10, 11], [9, 11]], "shape_V_edges_F": [12, 19, 18]},
+  "LH": {"columns": ["vac", "int", "int", "vac"], "pairs": [[0, 1], [1, 2], [0, 2], [9, 10], [10, 11], [9, 11], [4, 7]], "shape_V_edges_F": [12, 19, 19]},
+  "LT": {"columns": ["vac", "int", "int", "vac"], "pairs": [[0, 1], [1, 2], [0, 2], [9, 10], [10, 11], [9, 11], [3, 6]], "shape_V_edges_F": [12, 19, 19]},
+  "LB": {"columns": ["vac", "int", "int", "vac"], "pairs": [[0, 1], [1, 2], [0, 2], [9, 10], [10, 11], [9, 11], [5, 8]], "shape_V_edges_F": [12, 19, 19]}
+ },
+ "entries": [
+  {"key": "TT,0,0", "graph": "L", "factors": [["cp", 0, 0], ["cp", 0, 3]], "grouping": "split", "parity_zero": false, "K": 3, "role": "chain",
+   "note": "k = 0: <psi_0, T T psi_0> / lambda_0^2 (S8's key TT,0,0)"},
+  {"key": "TTh,0,0", "graph": "LH", "factors": [["cp", 0, 0], ["cp", 0, 3]], "grouping": "split", "parity_zero": false, "K": 3, "role": "control",
+   "note": "TT,0,0 again in family LH (control: equal to TT,0,0 of family L)"},
+  {"key": "Mh,0,0", "graph": "LH", "factors": [["cp", 0, 0], ["xia", [4, 7, 7]], ["cp", 0, 3]], "grouping": "split", "parity_zero": false, "K": 3, "role": "chain",
+   "note": "k = 1, h: <psi_0, T M_h T psi_0> / lambda_0^2"},
+  {"key": "Mhh,0,0", "graph": "LH", "factors": [["cp", 0, 0], ["xia", [4, 7, 7]], ["xia", [4, 7, 7]], ["cp", 0, 3]], "grouping": "split", "parity_zero": false, "K": 3, "role": "chain",
+   "note": "k = 2, h: <psi_0, T M_h^2 T psi_0> / lambda_0^2"},
+  {"key": "Mt,0,0", "graph": "LT", "factors": [["cp", 0, 0], ["xia", [3, 6, 6]], ["cp", 0, 3]], "grouping": "split", "parity_zero": false, "K": 3, "role": "chain",
+   "note": "k = 1, t: <psi_0, T M_t T psi_0> / lambda_0^2"},
+  {"key": "Mtt,0,0", "graph": "LT", "factors": [["cp", 0, 0], ["xia", [3, 6, 6]], ["xia", [3, 6, 6]], ["cp", 0, 3]], "grouping": "split", "parity_zero": false, "K": 3, "role": "chain",
+   "note": "k = 2, t: <psi_0, T M_t^2 T psi_0> / lambda_0^2"},
+  {"key": "Mb,0,0", "graph": "LB", "factors": [["cp", 0, 0], ["xia", [5, 8, 8]], ["cp", 0, 3]], "grouping": "split", "parity_zero": false, "K": 3, "role": "control",
+   "note": "float control only: k = 1 on the bottom-row mirror (5,8) of t; must equal Mt,0,0"}
+ ]
+}

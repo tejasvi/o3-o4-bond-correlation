@@ -1,0 +1,23 @@
+kt_ma_val_v1_5 sha256 cdc01d56b0ba8018d60a023e0c2a7c4a9cd22ddb8e741522962f5a87217387b6 PIECE=v4 LIM=540
+kt_cert_v1_5 sha256 bf1995af9ae714e5ba225d2d4ea3c7a8802709ad2dfe55f2163e0452eee0e37b ITEM=tA.e1n4 LIM=540 (RLIMIT_CPU soft 540, hard 545)
+C-HASH PASS (5 engine files, 1 own files, 10 predecessor outputs, 6 inputs)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+C-HASH PASS (kt_cert_v1_5, arbeng_ma_v1_3, arbeng_ma_v1_1, arbeng_ma_stub_v1_1, arbeng_ma_stub_v1)
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_3; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-TREE: m 1: 3 terms k 2 (want 2); merged with 3 terms k 3 (want 3; formula 3); m 2: 5 terms k 3 (want 3); merged with 3 terms k 4 (want 4; formula 3); m 3: 9 terms k 4 (want 4); merged with 3 terms k 5 (want 5; formula 4); m 5: 33 terms k 6 (want 6); merged with 3 terms k 7 (want 7; formula 6); m 8: 257 terms k 9 (want 9); merged with 3 terms k 10 (want 10; formula 9); m 12: 4097 terms k 13 (want 13); merged with 3 terms k 14 (want 14; formula 13) -> PASS
+HANDOFF-READ N=4 e1 tB: hand_kt_cert_v1_5_tB.e1n4.txt sha256 3c7b742192056d53f37301a371c6ec7f6557aebdabbc00f0a2260693a48bee52 equals its record (out_kt_cert_v1_5_tB.e1n4.out); body checksum and header PASS
+V4 B0: hand-off 1.321986474e-23 +- 4.9e-103 (rel 3.7e-80) | M-a 1.321986474e-23 +- 7.5e-35 (rel 5.7e-12) (table degree 16, cpu 26.2 s) | relative width 5.65e-12; C-SHADOW 7.88e-05 -> PASS
+C-SING B0: 511 kept, 512 dropped (all rank-deficient, det balls containing 0: True), 1023 allowed -> PASS
+QC C-BUDGET B0 (quality control, not a gate): M-a part 7.47e-35, relative 5.65e-12
+PLANT-MA-SING: forms with X0's column zeroed (W = W_int, not the forms of Gam): det of the singular subset (0,) excludes 0 -> FIRES
+PLANT-MA-W: W unequal to W_int: ValueError (W[0, 0] = 0 is not the exact integer W_int = 1); W missing: ValueError (W_int given without the forms W) -> FIRES
+C-ERRORS: MAFallback a plain Exception: True; 2^2000 at conversion raises MAFallback: True; the 1e-320 shadow product goes through the tiny rule (v1_2) to [+/- 4.01e-292], which contains (1e-160)^2: True -> PASS
+K3 E with caps vs arb (degree 8): M-a -5.937846939e-01 +- 9.8e-14 (rel 1.7e-13) | arb -5.937846939e-01 +- 1.3e-151 (rel 2.1e-151) -> PASS
+K5 lp_norm p = 2 vs arb: M-a 3.100346720e+00 +- 6.7e-13 (rel 2.2e-13) | arb 3.100346720e+00 +- 8.2e-151 (rel 2.7e-151) -> PASS
+K5 pos_norm p = 1 vs arb: M-a 7.030156257e+00 +- 3.4e-14 (rel 4.8e-15) | arb 7.030156257e+00 +- 6.1e-152 (rel 8.7e-153) -> PASS
+PLANT-MA-INPUT: first minor of j = 1 scaled by 1 + 1e-3: M-a E2(Q4, Q4) 9.612447982e+00 +- 4.2e-12 (rel 4.3e-13) against arb 9.612149786e+00 +- 5.1e-150 (rel 5.3e-151) -> FIRES
+K4 npoly_mul vs arb stub: 18170 product coefficients, 0 mismatches -> PASS
+SPoly + AllMom2 (mp.iv) vs arb stub: E[Q4 Q4] M-a 9.612149786e+00 +- 4.4e-12 (rel 4.6e-13) | stub 9.612149786e+00 +- 1.2e-13 (rel 1.2e-14); lp_moment(Q4, 2) M-a 9.612149786e+00 +- 4.4e-12 (rel 4.6e-13) | stub 9.612149786e+00 +- 1.2e-13 (rel 1.2e-14) -> PASS
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_3; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+ITEM v4 cpu 28.2 s, peak resident memory 1001 MiB
+VERDICT VALID

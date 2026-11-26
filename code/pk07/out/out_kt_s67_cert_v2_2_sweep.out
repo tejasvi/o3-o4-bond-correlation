@@ -1,0 +1,119 @@
+kt_s67_cert_v2_2 sha256 0718efcccc0250cafd44988d8679e6ad8398695a9ac7c108bb7509b0ceebdb93 ITEM=sweep LIM=200 (RLIMIT_CPU soft 200, hard 205) TAG=''
+C-HASH PASS (43 files)
+C-BLOCK PASS (author slices by sha256)
+C-ENV start: PASS (numpy 2.5.3, mpmath 1.3.0, python 3.14.4)
+C-HASH S4-U (full sha256 of the bytes read here): record pk08/S4_U_CERTIFIED_v2.md matches, reference parser pk07/s4u_kv_ref_v1.py matches, s4c_m2ba outputs match, the 6 asm outputs match -> PASS
+C-FMT S4-U (format S4U_KV_v1): 145 keys; the port's reader against the reference parser (pk07/s4u_kv_ref_v1.py, sha256 ce0ba6f4): identical; the 63 keys the port uses present: yes; header keys FORMAT, RECORD, END, AUTHOR, J_MIN, TARGET_U_MINUS_FLOAT, TARGET_QUAD as pinned: yes -> PASS
+C-SRC S4-U: N*_LEAD and N*_C1..C3 against the C-NORM and C-C123 lines of pk05/out/s4c_m2ba_n4.out and pk05/out/s4c_m2ba_n3.out (C-POS PASS and VERDICT VALID there), COEF_OUTPUT and U3_CODE, the 16 _LO/_HI ends as mid -+ rad exactly; D-1: N*_PREF2_RE, N*_PREF2_RHO4 and N*_M3_SUM against the READING lines of pk08/out/px08_px03_v4_n3_asm.out, pk08/out/px08_m2bb4_n3_asm.out, pk08/out/px08_m2bc4_n3_asm.out, pk08/out/px08_px03_v4_n4_asm.out, pk08/out/px08_m2bb4_n4_asm.out, pk08/out/px08_m2bc3_n4_asm.out (CHECKS all PASS and VERDICT VALID there), their _OUTPUT and _CODE tokens, R_CERT = PREF2_RE + PREF2_RHO4 + M3_SUM exactly, QUAD_TW_PART_EXACT = 0.071 (PREF2_RE + PREF2_RHO4) + M3_SUM + 1e-11 exactly and QUAD_TW_PART = it rounded up at 3 digits -> PASS
+C-POS S4-U: N*_LEAD_LO, N*_C1_LO, N*_C2_LO, N*_C3_LO > 0 exactly, so the HI ends bound U3 from above for t > 0 -> PASS
+PLANT-FMT-S4U (the port reads a copy with N4_C1_HI and N4_C2_HI swapped, the reference parser reads the record): C-FMT differs -> FIRES
+PLANT-KEYSWAP (both readers read the swapped copy): they agree: True; C-SRC fails on N4_C1_HI, N4_C2_HI -> FIRES
+PLANT-RSRC (D-1: N4_PREF2_RE set to 1.31803364015e-5 in a copy): C-SRC fails on N4_PREF2_RE against its READING, N4_R_CERT (R_CERT_RULE), N4_QUAD_TW_PART_EXACT (QUAD_TW_PART_RULE) -> FIRES
+PLANT-POS (N4_C1_LO negated in a copy): C-POS flags N4_C1_LO -> FIRES
+INFO S4-U N=4: the port's U at t = 1/300 is [1.03320068444201876908548781088, 1.03320068444201876908548796597], below the record's U_EXACT 1.033200684442025426: True; as t -> 0 it tends to LEAD_HI + R_CERT = [1.03028792776580658599999997181, 1.03028792776580658600000002351]
+INFO S4-U N=3: the port's U at t = 1/300 is [1.0328091438788189826908777509, 1.032809143878818982690877906], below the record's U_EXACT 1.032809143878833869: True; as t -> 0 it tends to LEAD_HI + R_CERT = [1.03025316903914502899999995699, 1.03025316903914502900000000869]
+S4-U provider: tag 'CERTIFIED pk08 b1b6b99b' (reads certified: True)
+C-HASH S4-TRB (full sha256 of the bytes read here): record pk08/S4_TRB_CERTIFIED_v1.md matches, reference parser pk07/s4u_kv_ref_v1.py matches, the 2 asm outputs match -> PASS
+C-FMT S4-TRB (format S4U_KV_v1): 89 keys; the port's reader against the reference parser (pk07/s4u_kv_ref_v1.py, sha256 ce0ba6f4): identical; the 32 keys the port uses present: yes; header keys FORMAT, RECORD, END, AUTHOR, J_MIN, TARGET_T2 as pinned: yes -> PASS
+C-SRC S4-TRB: N*_TRB, N*_TRB_MAIN .. N*_TRB_FAR, N*_PR and N*_TV against the READING lines of pk08/out/px08_trbcert_v1_1_n4_asm.out and pk08/out/px08_trbcert_v1_1_n3_asm.out (CHECKS all PASS and VERDICT VALID there, the header's code sha8 = the record's CODE), N*_ASM_OUTPUT, N*_VERDICT VALID, N*_T2_RESULT PASS -> PASS
+PLANT-FMT-S4T (the port reads a copy with N4_TRB and N3_TRB swapped, the reference parser reads the record): C-FMT differs -> FIRES
+PLANT-TSRC (N4_TRB set to 1.30797171128e+0 in a copy): C-SRC fails on N4_TRB against its READING -> FIRES
+INFO S4-TRB N=4: certified TRB 1.30797171127e+0, enclosed as [1.30797171126999999999999999201, 1.30797171127000000000000001786], for every J >= 300 (CONSTANT_PER_N); the FLOAT TRB of PARAMS was 1.312607
+INFO S4-TRB N=3: certified TRB 9.39977769617e-1, enclosed as [0.939977769616999999999999988899, 0.939977769617000000000000001824], for every J >= 300 (CONSTANT_PER_N); the FLOAT TRB of PARAMS was 0.942262
+S4-TRB provider: tag 'CERTIFIED pk08 91109301' (reads certified: True)
+C-REPRO N=4 [170, 171.7]: author lines m2_unif3 identical, endpairs4 J = 170 identical, assemble_unif4 identical; reference coverage lines (5) match; path B (naive, author forms) vs A: worst relative 5.20e-14 (S7 Rw), coverage tables (26 pairs) identical; production forms never better than A: yes -> PASS
+INFO N=4: S5 at [170, 171.7] by path A 1.1765e-04; the J >= 170 values: author (FLOAT Cov_1) 1.1765e-04, RV13_1 outward-endpoint arb 1.1735e-4
+PLANT-S2UP N=4 (S2_even from the upper ends of the diagonal): production bounds beat path A on R+, rho, rho1, c_x -> FIRES
+PLANT-PATHB N=4 (path B with sp = 0): worst relative B-A 9.64e-01 (S7 Dlt) -> FIRES
+C-REPRO N=3 [170, 171.7]: author lines m2_unif3 identical, endpairs4 J = 170 identical, assemble_unif4 identical; reference coverage lines (5) match; path B (naive, author forms) vs A: worst relative 1.63e-13 (S7 Rw), coverage tables (26 pairs) identical; production forms never better than A: yes -> PASS
+INFO N=3: S5 at [170, 171.7] by path A 2.2043e-04; the J >= 170 values: author (FLOAT Cov_1) 2.2043e-04, RV13_1 outward-endpoint arb 2.2036e-4
+PLANT-S2UP N=3 (S2_even from the upper ends of the diagonal): production bounds beat path A on R+, rho, rho1, c_x -> FIRES
+PLANT-PATHB N=3 (path B with sp = 0): worst relative B-A 9.58e-01 (S7 Dlt) -> FIRES
+C-C2 N=4: T = 0.01709310824, c2 = (N-1)T^2/2 = 0.000438261524; central even - odd at t = 0: 0.000438261524; relative 4.6e-12 -> PASS
+PLANT-ODDSIGN N=4: C-C2 with the odd part added -> FIRES
+C-C2 N=3: T = 0.01709310824, c2 = (N-1)T^2/2 = 0.0002921743493; central even - odd at t = 0: 0.0002921743493; relative 6.8e-12 -> PASS
+PLANT-ODDSIGN N=3: C-C2 with the odd part added -> FIRES
+PLANT-T (N=4): C-C2 against the transfer current with mode 2 weight +3/2 -> FIRES
+C-HARM N=4: r_main by matrix-tree 0.9654865604399 vs stored 0.965486560440 (relative 3.8e-15); q^2(t=0) 0.965486560440 (relative 0.0e+00); vacmod2 closed forms match -> PASS
+PLANT-HARM N=4 (v2_2: the conductances A_EX and B_EX swapped in the matrix-tree value): relative 3.8e-01 against the stored r_main -> FIRES
+INFO-HARM N=4: trial R+ at t = 0, I3p_0/N_w_0 = 0.10600 (harmonic 0.61 x 0.146 + 0.39 x 0.044 = 0.1062)
+C-HARM N=3: r_main by matrix-tree 0.9768566151942 vs stored 0.976856615194 (relative 7.3e-15); q^2(t=0) 0.976856615194 (relative 0.0e+00); vacmod2 closed forms match -> PASS
+PLANT-HARM N=3 (v2_2: the conductances A_EX and B_EX swapped in the matrix-tree value): relative 2.7e-01 against the stored r_main -> FIRES
+INFO-HARM N=3: trial R+ at t = 0, I3p_0/N_w_0 = 0.10599 (harmonic 0.61 x 0.146 + 0.39 x 0.044 = 0.1062)
+C-IP3 N=4: I_p3 - m-hat N_w a_0 -3.33e-16, a_1 -8.33e-16, a_2 1.24e-14 (tolerance 1e-12) -> PASS; INFO a_3 2.214e-04; at J = 170 4.506e-11
+C-IP3 N=3: I_p3 - m-hat N_w a_0 0.00e+00, a_1 -9.02e-17, a_2 -2.80e-15 (tolerance 1e-12) -> PASS; INFO a_3 -7.024e-05; at J = 170 -1.430e-11
+C-KBAR N=4 (v2_2: k-bar a free centering constant): kbar = 0.8271394273441662, m2's own (pk10/scratch/m2_N4_J170.json.b, the constant its N_w, I3p, I_p3 and A_0w integrate w~ = xi+ - kbar with); kbar >= 0: True; on [300, 303] the S6 centering term |k_n - kbar g00|/g00 <= 0.000360541 lies inside u_h <= 0.000361735: True; S7: E_w <= 0.000336387 and t1 = (kbar + E_w)(1 + eps_r) <= 0.827481, >= kbar (1 + eps_r): True -> PASS; PLANT-KBAR (kbar negated) must fail the sign gate -> FIRES
+C-KBAR N=3 (v2_2: k-bar a free centering constant): kbar = 0.5514259266145797, m2's own (pk10/scratch/m2_N3_J170.json.b, the constant its N_w, I3p, I_p3 and A_0w integrate w~ = xi+ - kbar with); kbar >= 0: True; on [300, 303] the S6 centering term |k_n - kbar g00|/g00 <= 0.000232721 lies inside u_h <= 0.000233044: True; S7: E_w <= 0.000220791 and t1 = (kbar + E_w)(1 + eps_r) <= 0.551648, >= kbar (1 + eps_r): True -> PASS; PLANT-KBAR (kbar negated) must fail the sign gate -> FIRES
+C-PARITY N=4: cross-parity Gram entries g,0,2, g,1,2, g,2,3: stored coefficients max |a_k| = 9.11e-12 (INFO while M3's tag is FLOAT: today's files are unsymmetrized; the certified item gates exact zeros in M3's files); control, a symmetrized copy -> PASS; PLANT-PARITY, that copy with g,0,2 a_0 = 1e-12 -> FIRES
+C-PARITY N=3: cross-parity Gram entries g,0,2, g,1,2, g,2,3: stored coefficients max |a_k| = 3.88e-12 (INFO while M3's tag is FLOAT: today's files are unsymmetrized; the certified item gates exact zeros in M3's files); control, a symmetrized copy -> PASS; PLANT-PARITY, that copy with g,0,2 a_0 = 1e-12 -> FIRES
+C-MODULE: 49 verdict-path functions and classes against 10 forbidden patterns: none -> PASS
+PLANT-MODULE: a libm sqrt planted in quantities -> FIRES
+C-TAG: wording control (control pins: all certified -> CERTIFIED, a failed verdict -> FAIL, one FLOAT tag -> FLOAT-PASS; this run's tags -> CERTIFIED exactly when every input has a pin, here FLOAT-PASS: no pin for M2 vacuum, M3 entries) -> PASS; PLANT-TAG (F1), each with every other tag certified, must not read CERTIFIED: FLOAT tags -> FLOAT-PASS -> FIRES; S4 TRB = "S4-TRB, pending" -> FLOAT-PASS -> FIRES; S4 U = CERTIFIED with a wrong sha8 -> FLOAT-PASS -> FIRES
+C-FMT N=4: 37 stored entries, the port's reader against the author's item() over [300, 303]: worst difference 1.1e-21 (B4 I_N) -> PASS
+PLANT-FMT N=4 (the port reads a copy with the g,0,1 and g,1,1 coefficient lists swapped): worst difference 2.0e+00 (B5 g,0,1) -> FIRES
+C-FMT N=3: 37 stored entries, the port's reader against the author's item() over [300, 303]: worst difference 4.1e-23 (B4 I_N) -> PASS
+PLANT-FMT N=3 (the port reads a copy with the g,0,1 and g,1,1 coefficient lists swapped): worst difference 2.0e+00 (B5 g,0,1) -> FIRES
+controls done at cpu 0.9 s
+  sweep N=4: piece 0 [300.00, 300.75] at cpu 0.9 s
+  sweep N=4: piece 100 [385.09, 386.05] at cpu 4.5 s
+  sweep N=4: piece 200 [924.50, 933.74] at cpu 8.0 s
+  sweep N=4: piece 300 [2500.59, 2525.59] at cpu 11.6 s
+  sweep N=4: piece 400 [6763.63, 6831.26] at cpu 15.1 s
+  sweep N=4: piece 500 [18294.35, 18477.29] at cpu 18.7 s
+  sweep N=4: piece 600 [49482.81, 49977.64] at cpu 22.3 s
+  sweep N=4: piece 700 [133841.80, 135180.22] at cpu 25.8 s
+  sweep N=4: piece 800 [362017.16, 365637.33] at cpu 29.4 s
+  sweep N=4: piece 900 [979189.01, 988980.90] at cpu 32.9 s
+  sweep N=4: piece 903 [1008859.42, inf] at cpu 33.0 s
+S5 N=4: c5 = min over 904 pieces of [even_lo - odd_up - vacT_up] = 0.000329775 on [1008859.42, inf] -> FLOAT-PASS
+S6 N=4: min R+/rho (lower end) 1.23362 on [300.00, 300.75]; sign condition c5 > 0 (S5) True -> FLOAT-PASS
+S7 N=4: claimed coverage flip d>=3, same d>=1 on every piece HOLDS (worst over pieces: flip d=3: Jensen checked to m=3, mode from m=4; same d=1: Jensen checked to m=3, mode from m=4); lambda_1^e simple on all pieces True; Lemma S7-mono (a) hypotheses True; C-MV clean True -> FLOAT-PASS
+C-MV N=4: 904 pieces x 4 smooth forms x 9 points: failures on 0 pieces (none) -> PASS
+INFO C-ORDER N=4: the L1 centered form fell back to the naive bound (minimizing row or positivity not certified) on 0 of 904 pieces; centered forms that met a kink or a non-finite D(P) and kept the naive bound: 0
+INFO-HARM N=4: rho on the last piece [1008859.42, inf] 0.0852003 (harmonic odd 2-phonon lambda_z/lambda_0 = 0.0797)
+C-REPRO300 N=4: path A on 11 sampled pieces: worst relative B-A 5.94e-14 (S7 Rw at J = 18294.4); production forms never better than A: yes; claimed-pair coverage identical -> PASS
+INFO N=4 [300.00, 300.75]: c5 0.000339268 (even 0.0179205, odd 0.0175719, vacT 1.19741e-05); R+ 0.105283, rho 0.0853447, rho1 0.149265, R_w 0.18888, |v+| 0.134361, |v-| 0.132563, ||B+|| 0.9101, ||B-|| 0.45505; q_x 0.146086, L2 0.0528563, mu_x 0.146086, alpha^2 0.964993, |a_x| 0.104662, c_x 0.0870112, r2 0.361817, ro 0.585005; full coverage: flip d=3: Jensen m<=14, mode m>=4; same d=1: Jensen m<=5, mode m>=4
+INFO N=4 [1008859.42, inf]: c5 0.000329775 (even 0.0178672, odd 0.0175378, vacT 1.18766e-13); R+ 0.105113, rho 0.0852003, rho1 0.149077, R_w 0.189124, |v+| 0.134148, |v-| 0.13243, ||B+|| 0.909551, ||B-|| 0.454776; q_x 0.145719, L2 0.0526455, mu_x 0.145719, alpha^2 0.965171, |a_x| 0.104479, c_x 0.08694, r2 0.361282, ro 0.58469; full coverage: flip d=3: Jensen m<=14, mode m>=4; same d=1: Jensen m<=5, mode m>=4
+  sweep N=3: piece 0 [300.00, 300.75] at cpu 33.1 s
+  sweep N=3: piece 100 [385.09, 386.05] at cpu 36.6 s
+  sweep N=3: piece 200 [924.50, 933.74] at cpu 40.2 s
+  sweep N=3: piece 300 [2500.59, 2525.59] at cpu 43.7 s
+  sweep N=3: piece 400 [6763.63, 6831.26] at cpu 47.2 s
+  sweep N=3: piece 500 [18294.35, 18477.29] at cpu 50.8 s
+  sweep N=3: piece 600 [49482.81, 49977.64] at cpu 54.3 s
+  sweep N=3: piece 700 [133841.80, 135180.22] at cpu 57.8 s
+  sweep N=3: piece 800 [362017.16, 365637.33] at cpu 61.3 s
+  sweep N=3: piece 900 [979189.01, 988980.90] at cpu 64.9 s
+  sweep N=3: piece 903 [1008859.42, inf] at cpu 65.0 s
+S5 N=3: c5 = min over 904 pieces of [even_lo - odd_up - vacT_up] = 0.000253672 on [1008859.42, inf] -> FLOAT-PASS
+S6 N=3: min R+/rho (lower end) 1.24836 on [400.78, 404.79]; sign condition c5 > 0 (S5) True -> FLOAT-PASS
+S7 N=3: claimed coverage flip d>=3, same d>=1 on every piece HOLDS (worst over pieces: flip d=3: Jensen checked to m=3, mode from m=4; same d=1: Jensen checked to m=2, mode from m=3); lambda_1^e simple on all pieces True; Lemma S7-mono (a) hypotheses True; C-MV clean True -> FLOAT-PASS
+C-MV N=3: 904 pieces x 4 smooth forms x 9 points: failures on 0 pieces (none) -> PASS
+INFO C-ORDER N=3: the L1 centered form fell back to the naive bound (minimizing row or positivity not certified) on 0 of 904 pieces; centered forms that met a kink or a non-finite D(P) and kept the naive bound: 0
+INFO-HARM N=3: rho on the last piece [1008859.42, inf] 0.0845495 (harmonic odd 2-phonon lambda_z/lambda_0 = 0.0797)
+C-REPRO300 N=3: path A on 11 sampled pieces: worst relative B-A 1.65e-13 (S7 Rw at J = 362017.2); production forms never better than A: yes; claimed-pair coverage identical -> PASS
+INFO N=3 [300.00, 300.75]: c5 0.000260457 (even 0.0119616, odd 0.0117001, vacT 2.22038e-06); R+ 0.105675, rho 0.084649, rho1 0.148761, R_w 0.153921, |v+| 0.109579, |v-| 0.108168, ||B+|| 0.644152, ||B-|| 0.322076; q_x 0.14608, L2 0.0518666, mu_x 0.14608, alpha^2 0.970529, |a_x| 0.0854685, c_x 0.0724185, r2 0.355056, ro 0.580171; full coverage: flip d=3: Jensen m<=15, mode m>=4; same d=1: Jensen m<=7, mode m>=3
+INFO N=3 [1008859.42, inf]: c5 0.000253672 (even 0.0119356, odd 0.011682, vacT 2.83796e-14); R+ 0.105561, rho 0.0845495, rho1 0.14865, R_w 0.153955, |v+| 0.109455, |v-| 0.108084, ||B+|| 0.64385, ||B-|| 0.321925; q_x 0.145808, L2 0.0517096, mu_x 0.145808, alpha^2 0.970677, |a_x| 0.0853573, c_x 0.0723638, r2 0.354643, ro 0.57987; full coverage: flip d=3: Jensen m<=15, mode m>=4; same d=1: Jensen m<=7, mode m>=3
+C-PIECE N=4: 2 binding pieces halved, naive enclosures (the piece's preconditioner, vacuum point and index order): terms outside the parent 0; parent against its end and midpoint values included; largest outward move of a final bound -5.55e-11 (mux on [1008859.42, inf]) -> PASS
+C-UNIF N=4: the same pieces, every stored entry, U and m-hat against 9 points each -> PASS
+C-MV-B N=4: the same pieces, 4 smooth forms at 9 points, delta = 0 and the two gradient-sign corners of B -> PASS
+C-PIECE N=3: 3 binding pieces halved, naive enclosures (the piece's preconditioner, vacuum point and index order): terms outside the parent 0; parent against its end and midpoint values included; largest outward move of a final bound -8.04e-08 (qx on [1008859.42, inf]) -> PASS
+C-UNIF N=3: the same pieces, every stored entry, U and m-hat against 9 points each -> PASS
+C-MV-B N=3: the same pieces, 4 smooth forms at 9 points, delta = 0 and the two gradient-sign corners of B -> PASS
+PLANT-RIGHTEND (N=4, [300.00, 300.75]): the piece's t replaced by its right end in J -> C-UNIF fails on 39 names, C-PIECE on 156 terms -> FIRES
+PLANT-MV (N=4, [300.00, 300.75]): D_c(P) replaced by 0 -> C-MV fails on S5 Dd, f_L1s, f_L2, f_rho2 -> FIRES
+PLANT-MVB (N=4, [300.00, 300.75]): F(t_m) evaluated with B = 0 -> C-MV-B fails on S5 Dd, f_L1s, f_L2, f_rho2; S5 Dd among them: True -> FIRES
+KILL KR1 (S6 R+/rho >= 1.05 on every piece): N=4 1.23362, N=3 1.24836 -> PASS
+INFO S4-U N=4 (F2): certified U(t) - float U(t) (float U = lead(1 + c1 t + c2 t^2 + c3 t^3) + rem(170), T2's baseline) over the 904 pieces: at most -0.0006022751 (on [300.00, 300.75]), at least -0.00060227633 (on [1008859.42, inf]); beside it the record's own key N4_U_MINUS_FLOAT = 2.0084443e-5 (its constant U minus S4's float U at J = 300, rem(170) not in it)
+INFO S4-U N=3 (F2): certified U(t) - float U(t) (float U = lead(1 + c1 t + c2 t^2 + c3 t^3) + rem(170), T2's baseline) over the 904 pieces: at most -0.00014533506 (on [1008859.42, inf]), at least -0.00014533597 (on [300.00, 300.75]); beside it the record's own key N3_U_MINUS_FLOAT = 5.643879e-6 (its constant U minus S4's float U at J = 300, rem(170) not in it)
+KILL KR3 (v1_2 form, pk08's quadrature error <= U_t/2 = 3.9e-4; a gate): N=4 3.82e-6, N=3 1.18e-6 (S4_U_CERTIFIED_v2 N*_QUAD_TW_PART, exact decimals; S4-U tag certified: True) -> PASS
+KILL KR4 (joint form, a gate: a certified input looser than its T2 target stops the port): S4 U (part pk08): certified U - float U <= 7.8e-4 on every piece: N=4 at most -0.0006022751, N=3 at most -0.00014533506 -> PASS; S4 TRB (part pk08, v2_1): certified TRB <= 1.02 x the FLOAT TRB, exact decimals: N=4 1.30797171127e+0 against 1.02 x 1.312607, N=3 9.39977769617e-1 against 1.02 x 0.942262 (S4-TRB tag certified: True) -> PASS; M3 entries, M2 vacuum: FLOAT, not applicable -> PASS
+KILL KR5a, sweep part (c5 > 0 on every piece): N=4 0.000329775, N=3 0.000253672 -> PASS (the joint-headroom part is in the scan item)
+KILL KR5b (c5 >= v1_1's S5 target Cov_1/1.51 = 7.791e-05 at N=4, 0.000146 at N=3) -> PASS
+KILL RULE, sweep part: no kill (KR1, KR3, KR4, KR5a part, KR5b pass)
+C-ENV end: PASS
+TAGS: M3 entries = FLOAT (pk10/scratch J = 170 JSONs) (not certified); M2 vacuum = FLOAT (vacscale parameters, rc_end_sens d3e142f3) (not certified); S4 U = CERTIFIED pk08 b1b6b99b (certified); S4 TRB = CERTIFIED pk08 91109301 (certified)
+C-EXPORT: the export text (1808 piece lines) read back before writing: the two S4U_KV_v1 readers and the producer's reader pk07/kt_s67_export_reader_v1.py (sha256 aaaa4c97) against the rows -> PASS; PLANT-EXPORT (N4_P0000's c5_lo moved one unit in its last digit) -> FIRES
+EXPORT pk07/out/export_kt_s67_cert_v2_2_sweep.kv sha256 2520bfb9b565868ca39f56a9fd3b55ed0d338f6ffaa9fc71864fd6af56527d8a (1833 lines; RUN_VERDICT VALID, EXPORT_STATUS FLOAT-PASS)
+ITEM sweep cpu 67.3 s, peak resident memory 78 MiB
+VERDICT VALID (run validity: controls, plants and completeness; results read CERTIFIED only when every input tag is certified, FLOAT-PASS otherwise)

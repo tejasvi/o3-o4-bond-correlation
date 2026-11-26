@@ -1,0 +1,712 @@
+m3_run_v1_9_3 item S4k1.3 LIM 540; script sha256 57991eb011023ae9a185423c375d42660eabe88607d207b1a535153a5d94ce5b; python 3.14.4
+STAGE-CPU C-HASH start 0.04 s
+C-HASH (9 modules, the kernel files, 12 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.12 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v11: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=) -> PASS
+PLANT-CALLER (m3_bar_v11 with one E2_combine call's plan= removed) -> FIRES
+C-SERIES (no *_series( call in 9 modules, the kernel files and this script) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-128.000000000 +/- 1.14e-12] overlaps the layer's [-128.000000000 +/- 1.27e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU S4 keys piece 1 start 0.14 s
+C-GRAPH-LIST (S4: the columns ['free', 'int', 'int', 'free'] give V 12, 17 edges and F 19 (the list: [12, 17, 19]); pairs [(0, 1), (3, 4), (4, 5), (6, 7), (7, 8), (9, 10), (10, 11)] equal the list's) -> PASS
+PLANT-GRAPH-LIST (S4: the pair list without its first pair) -> FIRES
+C-HANDOFF (m3_run_v1_9_3_S4p1.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_S4p2.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_S4p3.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_S4p4.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_S4p5.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_S4p6.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_S4p7.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_S4p8.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_S4p9.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_S4p10.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_S4p11.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_v1_9_3_S4p12.3.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PREP-CHAIN (S4: prep pieces [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] with done false, piece 12 done) -> PASS
+PIECE-START S4 piece 1 resumes at entry 0 after 0 capped piece(s); stop factor 1.5
+C-RULE (S4: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 8.1e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (S4: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 12 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 1.5441322736127014, 1.542581433543126) -> PASS
+C-PREP-REF (S4: m3ref_v1_14_P16S4.3.p6_z9sym.out PREPJSON of family P16S4, N 3, J 300.0) -> PASS
+GDATA-CPU S4,Z: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] D 6 caps {1: 6}: 0 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] D 6 caps {1: 6}: 0.23 s
+UNIT S4,Z ak: 0.23 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] D 1 caps {1: 12}: 0 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] D 1 caps {1: 12}: 0.00 s
+UNIT S4,Z m0u: 0.00 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] D 1 caps {1: 12}: 0 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] D 1 caps {1: 12}: 0.00 s
+UNIT S4,Z m0c: 0.00 s
+C-MONO-FAR S4,Z: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0701e-01 > 0 (m_F 0) -> PASS
+C-BUDGET S4,Z: largest relative radius of a norm 1.6e-15 (<= 1e-3), rnd 1.13e-15 <= 0.1 x bar 5.350e-06 -> PASS
+AKRAD-INFO S4,Z: largest relative radius of an a_k 5.21e-09
+ENTRY S4,Z ak ['1', '1.19772505347', '1.13694137418', '1.06345474345'] err 5.349728867e-06 parts rem 5.334520210e-06 tail 7.290964611e-09 ann 7.917691158e-09 far 2.835808081e-30 rnd 1.133e-15 groups 0 Dn 6 forms 12
+STAGE-CPU entry S4,Z 0.41 s
+GDATA-CPU S4,x,0,TM: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 7 caps {1: 6}: 386 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 7 caps {1: 6}: 0.92 s
+UNIT S4,x,0,TM ak: 0.93 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 2 caps {1: 12}: 0.00 s
+UNIT S4,x,0,TM m0u: 0.00 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] D 2 caps {1: 12}: 0.01 s
+UNIT S4,x,0,TM m0c: 0.01 s
+TABLE u forms [0, 1] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [0, 1] D 4 caps None: 0.00 s
+UNIT S4,x,0,TM g|0|ser|1|2|u: 0.00 s
+TABLE u forms [0, 1] D 6 caps None: 0 exact zeros
+TABLE-CPU u forms [0, 1] D 6 caps None: 0.00 s
+UNIT S4,x,0,TM g|0|ser|2|2|u: 0.00 s
+TABLE u forms [0, 1] D 8 caps None: 0 exact zeros
+TABLE-CPU u forms [0, 1] D 8 caps None: 0.00 s
+UNIT S4,x,0,TM g|0|ser|3|2|u: 0.00 s
+TABLE c forms [0, 1] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [0, 1] D 4 caps None: 0.00 s
+UNIT S4,x,0,TM g|0|ser|1|2|c: 0.00 s
+TABLE c forms [0, 1] D 6 caps None: 0 exact zeros
+TABLE-CPU c forms [0, 1] D 6 caps None: 0.00 s
+UNIT S4,x,0,TM g|0|ser|2|2|c: 0.00 s
+TABLE c forms [0, 1] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [0, 1] D 8 caps None: 0.00 s
+UNIT S4,x,0,TM g|0|ser|3|2|c: 0.00 s
+TABLE c forms [12] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [12] D 4 caps None: 0.00 s
+UNIT S4,x,0,TM g|0|ser|0|4|c: 0.00 s
+UNIT S4,x,0,TM g|0|bar|4|1|c: 0.00 s
+TABLE p forms [0, 1, 12] D 4 caps None: 1 exact zeros
+TABLE-CPU p forms [0, 1, 12] D 4 caps None: 0.00 s
+UNIT S4,x,0,TM g|0|barp|0|2|p: 0.00 s
+C-MONO-FAR S4,x,0,TM: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0368e-01 > 0 (m_F 1) -> PASS
+C-BUDGET S4,x,0,TM: largest relative radius of a norm 2.0e-13 (<= 1e-3), rnd 1.04e-14 <= 0.1 x bar 5.653e-06 -> PASS
+AKRAD-INFO S4,x,0,TM: largest relative radius of an a_k 5.10e-08
+ENTRY S4,x,0,TM ak ['0.705175983437', '0.902905353472', '0.91231710454', '0.904947686961'] err 5.652708927e-06 parts rem 5.637030498e-06 tail 7.742374130e-09 ann 7.936044483e-09 far 1.701484848e-27 rnd 1.036e-14 groups 1 Dn 7 forms 13
+STAGE-CPU entry S4,x,0,TM 1.14 s
+GDATA-CPU S4,x,1,MB: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14] D 7 caps {1: 6}: 386 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14] D 7 caps {1: 6}: 0.83 s
+UNIT S4,x,1,MB ak: 0.84 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14] D 2 caps {1: 12}: 0.01 s
+UNIT S4,x,1,MB m0u: 0.01 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14] D 2 caps {1: 12}: 0.00 s
+UNIT S4,x,1,MB m0c: 0.00 s
+TABLE u forms [4, 5] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [4, 5] D 4 caps None: 0.00 s
+UNIT S4,x,1,MB g|0|ser|1|2|u: 0.00 s
+TABLE u forms [4, 5] D 6 caps None: 0 exact zeros
+TABLE-CPU u forms [4, 5] D 6 caps None: 0.00 s
+UNIT S4,x,1,MB g|0|ser|2|2|u: 0.00 s
+TABLE u forms [4, 5] D 8 caps None: 0 exact zeros
+TABLE-CPU u forms [4, 5] D 8 caps None: 0.00 s
+UNIT S4,x,1,MB g|0|ser|3|2|u: 0.00 s
+TABLE c forms [4, 5] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [4, 5] D 4 caps None: 0.00 s
+UNIT S4,x,1,MB g|0|ser|1|2|c: 0.00 s
+TABLE c forms [4, 5] D 6 caps None: 0 exact zeros
+TABLE-CPU c forms [4, 5] D 6 caps None: 0.00 s
+UNIT S4,x,1,MB g|0|ser|2|2|c: 0.00 s
+TABLE c forms [4, 5] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [4, 5] D 8 caps None: 0.00 s
+UNIT S4,x,1,MB g|0|ser|3|2|c: 0.00 s
+TABLE c forms [14] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [14] D 4 caps None: 0.00 s
+UNIT S4,x,1,MB g|0|ser|0|4|c: 0.00 s
+UNIT S4,x,1,MB g|0|bar|4|1|c: 0.00 s
+TABLE p forms [4, 5, 14] D 4 caps None: 1 exact zeros
+TABLE-CPU p forms [4, 5, 14] D 4 caps None: 0.00 s
+UNIT S4,x,1,MB g|0|barp|0|2|p: 0.00 s
+C-MONO-FAR S4,x,1,MB: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0368e-01 > 0 (m_F 1) -> PASS
+C-BUDGET S4,x,1,MB: largest relative radius of a norm 1.6e-13 (<= 1e-3), rnd 8.31e-15 <= 0.1 x bar 4.534e-06 -> PASS
+AKRAD-INFO S4,x,1,MB: largest relative radius of an a_k 4.38e-08
+ENTRY S4,x,1,MB ak ['0.568530020704', '0.768649911664', '0.813230649382', '0.839110840424'] err 4.533560942e-06 parts rem 4.520996981e-06 tail 6.175704723e-09 ann 6.388248258e-09 far 1.701484848e-27 rnd 8.312e-15 groups 1 Dn 7 forms 13
+STAGE-CPU entry S4,x,1,MB 1.05 s
+GDATA-CPU S4,x,1,TM: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 7 caps {1: 6}: 386 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 7 caps {1: 6}: 0.84 s
+UNIT S4,x,1,TM ak: 0.85 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 2 caps {1: 12}: 0.01 s
+UNIT S4,x,1,TM m0u: 0.01 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 2 caps {1: 12}: 0.00 s
+UNIT S4,x,1,TM m0c: 0.00 s
+TABLE u forms [3, 4] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [3, 4] D 4 caps None: 0.00 s
+UNIT S4,x,1,TM g|0|ser|1|2|u: 0.00 s
+TABLE u forms [3, 4] D 6 caps None: 0 exact zeros
+TABLE-CPU u forms [3, 4] D 6 caps None: 0.00 s
+UNIT S4,x,1,TM g|0|ser|2|2|u: 0.00 s
+TABLE u forms [3, 4] D 8 caps None: 0 exact zeros
+TABLE-CPU u forms [3, 4] D 8 caps None: 0.00 s
+UNIT S4,x,1,TM g|0|ser|3|2|u: 0.00 s
+TABLE c forms [3, 4] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [3, 4] D 4 caps None: 0.00 s
+UNIT S4,x,1,TM g|0|ser|1|2|c: 0.00 s
+TABLE c forms [3, 4] D 6 caps None: 0 exact zeros
+TABLE-CPU c forms [3, 4] D 6 caps None: 0.00 s
+UNIT S4,x,1,TM g|0|ser|2|2|c: 0.00 s
+TABLE c forms [3, 4] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [3, 4] D 8 caps None: 0.00 s
+UNIT S4,x,1,TM g|0|ser|3|2|c: 0.00 s
+TABLE c forms [13] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [13] D 4 caps None: 0.00 s
+UNIT S4,x,1,TM g|0|ser|0|4|c: 0.00 s
+UNIT S4,x,1,TM g|0|bar|4|1|c: 0.00 s
+TABLE p forms [3, 4, 13] D 4 caps None: 1 exact zeros
+TABLE-CPU p forms [3, 4, 13] D 4 caps None: 0.00 s
+UNIT S4,x,1,TM g|0|barp|0|2|p: 0.00 s
+C-MONO-FAR S4,x,1,TM: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0368e-01 > 0 (m_F 1) -> PASS
+C-BUDGET S4,x,1,TM: largest relative radius of a norm 1.6e-13 (<= 1e-3), rnd 8.24e-15 <= 0.1 x bar 4.534e-06 -> PASS
+AKRAD-INFO S4,x,1,TM: largest relative radius of an a_k 4.38e-08
+ENTRY S4,x,1,TM ak ['0.568530020704', '0.768649911664', '0.813230649382', '0.839110840424'] err 4.533560942e-06 parts rem 4.520996981e-06 tail 6.175704723e-09 ann 6.388248258e-09 far 1.701484848e-27 rnd 8.241e-15 groups 1 Dn 7 forms 13
+STAGE-CPU entry S4,x,1,TM 1.06 s
+GDATA-CPU S4,x,2,MB: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16] D 7 caps {1: 6}: 386 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16] D 7 caps {1: 6}: 0.83 s
+UNIT S4,x,2,MB ak: 0.84 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16] D 2 caps {1: 12}: 0.00 s
+UNIT S4,x,2,MB m0u: 0.01 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16] D 2 caps {1: 12}: 0.00 s
+UNIT S4,x,2,MB m0c: 0.00 s
+TABLE u forms [7, 8] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [7, 8] D 4 caps None: 0.00 s
+UNIT S4,x,2,MB g|0|ser|1|2|u: 0.00 s
+TABLE u forms [7, 8] D 6 caps None: 0 exact zeros
+TABLE-CPU u forms [7, 8] D 6 caps None: 0.00 s
+UNIT S4,x,2,MB g|0|ser|2|2|u: 0.00 s
+TABLE u forms [7, 8] D 8 caps None: 0 exact zeros
+TABLE-CPU u forms [7, 8] D 8 caps None: 0.00 s
+UNIT S4,x,2,MB g|0|ser|3|2|u: 0.00 s
+TABLE c forms [7, 8] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [7, 8] D 4 caps None: 0.00 s
+UNIT S4,x,2,MB g|0|ser|1|2|c: 0.00 s
+TABLE c forms [7, 8] D 6 caps None: 0 exact zeros
+TABLE-CPU c forms [7, 8] D 6 caps None: 0.00 s
+UNIT S4,x,2,MB g|0|ser|2|2|c: 0.00 s
+TABLE c forms [7, 8] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [7, 8] D 8 caps None: 0.00 s
+UNIT S4,x,2,MB g|0|ser|3|2|c: 0.00 s
+TABLE c forms [16] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [16] D 4 caps None: 0.00 s
+UNIT S4,x,2,MB g|0|ser|0|4|c: 0.00 s
+UNIT S4,x,2,MB g|0|bar|4|1|c: 0.00 s
+TABLE p forms [7, 8, 16] D 4 caps None: 1 exact zeros
+TABLE-CPU p forms [7, 8, 16] D 4 caps None: 0.00 s
+UNIT S4,x,2,MB g|0|barp|0|2|p: 0.00 s
+C-MONO-FAR S4,x,2,MB: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0368e-01 > 0 (m_F 1) -> PASS
+C-BUDGET S4,x,2,MB: largest relative radius of a norm 1.6e-13 (<= 1e-3), rnd 8.29e-15 <= 0.1 x bar 4.534e-06 -> PASS
+AKRAD-INFO S4,x,2,MB: largest relative radius of an a_k 4.41e-08
+ENTRY S4,x,2,MB ak ['0.568530020704', '0.768649911664', '0.813230649382', '0.839110840424'] err 4.533560942e-06 parts rem 4.520996981e-06 tail 6.175704723e-09 ann 6.388248258e-09 far 1.701484848e-27 rnd 8.287e-15 groups 1 Dn 7 forms 13
+STAGE-CPU entry S4,x,2,MB 1.05 s
+GDATA-CPU S4,x,2,TM: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15] D 7 caps {1: 6}: 386 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15] D 7 caps {1: 6}: 0.84 s
+UNIT S4,x,2,TM ak: 0.84 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15] D 2 caps {1: 12}: 0.01 s
+UNIT S4,x,2,TM m0u: 0.01 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15] D 2 caps {1: 12}: 0.00 s
+UNIT S4,x,2,TM m0c: 0.00 s
+TABLE u forms [6, 7] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [6, 7] D 4 caps None: 0.00 s
+UNIT S4,x,2,TM g|0|ser|1|2|u: 0.00 s
+TABLE u forms [6, 7] D 6 caps None: 0 exact zeros
+TABLE-CPU u forms [6, 7] D 6 caps None: 0.00 s
+UNIT S4,x,2,TM g|0|ser|2|2|u: 0.00 s
+TABLE u forms [6, 7] D 8 caps None: 0 exact zeros
+TABLE-CPU u forms [6, 7] D 8 caps None: 0.00 s
+UNIT S4,x,2,TM g|0|ser|3|2|u: 0.00 s
+TABLE c forms [6, 7] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [6, 7] D 4 caps None: 0.00 s
+UNIT S4,x,2,TM g|0|ser|1|2|c: 0.00 s
+TABLE c forms [6, 7] D 6 caps None: 0 exact zeros
+TABLE-CPU c forms [6, 7] D 6 caps None: 0.00 s
+UNIT S4,x,2,TM g|0|ser|2|2|c: 0.00 s
+TABLE c forms [6, 7] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [6, 7] D 8 caps None: 0.00 s
+UNIT S4,x,2,TM g|0|ser|3|2|c: 0.00 s
+TABLE c forms [15] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [15] D 4 caps None: 0.00 s
+UNIT S4,x,2,TM g|0|ser|0|4|c: 0.00 s
+UNIT S4,x,2,TM g|0|bar|4|1|c: 0.00 s
+TABLE p forms [6, 7, 15] D 4 caps None: 1 exact zeros
+TABLE-CPU p forms [6, 7, 15] D 4 caps None: 0.00 s
+UNIT S4,x,2,TM g|0|barp|0|2|p: 0.00 s
+C-MONO-FAR S4,x,2,TM: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0368e-01 > 0 (m_F 1) -> PASS
+C-BUDGET S4,x,2,TM: largest relative radius of a norm 1.6e-13 (<= 1e-3), rnd 8.28e-15 <= 0.1 x bar 4.534e-06 -> PASS
+AKRAD-INFO S4,x,2,TM: largest relative radius of an a_k 4.38e-08
+ENTRY S4,x,2,TM ak ['0.568530020704', '0.768649911664', '0.813230649382', '0.839110840424'] err 4.533560942e-06 parts rem 4.520996981e-06 tail 6.175704723e-09 ann 6.388248258e-09 far 1.701484848e-27 rnd 8.278e-15 groups 1 Dn 7 forms 13
+STAGE-CPU entry S4,x,2,TM 1.06 s
+GDATA-CPU S4,x,3,MB: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 18] D 7 caps {1: 6}: 386 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 18] D 7 caps {1: 6}: 0.87 s
+UNIT S4,x,3,MB ak: 0.88 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 18] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 18] D 2 caps {1: 12}: 0.00 s
+UNIT S4,x,3,MB m0u: 0.00 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 18] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 18] D 2 caps {1: 12}: 0.00 s
+UNIT S4,x,3,MB m0c: 0.00 s
+TABLE u forms [10, 11] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [10, 11] D 4 caps None: 0.00 s
+UNIT S4,x,3,MB g|0|ser|1|2|u: 0.00 s
+TABLE u forms [10, 11] D 6 caps None: 0 exact zeros
+TABLE-CPU u forms [10, 11] D 6 caps None: 0.00 s
+UNIT S4,x,3,MB g|0|ser|2|2|u: 0.00 s
+TABLE u forms [10, 11] D 8 caps None: 0 exact zeros
+TABLE-CPU u forms [10, 11] D 8 caps None: 0.00 s
+UNIT S4,x,3,MB g|0|ser|3|2|u: 0.00 s
+TABLE c forms [10, 11] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [10, 11] D 4 caps None: 0.00 s
+UNIT S4,x,3,MB g|0|ser|1|2|c: 0.00 s
+TABLE c forms [10, 11] D 6 caps None: 0 exact zeros
+TABLE-CPU c forms [10, 11] D 6 caps None: 0.00 s
+UNIT S4,x,3,MB g|0|ser|2|2|c: 0.00 s
+TABLE c forms [10, 11] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [10, 11] D 8 caps None: 0.00 s
+UNIT S4,x,3,MB g|0|ser|3|2|c: 0.00 s
+TABLE c forms [18] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [18] D 4 caps None: 0.00 s
+UNIT S4,x,3,MB g|0|ser|0|4|c: 0.00 s
+UNIT S4,x,3,MB g|0|bar|4|1|c: 0.00 s
+TABLE p forms [10, 11, 18] D 4 caps None: 1 exact zeros
+TABLE-CPU p forms [10, 11, 18] D 4 caps None: 0.00 s
+UNIT S4,x,3,MB g|0|barp|0|2|p: 0.00 s
+C-MONO-FAR S4,x,3,MB: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0368e-01 > 0 (m_F 1) -> PASS
+C-BUDGET S4,x,3,MB: largest relative radius of a norm 2.0e-13 (<= 1e-3), rnd 1.04e-14 <= 0.1 x bar 5.653e-06 -> PASS
+AKRAD-INFO S4,x,3,MB: largest relative radius of an a_k 5.10e-08
+ENTRY S4,x,3,MB ak ['0.705175983437', '0.902905353472', '0.91231710454', '0.904947686961'] err 5.652708927e-06 parts rem 5.637030498e-06 tail 7.742374130e-09 ann 7.936044483e-09 far 1.701484848e-27 rnd 1.037e-14 groups 1 Dn 7 forms 13
+STAGE-CPU entry S4,x,3,MB 1.12 s
+GDATA-CPU S4,x,3,TM: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 17] D 7 caps {1: 6}: 386 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 17] D 7 caps {1: 6}: 0.84 s
+UNIT S4,x,3,TM ak: 0.85 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 17] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 17] D 2 caps {1: 12}: 0.01 s
+UNIT S4,x,3,TM m0u: 0.01 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 17] D 2 caps {1: 12}: 0 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 17] D 2 caps {1: 12}: 0.00 s
+UNIT S4,x,3,TM m0c: 0.00 s
+TABLE u forms [9, 10] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [9, 10] D 4 caps None: 0.00 s
+UNIT S4,x,3,TM g|0|ser|1|2|u: 0.00 s
+TABLE u forms [9, 10] D 6 caps None: 0 exact zeros
+TABLE-CPU u forms [9, 10] D 6 caps None: 0.00 s
+UNIT S4,x,3,TM g|0|ser|2|2|u: 0.00 s
+TABLE u forms [9, 10] D 8 caps None: 0 exact zeros
+TABLE-CPU u forms [9, 10] D 8 caps None: 0.00 s
+UNIT S4,x,3,TM g|0|ser|3|2|u: 0.00 s
+TABLE c forms [9, 10] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [9, 10] D 4 caps None: 0.00 s
+UNIT S4,x,3,TM g|0|ser|1|2|c: 0.00 s
+TABLE c forms [9, 10] D 6 caps None: 0 exact zeros
+TABLE-CPU c forms [9, 10] D 6 caps None: 0.00 s
+UNIT S4,x,3,TM g|0|ser|2|2|c: 0.00 s
+TABLE c forms [9, 10] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [9, 10] D 8 caps None: 0.00 s
+UNIT S4,x,3,TM g|0|ser|3|2|c: 0.00 s
+TABLE c forms [17] D 4 caps None: 0 exact zeros
+TABLE-CPU c forms [17] D 4 caps None: 0.00 s
+UNIT S4,x,3,TM g|0|ser|0|4|c: 0.00 s
+UNIT S4,x,3,TM g|0|bar|4|1|c: 0.00 s
+TABLE p forms [9, 10, 17] D 4 caps None: 1 exact zeros
+TABLE-CPU p forms [9, 10, 17] D 4 caps None: 0.00 s
+UNIT S4,x,3,TM g|0|barp|0|2|p: 0.00 s
+C-MONO-FAR S4,x,3,TM: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0368e-01 > 0 (m_F 1) -> PASS
+C-BUDGET S4,x,3,TM: largest relative radius of a norm 2.0e-13 (<= 1e-3), rnd 1.04e-14 <= 0.1 x bar 5.653e-06 -> PASS
+AKRAD-INFO S4,x,3,TM: largest relative radius of an a_k 5.10e-08
+ENTRY S4,x,3,TM ak ['0.705175983437', '0.902905353472', '0.91231710454', '0.904947686961'] err 5.652708926e-06 parts rem 5.637030498e-06 tail 7.742374130e-09 ann 7.936044483e-09 far 1.701484848e-27 rnd 1.035e-14 groups 1 Dn 7 forms 13
+STAGE-CPU entry S4,x,3,TM 1.06 s
+GDATA-CPU S4,xy,0,TM,1,TM: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] D 8 caps {1: 6}: 3.90 s
+UNIT S4,xy,0,TM,1,TM ak: 3.90 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] D 4 caps {1: 12}: 0.09 s
+UNIT S4,xy,0,TM,1,TM m0u: 0.09 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] D 4 caps {1: 12}: 0.09 s
+UNIT S4,xy,0,TM,1,TM m0c: 0.09 s
+TABLE u forms [12] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [12] D 4 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|ser|0|4|u: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|ser|1|4|u: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|ser|1|4|u: 0.00 s
+TABLE u forms [13] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [13] D 4 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|ser|0|4|u: 0.00 s
+TABLE u forms [3, 4] D 12 caps None: 0 exact zeros
+TABLE-CPU u forms [3, 4] D 12 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|ser|2|4|u: 0.00 s
+TABLE u forms [0, 1] D 12 caps None: 0 exact zeros
+TABLE-CPU u forms [0, 1] D 12 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|ser|2|4|u: 0.00 s
+TABLE u forms [3, 4] D 16 caps None: 0 exact zeros
+TABLE-CPU u forms [3, 4] D 16 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|ser|3|4|u: 0.00 s
+TABLE u forms [0, 1] D 16 caps None: 0 exact zeros
+TABLE-CPU u forms [0, 1] D 16 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|ser|3|4|u: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|ser|1|4|c: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|ser|1|4|c: 0.00 s
+TABLE c forms [3, 4] D 12 caps None: 0 exact zeros
+TABLE-CPU c forms [3, 4] D 12 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|ser|2|4|c: 0.00 s
+TABLE c forms [0, 1] D 12 caps None: 0 exact zeros
+TABLE-CPU c forms [0, 1] D 12 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|ser|2|4|c: 0.00 s
+TABLE c forms [3, 4] D 16 caps None: 0 exact zeros
+TABLE-CPU c forms [3, 4] D 16 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|ser|3|4|c: 0.00 s
+TABLE c forms [0, 1] D 16 caps None: 0 exact zeros
+TABLE-CPU c forms [0, 1] D 16 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|ser|3|4|c: 0.00 s
+TABLE c forms [12] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [12] D 8 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|ser|0|8|c: 0.00 s
+TABLE c forms [13] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [13] D 8 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|ser|0|8|c: 0.00 s
+TABLE c forms [0, 1, 12] D 4 caps None: 1 exact zeros
+TABLE-CPU c forms [0, 1, 12] D 4 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|bar|0|2|c: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|bar|4|2|c: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|bar|1|2|c: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|bar|3|2|c: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|bar|2|2|c: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|bar|2|2|c: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|bar|3|2|c: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|bar|1|2|c: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|bar|4|2|c: 0.00 s
+TABLE c forms [3, 4, 13] D 4 caps None: 1 exact zeros
+TABLE-CPU c forms [3, 4, 13] D 4 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|bar|0|2|c: 0.00 s
+TABLE p forms [0, 1, 12] D 8 caps None: 1 exact zeros
+TABLE-CPU p forms [0, 1, 12] D 8 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|0|barp|0|4|p: 0.00 s
+TABLE p forms [3, 4, 13] D 8 caps None: 1 exact zeros
+TABLE-CPU p forms [3, 4, 13] D 8 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,TM g|1|barp|0|4|p: 0.00 s
+C-MONO-FAR S4,xy,0,TM,1,TM: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0035e-01 > 0 (m_F 2) -> PASS
+C-BUDGET S4,xy,0,TM,1,TM: largest relative radius of a norm 4.9e-12 (<= 1e-3), rnd 4.55e-14 <= 0.1 x bar 5.845e-06 -> PASS
+AKRAD-INFO S4,xy,0,TM,1,TM: largest relative radius of an a_k 4.23e-07
+ENTRY S4,xy,0,TM,1,TM ak ['0.441578985722', '0.643546310495', '0.730961648324', '0.80750343344'] err 5.844665614e-06 parts rem 5.817737975e-06 tail 1.123537701e-08 ann 1.569221568e-08 far 1.020890909e-24 rnd 4.554e-14 groups 2 Dn 8 forms 14
+STAGE-CPU entry S4,xy,0,TM,1,TM 4.31 s
+GDATA-CPU S4,xy,0,TM,1,MB: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 8 caps {1: 6}: 3.77 s
+UNIT S4,xy,0,TM,1,MB ak: 3.78 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 4 caps {1: 12}: 0.09 s
+UNIT S4,xy,0,TM,1,MB m0u: 0.09 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 4 caps {1: 12}: 0.09 s
+UNIT S4,xy,0,TM,1,MB m0c: 0.09 s
+UNIT S4,xy,0,TM,1,MB g|1|ser|1|4|u: 0.00 s
+TABLE u forms [14] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [14] D 4 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|ser|0|4|u: 0.00 s
+TABLE u forms [4, 5] D 12 caps None: 0 exact zeros
+TABLE-CPU u forms [4, 5] D 12 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|ser|2|4|u: 0.00 s
+TABLE u forms [4, 5] D 16 caps None: 0 exact zeros
+TABLE-CPU u forms [4, 5] D 16 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|ser|3|4|u: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|ser|1|4|c: 0.00 s
+TABLE c forms [4, 5] D 12 caps None: 0 exact zeros
+TABLE-CPU c forms [4, 5] D 12 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|ser|2|4|c: 0.00 s
+TABLE c forms [4, 5] D 16 caps None: 0 exact zeros
+TABLE-CPU c forms [4, 5] D 16 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|ser|3|4|c: 0.00 s
+TABLE c forms [14] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [14] D 8 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|ser|0|8|c: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|bar|4|2|c: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|bar|3|2|c: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|bar|2|2|c: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|bar|1|2|c: 0.00 s
+TABLE c forms [4, 5, 14] D 4 caps None: 1 exact zeros
+TABLE-CPU c forms [4, 5, 14] D 4 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|bar|0|2|c: 0.00 s
+TABLE p forms [4, 5, 14] D 8 caps None: 1 exact zeros
+TABLE-CPU p forms [4, 5, 14] D 8 caps None: 0.00 s
+UNIT S4,xy,0,TM,1,MB g|1|barp|0|4|p: 0.00 s
+C-MONO-FAR S4,xy,0,TM,1,MB: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0035e-01 > 0 (m_F 2) -> PASS
+C-BUDGET S4,xy,0,TM,1,MB: largest relative radius of a norm 3.1e-12 (<= 1e-3), rnd 4.59e-14 <= 0.1 x bar 5.017e-06 -> PASS
+AKRAD-INFO S4,xy,0,TM,1,MB: largest relative radius of an a_k 4.82e-07
+ENTRY S4,xy,0,TM,1,MB ak ['0.402241511601', '0.580515098362', '0.652160050622', '0.711153939066'] err 5.016565519e-06 parts rem 4.990887305e-06 tail 9.985952399e-09 ann 1.569221568e-08 far 1.020890909e-24 rnd 4.595e-14 groups 2 Dn 8 forms 14
+STAGE-CPU entry S4,xy,0,TM,1,MB 4.16 s
+GDATA-CPU S4,xy,1,TM,2,TM: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 8 caps {1: 6}: 3.59 s
+UNIT S4,xy,1,TM,2,TM ak: 3.60 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 4 caps {1: 12}: 0.08 s
+UNIT S4,xy,1,TM,2,TM m0u: 0.08 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 4 caps {1: 12}: 0.08 s
+UNIT S4,xy,1,TM,2,TM m0c: 0.08 s
+UNIT S4,xy,1,TM,2,TM g|1|ser|1|4|u: 0.00 s
+TABLE u forms [15] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [15] D 4 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|ser|0|4|u: 0.00 s
+TABLE u forms [6, 7] D 12 caps None: 0 exact zeros
+TABLE-CPU u forms [6, 7] D 12 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|ser|2|4|u: 0.00 s
+TABLE u forms [6, 7] D 16 caps None: 0 exact zeros
+TABLE-CPU u forms [6, 7] D 16 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|ser|3|4|u: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|ser|1|4|c: 0.00 s
+TABLE c forms [6, 7] D 12 caps None: 0 exact zeros
+TABLE-CPU c forms [6, 7] D 12 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|ser|2|4|c: 0.00 s
+TABLE c forms [6, 7] D 16 caps None: 0 exact zeros
+TABLE-CPU c forms [6, 7] D 16 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|ser|3|4|c: 0.00 s
+TABLE c forms [15] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [15] D 8 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|ser|0|8|c: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|bar|4|2|c: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|bar|3|2|c: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|bar|2|2|c: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|bar|1|2|c: 0.00 s
+TABLE c forms [6, 7, 15] D 4 caps None: 1 exact zeros
+TABLE-CPU c forms [6, 7, 15] D 4 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|bar|0|2|c: 0.00 s
+TABLE p forms [6, 7, 15] D 8 caps None: 1 exact zeros
+TABLE-CPU p forms [6, 7, 15] D 8 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,TM g|1|barp|0|4|p: 0.00 s
+C-MONO-FAR S4,xy,1,TM,2,TM: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0035e-01 > 0 (m_F 2) -> PASS
+C-BUDGET S4,xy,1,TM,2,TM: largest relative radius of a norm 3.1e-12 (<= 1e-3), rnd 3.64e-14 <= 0.1 x bar 4.363e-06 -> PASS
+AKRAD-INFO S4,xy,1,TM,2,TM: largest relative radius of an a_k 3.79e-07
+ENTRY S4,xy,1,TM,2,TM ak ['0.350386516295', '0.534960916325', '0.63081530705', '0.718150123035'] err 4.362908796e-06 parts rem 4.342206455e-06 tail 8.072104350e-09 ann 1.263019971e-08 far 1.020890909e-24 rnd 3.635e-14 groups 2 Dn 8 forms 14
+STAGE-CPU entry S4,xy,1,TM,2,TM 3.98 s
+GDATA-CPU S4,xy,1,TM,2,MB: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 16] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 16] D 8 caps {1: 6}: 3.55 s
+UNIT S4,xy,1,TM,2,MB ak: 3.56 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 16] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 16] D 4 caps {1: 12}: 0.08 s
+UNIT S4,xy,1,TM,2,MB m0u: 0.08 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 16] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 16] D 4 caps {1: 12}: 0.08 s
+UNIT S4,xy,1,TM,2,MB m0c: 0.08 s
+UNIT S4,xy,1,TM,2,MB g|1|ser|1|4|u: 0.00 s
+TABLE u forms [16] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [16] D 4 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|ser|0|4|u: 0.00 s
+TABLE u forms [7, 8] D 12 caps None: 0 exact zeros
+TABLE-CPU u forms [7, 8] D 12 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|ser|2|4|u: 0.00 s
+TABLE u forms [7, 8] D 16 caps None: 0 exact zeros
+TABLE-CPU u forms [7, 8] D 16 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|ser|3|4|u: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|ser|1|4|c: 0.00 s
+TABLE c forms [7, 8] D 12 caps None: 0 exact zeros
+TABLE-CPU c forms [7, 8] D 12 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|ser|2|4|c: 0.00 s
+TABLE c forms [7, 8] D 16 caps None: 0 exact zeros
+TABLE-CPU c forms [7, 8] D 16 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|ser|3|4|c: 0.00 s
+TABLE c forms [16] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [16] D 8 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|ser|0|8|c: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|bar|4|2|c: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|bar|3|2|c: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|bar|2|2|c: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|bar|1|2|c: 0.00 s
+TABLE c forms [7, 8, 16] D 4 caps None: 1 exact zeros
+TABLE-CPU c forms [7, 8, 16] D 4 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|bar|0|2|c: 0.00 s
+TABLE p forms [7, 8, 16] D 8 caps None: 1 exact zeros
+TABLE-CPU p forms [7, 8, 16] D 8 caps None: 0.00 s
+UNIT S4,xy,1,TM,2,MB g|1|barp|0|4|p: 0.00 s
+C-MONO-FAR S4,xy,1,TM,2,MB: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0035e-01 > 0 (m_F 2) -> PASS
+C-BUDGET S4,xy,1,TM,2,MB: largest relative radius of a norm 3.1e-12 (<= 1e-3), rnd 3.70e-14 <= 0.1 x bar 3.799e-06 -> PASS
+AKRAD-INFO S4,xy,1,TM,2,MB: largest relative radius of an a_k 4.25e-07
+ENTRY S4,xy,1,TM,2,MB ak ['0.323885481099', '0.490550909373', '0.572816805892', '0.644138303715'] err 3.799003317e-06 parts rem 3.779151858e-06 tail 7.221221846e-09 ann 1.263019971e-08 far 1.020890909e-24 rnd 3.704e-14 groups 2 Dn 8 forms 14
+STAGE-CPU entry S4,xy,1,TM,2,MB 3.93 s
+GDATA-CPU S4,xy,0,TM,2,TM: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15] D 8 caps {1: 6}: 3.42 s
+UNIT S4,xy,0,TM,2,TM ak: 3.43 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15] D 4 caps {1: 12}: 0.09 s
+UNIT S4,xy,0,TM,2,TM m0u: 0.09 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15] D 4 caps {1: 12}: 0.09 s
+UNIT S4,xy,0,TM,2,TM m0c: 0.09 s
+C-MONO-FAR S4,xy,0,TM,2,TM: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0035e-01 > 0 (m_F 2) -> PASS
+C-BUDGET S4,xy,0,TM,2,TM: largest relative radius of a norm 9.4e-14 (<= 1e-3), rnd 4.59e-14 <= 0.1 x bar 5.081e-06 -> PASS
+AKRAD-INFO S4,xy,0,TM,2,TM: largest relative radius of an a_k 4.85e-07
+ENTRY S4,xy,0,TM,2,TM ak ['0.405140062326', '0.583552811428', '0.654209830605', '0.711840281579'] err 5.081199777e-06 parts rem 5.055424033e-06 tail 1.008348247e-08 ann 1.569221568e-08 far 1.020890909e-24 rnd 4.590e-14 groups 2 Dn 8 forms 14
+STAGE-CPU entry S4,xy,0,TM,2,TM 3.79 s
+GDATA-CPU S4,xy,0,TM,2,MB: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16] D 8 caps {1: 6}: 3.79 s
+UNIT S4,xy,0,TM,2,MB ak: 3.79 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16] D 4 caps {1: 12}: 0.09 s
+UNIT S4,xy,0,TM,2,MB m0u: 0.09 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16] D 4 caps {1: 12}: 0.09 s
+UNIT S4,xy,0,TM,2,MB m0c: 0.09 s
+C-MONO-FAR S4,xy,0,TM,2,MB: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0035e-01 > 0 (m_F 2) -> PASS
+C-BUDGET S4,xy,0,TM,2,MB: largest relative radius of a norm 9.8e-14 (<= 1e-3), rnd 4.59e-14 <= 0.1 x bar 5.007e-06 -> PASS
+AKRAD-INFO S4,xy,0,TM,2,MB: largest relative radius of an a_k 4.91e-07
+ENTRY S4,xy,0,TM,2,MB ak ['0.401827432927', '0.577208381284', '0.644928375647', '0.698810843871'] err 5.007144393e-06 parts rem 4.981480197e-06 tail 9.971935039e-09 ann 1.569221568e-08 far 1.020890909e-24 rnd 4.588e-14 groups 2 Dn 8 forms 14
+STAGE-CPU entry S4,xy,0,TM,2,MB 4.16 s
+GDATA-CPU S4,xy,0,TM,3,TM: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17] D 8 caps {1: 6}: 3.80 s
+UNIT S4,xy,0,TM,3,TM ak: 3.81 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17] D 4 caps {1: 12}: 0.09 s
+UNIT S4,xy,0,TM,3,TM m0u: 0.09 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17] D 4 caps {1: 12}: 0.09 s
+UNIT S4,xy,0,TM,3,TM m0c: 0.09 s
+UNIT S4,xy,0,TM,3,TM g|1|ser|1|4|u: 0.00 s
+TABLE u forms [17] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [17] D 4 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|ser|0|4|u: 0.00 s
+TABLE u forms [9, 10] D 12 caps None: 0 exact zeros
+TABLE-CPU u forms [9, 10] D 12 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|ser|2|4|u: 0.00 s
+TABLE u forms [9, 10] D 16 caps None: 0 exact zeros
+TABLE-CPU u forms [9, 10] D 16 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|ser|3|4|u: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|ser|1|4|c: 0.00 s
+TABLE c forms [9, 10] D 12 caps None: 0 exact zeros
+TABLE-CPU c forms [9, 10] D 12 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|ser|2|4|c: 0.00 s
+TABLE c forms [9, 10] D 16 caps None: 0 exact zeros
+TABLE-CPU c forms [9, 10] D 16 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|ser|3|4|c: 0.00 s
+TABLE c forms [17] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [17] D 8 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|ser|0|8|c: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|bar|4|2|c: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|bar|3|2|c: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|bar|2|2|c: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|bar|1|2|c: 0.00 s
+TABLE c forms [9, 10, 17] D 4 caps None: 1 exact zeros
+TABLE-CPU c forms [9, 10, 17] D 4 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|bar|0|2|c: 0.00 s
+TABLE p forms [9, 10, 17] D 8 caps None: 1 exact zeros
+TABLE-CPU p forms [9, 10, 17] D 8 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,TM g|1|barp|0|4|p: 0.00 s
+C-MONO-FAR S4,xy,0,TM,3,TM: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0035e-01 > 0 (m_F 2) -> PASS
+C-BUDGET S4,xy,0,TM,3,TM: largest relative radius of a norm 4.9e-12 (<= 1e-3), rnd 5.75e-14 <= 0.1 x bar 6.599e-06 -> PASS
+AKRAD-INFO S4,xy,0,TM,3,TM: largest relative radius of an a_k 5.69e-07
+ENTRY S4,xy,0,TM,3,TM ak ['0.498066003969', '0.679463994142', '0.727354284046', '0.760361635157'] err 6.599000499e-06 parts rem 6.565882364e-06 tail 1.362150297e-08 ann 1.949657477e-08 far 1.020890909e-24 rnd 5.750e-14 groups 2 Dn 8 forms 14
+STAGE-CPU entry S4,xy,0,TM,3,TM 4.21 s
+GDATA-CPU S4,xy,0,TM,3,MB: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 18] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 18] D 8 caps {1: 6}: 3.77 s
+UNIT S4,xy,0,TM,3,MB ak: 3.78 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 18] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 18] D 4 caps {1: 12}: 0.09 s
+UNIT S4,xy,0,TM,3,MB m0u: 0.09 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 18] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 18] D 4 caps {1: 12}: 0.09 s
+UNIT S4,xy,0,TM,3,MB m0c: 0.09 s
+UNIT S4,xy,0,TM,3,MB g|1|ser|1|4|u: 0.00 s
+TABLE u forms [18] D 4 caps None: 0 exact zeros
+TABLE-CPU u forms [18] D 4 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|ser|0|4|u: 0.00 s
+TABLE u forms [10, 11] D 12 caps None: 0 exact zeros
+TABLE-CPU u forms [10, 11] D 12 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|ser|2|4|u: 0.00 s
+TABLE u forms [10, 11] D 16 caps None: 0 exact zeros
+TABLE-CPU u forms [10, 11] D 16 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|ser|3|4|u: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|ser|1|4|c: 0.00 s
+TABLE c forms [10, 11] D 12 caps None: 0 exact zeros
+TABLE-CPU c forms [10, 11] D 12 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|ser|2|4|c: 0.00 s
+TABLE c forms [10, 11] D 16 caps None: 0 exact zeros
+TABLE-CPU c forms [10, 11] D 16 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|ser|3|4|c: 0.00 s
+TABLE c forms [18] D 8 caps None: 0 exact zeros
+TABLE-CPU c forms [18] D 8 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|ser|0|8|c: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|bar|4|2|c: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|bar|3|2|c: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|bar|2|2|c: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|bar|1|2|c: 0.00 s
+TABLE c forms [10, 11, 18] D 4 caps None: 1 exact zeros
+TABLE-CPU c forms [10, 11, 18] D 4 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|bar|0|2|c: 0.00 s
+TABLE p forms [10, 11, 18] D 8 caps None: 1 exact zeros
+TABLE-CPU p forms [10, 11, 18] D 8 caps None: 0.00 s
+UNIT S4,xy,0,TM,3,MB g|1|barp|0|4|p: 0.00 s
+C-MONO-FAR S4,xy,0,TM,3,MB: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0035e-01 > 0 (m_F 2) -> PASS
+C-BUDGET S4,xy,0,TM,3,MB: largest relative radius of a norm 4.9e-12 (<= 1e-3), rnd 5.70e-14 <= 0.1 x bar 6.590e-06 -> PASS
+AKRAD-INFO S4,xy,0,TM,3,MB: largest relative radius of an a_k 5.66e-07
+ENTRY S4,xy,0,TM,3,MB ak ['0.497651925294', '0.678571792964', '0.725915033592', '0.758171384394'] err 6.589656055e-06 parts rem 6.556551971e-06 tail 1.360745186e-08 ann 1.949657477e-08 far 1.020890909e-24 rnd 5.705e-14 groups 2 Dn 8 forms 14
+STAGE-CPU entry S4,xy,0,TM,3,MB 4.17 s
+GDATA-CPU S4,xy,2,TM,3,TM: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 17] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 17] D 8 caps {1: 6}: 3.25 s
+UNIT S4,xy,2,TM,3,TM ak: 3.26 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 17] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 17] D 4 caps {1: 12}: 0.08 s
+UNIT S4,xy,2,TM,3,TM m0u: 0.08 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 17] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 17] D 4 caps {1: 12}: 0.08 s
+UNIT S4,xy,2,TM,3,TM m0c: 0.08 s
+C-MONO-FAR S4,xy,2,TM,3,TM: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0035e-01 > 0 (m_F 2) -> PASS
+C-BUDGET S4,xy,2,TM,3,TM: largest relative radius of a norm 6.6e-14 (<= 1e-3), rnd 4.57e-14 <= 0.1 x bar 5.845e-06 -> PASS
+AKRAD-INFO S4,xy,2,TM,3,TM: largest relative radius of an a_k 4.23e-07
+ENTRY S4,xy,2,TM,3,TM ak ['0.441578985722', '0.643546310495', '0.730961648324', '0.80750343344'] err 5.844665614e-06 parts rem 5.817737975e-06 tail 1.123537701e-08 ann 1.569221568e-08 far 1.020890909e-24 rnd 4.572e-14 groups 2 Dn 8 forms 14
+STAGE-CPU entry S4,xy,2,TM,3,TM 3.61 s
+GDATA-CPU S4,xy,2,TM,3,MB: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 18] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 18] D 8 caps {1: 6}: 3.63 s
+UNIT S4,xy,2,TM,3,MB ak: 3.64 s
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 18] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 18] D 4 caps {1: 12}: 0.08 s
+UNIT S4,xy,2,TM,3,MB m0u: 0.08 s
+TABLE c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 18] D 4 caps {1: 12}: 24 exact zeros
+TABLE-CPU c forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 18] D 4 caps {1: 12}: 0.08 s
+UNIT S4,xy,2,TM,3,MB m0c: 0.08 s
+C-MONO-FAR S4,xy,2,TM,3,MB: far rate alpha_min - (m_F + n(V-1)/2)/J_REF = 3.0035e-01 > 0 (m_F 2) -> PASS
+C-BUDGET S4,xy,2,TM,3,MB: largest relative radius of a norm 9.8e-14 (<= 1e-3), rnd 4.58e-14 <= 0.1 x bar 5.017e-06 -> PASS
+AKRAD-INFO S4,xy,2,TM,3,MB: largest relative radius of an a_k 4.80e-07
+ENTRY S4,xy,2,TM,3,MB ak ['0.402241511601', '0.580515098362', '0.652160050622', '0.711153939066'] err 5.016565519e-06 parts rem 4.990887305e-06 tail 9.985952399e-09 ann 1.569221568e-08 far 1.020890909e-24 rnd 4.580e-14 groups 2 Dn 8 forms 14
+STAGE-CPU entry S4,xy,2,TM,3,MB 3.99 s
+C-PIECE (S4 piece 1: entries 0..17 of 18 done, next 18; 215 units computed) -> PASS
+FALLBACKS 0 (MAFallback recomputes in arb, INFO)
+HANDOFF m3_run_v1_9_3_S4k1.3.json ae56469a5bfdde96f268f7fb67d9342503580271b7b7a4bf0ac5182d27c15432
+C-HANDOFF-RT (the hand-off decodes to exactly the values written) -> PASS
+PLANT-HANDOFF (body byte tampered in memory) -> FIRES
+PLANT-HANDOFF (header script sha tampered in memory) -> FIRES
+PLANT-HANDOFF (END checksum tampered in memory) -> FIRES
+PLANT-VERDICT (a producer record whose VERDICT line extends 'VERDICT VALID' must be refused) -> FIRES
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 48.52 s
+VERDICT VALID

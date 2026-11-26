@@ -1,0 +1,13 @@
+a4_units_crosscheck_v1 sha256 224dc7304743493ed0c1c58d1e8ed10881028dcf80a2b004d80f7de973d5c95a
+INPUT R5 pk07/out/export_c2a_kt_s9h_v1_3_2_sweep.kv sha256 089db1ef6e0ea13e7604ddfdbe3d0b353c039a7cf17baf340fcea9efd23dd693 -> PIN OK
+INPUT A3N4 pk21/p2/a/out/a3_rows_N4_v1.tsv sha256 32623d2dadea8450745d708329a732c2a0e44ce820d98bc74e936c7138a398b5 -> PIN OK
+INPUT A3N3 pk21/p2/a/out/a3_rows_N3_v1.tsv sha256 31ea19009c04468b46365470dce436cd7f6dc0af3625baec00a3e668f2253b69 -> PIN OK
+Traceback (most recent call last):
+  File "/mnt/g2/release/root/code/pk21/p2/a/a4_units_crosscheck_v1.py", line 73, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/g2/release/root/code/pk21/p2/a/a4_units_crosscheck_v1.py", line 38, in main
+    head, kinds = rest.split('|', 1)
+    ^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+FAILED a4

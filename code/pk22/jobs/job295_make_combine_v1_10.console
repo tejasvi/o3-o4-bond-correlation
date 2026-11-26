@@ -1,0 +1,43 @@
+STATIC ast.parse OK /mnt/g2/release/root/code/pk22/midrow/g4/mrc/src/make_mrx_combine_v1_10.py
+PIN V19 71edae8fe380e0658c4fe90d8586496a5964d84ac88a4895d0c4fe5999efb8df /mnt/g2/release/root/code/pk22/midrow/g4/mrc/MANIFEST_MRX_CERT_v1_9.sha256 (18 rows verified)
+SOURCE b473a2ea243406761b01964c7faf954b6b863a62ba43229b5c6128452e3ea450 /mnt/g2/release/root/code/pk22/midrow/g4/mrc/src/mrx_combine_v1_9.py
+REPLACE R1 docstring head: 1 occurrence(s)
+REPLACE R2 import: 1 occurrence(s)
+REPLACE R3 V19 pin: 1 occurrence(s)
+REPLACE R4 CERTF: 1 occurrence(s)
+REPLACE R5 RUNS: 1 occurrence(s)
+REPLACE R6 Way A constants: 1 occurrence(s)
+REPLACE R7 head line: 1 occurrence(s)
+REPLACE R8 pins: 1 occurrence(s)
+REPLACE R9 Way A lines: 1 occurrence(s)
+REPLACE R10 part names: 1 occurrence(s)
+REPLACE R11 run line: 1 occurrence(s)
+REPLACE R12 CODE check: 1 occurrence(s)
+REPLACE R13 C-PARTS text: 1 occurrence(s)
+REPLACE R14 C-WAYA-ROWS, C-SAME-V1_9: 1 occurrence(s)
+REPLACE R15 record name: 1 occurrence(s)
+REPLACE R16 comment line: 1 occurrence(s)
+REPLACE R17 producer: 1 occurrence(s)
+REPLACE R18 code line: 1 occurrence(s)
+REPLACE R19 joined-by line: 1 occurrence(s)
+REPLACE R20 WAYA_FORM line: 1 occurrence(s)
+DEFS identical 7, changed [], added ['waya_row_ok'], dropped []
+LINES still naming v1_9: 10
+WROTE 83e76eec40de995149ba70ee85281f702cb9930f4690b60cf699540c096ddfe8 /mnt/g2/release/root/code/pk22/midrow/g4/mrc/src/mrx_combine_v1_10.py (264 lines)
+WROTE fa31c089567ec46c20879cb8ed2c1bf5a81965ba1f3f5e9ab7943b2a77b08869 /mnt/g2/release/root/code/pk22/midrow/g4/mrc/src/diff_mrx_combine_v1_9_to_v1_10.txt
+STATIC ast.parse OK /mnt/g2/release/root/code/pk22/midrow/g4/mrc/src/mrx_combine_v1_10.py
+SCRATCH copy written /mnt/g2/release/root/code/pk22/midrow/g4/mrc/src/SCRATCH_dry_mrx_combine_v1_10.py
+COMBINE rc=0
+mrx_combine_v1_10; script sha256 c1e0419af575a7a8f5887c1e3aae580268a0ac31ea7460f912a8080fe0ee09dc; mrx_cert_v1_10 sha256 106320de6d8ed2bcdccdf91c5435ede166c207eef47cfba75a35dc127df5d458; python 3.14.4
+C-SRC (MIDROW_G6_SPEC_v1_6_2.md 1e570ab7, kt_mr_assembly_v1_8_4.py abd48b2c, MANIFEST_MR_V4_CERT_v1.sha256 6ac308d7, MANIFEST_MRX_CERT_v1_9.sha256 b853b266) -> PASS
+C-SPECTRAL-PIN (mr/v4 MR_SPECTRAL.kv 0e4d817729c6f735 as MANIFEST_MR_V4_CERT_v1 lists it) -> PASS
+C-RUNS (N4 SCRATCH_dry_mrx_cert_v1_10_n4.out bf002513: ['VERDICT VALID'], C-ORIENT on 843 pieces, PLANT-ORIENT fired, Way A gates 6 of 6 PASS, plants 2 of 2 FIRE; N3 SCRATCH_dry_mrx_cert_v1_10_n3.out b1130af9: ['VERDICT VALID'], C-ORIENT on 904 pieces, PLANT-ORIENT fired, Way A gates 6 of 6 PASS, plants 2 of 2 FIRE; each names its two part files with their sha256s on RECORD lines) -> PASS
+C-PARTS (4 parts: RECORD MR_EXACT_PART, STATUS CERTIFIED, RUN_VERDICT VALID, CODE mrx_cert_v1_10 106320de; FIELDS, X_POWER, TRIAL_SET, LEMMAP_SHA256, ORIENTATION equal; TRIAL_SET equal to MR_SPECTRAL's; rows: each base key and its jlo, jhi exactly MR_SPECTRAL's, N4 843 and N3 904 pieces, four ends each) -> PASS
+C-WAYA-ROWS (the last piece of each N, variant C: h-1 and h0 rows with Axf 0, Axc_lo <= Axc_hi and t Axc inside [Ax_lo, Ax_hi] at t = 0 and 1/jlo: N4_P0903_h-1 Axc [2.2426880360580980e-01, 2.7273213933221996e-01] Axf 0; N4_P0903_h0 Axc [1.6036420478485524e-01, 3.0962054640986026e-01] Axf 0; N3_P0903_h-1 Axc [1.1384996969718486e-01, 1.3199260050896556e-01] Axf 0; N3_P0903_h0 Axc [9.2985620489344000e-02, 1.4161343360319734e-01] Axf 0) -> PASS
+PLANT-WAYA-ROWS (the first such row with Axc_hi = 2 jlo Ax_hi, so that t Axc_hi leaves the amplitude at t = 1/jlo, must fail the row test) -> FIRES
+C-SAME-V1_9 (every row of the C parts but the last piece's h-1 and h0 equals the row of v1_9's certified C part (MANIFEST_MRX_CERT_v1_9 b853b266), with the same keys in the same order: 6984 rows of 6984) -> PASS
+C-TEXT (X_DEFINITION and ORIENT_CHECK copied from MIDROW_G6_SPEC_v1_6_2.md sect. 6: X_DEFINITION equals engine v1_8_4's XDEF[MR_EXACT]; ORIENT_CHECK matches its ORIENT_RX with N4 843, N3 904, the record grid's counts; FIELDS equal its FIELDS4[MR_EXACT] + Pe_hi, X_POWER its XPOW[MR_EXACT]) -> PASS
+PLANT-TEXT (X_DEFINITION with its first <= changed to < must fail C-TEXT) -> FIRES
+PLANT-COUNT (ORIENT_CHECK with N4 843 - 1 pieces must fail the engine's count rule) -> FIRES
+RECORD /mnt/g2/release/root/code/pk22/midrow/g4/mrc/out/SCRATCH_dry_v1_10/MR_EXACT_CERT_v1_10_C.kv sha256 b29a52113aa78b7225ba2a8795a9e91c46954304944e82cfe9ed54df8610b7f5 rows 6988
+VERDICT VALID

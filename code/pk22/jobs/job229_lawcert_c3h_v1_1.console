@@ -1,0 +1,58 @@
+AST OK /mnt/g2/release/root/code/pk22/m3/make_m3_lawcert_c3h_v1_1.py
+SRC e10f9391 make_m3_lawcert_c3h_v1_1.py
+SOURCE 89725ecadc70e167fea5b6a6147861ba43b025c5abeaded1bdb4eef5911d966e /mnt/g2/release/root/code/pk22/m3/m3_lawcert_c3h_v1.py
+RUNNER 19282ca34ac2e0d30136da2a0895ab56e6efe5bd5791766ec735582231700dc5 /mnt/g2/release/root/code/pk22/m3/m3_run_v1_9_3_px22_c3h_1.py
+PIN 57991eb011023ae9a185423c375d42660eabe88607d207b1a535153a5d94ce5b /mnt/g2/release/root/code/pk03/m3_run_v1_9_3.py (the runner c3h_1 pins it so in INPUTS; the file agrees)
+PIN df052bb8e868d03c6ca08cbd5cd4da288e5ab2e82e92e6eee805429b3200703a /mnt/g2/release/root/code/pk03/out/m3ref_v1_14_P16H.4.p6_z9sym.out (the runner c3h_1 pins it so in INPUTS; the file agrees)
+PIN 5029d364ccc4786b5e973cf216ca11677b71169c9cf1da3289fab7bf9d945781 /mnt/g2/release/root/code/pk03/out/m3ref_v1_14_P16H.3.p6_z9sym.out (the runner c3h_1 pins it so in INPUTS; the file agrees)
+REPLACE doc: 1 occurrence, 97 -> 1683 chars
+REPLACE usage: 1 occurrence, 47 -> 49 chars
+REPLACE fams: 1 occurrence, 114 -> 103 chars
+REPLACE prepof: 1 occurrence, 61 -> 110 chars
+REPLACE prodf: 1 occurrence, 134 -> 209 chars
+REPLACE famref: 1 occurrence, 67 -> 98 chars
+REPLACE prepref: 1 occurrence, 149 -> 230 chars
+LINE pin-run: 1 line(s) after line 233
+LINE inp-p16h: 2 line(s) after line 249
+REPLACE banner: 1 occurrence, 64 -> 66 chars
+REPLACE pins-missing: 1 occurrence, 418 -> 499 chars
+REPLACE pins-msg: 1 occurrence, 123 -> 128 chars
+REPLACE producer-1: 1 occurrence, 94 -> 87 chars
+REPLACE producer-2: 1 occurrence, 100 -> 93 chars
+REPLACE runprod: 1 occurrence, 136 -> 180 chars
+REPLACE rsrc: 1 occurrence, 99 -> 126 chars
+REPLACE prep16-msg1: 1 occurrence, 131 -> 136 chars
+REPLACE prep16-msg2: 1 occurrence, 208 -> 227 chars
+REPLACE name: 1 occurrence, 40 -> 42 chars
+REPLACE rt-msg: 1 occurrence, 35 -> 37 chars
+REPLACEMENTS 20
+WROTE 554fa9d3b61762352489c095bb0956b3c395d9027da9600e3e208ea88c5812cc /mnt/g2/release/root/code/pk22/m3/m3_lawcert_c3h_v1_1.py
+MAKER rc=0
+AST OK /mnt/g2/release/root/code/pk22/m3/m3_lawcert_c3h_v1_1.py
+SRC 554fa9d3 m3_lawcert_c3h_v1_1.py
+RUN static rc=0
+C-HASH (15 pinned files) -> PASS
+C-PREP16 (m3_bar_v11: R(Prep16.stage_u16) and R(Prep16.stage_c16) equal Prep.stage_u and Prep.stage_c statement by statement once the pinned setup, N2 and cleanup statements are left out, and every stage result is assigned in exactly those two methods; the runner and the three producers (m3_run_v1_9
+VERDICT VALID
+RUN N=4 rc=0
+C-PINS (the runner m3_run_v1_9_3_px22_c3h_1.py pins 24 of this script's pins in its own OWNMOD and INPUTS (the modules, the inputs, the list and the three producers) with the same full sha256s; the asm output's first line names the runner 19282ca3) -> PASS
+C-BIND (the c3h records through m3_reader_v6_3.load against m3_run_v1_9_3_asm.4_c3h_1.out; the run manifest MANIFEST_G4C_C3H_v1.sha256 lists the asm output and the records with these sha256s; each record holds exactly the C3-h list's keys of its graph, every one free: CE3H 3, CS4H 4, H4TH 9; 16 free) -> PASS
+C-PRODUCER (each record's engine names the runner 19282ca3 and m3_bar_v11 c0032694, the bar that C-LAW-REM, C-PREP16 and C-LAW-SHAPE audit; its prep16 names the prep family and its producer: CE3H CE3 1c589cd5, CS4H S4 af90af6d, H4TH H 57991eb0) -> PASS
+C-NO-RESUME (adapted: the runner's only resume items are CS4Hr1 and CS4Hr2 (ITEM_RE; RESUME_FAMS ('CS4H',)), whose hand-offs hold no entry, and the records' entries come from entry pieces only (walk_pieces reads k pieces, run_asm fills res through walk_pieces alone); each family ran as the one piece <f>k1 from entry
+C-LAWFIELDS (16 free entries: rem_tpow 4; tail and ann n, J_REF and a_G from the C3-h list's graphs' G_vv, tilt_p's G_vv and the a_v of the PREPJSON each prep took; far_cF from the pinned sup_F's m_F of the runner's factors, never below this script's own exponent; far_rate = down(alpha_lo - c_F/300); all exactly equal) -> PASS
+C-MONO-FAR (every recomputed far rate certainly > 0; smallest 2.6302e-01 at CS4H:xxH) -> PASS
+C-BAND (sanity, 16 free entries: the banded bound in arb at J = 300, 600, 1000, 3000 is <= err (1 + 2^-30) at 300, <= err beyond and non-increasing; largest banded/err: J 300 1.0000, J 600 0.0623, J 1000 0.0081, J 3000 0.0001) -> PASS
+C-LAWCERT-RT (the certificate through m3_reader_v6_3's _bound and _parse_lawcert against the three loaded records: 16 entries back with the records' laws; claim and format equal the reader's) -> PASS
+RECORD m3_lawcert_c3h_v1_1_N4.json 75eb63eb28efd31875cc7a9b2e8596b9e1096abbbeaa1fec674e5265310f7b5f
+VERDICT VALID
+RUN N=3 rc=0
+C-PINS (the runner m3_run_v1_9_3_px22_c3h_1.py pins 24 of this script's pins in its own OWNMOD and INPUTS (the modules, the inputs, the list and the three producers) with the same full sha256s; the asm output's first line names the runner 19282ca3) -> PASS
+C-BIND (the c3h records through m3_reader_v6_3.load against m3_run_v1_9_3_asm.3_c3h_1.out; the run manifest MANIFEST_G4C_C3H_v1.sha256 lists the asm output and the records with these sha256s; each record holds exactly the C3-h list's keys of its graph, every one free: CE3H 3, CS4H 4, H4TH 9; 16 free) -> PASS
+C-PRODUCER (each record's engine names the runner 19282ca3 and m3_bar_v11 c0032694, the bar that C-LAW-REM, C-PREP16 and C-LAW-SHAPE audit; its prep16 names the prep family and its producer: CE3H CE3 1c589cd5, CS4H S4 af90af6d, H4TH H 57991eb0) -> PASS
+C-NO-RESUME (adapted: the runner's only resume items are CS4Hr1 and CS4Hr2 (ITEM_RE; RESUME_FAMS ('CS4H',)), whose hand-offs hold no entry, and the records' entries come from entry pieces only (walk_pieces reads k pieces, run_asm fills res through walk_pieces alone); each family ran as the one piece <f>k1 from entry
+C-LAWFIELDS (16 free entries: rem_tpow 4; tail and ann n, J_REF and a_G from the C3-h list's graphs' G_vv, tilt_p's G_vv and the a_v of the PREPJSON each prep took; far_cF from the pinned sup_F's m_F of the runner's factors, never below this script's own exponent; far_rate = down(alpha_lo - c_F/300); all exactly equal) -> PASS
+C-MONO-FAR (every recomputed far rate certainly > 0; smallest 3.0035e-01 at CS4H:xxH) -> PASS
+C-BAND (sanity, 16 free entries: the banded bound in arb at J = 300, 600, 1000, 3000 is <= err (1 + 2^-30) at 300, <= err beyond and non-increasing; largest banded/err: J 300 1.0000, J 600 0.0623, J 1000 0.0081, J 3000 0.0001) -> PASS
+C-LAWCERT-RT (the certificate through m3_reader_v6_3's _bound and _parse_lawcert against the three loaded records: 16 entries back with the records' laws; claim and format equal the reader's) -> PASS
+RECORD m3_lawcert_c3h_v1_1_N3.json 05ee268c4dae3be99361652f07ee95d7b744dfead75dc994ca79399bbff2887d
+VERDICT VALID

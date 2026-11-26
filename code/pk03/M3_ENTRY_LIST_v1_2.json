@@ -1,0 +1,2097 @@
+{
+  "list": "M3_ENTRY_LIST_v1_2",
+  "author": "pk03",
+  "date": "2026-11-07",
+  "plan": "PLAN_M3_CODE_v1_2 (f6ce8a96) with PLAN_M3_CODE_v1_2_ADD1",
+  "N": [
+    4,
+    3
+  ],
+  "conventions": {
+    "vertex": "3*col + row (row 0 T, 1 M, 2 B), columns 0-indexed; horizontals 1.0 between adjacent columns (T-T, M-M, B-B)",
+    "column_types": {
+      "vac": "T-M A, M-B A, T-B B with A = (3+sqrt 21)/6, B = (3 sqrt 5 - sqrt 21)/12 (exact, as kt_cert_v1_5; FLOAT reference: vacmod2's binary64)",
+      "int": "T-M 1, M-B 1",
+      "free": "T-M 1, M-B 1, no T-B"
+    },
+    "triple": "[t, m, b]: riglap3's pair order (t,m), (m,b), (t,b) for xi_0, xi_1, xi_2; a triple may span columns (e.g. [4,7,8]: xi_0 on the horizontal M-M bond (4,7))",
+    "factors": {
+      "[pv, T]": "riglap2 'p' factor 1 + t q1(xi) + t^2 q2(xi) + t^3 q3(xi), q from the run's vacres file (certified: vacres_K3_N*_sym_v1)",
+      "[cp, a, T]": "a = 0: [pv, T]; a >= 1: riglap3 'xi' factor c0 = S[0][a], c9 = S[1..9][a] of the run's state file (certified: ts_*_z9sym_v1)",
+      "[delta, T]": "riglap3 'xi' (0, [1/2, -1/2, 0, 0, 0, 0, 0, 0, 0])",
+      "[xia, T]": "riglap3 'xi' (0, [1, 0, 0, 0, 0, 0, 0, 0, 0]), i.e. xi on the pair (t, m)",
+      "[xip, T]": "riglap3 'xi' (0, [1/2, 1/2, 0, 0, 0, 0, 0, 0, 0])",
+      "[wt, T]": "riglap3 'xi' (-kbar, [1/2, 1/2, 0, 0, 0, 0, 0, 0, 0]), kbar = pk10 m2_N*_J170.json.b's value, exact binary64 (the Q1)"
+    },
+    "pairs": "the pair forms of an entry are the pairs its factors use; values and bars do not depend on unused pair forms",
+    "engines": {
+      "19.1c": "riglap5s Prep5s + bound5s: K = 3, a_0..a_3, bars rem, tail, ann, far (+ rnd); grouping std = riglap4.group_factors, split = one group per factor (kt_s9b_v3_2 l.219)",
+      "19.1": "riglap2.bound(g, factors, K, J, rho, rho_p): order K, Dbar_{K+1} remainder, tail, ann, far",
+      "outer_far3": "kt_cert_v1_5 l.1073-1108 (vacrig11f's outer_far with riglap3 factors): sum_v e^{-lam J a_m} N_v E_v[Fbar_0'] + sup_F3 x far base; constants A_P = 0.9^2, C_P, a_m, lam 0.5 as kt_cert_v1_5",
+      "far_rel": "vacrig11f l.226-248: the theta-split far term of a vertex subset S",
+      "main_ratio": "a ratio of main terms (logmain differences, matrix-tree determinants) in arb"
+    },
+    "radii": {
+      "s80": "rho_v = sqrt(min(80 G_vv/J_REF, 0.6)), rho' = 0.7 (riglap5s producers, kt_s9b_v2)",
+      "s70": "rho_v = sqrt(min(70 G_vv/J, 0.6)), rho' = 0.9 (vacmono l.136)",
+      "s60": "rho_v = sqrt(min(60 G_vv/J, 0.5)), rho' = 0.9 (vacmono l.147, vacgap l.41, gB_base)"
+    },
+    "J": "J_REF = 300 for S7, S8, S9 (one bar valid for every J >= 300, t = 0 included, Lemma U); J1 = 150 for M2's items (M2's own laws carry them to J >= 300)",
+    "columns": {
+      "D": {
+        "L": [
+          0,
+          1,
+          2
+        ],
+        "R": [
+          3,
+          4,
+          5
+        ]
+      },
+      "N": {
+        "L": [
+          0,
+          1,
+          2
+        ],
+        "M": [
+          3,
+          4,
+          5
+        ],
+        "R": [
+          6,
+          7,
+          8
+        ]
+      },
+      "G4": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          6,
+          7,
+          8
+        ],
+        [
+          9,
+          10,
+          11
+        ]
+      ]
+    }
+  },
+  "graphs": {
+    "D": {
+      "columns": [
+        "vac",
+        "vac"
+      ],
+      "source": "lapl2.strip_graph(2)"
+    },
+    "N": {
+      "columns": [
+        "vac",
+        "int",
+        "vac"
+      ],
+      "source": "lapl2.strip_graph(3); kt_cert_v1_5's E3_f is the same graph"
+    },
+    "mix": {
+      "columns": [
+        "vac",
+        "free"
+      ],
+      "source": "endw l.18 (Emix); S8's E2"
+    },
+    "free2": {
+      "columns": [
+        "free",
+        "free"
+      ],
+      "source": "endw l.19 (Efree); S8's FF"
+    },
+    "E3": {
+      "columns": [
+        "vac",
+        "int",
+        "free"
+      ],
+      "source": "S8_ENTRY_LIST_v1_1"
+    },
+    "G4": {
+      "columns": [
+        "vac",
+        "int",
+        "int",
+        "vac"
+      ],
+      "source": "lapl2.strip_graph(4); kt_cert_v1_5 E4_f and vacmono E4 in their own edge order"
+    },
+    "G4-r": {
+      "columns": [
+        "vac",
+        "int",
+        "int",
+        "vac"
+      ],
+      "minus": "the horizontal bond (r, 3+r), r = 0, 1, 2",
+      "source": "vacmono l.144-146, kt_cert_v1_5 gB_base"
+    }
+  },
+  "entries": [
+    {
+      "id": "D:g,0,0",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "cp",
+          0,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 g,0,0",
+          "m2 g00"
+        ],
+        "S8": [
+          "g,0,0"
+        ],
+        "S9": [
+          "kt_s9b_v2 G,0,0"
+        ]
+      }
+    },
+    {
+      "id": "D:g,0,1",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "cp",
+          1,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 g,0,1"
+        ],
+        "S8": [
+          "g,0,1"
+        ],
+        "S9": [
+          "kt_s9b_v2 G,0,1"
+        ]
+      }
+    },
+    {
+      "id": "D:g,0,2",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "cp",
+          2,
+          "R"
+        ]
+      ],
+      "parity": "zero",
+      "use": {
+        "S7": [
+          "b5 g,0,2"
+        ],
+        "S8": [
+          "g,0,2"
+        ]
+      }
+    },
+    {
+      "id": "D:g,0,3",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "cp",
+          3,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 g,0,3"
+        ],
+        "S8": [
+          "g,0,3"
+        ],
+        "S9": [
+          "kt_s9b_v2 G,0,3"
+        ]
+      }
+    },
+    {
+      "id": "D:g,1,1",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "cp",
+          1,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 g,1,1"
+        ],
+        "S8": [
+          "g,1,1"
+        ],
+        "S9": [
+          "kt_s9b_v2 G,1,1"
+        ]
+      }
+    },
+    {
+      "id": "D:g,1,2",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "cp",
+          2,
+          "R"
+        ]
+      ],
+      "parity": "zero",
+      "use": {
+        "S7": [
+          "b5 g,1,2"
+        ],
+        "S8": [
+          "g,1,2"
+        ]
+      }
+    },
+    {
+      "id": "D:g,1,3",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "cp",
+          3,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 g,1,3"
+        ],
+        "S8": [
+          "g,1,3"
+        ],
+        "S9": [
+          "kt_s9b_v2 G,1,3"
+        ]
+      }
+    },
+    {
+      "id": "D:g,2,2",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          2,
+          "L"
+        ],
+        [
+          "cp",
+          2,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 g,2,2"
+        ],
+        "S8": [
+          "g,2,2"
+        ]
+      }
+    },
+    {
+      "id": "D:g,2,3",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          2,
+          "L"
+        ],
+        [
+          "cp",
+          3,
+          "R"
+        ]
+      ],
+      "parity": "zero",
+      "use": {
+        "S7": [
+          "b5 g,2,3"
+        ],
+        "S8": [
+          "g,2,3"
+        ]
+      }
+    },
+    {
+      "id": "D:g,3,3",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          3,
+          "L"
+        ],
+        [
+          "cp",
+          3,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 g,3,3"
+        ],
+        "S8": [
+          "g,3,3"
+        ],
+        "S9": [
+          "kt_s9b_v2 G,3,3"
+        ]
+      }
+    },
+    {
+      "id": "D:Ndel",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "delta",
+          "L"
+        ],
+        [
+          "pv",
+          "L"
+        ],
+        [
+          "delta",
+          "R"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 Ndel",
+          "m2 Nd"
+        ]
+      }
+    },
+    {
+      "id": "D:Na",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "xia",
+          "L"
+        ],
+        [
+          "pv",
+          "L"
+        ],
+        [
+          "xia",
+          "R"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 Na"
+        ],
+        "S8": [
+          "||p_Y||^2 via (2 Ia/m-hat - Na)/g00 + eps_a^2 (PLAN_S8_CERT_v2 4(ii))"
+        ]
+      }
+    },
+    {
+      "id": "D:kn",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "xip",
+          "L"
+        ],
+        [
+          "pv",
+          "L"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "m2 kn"
+        ]
+      }
+    },
+    {
+      "id": "D:Nw",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "wt",
+          "L"
+        ],
+        [
+          "pv",
+          "L"
+        ],
+        [
+          "wt",
+          "R"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "m2 Nw"
+        ]
+      }
+    },
+    {
+      "id": "N:T,0,0",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "cp",
+          0,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "clT T,0,0",
+          "m2 T00"
+        ],
+        "S8": [
+          "T,0,0"
+        ],
+        "S9": [
+          "kt_s9b_v2 T,0,0"
+        ]
+      }
+    },
+    {
+      "id": "N:T,0,1",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "cp",
+          1,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "clT T,0,1"
+        ],
+        "S8": [
+          "T,0,1",
+          "T,1,0 (mirror)"
+        ],
+        "S9": [
+          "kt_s9b_v2 T,0,1"
+        ]
+      }
+    },
+    {
+      "id": "N:T,0,3",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "cp",
+          3,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "clT T,0,3"
+        ],
+        "S8": [
+          "T,0,3"
+        ],
+        "S9": [
+          "kt_s9b_v2 T,0,3"
+        ]
+      }
+    },
+    {
+      "id": "N:T,1,1",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "cp",
+          1,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "clT T,1,1"
+        ],
+        "S8": [
+          "T,1,1"
+        ],
+        "S9": [
+          "kt_s9b_v2 T,1,1"
+        ]
+      }
+    },
+    {
+      "id": "N:T,1,3",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "cp",
+          3,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "clT T,1,3"
+        ],
+        "S8": [
+          "T,1,3"
+        ],
+        "S9": [
+          "kt_s9b_v2 T,1,3"
+        ]
+      }
+    },
+    {
+      "id": "N:T,2,2",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          2,
+          "L"
+        ],
+        [
+          "cp",
+          2,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "clT T,2,2"
+        ],
+        "S8": [
+          "T,2,2"
+        ]
+      }
+    },
+    {
+      "id": "N:T,3,3",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          3,
+          "L"
+        ],
+        [
+          "cp",
+          3,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "clT T,3,3"
+        ],
+        "S8": [
+          "T,3,3"
+        ],
+        "S9": [
+          "kt_s9b_v2 T,3,3"
+        ]
+      }
+    },
+    {
+      "id": "N:I3p",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "wt",
+          "L"
+        ],
+        [
+          "pv",
+          "L"
+        ],
+        [
+          "wt",
+          "R"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "m2 I3p"
+        ]
+      }
+    },
+    {
+      "id": "N:I3m",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "delta",
+          "L"
+        ],
+        [
+          "pv",
+          "L"
+        ],
+        [
+          "delta",
+          "R"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "m2 I3m"
+        ]
+      }
+    },
+    {
+      "id": "N:I3c",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "pv",
+          "L"
+        ],
+        [
+          "wt",
+          "R"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "m2 I3c"
+        ]
+      }
+    },
+    {
+      "id": "N:A,0",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "xia",
+          "M"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 A,0"
+        ],
+        "S8": [
+          "TX,0,0"
+        ]
+      }
+    },
+    {
+      "id": "N:A,1",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "xia",
+          "M"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 A,1"
+        ],
+        "S8": [
+          "TX,1,0",
+          "TX,0,1 (mirror)"
+        ]
+      }
+    },
+    {
+      "id": "N:A,2",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          2,
+          "L"
+        ],
+        [
+          "xia",
+          "M"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 A,2"
+        ],
+        "S8": [
+          "TX,0,2 (mirror)"
+        ]
+      }
+    },
+    {
+      "id": "N:A,3",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          3,
+          "L"
+        ],
+        [
+          "xia",
+          "M"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 A,3"
+        ],
+        "S8": [
+          "TX,0,3 (mirror)"
+        ]
+      }
+    },
+    {
+      "id": "N:Ia",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "xia",
+          "L"
+        ],
+        [
+          "pv",
+          "L"
+        ],
+        [
+          "xia",
+          "M"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "b5 Ia"
+        ],
+        "S8": [
+          "||p_Y||^2 (with Na, g00)"
+        ]
+      }
+    },
+    {
+      "id": "N:I_N",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "delta",
+          "L"
+        ],
+        [
+          "pv",
+          "L"
+        ],
+        [
+          "delta",
+          "M"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "binding4 I_N"
+        ]
+      }
+    },
+    {
+      "id": "N:Ip3",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "wt",
+          "L"
+        ],
+        [
+          "pv",
+          "L"
+        ],
+        [
+          "wt",
+          "M"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "m2 Ip3"
+        ]
+      }
+    },
+    {
+      "id": "N:A0w",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "pv",
+          "L"
+        ],
+        [
+          "wt",
+          "M"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "m2 A0w"
+        ]
+      }
+    },
+    {
+      "id": "mix:I_mix",
+      "graph": "mix",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "pv",
+          [
+            0,
+            1,
+            2
+          ]
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "endw I_mix"
+        ],
+        "S8": [
+          "e,0"
+        ]
+      }
+    },
+    {
+      "id": "free2:I_free",
+      "graph": "free2",
+      "engine": "19.1c",
+      "factors": [],
+      "parity": "free",
+      "use": {
+        "S7": [
+          "endw I_free"
+        ],
+        "S8": [
+          "z"
+        ]
+      }
+    },
+    {
+      "id": "D:Dx,0",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "xia",
+          "R"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v2 Dx,0"
+        ]
+      }
+    },
+    {
+      "id": "D:Dx,1",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "xia",
+          "R"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v2 Dx,1"
+        ]
+      }
+    },
+    {
+      "id": "D:Dx,3",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          3,
+          "L"
+        ],
+        [
+          "xia",
+          "R"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v2 Dx,3"
+        ]
+      }
+    },
+    {
+      "id": "D:S,0",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "cp",
+          0,
+          "L"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_kappa_v1 S,0"
+        ]
+      }
+    },
+    {
+      "id": "D:S,1",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "cp",
+          1,
+          "L"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_kappa_v1 S,1"
+        ]
+      }
+    },
+    {
+      "id": "D:S,3",
+      "graph": "D",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          3,
+          "L"
+        ],
+        [
+          "cp",
+          3,
+          "L"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_kappa_v1 S,3"
+        ]
+      }
+    },
+    {
+      "id": "D:Gx,0,0",
+      "graph": "D",
+      "engine": "19.1c",
+      "grouping": "split",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            1,
+            4,
+            2
+          ]
+        ],
+        [
+          "cp",
+          0,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v3_2 Gx,0,0"
+        ]
+      }
+    },
+    {
+      "id": "D:Gx,0,1",
+      "graph": "D",
+      "engine": "19.1c",
+      "grouping": "split",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            1,
+            4,
+            2
+          ]
+        ],
+        [
+          "cp",
+          1,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v3_2 Gx,0,1"
+        ]
+      }
+    },
+    {
+      "id": "D:Gx,0,3",
+      "graph": "D",
+      "engine": "19.1c",
+      "grouping": "split",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            1,
+            4,
+            2
+          ]
+        ],
+        [
+          "cp",
+          3,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v3_2 Gx,0,3"
+        ]
+      }
+    },
+    {
+      "id": "D:Gx,1,1",
+      "graph": "D",
+      "engine": "19.1c",
+      "grouping": "split",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            1,
+            4,
+            2
+          ]
+        ],
+        [
+          "cp",
+          1,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v3_2 Gx,1,1"
+        ]
+      }
+    },
+    {
+      "id": "D:Gx,1,3",
+      "graph": "D",
+      "engine": "19.1c",
+      "grouping": "split",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            1,
+            4,
+            2
+          ]
+        ],
+        [
+          "cp",
+          3,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v3_2 Gx,1,3"
+        ]
+      }
+    },
+    {
+      "id": "D:Gx,3,3",
+      "graph": "D",
+      "engine": "19.1c",
+      "grouping": "split",
+      "factors": [
+        [
+          "cp",
+          3,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            1,
+            4,
+            2
+          ]
+        ],
+        [
+          "cp",
+          3,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v3_2 Gx,3,3"
+        ]
+      }
+    },
+    {
+      "id": "D:GxR,1,0",
+      "graph": "D",
+      "engine": "19.1c",
+      "grouping": "split",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            1,
+            4,
+            2
+          ]
+        ],
+        [
+          "cp",
+          0,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v3_2 GxR,1,0 (check family C-GXSYM)"
+        ]
+      }
+    },
+    {
+      "id": "D:GxR,3,0",
+      "graph": "D",
+      "engine": "19.1c",
+      "grouping": "split",
+      "factors": [
+        [
+          "cp",
+          3,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            1,
+            4,
+            2
+          ]
+        ],
+        [
+          "cp",
+          0,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v3_2 GxR,3,0 (check family)"
+        ]
+      }
+    },
+    {
+      "id": "D:GxR,3,1",
+      "graph": "D",
+      "engine": "19.1c",
+      "grouping": "split",
+      "factors": [
+        [
+          "cp",
+          3,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            1,
+            4,
+            2
+          ]
+        ],
+        [
+          "cp",
+          1,
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v3_2 GxR,3,1 (check family)"
+        ]
+      }
+    },
+    {
+      "id": "N:Ih,0",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          0,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            4,
+            7,
+            8
+          ]
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v2 Ih,0",
+          "kt_s9b_v3_2 IhT,0 (= Ih,0 by transposition, C-IHT0)"
+        ]
+      }
+    },
+    {
+      "id": "N:Ih,1",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            4,
+            7,
+            8
+          ]
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v2 Ih,1"
+        ]
+      }
+    },
+    {
+      "id": "N:Ih,3",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          3,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            4,
+            7,
+            8
+          ]
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v2 Ih,3"
+        ]
+      }
+    },
+    {
+      "id": "N:IhT,1",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          1,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            1,
+            4,
+            2
+          ]
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v3_2 IhT,1"
+        ]
+      }
+    },
+    {
+      "id": "N:IhT,3",
+      "graph": "N",
+      "engine": "19.1c",
+      "factors": [
+        [
+          "cp",
+          3,
+          "L"
+        ],
+        [
+          "xia",
+          [
+            1,
+            4,
+            2
+          ]
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_s9b_v3_2 IhT,3"
+        ]
+      }
+    },
+    {
+      "id": "D:Z2",
+      "graph": "D",
+      "engine": "19.1",
+      "K": 3,
+      "J": 150,
+      "radii": "s70",
+      "factors": [
+        [
+          "pv",
+          "L"
+        ],
+        [
+          "pv",
+          "R"
+        ]
+      ],
+      "parity": "free",
+      "use": {
+        "M2": [
+          "vacmono l.135-137: Z2 lower end = sum a_k t^k - sum B"
+        ]
+      }
+    },
+    {
+      "id": "G4-r:Z,0",
+      "graph": "G4-r",
+      "r": 0,
+      "engine": "19.1",
+      "K": 1,
+      "J": 150,
+      "radii": "s60",
+      "factors": [],
+      "parity": "free",
+      "use": {
+        "M2": [
+          "vacmono l.142-147",
+          "vacgap l.40-41 (gB, J1)"
+        ]
+      }
+    },
+    {
+      "id": "G4-r:Z,1",
+      "graph": "G4-r",
+      "r": 1,
+      "engine": "19.1",
+      "K": 1,
+      "J": 150,
+      "radii": "s60",
+      "factors": [],
+      "parity": "free",
+      "use": {
+        "M2": [
+          "vacmono l.142-147",
+          "vacgap l.40-41"
+        ]
+      }
+    },
+    {
+      "id": "G4-r:Z,2",
+      "graph": "G4-r",
+      "r": 2,
+      "engine": "19.1",
+      "K": 1,
+      "J": 150,
+      "radii": "s60",
+      "factors": [],
+      "parity": "free",
+      "use": {
+        "M2": [
+          "vacmono l.142-147",
+          "vacgap l.40-41"
+        ]
+      }
+    },
+    {
+      "id": "G4-r:Z300,0",
+      "graph": "G4-r",
+      "r": 0,
+      "engine": "19.1",
+      "K": 1,
+      "J": 300,
+      "radii": "s60",
+      "factors": [],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_cert_v1_5 gB_base (l.1127-1144)"
+        ]
+      },
+      "radii_frozen_at_J": 300,
+      "lemmaU": "gate (a), PLAN_M3_CODE_v1_2_ADD1 sect. 2"
+    },
+    {
+      "id": "G4-r:Z300,1",
+      "graph": "G4-r",
+      "r": 1,
+      "engine": "19.1",
+      "K": 1,
+      "J": 300,
+      "radii": "s60",
+      "factors": [],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_cert_v1_5 gB_base"
+        ]
+      },
+      "radii_frozen_at_J": 300,
+      "lemmaU": "gate (a), PLAN_M3_CODE_v1_2_ADD1 sect. 2"
+    },
+    {
+      "id": "G4-r:Z300,2",
+      "graph": "G4-r",
+      "r": 2,
+      "engine": "19.1",
+      "K": 1,
+      "J": 300,
+      "radii": "s60",
+      "factors": [],
+      "parity": "free",
+      "use": {
+        "S9": [
+          "kt_cert_v1_5 gB_base"
+        ]
+      },
+      "radii_frozen_at_J": 300,
+      "lemmaU": "gate (a), PLAN_M3_CODE_v1_2_ADD1 sect. 2"
+    }
+  ],
+  "families": [
+    {
+      "id": "S8:v1_1",
+      "engine": "19.1c",
+      "source": "pk11/out/S8_ENTRY_LIST_v1_1.json (8b4066f5; C-HASH at run time)",
+      "graphs": {
+        "D": "D",
+        "N": "N",
+        "E2": "mix",
+        "E3": "E3",
+        "FF": "free2"
+      },
+      "rule": "each of its 61 keys is computed on its graph with its factors ([cp, a, col], [xi, TM|MB, col] = xia on that column's (T,M) or (M,B) pair), unless it equals an entry above by factor-list identity or the left-right mirror of N, D, in which case it is an alias of that entry",
+      "aliases": {
+        "g,a,b": "D:g,a,b",
+        "T,a,b (parity-allowed)": "N:T,a,b",
+        "T,1,0": "N:T,0,1 (mirror)",
+        "TX,a,0 / TX,0,a": "N:A,a (TX,0,a by mirror)",
+        "e,0": "mix:I_mix",
+        "z": "free2:I_free"
+      },
+      "new_per_N": [
+        "TX,1,1",
+        "TX,1,2",
+        "TX,1,3",
+        "TX,2,2",
+        "TX,2,3",
+        "TX,3,3",
+        "TY,0,0",
+        "TY,0,1",
+        "TY,0,2",
+        "TY,0,3",
+        "TY,1,1",
+        "TY,1,2",
+        "TY,1,3",
+        "TY,2,2",
+        "TY,2,3",
+        "TY,3,3",
+        "e,1",
+        "e,3",
+        "eX,0",
+        "eX,1",
+        "eX,2",
+        "eX,3",
+        "f,0",
+        "f,1",
+        "f,3",
+        "fX,0",
+        "fX,1",
+        "fX,2",
+        "fX,3",
+        "wXw",
+        "wXwX"
+      ],
+      "parity_zero_per_N": [
+        "T,0,2",
+        "T,1,2",
+        "T,2,3",
+        "e,2",
+        "f,2"
+      ],
+      "check_family": "TY (TY,a,b = pi_a pi_b TX,a,b; PLAN_S8_CERT_v2 sect. 6)"
+    },
+    {
+      "id": "S8:v2",
+      "engine": "19.1c",
+      "source": "pk11/out/S8_ENTRY_LIST_v2.json (4565c6c7; C-HASH at run time)",
+      "required": 102,
+      "content": [
+        "v1_1's 61 unchanged",
+        "D: DY,0..3, DYY (5)",
+        "S4: the n = 4 strip [free | int | int | free], 18 entries, F = 19 (4-column, R2)",
+        "H: the d = 1 end graph [vac a | V xi | V | free], 8 entries, F = 16 (4-column, R2)",
+        "L: the leakage graph [vac a | V | V | vac b], 10 entries, F = 18 (4-column, R2)"
+      ],
+      "conditional_held": {
+        "W3": 6,
+        "W4": 11,
+        "S2": 6,
+        "S3": 12
+      },
+      "status": "M3 produces; 4-column runs after the R2 decision"
+    },
+    {
+      "id": "S9:outer_far3",
+      "engine": "outer_far3",
+      "source": "kt_cert_v1_5 far_mixed (l.1157-1205), FLOAT parts F2 of engine A",
+      "J": 300,
+      "per_N": {
+        "kinds e1, e3, h, h1, h3": "oSS on G4 (S = 3..8, factors_for(kind', ((0,1,2),4), ((9,10,11),7))) and oS_g on N (S = 3..8, src_factors(kind, (0,1,2)) + factors_for(g, ((6,7,8),0))) for each state g of the item",
+        "kind a": "oSS and oS_g on D (src_factors('a') on (0,1,2) with (3,4,5))",
+        "all kinds": "oD_g_h on D for g <= h (factors_for(g, (0,1,2)) + factors_for(h, (3,4,5))), once per N"
+      },
+      "count": "about 30 per N; exact call list taken from kt_cert_v1_5's code at build time (C-SCOPE prints it)",
+      "lemmaU": "gate (b), PLAN_M3_CODE_v1_2_ADD1 sect. 2"
+    },
+    {
+      "id": "S9:gB_base",
+      "engine": "main_ratio + 19.1",
+      "source": "kt_cert_v1_5 gB_base (l.1127-1144)",
+      "uses": [
+        "G4-r:Z300,0",
+        "G4-r:Z300,1",
+        "G4-r:Z300,2"
+      ],
+      "scalars": "ratio_main(r) = (det(L_G4)/det(L_G4-r))^(n/2) on the gauge complement, in arb; theta 0.95, delta 40 degrees",
+      "lemmaU": "gate (a) for its G4-r:Z300 entries"
+    },
+    {
+      "id": "M2:vacrig11f",
+      "engine": "outer_far (vacrig11f l.250-287)",
+      "source": "pk10 vacrig11f.py, vacrig11w.py",
+      "calls": [
+        {
+          "graph": "E4",
+          "S": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "pcols": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              9,
+              10,
+              11
+            ]
+          ]
+        },
+        {
+          "graph": "E3",
+          "S": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "pcols": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              6,
+              7,
+              8
+            ]
+          ]
+        },
+        {
+          "graph": "ED",
+          "S": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "pcols": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              3,
+              4,
+              5
+            ]
+          ]
+        }
+      ],
+      "J": [
+        150,
+        170
+      ],
+      "tilts_lam": [
+        0.5,
+        1,
+        1.5
+      ],
+      "note": "J = 150 for vacrig11f (l.389-390), J = 170 for vacrig11w (l.410, 414-415, 418); far_rel dropped (never called); uniformity by M2's own LAW"
+    }
+  ],
+  "scalars": [
+    {
+      "id": "endw:r_main",
+      "use": {
+        "S7": [
+          "endw r_main (kt_s67_cert_v2_1 l.864, needs its lower end)"
+        ]
+      },
+      "how": "exp(2 logmain(mix) - logmain(free2) - logmain(D)) in arb (matrix-tree determinants; J-independent: all three graphs have V = 6); record r_main, r_main_lo, r_main_hi"
+    },
+    {
+      "id": "m2:kbar",
+      "use": {
+        "S7": [
+          "kb, t1, uh (kt_s67_cert_v2_1 l.796-861)"
+        ]
+      },
+      "how": "pk10's J = 170 value kept exactly, a fixed centering constant (the Q1); if pk07's uh check fails, M3 adds a certified kbar ball here"
+    },
+    {
+      "id": "S9:logR",
+      "use": {
+        "S9": [
+          "kt_cert_v1_5 far_mixed logR"
+        ]
+      },
+      "how": "no bar (R = 1 exactly); M3 prints the arb value"
+    },
+    {
+      "id": "S9:Z",
+      "use": {
+        "S9": [
+          "Gram lower bound"
+        ]
+      },
+      "how": "from the certified J = 300 entries D:g,a,b, no new entry"
+    }
+  ],
+  "consumers": {
+    "S7": {
+      "reader": "pk07/kt_s67_cert_v2_1.py (98cde3a0) load() l.308-327, Ctx.bar l.545-557",
+      "files": [
+        "m2 (10 items + kbar)",
+        "b5 (17 items)",
+        "clT (7 items)",
+        "binding4 (I_N, top level)",
+        "endw (2 items + r_main)"
+      ],
+      "keys": 37,
+      "distinct_entries": 34,
+      "parity_zero": 3,
+      "check": "C-SCOPE-S7: the keys of pk10's five J = 170 files equal the S7 keys of this list (hand check done with jq, logged in NOTES_pk03.md; repeated in code)"
+    },
+    "S8": {
+      "reader": "pk11's import of M3 records (C-FMT against m3_reader_v1)",
+      "lists": [
+        "S8:v1_1",
+        "S8:v2 (S8_ENTRY_LIST_v2 4565c6c7)"
+      ],
+      "plus": "||p_Y||^2 from N:Ia, D:Na, D:g,0,0 (no new entry); ||B_X w^||^2 and the n <= 4 strips in S8:v2"
+    },
+    "S9": {
+      "reader": "kt_rb / kt_s9c / kt_kappa successors (pk02), KT-S9B entry lines",
+      "entries": "G and T shared with S7; Ih, Dx, IhT, Gx (+ GxR checks), S above; families S9:outer_far3, S9:gB_base; scalars S9:logR, S9:Z",
+      "future": "HZ program entries (SH1, SH2, SH4, C4, C3 end states) enter as entry specs of this form"
+    },
+    "S4c": {
+      "via": "S9's G and T entries (mu_y's Ritz enclosure by W2 v2)"
+    },
+    "M2": {
+      "reader": "pk02's M2(b) record builder",
+      "entries": [
+        "D:Z2",
+        "G4-r:Z,0..2"
+      ],
+      "families": [
+        "M2:vacrig11f"
+      ],
+      "order": "to agree with pk02",
+      "note": "twrig3's tail and far are pk02's port (twlib), not M3's"
+    }
+  }
+}

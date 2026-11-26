@@ -1,0 +1,28 @@
+1a04598f5eece0b4caa036e221679a5280a6cf503c6f9fd1497836e306ffa7d7  /mnt/g2/release/root/code/pk22/w1/rc_cert/kt_s8h_rcc_v1_2.py
+5aad7ad77a5e2ff153d536e5eb2afaa42e83100b0e0516ebd37bdaa2be9cebbf  /mnt/g2/release/root/code/pk22/w1/rc_cert/kt_s8h_rcc_v1_3.py
+2c2
+< """kt_s8h_rcc_v1_2.py -- pk22 (code/pk22/w1/rc_cert/). DRAFT. NE's certified RC engine (phase (iii), the approval to build from
+---
+> """kt_s8h_rcc_v1_3.py -- pk22 (code/pk22/w1/rc_cert/). DRAFT. NE's certified RC engine (phase (iii), the approval to build from
+8c8,9
+< v1_2 (this revision of v1_1, 26e64080: C-FMT on runner c3's records in cert mode, with PLANT-C3-KEYSWAP and PLANT-C3-N; the kill
+---
+> v1_3 (the pins-only revision of v1_2, 1a04598f, by make_rcc_v1_3.py): CERT_PINS holds runner c3_1's records and asm outputs of
+> both N by full sha256; nothing else changes. v1_2 (the revision of v1_1, 26e64080: C-FMT on runner c3's records in cert mode, with PLANT-C3-KEYSWAP and PLANT-C3-N; the kill
+69c70
+< Usage: kt_s8h_rcc_v1_2.py cert|dev smoke|chunk|final LIM N [a b] | cert|dev record LIM."""
+---
+> Usage: kt_s8h_rcc_v1_3.py cert|dev smoke|chunk|final LIM N [a b] | cert|dev record LIM."""
+76c77
+< USAGE = 'usage: kt_s8h_rcc_v1_2.py cert|dev smoke|final LIM N | cert|dev chunk LIM N a b | cert|dev record LIM   (LIM 10..540)'
+---
+> USAGE = 'usage: kt_s8h_rcc_v1_3.py cert|dev smoke|final LIM N | cert|dev chunk LIM N a b | cert|dev record LIM   (LIM 10..540)'
+101c102
+< LABEL = 'kt_s8h_rcc_v1_2'
+---
+> LABEL = 'kt_s8h_rcc_v1_3'
+177c178
+< CERT_PINS = {}   # runner c3's records and asm outputs by full sha256: a pins-only revision after c3's production fills these
+---
+> CERT_PINS = {C3REC[4]['CS4']: 'c0614f924bedd3a68bd11cd5976e479b31a86a0e85b5ec91133f70e02ee78230', C3REC[4]['CE3']: 'ab64935d7ba4857f089d91bac27a36f76fe1d35ae228af2bc20003a8e5e3eb18', C3REC[4]['H4T']: '20922bae66b79573f0442d351bf610d10bed89330b53f945a6adfc36c2caca25', C3ASM[4]: '788d8559c18c568e0212e2d46bfb37b485f4988a89cc0fbc8530b5ffcb1957b8', C3REC[3]['CS4']: '95f54466e52a79d8540041da90385f6683d79d5363ee2728877ba92065e88d01', C3REC[3]['CE3']: '3bedff291ef056d4664217752da3bf668fd74f8bea6a6d1696102b24aea90fa8', C3REC[3]['H4T']: '4a8297efd90554d2330bd7f40a6b60d99fda52b7511c53f78142b37f99572466', C3ASM[3]: '6baf16dd5bde7f6d7df2455b8b9f590eea6a25ee0074042aeea1459ed924a983'}   # runner c3_1's records and asm outputs by full sha256 (make_rcc_v1_3.py)
+diff exit 1

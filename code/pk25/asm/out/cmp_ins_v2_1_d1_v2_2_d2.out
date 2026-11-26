@@ -1,0 +1,3 @@
+compare 189a27d281257e52dbb4d14eed82684e3e48e85ca4b76405cf84b282c2c74766 asm/dry_d1/MR_INSERT.kv with f2f41ef9d2550f60bd8f02277eeb818ee32022889bfef687c32e4c6e8066873b asm/dry_d2/MR_INSERT.kv (main row 4441 condition: no h row vx or xc moves by more than 1e-5 relative)
+h rows 1747: largest relative change of vx_lo, vx_hi, xc_lo, xc_hi 1.216e-08 (row N4_P0063_h, field 3) -> PASS; fields that changed in some h row: 3(138 rows) 4(138 rows) 21(138 rows) 22(129 rows)
+t and a rows 3494: differing values 0 -> PASS

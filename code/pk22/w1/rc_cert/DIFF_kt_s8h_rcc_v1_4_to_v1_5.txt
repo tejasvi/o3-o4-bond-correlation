@@ -1,0 +1,127 @@
+69180107dbe9da5d8ff33e446300b5f6894a810a9f842b8ab485002cbf086e58  /mnt/g2/release/root/code/pk22/w1/rc_cert/kt_s8h_rcc_v1_4.py
+98e013df6d65a9e425c5eda6997a8253bb05fdadb06740e74a47a995b95237d7  /mnt/g2/release/root/code/pk22/w1/rc_cert/kt_s8h_rcc_v1_5.py
+2c2
+< """kt_s8h_rcc_v1_4.py -- pk22 (code/pk22/w1/rc_cert/). DRAFT. NE's certified RC engine (phase (iii), the approval to build from
+---
+> """kt_s8h_rcc_v1_5.py -- pk22 (code/pk22/w1/rc_cert/). DRAFT. NE's certified RC engine (phase (iii), the approval to build from
+8c8,11
+< v1_4 (this revision of v1_3, 5aad7ad7, by make_rcc_v1_4.py): the record writer writes strict S4U_KV_v1 (numbered keys, checked
+---
+> v1_5 (this revision of v1_4, 69180107, by make_rcc_v1_5.py): the horizontal place-2 allowance constants of
+> slots 0 and 1 from the dual run passed to the midpoint run and the thin chains (S8's upper-end rule), gate HALLOW with PLANT-HALLOW;
+> C-TARGET-RC with PLANT-TARGET-RC; the class-level centred balls on the ROW lines. v1_4 (the revision of v1_3, 5aad7ad7, by
+> make_rcc_v1_4.py): the record writer writes strict S4U_KV_v1 (numbered keys, checked
+72c75
+< Usage: kt_s8h_rcc_v1_4.py cert|dev smoke|chunk|final LIM N [a b] | cert|dev record LIM."""
+---
+> Usage: kt_s8h_rcc_v1_5.py cert|dev smoke|chunk|final LIM N [a b] | cert|dev record LIM."""
+79c82
+< USAGE = 'usage: kt_s8h_rcc_v1_4.py cert|dev smoke|final LIM N | cert|dev chunk LIM N a b | cert|dev record LIM   (LIM 10..540)'
+---
+> USAGE = 'usage: kt_s8h_rcc_v1_5.py cert|dev smoke|final LIM N | cert|dev chunk LIM N a b | cert|dev record LIM   (LIM 10..540)'
+104c107
+< LABEL = 'kt_s8h_rcc_v1_4'
+---
+> LABEL = 'kt_s8h_rcc_v1_5'
+1496c1499
+< def chain_h_c(VV, VH, chV, mains, vac, cfix):
+---
+> def chain_h_c(VV, VH, chV, mains, vac, cfix, allow=None):
+1499c1502,1504
+<     of the run (no bar is added here); slots >= 2 and the bulk vector are set by rc_apply."""
+---
+>     of the run (no bar is added here); slots >= 2 and the bulk vector are set by rc_apply. v1_5 (S8's upper-end rule): the
+>     place-2 allowance constants s |v_u| of slots 0 and 1 are the dual run's, upper ends over the box; allow (a run's ch['h']['allowH'])
+>     passes them to the midpoint run and to the thin chains, and ch['h']['allowH'] records the constants used."""
+1516,1517c1521,1525
+<     def allow(v):
+<         a_ = (s * abs(v[0]).upper()).upper()
+---
+>     alw = {}
+> 
+>     def allow_(i, v):
+>         a_ = allow[i] if allow is not None else (s * abs(v[0]).upper()).upper()
+>         alw[i] = a_
+1520,1521c1528,1529
+<     raw = {0: allow((rhoE * fT[0] / (lam0 * e[0]), comps(fT, rhoE * sg / (lam0 * e[0])))),
+<            1: allow((rhoH * hT[0] / (lam0 * lam0 * e[0]), comps(hT, rhoH * sg / (lam0 * lam0 * e[0]))))}
+---
+>     raw = {0: allow_(0, (rhoE * fT[0] / (lam0 * e[0]), comps(fT, rhoE * sg / (lam0 * e[0])))),
+>            1: allow_(1, (rhoH * hT[0] / (lam0 * lam0 * e[0]), comps(hT, rhoH * sg / (lam0 * lam0 * e[0]))))}
+1541c1549
+<     ch['h'] = {'c': c, 'res2y0': n2y - sq(y0), 'ny0': n2y, 'Ap2y0': ap2}
+---
+>     ch['h'] = {'c': c, 'res2y0': n2y - sq(y0), 'ny0': n2y, 'Ap2y0': ap2, 'allowH': alw}
+1894a1903,1907
+> def hallow_ok(used, ref):
+>     """HALLOW (v1_5): a run used exactly the reference constants, the same keys and the same objects."""
+>     return sorted(used) == sorted(ref) and all(used[k_] is ref[k_] for k_ in ref)
+> 
+> 
+1924c1937,1939
+<     chHm0 = chain_h_c(VmV, VmH, chm_V, mains, vac, cfix)
+---
+>     allowH = chHd0['h']['allowH']   # v1_5: the dual run's place-2 constants, upper ends over the box
+>     chHm0 = chain_h_c(VmV, VmH, chm_V, mains, vac, cfix, allow=allowH)
+>     hallow = hallow_ok(chHm0['h']['allowH'], allowH)
+1935c1950
+<     return {'keys': keys, 'rad': rad, 'chd_V': chd_V, 'chm_V': chm_V, 'chc_V': chc_V, 'chU': chU, 'prmV': prmV, 'cfix': cfix,
+---
+>     return {'keys': keys, 'rad': rad, 'allowH': allowH, 'hallow': hallow, 'VmV': VmV, 'VmH': VmH, 'chd_V': chd_V, 'chm_V': chm_V, 'chc_V': chc_V, 'chU': chU, 'prmV': prmV, 'cfix': cfix,
+1956c1971,1972
+<                 'VRERUN': not rerun_bad, 'KEYS': keys_ok(cH[3], keys) and keys_ok(cV[3], keys), 'OWN': dual_own(cH)})
+---
+>                 'VRERUN': not rerun_bad, 'KEYS': keys_ok(cH[3], keys) and keys_ok(cV[3], keys), 'OWN': dual_own(cH),
+>                 'HALLOW': hb['hallow']})
+1976c1992
+<     chH0 = chain_h_c(EV, EH, chV, A['mains'][n], v, hb['cfix'])
+---
+>     chH0 = chain_h_c(EV, EH, chV, A['mains'][n], v, hb['cfix'], allow=hb['allowH'])   # v1_5: the run's place-2 constants
+2059c2075
+< def target_h(ev, mb, c1_scale=None):
+---
+> def target_h(ev, mb, c1_scale=None, rc_scale=None):
+2068c2084,2087
+<     c1_scale: the box C1 multiplied by it in C-TARGET-H (PLANT-TARGET-H). Returns a dict of counts and failures."""
+---
+>     v1_5, C-TARGET-RC: RC's radii rho[i] (i = 2..7, inf) and u-balls r_u[i] of the box >= rc_radii's values on each of
+>     the 27 thin chains (same prm, tau', beta_H, w, pn_SH4 and kappa), box >= target (1 - 1e-10).
+>     c1_scale: the box C1 multiplied by it in C-TARGET-H (PLANT-TARGET-H); rc_scale: the box's rho and r_u multiplied by it in
+>     C-TARGET-RC (PLANT-TARGET-RC). Returns a dict of counts and failures."""
+2070c2089,2090
+<     res = {'classes': 0, 'active': 0, 'points': 0, 'fail': [], 'tchecks': 0, 'tfail': [], 'tworst': 0.0, 'vchecks': 0, 'vfail': []}
+---
+>     res = {'classes': 0, 'active': 0, 'points': 0, 'fail': [], 'tchecks': 0, 'tfail': [], 'tworst': 0.0, 'vchecks': 0, 'vfail': [],
+>            'rchecks': 0, 'rfail': [], 'rworst': 0.0}
+2078a2099,2109
+>     for it, mode, chHt, chVt in mb['thin']:   # v1_5: C-TARGET-RC
+>         rho_t, ru_t = rc_radii(chHt, ev['prmV'], hb['tau'], hb['bH'], ev['vac'], hb['w_b'], hb['pn'], hb['kap'])
+>         for k_ in list(range(2, 8)) + ['inf']:
+>             pairs = [('rho', hb['rho'][k_], rho_t[k_])] + ([('r_u', hb['r_u'][k_], ru_t[k_])] if k_ != 'inf' else [])
+>             for nm, bx, tg in pairs:
+>                 res['rchecks'] += 1
+>                 b_ = float((bx * arb(rc_scale)).upper()) if rc_scale is not None else float(bx.upper())
+>                 g_ = float(tg.upper())
+>                 res['rworst'] = max(res['rworst'], g_ / b_ if b_ > 0 else (0.0 if g_ <= 0 else float('inf')))
+>                 if not (g_ * (1 - 1e-10) <= b_):
+>                     res['rfail'].append('%s %s' % (nm, k_))
+2190a2222,2225
+>     out('C-TARGET-RC N=%d piece %d%s (RC\'s radii rho and u-balls r_u of the box against rc_radii on the 27 thin chains, box >= target '
+>         '(1 - 1e-10)): %d checks, largest target/box %.4f, failing %d%s -> %s' % (
+>             n, i, tag, d['rchecks'], d['rworst'], len(d['rfail']), (' (%s)' % ', '.join(sorted(set(d['rfail']))[:3])) if d['rfail'] else '',
+>             gate('C-TARGET-RC', not d['rfail'])))
+2353a2389,2391
+>         bl = lambda b: ('[%.9e, %.9e]' % (float(b.lower()), float(b.upper()))) if b is not None else '-'
+>         if inf.get('topc') is not None:   # v1_5: the class-level centred balls, so cl2 can be rebuilt
+>             tail += ' topc %s +dz %s -dz %s' % (bl(inf['topc']), bl(inf['cen'].get('+dz')), bl(inf['cen'].get('-dz')))
+2501a2540,2548
+>     dtr = target_h(ev, mb, rc_scale=1e-3)   # v1_5
+>     plant('PLANT-TARGET-RC', len(dtr['rfail']) > 0, '(piece %d with the box\'s rho and r_u x 1e-3: C-TARGET-RC fails %d of %d '
+>           'checks)' % (i0, len(dtr['rfail']), dtr['rchecks']))
+>     hb0 = ev['hb']   # v1_5: the midpoint run rebuilt without the dual run's constants must fail HALLOW
+>     chx = chain_h_c(hb0['VmV'], hb0['VmH'], hb0['chm_V'], A['mains'][n], ev['vac'], hb0['cfix'])
+>     out('C-HALLOW N=%d piece %d: the midpoint run used the dual run\'s place-2 constants (slots 0 and 1: %s) -> %s' % (
+>         n, i0, ', '.join('%.6e' % float(hb0['allowH'][k_]) for k_ in sorted(hb0['allowH'])), gate('C-HALLOW', hb0['hallow'])))
+>     plant('PLANT-HALLOW', not hallow_ok(chx['h']['allowH'], hb0['allowH']), '(the midpoint run rebuilt without them: its own constants '
+>           '%s)' % ', '.join('%.6e' % float(chx['h']['allowH'][k_]) for k_ in sorted(chx['h']['allowH'])))
+diff exit 1

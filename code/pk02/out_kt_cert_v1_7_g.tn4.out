@@ -1,0 +1,30 @@
+kt_cert_v1_7 sha256 efe4c40db1b82f7d6e4106d7a5e1f878c6d3cac2405b9c1d56c4cab86c24b5ab ITEM=g.tn4 LIM=300 (RLIMIT_CPU soft 300, hard 305)
+C-HASH PASS (5 engine files, 1 own files, 11 predecessor outputs, 6 inputs, 4 trial-set files, 12 float references, 1 replay record)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+FORMAT KT_CERT_RECORD_v1_7 CERTIFIED
+KERNEL arbeng_c2b_v2.py fb8cd1b5162930b1e9ff83c35fb652575a9f2ff1649f733c5d45bdf7f7762993 ctx.prec 512
+C-TILT (a) N=4: c_m 0.59545911617622549 >= -log(1 - a)/(2a) = 0.595459116176 (a 0.30250000000000005), c_e 0.61984319809502719 >= -log(1 - a)/(2a) = 0.619843198095 (a 0.35999999999999999), c_pp 1.3625639128541667 >= -log(1 - a)/(2a) = 1.36256391285 (a 0.91806662960623808); a_pp 0.91806662960623808 >= sin^2(asin rho_m + delta) = 0.918066629606; Chernoff lambdas 0.45 0.5 > 0 -> PASS
+PLANT-TILT N=4: c_m (1 - 1e-9) passes the rate test: False; a lambda = 1e3 tilt certified positive definite: False -> FIRES
+HANDOFF-READ N=4 t x: hand_kt_cert_v1_7_x.tn4.txt sha256 e39b1b12af4e107e89f5396eb42ef9509ed059d037c35ce5c9b303fba726c78d equals its record (out_kt_cert_v1_7_x.tn4.out); body checksum and header PASS
+PLANT-HANDOFF N=4 t x: (a) rejected: body checksum; (b) rejected: sha256 differs from the record; (c) rejected: header -> FIRES
+HANDOFF-READ N=4 t c: hand_kt_cert_v1_7_c.tn4.txt sha256 d695d68084e6d34f09fc51807b3e759e196bc9a51c5d85e5e826bcab7162ab37 equals its record (out_kt_cert_v1_7_c.tn4.out); body checksum and header PASS
+HANDOFF-READ N=4 t tX0: hand_kt_cert_v1_7_tX0.tn4.txt sha256 f6f2d90f529b6db87185e36c3e89c71620812575b55ba056f426a65e5ba9f853 equals its record (out_kt_cert_v1_7_tX0.tn4.out); body checksum and header PASS
+HANDOFF-READ N=4 t tX1: hand_kt_cert_v1_7_tX1.tn4.txt sha256 59135804e36fd9b39b83476b3a80b9803d4116667ed345bd19fca440b16f6ea8 equals its record (out_kt_cert_v1_7_tX1.tn4.out); body checksum and header PASS
+HANDOFF-READ N=4 t tX2: hand_kt_cert_v1_7_tX2.tn4.txt sha256 d55d1dfe8ee4e8f0186cbd305dee14a63943373f02bdf8d10a4a9c9d021fdfb8 equals its record (out_kt_cert_v1_7_tX2.tn4.out); body checksum and header PASS
+HANDOFF-READ N=4 t tB: hand_kt_cert_v1_7_tB.tn4.txt sha256 3caf9e1e5284d62da9293b52a193e60ed4bff095358b789091fc3c8115aec391 equals its record (out_kt_cert_v1_7_tB.tn4.out); body checksum and header PASS
+HANDOFF-READ N=4 t tA: hand_kt_cert_v1_7_tA.tn4.txt sha256 61d06e0511078a996402fe07fa1be8cc436f082ca9a7f8595ef2a3950d23e425 equals its record (out_kt_cert_v1_7_tA.tn4.out); body checksum and header PASS
+STAGE-CPU N=4 t: L0 remainder (1195 terms) done at cpu 0.6 s
+STAGE-CPU N=4 t: nP, nR0 done at cpu 2.8 s
+STAGE-CPU N=4 t: far (FLOAT parts with the cross terms) done at cpu 8.5 s
+SOURCES N=4 t: nD from hand-off c; tails X0 from hand-off tX0, X1 from hand-off tX1, X2 from hand-off tX2, B0 from hand-off tB, B1 from hand-off tB, B2 from hand-off tB, A0 from hand-off tA, A1 from hand-off tA, A2 from hand-off tA
+ENGINE N=4 J=300 t: bound 5.205119514e-04 +- 8.0e-82 (rel 1.5e-78) | nP 1.832125262e-04 +- 7.9e-82 (rel 4.3e-78) | nD 3.343874792e-04 +- 3.1e-84 (rel 9.2e-81) | nR0 2.909394221e-06 +- 3.3e-152 (rel 1.1e-146) | tailX 1.703e-10 tailB 4.264e-12 ann 1.039e-09 | gB 1.261e-09 | far 7.971195050e-14 +- 1.3e-166 (rel 1.7e-153) (FLOAT parts) | D4 25519 terms, deg2 10, tot 10 | cpu wish 2.4 far 5.7 (8.3 s)
+FLOAT-IN N=4 t (repr; F4, for M2/M3; eps_r and Z from the old trial set, indicative): oSS np.float64(2.203052752851777e-19) | logR 1.4210854715202004e-14 | oS_psi np.float64(2.1598766193968533e-19) | oS_e1 np.float64(1.4826285920770613e-18) | oS_e3 np.float64(4.577350767584307e-18) | oS_e2 np.float64(1.4693915314998657e-18) | oD_psi_psi np.float64(2.1175590913932075e-19) | oD_psi_e1 np.float64(1.4536990065418992e-18) | oD_psi_e3 np.float64(4.4879861313524515e-18) | oD_psi_e2 np.float64(1.4407092105145659e-18) | oD_e1_e1 np.float64(1.0297173094326416e-17) | oD_e1_e3 np.float64(3.158754767884455e-17) | oD_e1_e2 np.float64(1.0131422899194517e-17) | oD_e3_e3 np.float64(9.726267765257194e-17) | oD_e3_e2 np.float64(3.1276188458887094e-17) | oD_e2_e2 np.float64(1.0080756575760556e-17) | gBb 1.2415065191840287e-14 | eps_r 1.0385622774904195e-05 (not used by this kind) | Z: a_k [1.0, 1.1719552788587524, 1.5377245943411517, 1.898527981039237] remainder 1.5659020257164158e-06 -> Z 1.003922108e+00 +- 4.5e-154 (rel 4.5e-154)
+VALUE N=4 J=300 t: A_t <= 5.194941933e-04 (ball 5.194941923e-04 +- 8.0e-82 (rel 1.5e-78); rounded up; eps_r and Z FLOAT, old trial set, indicative: W2 v2 uses the certified eps_r of M2(b) and Z of M3)
+RESULT N=4 J=300 t: A_t [5.1949419226399412e-04, 5.1949419226399423e-04] bound [5.2051195142215133e-04, 5.2051195142215143e-04] FLOAT-IN far logR gBb eps_r Z
+C-BAD-HOOK N=4 t (SPEC ADD2 v1 sect. 8; W2 weights them by X): gB 1.261e-09, far_out 7.971e-14 (FLOAT parts, (2J)^2 on G4, 2J on G3), tailX 1.703e-10 tailB 4.264e-12 ann 1.039e-09
+C-REP N=4 t against out_kt_c_t_v1_1_tn4.out: C-REFHEAD PASS; bound 5.205119514e-04 vs 5.205119056e-04 (v2_3 5.205119e-04 with far 7.97e-14 -> 7.971e-14 and tailB 3.73e-20 -> 4.264e-12; rel 8.8e-08); nP 1.8321e-04 vs 1.832e-04; nD 3.3439e-04 vs 3.344e-04; nR0 2.9094e-06 vs 2.909e-06; tailX 1.7033e-10 vs 1.70e-10; ann 1.0392e-09 vs 1.04e-09; tailB 4.2636e-12 (F1 form; v2_3 printed 3.73e-20, not compared) -> PASS
+C-RAD N=4: worst relative radius over the bound and the main parts 4.34e-78 -> PASS
+C-R N=4 t: |log R| = 1.42e-14 <= 1e-10 (R = main_N^2/(main_D main_4) = 1 by the matrix-tree theorem; S2 of the REVIEW_kt_cert_v1_3) -> PASS
+C-TILT (b) N=4: 1 positive-definiteness tests (tilted_cov), all certified: True; smallest leading minor lower end 8.488e+00 -> PASS
+ITEM g.tn4 cpu 8.5 s, peak resident memory 157 MiB
+VERDICT VALID

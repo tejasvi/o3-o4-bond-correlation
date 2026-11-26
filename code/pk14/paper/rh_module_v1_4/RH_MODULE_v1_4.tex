@@ -1,0 +1,459 @@
+% RH_MODULE_v1_4.tex: route H for strips at 20 <= J <= 300, a module for Section 6 of the next paper version. It replaces the paragraph
+% "The cover of [20,300]" of G2_PAPER_DRAFT_v4_12 (l.2067-2074) and stands before "Strips at strong coupling". Labels carry the prefix rh.
+% v1_1: the fixes of the audit (rv01/AUDIT_RH_MODULE_v1_rv01.md, 1a77d790): M1, M2, c1-c6 and the S1 status comments. v1 (209ee05b)
+% stays frozen.
+% v1_2: SOURCE numbers from the final ru2 run over [20, 300] (route H CLOSED; the approval logged 2026-11-07T11:26:55Z) and the optional
+% kappa >= 1 clause in the proof of Lemma rhslack (rv01/AUDIT_RH_MODULE_v1_rv01_ADD1.md fc400fc4, M1 row). v1_1 (1b1470fc) stays frozen.
+% v1_3: comment lines only. The record of the final ru2 run is the frozen output pk05/out/ru2_U2.out with its manifest
+% pk05/MANIFEST_ru2_U2_out.sha256; the log pk05/RU2_LOG_pk05.md is a live file, cited by its lines l.48-52 (
+% AUDIT_G2KERNEL_LA_v1_1_DELTA_rv05_ADD10.md 715ff955, item m1; the note logged 2026-11-07T11:52:05Z). v1_2 (245b1dcb) stays frozen.
+% v1_4 (pk14): route H's cover at N = 4 extends to [20, 350] (pk08/R11_ADDENDUM_N4_300_350_pk08_v1_1.md 3797ca7e
+% CHECK_R11_ADDENDUM_N4_300_350_rv01.md d86b2e0f): the N = 4 range in the text, in Theorem thm:rhcover and in Corollary cor:rhstrips, and the
+% SOURCE of the further ru2 run. The S8 batch logged 2026-11-08T13:58:59Z in pk14/NOTES_pk14.md. v1_3 (859366b0) stays frozen.
+% SOURCE (notes, frozen): pk05/LEMMA_STRIP_RH_v1_3.md (3dab1187), sections 0, R1-R6, F and 7; pk05/LEMMA_STRIP_R7R8_v1_1.md (aa544045);
+% pk05/LEMMA_STRIP_R9_v1_4.md (9f7f5905); pk05/LEMMA_STRIP_R10_v1_4.md (bd7f8861); pk05/LEMMA_STRIP_R11_v1_4.md (5e532179).
+% SOURCE (reviews, no open item): rv01/REVIEW_LEMMA_STRIP_RH_v1_2_rv01_ADD1.md (1b78a0cf), REVIEW_LEMMA_STRIP_R7R8_v1_rv01_ADD1.md
+% (2935195f), REVIEW_LEMMA_STRIP_R9_v1_rv01_ADD3.md (b3a11d86), REVIEW_LEMMA_STRIP_R10_v1_1_rv01_ADD1.md (ba194e9c),
+% REVIEW_LEMMA_STRIP_R11_v1_1_rv01_ADD1.md (f6783f80); rv03/REVIEW_R2_STRIP_rv03_v1.md (eee9c197), R2 CONFIRMED.
+% SOURCE (code): engine pk05/cs33h_1_rh_cert.py (b0f40c89; MANIFEST_cs33h_1_rh.sha256 df2233ff) with its core cs33b_rh_core.py (929ab8a0)
+% and hubcert_v1e.py (c08d33c1), both loaded read-only after sha checks; driver pd5_driver.sh (9cb4e05d); union check ru2_ledger_union.py
+% (837a50b3; MANIFEST_ru2.sha256 5d1c19ab).
+% Notation against the notes: a_l, g_l, beta are k_l, r_l, J here; the vertical insertion X is U_e; J(p), I(e,p), I'(e,p) are w_p, w_{e,p},
+% w'_{e,p}; beta_a is theta_a; y_e is z_e; slack_f is eps_sl; pi(t) is varpi(t); the modes are chi_0..chi_5 with nu_0 > ... > nu_5 as in R7R8.
+% Wording of the coverage statement: the decision of 2026-11-06T22:48:58Z (pk13/NOTES_pk13.md l.1856): Cov >= 0 for every pair at
+% J > 20, strict for the pairs the certificates cover; pairs with a common vertex take >= 0 from Theorem thm:shared.
+
+\subsection{Strips for $20\le J\le300$}\label{sec:rh}
+
+In this subsection $N\in\{3,4\}$ and all couplings of $P_3\times P_n$ equal $J$. We write $\sigma_1,\sigma_2,\sigma_3$ for the top, middle and bottom
+spins of a column. The horizontal edges of the three rows have the types th, mh and bh, and the vertical edges the types tv (rows $1,2$) and bv
+(rows $2,3$). We prove $\Cov(s_e,s_f)>0$ for $20\le J\le300$ ($20\le J\le350$ when $N=4$), every $n\ge4$ and every pair of distinct edges other than the two vertical edges of one
+column (Theorem~\ref{thm:rhcover}). As in Section~6.3 the covariance is a $2\times2$ determinant of matrix elements of a transfer operator. Here the
+% SOURCE: this sentence states the outcome of Theorem thm:rhcover, certified by the final ru2 run over [20, 300] (pk05/out/ru2_U2.out f6f2280c:
+% VALID True, VERDICT COVERED for N = 3 and N = 4; see the SOURCE lines under the theorem). Route H was logged CLOSED (
+% 2026-11-07T11:26:55Z).
+% SOURCE (N = 4 on [300, 350]): the further ru2 run pk08/out/ru2_x2.out (b7452c92: VALID True l.61, VERDICT N=4 [300, 350]: COVERED
+% l.63); see the SOURCE lines under the theorem.
+operator is written in the hub frame of each column, whose axis is the middle spin, and the determinant is read as a matrix element of the second
+exterior power of the operator. Pairs less than two transfer steps apart are evaluated directly. For all other pairs the leading modes of the exterior
+power decide the sign, uniformly in the distance between the edges and in their distances to the ends.
+
+\paragraph{The column transfer.}
+% SOURCE: LEMMA_STRIP_RH_v1_3 section 0.
+Let $\mathcal H$ be the space of O($N$)-invariant functions in $L^2(\omega^{\otimes3})$, put $u_1=\sigma_1\cdot\sigma_2$ and $u_3=\sigma_2\cdot\sigma_3$,
+let $V$ be multiplication by $e^{J(u_1+u_3)}$, and let $K$ be the integral operator with kernel $\prod_{r=1}^3e^{J\sigma_r\cdot\sigma_r'}$. Then
+$T_0=V^{1/2}KV^{1/2}$ is compact, self-adjoint and positive on $\mathcal H$, and $Z(P_3\times P_n)=\langle v,T_0^{n-1}v\rangle$ with $v=V^{1/2}\one$. It
+has the same nonzero eigenvalues as the operator $T$ of Section~6.3. A horizontal edge of row $r$ between the columns $c$ and $c+1$ replaces the $c$-th
+factor $K$ by its derivative $K_r$ in the coupling of row $r$. A vertical edge of column $c$ inserts multiplication by $s_e$ between the two factors
+$V^{1/2}$ of column $c$, and two edges in one slot insert the product of their insertions.
+
+\paragraph{The hub frame.}
+% SOURCE: LEMMA_STRIP_RH_v1_3 R1 (Schur for O(N-1), N-1 in {2,3}: finding 2 of the review).
+Fix $\sigma_2=e$. As in Section~6.4, the harmonics of degree $l$ in $\sigma_1$ split under the stabilizer O($N-1$) of $e$ into sectors $m=0,\dots,l$, and
+those of sector $m$ are $f_{l,m}(u_1)Y_{m,j}(\omega_1)$, $1\le j\le D_m$, where $\omega_1$ is the direction of the part of $\sigma_1$ orthogonal to $e$
+and the $Y_{m,j}$ are an orthonormal basis of the sector. For $N-1\in\{2,3\}$ every sector is absolutely irreducible, so by Schur's lemma an invariant
+function of $(\sigma_1,\sigma_3)$ pairs equal sectors of $\sigma_1$ and $\sigma_3$ through the canonical pairing. Hence $\mathcal H$ has the orthonormal
+basis
+\[
+\Phi_{l_1l_3m}=D_m^{-1/2}\sum_{j=1}^{D_m}f_{l_1,m}(u_1)Y_{m,j}(\omega_1)\,f_{l_3,m}(u_3)Y_{m,j}(\omega_3),
+\]
+with $0\le m\le\min(l_1,l_3)$, and multiplication by $u_1$ (by $u_3$) acts in sector $m$ as $\Jac^{(m)}$ on the label $l_1$ (on $l_3$).
+
+\begin{lemma}\label{lem:rhframe}
+Let $l_1,l_3\ge0$, $s=\min(l_1,l_3)+1$ and $\mathcal H_{l_1l_3}=\mathrm{span}\{\Phi_{l_1l_3m}:0\le m<s\}$.
+\begin{enumerate}
+\item[(i)] The Laplacian $\Delta_2$ in $\sigma_2$ preserves $\mathcal H_{l_1l_3}$, and $-\Delta_2$ acts there by the tridiagonal matrix $C=C^{(l_1,l_3)}$
+with, for $N=3$,
+\begin{gather*}
+C_{mm}=l_1(l_1+1)+l_3(l_3+1)-2m^2,\\
+C_{m,m+1}=-\sqrt{(l_1-m)(l_1+m+1)(l_3-m)(l_3+m+1)},
+\end{gather*}
+the off-diagonal entry multiplied by $\sqrt2$ when $m=0$, and, for $N=4$,
+\begin{gather*}
+C_{mm}=l_1(l_1+2)+l_3(l_3+2)-2m(m+1),\\
+C_{m,m+1}=-2(m+1)\sqrt{\frac{((l_1+1)^2-(m+1)^2)\,((l_3+1)^2-(m+1)^2)}{(2m+1)(2m+3)}}.
+\end{gather*}
+\item[(ii)] The off-diagonal entries are nonzero, and the eigenvalues of $C$ are $l_2(l_2+N-2)$ for $l_2=|l_1-l_3|+2j$, $0\le j<s$, each simple.
+\item[(iii)] Let $Q=Q^{(l_1,l_3)}$ be the orthogonal matrix of unit eigenvectors of $C$, with columns labelled by $l_2$ and $Q^{(l_3,l_1)}:=Q^{(l_1,l_3)}$.
+The product singlets $\Psi_{l_1l_2l_3}=\sum_mQ_{m,l_2}\Phi_{l_1l_3m}$ form an orthonormal basis of $\mathcal H$, and
+\[
+K\Psi_{l_1l_2l_3}=k_{l_1}k_{l_2}k_{l_3}\Psi_{l_1l_2l_3},\qquad K_r\Psi_{l_1l_2l_3}=r_{l_r}k_{l_1}k_{l_2}k_{l_3}\Psi_{l_1l_2l_3},
+\]
+with $k_l=k_l(J)$ as in \eqref{eq:FH}, $r_l=\partial_J\log k_l(J)$ and $l_r$ the label of row $r$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+% SOURCE: LEMMA_STRIP_RH_v1_3 R2, proof of the entries (the derivation, Steps 1-4; Step 3 with the note 1) and proof of the spectrum.
+Take $e=e_N$ and write $L^{(i)}_{ab}$ for the generators of rotations of $\sigma_i$ and $B^{(i)}_a=L^{(i)}_{aN}$. On $\mathcal H$,
+$L^{(1)}+L^{(2)}+L^{(3)}=0$, so $(L^{(2)}_{ab})^2=(L^{(1)}_{ab}+L^{(3)}_{ab})^2$ there, and
+\[
+-\Delta_2=-\Delta_1-\Delta_3-2\sum_{a<b<N}L^{(1)}_{ab}L^{(3)}_{ab}-2\sum_{a<N}B^{(1)}_aB^{(3)}_a .
+\]
+In sector $m$, $\sum_{a<b<N}L^{(1)}_{ab}L^{(3)}_{ab}=m(m+N-3)$, which gives the diagonal. The last sum maps sector $m$ to the sectors $m\pm1$. Write
+$f_{l,m}(u)=c_{l,m}(1-u^2)^{m/2}p^{(m)}_{l-m}(u)$ with $c_{l,m}>0$ and $p^{(m)}_n$ orthonormal for the weight $(1-u^2)^{m+\lambda-1/2}$. The component in
+sector $m+1$ comes from the three-term rule $tP_m=\alpha'_mP_{m+1}+\gamma'_mP_{m-1}$ of the zonal polynomials of $S^{N-2}$ and from the ladder
+$(p^{(m)}_n)'=\kappa\,p^{(m+1)}_{n-1}$, $\kappa>0$, whose size the Sturm--Liouville identity of the Gegenbauer equation fixes. This gives
+$C_{m,m+1}=-2\alpha'_m\sqrt{D_m/D_{m+1}}\,\rho_{l_1,m}\rho_{l_3,m}$ with $\rho_{l,m}^2=(l-m)(l+m+N-2)$, which are the stated entries. For $m<s-1$ they
+are nonzero, so $C$ is an unreduced Jacobi matrix with $s$ simple eigenvalues. Each eigenvalue is $l_2(l_2+N-2)$ for a degree $l_2$ in $\sigma_2$ that
+carries an invariant of $H_{l_1}\otimes H_{l_2}\otimes H_{l_3}$. Such an $l_2$ satisfies $l_2\le l_1+l_3$, because $\Phi_{l_1l_3m}$ is a polynomial of
+degree $l_1+l_3$ in $\sigma_2$, and by symmetry in the three variables also $l_1\le l_2+l_3$ and $l_3\le l_1+l_2$; and $l_1+l_2+l_3$ is even, because
+$-1\in\mathrm O(N)$ acts on $H_l$ by $(-1)^l$. There are exactly $s$ such $l_2$, so each occurs once. For (iii), \eqref{eq:FH} and \eqref{eq:proj} give
+$K=k(\Delta_1)k(\Delta_2)k(\Delta_3)$ with $k(-l(l+N-2))=k_l$, and $\Delta_2$ commutes with $\Delta_1$, $\Delta_3$ and O($N$); $K_r$ replaces the
+factor $k_{l_r}$ of row $r$ by $\partial_Jk_{l_r}$.
+\end{proof}
+
+\noindent The sign of the off-diagonal entries does not depend on choices of sign inside a sector. Computations may use the basis $(-1)^m\Phi_{l_1l_3m}$,
+in which these entries are positive; this changes $Q$ by a diagonal of signs and none of the quantities below. For $s\ge2$ a column $Q_{\cdot,l_2}$, with
+its sign fixed by $\langle Q_{\cdot,l_2},U\rangle>0$ and the same sign used for $(l_3,l_1)$, is enclosed from a computed vector $U$ by
+$\|Q_{\cdot,l_2}-U\|\le\sqrt2\,\|CU-\mu U\|/(g\|U\|)+|\|U\|-1|$, with $\mu=l_2(l_2+N-2)$ and $g\ge4|l_1-l_3|+2N$ its distance to the other eigenvalues;
+for $s=1$, $Q=(1)$.
+% SOURCE: LEMMA_STRIP_RH_v1_3 R2 (gauge, Q radius, finding 7, s >= 2; for s = 1, Q = (1)).
+
+\paragraph{Frames and truncation.}
+% SOURCE: LEMMA_STRIP_RH_v1_3 R3 (normalization, (i)-(iv)) and R4 (insertions, (ii) frames, (iii) Davis-Kahan in its sector form, findings 9-11, N4).
+Put $\hat k_l=c\,k_l$ with one constant $c>0$ for all $l$, $\tilde E_m=e^{J(\Jac^{(m)}-1)}$, $\hat E=\bigoplus_m\tilde E_m^{1/2}\otimes\tilde E_m^{1/2}$ (on
+the labels $l_1$ and $l_3$), $\mathsf D=\mathrm{diag}(\hat k_{l_1}\hat k_{l_2}\hat k_{l_3})$ on the product singlets and $H=Q\mathsf DQ^\top$. Since
+$\hat E=e^{-J}V^{1/2}$ and $H$ is a positive multiple of $K$, the operator $T=\hat EH\hat E$ is a positive multiple of $T_0$. With $S=H^{1/2}\hat E$ we
+have $T=S^*S$, and we work mostly with $\tilde T=SS^*$, which has the same nonzero eigenvalues. For a cutoff $L$ let $H_L$ be the part of $H$ on the
+blocks with $\max(l_1,l_3)\le L$, $S_L=H_L^{1/2}\hat E$, $T_L=S_L^*S_L$, and let
+\[
+\hat T=\mathsf D^{1/2}Q^\top GQ\,\mathsf D^{1/2},\qquad G=\bigoplus_m(\tilde E_m)_{[m,L]}\otimes(\tilde E_m)_{[m,L]},
+\]
+on the product singlets with $\max(l_1,l_3)\le L$, where $(\cdot)_{[m,L]}$ is the compression to the labels $m\le l\le L$. A horizontal edge $e$ of row
+$r$ acts by $R_e=\mathrm{diag}(r_{l_r})$ on the product singlets. A vertical edge acts by $U_e$, multiplication by $u_1$ (tv) or by $u_3$ (bv); we put
+$\tilde T_e=SU_eS^*$ and $\hat T_e=\mathsf D^{1/2}Q^\top G_eQ\,\mathsf D^{1/2}$, where $G_e=\bigoplus_m(\Jac^{(m)}\tilde E_m)_{[m,L]}\otimes(\tilde E_m)_{[m,L]}$
+for tv and the two factors are exchanged for bv. The reflection $\rho$ that exchanges $\sigma_1$ and $\sigma_3$ acts by $\rho\Psi_{l_1l_2l_3}=\Psi_{l_3l_2l_1}$;
+we write $\pm$ for its two eigenspaces, the sectors.
+
+\begin{lemma}\label{lem:rhtrunc}
+\begin{enumerate}
+\item[(i)] $\|T-T_L\|\le\varepsilon_T:=\hat k_{L+1}\hat k_0^2$.
+\item[(ii)] $T_L$ and $\hat T$ have the same nonzero eigenvalues, with multiplicities. If $\chi$, written in the product singlets, is a unit eigenvector
+of $\hat T$ with eigenvalue $\nu>0$, then $S_L^*\chi/\sqrt\nu$ is a unit eigenvector of $T_L$. In the same coordinates $S_LU_eS_L^*$ is $\hat T_e$.
+\item[(iii)] $T$, $T_L$ and $\hat T$ are positive and commute with $\rho$, and in each sector the $k$-th eigenvalues satisfy
+$|\lambda_k^\pm(T)-\lambda_k^\pm(\hat T)|\le\varepsilon_T$, where $\lambda_k^\pm(\hat T)=0$ beyond the rank.
+\item[(iv)] Let $g$ be the distance from an eigenvalue of $T_L$ to the other eigenvalues of $T_L$ in its sector, zero included. If $g>2\varepsilon_T$,
+then $T$ has exactly one eigenvalue of that sector within $\varepsilon_T$ of it, and the unit eigenvectors, with signs aligned, differ by at most
+$\sqrt2\,\varepsilon_T/(g-\varepsilon_T)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The coefficients $\hat k_l$ decrease in $l$, since $k_{l+1}/k_l=I_{l+\lambda+1}(J)/I_{l+\lambda}(J)<1$ \cite[(16)]{Am74}. The part of $H$ on the blocks
+with $\max(l_1,l_3)\ge L+1$ is positive, with norm at most $\hat k_{L+1}\hat k_0^2$, and $\|\hat E\|\le1$ because $\|\Jac^{(m)}\|\le1$; this gives (i). For
+(ii), $S_LS_L^*=H_L^{1/2}P_L\tilde EP_LH_L^{1/2}$, where $\tilde E=\hat E^2$ and $P_L$ projects onto the labels $l_1,l_3\le L$; so $P_L\tilde EP_L$ is the direct
+sum of the compressions, and conjugation by $Q$ gives $\hat T$. The same computation with $U_e\tilde E$ in place of $\tilde E$ gives $\hat T_e$: it is the
+compression of the product $\Jac^{(m)}\tilde E_m$, not the product of compressions. For (iii), $\hat E$, $H$ and $H_L$ commute with $\rho$, because
+$\mathsf D$ is symmetric in $l_1$ and $l_3$ and $Q^{(l_3,l_1)}=Q^{(l_1,l_3)}$, and Weyl's inequality applies in each sector. For (iv), Weyl's inequality
+isolates the eigenvalue $\nu$ of $T$. If $\psi$ and $\psi^L$ are the eigenvectors and $P_\perp$ projects off $\psi^L$ inside the sector, then
+$(T_L-\nu)P_\perp\psi=-P_\perp(T-T_L)\psi$, and every other eigenvalue of $T_L$ in the sector is at distance at least $g-\varepsilon_T$ from $\nu$, so
+$\sin\angle(\psi,\psi^L)\le\varepsilon_T/(g-\varepsilon_T)$ and $\|\psi-\psi^L\|\le\sqrt2\sin\angle(\psi,\psi^L)$.
+\end{proof}
+
+\noindent The truncation thus enters once, through $\varepsilon_T$, in the frame of $T$, where it is linear, while $\hat T$ and $\hat T_e$ need only the
+compressions of $\tilde E_m$ and $\Jac^{(m)}\tilde E_m$, which are enclosed with proven tails as in the proof of Theorem~\ref{thm:hubcover}.
+
+\paragraph{Objects.}
+% SOURCE: LEMMA_STRIP_R7R8_v1_1 R7 (R7a transfer formulas, R7b objects, same-gap pairs, the ends) and R8 (L2), centring.
+Put $w=Sv$ and $w_p=\tilde T^pw$ for $p\ge0$. For a horizontal type $e$ put $w_{e,p}=R_ew_p$; for a vertical type $e$ put $w_{e,0}=SU_ev$ and
+$w_{e,p}=\tilde T_ew_{p-1}$ for $p\ge1$. An edge has index $p$ from the left end if it lies between the columns $p+1$ and $p+2$ (horizontal) or in the
+column $p+1$ (vertical); its index from the right end is defined in the mirror way, and the mirror symmetry of the strip gives the same vectors at the
+right end. For $a,b,c,d\in\mathcal H$ put $\langle a\wedge b,c\wedge d\rangle=\langle a,c\rangle\langle b,d\rangle-\langle a,d\rangle\langle b,c\rangle$, and
+let $\Lambda^2\tilde T$ act by $a\wedge b\mapsto\tilde Ta\wedge\tilde Tb$.
+
+\begin{lemma}\label{lem:rhobj}
+Let $e$ have index $p$ from the left end and $f$ index $q$ from the right end, with $k\ge0$ complete factors $\tilde T$ between their insertions, so that
+$n=p+k+q+2$. Then $Z=\langle w_p,\tilde T^kw_q\rangle$ is a positive multiple of $Z(P_3\times P_n)$, and
+\[
+\Cov(s_e,s_f)\,Z^2=\big\langle w_p\wedge w_{e,p},(\Lambda^2\tilde T)^k(w_q\wedge w_{f,q})\big\rangle .
+\]
+The right side does not change if $w_{e,p}$ is replaced by $w'_{e,p}=w_{e,p}-\alpha_ew_p$, or $w_{f,q}$ by $w'_{f,q}=w_{f,q}-\alpha_fw_q$, for any real
+$\alpha_e,\alpha_f$. Two horizontal edges of one junction are the case $k=0$. Every pair of distinct edges of $P_3\times P_n$, $n\ge4$, other than the two
+vertical edges of one column, arises in this way.
+\end{lemma}
+
+\begin{proof}
+For $m\ge1$, $T^m=S^*\tilde T^{m-1}S$ and $ST^m=\tilde T^mS$, so the partition function is a positive multiple of $\langle w,\tilde T^{n-2}w\rangle$. A
+horizontal insertion turns one factor $T$ into $S^*R_eS$, because $R_e$ commutes with $H^{1/2}$; a vertical insertion in a column $c\ge2$ turns one
+factor $\tilde T$ into $\tilde T_e$, and in the first column it gives $w_{e,0}$. Collecting the factors on both sides of the insertions gives $Z$,
+$Z_e=\langle w_{e,p},\tilde T^kw_q\rangle$, $Z_f=\langle w_p,\tilde T^kw_{f,q}\rangle$ and $Z_{ef}=\langle w_{e,p},\tilde T^kw_{f,q}\rangle$ for the
+derivatives of $Z$ in the couplings of $e$ and $f$, and $\Cov(s_e,s_f)Z^2=ZZ_{ef}-Z_eZ_f$ is the stated matrix element of $(\Lambda^2\tilde T)^k$. The
+centring holds because $a\wedge(b-\alpha a)=a\wedge b$. For two horizontal edges of one junction the factor of that junction carries
+$R_eR_f$, and $\langle w_p,R_eR_fw_q\rangle=\langle w_{e,p},w_{f,q}\rangle$. Two edges in different slots have their insertions in different factors;
+the only two distinct edges in one slot other than a pair at one junction are the two vertical edges of one column.
+\end{proof}
+
+\paragraph{Spectral enclosures.}
+% SOURCE: LEMMA_STRIP_RH_v1_3 R5 (i)-(v) (finding 13: x exactly in the sector) and R6 (leading mode, finding 16).
+\begin{lemma}\label{lem:rhspec}
+\begin{enumerate}
+\item[(i)] For $x\ne0$ and real $\mu$, $\hat T$ has an eigenvalue within $\|\hat Tx-\mu x\|/\|x\|$ of $\mu$.
+\item[(ii)] If disjoint intervals $I_1,\dots,I_K$ each contain an eigenvalue of $\hat T$ in the sector $\pm$, then every other eigenvalue of that sector is
+at most $\tr(\hat T\Pi_\pm)-\sum_i\max(\min I_i,0)$, where $\Pi_\pm=(1\pm\rho)/2$, $\tr(\hat T\Pi_\pm)=(\tr\hat T\pm\tr\hat T\rho)/2$ and
+\begin{gather*}
+\tr\hat T=\sum\mathsf D_{l_1l_2l_3}\sum_mQ_{m,l_2}^2\,\tilde E_m(l_1,l_1)\tilde E_m(l_3,l_3),\\
+\tr\hat T\rho=\sum\mathsf D_{l_1l_2l_3}\sum_mQ_{m,l_2}^2\,\tilde E_m(l_1,l_3)^2,
+\end{gather*}
+the outer sums running over the product singlets with $\max(l_1,l_3)\le L$.
+\item[(iii)] Let $x$ lie in one sector, let $\nu$ be a simple eigenvalue of $\hat T$ in that sector with unit eigenvector $\chi_\nu$, and let every other
+eigenvalue of the sector lie at distance at least $\gamma>0$ from $\mu$. Then $\sin\angle(x,\chi_\nu)\le\|\hat Tx-\mu x\|/(\gamma\|x\|)$.
+\item[(iv)] The largest eigenvalue of $T$ is simple, its eigenvector $\psi_0$ is positive and $\rho$-even, and $\langle v,\psi_0\rangle>0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For (i) and (iii), $\|(\hat T-\mu)x\|$ is at least the distance from $\mu$ to the spectrum times $\|x\|$, and at least $\gamma$ times the norm of the part of
+$x$ orthogonal to $\chi_\nu$. (ii) holds because $\hat T\ge0$. The trace formulas hold because $G$ is diagonal in $m$ and $\rho$ maps the entry of $G$ at
+$(l_1,l_3,m)$ to the entry at $(l_3,l_1,m)$, while $\tilde E_m$ is symmetric. For (iv), the kernel of $T_0$ on $(S^{N-1})^3$ is continuous and strictly
+positive, so by Jentzsch's theorem its largest eigenvalue is simple with a positive eigenvector; by uniqueness this eigenvector is invariant under
+O($N$) and under $\rho$, so it lies in $\mathcal H$; and $\langle v,\psi_0\rangle>0$ because $v>0$.
+\end{proof}
+
+\paragraph{Certified modes.}
+% SOURCE: LEMMA_STRIP_RH_v1_3 R3 (iv), R4 (iii), R5, R6 (far-pair hypotheses, findings 14, 15, N1; (G)) and section 7; LEMMA_STRIP_R7R8_v1_1 R8
+% (setting for the mode expansions; W6); LEMMA_STRIP_R9_v1_4 TR4 (mode vectors), TR6 (spectral data under truncation).
+On a subinterval of $J$ the computation produces disjoint intervals that contain eigenvalues $\nu_0>\nu_1>\dots>\nu_5$ of $\tilde T$, each simple in its
+sector, unit eigenvectors $\chi_0,\dots,\chi_5$ enclosed in angle, and a number $u_{\rm rem}$ that bounds every other eigenvalue of $\tilde T$ in both
+sectors. They come from Lemma~\ref{lem:rhspec} for $\hat T$, with mode vectors that lie exactly in one sector, and are transferred to $\tilde T$ by
+Lemma~\ref{lem:rhtrunc}: every interval and both sector bounds are widened by $\varepsilon_T$, and the angles carry the Davis--Kahan term of
+Lemma~\ref{lem:rhtrunc}(iv), transported by $\chi_a=S\psi_a/\sqrt{\nu_a}$. The computation checks that the interval of $\nu_0$ lies above all other
+bounds, that $\chi_1$ is $\rho$-even, and that
+$u_{\rm rem}<\nu_1$.
+
+\begin{lemma}\label{lem:rhinf}
+Put $\theta_a=\langle\chi_a,w\rangle$ and $w_\perp=w-\sum_{a\le5}\theta_a\chi_a$, assume $\theta_0\ne0$, and for $P\ge1$ let
+\[
+\eta(P)=\sum_{a=1}^5\Big(\frac{\nu_a}{\nu_0}\Big)^P\Big|\frac{\theta_a}{\theta_0}\Big|+\Big(\frac{u_{\rm rem}}{\nu_0}\Big)^P\frac{|w_\perp|}{|\theta_0|}.
+\]
+\begin{enumerate}
+\item[(i)] For every $p\ge P$, $w_p=\nu_0^p\theta_0(\chi_0+w^\circ_p)$ with $|w^\circ_p|\le\eta(P)$.
+\item[(ii)] Let $e$ be horizontal, $R'=R_e-\alpha_e$ and $z_e=R'\chi_0-\langle\chi_0,R'\chi_0\rangle\chi_0$. The norms $\|R'\chi_a\|$ and $\|R'\tilde T\|$ are
+finite, and for every $p\ge P$
+\begin{gather*}
+w_p\wedge w'_{e,p}=(\nu_0^p\theta_0)^2\big(\chi_0\wedge z_e+\Delta_e(p)\big),\\
+|\Delta_e(p)|\le m_e+\eta(P)\|R'\chi_0\|+\eta(P)m_e,\\
+m_e=\sum_{a=1}^5\Big(\frac{\nu_a}{\nu_0}\Big)^P\Big|\frac{\theta_a}{\theta_0}\Big|\,\|R'\chi_a\|+\frac{\|R'\tilde T\|\,u_{\rm rem}^{P-1}|w_\perp|}{\nu_0^P|\theta_0|}.
+\end{gather*}
+\item[(iii)] Let $e$ be vertical and $T'=\tilde T_e-\alpha_e\tilde T$, so that $w'_{e,p}=T'w_{p-1}$. For every $p\ge P\ge2$,
+$w_p\wedge w'_{e,p}=\nu_0(\nu_0^{p-1}\theta_0)^2(\chi_0\wedge z_e+\Delta_e(p))$, where $z_e$ is the part of $T'\chi_0$ orthogonal to $\chi_0$ and
+$\Delta_e(p)$ obeys the bound of (ii) with $T'$ in place of $R'$ and $P-1$ in place of $P$ in $m_e$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+% SOURCE: LEMMA_STRIP_R7R8_v1_1 R8 INF1-INF3 (W1: ||R'T~|| in place of the infinite ||R'||) and LEMMA_STRIP_R9_v1_4 TR7.
+(i) $w_p=\sum_{a\le5}\nu_a^p\theta_a\chi_a+\tilde T^pw_\perp$, and $\tilde T$ maps the orthogonal complement of $\chi_0,\dots,\chi_5$ into itself with norm at
+most $u_{\rm rem}$; every term of $w^\circ_p$ decreases in $p$. (ii) The operator $R'$ is unbounded, since $r_l$ grows like $l/J$, but
+$\chi_a=\tilde T\chi_a/\nu_a$ lies in the range of $H^{1/2}$, on which $R'$ is bounded because $\hat k_l$ decays faster than any geometric sequence, and
+$\|R'\tilde T\|\le\|R'S\|\,\|S^*\|$. Since $R'w^\circ_p=\sum_{a\ge1}(\nu_a/\nu_0)^p(\theta_a/\theta_0)R'\chi_a+(R'\tilde T)\tilde T^{p-1}w_\perp/(\nu_0^p\theta_0)$,
+we have $\|R'w^\circ_p\|\le m_e$ for $p\ge P$. Expanding $w_p\wedge R'w_p$ into four terms and using $|a\wedge b|\le|a||b|$ gives the bound; the projection
+in $z_e$ does not change the wedge with $\chi_0$. (iii) is the same computation with $w_p=\nu_0\cdot\nu_0^{p-1}\theta_0(\chi_0+w^\circ_p)$ and
+$T'w_{p-1}=\nu_0^{p-1}\theta_0(T'\chi_0+T'w^\circ_{p-1})$, where $T'$ is bounded.
+\end{proof}
+
+\noindent Let $D_e$ be a bound for $|\Delta_e(p)|$, $p\ge P_e$, as in Lemma~\ref{lem:rhinf}, where $P_e=9$ for mh and $P_e=6$ for the other types. Since
+$\|\Lambda^2\tilde T\|=\nu_0\nu_1$, for every $\Upsilon=x\wedge y$ and every $p\ge P_e$ the value $\langle w_p\wedge w'_{e,p},(\Lambda^2\tilde T)^k\Upsilon\rangle$
+is a positive multiple of $\langle\chi_0\wedge z_e,(\Lambda^2\tilde T)^k\Upsilon\rangle+E$ with $|E|\le D_e(\nu_0\nu_1)^k|x||y|$. One check of the representative
+$\chi_0\wedge z_e$ with this error therefore covers every index $p\ge P_e$; we call $(e,\infty)$ the infinity object of type $e$. When both objects of a
+pair are infinity objects, the product of their two errors is added. In the computation $\chi_0$ is replaced by its computed unit direction, and $D_e$
+includes the resulting error.
+% SOURCE: LEMMA_STRIP_R7R8_v1_1 R8 INF4 (W4: exact positive factor on the left, upper bounds only in the error) and the computed representatives
+% (W1-W3); LEMMA_STRIP_R9_v1_4 TR7 (the representative's error sqrt2 s_0' (ne_0 + Rop_L); no term of order sqrt(eps_T)).
+
+\paragraph{Near and far pairs.}
+% SOURCE: LEMMA_STRIP_R7R8_v1_1 R8 (NEAR, FAR, monotone bound; W5, W6) and LEMMA_STRIP_RH_v1_3 section 7 (monotonicity).
+For object pairs $\Xi=x\wedge y$ and $\Upsilon=x'\wedge y'$, with $x,x'$ plain and $y,y'$ centred inserted objects, put
+$S(k)=\langle\Xi,(\Lambda^2\tilde T)^k\Upsilon\rangle$. For $k<2$ it is computed directly as a $2\times2$ determinant of inner products of the objects and of
+their images under $\tilde T$. For $k\ge2$ the leading modes of $\Lambda^2\tilde T$ decide its sign.
+
+\begin{lemma}\label{lem:rhnf}
+Put $X_{ab}=\langle\chi_a\wedge\chi_b,\Xi\rangle$ and $Y_{ab}=\langle\chi_a\wedge\chi_b,\Upsilon\rangle$ for $0\le a<b\le5$, and let $\Xi^\perp$, $\Upsilon^\perp$ be
+the parts of $\Xi$, $\Upsilon$ orthogonal to all $\chi_a\wedge\chi_b$ with $a<b\le5$. Then for $k\ge0$
+\[
+\frac{S(k)}{(\nu_0\nu_1)^k}=X_{01}Y_{01}+\sum_{(a,b)\ne(0,1)}r_{ab}^k\,X_{ab}Y_{ab}+R_k,\qquad|R_k|\le q^k|\Xi^\perp||\Upsilon^\perp|,
+\]
+where $r_{ab}=\nu_a\nu_b/(\nu_0\nu_1)<1$ for $(a,b)\ne(0,1)$ and $q=u_{\rm rem}/\nu_1<1$. If $\ell$ is a lower bound for $X_{01}Y_{01}$, then
+$g(k)=\ell-\sum_{(a,b)\ne(0,1)}r_{ab}^k|X_{ab}Y_{ab}|-q^k|\Xi^\perp||\Upsilon^\perp|$ is nondecreasing in $k$ and $g(k)\le S(k)/(\nu_0\nu_1)^k$; so $g(k_*)>0$
+gives $S(k)>0$ for every $k\ge k_*$. Moreover $|\Xi^\perp|\le|x_C||y_\perp|+|x_\perp||y|$, where $x_C$ and $x_\perp$ are the parts of $x$ in and orthogonal
+to $\mathrm{span}\{\chi_0,\dots,\chi_5\}$, and likewise for $y$.
+\end{lemma}
+
+\begin{proof}
+$\Lambda^2\tilde T$ is compact, self-adjoint and positive, with eigenvectors $\chi_a\wedge\chi_b$, $a<b$, and eigenvalues $\nu_a\nu_b$, where the $\chi_a$ run
+over an eigenbasis of $\tilde T$ that extends $\chi_0,\dots,\chi_5$. A pair with an index beyond $5$ has $\nu_a\nu_b\le\nu_0u_{\rm rem}$, so the
+Cauchy--Schwarz inequality bounds the sum over these pairs by $(\nu_0u_{\rm rem})^k|\Xi^\perp||\Upsilon^\perp|$. Each $r_{ab}$ and $q$ is less than one, so
+every subtracted term in $g$ decreases in $k$. Finally $x\wedge y-x_C\wedge y_C=x_C\wedge y_\perp+x_\perp\wedge y$.
+\end{proof}
+
+\noindent For an infinity object the errors of the preceding paragraph, divided by $(\nu_0\nu_1)^k$, are bounded uniformly in $k$ and are subtracted in
+$g$ as well. If $\chi_1$ were $\rho$-odd, then $X_{01}$ would vanish for every $\rho$-even object pair, and the check could only fail.
+
+\begin{lemma}\label{lem:rhnp}
+\begin{enumerate}
+\item[(NORM)] If every object is replaced by a positive multiple, where the factor may depend on $J$ and on the number of factors of the object, then
+every value $S(k)$ and every amplitude $X_{ab}$ is multiplied by a positive number. The same holds if $\tilde T$ is replaced by a positive multiple,
+which does not change the ratios $\nu_a/\nu_b$.
+\item[(PAR)] $\rho$ commutes with $\tilde T$, $\hat T$, $R_{\rm mh}$ and with scalars, exchanges $R_{\rm th}$ with $R_{\rm bh}$ and $\tilde T_{\rm tv}$ with
+$\tilde T_{\rm bv}$, and fixes $w$. Hence the plain objects and all objects of type mh are $\rho$-even, and $\langle\chi_a,x\rangle=0$ whenever $\chi_a$ is
+$\rho$-odd and $x$ is $\rho$-even.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+% SOURCE: LEMMA_STRIP_RH_v1_3 section F (NORM; PAR (a)-(c), V6).
+(NORM) Each product of two inner products in $S(k)$ contains one plain and one inserted object from each side, and $X_{ab}$ is bilinear in the plain and
+the inserted object. (PAR) $\mathsf D$ and $G$ are symmetric under $l_1\leftrightarrow l_3$, the multiplier $r_{l_2}$ of $R_{\rm mh}$ depends only on the middle
+label, and $w=e^JH^{1/2}\tilde E\one$, where $\tilde E\one$ lies in sector $m=0$ and is symmetric in $l_1$ and $l_3$; $H^{1/2}=Q\mathsf D^{1/2}Q^\top$ commutes
+with $\rho$ by the convention $Q^{(l_3,l_1)}=Q^{(l_1,l_3)}$. For $\rho$-odd $\chi_a$ and $\rho$-even $x$, $\langle\chi_a,x\rangle=\langle\rho\chi_a,\rho x\rangle=
+-\langle\chi_a,x\rangle$.
+\end{proof}
+
+\paragraph{The computed frame.}
+% SOURCE: LEMMA_STRIP_R9_v1_4 sections 1-3 (frames, insertion factors f_x (Y1), top interval (Y3), TR1 with M_e = max(1, alpha_e), TR2-TR5) and
+% LEMMA_STRIP_RH_v1_3 R3 (v), R4 (iii) (eps_T, eps_e on a subinterval).
+The computation works on closed subintervals $b_-\le J\le b_+$, $b_\pm=b_0\pm h$, with $t=J-b_0$ and the normalization $\hat k_l=e^{-t}k_l(J)/k_0(b_0)$.
+Here $\hat k_0$ decreases in $t$, and $I_{l+\lambda}(J)/I_\lambda(J)$, a product of ratios $I_{\nu+1}/I_\nu$, increases in $J$ (proof of
+Lemma~\ref{lem:rmono}). So, with $A=\sup\hat k_0$ and $\hat k_{0,\rm lo}=\inf\hat k_0$ over the subinterval,
+\begin{gather*}
+\varepsilon_T\le A^3\frac{I_{L+1+\lambda}(b_+)}{I_\lambda(b_+)},\\
+\varepsilon_e:=A^3\frac{I_{L+\lambda}(b_+)}{I_\lambda(b_+)},\\
+\varepsilon_W:=\max\Big(\frac{2A\varepsilon_T}{\hat k_{0,\rm lo}},\Big(1+\frac{L+1}{b_-}\Big)\varepsilon_e\Big),
+\end{gather*}
+and we put $\varepsilon_*=\max(\varepsilon_T,\varepsilon_e,\varepsilon_W)$. Every object is formed in the truncated frame, with $\hat T$, $\hat T_e$ and $R_e$ on
+the labels $\max(l_1,l_3)\le L$ in place of $\tilde T$, $\tilde T_e$ and $R_e$; for an object $x$ of the exact frame we write $x_L$ for the computed one and
+$p_x$ for its number of factors $T$ or $S^*R'S$. Let $[\nu_0^-,\nu_0^+]$ be the interval of $\nu_0$, widened by $\varepsilon_T$, and $|\theta_0|^-$ a lower
+bound for $|\langle\chi_0^L,w_L\rangle|$, with $\chi_0^L$ the top eigenvector of $\hat T$. The insertion factor $f_x$ of an object is $1$ for plain objects,
+$\max(\max_l|r_l-\alpha_e|,1)$, the maximum over the
+computed labels, for horizontal ones, and $1+|\alpha_e|$ for vertical ones.
+
+\begin{lemma}\label{lem:rhslack}
+Assume $0\le\alpha_e\le1$ for the horizontal types and $p_{\max}^2\varepsilon_*/\nu_0^-\le10^{-6}$, where $p_{\max}=\max_xp_x$. Put
+$c=\max_x\big((\nu_0^+/\nu_0^-)(1+\varepsilon_T/\nu_0^-)\big)^{p_x}$, $\kappa=|v|\sqrt{\nu_0^+}/|\theta_0|^-$ and $\varrho=\max_xf_x|w_{p_x,L}|/|x_L|^-$, where
+$|x_L|^-$ is a lower bound for $|x_L|$; a mode vector $\chi_a$ enters with $p_x=0$, $x_L:=P_L\chi_a$ and $(\nu_0^+/\nu_a^-)^{1/2}$ in place of
+$f_x|w_{p_x,L}|$. Then for all objects $x,y$, the
+mode vectors and the representatives of the infinity objects included,
+\[
+|\langle x,y\rangle-\langle x_L,y_L\rangle|\le\varepsilon_{\rm sl}|x_L||y_L|,\qquad
+\varepsilon_{\rm sl}=\frac{\varepsilon_*}{\nu_0^-}\big(2p_{\max}c\kappa\varrho+c^2\kappa^2\varrho^2\big)(1+10^{-6}).
+\]
+\end{lemma}
+
+\begin{proof}
+Each difference between an exact and a truncated operator, $T-T_L$, $S^*R'S-S_L^*R'S_L$ and $S^*R'R''S-S_L^*R'R''S_L$, is $\hat E$ times the tail of an
+operator that is diagonal on the product singlets times $\hat E$. Its norm is at most the largest tail entry, a product of three factors $\hat k_{l_r}$ in
+which an inserted row carries $r_{l_r}-\alpha_e$ once or twice. We use $|r_l-\alpha_e|\le\max(r_l,1)$, $r_l\hat k_l\le\hat k_{l-1}$ and $r_l<1+l/J$, and that
+both $\hat k_l$ and $t_l=(1+l/J)\hat k_{l-1}$ decrease in $l$: for $t_l$, $l\ge1$, the Bessel ratio bound $I_{\nu+1}(J)/I_\nu(J)<J/(\nu+\frac12+J)$ from the
+proof of Lemma~\ref{lem:rmono} and $\lambda\ge\frac12$ give $t_{l+1}/t_l<(J+l+1)J/(J+l)^2<1$. So these entries are at most $\varepsilon_T$,
+$\varepsilon_e$ and $\varepsilon_W$, and the tails satisfy
+$\|P_\perp S\|^2\le\varepsilon_T$ and $\|R'P_\perp S\|^2\le\varepsilon_W$, where $P_\perp$ projects onto the labels with $\max(l_1,l_3)>L$. Telescoping the
+word of an object, with the computed factors to the left of each difference, gives $|P_Lx-x_L|\le p_x(\varepsilon_*/\nu_0^-)\kappa c_xf_x|w_{p_x,L}|$
+with $c_x=((\nu_0^+/\nu_0^-)(1+\varepsilon_T/\nu_0^-))^{p_x}$, and the tail gives $|P_\perp x|\le(\varepsilon_*/\nu_0^-)^{1/2}\kappa c_xf_x|w_{p_x,L}|$; the factor
+$\kappa$ converts $(\nu_0^+)^{p_x}|v|$ into the norm of the computed plain object, since $|w_{p,L}|\ge(\nu_0^-)^p|\theta_0|^-$. Then
+$\langle x,y\rangle=\langle P_Lx,P_Ly\rangle+\langle P_\perp x,P_\perp y\rangle$ gives the claim. For a mode vector $x_L=P_L\chi_a$, so only its tail enters:
+$\chi_a=S\psi_a/\sqrt{\nu_a}$ and $\|P_\perp S\|^2\le\varepsilon_T$ give $|P_\perp\chi_a|\le(\varepsilon_T/\nu_a^-)^{1/2}\le(\varepsilon_*/\nu_0^-)^{1/2}\kappa\,
+(\nu_0^+/\nu_a^-)^{1/2}$, since $\kappa\ge1$: indeed $|\theta_0|^-\le|w_L|\le\|S_L\|\,|v|\le\sqrt{\nu_0^+}\,|v|$.
+% SOURCE: the review AUDIT_RH_MODULE_v1_rv01_ADD1 (fc400fc4), M1 row: the one-clause reason for kappa >= 1, added at the fold-in.
+\end{proof}
+
+\noindent The coefficient of an object $x$ along a certified mode is enclosed from a computed mode vector $u_a$ by
+\[
+\langle\chi_a,x\rangle\in\frac{\langle u_a,x_L\rangle}{|u_a|}\pm\sqrt2\,s_a|x_L|\pm\varepsilon_{\rm sl}|x_L|,
+\]
+where $\sqrt2\,s_a$ bounds $|P_L\chi_a-u_a/|u_a||$. The number $s_a$ is the Krylov--Weinstein and Davis--Kahan bound for the angle between $u_a$ and the
+eigenvector of $\hat T$, plus the transport of Lemma~\ref{lem:rhtrunc}(iv) to $\tilde T$, namely
+$(\nu_0^+/\nu_a^-)^{1/2}\big(\sqrt2\,\varepsilon_T/(g_a-\varepsilon_T)+\varepsilon_T/(2\nu_a^-)\big)/\sqrt2$ with $g_a$ the gap of Lemma~\ref{lem:rhtrunc}(iv)
+for $\nu_a$.
+% SOURCE: LEMMA_STRIP_R9_v1_4 TR4 (the transport d_a) and TR6 (the enclosure of the mode coefficients); the review audit M1 and c3.
+
+\noindent Vectors depending on $J$ are carried as Taylor models in $t$ of degree four, with exact floating-point coefficients and a rigorous bound for the
+remainder in the $2$-norm; each operator step, multiplication by a polynomial in $t$ and linear combination adds its truncation and rounding errors to
+the remainder. The inner products of the coefficient vectors come from one Gram matrix product in floating point, formed by a classical algorithm (not a
+Strassen-type one), whose error is at most
+$\gamma_{n+2}\|x\|\|y\|+(n+2)\eta$ for $n$ states and the underflow unit $\eta$, and the resulting polynomials in $t$ are evaluated on subballs of the
+subinterval in ball arithmetic. With $\varepsilon_{\rm sl}|x_L||y_L|$ added to every inner product, every computed value of Lemmas~\ref{lem:rhinf}
+and~\ref{lem:rhnf}, and every direct value $S(k)$ for $k<2$, has a lower end that bounds the true value from below on the subball.
+% SOURCE: LEMMA_STRIP_R9_v1_4 section 5 (TM1-TM4; TM3 assumption Y7: classical gemm/syrk, single-threaded OpenBLAS) and TR9.
+
+\begin{theorem}[$\dagger$]\label{thm:rhcover}
+For $N=3$ and every $J\in[20,300]$, for $N=4$ and every $J\in[20,350]$, every $n\ge4$ and every pair of distinct edges $e,f$ of $P_3\times P_n$
+other than the two vertical edges of one column, $\Cov(s_e,s_f)>0$.
+\end{theorem}
+% SOURCE (certificate): the final ru2 run over [20, 300] on the concatenated job lists of k1-k5, pk05/out/ru2_U2.out (f6f2280c;
+% pk05/MANIFEST_ru2_U2_out.sha256 0979d81b, 4 OK): JOBS 358, counted 358; CONTROLS P-HOLE, P-VOIDJOB, P-ALPHA, P-TAG FIRED for N = 3 and N = 4;
+% UNION one certified component and 0 gaps per N; VALID True; VERDICT N=3 [20, 300]: COVERED and N=4 [20, 300]: COVERED (l.361-367). The
+% read: 910 intervals, 0 uncertified, 0 CONFLICT, engine b0f40c89 on every job. Batch k5's ru2: ru2_k5.out
+% 820e6b1b (MANIFEST_ru2_k5_out fa7d57a5). Log, a live file and not the record: pk05/RU2_LOG_pk05.md l.48-52 (the entry
+% "FINAL U2 [20, 300]" of 2026-11-07T11:23:24Z); the record is ru2_U2.out with its manifest.
+% SOURCE: engine cs33h_1_rh_cert.py (b0f40c89) with core cs33b_rh_core.py (929ab8a0) and hubcert_v1e.py (c08d33c1); code map LEMMA_STRIP_R10_v1_4
+% (bd7f8861); ledger and union LEMMA_STRIP_R11_v1_4 (5e532179); union check ru2_ledger_union.py (837a50b3).
+% SOURCE (final numbers, not stated in the text): counted subintervals per part, from the JOB lines of ru2_U2.out, the same for N = 3 and N = 4:
+% A 218 (k1-k5), B 199 (k1-k4), Bh 19 and Bv 19 (k5); 910 in all over both N. Smallest NEAR margin 6.234e-3 (N = 4, b0 59.4906, k1); smallest
+% FAR margin 1.758e-7 (N = 3, top subinterval b0 300.8088, lead 7.523e-7, err 6.144e-7) (the read). Compute: 38.97 core-h of the 46 core-h cap.
+% SOURCE (N = 4 on [300, 350]): pk08/R11_ADDENDUM_N4_300_350_pk08_v1_1.md (3797ca7e): one further ru2 run, pk08/out/ru2_x2.out (b7452c92;
+% pk08/MANIFEST_ru2_x2_out.sha256 ff8f825c), on the job manifest pk08/MANIFEST_ru2_x2_jobs.sha256 (53f0db26; the chain's intervals on
+% [302.31, 350] and batch k5's top N = 4 outputs, which overlap them): JOBS l.60, CONTROLS fired at both N l.59, VALID True
+% l.61, VERDICT N=4 [300, 350]: COVERED l.63; the same engine cs33h_1_rh_cert.py (b0f40c89). With U2's VERDICT N=4 [20, 300] the
+% two join at 300. N = 3 stays [20, 300].
+
+\begin{proof}[Method]
+% SOURCE: LEMMA_STRIP_R7R8_v1_1 R8 (coverage; W5; R9 TR8 on infinity pairs), LEMMA_STRIP_R10_v1_4 (controls and plants), LEMMA_STRIP_R11_v1_4
+% (parts, union, counting rules, single engine U1, superseded batches).
+By Lemma~\ref{lem:rhobj} and (NORM) it suffices to prove $S(k)>0$ for every pair of objects, where an object is $(e,p)$ with $p<P_e$ or the infinity object
+$(e,\infty)$, which stands for every $p\ge P_e$. The interval $[20,300]$ ($[20,350]$ for $N=4$) is covered by closed subintervals. On each of them, separately for $N=3$ and
+$N=4$, the following is certified.
+\begin{enumerate}
+\item[(a)] Inputs: Taylor models of degree four in $J$ with rigorous remainders for $\hat k_l$, $\hat k_l^{1/2}$, $r_l$, $\tilde E_m$ and $\Jac^{(m)}\tilde E_m$,
+built with the enclosures used for Theorem~\ref{thm:hubcover}, and the blocks $Q$ with the radius bound above.
+\item[(b)] Spectral data: the modes $\chi_0,\dots,\chi_5$ and $u_{\rm rem}$, with the checks listed above and the gap condition of
+Lemma~\ref{lem:rhtrunc}(iv); the coefficients that vanish by (PAR) are set to zero.
+\item[(c)] Objects: $w_p$ and $w'_{e,p}$ for $p<P_e$, the representatives of the infinity objects with their errors $D_e$, and the images of all of these
+under $\tilde T$. Every propagation step is multiplied by a polynomial $\varpi(t)$ close to $1/\nu_0$, with a rigorous lower bound $\varpi>0$ on the
+subinterval, which (NORM) allows; upper bounds of $\varpi$ enter only the error terms.
+\item[(d)] Checks: for every unordered pair of objects and every $k\ge0$ with $p+q+k\ge2$, the direct value $S(k)$ for $k<2$. For $k\ge2$, the lower
+bound for $S(k)/(\nu_0\nu_1)^k$ from the expansion of Lemma~\ref{lem:rhnf} must be positive at $k=2,\dots,k_*-1$, and the monotone bound must satisfy
+$g(k_*)>0$ for some $k_*\le60$, which covers every $k\ge k_*$. An infinity object paired with itself stands for all indices
+$p,q\ge P_e$, unequal ones included, and is checked like every other pair. The pairs at $k=0$ of one horizontal type, which are not pairs of distinct
+edges, are checked as well.
+\item[(e)] Controls: on the first subinterval of each run, deliberately falsified inputs must each make a check fail. Every part has the common ones, a
+test of the ball arithmetic and a perturbed Casimir block, operator enclosure, trace bound, cutoff and infinity error; part A adds a perturbed mode
+vector and a negated leading amplitude, and part B (or Bh and Bv) a negated near value. In every run the floating-point spectral data must agree with
+an independent computation.
+\end{enumerate}
+The checks are divided into part A, the checks for $k\ge2$, and part B, the checks for $k<2$; part B may also be run as two parts Bh and Bv, which
+together contain its checks. Each part carries the common controls and those of its own checks. A subinterval counts for a part when every control and
+every check of the part holds on it.
+With $U_P$ the union of the closed subintervals that count for part $P$, a range of $J$ is covered when it lies in $U_A\cap(U_B\cup(U_{Bh}\cap U_{Bv}))$.
+A run counts only if it was made with the single production code, which its output identifies by checksum, if every control fired, if it prints its
+centring constants at least as often as it certifies subintervals, and if every printed centring constant $\alpha_e$ of a horizontal type lies in
+$[0,1-10^{-9}]$, so that Lemma~\ref{lem:rhslack} applies. An independent program, which
+shares no code with the certification, forms the unions in exact rational arithmetic from the hexadecimal endpoints of the subintervals and reports
+every gap; it has its own controls (a removed subinterval, a run without valid controls, a relabelled part and a centring constant out of range must
+each be detected). Its final run over $[20,300]$, on the runs of all batches together, reports no gap for $N=3$ and for $N=4$, and a further run over $[300,350]$ for $N=4$ reports none either.
+% SOURCE: the final run, ru2_U2.out (f6f2280c), reports one certified component and 0 gaps for N = 3 and N = 4 (UNION lines, l.361-362), all
+% eight controls fired (l.363) and VALID True (l.365).
+% SOURCE (N = 4 on [300, 350]): ru2_x2.out (b7452c92) reports one certified component and 0 gaps for N = 4 (UNION N=4, l.58), all
+% eight controls fired (l.59) and VALID True (l.61).
+% SOURCE (batches, R11): [20, 60] (q = 2%), [60, 150], [150, 200], [200, 250], [250, 300] (q = 1%), tags k1-k5 on cs33h_1 only, each closed by ru2
+% on its job list before the next; superseded and ignored by ru2: cs33e certificates, the cs33b-cs33h test outputs, batches g1 (cs33g) and h1 (cs33h).
+% SOURCE (counts and margins): see the SOURCE lines under Theorem thm:rhcover (910 counted subintervals; NEAR 6.234e-3, FAR 1.758e-7; 38.97 core-h).
+\end{proof}
+
+\begin{corollary}\label{cor:rhstrips}
+For $N=3$ and every $J\in[20,300]$, for $N=4$ and every $J\in[20,350]$, and every $n\ge1$, $\Cov(s_e,s_f)\ge0$ for every pair of distinct edges
+of $P_3\times P_n$. For $n\ge4$ the inequality is strict for every pair other than the two vertical edges of one column.
+\end{corollary}
+
+\begin{proof}
+% SOURCE: LEMMA_STRIP_RH_v1_3 section 0 (scope, finding 1 and N3; V1, V2) and section 7 (engine scope).
+For $n\ge4$ this is Theorem~\ref{thm:rhcover}, together with Theorem~\ref{thm:shared} for the two vertical edges of one column, which share the middle
+vertex. For $n=3$ it is Theorem~\ref{thm:D}(i). For $n=2$ the graph $P_3\times P_2$ is the ladder with three rungs, a $2$-connected outerplanar graph
+whose weak dual is a path: Theorem~\ref{thm:B}(a) applies at $N=4$, and Theorem~\ref{thm:C} at $N=3$, since an outerplanar graph has no $K_4$ minor,
+hence no $W_4$ minor, and $G\cup\{e,f\}=G$ for edges $e,f$ of $G$. For $n=1$ the graph is a path, whose two edges lie in different blocks, so
+$\Cov(s_e,s_f)=0$ by Lemma~\ref{lem:blocks}.
+\end{proof}
+
+\noindent Theorem~\ref{thm:D}(ii) covers $0<J\le20$ for $n\ge3$, and the arguments for $n\le3$ in the proof above hold at every $J\ge0$. With
+Corollary~\ref{cor:rhstrips}, therefore,
+$\Cov(s_e,s_f)\ge0$ holds for every pair of distinct edges of every $P_3\times P_n$ at every $0<J\le300$ for $N=3$ and every $0<J\le350$ for $N=4$.
+% SOURCE: LEMMA_STRIP_R11_v1_4 (U4): certint6 tops 20.06497 (N = 4) and 20.07052 (N = 3), UNIFORM_0_20_AUDIT_v1 (e7f6c283).

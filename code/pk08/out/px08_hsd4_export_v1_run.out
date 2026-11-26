@@ -1,0 +1,27 @@
+px08_hsd4_export_v1 start; code sha256 efa92858d503ffcca80289b4f52abf448260ce0b81eedd1eedcd71edc53ab94a
+C-SRC: 14 pinned inputs, sha256 of the parsed bytes -> PASS
+C-D3-SAME -> PASS
+C-A2 -> PASS
+C-RTR -> PASS
+C-OPSTR -> PASS
+C-CBOX0 -> PASS
+N4: A2 <= 2.33539825174e+0, A0 = N*_RTR mhat(1/300) <= 1.33286662599, COEF = (A + 1.06)^2 (A2 + 0.89^2 A0) = 22.2243186684, normX at r = 1 <= 4.714267565 (need 9.3: margin 1.973); spot 14.5402688104 vs D4 3.253094e-04, D4M 3.268188e-05
+N3: A2 <= 1.47608088926e+0, A0 = N*_RTR mhat(1/300) <= 1.33233024890, COEF = (A + 0.72)^2 (A2 + 0.60^2 A0) = 5.78580139379, normX at r = 1 <= 2.405369285 (need 9.3: margin 3.866); spot 4.08831814966 vs D4 1.787807e-04, D4M 1.776584e-05
+C-ARITH -> PASS
+C-NEED -> PASS
+C-SPOT -> PASS
+C-MIRROR -> PASS
+PLANT-A2 -> FIRED
+PLANT-ARITH -> FIRED
+PLANT-CBOX0 -> FIRED
+PLANT-D3-SAME -> FIRED
+PLANT-MIRROR -> FIRED
+PLANT-NEED -> FIRED
+PLANT-OPSTR -> FIRED
+PLANT-RTR -> FIRED
+PLANT-SPOT -> FIRED
+PLANT-SRC -> FIRED
+C-D3-SAME (written record: the 40 copied lines present in order) -> PASS
+CPU 0.02 s, wall 0.00 s
+VERDICT VALID
+RECORD HS_INV_NORMX_v1_d3d4.kv 45a2ab00dcbe47cf6873e5b12db69a1ff8ae3171c84abbc57c5ee43f8a39b343

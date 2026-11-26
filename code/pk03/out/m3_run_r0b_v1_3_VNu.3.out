@@ -1,0 +1,102 @@
+m3_run_r0b_v1_3 item VNu.3 LIM 540; script sha256 9fceb2477ba8c474ca0c517c94fcc21f9fe4a7b91d11071a4f0d6d076aeec5cf; python 3.14.4
+STAGE-CPU C-HASH start 0.05 s
+C-HASH (10 modules, the kernel files, 19 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.14 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v16_1: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=; 6 layer calls in E2_ma/lp_moment_ma/lp_ma/pos_ma/E2_ball/e2, each with fallback=False, 6 wanted) -> PASS
+PLANT-CALLER (m3_bar_v16_1 with one E2_combine call's plan= removed) -> FIRES
+PLANT-CALLER-FLAG (m3_bar_v16_1 with pos_ma's fallback=False dropped) -> FIRES
+C-SERIES (no *_series( call in 10 modules, the kernel files and this script) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-128.000000000 +/- 1.14e-12] overlaps the layer's [-128.000000000 +/- 1.27e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU VN prep stage u start 0.16 s
+C-GRAPH-LIST (W3e: the columns ['vac', 'int', 'vac'] give V 9 and 14 edges; the list's 8 pairs [(0, 1), (0, 2), (0, 3), (1, 2), (3, 6), (6, 7), (6, 8), (7, 8)], F 17 (the list: 17); the entries use 8 of them) -> PASS
+PLANT-GRAPH-LIST (W3e: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-GRAPH-LIST (W3f: the columns ['vac', 'int', 'vac'] give V 9 and 14 edges; the list's 8 pairs [(0, 1), (0, 2), (1, 2), (2, 5), (5, 8), (6, 7), (6, 8), (7, 8)], F 17 (the list: 17); the entries use 8 of them) -> PASS
+PLANT-GRAPH-LIST (W3f: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-GRAPH-LIST (D4L0: the columns ['vac', 'int', 'vac'] give V 9 and 14 edges; the list's 9 pairs [(0, 1), (0, 2), (0, 3), (1, 2), (3, 6), (4, 5), (6, 7), (6, 8), (7, 8)], F 18 (the list: 18); the entries use 9 of them) -> PASS
+PLANT-GRAPH-LIST (D4L0: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-GRAPH-LIST (D4ML0: the columns ['vac', 'int', 'vac'] give V 9 and 14 edges; the list's 8 pairs [(0, 1), (0, 2), (0, 3), (1, 2), (3, 6), (6, 7), (6, 8), (7, 8)], F 17 (the list: 17); the entries use 8 of them) -> PASS
+PLANT-GRAPH-LIST (D4ML0: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-GRAPH-LIST (FA: the columns ['vac', 'int', 'vac'] give V 9 and 14 edges; the list's 8 pairs [(0, 1), (0, 2), (1, 2), (3, 6), (4, 5), (6, 7), (6, 8), (7, 8)], F 17 (the list: 17); the entries use 8 of them) -> PASS
+PLANT-GRAPH-LIST (FA: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-RULE (VN: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 4.7e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (VN: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8] D 18 caps None: 1 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8] D 18 caps None: 57.48 s
+TABLE-CPU u vertex forms D 18: 57.48 s
+NORM u ex p 2: 69.35 s
+NORM u t4|H4| p 2: 0.04 s
+NORM u t5 h5 p 2: 0.18 s
+NORM u t4 H2^2 p 2: 0.41 s
+NORM u t6 h3^2 p 2: 7.34 s
+NORM u t4|H1H3| p 2: 0.65 s
+NORM u t5|H1H4| p 2: 2.78 s
+NORM u t6|H1|h5 p 2: 10.15 s
+NORM u t5|H2|h3 p 2: 2.81 s
+NORM u t4 H1^2|H2| p 2: 8.03 s
+NORM u t5 H1^2 h3 p 2: 27.90 s
+NORM u t5|H1|h2^2 p 2: 29.87 s
+NORM u tr p 2: 36.01 s
+NORM u nE1 p 2: 0.00 s
+NORM u nE2 p 2: 0.03 s
+NORM u nE3 p 2: 1.13 s
+NORM u nE4_1 p 4: 0.02 s
+NORM u nE4_2 p 4: 33.12 s
+C-TILT (a) 9 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 2.241056025892169, 2.239486019390087) -> PASS
+C-PREP-REF (VN: m3ref_v1_10_V3N.3.all_z9sym.out PREPJSON of family V3N, N 3, J 300.0) -> PASS
+C-PREP-GRAPH (W3e: the prep graph has V 9, F 9 and pairs [] (the family graph: F 17); against the family graph, V, N, S_gauge and the 14 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 9 x 9 vertex block of Gam, 9 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo (C-4)) -> PASS
+PLANT-PREP-EDGE (W3e: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (W3e: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (W3e: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (W3e: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+C-PREP-GRAPH (W3f: the prep graph has V 9, F 9 and pairs [] (the family graph: F 17); against the family graph, V, N, S_gauge and the 14 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 9 x 9 vertex block of Gam, 9 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo (C-4)) -> PASS
+PLANT-PREP-EDGE (W3f: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (W3f: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (W3f: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (W3f: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+C-PREP-GRAPH (D4L0: the prep graph has V 9, F 9 and pairs [] (the family graph: F 18); against the family graph, V, N, S_gauge and the 14 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 9 x 9 vertex block of Gam, 9 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo (C-4)) -> PASS
+PLANT-PREP-EDGE (D4L0: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (D4L0: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (D4L0: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (D4L0: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+C-PREP-GRAPH (D4ML0: the prep graph has V 9, F 9 and pairs [] (the family graph: F 17); against the family graph, V, N, S_gauge and the 14 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 9 x 9 vertex block of Gam, 9 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo (C-4)) -> PASS
+PLANT-PREP-EDGE (D4ML0: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (D4ML0: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (D4ML0: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (D4ML0: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+C-PREP-GRAPH (FA: the prep graph has V 9, F 9 and pairs [] (the family graph: F 17); against the family graph, V, N, S_gauge and the 14 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 9 x 9 vertex block of Gam, 9 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo (C-4)) -> PASS
+PLANT-PREP-EDGE (FA: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (FA: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (FA: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (FA: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+PREP-REP VN stage u: 21 scalars, certified upper end / float in [1.000000 (nE4[0]), 1.016427 (nE4[2])]; nE4[0] 1.000000; nE[0] 1.000000; nE[1] 1.000000; rE_parts[t4|H4|] 1.000000; rE_parts[t5 h5/120] 1.000000; nE4[1] 1.000000; rE_parts[t4 H2^2/2] 1.000000; rE_parts[t4|H1H3|] 1.000000; rE_parts[t5|H1H4|] 1.000000; nE[2] 1.000000; rE_parts[t5|H2|h3/6] 1.000000; rE_parts[t6|H1|h5/120] 1.000000; rE_parts[t6 h3^2/72] 1.000000; rE_parts[t5|H1|h2^2/8] 1.000005; rE_parts[t4 H1^2|H2|/2] 1.000006; rE 1.000006; rE_parts[E2^3 term] 1.000009; rE_parts[t5 H1^2 h3/12] 1.000035; nE4[3] 1.000124; nE[3] 1.000124; nE4[2] 1.016427
+PREP VN N=3 stage u: V 9, F 9, radii from m3ref_v1_10_V3N.3.all_z9sym.out, theta0 0.9500000000000001; rE 2.704580e-07 nE ['1.000000e+00', '1.559277e+00', '3.386132e+00', '1.281932e+01'] nE4 ['1.000000e+00', '3.308740e+00', '4.327696e+01', '9.345283e+03']
+C-HANDOFF (m3_run_v1_8_Nu.3.json: m3_run_v1_8's producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PREP-SAME (VN stage u against m3_run_v1_8's Nu.3: 21 scalars, labels equal, every one overlapping: True; 21 bit-identical; largest relative mid difference 0.0e+00 at [rE_parts][t6|H1|h5/120]) -> PASS
+PLANT-PREP-SAME ([nE][0]: N's value moved by ten times both widths plus 1e-12 of its size) -> FIRES
+FALLBACKS 0 (MAFallback recomputes in arb, INFO)
+HANDOFF m3_run_r0b_v1_3_VNu.3.json b32fb976a86e478dbfc18731b18a1e6d42364e5f5a12ef5d78270988db9c038d
+C-HANDOFF-RT (the hand-off decodes to exactly the values written) -> PASS
+PLANT-HANDOFF (body byte tampered in memory) -> FIRES
+PLANT-HANDOFF (header script sha tampered in memory) -> FIRES
+PLANT-HANDOFF (END checksum tampered in memory) -> FIRES
+PLANT-VERDICT (a producer record whose VERDICT line extends 'VERDICT VALID' must be refused) -> FIRES
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 288.28 s
+VERDICT VALID

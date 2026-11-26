@@ -1,0 +1,12 @@
+kt_s8h_rcc_v1_5 sha256 98e013df6d65a9e425c5eda6997a8253bb05fdadb06740e74a47a995b95237d7 MODE=cert ITEM=record LIM=540 record; python 3.14.4
+C-HASH (28 pinned files: the S8 module copy, pk15's certified t export, the TRB_H rule, the M2(b) asm output, the float engine's tables and P2-13's outputs and list, the pair map, and the c3 records and asm outputs (cert)) -> PASS
+IMPORT: the S8 module copy in its cert chunk namespace c4_0000_0001 with tag r25 (a stray output in ne_cert/cert_out, not counted)
+C-SMOKE N=4: out_kt_s8h_rcc_v1_5_cert_smoke_n4.out with this script's sha256 and VERDICT VALID -> PASS
+C-FINAL N=4: out_kt_s8h_rcc_v1_5_cert_final_n4.out with this script's sha256 and VERDICT VALID -> PASS
+C-SMOKE N=3: out_kt_s8h_rcc_v1_5_cert_smoke_n3.out with this script's sha256 and VERDICT VALID -> PASS
+C-FINAL N=3: out_kt_s8h_rcc_v1_5_cert_final_n3.out with this script's sha256 and VERDICT VALID -> PASS
+C-KV-FORMAT: the record parses with the strict S4U_KV_v1 reader (s4u_kv_ref_v1, pinned in the S8 module) into exactly its 607 keys, each unique -> PASS
+PLANT-KV-DUP (the record text with its row key SMOKE_N4 written twice) -> FIRES
+RECORD ne_rc_record_cert_kt_s8h_rcc_v1_5.kv 3e1204fc7a86f1039064fb375d8849c708678ea83cee9912a52742f833e17250
+ITEM cert record cpu 0.1 s, wall 0.1 s, peak resident memory 54 MiB
+VERDICT VALID

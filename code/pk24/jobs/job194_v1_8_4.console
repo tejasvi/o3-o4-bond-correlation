@@ -1,0 +1,142 @@
+start 2026-11-21T11:05:27Z
+ast1 rc=0
+AST OK dd2728c1e2d1ace94cab7e4ca68c38f619c5859f06d070534de05119a135e755 /mnt/g2/release/root/code/pk24/tools/make_mrtemplates_v1_8_4.py
+AST OK 3d46bb90e9cec9c6712342ef3181013e1c3bf0bb8e908cbeac79a2d4d932952d /mnt/g2/release/root/code/pk24/tools/make_mrengine_v1_8_4.py
+templates rc=0
+SRC 934ce7c3b13b90aebff9c7dad7c045e45dfa74ae7a1f910e5644ebe7a3ac60c2 /mnt/g2/release/root/code/pk24/mr_engine/src/kt_mr_assembly_v1_8_3.py.in
+DST 06a66ac4fbf75f7218f78277b688c58bcf1dc6dc4c26cac46448ebf2b14f2085 /mnt/g2/release/root/code/pk24/mr_engine/src/kt_mr_assembly_v1_8_4.py.in (6 replacements)
+SRC b3d8959c7f0aff3852d10b415b35b38305b47db25115de883d4826302b75d29f /mnt/g2/release/root/code/pk24/mr_engine/src/mr_merge_v1_8_3.py.in
+DST 72020dd530b176a06dc3bc9539dfa49851333c922fc65728383c7a1e34058d87 /mnt/g2/release/root/code/pk24/mr_engine/src/mr_merge_v1_8_4.py.in (4 replacements)
+engine make rc=0
+PIN 5e3fc430d69a445487a449fd54faefdf540ba8a3298a52c7e5fd9cadb0bd76e6 pk24/midrow/g6_engine_proto_v1_2.py
+PIN b897451f512c69c3e08ac61d330f993634c105d42169dbd898dc91448554898a pk24/mr_engine/mr_core_v1_3.py
+PIN 1893558d231dcc3db1a35a73d503f05e4dc4651a28e5ecc609de22f3d59881f7 pk24/mr_engine/v17/kt_mr_v1_5_NOF1_L3.out
+SRC 06a66ac4fbf75f7218f78277b688c58bcf1dc6dc4c26cac46448ebf2b14f2085 /mnt/g2/release/root/code/pk24/mr_engine/src/kt_mr_assembly_v1_8_4.py.in
+DST abd48b2c94e0d64328ce631a21f8ab3c93c665f1de86e4abcdb190c3744df448 /mnt/g2/release/root/code/pk24/mr_engine/kt_mr_assembly_v1_8_4.py
+PIN abd48b2c94e0d64328ce631a21f8ab3c93c665f1de86e4abcdb190c3744df448 pk24/mr_engine/kt_mr_assembly_v1_8_4.py
+PIN 1893558d231dcc3db1a35a73d503f05e4dc4651a28e5ecc609de22f3d59881f7 pk24/mr_engine/v17/kt_mr_v1_5_NOF1_L3.out
+SRC 72020dd530b176a06dc3bc9539dfa49851333c922fc65728383c7a1e34058d87 /mnt/g2/release/root/code/pk24/mr_engine/src/mr_merge_v1_8_4.py.in
+DST 03110277e47b575653e573bd5135bb3c184a434b5b114a83265b53a4bbfe0138 /mnt/g2/release/root/code/pk24/mr_engine/mr_merge_v1_8_4.py
+ast2 rc=0
+AST OK 06a66ac4fbf75f7218f78277b688c58bcf1dc6dc4c26cac46448ebf2b14f2085 /mnt/g2/release/root/code/pk24/mr_engine/src/kt_mr_assembly_v1_8_4.py.in
+AST OK 72020dd530b176a06dc3bc9539dfa49851333c922fc65728383c7a1e34058d87 /mnt/g2/release/root/code/pk24/mr_engine/src/mr_merge_v1_8_4.py.in
+AST OK abd48b2c94e0d64328ce631a21f8ab3c93c665f1de86e4abcdb190c3744df448 /mnt/g2/release/root/code/pk24/mr_engine/kt_mr_assembly_v1_8_4.py
+AST OK 03110277e47b575653e573bd5135bb3c184a434b5b114a83265b53a4bbfe0138 /mnt/g2/release/root/code/pk24/mr_engine/mr_merge_v1_8_4.py
+udiff rc=0
+UDIFF OUT 17da4a1adfaddcf88d77d6aaab7d12a75fc6b089cfa560515acc7ca38add0464 /mnt/g2/release/root/code/pk24/mr_engine/out/udiff_engine_tmpl_v1_8_3_v1_8_4.txt: 22 lines added, 10 removed
+UDIFF OUT 33b752a1cd6d0f1e67e2cbb3d55f9ad3cbcc296e99ace6b568826239812ae86b /mnt/g2/release/root/code/pk24/mr_engine/out/udiff_merge_tmpl_v1_8_3_v1_8_4.txt: 14 lines added, 13 removed
+UDIFF OUT 6552ac82f2730230d4712700587909863bb9f71f8ab01b4157d6d9d1b071196f /mnt/g2/release/root/code/pk24/mr_engine/out/udiff_engine_tmpl_v1_7_1_v1_8_4.txt: 403 lines added, 90 removed
+UDIFF OUT 9dcd3c7c9d5819ffdf4a49e23023792b6cb42dae7d4350e4e1fdf8da1fedec49 /mnt/g2/release/root/code/pk24/mr_engine/out/udiff_merge_tmpl_v1_7_1_v1_8_4.txt: 85 lines added, 15 removed
+regression run v3f rc=0
+RUN_VERDICT STANDIN-VALID
+REGRESSION v1_8_4 v3f against v1_7_1: rows 1732, rows differing 0
+regression run v3s rc=0
+RUN_VERDICT STANDIN-VALID
+REGRESSION v1_8_4 v3s against v1_7_1: rows 1732, rows differing 0
+regression run v4s rc=0
+RUN_VERDICT STANDIN-VALID
+REGRESSION v1_8_4 v4s against v1_7_1: rows 1732, rows differing 0
+regression run v4f rc=0
+RUN_VERDICT STANDIN-VALID
+REGRESSION v1_8_4 v4f against v1_7_1: rows 5564, rows differing 0
+regression run a0 rc=0
+RUN_VERDICT STANDIN-VALID
+REGRESSION v1_8_4 a0 against v1_7_1: rows 1732, rows differing 0
+tail run 3:3 rc=0
+TAIL N=4 D0 3 M0 3: envelope classes 45 per piece, FAIL 0, least L 7.479874e-05 at h-1-aD0+/m2 (piece 0); m-tail at M0: FAIL 0, least lower end 2.572431e-02 (pair h-a, piece 0), q_R <= 0.6347, q_T <= 0.4886; sign condition (c): FAIL on 0 pieces; Proposition J envelope orbits: FAIL 0, least L_J 6.738028e-02 (d_R 0, piece 0)
+C-TAILMONO OK N=4: 6 pieces; s_x, s_y, tau, rho_1 and env_r below 1; the envelope at D0 = 3 encloses the end at d = 3..15, 30 and 31 (A_y, A_x, N', |P_e a|, |S a|, e; for h also the coefficient and e)
+TAIL SUP N=4: sup over d >= D0 = 3 of e-hat(d) = max(rows 3..30, envelope at 31): least 2.478407e-05, largest 2.478407e-05 over the pieces; it enters h's envelope as the coefficient xc -+ sup and the x amplitude v_x -+ t_hi sup (the h end at every d >= D0)
+TAIL N=3 D0 3 M0 3: envelope classes 45 per piece, FAIL 0, least L 5.054482e-05 at h-1-aD0+/m2 (piece 0); m-tail at M0: FAIL 0, least lower end 2.081471e-02 (pair h-a, piece 0), q_R <= 0.6171, q_T <= 0.4886; sign condition (c): FAIL on 0 pieces; Proposition J envelope orbits: FAIL 0, least L_J 4.594906e-02 (d_R 0, piece 0)
+C-TAILMONO OK N=3: 6 pieces; s_x, s_y, tau, rho_1 and env_r below 1; the envelope at D0 = 3 encloses the end at d = 3..15, 30 and 31 (A_y, A_x, N', |P_e a|, |S a|, e; for h also the coefficient and e)
+TAIL SUP N=3: sup over d >= D0 = 3 of e-hat(d) = max(rows 3..30, envelope at 31): least 1.042323e-05, largest 1.042323e-05 over the pieces; it enters h's envelope as the coefficient xc -+ sup and the x amplitude v_x -+ t_hi sup (the h end at every d >= D0)
+TAIL_VERDICT PASS (TAIL = 3 3 10)
+RUN_VERDICT STANDIN-VALID
+REGRESSION v1_8_4 tail run 3:3 rows against v1_8_1: rows 534, rows differing 0
+TAIL REGRESSION v1_8_4 3:3 against v1_8_1: rows 12, rows differing 0
+tail run 2:5 rc=0
+TAIL N=4 D0 2 M0 5: envelope classes 77 per piece, FAIL 0, least L 1.436016e-07 at h-1-aD0+/m4 (piece 0); m-tail at M0: FAIL 0, least lower end 3.385416e-02 (pair h-a, piece 0), q_R <= 0.6347, q_T <= 0.4886; sign condition (c): FAIL on 0 pieces; Proposition J envelope orbits: FAIL 0, least L_J 6.734545e-02 (d_R 0, piece 0)
+C-TAILMONO OK N=4: 6 pieces; s_x, s_y, tau, rho_1 and env_r below 1; the envelope at D0 = 2 encloses the end at d = 2..14, 30 and 31 (A_y, A_x, N', |P_e a|, |S a|, e; for h also the coefficient and e)
+TAIL SUP N=4: sup over d >= D0 = 2 of e-hat(d) = max(rows 2..30, envelope at 31): least 1.679047e-04, largest 1.679047e-04 over the pieces; it enters h's envelope as the coefficient xc -+ sup and the x amplitude v_x -+ t_hi sup (the h end at every d >= D0)
+TAIL N=3 D0 2 M0 5: envelope classes 77 per piece, FAIL 0, least L 9.661874e-08 at h-1-aD0+/m4 (piece 0); m-tail at M0: FAIL 0, least lower end 2.439998e-02 (pair h-a, piece 0), q_R <= 0.6171, q_T <= 0.4886; sign condition (c): FAIL on 0 pieces; Proposition J envelope orbits: FAIL 0, least L_J 4.593869e-02 (d_R 0, piece 0)
+C-TAILMONO OK N=3: 6 pieces; s_x, s_y, tau, rho_1 and env_r below 1; the envelope at D0 = 2 encloses the end at d = 2..14, 30 and 31 (A_y, A_x, N', |P_e a|, |S a|, e; for h also the coefficient and e)
+TAIL SUP N=3: sup over d >= D0 = 2 of e-hat(d) = max(rows 2..30, envelope at 31): least 7.051137e-05, largest 7.051137e-05 over the pieces; it enters h's envelope as the coefficient xc -+ sup and the x amplitude v_x -+ t_hi sup (the h end at every d >= D0)
+TAIL_VERDICT PASS (TAIL = 2 5 10)
+RUN_VERDICT STANDIN-VALID
+REGRESSION v1_8_4 tail run 2:5 rows against v1_8_1: rows 534, rows differing 0
+TAIL REGRESSION v1_8_4 2:5 against v1_8_1: rows 12, rows differing 0
+plant OPN rc=0
+PLANT OPN: FIRED on its own failure G-POS (classes failing at G-POS 75, at G-DELTA 0, on the margin alone 0; FAIL rows 75, gate lines 0)
+plant TAU2 rc=0
+PLANT TAU2: FIRED on its own failure MARGIN (classes failing at G-POS 0, at G-DELTA 0, on the margin alone 174; FAIL rows 174, gate lines 0)
+plant SIGN rc=0
+PLANT SIGN: FIRED on its own failure MARGIN (classes failing at G-POS 0, at G-DELTA 0, on the margin alone 54; FAIL rows 54, gate lines 0)
+plant T2 rc=0
+PLANT T2: FIRED on its own failure MARGIN (classes failing at G-POS 0, at G-DELTA 0, on the margin alone 2; FAIL rows 2, gate lines 0)
+plant DELTA rc=0
+PLANT DELTA: FIRED on its own failure G-DELTA (classes failing at G-POS 248, at G-DELTA 112, on the margin alone 83; FAIL rows 381, gate lines 0)
+plant PIN rc=0
+PLANT PIN: FIRED
+plant COUNT rc=0
+PLANT COUNT: FIRED
+plant UNIF rc=0
+PLANT UNIF: FIRED
+plant DUPKEY rc=0
+PLANT DUPKEY: FIRED
+plant PROD rc=0
+PLANT PROD: FIRED
+plant PRODOK rc=0
+PLANT PRODOK: FIRED (the owner rule passed on 5 of 5 records with owner PRODUCER lines; FAIL rows 0, gate lines 0; a positive control)
+plant XSIGN rc=0
+PLANT XSIGN: FIRED on its own failure MARGIN (classes failing at G-POS 0, at G-DELTA 0, on the margin alone 6; FAIL rows 6, gate lines 0)
+plant ENVR rc=0
+PLANT ENVR: FIRED
+plant FACTX rc=0
+PLANT FACTX: FIRED
+plant CSTAT rc=0
+PLANT CSTAT: FIRED
+plant ORIENT rc=0
+PLANT ORIENT: FIRED
+plant XORIENT rc=0
+PLANT XORIENT: FIRED
+plant YORIENT rc=0
+PLANT YORIENT: FIRED
+plant IORIENT rc=0
+PLANT IORIENT: FIRED
+plant OCHK rc=0
+PLANT OCHK: FIRED
+plant XDEF rc=0
+PLANT XDEF: FIRED
+plant FLOOR rc=0
+PLANT FLOOR: FIRED
+plant TAILQ rc=0
+PLANT TAILQ: FIRED on its own failure TAIL-MTAIL (classes failing at G-POS 0, at G-DELTA 0, on the margin alone 0; FAIL rows 0, gate lines 0)
+plant TAILSIGN rc=0
+PLANT TAILSIGN: FIRED on its own failure TAIL-SIGN (classes failing at G-POS 0, at G-DELTA 0, on the margin alone 0; FAIL rows 0, gate lines 0)
+plant TAILENV rc=0
+PLANT TAILENV: FIRED
+negative 1 (a v4 set in v1_8_1's layout) rc=8 (8 expected)
+STOP G-PIN: MR_SPECTRAL has no valid ORIENT_CHECK line (the rows 4335, 4340): ""
+negative 2 (a v3 set without ORIENT_CHECK) rc=8 (8 expected)
+STOP G-PIN: MR_SPECTRAL has no valid ORIENT_CHECK line (the rows 4335, 4340): ""
+negative 3 (TAIL on a split set) rc=8 (8 expected)
+STOP G-TAIL: the tail section needs the factored mode (MR_INPUT_KV_v4 with a factored MR_CRUDEX)
+negative 4 (NMAX 8 below n0 10) rc=8 (8 expected)
+STOP G-TAIL: NMAX 8 is below n0 = 2 D0 + M0 + 1 = 10, so the finite check does not reach n0
+route (v) run rc=0
+ROUTE V ON: MR_EXACT carries Pe_hi (the exact end's unwindowed flip-even |P_e a|), and the m = 1 rest takes the least of |P_e a_L| N'_R and 
+RUN_VERDICT STANDIN-VALID
+REGRESSION v1_8_4 route (v) against the diagnostic engine: rows 1732, rows differing 0
+v4f with Pe_hi rc=0
+RUN_VERDICT STANDIN-VALID
+ROUTE V ON THE V4 STAND-INS: rows 5564, H changed on 60 (m = 1: 60), H lower on 0
+floor run rc=9 (tail FAIL on the floor pieces expected, rc 9)
+G-FACTX OK: 72 x-coefficient rows inside their amplitudes with their floors (power 1) or equal to them (power 0); 2 rows with a Way B floor (last piece, h); one envelope per piece with 0 < env_r < 1
+FACTORED SIGN FALLBACK: 276 class-piece evaluations had no certified sign for the product of the two x coefficients, so X took v1_6's form there (the v1_7 N-2)
+TAIL N=4 D0 2 M0 5: envelope classes 77 per piece, FAIL 0, least L 1.055148e-07 at hD0+-a0/m4 (piece 5); m-tail at M0: FAIL 0, least lower end 2.230601e-02 (pair h-a, piece 0), q_R <= 0.6347, q_T <= 0.4886; sign condition (c): FAIL on 1 pieces; Proposition J envelope orbits: FAIL 0, least L_J 6.695998e-02 (d_R 0, piece 0)
+TAIL N=3 D0 2 M0 5: envelope classes 77 per piece, FAIL 0, least L 8.667310e-08 at hD0+-a0/m4 (piece 5); m-tail at M0: FAIL 0, least lower end 2.003058e-02 (pair h-a, piece 0), q_R <= 0.6171, q_T <= 0.4886; sign condition (c): FAIL on 1 pieces; Proposition J envelope orbits: FAIL 0, least L_J 4.571841e-02 (d_R 0, piece 0)
+TAIL_VERDICT FAIL (TAIL = 2 5 10)
+RUN_VERDICT INVALID
+FLOOR TAIL ROW N4_P0005 sign FAIL envfail 0 verdict FAIL
+FLOOR TAIL ROW N3_P0005 sign FAIL envfail 0 verdict FAIL
+REGRESSION floor set rows against the zero-floor rows of up_v4f (n <= 10): rows 534, rows differing 220
+end 2026-11-21T11:12:01Z

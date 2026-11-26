@@ -1,0 +1,25 @@
+m2b_cert_v1_1 sha256 4b42e4f5b6c358b56f8c6d92779d4745e66655110963bad2478665c6a7e97ebd ITEM=tB.n3 LIM=300 (RLIMIT_CPU soft 300, hard 305)
+C-HASH PASS (2 engine files, 2 trial-vacuum files, 2 kbar files, 5 validation records of the M-a layer)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+FORMAT M2B_PIECE_v1 CERTIFIED
+KERNEL arbeng_c2b_v2.py fb8cd1b5162930b1e9ff83c35fb652575a9f2ff1649f733c5d45bdf7f7762993 ctx.prec 512
+LAYER arbeng_ma_v1_3.py 075e35864a272e29014d2259e0bfc37eaf7a1d0b5a9a101ae78ee9d4ed8f6a15 prec 512 validation 5ccbb6d006f5365f219eb6221b7e66b76e7e7799e977148df94f34b0c3d86216 a61d893e6424b9ea524d944e40f625c934de04a2faeaa741e3fd333e97f48817 d613fe804a030be397fefa46ed1424063f794400b7d9618e12db8af046e09d93 2ad13ec3cac14ef919f5e34fa19664f70eece05c3c3f208dcfec36a93cdd4473 a8a5e8d020d2d1e1127c3ee8f400496011ddbd022af83180025ac3185ba22f95
+C-IMPORT N=3: arbeng_c2b_v2 from /mnt/g2/release/root/code/pk02/arbeng_c2b_v2.py, arbeng_ma_v1_3 from /mnt/g2/release/root/code/pk02/arbeng_ma_v1_3.py -> PASS
+BOUND N=3: a_m 6135428905104631294035961535529/20282409603651670423947251286016 a_e 29206669829258403248756220714025/81129638414606681695789005144064 a_pp 1163787714069855263078269343481/1267650600228229401496703205376 RHO_PP_HEX 0x1.ea93ad4bd8e58p-1 (a_pp >= sin^2(asin rho_m + delta) = 0.91806662960623806742) -> PASS
+C-TILT (a) N=3: c_m 0.59545911617622549 >= -log(1 - a)/(2a) = 0.595459116176, c_e 0.61984319809502719 >= -log(1 - a)/(2a) = 0.619843198095, c_pp 1.3625639128541667 >= -log(1 - a)/(2a) = 1.36256391285; Chernoff lambdas 0.3 0.45 0.6 0.45 > 0, tailX/ann lambdas >= 0.3 (LAW v1) -> PASS
+PLANT-TILT N=3: c_m (1 - 1e-9) passes the rate test: False; a lambda = 1e3 tilt certified positive definite: False -> FIRES
+HANDOFF N=3 vac tB: not written (a gate failed or the piece is incomplete)
+PLANT-NOWRITE N=3: the guarded writer with a failed gate opened 0 files -> FIRES
+STAGE-CPU N=3 tB: tail polynomials ([1, 26, 301, 2054, 9223] terms, degree 8, Q degree 2) done at cpu 0.2 s
+STAGE-CPU N=3 tB: tail table B0 lambda 0.45 (degree 16; 208 rank-deficient subsets as exact zeros): 1.613537814e-12 +- 2.8e-159 (rel 1.7e-147) done at cpu 41.2 s
+C-SING N=3 B0 lam 0.45: 303 subsets kept (full rank; det balls identical to direct), 208 dropped (rank-deficient; det balls contain 0, largest radius 5.76e-152), all 511 allowed subsets covered; degree-4 tables with and without the rule overlap in 715 moments -> PASS
+PLANT-SING N=3: the rule with X0's column of W9 zeroed stops -> FIRES
+STAGE-CPU N=3 tB: tail table B1 lambda 0.45 (degree 16; 208 rank-deficient subsets as exact zeros): 1.269147554e-12 +- 6.5e-159 (rel 5.1e-147) done at cpu 82.9 s
+C-SING N=3 B1 lam 0.45: 303 subsets kept (full rank; det balls identical to direct), 208 dropped (rank-deficient; det balls contain 0, largest radius 5.14e-152), all 511 allowed subsets covered; degree-4 tables with and without the rule overlap in 715 moments -> PASS
+STAGE-CPU N=3 tB: tail table B2 lambda 0.45 (degree 16; 208 rank-deficient subsets as exact zeros): 1.613537814e-12 +- 3.2e-159 (rel 2.0e-147) done at cpu 125.4 s
+C-SING N=3 B2 lam 0.45: 303 subsets kept (full rank; det balls identical to direct), 208 dropped (rank-deficient; det balls contain 0, largest radius 6.03e-152), all 511 allowed subsets covered; degree-4 tables with and without the rule overlap in 715 moments -> PASS
+TAIL N=3 B lambda 0.45: sum over the three tables 4.496223182e-12 +- 1.2e-158 (rel 2.8e-147), root 2.120429952e-06 +- 2.9e-153 (rel 1.4e-147)
+C-TILT (b) N=3: 3 positive-definiteness tests (tilt B0 lam 0.45, tilt B1 lam 0.45, tilt B2 lam 0.45), all certified: True; smallest leading minor lower end 8.084e+00 -> PASS
+HANDOFF N=3 vac tB: hand_m2b_cert_v1_1_tB.n3.txt sha256 313a303ae6e0be6780cf184049735294da8ea9e31353d83592186b8a18b1f119 (878 bytes, 5 rows; cpu 125.5 s)
+ITEM tB.n3 cpu 125.5 s, peak resident memory 983 MiB
+VERDICT VALID

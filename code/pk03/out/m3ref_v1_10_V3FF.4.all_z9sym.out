@@ -1,0 +1,36 @@
+m3ref_v1_10 item V3FF.4.all LIM 540; python 3.14.4
+C-COPY (12 pinned copies in /mnt/g2/release/root/code/pk03/pin) -> PASS
+PLANT-COPY (riglap2 bytes plus one byte) -> FIRES
+C-SRC (lapl2 l.63-79, vacmod2 l.8-9 and l.12-13, endw l.16-19, vacrig11f l.166-170, 173-175, 178-186, 196-197, 240-244, 247, 250-287, riglap5s l.22-34 (C-SRC-H) against this file; source shas) -> PASS
+PLANT-SRC (strip_graph text with one character changed) -> FIRES
+C-HASH (15 pk10 inputs and J = 170 records, 4 trial files and 3 S8 lists in pk11/out, 6 m3ref_v1_2 records) -> PASS
+PLANT-HASH (vacres_K3_N4 against a sha with its last digit changed) -> FIRES
+versions: numpy 2.5.3, scipy 1.18.1; engines from /mnt/g2/release/root/code/pk03/pin
+PLANT-NPGUARD (riglap5b's guarded NPoly product is installed and refuses x^3 times x^2 in base 4) -> FIRES
+TRIAL z9sym
+inputs: N = 4, kbar 0.8271394273441662 (m2_N4_J170.json.b), trial set ts_N4_J170_D_S_z9sym_v1.json, vacres_K3_N4_sym_v1.json
+family V3FF N=4: V 6, F 8, pairs [(0, 1), (3, 4)], NPOLY_B 16, qcap 6, 3 keys: z, wXw, wXwX
+STAGE-CPU graph 0.00 s
+C-GRAPH (the column specs of D (v1_1, v2), N, E2, FF and L (v2) give strip_graph(2), strip_graph(3), Emix, Efree and strip_graph(4) exactly) -> PASS
+PLANT-GRAPH (D with its T-B coupling times 1 + 1e-12) -> FIRES
+STAGE-CPU prep J=300 1.94 s (ok True)
+PROFILE prep J=300 {"AllMom2.E2": [30, 1.49], "AllMom2.init": [10, 0.29], "NPoly.mul": [207, 0.01], "pmul": [179, 0.12]}
+C-THETA theta0 0.9550000000000001 reproduces farbase 1.9680804845390194e-54: relative 0.0e+00 -> PASS
+PLANT-THETA (the base times 1 + 1e-9) -> FIRES
+PREPJSON {"family": "V3FF", "N": 4, "J": 300.0, "rho": [0.3506607519568778, 0.26387426860084257, 0.3506607519568778, 0.3506607519568778, 0.2638742686008426, 0.3506607519568778], "a_v": [0.12296296296296297, 0.06962962962962961, 0.12296296296296297, 0.12296296296296297, 0.06962962962962964, 0.12296296296296297], "ap": 0.48999999999999994, "ok": true, "tree": [1.0, 1.0, 1.0, 1.0, 1.0], "theta0": 0.9550000000000001, "logmain": -47.96940062479845, "cpu_prep": 1.94, "rE": 5.112993517462997e-07, "rE_parts": {"t4|H4|": 2.4784473954373125e-08, "t5 h5/120": 1.0599673938236011e-08, "t4 H2^2/2": 3.687079326681553e-08, "t6 h3^2/72": 1.1309916141796406e-09, "t4|H1H3|": 8.666608323855849e-08, "t5|H1H4|": 2.6900648434847256e-09, "t6|H1|h5/120": 1.4714488773461925e-09, "t5|H2|h3/6": 1.237083007383004e-08, "t4 H1^2|H2|/2": 2.16126698363199e-07, "t5 H1^2 h3/12": 4.0537171683666814e-08, "t5|H1|h2^2/8": 7.553586634671455e-08, "E2^3 term": 2.5152555458955593e-09}, "nE": [1.0, 1.6505793034680394, 4.86858367790712, 22.476835952342363], "nE4": [1.0, 4.237655672859853, 59.579391265925665, 16385.61340925758], "nC8": 0.057962348473525965, "nC6": 0.029107879045128862, "Nc": 1.0126404234443462, "Np": 1.0164182184864043, "Pout": 1.8415664917034417e-16, "Pout_p": 2.0530162556951466e-16, "farbase": 1.9680804845390194e-54}
+KEYJSON {"family": "V3FF", "N": 4, "J": 300.0, "key": "z", "index": 0, "ak": [1.0, 0.041666666666667185, -0.08374305555555495, -0.12961115354938002], "B": {"rem": 5.415884444595756e-07, "tail": 1.3779341394851926e-08, "ann": 1.4563596401048835e-08, "far": 1.9680804845390194e-54}, "err": 5.699313822554763e-07, "cpu": 0.01, "refs": [], "rem_split": {"overflow": 0.0, "F.R_E": 5.11e-07, "rho4": 3.03e-08, "rho4_C8": 4.76e-07, "rho4_C6": 3.03e-08, "R_F": 0.0}}
+STAGE-CPU key z J=300 0.01 s
+PROFILE after z J=300 {"AllMom2.E2": [36, 1.49], "AllMom2.init": [13, 0.3], "NPoly.mul": [207, 0.01], "pmul": [179, 0.12]}
+KEYJSON {"family": "V3FF", "N": 4, "J": 300.0, "key": "wXw", "index": 1, "ak": [1.0999999999999999, 0.028611111111111254, -0.1335090277777804, -0.21275415702159317], "B": {"rem": 7.993668696548873e-07, "tail": 2.042318898739898e-08, "ann": 2.0767769628477572e-08, "far": 1.1808482907234117e-51}, "err": 8.405578282707639e-07, "cpu": 0.01, "refs": [], "rem_split": {"overflow": 4.86e-09, "F.R_E": 7.27e-07, "rho4": 6.23e-08, "rho4_C8": 6.79e-07, "rho4_C6": 6.23e-08, "R_F": 5.09e-09}}
+STAGE-CPU key wXw J=300 0.01 s
+PROFILE after wXw J=300 {"AllMom2.E": [1, 0.0], "AllMom2.E2": [56, 1.49], "AllMom2.init": [25, 0.31], "NPoly.mul": [223, 0.01], "pmul": [205, 0.12]}
+KEYJSON {"family": "V3FF", "N": 4, "J": 300.0, "key": "wXwX", "index": 2, "ak": [1.3166666666666664, 0.04274999999999973, -0.2001205787037157, -0.3588315725951441], "B": {"rem": 1.8693294861756177e-06, "tail": 4.567666334939808e-08, "ann": 6.07370960730961e-08, "far": 7.08508974434047e-49}, "err": 1.9757432455981116e-06, "cpu": 0.03, "refs": [], "rem_split": {"overflow": 1.23e-07, "F.R_E": 1.22e-06, "rho4": 3.34e-07, "rho4_C8": 1.14e-06, "rho4_C6": 3.34e-07, "R_F": 1.97e-07}}
+STAGE-CPU key wXwX J=300 0.03 s
+PROFILE after wXwX J=300 {"AllMom2.E": [11, 0.0], "AllMom2.E2": [87, 1.5], "AllMom2.init": [55, 0.33], "NPoly.mul": [239, 0.01], "pmul": [283, 0.12]}
+keys done 3 of range 0-2
+C-REPOLD-REF (m3ref_v1_3_S8FF at N = 4: sha256 pinned, VERDICT lines exactly [VERDICT VALID]; TRIAL z9sym) -> PASS
+C-REPOLD (3 old keys of this range against m3ref_v1_3_S8FF: largest max|diff| / max|a_k| 0.00e+00 at z) -> PASS
+PLANT-REPOLD (z: the largest reference coefficient times 1 + 1e-6) -> FIRES
+V3-INFO V3FF N=4: 3 keys done (3 old, 0 new, 0 parity zeros); CPU per key: max 0.03 s at wXwX, mean 0.02 s, total 0.1 s
+STAGE-CPU total 2.16 s
+VERDICT VALID

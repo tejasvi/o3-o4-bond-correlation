@@ -1,0 +1,70 @@
+start 2026-11-21T15:18:54Z
+stage rc=0
+STAGE MR_SPECTRAL 0e4d817729c6f735e5b4b3bd05ce97d195f3a0840bddd99d1654abc40d0d593a from pk25/mr/v4/MR_SPECTRAL.kv | PRODUCER pk25 kt_s9h_asm_v1_8 | CERTIFIED/VALID | MR_INPUT_KV_v4
+STAGE MR_INSERT 54691bc11e5c8a00e427d84938791ecdb79aad09ae0a2ef7553d9152b9ac490e from pk25/mr/v4b/MR_INSERT.kv | PRODUCER pk25 kt_s9h_ins_v2_4 | CERTIFIED/VALID | MR_INPUT_KV_v4
+STAGE MR_EXACT 98e4e01ea47b5fadc01766977601a7bc285d773204e6b749a30cf224b8e27a54 from pk22/midrow/g4/mrc/out/cert/MR_EXACT_CERT_v1_9_C.kv | PRODUCER pk22 mrx_cert_v1_9 CERT_C | CERTIFIED/VALID | MR_INPUT_KV_v4
+STAGE MR_CRUDEX eb4d751158ed41716e22f374f0b389dbf98b334855359774413d7998629d062b from pk25/mr/v4/MR_CRUDEX.kv | PRODUCER pk25 kt_s9h_crudex_v1 | CERTIFIED/VALID | MR_INPUT_KV_v4
+STAGE MR_JOINT 80bc8d81739118bd2b20c231c01b8eb33690e6c28d57b702647421d180e7226b from pk22/midrow/g4/mrc/out/cert/MR_JOINT_CERT_v1.kv | PRODUCER pk22 mrj_cert_v1 CERT | CERTIFIED/VALID | MR_INPUT_KV_v4
+PINS 599bcbc67b4961e20344889637ada6f8899745ab32b2814d75664352d5644e2e pk24/mr_engine/cert_m1_v4b_1/PINS.txt
+v4b check rc=0
+V4B PIN mr/v4 MR_INSERT 21e888435b2597b035c13d39bc14e0cc50dd7c8793e38a43b44efc032f4bb9db (pin 21e88843 OK); supplied 54691bc11e5c8a00e427d84938791ecdb79aad09ae0a2ef7553d9152b9ac490e /mnt/g2/release/root/code/pk24/mr_engine/cert_m1_v4b_1/MR_INSERT.kv
+V4B STRUCT FIELDS identical; rows v4 5241, supplied 5241, missing 0, extra 0; OK
+V4B C11 rows 1747 (h rows; 10 fields each): 0 differ
+V4B CHI rows 3494 (h/t rows; 1 fields each): 0 differ
+V4B NONPEV rows 5241 (h/t/a rows; 21 fields each): 0 differ
+V4B PEV Pev_hi changed on 3494 rows (h 1747, t 1747); above v4 on 0 rows (INFO)
+V4B PEV vp_hi changed on 3494 rows (h 1747, t 1747); above v4 on 0 rows (INFO)
+V4B HEADER keys whose lines differ (INFO; G-PIN judges them): CODE, PEV_ROUTE, PRODUCER, SOURCE
+V4B OK: the supplied MR_INSERT is mr/v4 with only Pev_hi and vp_hi changed
+PEV LEVELS N=4: h Pev_hi [0.535309 at N4_P0115_h, 0.535575 at N4_P0116_h], t Pev_hi [0.408631 at N4_P0115_t, 0.408986 at N4_P0116_t]
+PEV LEVELS N=3: h Pev_hi [0.437326 at N3_P0029_h, 0.437602 at N3_P0903_h], t Pev_hi [0.333935 at N3_P0024_t, 0.334266 at N3_P0903_t]
+PEV GATE (main row 4520: t <= 0.48 on every piece): PASS
+engine NMAX 11 rc=0
+C-CORE OK: mr_core_v1_3 b897451f512c69c3e08ac61d330f993634c105d42169dbd898dc91448554898a; 7 blocks and 3 constants equal to the prototype 5e3fc430d69a445487a449fd54faefdf540ba8a3298a52c7e5fd9cadb0bd76e6
+C-IV OK: 3000 operations (add, sub, mul, inv, sqrt; negation, amax, hull, pow, division with 50-digit endpoints) enclose or equal the exact rational results
+G-PIN MR_SPECTRAL.kv 0e4d817729c6f735e5b4b3bd05ce97d195f3a0840bddd99d1654abc40d0d593a OK (PRODUCER pk25, owner rule)
+G-PIN MR_INSERT.kv 54691bc11e5c8a00e427d84938791ecdb79aad09ae0a2ef7553d9152b9ac490e OK (PRODUCER pk25, owner rule)
+G-PIN MR_EXACT.kv 98e4e01ea47b5fadc01766977601a7bc285d773204e6b749a30cf224b8e27a54 OK (PRODUCER pk22, owner rule)
+G-PIN MR_CRUDEX.kv eb4d751158ed41716e22f374f0b389dbf98b334855359774413d7998629d062b OK (PRODUCER pk25, owner rule) (CRUDEX_FORM split)
+G-PIN MR_JOINT.kv 80bc8d81739118bd2b20c231c01b8eb33690e6c28d57b702647421d180e7226b OK (PRODUCER pk22, owner rule)
+G-FACTX OK: 12229 x-coefficient rows inside their amplitudes with their floors (power 1) or equal to them (power 0); 6 rows with a Way B floor (last piece, h)
+C-ORIENT OK: c_x(-1) > 0 and c_y(-1) > 0 on every MR_SPECTRAL row; t and a v_x > 0, h, t and a v_y > 0 on every MR_INSERT row; 6988 exact ends checked against the sign of their bulk x amplitude; ORIENT_CHECK on MR_SPECTR
+G-UNIF OK: N = 4 843 pieces, N = 3 904 pieces; every record on the same grid with every row; last piece to inf; decimal fields finite, lo <= hi, single upper bounds >= 0, the spectral data positive
+XMODE UNFACTORED: the rows of v1_6 (MR_INPUT_KV_v4, CRUDEX_FORM split)
+ROUTE V ON: MR_EXACT carries Pe_hi (the exact end's unwindowed flip-even |P_e a|), and the m = 1 rest takes the least of |P_e a_L| N'_R and N'_L |P_e a_R| over the ends that give |P_e a| (the row 4376)
+G-FLOAT INFO N4 n6: least headroom 1.1929, reference 1.6360 (differs)
+G-FLOAT INFO N4 n7: least headroom 1.2945, reference 1.9610 (differs)
+G-FLOAT INFO N4 n8: least headroom 1.3094, reference 2.2430 (differs)
+G-FLOAT INFO N4 n9: least headroom 1.3116, reference 2.3880 (differs)
+G-FLOAT INFO N4 n10: least headroom 1.3119, reference 2.3880 (differs)
+G-FLOAT INFO N4 n11: least headroom 1.2999, reference 2.3880 (differs)
+G-FLOAT INFO N3 n6: least headroom 1.9457, reference 3.1070 (differs)
+G-FLOAT INFO N3 n7: least headroom 2.0445, reference 3.6370 (differs)
+G-FLOAT INFO N3 n8: least headroom 2.0584, reference 4.0640 (differs)
+G-FLOAT INFO N3 n9: least headroom 2.0604, reference 4.1460 (differs)
+G-FLOAT INFO N3 n10: least headroom 2.0607, reference 4.1470 (differs)
+G-FLOAT INFO N3 n11: least headroom 2.0607, reference 4.1470 (differs)
+RUN_VERDICT VALID
+CERT M1 NMAX 11: rows 754, FAIL 0
+  N4 lowest H #1: N4_n06_h2-bb3 (chan-exact d 0 dp 1 m 1 piece 61, H 1.1929)
+  N4 lowest H #2: N4_n07_h2-bb3 (chan-exact d 0 dp 2 m 1 piece 61, H 1.29446)
+  N4 lowest H #3: N4_n11_h1-a11 (chan-exact d -1 dp -1 m 9 piece 903, H 1.29989)
+  N3 lowest H #1: N3_n06_h2-bb3 (chan-exact d 0 dp 1 m 1 piece 0, H 1.94572)
+  N3 lowest H #2: N3_n07_h2-bb3 (chan-exact d 0 dp 2 m 1 piece 0, H 2.0445)
+  N3 lowest H #3: N3_n08_h2-bb3 (chan-exact d 0 dp 3 m 1 piece 0, H 2.05842)
+  N=4 n=6: same-bond: 2, least H_J 21.94; FAIL 0
+  N=4 n=7: same-bond: 2, least H_J 22.82; FAIL 0
+  N=4 n=8: same-bond: 3, least H_J 22.95; FAIL 0
+  N=4 n=9: same-bond: 3, least H_J 22.97; FAIL 0
+  N=4 n=10: same-bond: 4, least H_J 22.97; FAIL 0
+  N=4 n=11: same-bond: 4, least H_J 22.97; FAIL 0
+  N=3 n=6: same-bond: 2, least H_J 37.15; FAIL 0
+  N=3 n=7: same-bond: 2, least H_J 38.42; FAIL 0
+  N=3 n=8: same-bond: 3, least H_J 38.61; FAIL 0
+  N=3 n=9: same-bond: 3, least H_J 38.64; FAIL 0
+  N=3 n=10: same-bond: 4, least H_J 38.64; FAIL 0
+  N=3 n=11: same-bond: 4, least H_J 38.64; FAIL 0
+MODE = CERTIFIED
+RUN_VERDICT = VALID
+NMAX_M1 = 11 (row 4505)
+end 2026-11-21T15:20:10Z

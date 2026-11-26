@@ -1,0 +1,39 @@
+--- /mnt/g2/release/root/code/pk23/pev/m3_reader_cw_check_v1.py	2026-11-21 16:14:32.703744934 +0000
++++ /mnt/g2/release/root/code/pk23/pev/m3_reader_cw_check_v1_1.py	2026-11-21 16:15:15.722730197 +0000
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""m3_reader_cw_check_v1.py -- pk23 (code/pk23/pev/): the check job of the reader fork m3_reader_cw_v1 (the P0_LOG rows 4589 and 4610),
++"""m3_reader_cw_check_v1_1.py -- pk23 (code/pk23/pev/): the check job of the reader fork m3_reader_cw_v1 (the P0_LOG rows 4589 and 4610),
+ on the pattern of pk23's m3_reader_hl_check_v1.py. For N = 4 and 3: the C_w record m3_cw_LC_N<N>_J300_cw.json through the fork's load, bound
+ to its asm output m3_run_v1_9_3_asmc.<N>.out, and the law certificate m3_lawcert_cw_v1_N<N>.json through the fork's load_lawcert, bound to its
+ job's output m3_lawcert_cw_v1_<N>.out (C-LOAD-LAWCERT: producer m3_lawcert_cw_v1, 4 entries, every law's ak, ak_rad, err and parts equal its
+@@ -7,7 +7,8 @@
+ and record sets. The Pev records still load through the fork (C-PARENT-RECORDS: the hl certificate of both N). Plants (PLANT-READER-CW), each
+ must be refused: the producer sha256 with its last digit changed on the job's first line, the other N on the first line, the hl producer with
+ its own sha256 for the cw record, the record passed as family L, and a law changed with the RECORD line re-hashed. PLANT-PARENT: the parent
+-m3_reader_hl_v1 must refuse the cw certificate. Reads only; prints this output. Usage: m3_reader_cw_check_v1.py"""
++m3_reader_hl_v1 must refuse the cw certificate. Reads only; prints this output. Usage: m3_reader_cw_check_v1_1.py
++v1_1: m3_reader_cw_check_v1.py with the LAW lines printed in exponent form (v1 cut the strings and dropped the exponents); nothing else changes."""
+ import copy, hashlib, importlib.util, json, os, sys
+ CODEDIR = '/mnt/g2/release/root/code'
+ HLD = CODEDIR + '/pk23/pev'
+@@ -57,7 +58,7 @@
+ 
+ RDR = load_as('m3_reader_cw_v1', os.path.join(HLD, 'm3_reader_cw_v1.py'))
+ PAR = load_as('m3_reader_hl_v1', os.path.join(HLD, 'm3_reader_hl_v1.py'))
+-out('m3_reader_cw_check_v1: fork %s, parent %s, producer %s' % (sha(os.path.join(HLD, 'm3_reader_cw_v1.py'))[:16],
++out('m3_reader_cw_check_v1_1: fork %s, parent %s, producer %s' % (sha(os.path.join(HLD, 'm3_reader_cw_v1.py'))[:16],
+                                                                sha(os.path.join(HLD, 'm3_reader_hl_v1.py'))[:16],
+                                                                sha(os.path.join(HLD, 'm3_lawcert_cw_v1.py'))[:16]))
+ lc = sha(os.path.join(HLD, 'm3_lawcert_cw_v1.py'))
+@@ -92,8 +93,8 @@
+              N, os.path.basename(cpath), os.path.basename(opath), cert['producer'], len(ents), ', '.join(sorted(ents))))
+     for k in KEYS:
+         e = ents['LC:' + k]
+-        out('LAW N=%d LC:%s: ak %s ak_rad %s parts %s far_rate %s' % (N, k, [str(float(x))[:14] for x in e['ak']], [str(float(x))[:10] for x in e['ak_rad']],
+-                                                                    dict((p, str(float(v))[:12]) for p, v in e['parts'].items()), str(float(e['laws']['far_rate']))[:10]))
++        out('LAW N=%d LC:%s: ak %s ak_rad %s parts %s far_rate %s' % (N, k, ['%.12e' % float(x) for x in e['ak']], ['%.3e' % float(x) for x in e['ak_rad']],
++                                                                    dict((p, '%.3e' % float(v)) for p, v in e['parts'].items()), '%.8f' % float(e['laws']['far_rate'])))
+     hasm = os.path.join(OUTD, 'm3_run_v1_9_3_asm.%d.out' % N)
+     hrecs = dict((f, RDR.load(os.path.join(OUTD, 'm3_hl_%s_N%d_J300_hl.json' % (f, N)), hasm, J_REF, N)) for f in ('L', 'LH', 'LT'))
+     hcert = RDR.load_lawcert(os.path.join(OUTD, 'm3_lawcert_hl_v1_1_N%d.json' % N), os.path.join(OUTD, 'm3_lawcert_hl_v1_1_%d.out' % N), J_REF, N, hrecs)

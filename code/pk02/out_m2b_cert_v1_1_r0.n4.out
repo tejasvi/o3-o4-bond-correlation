@@ -1,0 +1,19 @@
+m2b_cert_v1_1 sha256 4b42e4f5b6c358b56f8c6d92779d4745e66655110963bad2478665c6a7e97ebd ITEM=r0.n4 LIM=120 (RLIMIT_CPU soft 120, hard 125)
+C-HASH PASS (2 engine files, 2 trial-vacuum files, 2 kbar files, 5 validation records of the M-a layer)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+FORMAT M2B_PIECE_v1 CERTIFIED
+KERNEL arbeng_c2b_v2.py fb8cd1b5162930b1e9ff83c35fb652575a9f2ff1649f733c5d45bdf7f7762993 ctx.prec 512
+LAYER arbeng_ma_v1_3.py 075e35864a272e29014d2259e0bfc37eaf7a1d0b5a9a101ae78ee9d4ed8f6a15 prec 512 validation 5ccbb6d006f5365f219eb6221b7e66b76e7e7799e977148df94f34b0c3d86216 a61d893e6424b9ea524d944e40f625c934de04a2faeaa741e3fd333e97f48817 d613fe804a030be397fefa46ed1424063f794400b7d9618e12db8af046e09d93 2ad13ec3cac14ef919f5e34fa19664f70eece05c3c3f208dcfec36a93cdd4473 a8a5e8d020d2d1e1127c3ee8f400496011ddbd022af83180025ac3185ba22f95
+C-IMPORT N=4: arbeng_c2b_v2 from /mnt/g2/release/root/code/pk02/arbeng_c2b_v2.py, arbeng_ma_v1_3 from /mnt/g2/release/root/code/pk02/arbeng_ma_v1_3.py -> PASS
+BOUND N=4: a_m 6135428905104631294035961535529/20282409603651670423947251286016 a_e 29206669829258403248756220714025/81129638414606681695789005144064 a_pp 1163787714069855263078269343481/1267650600228229401496703205376 RHO_PP_HEX 0x1.ea93ad4bd8e58p-1 (a_pp >= sin^2(asin rho_m + delta) = 0.91806662960623806742) -> PASS
+C-TILT (a) N=4: c_m 0.59545911617622549 >= -log(1 - a)/(2a) = 0.595459116176, c_e 0.61984319809502719 >= -log(1 - a)/(2a) = 0.619843198095, c_pp 1.3625639128541667 >= -log(1 - a)/(2a) = 1.36256391285; Chernoff lambdas 0.3 0.45 0.6 0.45 > 0, tailX/ann lambdas >= 0.3 (LAW v1) -> PASS
+PLANT-TILT N=4: c_m (1 - 1e-9) passes the rate test: False; a lambda = 1e3 tilt certified positive definite: False -> FIRES
+HANDOFF N=4 vac r0: not written (a gate failed or the piece is incomplete)
+PLANT-NOWRITE N=4: the guarded writer with a failed gate opened 0 files -> FIRES
+STAGE-CPU N=4 r0: R0 at J1 (2188 terms) done at cpu 4.5 s
+STAGE-CPU N=4 r0: R0 weighted at J0 (2188 terms) done at cpu 27.0 s
+R0-V N=4: R0 4.285347802e-06 +- 5.4e-151 (rel 1.3e-145) | R0W_dl 6.218626546e-06 +- 5.2e-150 (rel 8.4e-145) | R0W_wt 7.486550663e-06 +- 7.2e-150 (rel 9.6e-145)
+C-TILT (b) N=4: 2 positive-definiteness tests (G1 J0, G1 J1), all certified: True; smallest leading minor lower end 8.480e+00 -> PASS
+HANDOFF N=4 vac r0: hand_m2b_cert_v1_1_r0.n4.txt sha256 043013b6e6bf4b73b868dca5827cdcab72f86730dab86f4b384561d1cc611981 (761 bytes, 4 rows; cpu 27.0 s)
+ITEM r0.n4 cpu 27.0 s, peak resident memory 594 MiB
+VERDICT VALID

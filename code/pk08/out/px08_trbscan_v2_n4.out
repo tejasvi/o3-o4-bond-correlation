@@ -1,0 +1,28 @@
+px08_trbscan_v2 sha256 d05db1cf95f9944b3ed2b98add0372ada18792389af6755c6cde5180109e832d ITEM=n4 LIM=230
+C-HASH (9 files: twrig4, the six modules it loads, the two frozen outputs): PASS
+J =  170.0: tr(T_xi)/lam_h <= 1.312607  (second-order value 1.310384; far 6.1e-05)
+J =  300.0: tr(T_xi)/lam_h <= 1.307943  (second-order value 1.307622; far 3.9e-12)
+# twrig4: upper bound for tr_H(T_xi)/lambda_h, N = 4, a = 0.25, aZ = 0.25, 32-point rule; lead (no insertion) 1.33018902; leading <xi_a> (trace-weighted) 0.980335
+twrig4 done (12.2 s)
+C-MODPATH (the six modules loaded from pk10/scripts; no pycache read or written; the nine shas unchanged after the run): PASS
+C-REPRO N=4 (twrig4 header and J = 170 line = twrig4_N4_a25.txt, byte for byte): PASS
+C-REPLICA N=4 (replica of twrig4 lines 61-90 at J = 300 = twrig4: bound, second-order sum, far; relative 1e-12; 3.7 s): PASS
+  twrig4 J = 300: bound 1.307943190461, second-order value 1.307622204026, far 3.873345e-12; replica bound 1.307943190461
+EPS N=4 eps 0.1: min eig of Q - 2T over the 16 nodes 7.2167e-02, over 1025 al 7.1631e-02; R_cub 1.175754e+03, R_F 1.603753e-04, sum 1.175754e+03 (node-wise at this eps 1.101583e+03); moved-out TRB 1177.061654384 (T2 1.338859, margin -87815.2812%)
+EPS N=4 eps 0.2: min eig of Q - 2T over the 16 nodes 5.9888e-01, over 1025 al 5.9860e-01; R_cub 8.742263e-04, R_F 3.570396e-06, sum 8.777967e-04 (node-wise at this eps 7.820352e-04); moved-out TRB 1.308557002 (T2 1.338859, margin 2.2633%)
+EPS N=4 eps 0.3: min eig of Q - 2T over the 16 nodes 7.6718e-01, over 1025 al 7.6702e-01; R_cub 2.959554e-04, R_F 3.357316e-06, sum 2.993127e-04 (node-wise at this eps 2.822763e-04); moved-out TRB 1.307978518 (T2 1.338859, margin 2.3065%)
+EPS N=4 eps 0.45: min eig of Q - 2T over the 16 nodes 8.7721e-01, over 1025 al 8.7713e-01; R_cub 2.870676e-04, R_F 4.368919e-06, sum 2.914365e-04 (node-wise at this eps 2.822279e-04); moved-out TRB 1.307970642 (T2 1.338859, margin 2.3071%)
+EPS N=4 eps 0.6: min eig of Q - 2T over the 16 nodes 9.3156e-01, over 1025 al 9.3151e-01; R_cub 4.961009e-04, R_F 6.938581e-06, sum 5.030395e-04 (node-wise at this eps 4.916148e-04); moved-out TRB 1.308182245 (T2 1.338859, margin 2.2913%)
+EPS-CHOICE N=4: eps = 0.45 (smallest R_cub + R_F among the PD eps; the final eps is the N = 4 choice if it is PD at N = 3)
+S N=4: S = I[F0] = 1.304031332072 (0.980335 x lead 1.33018902), s1 = 0.823379, s2 = 0.816455 (ADD2 M1 needs s1, s2 > 0: yes)
+LMAX N=4 (1025 al; lam_v = (17/20) / (2 Lmax_v)): Lmax / lam  X_T 1.000000 / 0.425000, X_B 1.000000 / 0.425000, Z 0.714286 / 0.595000; min eig of Q - 2 lam_v B_v 1.5000e-01 1.5000e-01 1.5784e-01; e^{-lam_v J a_v} T_v 9.131e-14 9.131e-14 2.977e-19
+SPLIT N=4 moved-out (J = 300, eps 0.45, 32-point rule): main 1.307622204026; remainder 3.484382e-04 = R3 5.6322e-05 + R_cub 2.8707e-04 + R_F 4.3689e-06 + tail 6.8001e-07 + far 3.8733e-12; total 1.307970642234
+SPLIT N=4 node-wise (replica of twrig4): second-order 1.307622204026; remainder 3.209864e-04 = R3 5.6176e-05 + best eps 2.6470e-04 + tail 1.0979e-07 + far 3.8733e-12; total 1.307943190461
+C-MAIN N=4 (N-a: main on the 64-point rule within 1e-06 relative of twrig4 second-order value at J = 300): 1.307622204024 vs 1.307622204026 (32-point main 1.307622204026): PASS
+C-REM N=4 (N-a: node-wise remainder 3.209864e-04 <= moved-out remainder 3.484382e-04 <= 10 x node-wise): PASS; ratio 1.0855; tails: node-wise 1.098e-07, moved-out 6.800e-07
+KILL-RULE N=4 (D2: moved-out value at J = 300 <= T2 target 1.338859): 1.307970642: PASS; margin 2.3071%; ratio to twrig4 J = 300 value 1.000021
+INTEGRALS N=4 (nu = PR w det(Q)^{-1/2}, 32-point rule): I[F0] 1.304031e+00 I[FE1] 1.073713e+00 I[FE2] 1.064683e+00 I[F1^2] 5.604805e+00 I[F2^2] 1.427206e+02 I[P2^2] 2.130715e+02 I[H1^2] 8.435780e+00 I[X_T hbar3] 5.224202e+03 I[X_T^2 hbar2^2] 1.483409e+06 I[X_T hbar2^2] 1.629248e+05 I[F0^2] 2.324769e+00 I[F0^2 H1^2] 8.744934e+01 I[F1^2 H1^2] 1.090998e+03 I[F0^4] 2.241922e+01 I[(E P2^2)^2] 3.604730e+04; at eps 0.45: I_t[X_T^4] 1.357129e+03 I_t[H1^4] 3.037787e+04 I_t[hhat^4] 1.501173e+04 (0.2 s)
+PLANTS PLANT-HASH:FIRED PLANT-MODPATH:FIRED PLANT-REPRO:FIRED PLANT-REPLICA:FIRED PLANT-MAIN:FIRED PLANT-REM-LO:FIRED PLANT-REM-HI:FIRED
+TWRIG4-FILE px08_trbscan_v2_n4_twrig4.txt sha256 89bbfdcac0c052ba50496590af5214c29a619ca749381f2a7a6f12e03019a592
+VERDICT DONE
+CPU 16.2 s

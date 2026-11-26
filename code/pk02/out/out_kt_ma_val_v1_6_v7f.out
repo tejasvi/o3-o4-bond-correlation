@@ -1,0 +1,31 @@
+kt_ma_val_v1_6 sha256 e182d5039ae4e6abd203ecc53d8e7cd703e5a8793467feaf9ea0a1543fd4d829 PIECE=v7f LIM=200
+kt_cert_v1_5 sha256 bf1995af9ae714e5ba225d2d4ea3c7a8802709ad2dfe55f2163e0452eee0e37b ITEM=tA.e1n4 LIM=200 (RLIMIT_CPU soft 200, hard 205)
+C-HASH PASS (5 engine files, 1 own files, 10 predecessor outputs, 6 inputs)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+C-HASH PASS (kt_cert_v1_5, arbeng_ma_v1_4, arbeng_ma_v1_1, arbeng_ma_stub_v1_1, arbeng_ma_stub_v1)
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-TREE: m 1: 3 terms k 2 (want 2); merged with 3 terms k 3 (want 3; formula 3); m 2: 5 terms k 3 (want 3); merged with 3 terms k 4 (want 4; formula 3); m 3: 9 terms k 4 (want 4); merged with 3 terms k 5 (want 5; formula 4); m 5: 33 terms k 6 (want 6); merged with 3 terms k 7 (want 7; formula 6); m 8: 257 terms k 9 (want 9); merged with 3 terms k 10 (want 10; formula 9); m 12: 4097 terms k 13 (want 13); merged with 3 terms k 14 (want 14; formula 13) -> PASS
+C-COVER: levels assembled [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] (each from units that partition its blocks: _assemble) -> PASS
+C-PAIRS16: 20 units: candidate pairs 5304518790, exact total 5304518790; terms/(2^|supp c| - 1) at most 1.000 -> PASS
+V7 LEVEL 1: 1 units, terms 12, cpu 0.0 s (largest unit 0.0 s), k_max 3
+V7 LEVEL 2: 1 units, terms 210, cpu 0.0 s (largest unit 0.0 s), k_max 8
+V7 LEVEL 3: 1 units, terms 1948, cpu 0.0 s (largest unit 0.0 s), k_max 14
+V7 LEVEL 4: 1 units, terms 12651, cpu 0.0 s (largest unit 0.0 s), k_max 21
+V7 LEVEL 5: 1 units, terms 64296, cpu 0.0 s (largest unit 0.0 s), k_max 29
+V7 LEVEL 6: 1 units, terms 271624, cpu 0.0 s (largest unit 0.0 s), k_max 38
+V7 LEVEL 7: 1 units, terms 990936, cpu 0.1 s (largest unit 0.1 s), k_max 48
+V7 LEVEL 8: 1 units, terms 3205698, cpu 0.4 s (largest unit 0.4 s), k_max 59
+V7 LEVEL 9: 1 units, terms 9377600, cpu 1.3 s (largest unit 1.3 s), k_max 71
+V7 LEVEL 10: 1 units, terms 25181652, cpu 4.1 s (largest unit 4.1 s), k_max 84
+V7 LEVEL 11: 1 units, terms 62815920, cpu 10.5 s (largest unit 10.5 s), k_max 98
+V7 LEVEL 12: 1 units, terms 146969266, cpu 26.8 s (largest unit 26.8 s), k_max 113
+V7 LEVEL 13: 1 units, terms 325076712, cpu 61.3 s (largest unit 61.3 s), k_max 128
+V7 LEVEL 14: 1 units, terms 684228648, cpu 121.8 s (largest unit 121.8 s), k_max 143
+V7 LEVEL 15: 2 units, terms 1378067992, cpu 275.0 s (largest unit 199.2 s), k_max 158
+V7 LEVEL 16: 4 units, terms 2668253625, cpu 437.3 s (largest unit 155.4 s), k_max 173
+V7 TOTAL: units cpu 938.6 s over 20 units (largest 199.2 s)
+V7 TABLE: 30421755 moments, shadow max 4.22e-03 (85.4 s)
+QC E2 RATE D16 (quality control, not a gate): 12000 x 12000 pairs in 3 blocks: 13.1 s, 91 ns/pair; E2 = [3.95e+33 +/- 4.23e+30]
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+ITEM v7f cpu 98.6 s, peak resident memory 4659 MiB
+VERDICT VALID

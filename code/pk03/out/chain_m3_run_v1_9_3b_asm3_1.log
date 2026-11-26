@@ -1,0 +1,26 @@
+2026-11-08T12:49:46Z CHAIN start m3_run_v1_9_3 57991eb0, asm at N3, mode all; run_chain_m3_run_v1_9_3b.sh 2d52af21; cap 200 s; log chain_m3_run_v1_9_3b_asm3_1.log
+2026-11-08T12:49:46Z MANIFEST_m3_run_v1_9_3b.sha256 0fef19f0 and the v1_9_3, v1_9_2, v1_9_1, v1_9 manifests OK (--strict)
+2026-11-08T12:49:47Z END pycheck rc 0 VERDICT VALID  out b370b31f
+2026-11-08T12:49:47Z PREFLIGHT: the H N4 replay check must pass before this chain runs
+2026-11-08T12:49:47Z REPLAY-H4 lines: REPLAY_REF 18, m3_run_v1_9_1 18 (self-test cmp rc 0), m3_run_v1_9_3 18 (cmp rc 0, 9f798728); PLANT-REPLAY cmp rc 1 (must be 1)
+2026-11-08T12:49:47Z REPLAY-H4 m3_run_v1_9_3 pieces: Hp1.4 3f210ddf Hp2.4 2a166181 Hp3.4 2f8fae36 Hp4.4 7daa1481 Hp5.4 2bd1213c
+2026-11-08T12:49:47Z REPLAY-H4 PASS (the 18 lines equal REPLAY_REF 4ce12eea byte for byte; PLANT-REPLAY FIRES)
+2026-11-08T12:49:47Z START asm.3 LIM 194 (CPU so far 0.2 s of 200)
+2026-11-08T12:49:47Z END asm.3 rc 0 CPU 0.2 s (total 0.4 s) VERDICT VALID  out 358c2c92 15813 bytes; err 0 bytes
+2026-11-08T12:49:47Z   asm.3: C-PARITY-SET (the entries whose factors pass C-ODD on their own graph: ['h,2']; marked zero: ['h,2']; PARITY_ZERO ['h,2']) -> PASS
+2026-11-08T12:49:47Z   asm.3: C-PIECES (Hk1.3: entries 0..7 complete) -> PASS
+2026-11-08T12:49:47Z   asm.3: C-PIECES (the H pieces cover all 8 H entries, in order, none left in progress) -> PASS
+2026-11-08T12:49:47Z   asm.3: C-PIECES (S4k1.3: entries 0..17 complete) -> PASS
+2026-11-08T12:49:47Z   asm.3: C-PIECES (the S4 pieces cover all 18 S4 entries, in order, none left in progress) -> PASS
+2026-11-08T12:49:47Z   asm.3: C-RESUME-CHAIN (H on h,1: part 1 cut ['ak', 'm0u', 'm0c'] resumed identical, PLANT-RESUME FIRES; part 2 cut after 6 of 12 units resumed identical) -> PASS
+2026-11-08T12:49:47Z   asm.3: C-PREP-CHAIN (H: prep pieces [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] with done false, piece 14 done) -> PASS
+2026-11-08T12:49:47Z   asm.3: C-PREP-CHAIN (S4: prep pieces [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] with done false, piece 12 done) -> PASS
+2026-11-08T12:49:47Z   asm.3: C-SCOPE (the two records hold exactly the list's keys of their graphs: H 8, S4 18) -> PASS
+2026-11-08T12:49:47Z   asm.3: C-REP-B (100 bar parts against m3ref_v1_14 P16 z9sym: certified/float in [1.000000000 (S4,Z far), 1.032547 (h,1 rem)]) -> PASS
+2026-11-08T12:49:47Z   asm.3: C-REP-AK (100 a_k against m3ref_v1_14 P16 z9sym: largest |certified mid - float| / max(1, |float|) 6.73e-13 at h,1 a_3) -> PASS
+2026-11-08T12:49:47Z   asm.3: PREP16-INFO H: largest D16 E2 relative radius 4.918e-01 at u:nE4_2, 3 over FALLBACK_REL; shadow_max c vertex forms D 16 6.205e-03, u vertex forms D 16 6.369e-03; adopted 0, moved aside 0; pieces 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
+2026-11-08T12:49:47Z   asm.3: PREP16-INFO S4: largest D16 E2 relative radius 4.118e-01 at u:nE4_2, 3 over FALLBACK_REL; shadow_max c vertex forms D 16 7.361e-03, u vertex forms D 16 7.539e-03; adopted 0, moved aside 0; pieces 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+2026-11-08T12:49:47Z   asm.3: RECORD m3_s8v2_H_N3_J300_v1_9_3.json 66a7883dc01d48b681472823900102050aab0bd9223346f82731c42782604ba7
+2026-11-08T12:49:47Z   asm.3: RECORD m3_s8v2_S4_N3_J300_v1_9_3.json 0f83c8940f7288f1a69b5100271d1db82e638fb2d0dfee48312771b80067c84b
+2026-11-08T12:49:47Z   asm.3: STAGE-CPU total 0.17 s
+2026-11-08T12:49:47Z CHAIN end: CPU 0.5 s of 200

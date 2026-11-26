@@ -1,0 +1,57 @@
+273c273
+< OWN = CODEDIR + '/pk07'
+---
+> OWN = CODEDIR + '/pk21/p2/s4c'    # PK21 copy (kill test (i) of step 1): outputs in pk21's folder only
+2989c2989
+<              'CODE = pk07/%s.py:%s' % (LABEL, sha_file(os.path.abspath(__file__))[:8]), 'RUN = %s' % MODE,
+---
+>              'CODE = pk21/p2/s4c/%s.py:%s' % (LABEL, sha_file(os.path.abspath(__file__))[:8]), 'RUN = %s' % MODE,
+3198c3198
+<              'CODE = pk07/%s.py:%s' % (LABEL, sha_file(os.path.abspath(__file__))[:8]), 'RUN = %s' % MODE,
+---
+>              'CODE = pk21/p2/s4c/%s.py:%s' % (LABEL, sha_file(os.path.abspath(__file__))[:8]), 'RUN = %s' % MODE,
+5243a5244,5283
+> # ------------------------------------------------------------------ PK21: the tight Hilbert-Schmidt bound over P_4, per piece
+> # Kill test (i) of pk21's step 1, a reading, not a certified record. tau_inf^2 <= tr T^2 - sum_k theta_k^2 over
+> # the four trial states (supplement v5b l.307). In S6's quantities: rho2 = U - sum of the squared even Ritz diagonal entries (upper end,
+> # the same number S6's rho uses), muz = the odd trial state's Ritz value (lower end), lam0 = the lower bound of lambda_0; units lambda_h.
+> TAU4_ROWS = {4: [], 3: []}
+> 
+> 
+> def tau4_row(Jlo, Jhi, Q):
+>     """(Jlo, Jhi, rho2_hi, muz_lo, lam0_lo, tau4_hi, rho_hi); tau4_hi = upper end of sqrt(rho2 - muz^2) / lam0, None if rho2 < muz^2."""
+>     r2, mz, l0 = pt(Q['rho2']), pt(Q['muz']), pt(Q['lam0'])
+>     arg = r2 - mz * mz
+>     t4 = None
+>     if (arg.b < 0) is not True:
+>         t4 = (iv.sqrt(iv.mpf([0, arg.b])) / l0).b
+>     return (Jlo, Jhi, r2.b, mz.a, l0.a, t4, pt(Q['rho']).b)
+> 
+> 
+> def tau4_summary(N):
+>     """the per-N summary line and the TSV of every piece (pk21's folder)."""
+>     rows = TAU4_ROWS[N]
+>     good = [r for r in rows if r[5] is not None]
+>     if not rows:
+>         out('PK21 TAU4 N=%d: no rows' % N)
+>         return
+>     worst = max(good, key=lambda r: fnum(r[5])) if good else None
+>     nbad = sum(1 for r in rows if r[5] is None or fnum(r[5]) >= 0.04)
+>     out('PK21 TAU4 N=%d: %d pieces; max tau4_hi %s on [%s] (rho_hi there %s); first piece [%s] tau4_hi %s; last piece [%s] tau4_hi %s; '
+>         'pieces with tau4_hi >= 0.04 or undefined: %d' % (
+>             N, len(rows), nf(worst[5], 8) if worst else 'NONE', piece_str(worst[0], worst[1]) if worst else '-',
+>             nf(worst[6], 8) if worst else '-', piece_str(rows[0][0], rows[0][1]), nf(rows[0][5], 8) if rows[0][5] is not None else 'NONE',
+>             piece_str(rows[-1][0], rows[-1][1]), nf(rows[-1][5], 8) if rows[-1][5] is not None else 'NONE', nbad))
+>     path = os.path.join(OUTD, 'tau4_%s_N%d.tsv' % (LABEL, N))
+>     with open(path, 'x') as fh:
+>         fh.write('jlo\tjhi\trho2_hi\tmuz_lo\tlam0_lo\ttau4_hi\trho_hi\n')
+>         for r in rows:
+>             fh.write('%s\t%s\t%r\t%r\t%r\t%s\t%r\n' % (repr(r[0]), 'inf' if r[1] is None else repr(r[1]), fnum(r[2]), fnum(r[3]),
+>                                                      fnum(r[4]), 'NONE' if r[5] is None else repr(fnum(r[5])), fnum(r[6])))
+>     out('PK21 TAU4 N=%d: TSV %s (%d rows)' % (N, path, len(rows)))
+> 
+> 
+5257a5298
+>             TAU4_ROWS[N].append(tau4_row(Jlo, Jhi, Q))                          # PK21: kill test (i)
+5430a5472
+>         tau4_summary(N)                                                     # PK21: kill test (i)

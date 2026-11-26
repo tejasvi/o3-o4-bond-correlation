@@ -1,0 +1,9 @@
+# o5_jobs_v6.txt (pk23 O5 box kit v6): PHASE TAG CAP_GB GUARD_CAP_COREH LIM ENGINE REF K ROWS COLS N J1 ORBIT SIGMA CONTROLS MEMSTOP
+# ENGINE is one of the kit's two engine files; REF is - or a ref_*.out file of the kit, which o5_job_v2.sh compares with the job's output
+# (o5_control_cmp_v1.sh, masked) into <TAG>.cmp. Phase C: the n = 4 control on g37 (as kit v5) and on the g37lzd; the driver's gate
+# needs both to agree with pk06's run. Phase B: G55 on g37lzd beside the n = 6 control on g37lzd, which is compared with the g37 output
+# of n6 G27 from box_run_20261118T013023Z (caps 663 + 110 = 773 G of the 800 G budget).
+C c_G02_n4 8 0.10 600 kt_lbu_g37_v1.py - 3 3 4 4 350 G02 1/4 none 0
+C c_G02_n4_lzd 8 0.10 600 kt_lbu_g37lzd_v1.py ref_pk06_full_n4_G02_s14_v1.out 3 3 4 4 350 G02 1/4 none 0
+B G55_n7_N4 663 12.50 43000 kt_lbu_g37lzd_v1.py - 3 3 7 4 350 G55 1/4 none 0
+B c6_G27_n6_lzd 110 3.00 10700 kt_lbu_g37lzd_v1.py ref_g37_n6_G27_N4_box_run_20261118T013023Z.out 3 3 6 4 350 G27 1/4 none 0

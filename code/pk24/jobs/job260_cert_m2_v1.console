@@ -1,0 +1,91 @@
+start 2026-11-21T20:17:40Z
+stage rc=0
+STAGE MR_SPECTRAL 0e4d817729c6f735e5b4b3bd05ce97d195f3a0840bddd99d1654abc40d0d593a from pk25/mr/v4/MR_SPECTRAL.kv | PRODUCER pk25 kt_s9h_asm_v1_8 | CERTIFIED/VALID | MR_INPUT_KV_v4
+STAGE MR_INSERT 9de890745b017b5b371c330143635f3c0d647eeefd49078d21f80f88aac9780c from pk25/mr/v5b/MR_INSERT.kv | PRODUCER pk25 kt_s9h_ins_v2_7 | CERTIFIED/VALID | MR_INPUT_KV_v4
+STAGE MR_EXACT 7e08d47e18296c2a68e4af0e5e61d4aaa16ac4d54e99cd6e49f6820d6a48ecd9 from pk22/midrow/g4/mrc/out/cert/MR_EXACT_CERT_v1_10_C.kv | PRODUCER pk22 mrx_cert_v1_10 CERT_C | CERTIFIED/VALID | MR_INPUT_KV_v4
+STAGE MR_CRUDEX 8cece5c0a430d1f14b606bd3b7ab0259cef80ecaaf67293632d8cb67598d13fe from pk25/mr/v6/MR_CRUDEX.kv | PRODUCER pk25 kt_s9h_p3_v7_1 | CERTIFIED/VALID | MR_INPUT_KV_v4
+STAGE MR_JOINT 80bc8d81739118bd2b20c231c01b8eb33690e6c28d57b702647421d180e7226b from pk22/midrow/g4/mrc/out/cert/MR_JOINT_CERT_v1.kv | PRODUCER pk22 mrj_cert_v1 CERT | CERTIFIED/VALID | MR_INPUT_KV_v4
+PINS 63c55544c89c6269360e9afd434d1e3f674bc0303efef8ede6c85e1e44913806 pk24/mr_engine/cert_m2_m2cert_1/PINS.txt
+m2 cols rc=0
+M2COLS PINS v4b 54691bc1, v1_9 98e4e01e; supplied v5 9de89074, v1_10 7e08d47e
+M2COLS INSERT VXHULL N3_P0903_h (INFO): vx [0.0000000000000000e+00, 1.1500043721632381e-07] against the floor-free hull [0, 1.1500043721553377e-07] -> contains
+M2COLS INSERT VXHULL N4_P0903_h (INFO): vx [0.0000000000000000e+00, 2.2993720610958834e-07] against the floor-free hull [0, 2.299372061085444e-07] -> contains
+M2COLS INSERT: rows 5241, fields 23; outside the allowed last-piece fields 0 differ; allowed changes 10
+M2COLS INSERT CHANGED N3_P0903_h vx_lo: -8.4540710855081688e-12 -> 0.0000000000000000e+00
+M2COLS INSERT CHANGED N3_P0903_h vx_hi: 1.3975530249701541e-07 -> 1.1500043721632381e-07
+M2COLS INSERT CHANGED N3_P0903_h xc_lo: 9.3073129023039977e-02 -> 1.1575711367186158e-01
+M2COLS INSERT CHANGED N3_P0903_h xc_hi: 1.4098492387923067e-01 -> 1.1601927387528123e-01
+M2COLS INSERT CHANGED N3_P0903_h xf_hi: 8.4537635035507779e-12 -> 0
+M2COLS INSERT CHANGED N4_P0903_h vx_lo: -1.3524704817050890e-11 -> 0.0000000000000000e+00
+M2COLS INSERT CHANGED N4_P0903_h vx_hi: 2.8325750237466216e-07 -> 2.2993720610958834e-07
+M2COLS INSERT CHANGED N4_P0903_h xc_lo: 1.8232352899268831e-01 -> 2.3117701360024509e-01
+M2COLS INSERT CHANGED N4_P0903_h xc_hi: 2.8575335392144141e-01 -> 2.3197431536391380e-01
+M2COLS INSERT CHANGED N4_P0903_h xf_hi: 1.3524173932003794e-11 -> 0
+M2COLS EXACT: rows 6988, fields 12; outside the allowed last-piece fields 0 differ; allowed changes 16
+M2COLS EXACT CHANGED N3_P0903_h-1 Ax_lo: -1.3454122074207931e-06 -> -1.2235983044561750e-06
+M2COLS EXACT CHANGED N3_P0903_h-1 Axc_lo: 0 -> 1.1384996969718486e-01
+M2COLS EXACT CHANGED N3_P0903_h-1 Axc_hi: 0 -> 1.3199260050896556e-01
+M2COLS EXACT CHANGED N3_P0903_h-1 Axf_hi: 1.3454122074207931e-06 -> 0
+M2COLS EXACT CHANGED N3_P0903_h0 Ax_lo: -1.3703853820601353e-06 -> -1.2540967784246960e-06
+M2COLS EXACT CHANGED N3_P0903_h0 Axc_lo: 0 -> 9.2985620489344000e-02
+M2COLS EXACT CHANGED N3_P0903_h0 Axc_hi: 0 -> 1.4161343360319734e-01
+M2COLS EXACT CHANGED N3_P0903_h0 Axf_hi: 1.3703853820601353e-06 -> 0
+M2COLS EXACT CHANGED N4_P0903_h-1 Ax_lo: -4.2862644988872490e-06 -> -4.0396848390855667e-06
+M2COLS EXACT CHANGED N4_P0903_h-1 Axc_lo: 0 -> 2.2426880360580980e-01
+M2COLS EXACT CHANGED N4_P0903_h-1 Axc_hi: 0 -> 2.7273213933221996e-01
+M2COLS EXACT CHANGED N4_P0903_h-1 Axf_hi: 4.2862644988872490e-06 -> 0
+M2COLS EXACT CHANGED N4_P0903_h0 Ax_lo: -4.1103617718363239e-06 -> -3.8773919612822283e-06
+M2COLS EXACT CHANGED N4_P0903_h0 Axc_lo: 0 -> 1.6036420478485524e-01
+M2COLS EXACT CHANGED N4_P0903_h0 Axc_hi: 0 -> 3.0962054640986026e-01
+M2COLS EXACT CHANGED N4_P0903_h0 Axf_hi: 4.1103617718363239e-06 -> 0
+M2COLS OK: v5 is v4b and v1_10 is v1_9 outside the last piece's Way A fields
+FACTORED MR_CRUDEX: CRUDEX_FORM factored, D_MAX 9
+PEV MAX N=4: h 0.535575 at N4_P0116_h, t 0.408986 at N4_P0116_t
+PEV MAX N=3: h 0.437602 at N3_P0903_h, t 0.334266 at N3_P0903_t
+PEV GATE (row 4520: t <= 0.48): PASS
+engine rc=0
+TAIL ARGUMENT 2:5: D0 2, M0 5, n0 = 2 D0 + M0 + 1 = 10
+C-CORE OK: mr_core_v1_3 b897451f512c69c3e08ac61d330f993634c105d42169dbd898dc91448554898a; 7 blocks and 3 constants equal to the prototype 5e3fc430d69a445487a449fd54faefdf540ba8a3298a52c7e5fd9cadb0bd76e6
+C-IV OK: 3000 operations (add, sub, mul, inv, sqrt; negation, amax, hull, pow, division with 50-digit endpoints) enclose or equal the exact rational results
+G-PIN MR_SPECTRAL.kv 0e4d817729c6f735e5b4b3bd05ce97d195f3a0840bddd99d1654abc40d0d593a OK (PRODUCER pk25, owner rule)
+G-PIN MR_INSERT.kv 9de890745b017b5b371c330143635f3c0d647eeefd49078d21f80f88aac9780c OK (PRODUCER pk25, owner rule)
+G-PIN MR_EXACT.kv 7e08d47e18296c2a68e4af0e5e61d4aaa16ac4d54e99cd6e49f6820d6a48ecd9 OK (PRODUCER pk22, owner rule)
+G-PIN MR_CRUDEX.kv 8cece5c0a430d1f14b606bd3b7ab0259cef80ecaaf67293632d8cb67598d13fe OK (PRODUCER pk25, owner rule) (CRUDEX_FORM factored)
+G-PIN MR_JOINT.kv 80bc8d81739118bd2b20c231c01b8eb33690e6c28d57b702647421d180e7226b OK (PRODUCER pk22, owner rule)
+G-FACTX OK: 12229 x-coefficient rows inside their amplitudes with their floors (power 1) or equal to them (power 0); 0 rows with a Way B floor (last piece, h); one envelope per piece with 0 < env_r < 1
+C-ORIENT OK: c_x(-1) > 0 and c_y(-1) > 0 on every MR_SPECTRAL row; t and a v_x > 0, h, t and a v_y > 0 on every MR_INSERT row; 6988 exact ends checked against the sign of their bulk x amplitude; ORIENT_CHECK on MR_SPECTRAL, MR_INSERT and MR
+G-UNIF OK: N = 4 843 pieces, N = 3 904 pieces; every record on the same grid with every row; last piece to inf; decimal fields finite, lo <= hi, single upper bounds >= 0, the spectral data positive
+XMODE FACTORED: x signs read on the coefficient intervals (MR_INPUT_KV_v4, factored MR_CRUDEX, D_MAX 9)
+ROUTE V ON: MR_EXACT carries Pe_hi (the exact end's unwindowed flip-even |P_e a|), and the m = 1 rest takes the least of |P_e a_L| N'_R and N'_L |P_e a_R| over the ends that give |P_e a| (the row 4376)
+C-SIGN OK: 1747 pieces, e-hat(d) for d = 1..9 and the envelope at 10 against the modulus of h's coefficient
+G-FLOAT INFO N4 n6: least headroom 1.1929, reference 1.6360 (differs)
+G-FLOAT INFO N4 n7: least headroom 1.2945, reference 1.9610 (differs)
+G-FLOAT INFO N4 n8: least headroom 1.3094, reference 2.2430 (differs)
+G-FLOAT INFO N4 n9: least headroom 1.3116, reference 2.3880 (differs)
+G-FLOAT INFO N4 n10: least headroom 1.3119, reference 2.3880 (differs)
+G-FLOAT INFO N3 n6: least headroom 1.9457, reference 3.1070 (differs)
+G-FLOAT INFO N3 n7: least headroom 2.0445, reference 3.6370 (differs)
+G-FLOAT INFO N3 n8: least headroom 2.0584, reference 4.0640 (differs)
+G-FLOAT INFO N3 n9: least headroom 2.0604, reference 4.1460 (differs)
+G-FLOAT INFO N3 n10: least headroom 2.0607, reference 4.1470 (differs)
+FACTORED SIGN FALLBACK: 0 class-piece evaluations had no certified sign for the product of the two x coefficients, so X took v1_6's form there (the v1_7 N-2)
+TAIL N=4 D0 2 M0 5: envelope classes 77 per piece, FAIL 0, least L 1.412433e-07 at h-1-aD0+/m4 (piece 61); m-tail at M0: FAIL 0, least lower end 2.683512e-02 (pair h-a, piece 116), q_R <= 0.6360, q_T <= 0.4898; sign condition (c): FAIL on 0
+C-TAILMONO OK N=4: 843 pieces; s_x, s_y, tau, rho_1 and env_r below 1; the envelope at D0 = 2 encloses the end at d = 2..14, 9 and 10 (A_y, A_x, N', |P_e a|, |S a|, e; for h also the coefficient and e)
+TAIL N=3 D0 2 M0 5: envelope classes 77 per piece, FAIL 0, least L 9.546982e-08 at h-1-aD0+/m4 (piece 0); m-tail at M0: FAIL 0, least lower end 2.191137e-02 (pair h-a, piece 116), q_R <= 0.6181, q_T <= 0.4894; sign condition (c): FAIL on 0 
+C-TAILMONO OK N=3: 904 pieces; s_x, s_y, tau, rho_1 and env_r below 1; the envelope at D0 = 2 encloses the end at d = 2..14, 9 and 10 (A_y, A_x, N', |P_e a|, |S a|, e; for h also the coefficient and e)
+TAIL REASONS: envelope classes failing 0, m-tail pairs failing 0, pieces failing the sign condition 0, Proposition J envelope orbits failing 0
+TAIL_VERDICT PASS (TAIL = 2 5 10)
+RUN_VERDICT VALID
+CERT M2 finite rows: 534, FAIL 0
+  N4 lowest H #1: N4_n06_h2-bb3 (chan-exact d 0 dp 1 m 1 piece 61, H 1.1929)
+  N4 lowest H #2: N4_n07_h2-bb3 (chan-exact d 0 dp 2 m 1 piece 61, H 1.29446)
+  N4 lowest H #3: N4_n08_h2-bb3 (chan-exact d 0 dp 3 m 1 piece 61, H 1.30941)
+  N3 lowest H #1: N3_n06_h2-bb3 (chan-exact d 0 dp 1 m 1 piece 0, H 1.94572)
+  N3 lowest H #2: N3_n07_h2-bb3 (chan-exact d 0 dp 2 m 1 piece 0, H 2.0445)
+  N3 lowest H #3: N3_n08_h2-bb3 (chan-exact d 0 dp 3 m 1 piece 0, H 2.05842)
+TAIL SUP N=4: sup over d >= D0 = 2 of e-hat(d) = max(rows 2..9, envelope at 10): least 1.294228e-02, largest 1.796039e-02 over the pieces; it enters h's envelope as the coefficient xc -+ sup and the x
+TAIL SUP N=3: sup over d >= D0 = 2 of e-hat(d) = max(rows 2..9, envelope at 10): least 3.333847e-03, largest 5.089188e-03 over the pieces; it enters h's envelope as the coefficient xc -+ sup and the x
+MODE = CERTIFIED
+TAIL_VERDICT = PASS
+RUN_VERDICT = VALID
+end 2026-11-21T20:19:11Z

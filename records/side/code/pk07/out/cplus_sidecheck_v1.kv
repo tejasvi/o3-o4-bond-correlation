@@ -1,0 +1,28 @@
+FORMAT = CPLUS_SIDECHECK_v1
+SCRIPT = pk07/cplus_sidecheck_v1.py:5a30003fff5c58cbc22bdef4a450c912a194535b8bfba626399fcacfaa32fb66
+INPUT_EXPORT = pk07/out/export_kt_s9h_v1_2_vsweep.kv:10f3c3d9a18b9c7a596121a8dbec7d2b82afb366704845a7c00e066c8bf6d4f6
+INPUT_CODE = pk07/kt_s9h_v1_2.py:1b68e47141dfc5e873e2660711f6430a0badc9cc948ada32eb11641fabde4ff4
+INPUT_M2B = pk02/M2B_KV_v1.txt:01ffc2aacb0bf6b4f33c55602c9419964481ce0f0a6c1fbdc6520a91aab0b72d
+MODULE_RUN = kt_s9h_v1_2 loaded from the checked bytes, argv vsweep 60 cplus; its own log pk07/out/out_kt_s9h_v1_2_vsweep_cplus.out:111c5e80822cf0dcc05680e219e2aba93fd91447676fda23a06a3ba712ea47d8
+PROVIDER = fails [] ; fires []
+A0 = PASS
+N4_RTR_LO = 1.33103977242e0
+N4_RTR_HI = 1.33103977244e0
+N4_ER = 5.14608485854e-6
+N4_SV = 7.69272108243e-6
+N4_DEN_LO = 6.68955081485e-1
+N4_G_LO = 6.68949935400e-1
+N4_ASSERT = A2 PASS ; A3 PASS ; A4 PASS
+N4_A5 = INFO er 5.14608485854e-6 beside the record's N4_EPS_R_300 5.14608485854e-06; sv 7.69272108243e-6 beside N4_S_300 7.69272108243e-06 (their agreement is C-LAW300's gate in A0)
+N4_PLANT_CPLUS_G = FIRES (Rtr scaled by f = (2 - 2.2 er)/RTR; planted den lower end 6.17530183024e-6, sv upper end 8.33333333334e-1, g upper end -3.13431595980e-6)
+N3_RTR_LO = 1.33071322603e0
+N3_RTR_HI = 1.33071322605e0
+N3_ER = 1.85151323105e-6
+N3_SV = 2.76640511230e-6
+N3_DEN_LO = 6.69284922446e-1
+N3_G_LO = 6.69283070933e-1
+N3_ASSERT = A2 PASS ; A3 PASS ; A4 PASS
+N3_A5 = INFO er 1.85151323105e-6 beside the record's N3_EPS_R_300 1.85151323105e-06; sv 2.76640511230e-6 beside N3_S_300 2.76640511230e-06 (their agreement is C-LAW300's gate in A0)
+N3_PLANT_CPLUS_G = FIRES (Rtr scaled by f = (2 - 2.2 er)/RTR; planted den lower end 2.22181587724e-6, sv upper end 8.33333333334e-1, g upper end -1.12769758551e-6)
+CLAIM = For N in {3, 4} and every J >= 300 (t in (0, 1/300], t -> 0 included): 2 - R_tr - eps_r(J) - eps_r(J)/sqrt(1 - s(J)^2) > 0, with eps_r(J) and s(J) = eps_r(J)/(2 - R_tr - eps_r(J)) by LAW v1 on M2B_KV_v1 and R_tr its RTR. This is the hypothesis of Lemma 19.2 (c+) (NOTE_LEMMA_19_2_CPLUS_rv01.md), so lambda_0 <= (1 + eps_r) mu-hat holds wherever export 761084be uses it.
+VERDICT = VALID

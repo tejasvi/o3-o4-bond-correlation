@@ -1,0 +1,94 @@
+AST OK /mnt/g2/release/root/code/pk22/m3/make_m3_lawcert_c3k_v2.py
+SRC 1be3a4cb make_m3_lawcert_c3k_v2.py
+SIDE8 e7a1cd17 (MANIFEST_E4_C3K2_v1.sha256, read by tool)
+PIN run d027f2d49dd545d1101898fab2b10ab5fb83f5829a4a0f034dfdabb586b8e8de /mnt/g2/release/root/code/pk22/m3/m3_run_v1_9_3_px22_c3k_2.py
+PIN c3k1 c76745bcd21a2513ad3f7b199244d7e8438307aa71f5b0a5aeb12d4a3346dbf9 /mnt/g2/release/root/code/pk22/m3/m3_run_v1_9_3_px22_c3k_1.py
+PIN list e82f042cf2f8f97ee0ce60adea76209ea577937f1ccd16c4484bb66e9a7efe73 /mnt/g2/release/root/code/pk22/m3/C3K_ENTRY_LIST_v1_2.json
+PIN side 50003fbf8ea549481778bbc788f4650e505ea85deb9457c4c0d9fcb932a0799f /mnt/g2/release/root/code/pk22/midrow/e4/MANIFEST_E4_C3K2_v1.sha256
+PIN ts4 4f0199bc6f3b03d906c4f268d51e4aee29432cf32e6bb9a9f91cd072b983acd0 /mnt/g2/release/root/code/pk22/midrow/psixy/ts_N4_J170_D_S_z9symxyp_v1.json
+PIN ts3 0a6109691c8626c06073e5c3e7be66026e0c3cafbb4377b1f152ced58624ecc7 /mnt/g2/release/root/code/pk22/midrow/psixy/ts_N3_S_z9symxyp_v1.json
+SOURCE 8b96d81a41bd172ef26e940bece4f43bdc17c5ce039953f900b5660ca96fa6f3 /mnt/g2/release/root/code/pk22/m3/m3_lawcert_c3k_v1.py
+REPLACE doc: 1 occurrence(s), 133 -> 1810 chars
+REPLACE usage: 1 occurrence(s), 47 -> 47 chars
+REPLACE banner: 1 occurrence(s), 64 -> 64 chars
+REPLACE psx: 1 occurrence(s), 102 -> 103 chars
+REPLACE runf: 1 occurrence(s), 121 -> 315 chars
+REPLACE prodf: 1 occurrence(s), 105 -> 111 chars
+REPLACE listf: 1 occurrence(s), 72 -> 72 chars
+REPLACE sidef: 1 occurrence(s), 99 -> 106 chars
+REPLACE pin-run: 1 occurrence(s), 125 -> 274 chars
+REPLACE pin-list: 1 occurrence(s), 86 -> 86 chars
+REPLACE pin-side: 1 occurrence(s), 79 -> 79 chars
+REPLACE pin-ts: 1 occurrence(s), 219 -> 287 chars
+REPLACE want-inp: 1 occurrence(s), 125 -> 136 chars
+REPLACE asm: 1 occurrence(s), 61 -> 62 chars
+REPLACE recs: 1 occurrence(s), 95 -> 97 chars
+REPLACE runprod: 1 occurrence(s), 99 -> 124 chars
+REPLACE prun: 1 occurrence(s), 75 -> 71 chars
+REPLACE tsf: 1 occurrence(s), 132 -> 135 chars
+REPLACE name: 1 occurrence(s), 40 -> 40 chars
+REPLACE item-re: 1 occurrence(s), 144 -> 119 chars
+REPLACE ps-re: 1 occurrence(s), 62 -> 146 chars
+REPLACE apl: 1 occurrence(s), 189 -> 229 chars
+REPLACE loop-init: 1 occurrence(s), 40 -> 104 chars
+REPLACE hand: 1 occurrence(s), 62 -> 68 chars
+REPLACE opath: 1 occurrence(s), 82 -> 88 chars
+REPLACE header: 1 occurrence(s), 140 -> 146 chars
+REPLACE start-hand: 1 occurrence(s), 52 -> 503 chars
+REPLACE prevj: 1 occurrence(s), 70 -> 153 chars
+REPLACE later: 1 occurrence(s), 125 -> 131 chars
+REPLACE pieces: 1 occurrence(s), 75 -> 81 chars
+REPLACE gate-text: 1 occurrence(s), 75 -> 75 chars
+REPLACE gate-text2: 1 occurrence(s), 101 -> 164 chars
+REPLACE wp-old: 1 occurrence(s), 85 -> 86 chars
+REPLACE wp-new: 1 occurrence(s), 96 -> 97 chars
+REPLACE mid: 1 occurrence(s), 65 -> 65 chars
+REPLACE kh: 1 occurrence(s), 21 -> 592 chars
+REPLACE plant6: 1 occurrence(s), 141 -> 391 chars
+REPLACEMENTS 37
+WROTE 69730e387a039525d35382c112db23d38ca9755a82fc51ce828c1ca972c8b859 /mnt/g2/release/root/code/pk22/m3/m3_lawcert_c3k_v2.py
+MAKER rc=0
+DIFF rc=1 lines 283
+AST OK /mnt/g2/release/root/code/pk22/m3/m3_lawcert_c3k_v2.py
+SRC 69730e38 m3_lawcert_c3k_v2.py
+RUN static rc=0
+C-HASH (13 pinned files) -> PASS
+C-LAW-REM (m3_bar_v11 Prep.bound: B_rem = overflow + nFle3 rE + rho4 + t^4 Nc EF4/24, each term a polynomial in t with nonnegative coefficients fixed at J_REF and valuation >= 4; l2 a polynomial of valuation >= 0; term valuations [4, 4, 4, 4], l2 valuation 0) -> PASS
+C-PREP16 (m3_bar_v11: R(Prep16.stage_u16) and R(Prep16.stage_c16) equal Prep.stage_u and Prep.stage_c statement by statement once the pinned setup, N2 and cleanup statements are left out, and every stage result is assigned in exactly those two methods; the runner (m3_run_v1_9_3_px22_c3k_2.py, m3_run_v1_9_3_px22_c3k_1.py), which made its own preps, builds BAR.Prep16 and BAR.Prep only in make_prep w
+C-PREP-BAR (m3_bar_v11, the premises of C-LAW-REM's and C-PREP16's reading of classes Prep and Prep16, with the N-1: classes Prep, Prep16 at module level with bases Prep [], Prep16 ['Prep']; 3 uses of their names, each a class base or a call <name>.<method>(...); no attribute named Prep or Prep16, no star import; 1 setattr/delattr calls, each in a method of theirs on its first parameter; no 
+C-LAW-SHAPE (42 pinned texts of m3_lawcert_c3h_v1_pins, as ASTs, in their places: the tail, ann and far statements, sup_F, norm_any, chi_tail_up, ive1, logtree, logmain, far_base, the bound's return, Prep.UK/CK, __init__'s t, rates, tilts and restore, laws_of, compute_entry's law lines, entry_record, Prep16's lazy, h, hh16, h2sq and norm16, and the statements C-PREP16 leaves out) -> PASS
+VERDICT VALID
+RUN N=4 rc=0
+C-PINS (the runner m3_run_v1_9_3_px22_c3k_2.py pins 20 of this script's pins in its own OWNMOD and INPUTS (the modules, the inputs, the list) with the same full sha256s; the asm output's first line names the runner d027f2d4) -> PASS
+C-BIND (the c3k records through m3_reader_v6_3.load against m3_run_v1_9_3_asm.4_c3k2.out; the run manifest MANIFEST_E4_C3K2_v1.sha256 lists the asm output and the records with these sha256s; each record holds exactly the C3-h list's keys of its graph, every one free: E4D 4, E4N 7; 11 free) -> PASS
+C-PRODUCER (each record's engine names the runner d027f2d4 and m3_bar_v11 c0032694, the bar that C-LAW-REM, C-PREP16 and C-LAW-SHAPE audit; its prep16 names the prep family and its producer: E4D E4D c76745bc, E4N E4N c76745bc) -> PASS
+C-NO-RESUME (adapted to multi-piece chains: the runner's only resume items are F4Nr1 and F4Nr2 (ITEM_RE; RESUME_FAMS ('E4N',)), whose hand-offs hold no entry, and the records' entries come from entry pieces only; each family's chain k1..k_last is whole (contiguous entries, units carried exactly into the next piece, capped pieces without hand-offs, the asm's lines equal the pieces' lines, hand-offs by sha256, no later piece; each PIECE-START names the hand-off it read by sha256); outputs and hand-offs a
+PLANT-NO-RESUME (a resume read in walk_pieces must be refused as runner:walk-reads: failed runner:walk-reads) -> FIRES
+PLANT-NO-RESUME (a second resume family must be refused as runner:RESUME_FAMS: failed runner:RESUME_FAMS) -> FIRES
+PLANT-NO-RESUME (a store into res in run_asm must be refused as runner:run_asm-res-store: failed runner:run_asm-res-store) -> FIRES
+PLANT-NO-RESUME (a gap in the asm's E4N piece lines must be refused as E4N:asm-gap: failed E4N:asm-gap, E4N:k4:capped, E4N:k5:start, E4N:k5:start-hand) -> FIRES
+PLANT-NO-RESUME (restored units that differ from the previous piece's carry must be refused as E4N:k3:start: failed E4N:k3:start, E4N:k3:man-out) -> FIRES
+PLANT-NO-RESUME (a PIECE-START naming a wrong hand-off sha256 must be refused as E4N:k3:start-hand: failed E4N:k3:start-hand, E4N:k3:man-out) -> FIRES
+C-LAWFIELDS (11 free entries: rem_tpow 4; tail and ann n, J_REF and a_G from the C3-h list's graphs' G_vv, tilt_p's G_vv and the a_v of the PREPJSON each prep took; far_cF from the pinned sup_F's m_F of the runner's factors, never below this script's own exponent; far_rate = down(alpha_lo - c_F/300); all exactly equal) -> PASS
+C-MONO-FAR (every recomputed far rate certainly > 0; smallest 4.5850e-01 at E4N:IhL,10,0) -> PASS
+C-BAND (sanity, 11 free entries: the banded bound in arb at J = 300, 600, 1000, 3000 is <= err (1 + 2^-30) at 300, <= err beyond and non-increasing; largest banded/err: J 300 1.0000, J 600 0.0570, J 1000 0.0074, J 3000 0.0001) -> PASS
+C-LAWCERT-RT (the certificate through m3_reader_v6_3's _bound and _parse_lawcert against the two loaded records: 11 entries back with the records' laws; claim and format equal the reader's) -> PASS
+RECORD m3_lawcert_c3k_v2_N4.json 49b625c88a35a1ff8b0e1ac35402726e6fa295e3e0c46671c2f9cf108cd3d701
+VERDICT VALID
+RUN N=3 rc=0
+C-PINS (the runner m3_run_v1_9_3_px22_c3k_2.py pins 20 of this script's pins in its own OWNMOD and INPUTS (the modules, the inputs, the list) with the same full sha256s; the asm output's first line names the runner d027f2d4) -> PASS
+C-BIND (the c3k records through m3_reader_v6_3.load against m3_run_v1_9_3_asm.3_c3k2.out; the run manifest MANIFEST_E4_C3K2_v1.sha256 lists the asm output and the records with these sha256s; each record holds exactly the C3-h list's keys of its graph, every one free: E4D 4, E4N 7; 11 free) -> PASS
+C-PRODUCER (each record's engine names the runner d027f2d4 and m3_bar_v11 c0032694, the bar that C-LAW-REM, C-PREP16 and C-LAW-SHAPE audit; its prep16 names the prep family and its producer: E4D E4D c76745bc, E4N E4N c76745bc) -> PASS
+C-NO-RESUME (adapted to multi-piece chains: the runner's only resume items are F4Nr1 and F4Nr2 (ITEM_RE; RESUME_FAMS ('E4N',)), whose hand-offs hold no entry, and the records' entries come from entry pieces only; each family's chain k1..k_last is whole (contiguous entries, units carried exactly into the next piece, capped pieces without hand-offs, the asm's lines equal the pieces' lines, hand-offs by sha256, no later piece; each PIECE-START names the hand-off it read by sha256); outputs and hand-offs a
+PLANT-NO-RESUME (a resume read in walk_pieces must be refused as runner:walk-reads: failed runner:walk-reads) -> FIRES
+PLANT-NO-RESUME (a second resume family must be refused as runner:RESUME_FAMS: failed runner:RESUME_FAMS) -> FIRES
+PLANT-NO-RESUME (a store into res in run_asm must be refused as runner:run_asm-res-store: failed runner:run_asm-res-store) -> FIRES
+PLANT-NO-RESUME (a gap in the asm's E4N piece lines must be refused as E4N:asm-gap: failed E4N:asm-gap, E4N:k4:capped, E4N:k5:start, E4N:k5:start-hand) -> FIRES
+PLANT-NO-RESUME (restored units that differ from the previous piece's carry must be refused as E4N:k3:start: failed E4N:k3:start, E4N:k3:man-out) -> FIRES
+PLANT-NO-RESUME (a PIECE-START naming a wrong hand-off sha256 must be refused as E4N:k3:start-hand: failed E4N:k3:start-hand, E4N:k3:man-out) -> FIRES
+C-LAWFIELDS (11 free entries: rem_tpow 4; tail and ann n, J_REF and a_G from the C3-h list's graphs' G_vv, tilt_p's G_vv and the a_v of the PREPJSON each prep took; far_cF from the pinned sup_F's m_F of the runner's factors, never below this script's own exponent; far_rate = down(alpha_lo - c_F/300); all exactly equal) -> PASS
+C-MONO-FAR (every recomputed far rate certainly > 0; smallest 4.8284e-01 at E4N:IhL,10,0) -> PASS
+C-BAND (sanity, 11 free entries: the banded bound in arb at J = 300, 600, 1000, 3000 is <= err (1 + 2^-30) at 300, <= err beyond and non-increasing; largest banded/err: J 300 1.0000, J 600 0.0593, J 1000 0.0077, J 3000 0.0001) -> PASS
+C-LAWCERT-RT (the certificate through m3_reader_v6_3's _bound and _parse_lawcert against the two loaded records: 11 entries back with the records' laws; claim and format equal the reader's) -> PASS
+RECORD m3_lawcert_c3k_v2_N3.json 4b46e5c123dcc1dbc0b31de58b314c5d878d92b23db25de8f3065b8e473cab53
+VERDICT VALID

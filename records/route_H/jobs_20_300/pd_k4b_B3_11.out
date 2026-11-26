@@ -1,0 +1,25 @@
+SELF sha256 b0f40c890d4e4be4b389f4fc690916d99d57816369465503b3989a64b3657de7
+cs33h_1_rh_cert core 929ab8a0 engine c08d33c1 probe 13f53bf6 item coverB:3:221.034367813122:250:0.01 CAP_S 540 NMODE 8 NCERT 6 K_S 4 K_F 4 PE {'th': 6, 'mh': 9, 'bh': 6, 'tv': 6, 'bv': 6} K_EX 2 NSUB 16 K_MAX 60
+Q N=3 L=124: 7875 blocks, max Davis-Kahan radius 8.839e-12 (gate 1e-09) (2.2 s)
+BUILD N=3 L=124 K=4 Kb=33 n1=398 sertail=9.535e-27; labels 0..248: sqrt TM on 165, g TM on 162 (crude elsewhere); max rem a~ 3.141e-12, E~ 4.126e-14, XE~ 4.035e-14; t=2.9 s
+NODE t=+1.056363 lam1=7.872283509873e-02 lam_s/lam1 s=2..10: 0.1460271 0.0798275 0.0436481 0.0213622 0.0116879 0.0063942 0.0063658 0.0034971 0.0031307 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (2.8 s)
+NODE t=+0.652868 lam1=7.915155374412e-02 lam_s/lam1 s=2..10: 0.1460274 0.0798277 0.0436483 0.0213624 0.0116880 0.0063943 0.0063658 0.0034972 0.0031307 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (5.9 s)
+NODE t=+0.000000 lam1=7.985185295219e-02 lam_s/lam1 s=2..10: 0.1460277 0.0798280 0.0436486 0.0213626 0.0116882 0.0063944 0.0063658 0.0034973 0.0031308 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (9.2 s)
+NODE t=-0.652868 lam1=8.056043785237e-02 lam_s/lam1 s=2..10: 0.1460281 0.0798283 0.0436488 0.0213628 0.0116884 0.0063945 0.0063659 0.0034973 0.0031309 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (12.5 s)
+NODE t=-1.056363 lam1=8.100256378798e-02 lam_s/lam1 s=2..10: 0.1460284 0.0798285 0.0436490 0.0213629 0.0116885 0.0063946 0.0063659 0.0034974 0.0031309 parity +1 +1 -1 +1 +1 -1 +1 +1 -1 +1 (15.7 s)
+SPECTRAL N=3: eps/mu0 2.5e-10 5.3e-10 6.2e-10 9.6e-10 2.4e-09 3.6e-09 6.5e-09 3.5e-09; parities +1.000000000 +1.000000000 -1.000000000 +1.000000000 +1.000000000 -1.000000000 +1.000000000 +1.000000000; C-NODE excess -0.00e+00; |T^| <= 1.078816e-01 (57.1 s)
+SPEC N=3 b0=222.1450932795196 part B: identification True; eps_T 1.065e-15 eps_e 1.818e-15; min gap/nu1 8.521e-01 1.021e-01 6.799e-02 2.220e-02 1.272e-02 4.739e-03; u_rem/nu2 <= 0.059013; mode sha8 (diagnostic) bc282abb 10391c42 e8098a68 a8da30a2 d6a42fec e076d2b2 3f92a779 d0ce59c8
+FAMILY base: p(t) coefficients 1.252319e+01 1.692144e-01 7.621459e-04 1.144978e-06 1.581933e-11 (sup 1.271208e+01, inf >= 1.233430e+01), centring th 0.997009167 mh 0.997473572 bh 0.997009167 tv 0.997529997 bv 0.997529997, |J_p| 5.894e-04 5.827e-04 5.825e-04 5.825e-04 5.825e-04 5.825e-04 5.825e-04 5.825e-04 5.825e-04 5.825e-04 (74.9 s)
+FAMILY common: 73 vectors (43.4 s)
+FAMILY part B: 111 vectors, max rho/norm 3.36e-04 (113.3 s)
+TRUNC N=3 b0=222.1450932795196 part B: eps_T 1.065e-15 eps_e 1.818e-15 eps_W 2.847e-15 kappa 1.138 rho 3.602e+04 (TY_bv) c 1.35034 slack_f 1.110e-04 | rho by type I_bh 835.8 I_bv 2994 I_mh 642.9 I_th 835.8 I_tv 2994 J 1.027 P_bh 6728 P_bv 3.491e+04 P_mh 1.549e+04 P_th 6728 P_tv 3.491e+04 TY_bh 6529 TY_bv 3.602e+04 TY_mh 1.543e+04 TY_th 6529 TY_tv 3.602e+04 U 9.39 Y_bh 677.2 Y_bv 2944 Y_mh 579.8 Y_th 677.2 Y_tv 2944 seed 1.007
+CHECKS N=3 b0=222.1450932795196 part B: NEAR 22832 min 1.104e-02 at (15,tv,5,bv,5,0,1.127e-02,4.464e-04) | FAR 0 k* <= 0 min - at - | fails 0 [] | negatives 0 [] | slack 1.11e-04 | controls {'cas': True, 'node': True, 'par': True, 'pos': True, 'slack': True, 'fin': True} | gram rows 470, per-pair 0, inner products 2242 (gram 1.9 s, checks 2.5 s)
+P6 flint: zero-centred ball (x > 0)=False (x < 0)=False contains(0)=True; ctx.prec=128 -> FIRED
+PLANTS N=3 b0=222.1450932795196 part B: P6:FIRED P-CAS:FIRED P-NODE:FIRED P-NEAR:FIRED P-TR:FIRED P-DELTA:FIRED P-L:FIRED (P-NODE excess 1.00e-06)
+C-PROBE N=3 beta=223.20145597215205 L=124: lam_s/lam1 rel 2.64e-12 (gate 1e-8); c_mh/c_th cs30 2.3317166440e-03 here 2.3317166507e-03 rel 2.88e-09 (gate 1e-4): PASS
+IV N=3 part B K=4 b0=222.1450932795196 h=1.1107254663976107 L=124 status CERTIFIED (312.7 s)
+LEDGER B N=3 lo=221.0343678131220030991244 hi=223.2558187459172245326045 b0hex=0x1.bc4a49aa94cffp+7 hhex=0x1.1c58811103180p+0 K=4
+COVER_STOP N=3 part B next_left=223.2558187459172 (time)
+VALID True
+VERDICT PARTIAL B [221.034367813122, 223.2558187459172245326045]
+CPU 323.2 s maxrss_kb 6140240

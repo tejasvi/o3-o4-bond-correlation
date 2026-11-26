@@ -1,0 +1,34 @@
+kt_gjj_export_v1_1 sha256 de404efa5e5edf817f1a0e2f89907dc87049630b4bc12ca88e18a1bdf4072b8c ITEM=run LIM=300
+C-HASH PASS (3 files)
+IMPORT: kt_s8_cert_v1_14_3 in its cert namespace, chunk c4_0000_0001 with tag r62 (the first free of r50..r99; a stray, not counted by S8's final; tags used at c4 after this import: 13)
+C-S8-STAGEA: run_A's stage-A lists come back empty (failing none, not firing none) -> PASS
+PLANT-S8-STAGEA: one injected stage-A failure must be refused -> FIRES
+C-GJJ-LIST: S8's D records (N4 29cbb2a2, N3 c3c367f3) both name S8_ENTRY_LIST_v3.json:12374013, and the file hashes to it -> PASS
+C-GJJ-DEF: in S8_ENTRY_LIST_v3.json (12374013) g,0,0..g,3,3 are each one graph-D entry (two vac columns, horizontals 1.0) with both factors cp_j; S8's chain_key maps them to [('g', 0, 0), ('g', 1, 1), ('g', 2, 2), ('g', 3, 3)] -> PASS
+PLANT-GJJ-KEY: g,0,j read as g_jj (j = 1..3) must be refused by its factors -> FIRES
+C-G00 N=4 piece 61: the export's g_00 ball [1.00336 +/- 7.33e-6], the chain's g00 [1.00336 +/- 7.33e-6], overlap True -> PASS
+PLANT-G00 N=4 piece 61: the g_00 ball moved up by eight of the two widths must not overlap the chain's -> FIRES
+INFO N=4 piece 61 (J [349.3562470527477, 350.22963767037953]): g_jj/g_00 balls [0.9955 +/- 2.01e-5]; [0.99781 +/- 5.89e-6]; [0.9987 +/- 1.18e-5]
+PLANT-GJJ-LOW: a value below g_11/g_00's lower end at N4 piece 61 (995478910354e-12) must be refused by C-GJJ-UP, and the written value passes -> FIRES
+PLANT-GJJ-MID: a value between g_11/g_00's midpoint and its upper end (995486602939561498634048...) must be refused by C-GJJ-UP -> FIRES
+C-G00 N=4 piece 903: the export's g_00 ball [1.00000 +/- 1.17e-6], the chain's g00 [1.00000 +/- 1.17e-6], overlap True -> PASS
+PLANT-G00 N=4 piece 903: the g_00 ball moved up by eight of the two widths must not overlap the chain's -> FIRES
+INFO N=4 piece 903 (J [1008859.4155328119, inf]): g_jj/g_00 balls [1.0000 +/- 1.57e-6]; [1.00000 +/- 7.58e-7]; [1.00000 +/- 4.53e-7]
+C-G00 N=3 piece 0: the export's g_00 ball [1.00275 +/- 4.94e-6], the chain's g00 [1.00275 +/- 4.94e-6], overlap True -> PASS
+PLANT-G00 N=3 piece 0: the g_00 ball moved up by eight of the two widths must not overlap the chain's -> FIRES
+INFO N=3 piece 0 (J [300.0, 300.75]): g_jj/g_00 balls [0.99780 +/- 6.55e-6]; [0.99982 +/- 4.50e-6]; [1.0002 +/- 1.53e-5]
+C-G00 N=3 piece 903: the export's g_00 ball [1.000000 +/- 8.16e-7], the chain's g00 [1.000000 +/- 8.16e-7], overlap True -> PASS
+PLANT-G00 N=3 piece 903: the g_00 ball moved up by eight of the two widths must not overlap the chain's -> FIRES
+INFO N=3 piece 903 (J [1008859.4155328119, inf]): g_jj/g_00 balls [1.00000 +/- 6.55e-7]; [1.000000 +/- 5.27e-8]; [1.0000000 +/- 5.78e-8]
+PLANT-GJJ-KEYS: N3 piece 0 read with g,3,3 removed from its entries must be refused under C-GJJ-KEYS -> FIRES
+C-GJJ-POS, C-GJJ-UP, C-JLO, C-GJJ-KEYS: every piece's g_00 and g_jj value balls have lower ends > 0, every written upper end re-reads at or above its exact end, every piece's J ends equal the means export's, and every key is present (a failure stops the run as a refusal) -> PASS
+C-COVER: pieces evaluated N4 843 (P0061..P0903), N3 904 (P0000..P0903) of S8's ranges -> PASS
+MAX N=4 (J-uniform over P0061..P0903, J_RANGE 349.3562470527477 inf; re-read by C-GJJ-UP): g_11/g_00 <= 99999999998972791e-17, g_22/g_00 <= 99999999999563935e-17, g_33/g_00 <= 99999999999860418e-17
+MAX N=3 (J-uniform over P0000..P0903, J_RANGE 300.0 inf; re-read by C-GJJ-UP): g_11/g_00 <= 10000000000021076e-16, g_22/g_00 <= 99999999999831912e-17, g_33/g_00 <= 10002152890441395e-16
+PIECES: cpu 26.3 s
+PREPARED: the record, 1747 piece lines; written only after the last gate
+C-PREC: flint ctx.prec 256 at the end, the cert module's PREC 256 -> PASS
+ITEM run cpu 26.7 s, peak resident memory 96 MiB
+GATES: failing none; PLANTS: not firing none
+RECORD GJJ_EXPORT_v1_kt_gjj_export_v1_1.kv sha256 38820caf78cebb529ad010676167ac042cebd5f4e9d62381af1e3a342eec2516
+VERDICT VALID

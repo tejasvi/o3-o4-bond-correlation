@@ -1,0 +1,186 @@
+m3_run_es_v1_3 item asm.4 LIM 540; script sha256 3d638b75548a2a64ccceaed5b8a558b71bb0d014686c2dcc57529b17a0f99a88; python 3.14.4
+STAGE-CPU C-HASH start 0.03 s
+C-HASH (9 modules, the kernel files, 2 parts of this script, 27 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.12 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (the mock 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v16_1: 3 kernel calls, 6 layer calls in E2_ma/lp_moment_ma/lp_ma/pos_ma/E2_ball/e2 with fallback=False, 6 wanted) -> PASS
+PLANT-CALLER (m3_bar_v16_1 with one E2_combine call's plan= removed) -> FIRES
+PLANT-CALLER-FLAG (m3_bar_v16_1 with pos_ma's fallback=False dropped) -> FIRES
+C-SERIES (no *_series( call in 9 modules, the kernel files, this script and its 2 parts) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-330.000000000 +/- 2.94e-12] overlaps the layer's [-330.000000000 +/- 2.64e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU asm start 0.16 s
+C-LIST (esemi_windows_v2.json be8ff5d6: 24/24/8/12 windows; 96 uses, 96 distinct; 6 records of 16 keys: True; failing none) -> PASS
+PLANT-LIST (ES9 without its first window) -> FIRES
+C-LIST-RULE (the class rules give 68 windows, the list 68: equal) -> PASS
+PLANT-LIST-RULE (D3's bb bond on the top row: differs) -> FIRES
+C-ENC ([cp, 1, 0], [cp, 0, 0], [xi, [3, 6]] give the conventions' tuples: True; pair forms outside the list pairs: none) -> PASS
+PLANT-ENC ([st, 0, 0] and [cp, 10, 0] refused: [True, True]) -> FIRES
+C-PARITY-SET (windows passing C-ODD: {'ES9': ['W1,2'], 'ES12A': ['W1,2'], 'ES12B': [], 'ES12C': []}; marked zero: {'ES9': ['W1,2'], 'ES12A': ['W1,2'], 'ES12B': [], 'ES12C': []}; the list's parity zeros: {'ES9': ['W1,2'], 'ES12A': ['W1,2'], 'ES12B': [], 'ES12C': []}) -> PASS
+PLANT-ODD (ES9 W1,2: passes True; with S[1][2] + 1e-12: a factor is neither exactly even nor exactly odd: [None]) -> FIRES
+C-ALIAS (aliases recomputed from the factor tuples equal ALIASES (none): True) -> PASS
+PLANT-ALIAS (ES9 x3_6,0 with its bond moved to (4, 5) matches x4_5,0; x3_6,0 itself must not) -> FIRES
+C-RULE-OF (68 computed keys: std 8, col 60, colh 0, colb 0; RULE_TAB keys 0, all bonded computed keys: True) -> PASS
+PLANT-RULE-OF (W1,0 with [xi, [3, 6]] added: col; W1,0: std) -> FIRES
+C-HANDOFF (m3_run_es_v1_3_ES9k1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (ES9k1.4: entries 0..23 complete) -> PASS
+C-PIECES (the ES9 pieces cover all 24 computed ES9 keys, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_es_v1_3_ES12Ak1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (ES12Ak1.4: entries 0..15 complete) -> PASS
+C-HANDOFF (m3_run_es_v1_3_ES12Ak2.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (ES12Ak2.4: entries 16..23 complete) -> PASS
+C-PIECES (the ES12A pieces cover all 24 computed ES12A keys, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_es_v1_3_ES12Bk1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (ES12Bk1.4: entries 0..4 complete, 1 units of x2_5x3_6,2 carried) -> PASS
+C-HANDOFF (m3_run_es_v1_3_ES12Bk2.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (ES12Bk2.4: entries 5..7 complete) -> PASS
+C-PIECES (the ES12B pieces cover all 8 computed ES12B keys, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_es_v1_3_ES12Ck1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PIECES (ES12Ck1.4: entries 0..11 complete) -> PASS
+C-PIECES (the ES12C pieces cover all 12 computed ES12C keys, in order, none left in progress) -> PASS
+C-HANDOFF (m3_run_es_v1_3_ES9r1.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_es_v1_3_ES9r2.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-RESUME-CHAIN (ES9 on x3_6x7_8,1: part 1 cut ['ak', 'm0u', 'm0c'] resumed identical, PLANT-RESUME FIRES; part 2 cut after 15 of 48 units resumed identical) -> PASS
+C-HANDOFF (m3_run_es_v1_3_P9u.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-HANDOFF (m3_run_es_v1_3_P9c.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-PREP-STAGES (P9: P9u.4 and P9c.4, of P9 and P9, scalars ['nE', 'nE4', 'rE', 'rE_parts'] and ['Pout', 'Pout_p', 'alpha_lo', 'farbase', 'nC6', 'nC8']) -> PASS
+C-PREP-FOREIGN (m3_run_v1_9_3_Hp10.4.json 35c7b6ca, producer m3_run_v1_9_3_Hp10.4.out: VERDICT lines exactly ["VERDICT VALID"], its HANDOFF sha256; header script 57991eb0, item Hp10.4, N 4, family 'H', kernel 'arbeng_ma_v1_4_1:4126e83e', arb kernel 'arbeng_ma_stub_v1_1:4fc7e49d', trial as this run True; done True, scalars ['nE', 'nE4', 'rE', 'rE_parts'] and ['Pout', 'Pout_p', 'alpha_lo', 'farbase', 'nC6', 'nC8']; columns of ES12A/ES12B/ES12C [['vac', 'int', 'int', 'free'], ['vac', 'int', 'int', 'free'], ['vac', 'int', 'int', 'free']], FCOLS ['vac', 'int', 'int', 'free'], H's columns in S8_ENTRY_LIST_v2 ['vac', 'int', 'int', 'free']; radii of m3ref_v1_14_P16H.4.p6_z9sym.out equal to m3_s8v2_H_N4_J300_v1_9_3.json's and its dmaxH 16 = DMAXH 16: True) -> PASS
+PLANT-PREP-FOREIGN (the header's trial ts sha256 flipped: refused True; done False: refused True; the L columns [vac, int, int, vac]: refused True) -> FIRES
+PLANT-PREP-FOREIGN-SRC (the S8 H record's a_v[0] moved up by one ulp: refused True; H's columns [vac, int, int, vac]: refused True; the S8 H record's dmaxH 18: refused True) -> FIRES
+PLANT-HANDOFF-FOREIGN (m3_run_v1_9_3_Hp10.4.json: body byte tampered in memory) -> FIRES
+PLANT-HANDOFF-FOREIGN (m3_run_v1_9_3_Hp10.4.json: header script sha tampered in memory) -> FIRES
+PLANT-HANDOFF-FOREIGN (m3_run_v1_9_3_Hp10.4.json: END checksum tampered in memory) -> FIRES
+C-GRAPH-LIST (ES12A: the columns ['vac', 'int', 'int', 'free'] give V 12 and 18 edges; the list's 6 pairs [(0, 1), (0, 2), (1, 2), (3, 6), (4, 5), (7, 8)], F 18 (the list: 18); the entries use 6 of them) -> PASS
+PLANT-GRAPH-LIST (ES12A: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-RULE (P12: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 8.1e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (P12: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 12 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 1.5453758382672376, 1.543813959378917) -> PASS
+C-PREP-REF (P12: m3ref_v1_14_P16H.4.p6_z9sym.out PREPJSON of family P16H, N 4, J 300.0, theta0 0.855; dmaxH 16) -> PASS
+C-PREP-GRAPH (ES12A: the prep graph (V 12, F 12, no pairs; the family graph F 18) against the family graph: inputs, C-1 and C-4 values exactly equal) -> PASS
+PLANT-PREP-EDGE (ES12A: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (ES12A: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (ES12A: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (ES12A: the prep view with Gam[0][1] moved up by one ulp of each end (overlapping: True): differs in C-1 values) -> FIRES
+C-PREP-FOREIGN-C4 (ES12A: Pout, Pout_p, farbase, alpha_lo recomputed on the family graph with this run's radii, rho'^2, theta0, J and N equal the foreign hand-off's scal_c end for end: True) -> PASS
+PLANT-PREP-FOREIGN-C4 (ES12A: the prep with a_v[0] moved up by one ulp must break the equality) -> FIRES
+C-GRAPH-LIST (ES12B: the columns ['vac', 'int', 'int', 'free'] give V 12 and 18 edges; the list's 5 pairs [(0, 1), (0, 2), (1, 2), (2, 5), (3, 6)], F 17 (the list: 17); the entries use 5 of them) -> PASS
+PLANT-GRAPH-LIST (ES12B: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-RULE (P12: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 8.1e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (P12: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 12 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 1.5453758382672376, 1.543813959378917) -> PASS
+C-PREP-REF (P12: m3ref_v1_14_P16H.4.p6_z9sym.out PREPJSON of family P16H, N 4, J 300.0, theta0 0.855; dmaxH 16) -> PASS
+C-PREP-GRAPH (ES12B: the prep graph (V 12, F 12, no pairs; the family graph F 17) against the family graph: inputs, C-1 and C-4 values exactly equal) -> PASS
+PLANT-PREP-EDGE (ES12B: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (ES12B: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (ES12B: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (ES12B: the prep view with Gam[0][1] moved up by one ulp of each end (overlapping: True): differs in C-1 values) -> FIRES
+C-PREP-FOREIGN-C4 (ES12B: Pout, Pout_p, farbase, alpha_lo recomputed on the family graph with this run's radii, rho'^2, theta0, J and N equal the foreign hand-off's scal_c end for end: True) -> PASS
+PLANT-PREP-FOREIGN-C4 (ES12B: the prep with a_v[0] moved up by one ulp must break the equality) -> FIRES
+C-GRAPH-LIST (ES12C: the columns ['vac', 'int', 'int', 'free'] give V 12 and 18 edges; the list's 5 pairs [(0, 1), (0, 2), (1, 2), (5, 8), (6, 9)], F 17 (the list: 17); the entries use 5 of them) -> PASS
+PLANT-GRAPH-LIST (ES12C: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-RULE (P12: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 8.1e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (P12: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 12 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 1.5453758382672376, 1.543813959378917) -> PASS
+C-PREP-REF (P12: m3ref_v1_14_P16H.4.p6_z9sym.out PREPJSON of family P16H, N 4, J 300.0, theta0 0.855; dmaxH 16) -> PASS
+C-PREP-GRAPH (ES12C: the prep graph (V 12, F 12, no pairs; the family graph F 17) against the family graph: inputs, C-1 and C-4 values exactly equal) -> PASS
+PLANT-PREP-EDGE (ES12C: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (ES12C: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (ES12C: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (ES12C: the prep view with Gam[0][1] moved up by one ulp of each end (overlapping: True): differs in C-1 values) -> FIRES
+C-PREP-FOREIGN-C4 (ES12C: Pout, Pout_p, farbase, alpha_lo recomputed on the family graph with this run's radii, rho'^2, theta0, J and N equal the foreign hand-off's scal_c end for end: True) -> PASS
+PLANT-PREP-FOREIGN-C4 (ES12C: the prep with a_v[0] moved up by one ulp must break the equality) -> FIRES
+C-G-PHI (M2B_KV_v1 13cc0d9a PIN_TRIAL tokens of N4: ['pk10/scratch/m2_N4_J170.json.b:7c0d4316e5162300becf5b541ebb4d2e68c83115ee2f35f30c4f2b22ffc95a19', 'pk11/out/vacres_K3_N4_sym_v1.json:b40859de2607f64cd127cb1834a04e9f33b3c2cbe4af9fe4f2bb80badaacd43e']; each file under code/ hashes to its token and to this run's pin) -> PASS
+PLANT-G-PHI (the second token with its sha256's last digit changed) -> FIRES
+C-S8-SAME (ES9 W1,k against S8 E3 f,k (m3_s8v3_E3_N4_J300_v1_8_1.json fa2cf59b), k = 0..3: every [ak - ak_rad, ak + ak_rad] meets S8's ball: {0: [True, True, True, True], 1: [True, True, True, True], 2: [True, True, True, True], 3: [True, True, True, True]}; parities equal: True; err / S8's err ['1.000', '1.000', '-', '1.000'] (INFO)) -> PASS
+PLANT-S8-SAME (ES9 W1,1 with its a_0 moved by ten times both a_0 widths plus 1e-12 must miss S8's f,1) -> FIRES
+C-S8-SAME (ES12A W1,k against S8 H h,k (m3_s8v2_H_N4_J300_v1_9_3.json c6acd6a1), k = 0..3: every [ak - ak_rad, ak + ak_rad] meets S8's ball: {0: [True, True, True, True], 1: [True, True, True, True], 2: [True, True, True, True], 3: [True, True, True, True]}; parities equal: True; err / S8's err ['1.000', '1.000', '-', '1.000'] (INFO)) -> PASS
+PLANT-S8-SAME (ES12A W1,1 with its a_0 moved by ten times both a_0 widths plus 1e-12 must miss S8's h,1) -> FIRES
+C-GRAPH-LIST (ES9: the columns ['vac', 'int', 'free'] give V 9 and 13 edges; the list's 6 pairs [(0, 1), (0, 2), (1, 2), (3, 6), (4, 5), (7, 8)], F 15 (the list: 15); the entries use 6 of them) -> PASS
+PLANT-GRAPH-LIST (ES9: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-GRAPH-LIST (ES12A: the columns ['vac', 'int', 'int', 'free'] give V 12 and 18 edges; the list's 6 pairs [(0, 1), (0, 2), (1, 2), (3, 6), (4, 5), (7, 8)], F 18 (the list: 18); the entries use 6 of them) -> PASS
+PLANT-GRAPH-LIST (ES12A: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-GRAPH-LIST (ES12B: the columns ['vac', 'int', 'int', 'free'] give V 12 and 18 edges; the list's 5 pairs [(0, 1), (0, 2), (1, 2), (2, 5), (3, 6)], F 17 (the list: 17); the entries use 5 of them) -> PASS
+PLANT-GRAPH-LIST (ES12B: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-GRAPH-LIST (ES12C: the columns ['vac', 'int', 'int', 'free'] give V 12 and 18 edges; the list's 5 pairs [(0, 1), (0, 2), (1, 2), (5, 8), (6, 9)], F 17 (the list: 17); the entries use 5 of them) -> PASS
+PLANT-GRAPH-LIST (ES12C: the list's pairs without (0, 1), a pair an entry uses) -> FIRES
+C-COPY (96 record keys, each its window's computed item exactly) -> PASS
+PLANT-COPY (D4 -1 ES,e,1 with its a_0 moved by 1e-9 must differ from its window) -> FIRES
+C-SCOPE (6 records, each with exactly the 16 keys ES,<mono>,<k>) -> PASS
+PLANT-SCOPE (a record without one key) -> FIRES
+C-ES-ITEMS (every item carries class, d_L, mono, k, its window, shape, the window's factors and uses, and its own use among them) -> PASS
+PLANT-ES-ITEMS (D4 -1 ES,f,2 carrying k 1) -> FIRES
+C-PART-REC (each record's partition field: its 16 keys with their windows' rules and groups, G, qcap >= QCAP0) -> PASS
+PLANT-PART-REC (D4 -1's field with ES,e,0's groups 0 and 1 swapped) -> FIRES
+C-FMT (m3_es_D4_dLm1_N4_J300_v1_3.json: 16 keys read back exactly by m3_reader_v6_3 with the partition and item fields; 68785 bytes; sha256 89e36301e636bead67bf7b938b2f0e7ac0ea0f888ec3f0440d29f29f886b0626) -> PASS
+C-FMT (m3_es_D4M_dLm1_N4_J300_v1_3.json: 16 keys read back exactly by m3_reader_v6_3 with the partition and item fields; 68496 bytes; sha256 66d5f7b698e7bdcb95eecf3cf1e94f9e97fced21d4e95794464f7adcd8befd28) -> PASS
+C-FMT (m3_es_D4_dL0_N4_J300_v1_3.json: 16 keys read back exactly by m3_reader_v6_3 with the partition and item fields; 78809 bytes; sha256 a4e0c56813e1af6384c603238ce652a54b1d3a9574e031f28f60e457caac32d7) -> PASS
+C-FMT (m3_es_D4M_dL0_N4_J300_v1_3.json: 16 keys read back exactly by m3_reader_v6_3 with the partition and item fields; 78765 bytes; sha256 652d4855e10f3e35e1eee92c1b0b12a1f429f2b3f6fa9f23428519acc937551a) -> PASS
+C-FMT (m3_es_D3_dLm1_N4_J300_v1_3.json: 16 keys read back exactly by m3_reader_v6_3 with the partition and item fields; 79568 bytes; sha256 ddf6a1f2700c6dcaf2dcca1c15a60378a2d86d92ea413d436aeee345382dcb3e) -> PASS
+C-FMT (m3_es_D3_dL0_N4_J300_v1_3.json: 16 keys read back exactly by m3_reader_v6_3 with the partition and item fields; 79652 bytes; sha256 8076fb6a51c77c6ff1b40a13ab9af7bd548a016567df06a10bf21ee55e38fc70) -> PASS
+C-DEC-EXACT (m3_es_D4_dLm1_N4_J300_v1_3.json: its written decimals read as exact rationals hold rnd >= sum_k ak_rad_k 300^-k, err >= the sum of B, Bp = B without rnd, parity zeros exactly 0; smallest margin 1.598e-31 at ES,1,0) -> PASS
+C-DEC-EXACT (m3_es_D4M_dLm1_N4_J300_v1_3.json: its written decimals read as exact rationals hold rnd >= sum_k ak_rad_k 300^-k, err >= the sum of B, Bp = B without rnd, parity zeros exactly 0; smallest margin 1.598e-31 at ES,1,0) -> PASS
+C-DEC-EXACT (m3_es_D4_dL0_N4_J300_v1_3.json: its written decimals read as exact rationals hold rnd >= sum_k ak_rad_k 300^-k, err >= the sum of B, Bp = B without rnd, parity zeros exactly 0; smallest margin 3.395e-31 at ES,f,0) -> PASS
+C-DEC-EXACT (m3_es_D4M_dL0_N4_J300_v1_3.json: its written decimals read as exact rationals hold rnd >= sum_k ak_rad_k 300^-k, err >= the sum of B, Bp = B without rnd, parity zeros exactly 0; smallest margin 3.778e-31 at ES,1,0) -> PASS
+C-DEC-EXACT (m3_es_D3_dLm1_N4_J300_v1_3.json: its written decimals read as exact rationals hold rnd >= sum_k ak_rad_k 300^-k, err >= the sum of B, Bp = B without rnd, parity zeros exactly 0; smallest margin 3.778e-31 at ES,1,0) -> PASS
+C-DEC-EXACT (m3_es_D3_dL0_N4_J300_v1_3.json: its written decimals read as exact rationals hold rnd >= sum_k ak_rad_k 300^-k, err >= the sum of B, Bp = B without rnd, parity zeros exactly 0; smallest margin 3.778e-31 at ES,1,0) -> PASS
+PLANT-DEC-EXACT (m3_es_D4_dLm1_N4_J300_v1_3.json with ES,ef,3 rnd 0 must fail C-DEC-EXACT) -> FIRES
+PLANT-FMT (record copy without one rnd) -> FIRES
+PLANT-RND (record copy with ES,ef,3 rnd = 0; its ak_rad sum 2.9e-05) -> FIRES
+PLANT-READER-PRECERT (m3_reader_v6_3 refuses the mutated record copy: precert) -> FIRES
+PLANT-READER-KERNEL (m3_reader_v6_3 refuses the mutated record copy: kernel) -> FIRES
+PLANT-READER-PREC (m3_reader_v6_3 refuses the mutated record copy: prec) -> FIRES
+PLANT-LAYER-V1_1 (m3_reader_v6_3 refuses the mutated record copy: arbeng_ma_v1_1.py) -> FIRES
+PLANT-LAYER-V1_2 (m3_reader_v6_3 refuses the mutated record copy: arbeng_ma_v1_2.py) -> FIRES
+PLANT-LAYER-V1_4 (m3_reader_v6_3 refuses the mutated record copy: arbeng_ma_v1_4.py) -> FIRES
+PLANT-READER-MOCK (m3_reader_v6_3 refuses the mutated record copy: mock_arbeng_v1_4.py) -> FIRES
+PLANT-LAYER-MIX (m3_reader_v6_3 refuses the mutated record copy: mix) -> FIRES
+PLANT-VALREC (m3_reader_v6_3 refuses the mutated record copy: valrec) -> FIRES
+PLANT-CLAIM (m3_reader_v6_3 refuses the mutated record copy: claim) -> FIRES
+PLANT-ARBK (m3_reader_v6_3 refuses the mutated record copy: arbk) -> FIRES
+PLANT-ARBB (m3_reader_v6_3 refuses the mutated record copy: arbb) -> FIRES
+PLANT-JREF (m3_reader_v6_3 refuses the mutated record copy: expected J_REF 150) -> FIRES
+PLANT-N (m3_reader_v6_3 refuses the mutated record copy: expected N 3) -> FIRES
+PLANT-KIND (m3_reader_v6_3 refuses the mutated record copy: kind) -> FIRES
+PLANT-CLAIM-BALL (m3_reader_v6_3 refuses the mutated record copy: claimball) -> FIRES
+PLANT-CLAIM-BALL-MISSING (m3_reader_v6_3 refuses the mutated record copy: noclaimball) -> FIRES
+PLANT-PARZERO (m3_reader_v6_3 refuses the record copy with ES,e,1 marked a parity zero) -> FIRES
+C-BOUND-RT (m3_reader_v6_3.loads accepts the record text under an output that names it and ends VALID) -> PASS
+PLANT-BOUND-VERDICT (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-INVALID (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-TWO (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-SHA (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+PLANT-BOUND-NONE (m3_reader_v6_3.loads refuses this asm output) -> FIRES
+C-PREC-ASM (flint ctx.prec 512 before the write) -> PASS
+PLANT-NOWRITE (write_records under a failed gate, an unfired plant and a PRECERT tag: 3 of 3 refused, 0 files opened) -> FIRES
+C-WRITE (m3_es_D3_dLm1_N4_J300_v1_3.json holds exactly its C-FMT text) -> PASS
+RECORD m3_es_D3_dLm1_N4_J300_v1_3.json ddf6a1f2700c6dcaf2dcca1c15a60378a2d86d92ea413d436aeee345382dcb3e
+C-WRITE (m3_es_D3_dL0_N4_J300_v1_3.json holds exactly its C-FMT text) -> PASS
+RECORD m3_es_D3_dL0_N4_J300_v1_3.json 8076fb6a51c77c6ff1b40a13ab9af7bd548a016567df06a10bf21ee55e38fc70
+C-WRITE (m3_es_D4_dLm1_N4_J300_v1_3.json holds exactly its C-FMT text) -> PASS
+RECORD m3_es_D4_dLm1_N4_J300_v1_3.json 89e36301e636bead67bf7b938b2f0e7ac0ea0f888ec3f0440d29f29f886b0626
+C-WRITE (m3_es_D4_dL0_N4_J300_v1_3.json holds exactly its C-FMT text) -> PASS
+RECORD m3_es_D4_dL0_N4_J300_v1_3.json a4e0c56813e1af6384c603238ce652a54b1d3a9574e031f28f60e457caac32d7
+C-WRITE (m3_es_D4M_dLm1_N4_J300_v1_3.json holds exactly its C-FMT text) -> PASS
+RECORD m3_es_D4M_dLm1_N4_J300_v1_3.json 66d5f7b698e7bdcb95eecf3cf1e94f9e97fced21d4e95794464f7adcd8befd28
+C-WRITE (m3_es_D4M_dL0_N4_J300_v1_3.json holds exactly its C-FMT text) -> PASS
+RECORD m3_es_D4M_dL0_N4_J300_v1_3.json 652d4855e10f3e35e1eee92c1b0b12a1f429f2b3f6fa9f23428519acc937551a
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 1.83 s
+VERDICT VALID

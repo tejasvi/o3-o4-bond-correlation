@@ -1,0 +1,15 @@
+px08_rtrcert_v1 sha256 80726a83200c9d24a0b750aceb0574278f13f342c567eaea8e39aa026ac95654 ITEM=n3 cov LIM=230 SIGC=-
+C-HASH PASS (11 sources)
+C-PROP N=3 (Q_t = Q - 2 T(1/300, 9/20), interval LDL^T): PASS, 32 al-intervals tiling [0, pi], hence all of [0, 2 pi) (k(2 pi - al) = P k(al) P with P = diag(1, -1) or diag(1, -1, 1), so each family at 2 pi - al is (I_3 (x) P)-similar to the one at al) and the reflection; smallest pivot >= 1.49162958280e-1 on x in [21/32, 11/16] pi (0.0 s)
+CHECK PLANT-PROP FIRED
+C-PROP N=3 (Q - 2 (lam_XT/theta2) B_XT, interval LDL^T): PASS, 42 al-intervals tiling [0, pi], hence all of [0, 2 pi) (k(2 pi - al) = P k(al) P with P = diag(1, -1) or diag(1, -1, 1), so each family at 2 pi - al is (I_3 (x) P)-similar to the one at al) and the reflection; smallest pivot >= 5.07275915190e-2 on x in [0, 1/32] pi (0.0 s)
+CHECK PLANT-PROP FIRED
+C-PROP N=3 (Q - 2 (lam_XB/theta2) B_XB, interval LDL^T): PASS, 42 al-intervals tiling [0, pi], hence all of [0, 2 pi) (k(2 pi - al) = P k(al) P with P = diag(1, -1) or diag(1, -1, 1), so each family at 2 pi - al is (I_3 (x) P)-similar to the one at al) and the reflection; smallest pivot >= 5.07275915190e-2 on x in [0, 1/32] pi (0.0 s)
+CHECK PLANT-PROP FIRED
+C-PROP N=3 (Q - 2 (lam_Z/theta2) B_Z, interval LDL^T): PASS, 123 al-intervals tiling [0, pi], hence all of [0, 2 pi) (k(2 pi - al) = P k(al) P with P = diag(1, -1) or diag(1, -1, 1), so each family at 2 pi - al is (I_3 (x) P)-similar to the one at al) and the reflection; smallest pivot >= 6.16539981569e-3 on x in [1/2, 33/64] pi (0.0 s)
+CHECK PLANT-PROP FIRED
+COVER N=3 Re det Q > 0 and Re det Q_t > 0: certified at sigma 0.5, M = 64 (9074 boxes, 0.5 s)
+CHECK PLANT-STRIP FIRED
+TIMING N=3: one point (untilted and tilted tables) 0.9 s
+VERDICT PART-DONE
+CPU 1.5 s maxrss_kb 64220

@@ -1,0 +1,27 @@
+s4c_m2ba sha256 e86784a3209504c1516f8bb55ba9f3233c0254e9165991f09b0f924c0352d3b5 ITEM=n4 LIM=540
+C-HASH PASS (6 sources)
+C-SERIES N=4: H1, H2, H3 with 27, 38, 51 terms; E3 with 2232 terms; max relative coefficient error 9.25e-18: PASS
+PLANT-SERIES N=4: one H2 coefficient moved by 2^-40 max(1, |c|): C-SERIES fails: FIRED
+C-PORT N=4: Q_k and the ten B_f against twlib2.mats, max entry difference 1.51e-16: PASS
+C-BLOCK N=4: det Q_k, E H1, E P2, E E3 full against blocks at al = 0.7, 0.3 + 0.2 i: max |difference| 6.23e-30: PASS (5.5 s)
+PLANT-BLOCK N=4: the + block with k^T -> e^{i al}: C-BLOCK fails: FIRED
+C-FLT N=4: E E3 acb / pk10 float at al = 0.7, 2.3: 0.0710581242748 / 0.0710581242771, 0.560894929658 / 0.560894929656; max relative difference 3.30e-11 (tolerance 1e-09): PASS
+PLANT-FLT N=4: the acb value x (1 + 1e-7): max relative difference 1.00e-07: C-FLT fails: FIRED
+C-COVER N=4 det Q_k (blocks): PASS: sigma 0.5 certified on 18144 boxes (2.2 s)
+INT N=4: sigma 0.5, M 96 (49 nodes, 36.8 s); G on 116 boxes (224 evaluations, 108 failed, 141.2 s); C-EVEN PASS, C-CONJ PASS, C-HALF PASS
+  N=4 J0 = int dmu dq: [0.000521981948583150 +/- 1.85e-19]; T_M [0.000521981948583150 +/- 1.85e-19], T_M/2 [0.000521981948583150 +/- 1.85e-19], G [0.006468 +/- 2.81e-7], error [1.844e-23 +/- 4.88e-27]
+  N=4 J1 = int dmu dq E E1: [0.000441618323815564 +/- 1.51e-19]; T_M [0.000441618323815564 +/- 1.49e-19], T_M/2 [0.000441618323815564 +/- 1.49e-19], G [0.5663 +/- 4.57e-5], error [1.614e-21 +/- 1.08e-26]
+  N=4 J2 = int dmu dq E E2: [0.000333821215922579 +/- 9.20e-19]; T_M [0.000333821215922579 +/- 3.60e-19], T_M/2 [0.000333821215922579 +/- 3.60e-19], G [196.7 +/- 0.0496], error [5.608e-19 +/- 6.85e-25]
+  N=4 J3 = int dmu dq E E3: [0.000260439838092 +/- 3.98e-16]; T_M [0.000260439838091842 +/- 2.85e-19], T_M/2 [0.000260439838091842 +/- 2.85e-19], G [8.401e+4 +/- 1.81], error [2.395e-16 +/- 3.89e-20]
+C-FINITE N=4: pref and J0..J3 finite: PASS
+C-NORM N=4: pref^2 J0 = [1.03023930410320 +/- 1.16e-15]: PASS
+C-C123 N=4: c1 = [0.846041371764 +/- 4.42e-13], c2 = [0.639526360689 +/- 2.99e-13], c3 = [0.498944147013 +/- 7.69e-13] (twrig6z 0.846041, 0.639526, 0.498944), window 1e-6: PASS
+PLANT-C123 N=4: c3 x (1 + 1e-4) = [0.498994041427 +/- 8.51e-13]: FIRED
+C-POS N=4: c1, c2, c3 > 0: PASS
+C-TW3 N=4: U3 = pref^2 J0 (1 + c1 t + c2 t^2 + c3 t^3) at t = 1/300 = [1.03315206077941 +/- 3.34e-15]; twrig6z 1.0331520608: |difference| <= [2.06e-11 +/- 1.34e-14]: PASS
+READING N=4: J0 [0.000521981948583150 +/- 1.85e-19], J1 [0.000441618323815564 +/- 1.51e-19], J2 [0.000333821215922579 +/- 9.20e-19], J3 [0.000260439838092 +/- 3.98e-16]; certified third-order bound for every J >= 300 (c_i > 0, so the sup over t in [0, 1/300] is at t = 1/300): U3 <= [1.03315206077941 +/- 3.34e-15]
+TIME N=4: 197.5 s
+CHECKS all PASS
+PLANTS PLANT-SERIES N=4:FIRED PLANT-BLOCK N=4:FIRED PLANT-FLT N=4:FIRED PLANT-C123 N=4:FIRED
+VERDICT VALID
+CPU 197.6 s maxrss_kb 267524

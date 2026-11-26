@@ -1,0 +1,33 @@
+m3ref_v1_15 item P16E4D.3.p1 LIM 60; python 3.14.4
+C-COPY (12 pinned copies in /mnt/g2/release/root/code/pk03/pin) -> PASS
+PLANT-COPY (riglap2 bytes plus one byte) -> FIRES
+C-SRC (lapl2 l.63-79, vacmod2 l.8-9 and l.12-13, endw l.16-19, vacrig11f l.166-170, 173-175, 178-186, 196-197, 240-244, 247, 250-287, riglap5s l.22-34 (C-SRC-H) against this file; source shas) -> PASS
+PLANT-SRC (strip_graph text with one character changed) -> FIRES
+C-HASH (15 pk10 inputs and J = 170 records, 4 trial files and 4 S8 lists in pk11/out, 6 m3ref_v1_2 records, the S9 list and 2 m3ref_v1_10 base records) -> PASS
+PLANT-HASH (vacres_K3_N4 against a sha with its last digit changed) -> FIRES
+versions: numpy 2.5.3, scipy 1.18.1; engines from /mnt/g2/release/root/code/pk03/pin
+PLANT-NPGUARD (riglap5b's guarded NPoly product is installed and refuses x^3 times x^2 in base 4) -> FIRES
+TRIAL z9symxy
+inputs: N = 3, kbar 0.5514259266145797 (m2_N3_J170.json.b), trial set ts_N3_S_z9symxy_v1.json, vacres_K3_N3_sym_v1.json
+C-CACHE-CHAIN (piece 1: no memo s16memo_P16E4D_N3.jsonl yet; no recorded table) -> PASS
+P16 piece 1 of P16E4D N=3: disk table cache /mnt/g2/release/root/code/pk22/m3/out/tab16, E2 memo s16memo_P16E4D_N3.jsonl (0 entries)
+family P16E4D N=3: V 6, F 13, pairs [(0, 1), (0, 2), (1, 2), (3, 4), (3, 5), (4, 5), (1, 4)], NPOLY_B 28, qcap 6, 8 keys: Gxh,10,0, Gxh,10,1, Gxh,10,3, Gxhr,1,10, G10,0, G10,1, G10,3, G10,10
+C-NPB (npoly base 28 for F = 13 forms: 28**13 = 6502111422497947648, below 2**63 = 9223372036854775808) -> PASS
+STAGE-CPU graph 0.00 s
+C-GRAPH (the column specs of D (v1_1, v2), N, E2, FF and L (v2) give strip_graph(2), strip_graph(3), Emix, Efree and strip_graph(4) exactly) -> PASS
+PLANT-GRAPH (D with its T-B coupling times 1 + 1e-12) -> FIRES
+TABLE-ADOPTED 7c63c641d5dc46bb7d8727fb12176691.npz: sha256 8723183e1f99f12d2cecfebb05c4468f5b5c23687d4f2f8434ab17fedd01dd24, 1203784 bytes (the same key; built by another family or copied)
+TABLE-LOADED 7c63c641d5dc46bb7d8727fb12176691.npz: D 16 F 6 moments 74613 (cpu so far 0.2 s)
+TABLE-ADOPTED 5d91be7aa54963dc90eeb484f4e6e32a.npz: sha256 2ff58fc1e06c45b7dd0470dd0d2df0ac6769fc8cccf5ef7f2087d55424f8484e, 629152 bytes (the same key; built by another family or copied)
+TABLE-LOADED 5d91be7aa54963dc90eeb484f4e6e32a.npz: D 14 F 6 moments 38760 (cpu so far 0.3 s)
+TABLE-ADOPTED a979fac595035932339a367ab85545af.npz: sha256 1824cd05ab51ca1c7c23c1fce74c95f0c94b63bba60da71dc847a2476a0ea8a9, 1203784 bytes (the same key; built by another family or copied)
+TABLE-LOADED a979fac595035932339a367ab85545af.npz: D 16 F 6 moments 74613 (cpu so far 0.5 s)
+STAGE-CPU prep J=300 1.29 s (ok True)
+PROFILE prep J=300 {"AllMom2.E2": [27, 1.02], "AllMom2.init": [5, 0.02], "NPoly.mul": [235, 0.01], "pmul": [215, 0.17]}
+C-THETA theta0 0.975 reproduces farbase 1.5238686304395233e-81: relative 0.0e+00 -> PASS
+PLANT-THETA (the base times 1 + 1e-9) -> FIRES
+PREPJSON {"family": "P16E4D", "N": 3, "J": 300.0, "rho": [0.30257110655446606, 0.24701520969311172, 0.302571106554466, 0.3025711065544661, 0.24701520969311178, 0.3025711065544661], "a_v": [0.09154927452159406, 0.06101651381973196, 0.09154927452159402, 0.09154927452159409, 0.061016513819731985, 0.09154927452159409], "ap": 0.48999999999999994, "ok": true, "tree": [1.2637626158259734, 1.2637626158259734, 1.2637626158259734, 1.2637626158259734, 1.0], "theta0": 0.975, "logmain": -35.742239049583006, "cpu_prep": 1.29, "rE": 4.9839195727175244e-08, "rE_parts": {"t4|H4|": 3.4693394231073084e-09, "t5 h5/120": 9.453524036743135e-10, "t4 H2^2/2": 4.340772375002143e-09, "t6 h3^2/72": 5.97921576290447e-11, "t4|H1H3|": 1.0165009436757405e-08, "t5|H1H4|": 2.3033077296342773e-10, "t6|H1|h5/120": 7.970560912521417e-11, "t5|H2|h3/6": 9.790673542109753e-10, "t4 H1^2|H2|/2": 2.1683190820302663e-08, "t5 H1^2 h3/12": 2.735449380434118e-09, "t5|H1|h2^2/8": 4.722250422820952e-09, "E2^3 term": 4.289355711476781e-10}, "nE": [1.0, 0.8561908463849051, 1.2060633700068695, 2.8283403827856732], "nE4": [1.0, 2.006176418473684, 16.828991308487943, 2061.8601390507556], "nC8": 0.029081878805845292, "nC6": 0.019870570900185805, "Nc": 1.0063999712666083, "Np": 1.008430228378283, "Pout": 2.5490125531749533e-17, "Pout_p": 2.7574816761548477e-17, "farbase": 1.5238686304395233e-81}
+PREP-PARTIAL piece 1: keys: the D-14 table on 13 forms needs about 186 s and 8 s are left
+CACHE-STATE {"memo": "s16memo_P16E4D_N3.jsonl", "memo_entries": 0, "memo_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "tables": {"5d91be7aa54963dc90eeb484f4e6e32a": ["5d91be7aa54963dc90eeb484f4e6e32a.npz", "2ff58fc1e06c45b7dd0470dd0d2df0ac6769fc8cccf5ef7f2087d55424f8484e", 629152], "7c63c641d5dc46bb7d8727fb12176691": ["7c63c641d5dc46bb7d8727fb12176691.npz", "8723183e1f99f12d2cecfebb05c4468f5b5c23687d4f2f8434ab17fedd01dd24", 1203784], "a979fac595035932339a367ab85545af": ["a979fac595035932339a367ab85545af.npz", "1824cd05ab51ca1c7c23c1fce74c95f0c94b63bba60da71dc847a2476a0ea8a9", 1203784]}}
+STAGE-CPU total 27.31 s
+VERDICT VALID

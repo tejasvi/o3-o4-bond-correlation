@@ -1,0 +1,12 @@
+M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+(1)-(2) F=5 D=7 n=3: units 7 / 7 / 65 (CPU-guard stops, block 13); codes equal True, overlap True, worst rel mid diff 3.29e-15, counts max v1_3 50 MomTableU 46; C-PAIRS cand = plan True, max terms/(2^|supp|-1) 1.000; bit-identical across partitions True -> PASS (0.3 s)
+(3) E2 F=5 D=7: one-block bit-identical True; 10-block overlaps v1_3 True; plan without its last block refused True; combine with missing parts refused True -> PASS
+(1)-(2) F=6 D=8 n=3: units 17 / 8 / 234 (CPU-guard stops, block 13); codes equal True, overlap True, worst rel mid diff 4.23e-15, counts max v1_3 59 MomTableU 57; C-PAIRS cand = plan True, max terms/(2^|supp|-1) 1.000; bit-identical across partitions True -> PASS (1.0 s)
+(3) E2 F=6 D=8: one-block bit-identical True; 10-block overlaps v1_3 True; plan without its last block refused True; combine with missing parts refused True -> PASS
+(1)-(2) F=4 D=10 n=2: units 10 / 10 / 81 (CPU-guard stops, block 13); codes equal True, overlap True, worst rel mid diff 5.05e-15, counts max v1_3 65 MomTableU 64; C-PAIRS cand = plan True, max terms/(2^|supp|-1) 1.000; bit-identical across partitions True -> PASS (0.3 s)
+(3) E2 F=4 D=10: one-block bit-identical True; 10-block overlaps v1_3 True; plan without its last block refused True; combine with missing parts refused True -> PASS
+(1)-(2) F=6 D=9 n=3 groups+caps: units 22 / 9 / 213 (CPU-guard stops, block 13); codes equal True, overlap True, worst rel mid diff 5.54e-15, counts max v1_3 68 MomTableU 66; C-PAIRS cand = plan True, max terms/(2^|supp|-1) 1.000; bit-identical across partitions True -> PASS (0.9 s)
+(3) E2 F=6 D=9: one-block bit-identical True; 10-block overlaps v1_3 True; plan without its last block refused True; combine with missing parts refused True -> PASS
+(3) C-FASTSUM: scalar_sum_fast == scalar_sum bit for bit on 36 lengths (1, 2, 3, 2^m - 1, 2^m, 2^m + 1 for m = 2..12) with zeros, error-only and near-TINY terms -> PASS
+(4) plants: PLANT-STATE-HASH FIRES, PLANT-PARAM (n) FIRES, PLANT-PARAM (Gam entry) FIRES, PLANT-FLOATSTATE FIRES, PLANT-CHAIN FIRES, PLANT-CODES (sha rewritten) FIRES, PLANT-PARTITION (overlap) FIRES -> PASS
+SMOKE PASS

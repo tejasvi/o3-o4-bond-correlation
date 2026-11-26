@@ -1,0 +1,43 @@
+# TAU_D3B_v1: the certified upper end of Lemma B's tau (the type-B rows of D3 at d_L = -1) for N in {3, 4} and every J >= 300;
+# the TAU_SOURCE of SPEC_HS_INV_NORMX_v1_2_ADD2_1. Format S4U_KV_v1 ("KEY = value"; lines starting with # are comments). Values
+# named _HI are upper ends rounded up, _LO lower ends rounded down; N*_RW_HI is the export's own decimal.
+RECORD = TAU_D3B_v1
+FORMAT = S4U_KV_v1
+EXPORT_STATUS = CERTIFIED
+PRODUCER = pk08
+CODE = pk08/px08_tau_d3b_v1_1.py:dc97e0ac9a4584b82ef35df8dbd9a3b745c3f3ea2b9651a51743303b888a7a4e
+LEMMA_NOTE_D3B = pk08/HS_TYPEB_LEMMA_NOTE_v1_1.md:6d0864e59c8a1f26e7318b4760d2ae1bc5f38f1576a2009465c80e72a2ba01c1
+SPEC_ADD2_1 = pk15/SPEC_HS_INV_NORMX_v1_2_ADD2_1.md:2ad2cc4c29674192834c9b75ef159845c4539bf87a3c28ff3f41305996056fbb
+CLAIM = for N in {3, 4} and every J >= 300: tau(J) <= N*_TAU_HI and 1 + tau(J)^2 <= N*_ONE_PLUS_TAU2_HI, where tau^2 = lambda_0 v_0^2/<u,w>^2 - 1 is Lemma B's tau (LEMMA_NOTE_D3B sect. 0 and B6; OPERATOR_D3B of SPEC_ADD2_1)
+CHAIN = 1 + tau^2 = (1 + R_w^2)/RQ (B6), RQ = ||w||^2/(lambda_0 v_0^2) = I_free RQ_h/(lambda~_0 I_1col), with I_free = ||w||^2/main_free, lambda~_0 = lambda_0/lambda_h, I_1col = v_0^2/main_1col and RQ_h = main_free/(lambda_h main_1col); since I_1col < 1 (I1COL_DEF), 1 + tau^2 <= (1 + R_w,hi^2)/RQ_lo with RQ_lo = I_free,lo RQ_h,lo/lambda~_0,hi
+MAIN_TERMS = each main term is the Gaussian (matrix-tree) term of its graph G (V vertices, edge weights c_e, normalized measure on S^(N-1)): main(G) = |S^(N-1)|^-(V-1) (2 pi/J)^((N-1)(V-1)/2) det_red(L_G)^-((N-1)/2). The ratios I_free, lambda~_0, I_1col and RQ do not depend on the measure normalization, and in RQ_h the area and 2 pi/J powers cancel (V - 1: 5 = (8 - 5) + 2)
+I_FREE_DEF = ||w||^2 = <V 1, K V 1> (w = K^(1/2) V 1) and I_free = <V 1, K V 1>/main_free (pk10 endw.py l.4; the free 2 x 3 grid of l.17-19 is strip_graph(2, 1, 0), C-DEF; its det_red is 15, C-FREE15); the endw records claim |I_free(J) - sum_k a_k t^k| <= err for every J >= 300, t = 1/J, t = 0 included
+I_FREE_SOURCE = pk03/out/m3_endw_N4_J300_v1_7.json:d1cb3a97eac2cf270fdc5ade8e2d225b7df2332ba07721e162f2414126f6224e ; pk03/out/m3_endw_N3_J300_v1_7.json:8fa813aff1a76deac57b016e81de2008b97fb9f509e78a51f27f84a2aa56f662 ; pk03/out/m3_run_v1_7_asm.4.out:ebfbe85a85cbe325f03435e99f0cc359825777af437c6290231a3c40b8c1e07f ; pk03/out/m3_run_v1_7_asm.3.out:f9911b5d381714046d64611b52a9d9501d2cb4a63654b1efdba8668a23f507c3 ; pk10/scripts/endw.py:bcddbe818194c4c831f65d33042d00747197190f59c8ed4b37178369d78fa353
+I_FREE_LO_RULE = N*_I_FREE_LO <= the arb lower end of sum_k (a_k - ak_rad_k) t^k - err over the ball t in [0, 1/300] (t^k by multiplication)
+LAMBDA0_DEF = lambda_0 = the top eigenvalue of T = Z Z* >= 0 on H, so lambda_0^2 <= tr_H T^2 <= U_N lambda_h^2 (S4_U_CERTIFIED_v3 CLAIM, every J >= 300) and lambda~_0 <= U_N^(1/2) <= N*_LAMBDA0T_HI (N*_LAMBDA0T_HI^2 >= N*_U_USED exactly); lambda_h is the one of HS_INV_NORMX_v1's LAMBDA_H_DEF (the 3- and 2-column strips with the ends (A_EX, B_EX))
+U_SOURCE = pk08/S4_U_CERTIFIED_v3.md:e870cbe5c8dadc88b1c01b46015ed6956f115ba88616937f772a7f3950add699 ; pk08/out/HS_INV_NORMX_v1_d3d4.kv:bf212cdc6c69731c9c0340c72286afae3b9bcb4cf8d3152679687fb192143ff1
+I1COL_DEF = v_0 = int e^(J(s.e - 1)) dsigma(s) over S^(N-1) (LEMMA_NOTE_D3B l.76-77) = Gamma(N/2) (2/J)^nu e^-J I_nu(J) with nu = (N-2)/2 (DLMF 10.32.2), and int V = v_0^2 (B6); main_1col = v_0,main^2 with v_0,main = (2 pi/J)^((N-1)/2)/|S^(N-1)|, so I_1col = (sqrt(2 pi J) e^-J I_nu(J))^2. N = 3: sqrt(2 pi J) e^-J I_1/2(J) = 1 - e^-2J < 1 (DLMF 10.39.1: I_1/2(z) = (2/(pi z))^(1/2) sinh z). N = 4: I_nu(J) decreases in nu >= 0 at fixed J > 0 (DLMF 10.37), so sqrt(2 pi J) e^-J I_1(J) < 1 - e^-2J; directly, by DLMF 10.32.2 at nu = 1, sqrt(2 pi J) e^-J I_1(J) = (2 J^3/pi)^(1/2) int_0^2 e^-Js (s (2 - s))^(1/2) ds < (2 J^3/pi)^(1/2) int_0^inf e^-Js (2 s)^(1/2) ds = 1. So I_1col < 1 for every J > 0 at N = 3 and 4, and the bound uses 1; C-I1COL is a numerical control at J = 300, 1e3, 1e4, 1e6 (the N = 3 identity, the N = 4 value below 1, and I_1 < I_1/2)
+RQH_DEF = RQ_h = (d3/(15 d2))^((N-1)/2) = PR/15^((N-1)/2), d3/d2 = detred(3)/detred(2) of strip_graph(ncols, A_EX, B_EX) (the COPY block of px08_m2bc4 l.448-484, C-COPY; PR checked against the TRB record's N*_PR, C-PREF); det_red of the 1-column path is 1; the half-integer power in arb, N*_RQH_LO <= its lower end
+STRIP_SOURCE = pk08/px08_m2bc4.py:5b72a5937aa05d8436f6b3c6e534c96e6c77f04ef66e6dc7d8dff7430b203a24 ; pk08/S4_TRB_CERTIFIED_v1.md:9110930189c3f3dbd54f892c84cc3a9769f5722cb8804c7212ae5a712c883f4b
+RW_DEF = R_w = ||Q0 w-hat||, w-hat = w/<u,w> (SPEC_S8_CERT_v1 l.106), so <u,w>^2 = ||w||^2/(1 + R_w^2) (B6); N*_RW_HI = the largest Rw_hi (field 17 of the export's FIELDS) over the 904 pieces per N, which tile [300, inf) with no gap (C-COVER; pk07's C-GRID-ALL PASS)
+RW_SOURCE = pk07/out/export_kt_s9h_v1_2_vsweep.kv:761084be2333dfe0525c47e5294d62daaa702dcd101312ea5a182cf23574c2c8 ; pk07/out/out_kt_s9h_v1_2_vsweep.out:f18072f44a3c8fdd55c44c2eaab7486d18fd10608f62a8056ff0fa54dd150d43 ; pk11/SPEC_S8_CERT_v1.md:c0f953986e0784b1d1957049c907539e9ddd6f8612aa2ed1b86f7f75a76ea6be
+TAU_RULE = N*_RQ_LO <= N*_I_FREE_LO N*_RQH_LO/N*_LAMBDA0T_HI, N*_ONE_PLUS_TAU2_HI >= (1 + N*_RW_HI^2)/N*_RQ_LO and N*_TAU_HI^2 >= N*_ONE_PLUS_TAU2_HI - 1, each in exact rationals (C-ROUND)
+N4_I_FREE_LO = 0.999998494786646
+N4_U_USED = 1.033200684443
+N4_LAMBDA0T_HI = 1.01646479744407
+N4_RQH_LO = 0.764723482703968
+N4_RW_HI = 1.89076250775e-1
+N4_RW_HI_PIECE = N4_P0903
+N4_RQ_LO = 0.752335283577833
+N4_ONE_PLUS_TAU2_HI = 1.37671308421
+N4_TAU_HI = 0.613769569310
+N3_I_FREE_LO = 0.999998198063343
+N3_U_USED = 1.032809143879
+N3_LAMBDA0T_HI = 1.01627218001823
+N3_RQH_LO = 0.836250295638767
+N3_RW_HI = 1.53971233286e-1
+N3_RW_HI_PIECE = N3_P0116
+N3_RQ_LO = 0.822859077726307
+N3_ONE_PLUS_TAU2_HI = 1.24408561368
+N3_TAU_HI = 0.494050213724
+END = TAU_D3B_v1

@@ -1,0 +1,90 @@
+m3ref_v1_10 item V3E2.3.all LIM 540; python 3.14.4
+C-COPY (12 pinned copies in /mnt/g2/release/root/code/pk03/pin) -> PASS
+PLANT-COPY (riglap2 bytes plus one byte) -> FIRES
+C-SRC (lapl2 l.63-79, vacmod2 l.8-9 and l.12-13, endw l.16-19, vacrig11f l.166-170, 173-175, 178-186, 196-197, 240-244, 247, 250-287, riglap5s l.22-34 (C-SRC-H) against this file; source shas) -> PASS
+PLANT-SRC (strip_graph text with one character changed) -> FIRES
+C-HASH (15 pk10 inputs and J = 170 records, 4 trial files and 3 S8 lists in pk11/out, 6 m3ref_v1_2 records) -> PASS
+PLANT-HASH (vacres_K3_N4 against a sha with its last digit changed) -> FIRES
+versions: numpy 2.5.3, scipy 1.18.1; engines from /mnt/g2/release/root/code/pk03/pin
+PLANT-NPGUARD (riglap5b's guarded NPoly product is installed and refuses x^3 times x^2 in base 4) -> FIRES
+TRIAL z9sym
+inputs: N = 3, kbar 0.5514259266145797 (m2_N3_J170.json.b), trial set ts_N3_S_z9sym_v1.json, vacres_K3_N3_sym_v1.json
+family V3E2 N=3: V 6, F 10, pairs [(0, 1), (1, 2), (0, 2), (3, 4)], NPOLY_B 16, qcap 6, 20 keys: e,0, eX,0, e,1, eX,1, e,2, eX,2, e,3, eX,3, e,4, eX,4, e,5, eX,5, e,6, eX,6, e,7, eX,7, e,8, eX,8, e,9, eX,9
+STAGE-CPU graph 0.00 s
+C-GRAPH (the column specs of D (v1_1, v2), N, E2, FF and L (v2) give strip_graph(2), strip_graph(3), Emix, Efree and strip_graph(4) exactly) -> PASS
+PLANT-GRAPH (D with its T-B coupling times 1 + 1e-12) -> FIRES
+STAGE-CPU prep J=300 2.13 s (ok True)
+PROFILE prep J=300 {"AllMom2.E2": [30, 1.66], "AllMom2.init": [10, 0.29], "NPoly.mul": [221, 0.01], "pmul": [197, 0.14]}
+C-THETA theta0 0.97 reproduces farbase 1.4310085877900317e-62: relative 0.0e+00 -> PASS
+PLANT-THETA (the base times 1 + 1e-9) -> FIRES
+PREPJSON {"family": "V3E2", "N": 3, "J": 300.0, "rho": [0.3081565055627353, 0.24772811376473863, 0.3081565055627352, 0.3411004793035923, 0.26289418769652834, 0.34110047930359216], "a_v": [0.0949604319206361, 0.06136921834943529, 0.09496043192063607, 0.11634953698114038, 0.06911335392461747, 0.11634953698114031], "ap": 0.48999999999999994, "ok": true, "tree": [1.2637626158259734, 1.2637626158259734, 1.0, 1.0, 1.0], "theta0": 0.97, "logmain": -35.2291764623841, "cpu_prep": 2.13, "rE": 1.262567700584514e-07, "rE_parts": {"t4|H4|": 7.433991258459368e-09, "t5 h5/120": 2.903848960270281e-09, "t4 H2^2/2": 9.889587183078613e-09, "t6 h3^2/72": 2.5326461333213194e-10, "t4|H1H3|": 2.3367546539080476e-08, "t5|H1H4|": 6.517712445160148e-10, "t6|H1|h5/120": 3.2801939533833565e-10, "t5|H2|h3/6": 3.0179342399844747e-09, "t4 H1^2|H2|/2": 5.286082055303424e-08, "t5 H1^2 h3/12": 9.05100136017675e-09, "t5|H1|h2^2/8": 1.6025465739334305e-08, "E2^3 term": 4.735189718463941e-10}, "nE": [1.0, 1.0013647939914425, 1.8011358206984756, 5.735273639168099], "nE4": [1.0, 2.5173245801503557, 27.480020325084535, 4181.014482953544], "nC8": 0.03884302420484102, "nC6": 0.018744594108339754, "Nc": 1.0073069555951677, "Np": 1.009557574993679, "Pout": 2.5490125531749444e-17, "Pout_p": 2.793646126962079e-17, "farbase": 1.4310085877900317e-62}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "e,0", "index": 0, "ak": [1.0, 0.6464449154183932, 0.5137204686562907, 0.4642477054517809], "B": {"rem": 1.3199520950294996e-07, "tail": 5.127327580849709e-09, "ann": 5.343272517221268e-09, "far": 2.4157381489535414e-60}, "err": 1.4246580960102093e-07, "cpu": 0.23, "refs": [], "rem_split": {"overflow": 2.42e-10, "F.R_E": 1.26e-07, "rho4": 5.22e-09, "rho4_C8": 9.56e-08, "rho4_C6": 5.22e-09, "R_F": 1.88e-10}}
+STAGE-CPU key e,0 J=300 0.23 s
+PROFILE after e,0 J=300 {"AllMom2.E": [1, 0.0], "AllMom2.E2": [49, 1.66], "AllMom2.init": [21, 0.32], "NPoly.mul": [2753, 0.15], "pmul": [520, 0.14]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "eX,0", "index": 1, "ak": [0.7046609181139074, 0.5135929408732476, 0.4400202738066151, 0.4223496084541287], "B": {"rem": 1.792889044962017e-07, "tail": 5.934892206434212e-09, "ann": 8.366532678260317e-09, "far": 1.4494428893721247e-57}, "err": 1.9359032938089624e-07, "cpu": 0.32, "refs": [], "rem_split": {"overflow": 9.46e-09, "F.R_E": 1.27e-07, "rho4": 1.46e-08, "rho4_C8": 9.59e-08, "rho4_C6": 1.46e-08, "R_F": 2.88e-08}}
+STAGE-CPU key eX,0 J=300 0.32 s
+PROFILE after eX,0 J=300 {"AllMom2.E": [11, 0.0], "AllMom2.E2": [78, 1.7], "AllMom2.init": [50, 0.54], "NPoly.mul": [2769, 0.15], "pmul": [594, 0.2]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "e,1", "index": 2, "ak": [0.14589803374987564, -0.03720892350109761, 0.013474247878273338, 0.07790464420969057], "B": {"rem": 3.789237205940966e-07, "tail": 1.4472104838592776e-08, "ann": 3.235343761096225e-08, "far": 2.5169274853728166e-59}, "err": 4.257492630436516e-07, "cpu": 0.01, "refs": [], "rem_split": {"overflow": 1.85e-09, "F.R_E": 3.5e-07, "rho4": 2.53e-08, "rho4_C8": 2.65e-07, "rho4_C6": 2.53e-08, "R_F": 1.99e-09}}
+STAGE-CPU key e,1 J=300 0.01 s
+PROFILE after e,1 J=300 {"AllMom2.E": [12, 0.0], "AllMom2.E2": [98, 1.71], "AllMom2.init": [59, 0.54], "NPoly.mul": [2785, 0.15], "pmul": [620, 0.2]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "eX,1", "index": 3, "ak": [0.26592760303791385, 0.06172189571689729, 0.07078393169341102, 0.12602360579514293], "B": {"rem": 7.906684693991679e-07, "tail": 2.2150160436903986e-08, "ann": 6.489689696495095e-08, "far": 1.5101564912236901e-56}, "err": 8.777155268010227e-07, "cpu": 0.08, "refs": [], "rem_split": {"overflow": 6.13e-08, "F.R_E": 4.11e-07, "rho4": 1.32e-07, "rho4_C8": 3.12e-07, "rho4_C6": 1.32e-07, "R_F": 1.86e-07}}
+STAGE-CPU key eX,1 J=300 0.08 s
+PROFILE after eX,1 J=300 {"AllMom2.E": [17, 0.0], "AllMom2.E2": [119, 1.71], "AllMom2.init": [74, 0.62], "NPoly.mul": [2785, 0.15], "pmul": [666, 0.2]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "e,2", "index": 4, "ak": [6.06849246558468e-16, 1.7801702189356806e-15, 3.8442225651664034e-15, -1.422971184074323e-14], "B": {"rem": 4.998219773408943e-07, "tail": 1.917100008116504e-08, "ann": 3.452353228819568e-08, "far": 7.948020111493703e-59}, "err": 5.535165097102551e-07, "cpu": 0.01, "refs": [], "rem_split": {"overflow": 3.27e-09, "F.R_E": 4.62e-07, "rho4": 2.99e-08, "rho4_C8": 3.5e-07, "rho4_C6": 2.99e-08, "R_F": 4.48e-09}}
+STAGE-CPU key e,2 J=300 0.01 s
+PROFILE after e,2 J=300 {"AllMom2.E": [18, 0.0], "AllMom2.E2": [139, 1.71], "AllMom2.init": [83, 0.62], "NPoly.mul": [2811, 0.16], "pmul": [703, 0.2]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "eX,2", "index": 5, "ak": [0.18044912627393297, 0.14356166146574845, 0.12765537016005976, 0.13659468460103427], "B": {"rem": 9.730867700951586e-07, "tail": 2.851844559066986e-08, "ann": 7.370459154985445e-08, "far": 4.768812066896222e-56}, "err": 1.0753098072356829e-06, "cpu": 0.01, "refs": [], "rem_split": {"overflow": 8.52e-08, "F.R_E": 5.17e-07, "rho4": 1.41e-07, "rho4_C8": 3.93e-07, "rho4_C6": 1.41e-07, "R_F": 2.3e-07}}
+STAGE-CPU key eX,2 J=300 0.01 s
+PROFILE after eX,2 J=300 {"AllMom2.E": [23, 0.0], "AllMom2.E2": [160, 1.71], "AllMom2.init": [95, 0.62], "NPoly.mul": [2811, 0.16], "pmul": [749, 0.2]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "e,3", "index": 6, "ak": [0.04356076267175357, 1.0445994931182583, 0.9744992860054971, 0.8768362140189421], "B": {"rem": 6.690178893749357e-07, "tail": 2.5413461218599254e-08, "ann": 9.930506412473656e-08, "far": 1.5716782927471658e-58}, "err": 7.937364147182715e-07, "cpu": 0.01, "refs": [], "rem_split": {"overflow": 4.15e-09, "F.R_E": 6.11e-07, "rho4": 4.39e-08, "rho4_C8": 4.63e-07, "rho4_C6": 4.39e-08, "R_F": 9.57e-09}}
+STAGE-CPU key e,3 J=300 0.01 s
+PROFILE after e,3 J=300 {"AllMom2.E": [24, 0.0], "AllMom2.E2": [180, 1.71], "AllMom2.init": [96, 0.62], "NPoly.mul": [2847, 0.16], "pmul": [797, 0.2]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "eX,3", "index": 7, "ak": [0.13050581301640873, 0.9500984607356493, 0.9918515479878356, 0.9983118774666297], "B": {"rem": 1.6084669733230072e-06, "tail": 3.724844696030942e-08, "ann": 1.9319530879070685e-07, "far": 9.430069756482994e-56}, "err": 1.8389107290740234e-06, "cpu": 0.01, "refs": [], "rem_split": {"overflow": 1.11e-07, "F.R_E": 6.52e-07, "rho4": 2.31e-07, "rho4_C8": 4.95e-07, "rho4_C6": 2.31e-07, "R_F": 6.14e-07}}
+STAGE-CPU key eX,3 J=300 0.01 s
+PROFILE after eX,3 J=300 {"AllMom2.E": [29, 0.0], "AllMom2.E2": [201, 1.71], "AllMom2.init": [97, 0.62], "NPoly.mul": [2847, 0.16], "pmul": [843, 0.2]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "e,4", "index": 8, "ak": [-0.021286237030621713, 1.628595334344929, 1.0376089382786287, 0.6469080717394826], "B": {"rem": 1.2009545457589097e-06, "tail": 4.408258830432817e-08, "ann": 2.263098858044549e-07, "far": 2.2200317195745398e-56}, "err": 1.471347019867693e-06, "cpu": 0.01, "refs": [], "rem_split": {"overflow": 2.07e-08, "F.R_E": 9.72e-07, "rho4": 1.72e-07, "rho4_C8": 7.39e-07, "rho4_C6": 1.72e-07, "R_F": 3.6e-08}}
+STAGE-CPU key e,4 J=300 0.01 s
+PROFILE after e,4 J=300 {"AllMom2.E": [30, 0.0], "AllMom2.E2": [221, 1.72], "AllMom2.init": [104, 0.63], "NPoly.mul": [2931, 0.16], "pmul": [883, 0.2]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "eX,4", "index": 9, "ak": [-0.0625970506000959, 1.4031935928846755, 1.0421877422468944, 0.7258270131399271], "B": {"rem": 5.21620320251823e-06, "tail": 1.9669929840940954e-07, "ann": 7.07724179156383e-07, "far": 1.3320190317447238e-53}, "err": 6.120626680084023e-06, "cpu": 0.17, "refs": [], "rem_split": {"overflow": 8.85e-07, "F.R_E": 1.34e-06, "rho4": 1.02e-06, "rho4_C8": 1.02e-06, "rho4_C6": 2.05e-06, "R_F": 1.97e-06}}
+STAGE-CPU key eX,4 J=300 0.17 s
+PROFILE after eX,4 J=300 {"AllMom2.E": [35, 0.0], "AllMom2.E2": [242, 1.72], "AllMom2.init": [120, 0.79], "NPoly.mul": [2931, 0.16], "pmul": [929, 0.2]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "e,5", "index": 10, "ak": [4.678390202232176e-16, -3.2184724713686405e-16, 4.302818027181942e-15, -2.741883250176425e-13], "B": {"rem": 1.6000469505052935e-06, "tail": 6.058417445091781e-08, "ann": 2.700054979540294e-07, "far": 9.899616857590239e-56}, "err": 1.930636622910241e-06, "cpu": 0.02, "refs": [], "rem_split": {"overflow": 4.57e-08, "F.R_E": 1.28e-06, "rho4": 1.87e-07, "rho4_C8": 9.75e-07, "rho4_C6": 1.87e-07, "R_F": 8.32e-08}}
+STAGE-CPU key e,5 J=300 0.02 s
+PROFILE after e,5 J=300 {"AllMom2.E": [36, 0.0], "AllMom2.E2": [262, 1.72], "AllMom2.init": [122, 0.8], "NPoly.mul": [3093, 0.17], "pmul": [1001, 0.2]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "eX,5", "index": 11, "ak": [-0.037232244705646345, -0.059820840106107276, -0.10851850291455756, -0.19076556737679384], "B": {"rem": 7.83171716521191e-06, "tail": 3.0676288748591164e-07, "ann": 8.257522876002275e-07, "far": 5.939770114554143e-53}, "err": 8.964232340298049e-06, "cpu": 0.31, "refs": [], "rem_split": {"overflow": 1.55e-06, "F.R_E": 1.71e-06, "rho4": 1.3e-06, "rho4_C8": 1.3e-06, "rho4_C6": 2.06e-06, "R_F": 3.27e-06}}
+STAGE-CPU key eX,5 J=300 0.31 s
+PROFILE after eX,5 J=300 {"AllMom2.E": [41, 0.0], "AllMom2.E2": [283, 1.73], "AllMom2.init": [125, 1.08], "NPoly.mul": [3093, 0.17], "pmul": [1047, 0.21]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "e,6", "index": 12, "ak": [-0.00493302641109139, -1.082966523171918, -0.4840796596133732, -0.28145887858050145], "B": {"rem": 2.1460085724209187e-06, "tail": 8.002712299292204e-08, "ann": 5.109670320598786e-07, "far": 2.8824145585623316e-55}, "err": 2.7370027274737193e-06, "cpu": 0.04, "refs": [], "rem_split": {"overflow": 5.66e-08, "F.R_E": 1.7e-06, "rho4": 2.34e-07, "rho4_C8": 1.29e-06, "rho4_C6": 2.34e-07, "R_F": 1.61e-07}}
+STAGE-CPU key e,6 J=300 0.04 s
+PROFILE after e,6 J=300 {"AllMom2.E": [42, 0.0], "AllMom2.E2": [303, 1.74], "AllMom2.init": [125, 1.08], "NPoly.mul": [3537, 0.19], "pmul": [1179, 0.21]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "eX,6", "index": 13, "ak": [-0.020294385582122487, -1.1833486395589983, -0.8454135039278148, -0.7738300782426784], "B": {"rem": 1.1955090579742683e-05, "tail": 3.863535668238822e-07, "ann": 1.5640284677654478e-06, "far": 1.729448735137399e-52}, "err": 1.3905472614332013e-05, "cpu": 0.06, "refs": [], "rem_split": {"overflow": 1.89e-06, "F.R_E": 2.15e-06, "rho4": 1.64e-06, "rho4_C8": 1.64e-06, "rho4_C6": 2.56e-06, "R_F": 6.28e-06}}
+STAGE-CPU key eX,6 J=300 0.06 s
+PROFILE after eX,6 J=300 {"AllMom2.E": [47, 0.01], "AllMom2.E2": [324, 1.77], "AllMom2.init": [125, 1.08], "NPoly.mul": [3537, 0.19], "pmul": [1225, 0.23]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "e,7", "index": 14, "ak": [0.004007085723779724, 5.43352787525304, 3.0432681551209075, 1.8203626362822316], "B": {"rem": 2.3531654692884776e-06, "tail": 8.579613072750289e-08, "ann": 1.004205972737226e-06, "far": 5.6790317613355836e-55}, "err": 3.4431675727532063e-06, "cpu": 0.04, "refs": [], "rem_split": {"overflow": 6.18e-08, "F.R_E": 1.7e-06, "rho4": 2.36e-07, "rho4_C8": 1.29e-06, "rho4_C6": 2.36e-07, "R_F": 3.55e-07}}
+STAGE-CPU key e,7 J=300 0.04 s
+PROFILE after e,7 J=300 {"AllMom2.E": [48, 0.01], "AllMom2.E2": [344, 1.77], "AllMom2.init": [125, 1.08], "NPoly.mul": [3981, 0.21], "pmul": [1357, 0.24]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "eX,7", "index": 15, "ak": [0.016485081562692905, 4.886256742114905, 3.2923839117328875, 2.3024819185406216], "B": {"rem": 1.9550849999133878e-05, "tail": 5.626923176794946e-07, "ann": 3.6891947123247093e-06, "far": 3.40741905680135e-52}, "err": 2.3802737029138082e-05, "cpu": 0.06, "refs": [], "rem_split": {"overflow": 1.89e-06, "F.R_E": 2.18e-06, "rho4": 1.66e-06, "rho4_C8": 1.66e-06, "rho4_C6": 2.68e-06, "R_F": 1.38e-05}}
+STAGE-CPU key eX,7 J=300 0.06 s
+PROFILE after eX,7 J=300 {"AllMom2.E": [53, 0.01], "AllMom2.E2": [365, 1.8], "AllMom2.init": [125, 1.08], "NPoly.mul": [3981, 0.21], "pmul": [1403, 0.26]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "e,8", "index": 16, "ak": [-1.6964978878705886e-15, -3.4048225047436154e-15, -1.9205741433392032e-14, 2.1228505523794242e-13], "B": {"rem": 2.8553955787927225e-06, "tail": 1.022731275434632e-07, "ann": 6.998992310554579e-07, "far": 3.707306314272282e-55}, "err": 3.6575679373916435e-06, "cpu": 0.03, "refs": [], "rem_split": {"overflow": 4.5e-08, "F.R_E": 2.24e-06, "rho4": 3.18e-07, "rho4_C8": 1.7e-06, "rho4_C6": 3.18e-07, "R_F": 2.55e-07}}
+STAGE-CPU key e,8 J=300 0.03 s
+PROFILE after e,8 J=300 {"AllMom2.E": [54, 0.01], "AllMom2.E2": [385, 1.81], "AllMom2.init": [125, 1.08], "NPoly.mul": [4279, 0.23], "pmul": [1503, 0.26]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "eX,8", "index": 17, "ak": [-0.011116427902995607, -0.22434694749132655, -0.32968891667907474, -0.45461581603088863], "B": {"rem": 1.6028487410844734e-05, "tail": 4.007167267666465e-07, "ann": 2.1600140586070453e-06, "far": 2.224383788563369e-52}, "err": 1.8589218196218425e-05, "cpu": 0.04, "refs": [], "rem_split": {"overflow": 1.73e-06, "F.R_E": 2.69e-06, "rho4": 2.04e-06, "rho4_C8": 2.04e-06, "rho4_C6": 3.44e-06, "R_F": 9.57e-06}}
+STAGE-CPU key eX,8 J=300 0.04 s
+PROFILE after eX,8 J=300 {"AllMom2.E": [59, 0.01], "AllMom2.E2": [406, 1.83], "AllMom2.init": [125, 1.08], "NPoly.mul": [4279, 0.23], "pmul": [1549, 0.28]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "e,9", "index": 18, "ak": [-0.0018975400391916253, 4.212395772050162, 1.6431525287474127, 0.1063503265590171], "B": {"rem": 4.048844751789897e-06, "tail": 1.3703138333523724e-07, "ann": 1.8247417808452832e-06, "far": 8.638408635463533e-55}, "err": 6.010617915970417e-06, "cpu": 0.04, "refs": [], "rem_split": {"overflow": 4.75e-08, "F.R_E": 2.96e-06, "rho4": 5.16e-07, "rho4_C8": 2.24e-06, "rho4_C6": 5.16e-07, "R_F": 5.25e-07}}
+STAGE-CPU key e,9 J=300 0.04 s
+PROFILE after e,9 J=300 {"AllMom2.E": [60, 0.01], "AllMom2.E2": [426, 1.83], "AllMom2.init": [125, 1.08], "NPoly.mul": [4723, 0.25], "pmul": [1681, 0.28]}
+KEYJSON {"family": "V3E2", "N": 3, "J": 300.0, "key": "eX,9", "index": 19, "ak": [-0.010032743170107494, 3.2918090255889485, 1.232208249167492, -0.3360412240714652], "B": {"rem": 2.9017900203816414e-05, "tail": 6.350852444500962e-07, "ann": 5.260049195303688e-06, "far": 5.1830451812781194e-52}, "err": 3.4913034643570194e-05, "cpu": 0.06, "refs": [], "rem_split": {"overflow": 2.14e-06, "F.R_E": 3.42e-06, "rho4": 2.6e-06, "rho4_C8": 2.6e-06, "rho4_C6": 6.26e-06, "R_F": 2.09e-05}}
+STAGE-CPU key eX,9 J=300 0.06 s
+PROFILE after eX,9 J=300 {"AllMom2.E": [65, 0.01], "AllMom2.E2": [447, 1.86], "AllMom2.init": [125, 1.08], "NPoly.mul": [4723, 0.25], "pmul": [1727, 0.31]}
+keys done 20 of range 0-19
+PAR-INFO e,2: max |a_k| 1.42e-14 (one odd state on a T <-> B symmetric graph)
+C-REPOLD-REF (m3ref_v1_3_S8E2 at N = 3: sha256 pinned, VERDICT lines exactly [VERDICT VALID]; TRIAL z9sym) -> PASS
+C-REPOLD (7 old keys of this range against m3ref_v1_3_S8E2: largest max|diff| / max|a_k| 0.00e+00 at eX,3) -> PASS
+PLANT-REPOLD (e,0: the largest reference coefficient times 1 + 1e-6) -> FIRES
+C-PARZERO (3 parity-zero keys of this range: largest max|a_k| 2.74e-13 at e,5, against 1e-10 of the largest nonzero key's 5.434e+00) -> PASS
+PLANT-PARZERO (e,7, the largest nonzero key, read as a parity zero) -> FIRES
+V3-INFO V3E2 N=3: 20 keys done (7 old, 12 new, 3 parity zeros); CPU per key: max 0.32 s at eX,0, mean 0.08 s, total 1.5 s
+STAGE-CPU total 3.83 s
+VERDICT VALID

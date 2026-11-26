@@ -1,0 +1,84 @@
+m3_lawcert_hl_v1_1 N 3 LIM 540; script sha256 8d5fe3c797b7861fa3ea6da836e0b7d5341d8aea8a693c553bf3805b650c9fd0; python 3.14.4
+STAGE-CPU C-HASH start 0.03 s
+C-HASH (12 pinned files, 8 inputs) -> PASS
+PLANT-HASH (m3_bar_v11 against its sha256 with the last digit changed) -> FIRES
+STAGE-CPU C-PINS start 0.03 s
+C-PINS (the runner m3_run_v1_9_3_hl_v1.py pins 17 of this script's pins in its own OWNMOD and INPUTS (the modules, the inputs, the list) with the same full sha256s; the asm output's first line names the runner 2c81e6bc) -> PASS
+PLANT-PINS (the asm output's first line against the runner's sha256 with the last digit changed) -> FIRES
+PLANT-PINS (the runner text with its bar pin's last digit changed must leave m3_bar_v11 not pinned alike) -> FIRES
+PRECISION iv.prec 136 (m3_scal_v2.setup, as the run)
+STAGE-CPU C-BIND start 0.19 s
+C-BIND (the hl records through m3_reader_v6_3.load against m3_run_v1_9_3_asm.3.out; the run manifest MANIFEST_PEV_RUN_ABS_v1.sha256 lists the asm output and the records with these sha256s; each record holds exactly the C3-h list's keys of its graph, every one free: L 1, LH 3, LT 2; 6 free) -> PASS
+C-PRODUCER (each record's engine names the runner 2c81e6bc and m3_bar_v11 c0032694, the bar that C-LAW-REM, C-PREP16 and C-LAW-SHAPE audit; its prep16 names the prep family and its producer: L L 2c81e6bc, LH L 2c81e6bc, LT L 2c81e6bc) -> PASS
+STAGE-CPU C-LAW-REM start 0.20 s
+C-LAW-REM (m3_bar_v11 Prep.bound: B_rem = overflow + nFle3 rE + rho4 + t^4 Nc EF4/24, each term a polynomial in t with nonnegative coefficients fixed at J_REF and valuation >= 4; l2 a polynomial of valuation >= 0; term valuations [4, 4, 4, 4], l2 valuation 0) -> PASS
+PLANT-LAW-REM (T(4) -> T(3) in the EF4 term: valuations [4, 4, 4, 3]) -> FIRES
+PLANT-LAW-REM (the overflow filter >= 3: valuations [3, 4, 4, 4]) -> FIRES
+PLANT-LAW-REM (nC8 without its factor t: valuations [4, 4, 0, 4]) -> FIRES
+PLANT-LAW-REM (rE's 't4|H4|' part with T(3): valuations [4, 3, 4, 4]) -> FIRES
+PLANT-LAW-REM (a '- nF0' term in B_rem: refused: Prep.bound: operator Sub refused) -> FIRES
+PLANT-LAW-REM (an unknown name in rho4: refused: Prep.bound: zeta must have exactly one binding, a direct statement with a value (bindings 0)) -> FIRES
+PLANT-LAW-REM (a second binding of overflow (condition 2): refused: Prep.bound: overflow must have exactly one binding, a direct statement with a value (bindings 2)) -> FIRES
+PLANT-LAW-REM (nFle3 allow-listed with a pinned text that is not its definition: refused: Prep.bound: nFle3 has bindings outside its pinned definition) -> FIRES
+PLANT-LAW-REM (a t-dependent name allow-listed with its own definition: refused: Prep.bound: allow-listed nFle3 mentions T) -> FIRES
+STAGE-CPU C-PREP16 start 0.79 s
+C-PREP16 (m3_bar_v11: R(Prep16.stage_u16) and R(Prep16.stage_c16) equal Prep.stage_u and Prep.stage_c statement by statement once the pinned setup, N2 and cleanup statements are left out, and every stage result is assigned in exactly those two methods; the runner (m3_run_v1_9_3_hl_v1.py), which made its own preps, builds BAR.Prep16 and BAR.Prep only in make_prep with stages=(), run stage_u16, stage_c16 and scalars_out only in run_prep16, never stage_u or stage_c, and store into the bar module only BAR.ARB['kern'] and BAR.FALLBACKS[:]) -> PASS
+PLANT-PREP16 (R(stage_u16) with T(3) in the 't4|H4|' part must be refused: R(Prep16.stage_u16) differs from Prep.stage_u) -> FIRES
+PLANT-PREP16 (stage_c16's nC8 without its factor t must be refused: R(Prep16.stage_c16) differs from Prep.stage_c) -> FIRES
+PLANT-PREP16 (stage_c16's 'hh p8' at p 6 must be refused: R(Prep16.stage_c16) differs from Prep.stage_c) -> FIRES
+PLANT-PREP16 (self.rE assigned in Prep16.h2sq must be refused: self.rE assigned in ['Prep.stage_u', 'Prep16.h2sq', 'Prep16.stage_u16']) -> FIRES
+PLANT-PREP16 (c1's make_prep calling BAR.Prep16 with stages ('u', 'c') must be refused: calls [('Prep', [('make_prep', True)]), ('Prep16', [('make_prep', False)]), ('scalars_out', [('run_prep16', True), ('run) -> FIRES
+PLANT-PREP16 (a store BAR.Prep16.stage_c16 = BAR.Prep.stage_c in c1 must be refused: l.1736 uses BAR.Prep16 other than as a call; l.1736 uses BAR.Prep other than as a call; stores rooted at BAR ["BAR.ARB[') -> FIRES
+PLANT-PREP16 (a call of pr.stage_u in c1's run_prep16 must be refused: l.1276 calls .stage_u) -> FIRES
+STAGE-CPU C-PREP-BAR start 1.43 s
+C-PREP-BAR (m3_bar_v11, the premises of C-LAW-REM's and C-PREP16's reading of classes Prep and Prep16, with the N-1: classes Prep, Prep16 at module level with bases Prep [], Prep16 ['Prep']; 3 uses of their names, each a class base or a call <name>.<method>(...); no attribute named Prep or Prep16, no star import; 1 setattr/delattr calls, each in a method of theirs on its first parameter; no other binding and no other reflection) -> PASS
+PLANT-PREP-BAR (Prep = Prep16 at module level must be refused: l.1040 binds or deletes Prep; l.1040 uses Prep16 other than as a class base or in a call Prep16.<method>(...)) -> FIRES
+PLANT-PREP-BAR (an attribute of Prep assigned must be refused: l.1040 uses Prep other than as a class base or in a call Prep.<method>(...)) -> FIRES
+PLANT-PREP-BAR (setattr on Prep must be refused: l.1040 setattr outside a method of Prep/Prep16 or not on its first parameter; l.1040 uses Prep other than as a class bas) -> FIRES
+PLANT-PREP-BAR (a base for class Prep must be refused: class Prep has bases ['object'], keywords or decorators) -> FIRES
+PLANT-PREP-BAR (globals() rebinding Prep must be refused: l.1040 uses Prep16 other than as a class base or in a call Prep16.<method>(...); l.1040 calls globals) -> FIRES
+PLANT-PREP-BAR (an alias of Prep must be refused: l.1040 uses Prep other than as a class base or in a call Prep.<method>(...)) -> FIRES
+PLANT-PREP-BAR (the module attribute Prep rebound through a self-import (N-1) must be refused: l.1041 an attribute named Prep; l.1041 uses Prep16 other than as a class base or in a call Prep16.<method>(...)) -> FIRES
+PLANT-PREP-BAR (a star import (N-1) must be refused: a star import) -> FIRES
+PLANT-PREP-BAR (a method's code replaced through Prep.<method> (N-1) must be refused: l.1040 uses __code__; l.1040 uses __code__; l.1040 uses Prep other than as a class base or in a call Prep.<method>(...);) -> FIRES
+PLANT-PREP-BAR (setattr on a parameter named self outside the classes (N-1) must be refused: l.1042 setattr outside a method of Prep/Prep16 or not on its first parameter) -> FIRES
+PLANT-PREP-BAR (Prep16 = Prep at module level must be refused: l.1040 binds or deletes Prep16; l.1040 uses Prep other than as a class base or in a call Prep.<method>(...)) -> FIRES
+PLANT-PREP-BAR (a second base for class Prep16 must be refused: class Prep16 has bases ['Prep', 'object'], keywords or decorators) -> FIRES
+STAGE-CPU C-LAW-SHAPE start 1.90 s
+C-LAW-SHAPE (42 pinned texts of m3_lawcert_c3h_v1_pins, as ASTs, in their places: the tail, ann and far statements, sup_F, norm_any, chi_tail_up, ive1, logtree, logmain, far_base, the bound's return, Prep.UK/CK, __init__'s t, rates, tilts and restore, laws_of, compute_entry's law lines, entry_record, Prep16's lazy, h, hh16, h2sq and norm16, and the statements C-PREP16 leaves out) -> PASS
+PLANT-LAW-SHAPE (B_tail without sqrt_nn must be missed) -> FIRES
+PLANT-LAW-SHAPE (alpha_lo taking .b must be missed) -> FIRES
+PLANT-LAW-SHAPE (sup_F's m_F without '- i' must be missed) -> FIRES
+STAGE-CPU C-NO-RESUME start 2.13 s
+C-NO-RESUME (adapted to multi-piece chains: the runner's only resume items are LHr1 and LHr2 (ITEM_RE; RESUME_FAMS ('LH',)), whose hand-offs hold no entry, and the records' entries come from entry pieces only; each family's chain k1..k_last is whole (contiguous entries, units carried exactly into the next piece, capped pieces without hand-offs, the asm's lines equal the pieces' lines, hand-offs by sha256, no later piece); outputs and hand-offs are rows of MANIFEST_PEV_RUN_ABS_v1.sha256 33fcb10c: L, LH, LT, pieces L [1], LH [1, 2, 3, 4, 5], LT [1, 2, 3, 4, 5]) -> PASS
+PLANT-NO-RESUME (a resume read in walk_pieces must be refused as runner:walk-reads: failed runner:walk-reads) -> FIRES
+PLANT-NO-RESUME (a second resume family must be refused as runner:RESUME_FAMS: failed runner:RESUME_FAMS) -> FIRES
+PLANT-NO-RESUME (a store into res in run_asm must be refused as runner:run_asm-res-store: failed runner:run_asm-res-store) -> FIRES
+PLANT-NO-RESUME (a gap in the asm's LH piece lines must be refused as LH:asm-gap: failed LH:asm-gap, LH:asm-gap, LH:asm-gap, LH:asm-gap, LH:k1:capped, LH:k2:start) -> FIRES
+PLANT-NO-RESUME (restored units that differ from the previous piece's carry must be refused as LH:k2:start: failed LH:k2:start, LH:k2:man-out) -> FIRES
+STAGE-CPU C-LAWFIELDS start 2.47 s
+C-LAWFIELDS (6 free entries: rem_tpow 4; tail and ann n, J_REF and a_G from the C3-h list's graphs' G_vv, tilt_p's G_vv and the a_v of the PREPJSON each prep took; far_cF from the pinned sup_F's m_F of the runner's factors, never below this script's own exponent; far_rate = down(alpha_lo - c_F/300); all exactly equal) -> PASS
+C-MONO-FAR (every recomputed far rate certainly > 0; smallest 3.5638e-01 at LH:Mhh,0,0) -> PASS
+STAGE-CPU C-BAND start 2.64 s
+C-BAND (sanity, 6 free entries: the banded bound in arb at J = 300, 600, 1000, 3000 is <= err (1 + 2^-30) at 300, <= err beyond and non-increasing; largest banded/err: J 300 1.0000, J 600 0.0621, J 1000 0.0081, J 3000 0.0001) -> PASS
+BAND-INFO L: 1 free entries; largest banded/err at J = 600 0.0621, at J = 1000 0.0081
+BAND-INFO LH: 3 free entries; largest banded/err at J = 600 0.0621, at J = 1000 0.0081
+BAND-INFO LT: 2 free entries; largest banded/err at J = 600 0.0619, at J = 1000 0.0080
+STAGE-CPU C-LAWCERT-RT start 2.65 s
+C-LAWCERT-RT (the certificate through m3_reader_v6_3's _bound and _parse_lawcert against the three loaded records: 6 entries back with the records' laws; claim and format equal the reader's) -> PASS
+PLANT-LAWCERT (rem_tpow 3 must be refused) -> FIRES
+PLANT-LAWCERT (far_rate 0 must be refused) -> FIRES
+PLANT-LAWCERT (an a_G entry 0 must be refused) -> FIRES
+PLANT-LAWCERT (J_REF 299 must be refused) -> FIRES
+PLANT-LAWCERT (n 4 must be refused) -> FIRES
+PLANT-LAWCERT (a record sha changed must be refused) -> FIRES
+PLANT-LAWCERT (an entry dropped must be refused) -> FIRES
+PLANT-LAWCERT (an entry added must be refused) -> FIRES
+PLANT-LAWCERT (law_claim + ' ' must be refused) -> FIRES
+PLANT-LAWCERT (a records map without one loaded record must be refused) -> FIRES
+PLANT-LAWCERT (a non-canonical exact string must be refused) -> FIRES
+PLANT-LAWCERT (a writing job whose VERDICT line is VERDICT VALID-PRECERT must be refused) -> FIRES
+C-WRITE (m3_lawcert_hl_v1_1_N3.json re-read byte for byte) -> PASS
+RECORD m3_lawcert_hl_v1_1_N3.json 08923b6e3313d9378983afe57542494ebad4f7f43ab463092164ef03a0170779
+STAGE-CPU total 2.66 s
+VERDICT VALID

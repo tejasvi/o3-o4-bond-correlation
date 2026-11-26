@@ -1,0 +1,107 @@
+m2b_wasm_v1_2 sha256 e56d2cecc805a4ef1deae9101797865b98315bb507dd1f2e271b9a2709ceb083 TAG=r1
+C-HASH: 9 pinned inputs: M2B_KV_v1.txt 13cc0d9a, m2b_reader_v1.py 3580bce7, m2b_cert_v1_5.py f151ab55, m2b_cert_v1_6.py 109a19a7, far_crude_reader_v1_1.py 92d8e23a, FAR_CRUDE_v1_N4.json 7140b2a5, out/far_crude_v1.N4.out c859c361, FAR_CRUDE_v1_N3.json f174b2c3, out/far_crude_v1.N3.out 283e4fe7 -> PASS
+FAR-CRUDE: N4 E4:psi:psi X300 3.2203e-31 p 2 c 0.302500; N4 E3:psi:psi X300 3.4687e-34 p 2 c 0.302500; N4 ED:psi:psi X300 3.3351e-34 p 2 c 0.302500; N3 E4:psi:psi X300 2.0066e-34 p 2 c 0.302500; N3 E3:psi:psi X300 1.9531e-34 p 2 c 0.302500; N3 ED:psi:psi X300 1.9011e-34 p 2 c 0.302500
+INFO REFL-MAX N=4 NPW: X_T 2.2536873164e-06, X_B 2.2536873164e-06, relative difference 0.000e+00
+INFO REFL-MAX N=4 R1W: X_T 1.4343301534e-16, X_B 1.4343301534e-16, relative difference 0.000e+00
+INFO REFL-MAX N=4 D5W: X_T 9.1196487649e-06, X_B 9.0516597578e-06, relative difference 7.511e-03
+INFO REFL-MAX N=4 R0W: X_T 7.2804182691e-07, X_B 7.2804182691e-07, relative difference 0.000e+00
+FAR N=4 at J_W: FAR_CRUDE fJ(300) 3.2306e-31; LAW v1 FAR (J1 = 150) scaled to 300 4.0384e-20 (INFO)
+C-FAR-LAW N=4 E4: FAR_CRUDE item E4:psi:psi p 2 <= 8, c 0.302500 >= 0.3 -> PASS
+C-FAR-LAW N=4 E3: FAR_CRUDE item E3:psi:psi p 2 <= 8, c 0.302500 >= 0.3 -> PASS
+C-FAR-LAW N=4 ED: FAR_CRUDE item ED:psi:psi p 2 <= 8, c 0.302500 >= 0.3 -> PASS
+C-PIECES N=4: 8 records and hand-offs: wx 9e9b92f6, wd5 37003e6a, wr0 2c685928, wtA f6bd6a3a, wtB 6abd1455, wtX0 aded5092, wtX1 b5b631cc, wtX2 b719771c -> PASS
+C-WDEF N=4: the same 11 weights in every piece, each with NPW, R1W, D5W, R0W -> PASS
+C-REF N=4: the law with w = 1 at J_W, 4.850881e-06, is at most M2B's N4_EPS_R_300 5.14608485854e-06 -> PASS
+TAILS N=4 at J_W: TX 1.081e-13 (lambda* 3/5), ANN 9.887e-13 (lambda* 3/5), TB 1.984e-12
+C-MONO N=4 X_B: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 X_T: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 X_T*xi_MB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 X_T*xi_TB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 X_T*xi_TM: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 X_T^2: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 xi_TB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 xi_TB^2: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 xi_TM*xi_MB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 xi_TM*xi_TB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 xi_TM^2: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 KXT2_XITM: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-DERIVED N=4 KXT2_XITM: at most X_T*xi_TM's eps times 1/(8(1 - a_m)), the bound from t X_T <= 1 everywhere: 2.2299e-06 <= 7.1360e-06 -> PASS
+C-MONO N=4 KXT2_XIMB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-DERIVED N=4 KXT2_XIMB: at most X_T*xi_MB's eps times 1/(8(1 - a_m)), the bound from t X_T <= 1 everywhere: 1.2621e-06 <= 3.9367e-06 -> PASS
+C-MONO N=4 KXT2_XITB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-DERIVED N=4 KXT2_XITB: at most X_T*xi_TB's eps times 1/(8(1 - a_m)), the bound from t X_T <= 1 everywhere: 4.2576e-06 <= 1.3839e-05 -> PASS
+C-MONO N=4 FARCAP_D1: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 FARCAP_D2: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=4 FARCAP_D3: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+INFO REFL-MAX N=3 NPW: X_T 7.9405947926e-07, X_B 7.9405947926e-07, relative difference 0.000e+00
+INFO REFL-MAX N=3 R1W: X_T 9.2068331736e-18, X_B 9.2068331736e-18, relative difference 0.000e+00
+INFO REFL-MAX N=3 D5W: X_T 2.9499904254e-06, X_B 2.9217388479e-06, relative difference 9.669e-03
+INFO REFL-MAX N=3 R0W: X_T 3.3186852335e-07, X_B 3.3186852335e-07, relative difference 0.000e+00
+FAR N=3 at J_W: FAR_CRUDE fJ(300) 7.8233e-34; LAW v1 FAR (J1 = 150) scaled to 300 2.9218e-26 (INFO)
+C-FAR-LAW N=3 E4: FAR_CRUDE item E4:psi:psi p 2 <= 8, c 0.302500 >= 0.3 -> PASS
+C-FAR-LAW N=3 E3: FAR_CRUDE item E3:psi:psi p 2 <= 8, c 0.302500 >= 0.3 -> PASS
+C-FAR-LAW N=3 ED: FAR_CRUDE item ED:psi:psi p 2 <= 8, c 0.302500 >= 0.3 -> PASS
+C-PIECES N=3: 8 records and hand-offs: wx 05e36a1d, wd5 89209bc3, wr0 59c4e468, wtA 0ec0ab1c, wtB 56ace149, wtX0 969f43db, wtX1 93c7c954, wtX2 7b11e71e -> PASS
+C-WDEF N=3: the same 11 weights in every piece, each with NPW, R1W, D5W, R0W -> PASS
+C-REF N=3: the law with w = 1 at J_W, 1.759628e-06, is at most M2B's N3_EPS_R_300 1.85151323105e-06 -> PASS
+TAILS N=3 at J_W: TX 5.218e-14 (lambda* 3/5), ANN 4.666e-13 (lambda* 3/5), TB 1.584e-12
+C-MONO N=3 X_B: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 X_T: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 X_T*xi_MB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 X_T*xi_TB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 X_T*xi_TM: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 X_T^2: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 xi_TB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 xi_TB^2: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 xi_TM*xi_MB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 xi_TM*xi_TB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 xi_TM^2: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 KXT2_XITM: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-DERIVED N=3 KXT2_XITM: at most X_T*xi_TM's eps times 1/(8(1 - a_m)), the bound from t X_T <= 1 everywhere: 8.1985e-07 <= 2.5581e-06 -> PASS
+C-MONO N=3 KXT2_XIMB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-DERIVED N=3 KXT2_XIMB: at most X_T*xi_MB's eps times 1/(8(1 - a_m)), the bound from t X_T <= 1 everywhere: 4.1123e-07 <= 1.2072e-06 -> PASS
+C-MONO N=3 KXT2_XITB: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-DERIVED N=3 KXT2_XITB: at most X_T*xi_TB's eps times 1/(8(1 - a_m)), the bound from t X_T <= 1 everywhere: 1.5350e-06 <= 4.9223e-06 -> PASS
+C-MONO N=3 FARCAP_D1: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 FARCAP_D2: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+C-MONO N=3 FARCAP_D3: rate conditions True; law nonincreasing on a 9-point grid True -> PASS
+INFO N4 X_B: eps_w(300) 1.2103e-05 = 2.35 eps_r (n_X 1, n_xi 0); near 1.210e-05 [NPW 2.254e-06 R1W 1.434e-16 D5W 9.120e-06 R0W 7.280e-07]
+INFO N4 X_T: eps_w(300) 1.2103e-05 = 2.35 eps_r (n_X 1, n_xi 0); near 1.210e-05 [NPW 2.254e-06 R1W 1.434e-16 D5W 9.120e-06 R0W 7.280e-07]
+INFO N4 X_T*xi_MB: eps_w(300) 2.1967e-05 = 4.27 eps_r (n_X 1, n_xi 1); near 2.140e-05 [NPW 6.599e-06 R1W 3.219e-16 D5W 1.292e-05 R0W 1.821e-06]
+INFO N4 X_T*xi_TB: eps_w(300) 7.7221e-05 = 15.01 eps_r (n_X 1, n_xi 1); near 7.665e-05 [NPW 2.087e-05 R1W 1.022e-15 D5W 4.594e-05 R0W 9.782e-06]
+INFO N4 X_T*xi_TM: eps_w(300) 3.9819e-05 = 7.74 eps_r (n_X 1, n_xi 1); near 3.925e-05 [NPW 9.777e-06 R1W 4.532e-16 D5W 2.426e-05 R0W 5.158e-06]
+INFO N4 X_T^2: eps_w(300) 7.5335e-05 = 14.64 eps_r (n_X 2, n_xi 0); near 7.505e-05 [NPW 1.434e-05 R1W 7.220e-16 D5W 5.080e-05 R0W 9.883e-06]
+INFO N4 xi_TB: eps_w(300) 1.4533e-05 = 2.82 eps_r (n_X 0, n_xi 1); near 1.453e-05 [NPW 3.781e-06 R1W 2.378e-16 D5W 9.782e-06 R0W 9.683e-07]
+INFO N4 xi_TB^2: eps_w(300) 1.1617e-04 = 22.57 eps_r (n_X 0, n_xi 2); near 1.150e-04 [NPW 3.662e-05 R1W 1.767e-15 D5W 6.416e-05 R0W 1.412e-05]
+INFO N4 xi_TM*xi_MB: eps_w(300) 1.2829e-05 = 2.49 eps_r (n_X 0, n_xi 2); near 1.169e-05 [NPW 3.889e-06 R1W 1.772e-16 D5W 6.747e-06 R0W 9.321e-07]
+INFO N4 xi_TM*xi_TB: eps_w(300) 4.4665e-05 = 8.68 eps_r (n_X 0, n_xi 2); near 4.352e-05 [NPW 1.388e-05 R1W 6.510e-16 D5W 2.434e-05 R0W 5.185e-06]
+INFO N4 xi_TM^2: eps_w(300) 2.8507e-05 = 5.54 eps_r (n_X 0, n_xi 2); near 2.737e-05 [NPW 8.702e-06 R1W 3.763e-16 D5W 1.560e-05 R0W 2.944e-06]
+INFO N4 KXT2_XITM: eps(300) 2.2299e-06 = 0.4333 eps_r; near 2.128e-06
+INFO N4 KXT2_XIMB: eps(300) 1.2621e-06 = 0.2453 eps_r; near 1.160e-06
+INFO N4 KXT2_XITB: eps(300) 4.2576e-06 = 0.8273 eps_r; near 4.155e-06
+INFO N4 FARCAP_D1: eps(300) 1.9015e-09 = 0.0004 eps_r; near 0.000e+00
+INFO N4 FARCAP_D2: eps(300) 1.1409e-06 = 0.2217 eps_r; near 0.000e+00
+INFO N4 FARCAP_D3: eps(300) 6.8455e-04 = 133.0238 eps_r; near 0.000e+00
+INFO N3 X_B: eps_w(300) 4.0767e-06 = 2.20 eps_r (n_X 1, n_xi 0); near 4.076e-06 [NPW 7.941e-07 R1W 9.207e-18 D5W 2.950e-06 R0W 3.319e-07]
+INFO N3 X_T: eps_w(300) 4.0767e-06 = 2.20 eps_r (n_X 1, n_xi 0); near 4.076e-06 [NPW 7.941e-07 R1W 9.207e-18 D5W 2.950e-06 R0W 3.319e-07]
+INFO N3 X_T*xi_MB: eps_w(300) 6.7364e-06 = 3.64 eps_r (n_X 1, n_xi 1); near 6.368e-06 [NPW 1.872e-06 R1W 1.695e-17 D5W 3.739e-06 R0W 7.185e-07]
+INFO N3 X_T*xi_TB: eps_w(300) 2.7466e-05 = 14.83 eps_r (n_X 1, n_xi 1); near 2.710e-05 [NPW 6.366e-06 R1W 5.876e-17 D5W 1.643e-05 R0W 4.264e-06]
+INFO N3 X_T*xi_TM: eps_w(300) 1.4274e-05 = 7.71 eps_r (n_X 1, n_xi 1); near 1.391e-05 [NPW 3.059e-06 R1W 2.479e-17 D5W 8.538e-06 R0W 2.270e-06]
+INFO N3 X_T^2: eps_w(300) 2.7408e-05 = 14.80 eps_r (n_X 2, n_xi 0); near 2.722e-05 [NPW 4.470e-06 R1W 4.144e-17 D5W 1.834e-05 R0W 4.399e-06]
+INFO N3 xi_TB: eps_w(300) 4.8372e-06 = 2.61 eps_r (n_X 0, n_xi 1); near 4.836e-06 [NPW 1.337e-06 R1W 1.556e-17 D5W 3.063e-06 R0W 4.361e-07]
+INFO N3 xi_TB^2: eps_w(300) 4.1432e-05 = 22.38 eps_r (n_X 0, n_xi 2); near 4.069e-05 [NPW 1.127e-05 R1W 1.036e-16 D5W 2.322e-05 R0W 6.119e-06]
+INFO N3 xi_TM*xi_MB: eps_w(300) 3.9587e-06 = 2.14 eps_r (n_X 0, n_xi 2); near 3.222e-06 [NPW 1.030e-06 R1W 8.162e-18 D5W 1.752e-06 R0W 3.578e-07]
+INFO N3 xi_TM*xi_TB: eps_w(300) 1.5639e-05 = 8.45 eps_r (n_X 0, n_xi 2); near 1.490e-05 [NPW 4.193e-06 R1W 3.589e-17 D5W 8.395e-06 R0W 2.231e-06]
+INFO N3 xi_TM^2: eps_w(300) 1.0060e-05 = 5.43 eps_r (n_X 0, n_xi 2); near 9.324e-06 [NPW 2.849e-06 R1W 2.015e-17 D5W 5.106e-06 R0W 1.286e-06]
+INFO N3 KXT2_XITM: eps(300) 8.1985e-07 = 0.4428 eps_r; near 7.538e-07
+INFO N3 KXT2_XIMB: eps(300) 4.1123e-07 = 0.2221 eps_r; near 3.452e-07
+INFO N3 KXT2_XITB: eps(300) 1.5350e-06 = 0.8291 eps_r; near 1.469e-06
+INFO N3 FARCAP_D1: eps(300) 1.2277e-09 = 0.0007 eps_r; near 0.000e+00
+INFO N3 FARCAP_D2: eps(300) 7.3661e-07 = 0.3978 eps_r; near 0.000e+00
+INFO N3 FARCAP_D3: eps(300) 4.4196e-04 = 238.7042 eps_r; near 0.000e+00
+PLANT-MONO: a tail rate lambda* = 0.001 fails the rate condition for n = 2 -> FIRES
+PLANT-FARRATE: the far item E4:psi:psi with rate c = 1/1000 fails the rate condition for n = 2 -> FIRES
+PLANT-VALUE: one hand-off value changed in memory changes the assembled value -> FIRES
+C-FINITE: 154 keys are finite decimals (upper ends) or integer/rational pairs -> PASS
+RECORD M2B_W_KV_v1_r1.txt d74ac24b3e1d2e9c8a4f2b9deb22400ae7f43ccf1778b8c70c4dc472137e42e9
+VERDICT VALID

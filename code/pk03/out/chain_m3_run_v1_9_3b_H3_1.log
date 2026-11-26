@@ -1,0 +1,120 @@
+2026-11-08T06:21:58Z CHAIN start m3_run_v1_9_3 57991eb0, H at N3, mode u; run_chain_m3_run_v1_9_3b.sh 2d52af21; cap 8000 s; log chain_m3_run_v1_9_3b_H3_1.log
+2026-11-08T06:21:58Z MANIFEST_m3_run_v1_9_3b.sha256 0fef19f0 and the v1_9_3, v1_9_2, v1_9_1, v1_9 manifests OK (--strict)
+2026-11-08T06:21:59Z END pycheck rc 0 VERDICT VALID  out b370b31f
+2026-11-08T06:21:59Z PREFLIGHT: the H N4 replay check must pass before this chain runs
+2026-11-08T06:21:59Z REPLAY-H4 lines: REPLAY_REF 18, m3_run_v1_9_1 18 (self-test cmp rc 0), m3_run_v1_9_3 18 (cmp rc 0, 9f798728); PLANT-REPLAY cmp rc 1 (must be 1)
+2026-11-08T06:21:59Z REPLAY-H4 m3_run_v1_9_3 pieces: Hp1.4 3f210ddf Hp2.4 2a166181 Hp3.4 2f8fae36 Hp4.4 7daa1481 Hp5.4 2bd1213c
+2026-11-08T06:21:59Z REPLAY-H4 PASS (the 18 lines equal REPLAY_REF 4ce12eea byte for byte; PLANT-REPLAY FIRES)
+2026-11-08T06:21:59Z H has 8 entries in S8_ENTRY_LIST_v2
+2026-11-08T06:21:59Z SKIP Ha.3: done before (32d5a642)
+2026-11-08T06:21:59Z START Hp1.3 LIM 540 (CPU so far 0.2 s of 8000)
+2026-11-08T06:26:40Z END Hp1.3 rc 0 CPU 281.0 s (total 281.2 s) VERDICT VALID  out 39852ac2 10205 bytes; err 0 bytes
+2026-11-08T06:26:40Z   Hp1.3: C-CACHE-CHAIN (H prep piece 1: no valid prep piece before it; memo m3_run_v1_9_3_memo_H_N3.jsonl: its first 0 lines have sha256 e3b0c442 (recorded e3b0c442), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T06:26:40Z   Hp1.3: C-PREP-GRAPH (H: the prep graph has V 12, F 12 and pairs [] (the family graph: F 16); against the family graph, V, N, S_gauge and the 18 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo
+2026-11-08T06:26:40Z   Hp1.3: PLANT-PREP-EDGE (H: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:26:40Z   Hp1.3: PLANT-PREP-TAG (H: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:26:40Z   Hp1.3: PLANT-PREP-GAUGE (H: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:26:40Z   Hp1.3: PLANT-PREP-ULP (H: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T06:26:40Z   Hp1.3: PREP16-START H piece 1: 0 norms finished before, 0 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T06:26:40Z   Hp1.3: TABLE16-START u vertex forms D 16: state u16_b448b384c8b7a955e4bec22ad3c443d4_97ea161946d0, state0 hand-off 290ecf1954c561be2518836f3f6dba640bc0a30981879ccab70ec25c2fd3619a
+2026-11-08T06:26:40Z   Hp1.3: PREP16 H piece 1: PARTIAL before table unit L15:0-1125 of u vertex forms D 16 (about 250 s); 1 norms finished, memo 0 lines (head sha256 e3b0c442); tables: u16_b448b384c8b7a955 14 units; adopted 0, moved aside 0, memo hits 0; largest E2 relative radius 0.000e+00 at -, 0 over FALLBACK_REL; shadow_max -
+2026-11-08T06:26:40Z   Hp1.3: STAGE-CPU total 280.88 s
+2026-11-08T06:26:40Z START Hp2.3 LIM 540 (CPU so far 281.3 s of 8000)
+2026-11-08T06:30:33Z END Hp2.3 rc 0 CPU 232.5 s (total 513.8 s) VERDICT VALID  out 3f00c554 6702 bytes; err 0 bytes
+2026-11-08T06:30:33Z   Hp2.3: C-CACHE-CHAIN (H prep piece 2: piece 1's hand-off, done False; memo m3_run_v1_9_3_memo_H_N3.jsonl: its first 0 lines have sha256 e3b0c442 (recorded e3b0c442), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T06:30:33Z   Hp2.3: C-PREP-GRAPH (H: the prep graph has V 12, F 12 and pairs [] (the family graph: F 16); against the family graph, V, N, S_gauge and the 18 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo
+2026-11-08T06:30:33Z   Hp2.3: PLANT-PREP-EDGE (H: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:30:33Z   Hp2.3: PLANT-PREP-TAG (H: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:30:33Z   Hp2.3: PLANT-PREP-GAUGE (H: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:30:33Z   Hp2.3: PLANT-PREP-ULP (H: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T06:30:33Z   Hp2.3: PREP16-START H piece 2: 1 norms finished before, 0 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T06:30:33Z   Hp2.3: PREP16 H piece 2: PARTIAL before table unit L16:0-1222 of u vertex forms D 16 (about 250 s); 1 norms finished, memo 0 lines (head sha256 e3b0c442); tables: u16_b448b384c8b7a955 16 units; adopted 0, moved aside 0, memo hits 0; largest E2 relative radius 0.000e+00 at -, 0 over FALLBACK_REL; shadow_max -
+2026-11-08T06:30:33Z   Hp2.3: STAGE-CPU total 232.43 s
+2026-11-08T06:30:33Z START Hp3.3 LIM 540 (CPU so far 513.9 s of 8000)
+2026-11-08T06:35:51Z END Hp3.3 rc 0 CPU 317.6 s (total 831.5 s) VERDICT VALID  out b6d790e2 6707 bytes; err 0 bytes
+2026-11-08T06:35:51Z   Hp3.3: C-CACHE-CHAIN (H prep piece 3: piece 2's hand-off, done False; memo m3_run_v1_9_3_memo_H_N3.jsonl: its first 0 lines have sha256 e3b0c442 (recorded e3b0c442), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T06:35:51Z   Hp3.3: C-PREP-GRAPH (H: the prep graph has V 12, F 12 and pairs [] (the family graph: F 16); against the family graph, V, N, S_gauge and the 18 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo
+2026-11-08T06:35:51Z   Hp3.3: PLANT-PREP-EDGE (H: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:35:51Z   Hp3.3: PLANT-PREP-TAG (H: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:35:51Z   Hp3.3: PLANT-PREP-GAUGE (H: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:35:51Z   Hp3.3: PLANT-PREP-ULP (H: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T06:35:51Z   Hp3.3: PREP16-START H piece 3: 1 norms finished before, 0 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T06:35:51Z   Hp3.3: PREP16 H piece 3: PARTIAL before table unit L16:1941-2608 of u vertex forms D 16 (about 167 s); 1 norms finished, memo 0 lines (head sha256 e3b0c442); tables: u16_b448b384c8b7a955 18 units; adopted 0, moved aside 0, memo hits 0; largest E2 relative radius 0.000e+00 at -, 0 over FALLBACK_REL; shadow_max -
+2026-11-08T06:35:51Z   Hp3.3: STAGE-CPU total 317.46 s
+2026-11-08T06:35:51Z START Hp4.3 LIM 540 (CPU so far 831.5 s of 8000)
+2026-11-08T06:40:29Z END Hp4.3 rc 0 CPU 275.6 s (total 1107.1 s) VERDICT VALID  out a321a5a9 7542 bytes; err 0 bytes
+2026-11-08T06:40:29Z   Hp4.3: C-CACHE-CHAIN (H prep piece 4: piece 3's hand-off, done False; memo m3_run_v1_9_3_memo_H_N3.jsonl: its first 0 lines have sha256 e3b0c442 (recorded e3b0c442), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T06:40:29Z   Hp4.3: C-PREP-GRAPH (H: the prep graph has V 12, F 12 and pairs [] (the family graph: F 16); against the family graph, V, N, S_gauge and the 18 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo
+2026-11-08T06:40:29Z   Hp4.3: PLANT-PREP-EDGE (H: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:40:29Z   Hp4.3: PLANT-PREP-TAG (H: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:40:29Z   Hp4.3: PLANT-PREP-GAUGE (H: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:40:29Z   Hp4.3: PLANT-PREP-ULP (H: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T06:40:29Z   Hp4.3: PREP16-START H piece 4: 1 norms finished before, 0 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T06:40:29Z   Hp4.3: TABLE16-FINISHED u vertex forms D 16: hand-off handoff_table.json 1fb5ad0f1fa5f3b52089c189254b33765fa7d0c506af557549f6587da5b91857
+2026-11-08T06:40:29Z   Hp4.3: TABLE16-LOADED u vertex forms D 16: 3.43 s; shadow_max 6.369e-03
+2026-11-08T06:40:29Z   Hp4.3: PREP16 H piece 4: PARTIAL before E2 block 1 of 2 on u vertex forms D 16 (about 180 s); 7 norms finished, memo 2 lines (head sha256 43e606ad); tables: u16_b448b384c8b7a955 finished 1fb5ad0f; adopted 0, moved aside 0, memo hits 0; largest E2 relative radius 2.603e-07 at u:t6 h3^2, 0 over FALLBACK_REL; shadow_max u vertex forms D 16 6.369e-03
+2026-11-08T06:40:29Z   Hp4.3: STAGE-CPU total 275.45 s
+2026-11-08T06:40:29Z START Hp5.3 LIM 540 (CPU so far 1107.2 s of 8000)
+2026-11-08T06:45:07Z END Hp5.3 rc 0 CPU 277.9 s (total 1385.1 s) VERDICT VALID  out 4edc1de6 6927 bytes; err 0 bytes
+2026-11-08T06:45:07Z   Hp5.3: C-CACHE-CHAIN (H prep piece 5: piece 4's hand-off, done False; memo m3_run_v1_9_3_memo_H_N3.jsonl: its first 2 lines have sha256 43e606ad (recorded 43e606ad), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T06:45:07Z   Hp5.3: C-PREP-GRAPH (H: the prep graph has V 12, F 12 and pairs [] (the family graph: F 16); against the family graph, V, N, S_gauge and the 18 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo
+2026-11-08T06:45:07Z   Hp5.3: PLANT-PREP-EDGE (H: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:45:07Z   Hp5.3: PLANT-PREP-TAG (H: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:45:07Z   Hp5.3: PLANT-PREP-GAUGE (H: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:45:07Z   Hp5.3: PLANT-PREP-ULP (H: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T06:45:07Z   Hp5.3: PREP16-START H piece 5: 7 norms finished before, 2 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T06:45:07Z   Hp5.3: TABLE16-LOADED u vertex forms D 16: 3.38 s; shadow_max 6.369e-03
+2026-11-08T06:45:07Z   Hp5.3: PREP16 H piece 5: PARTIAL before E2 block 2 of 4 on u vertex forms D 16 (about 180 s); 10 norms finished, memo 7 lines (head sha256 3ecada6c); tables: u16_b448b384c8b7a955 finished 1fb5ad0f; adopted 0, moved aside 0, memo hits 0; largest E2 relative radius 5.061e-05 at u:t4 H1^2|H2|, 0 over FALLBACK_REL; shadow_max u vertex forms D 16 6.369e-03
+2026-11-08T06:45:07Z   Hp5.3: STAGE-CPU total 277.74 s
+2026-11-08T06:45:07Z START Hp6.3 LIM 540 (CPU so far 1385.1 s of 8000)
+2026-11-08T06:50:54Z END Hp6.3 rc 0 CPU 347.5 s (total 1732.6 s) VERDICT VALID  out c73085fd 6672 bytes; err 0 bytes
+2026-11-08T06:50:54Z   Hp6.3: C-CACHE-CHAIN (H prep piece 6: piece 5's hand-off, done False; memo m3_run_v1_9_3_memo_H_N3.jsonl: its first 7 lines have sha256 3ecada6c (recorded 3ecada6c), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T06:50:54Z   Hp6.3: C-PREP-GRAPH (H: the prep graph has V 12, F 12 and pairs [] (the family graph: F 16); against the family graph, V, N, S_gauge and the 18 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo
+2026-11-08T06:50:54Z   Hp6.3: PLANT-PREP-EDGE (H: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:50:54Z   Hp6.3: PLANT-PREP-TAG (H: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:50:54Z   Hp6.3: PLANT-PREP-GAUGE (H: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:50:54Z   Hp6.3: PLANT-PREP-ULP (H: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T06:50:54Z   Hp6.3: PREP16-START H piece 6: 10 norms finished before, 7 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T06:50:54Z   Hp6.3: TABLE16-LOADED u vertex forms D 16: 3.27 s; shadow_max 6.369e-03
+2026-11-08T06:50:54Z   Hp6.3: PREP16 H piece 6: PARTIAL before E2 block 3 of 3 on u vertex forms D 16 (about 172 s); 11 norms finished, memo 12 lines (head sha256 4cb5ebca); tables: u16_b448b384c8b7a955 finished 1fb5ad0f; adopted 0, moved aside 0, memo hits 1; largest E2 relative radius 2.264e-04 at u:t5 H1^2 h3, 0 over FALLBACK_REL; shadow_max u vertex forms D 16 6.369e-03
+2026-11-08T06:50:54Z   Hp6.3: STAGE-CPU total 347.35 s
+2026-11-08T06:50:54Z START Hp7.3 LIM 540 (CPU so far 1732.7 s of 8000)
+2026-11-08T06:56:35Z END Hp7.3 rc 0 CPU 341.0 s (total 2073.7 s) VERDICT VALID  out 9e15cc79 6615 bytes; err 0 bytes
+2026-11-08T06:56:35Z   Hp7.3: C-CACHE-CHAIN (H prep piece 7: piece 6's hand-off, done False; memo m3_run_v1_9_3_memo_H_N3.jsonl: its first 12 lines have sha256 4cb5ebca (recorded 4cb5ebca), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T06:56:35Z   Hp7.3: C-PREP-GRAPH (H: the prep graph has V 12, F 12 and pairs [] (the family graph: F 16); against the family graph, V, N, S_gauge and the 18 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo
+2026-11-08T06:56:35Z   Hp7.3: PLANT-PREP-EDGE (H: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:56:35Z   Hp7.3: PLANT-PREP-TAG (H: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:56:35Z   Hp7.3: PLANT-PREP-GAUGE (H: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T06:56:35Z   Hp7.3: PLANT-PREP-ULP (H: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T06:56:35Z   Hp7.3: PREP16-START H piece 7: 11 norms finished before, 12 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T06:56:35Z   Hp7.3: TABLE16-LOADED u vertex forms D 16: 3.41 s; shadow_max 6.369e-03
+2026-11-08T06:56:35Z   Hp7.3: PREP16 H piece 7: PARTIAL before E2 block 4 of 5 on u vertex forms D 16 (about 180 s); 12 norms finished, memo 16 lines (head sha256 1711315e); tables: u16_b448b384c8b7a955 finished 1fb5ad0f; adopted 0, moved aside 0, memo hits 2; largest E2 relative radius 2.620e-05 at u:t5|H1|h2^2, 0 over FALLBACK_REL; shadow_max u vertex forms D 16 6.369e-03
+2026-11-08T06:56:35Z   Hp7.3: STAGE-CPU total 340.91 s
+2026-11-08T06:56:35Z START Hp8.3 LIM 540 (CPU so far 2073.8 s of 8000)
+2026-11-08T07:02:07Z END Hp8.3 rc 0 CPU 331.5 s (total 2405.3 s) VERDICT VALID  out b1c01acf 7048 bytes; err 0 bytes
+2026-11-08T07:02:07Z   Hp8.3: C-CACHE-CHAIN (H prep piece 8: piece 7's hand-off, done False; memo m3_run_v1_9_3_memo_H_N3.jsonl: its first 16 lines have sha256 1711315e (recorded 1711315e), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T07:02:07Z   Hp8.3: C-PREP-GRAPH (H: the prep graph has V 12, F 12 and pairs [] (the family graph: F 16); against the family graph, V, N, S_gauge and the 18 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo
+2026-11-08T07:02:07Z   Hp8.3: PLANT-PREP-EDGE (H: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T07:02:07Z   Hp8.3: PLANT-PREP-TAG (H: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T07:02:07Z   Hp8.3: PLANT-PREP-GAUGE (H: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T07:02:07Z   Hp8.3: PLANT-PREP-ULP (H: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T07:02:07Z   Hp8.3: PREP16-START H piece 8: 12 norms finished before, 16 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T07:02:07Z   Hp8.3: TABLE16-LOADED u vertex forms D 16: 3.33 s; shadow_max 6.369e-03
+2026-11-08T07:02:07Z   Hp8.3: PREP16 H piece 8: PARTIAL before E2 block 3 of 4 on u vertex forms D 16 (about 180 s); 17 norms finished, memo 20 lines (head sha256 8971c258); tables: u16_b448b384c8b7a955 finished 1fb5ad0f; adopted 0, moved aside 0, memo hits 3; largest E2 relative radius 9.684e-04 at u:nE3, 0 over FALLBACK_REL; shadow_max u vertex forms D 16 6.369e-03
+2026-11-08T07:02:07Z   Hp8.3: STAGE-CPU total 331.34 s
+2026-11-08T07:02:07Z START Hp9.3 LIM 540 (CPU so far 2405.3 s of 8000)
+2026-11-08T07:07:43Z END Hp9.3 rc 0 CPU 335.9 s (total 2741.2 s) VERDICT VALID  out 47bdd545 11412 bytes; err 0 bytes
+2026-11-08T07:07:43Z   Hp9.3: C-CACHE-CHAIN (H prep piece 9: piece 8's hand-off, done False; memo m3_run_v1_9_3_memo_H_N3.jsonl: its first 20 lines have sha256 8971c258 (recorded 8971c258), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+2026-11-08T07:07:43Z   Hp9.3: C-PREP-GRAPH (H: the prep graph has V 12, F 12 and pairs [] (the family graph: F 16); against the family graph, V, N, S_gauge and the 18 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo
+2026-11-08T07:07:43Z   Hp9.3: PLANT-PREP-EDGE (H: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T07:07:43Z   Hp9.3: PLANT-PREP-TAG (H: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T07:07:43Z   Hp9.3: PLANT-PREP-GAUGE (H: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+2026-11-08T07:07:43Z   Hp9.3: PLANT-PREP-ULP (H: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+2026-11-08T07:07:43Z   Hp9.3: PREP16-START H piece 9: 17 norms finished before, 20 memo lines (0 adopted from capped pieces), budget factor 1.25
+2026-11-08T07:07:43Z   Hp9.3: TABLE16-LOADED u vertex forms D 16: 3.41 s; shadow_max 6.369e-03
+2026-11-08T07:07:43Z   Hp9.3: PREP16-REP H stage u: 21 scalars, certified upper end / float in [1.000000 (nE4[0]), 1.105160 (nE4[2])]; nE4[0] 1.000000; nE[0] 1.000000; nE[1] 1.000000; rE_parts[t4|H4|] 1.000000; rE_parts[t5 h5/120] 1.000000; nE4[1] 1.000000; rE_parts[t4 H2^2/2] 1.000000; rE_parts[t4|H1H3|] 1.000000; rE_parts[t5|H1H4|] 1.000000; rE_parts[t5|H2|h3/6] 1.000000; nE[2] 1.000000; rE_parts[t6|H1|h5/120] 1.000000; rE_p
+2026-11-08T07:07:43Z   Hp9.3: TABLE16-START c vertex forms D 16: state u16_c856ab3051ee62f9f0f265042d9bec4e_97ea161946d0, state0 hand-off e8847fa6b86cc2d460c90cb39a158b58d9c3270978829ba6c1cfb7025c1cacce
+2026-11-08T07:07:43Z   Hp9.3: PREP16 H piece 9: PARTIAL before table unit L15:0-1125 of c vertex forms D 16 (about 250 s); 19 norms finished, memo 22 lines (head sha256 3a0aaefc); tables: u16_b448b384c8b7a955 finished 1fb5ad0f, u16_c856ab3051ee62f9 14 units; adopted 0, moved aside 0, memo hits 2; largest E2 relative radius 4.918e-01 at u:nE4_2, 1 over FALLBACK_REL; shadow_max u vertex forms D 16 6.369e-03
+2026-11-08T07:07:43Z   Hp9.3: STAGE-CPU total 335.71 s
+2026-11-08T07:07:43Z MEASURE: stage u done in Hp9.3; the chain stops (mode u)
+2026-11-08T07:07:43Z CHAIN end: CPU 2741.2 s of 8000

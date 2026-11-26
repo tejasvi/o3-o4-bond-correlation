@@ -1,0 +1,23 @@
+side	k	LIM	start	end	VERDICT	match	compared_1_1
+archive	1	540	resumes at entry 0 of 8 after 0 capped piece(s); stop factor 1.5	clean CAP-STOP in stage entry XT,2	VERDICT INCOMPLETE (CAP-STOP)	-	-
+archive	2	1500	resumes at entry 0 of 8 after 1 capped piece(s); stop factor 3.0	entries 0..0 done, next 1 of 8; 58 units computed, 14 units of XT,2 carried	VERDICT VALID	-	-
+archive	3	540	resumes at entry 1 of 8 with 14 units of XT,2 restored after 0 capped piece(s); stop factor 1.5	entries 1..0 done, next 1 of 8; 1 units computed, 15 units of XT,2 carried	VERDICT VALID	new 3	-
+archive	4	540	resumes at entry 1 of 8 with 15 units of XT,2 restored after 0 capped piece(s); stop factor 1.5	entries 1..0 done, next 1 of 8; 11 units computed, 26 units of XT,2 carried	VERDICT VALID	new 4	-
+archive	5	472	resumes at entry 1 of 8 with 26 units of XT,2 restored after 0 capped piece(s); stop factor 1.5	entries 1..0 done, next 1 of 8; 1 units computed, 27 units of XT,2 carried	VERDICT VALID	new 5	-
+archive	6	540	resumes at entry 1 of 8 with 27 units of XT,2 restored after 0 capped piece(s); stop factor 1.5	clean CAP-STOP in stage entry XT,3	VERDICT INCOMPLETE (CAP-STOP)	new 6	-
+archive	7	1500	resumes at entry 1 of 8 with 27 units of XT,2 restored after 1 capped piece(s); stop factor 3.0	entries 1..1 done, next 2 of 8; 31 units computed, 14 units of XT,3 carried	VERDICT VALID	new 7	-
+archive	8	540	resumes at entry 2 of 8 with 14 units of XT,3 restored after 0 capped piece(s); stop factor 1.5	entries 2..1 done, next 2 of 8; 1 units computed, 15 units of XT,3 carried	VERDICT VALID	new 8	-
+archive	9	540	resumes at entry 2 of 8 with 15 units of XT,3 restored after 0 capped piece(s); stop factor 1.5	entries 2..1 done, next 2 of 8; 11 units computed, 26 units of XT,3 carried	VERDICT VALID	new 9	-
+archive	10	540	resumes at entry 2 of 8 with 26 units of XT,3 restored after 0 capped piece(s); stop factor 1.5	entries 2..1 done, next 2 of 8; 1 units computed, 27 units of XT,3 carried	VERDICT VALID	new 10	-
+archive	11	540	resumes at entry 2 of 8 with 27 units of XT,3 restored after 0 capped piece(s); stop factor 1.5	entries 2..7 done, next 8 of 8; 171 units computed	VERDICT VALID	new 11	-
+new	1	540	resumes at entry 0 of 8 after 0 capped piece(s); stop factor 1.5	entries 0..0 done, next 1 of 8; 57 units computed, 13 units of XT,2 carried	VERDICT VALID	-	-
+new	2	540	resumes at entry 1 of 8 with 13 units of XT,2 restored after 0 capped piece(s); stop factor 1.5	entries 1..0 done, next 1 of 8; 1 units computed, 14 units of XT,2 carried	VERDICT VALID	-	-
+new	3	540	resumes at entry 1 of 8 with 14 units of XT,2 restored after 0 capped piece(s); stop factor 1.5	entries 1..0 done, next 1 of 8; 1 units computed, 15 units of XT,2 carried	VERDICT VALID	archive 3	PASS
+new	4	540	resumes at entry 1 of 8 with 15 units of XT,2 restored after 0 capped piece(s); stop factor 1.5	entries 1..0 done, next 1 of 8; 11 units computed, 26 units of XT,2 carried	VERDICT VALID	archive 4	PASS
+new	5	540	resumes at entry 1 of 8 with 26 units of XT,2 restored after 0 capped piece(s); stop factor 1.5	entries 1..0 done, next 1 of 8; 1 units computed, 27 units of XT,2 carried	VERDICT VALID	archive 5	FAIL
+new	6	540	resumes at entry 1 of 8 with 27 units of XT,2 restored after 0 capped piece(s); stop factor 1.5	clean CAP-STOP in stage entry XT,3	VERDICT INCOMPLETE (CAP-STOP)	archive 6	PASS
+new	7	1500	resumes at entry 1 of 8 with 27 units of XT,2 restored after 1 capped piece(s); stop factor 3.0	entries 1..1 done, next 2 of 8; 31 units computed, 14 units of XT,3 carried	VERDICT VALID	archive 7	PASS
+new	8	540	resumes at entry 2 of 8 with 14 units of XT,3 restored after 0 capped piece(s); stop factor 1.5	entries 2..1 done, next 2 of 8; 1 units computed, 15 units of XT,3 carried	VERDICT VALID	archive 8	PASS
+new	9	540	resumes at entry 2 of 8 with 15 units of XT,3 restored after 0 capped piece(s); stop factor 1.5	entries 2..1 done, next 2 of 8; 11 units computed, 26 units of XT,3 carried	VERDICT VALID	archive 9	PASS
+new	10	540	resumes at entry 2 of 8 with 26 units of XT,3 restored after 0 capped piece(s); stop factor 1.5	entries 2..1 done, next 2 of 8; 1 units computed, 27 units of XT,3 carried	VERDICT VALID	archive 10	PASS
+new	11	540	resumes at entry 2 of 8 with 27 units of XT,3 restored after 0 capped piece(s); stop factor 1.5	entries 2..7 done, next 8 of 8; 171 units computed	VERDICT VALID	archive 11	PASS

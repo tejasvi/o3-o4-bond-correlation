@@ -1,0 +1,57 @@
+{
+  "list": "S9_ENTRY_LIST_v1",
+  "author": "pk03",
+  "basis": "pk15 NOTE_P2_17_RITZ_PIECES_v1 (d3cbeb18) sect. 2, confirmed by pk15 2026-11-08 00:06Z: (a) the 18 keys per N exactly as written here, (b) Iht,b with xi on the top bond (3,6) next to phi_0 (kt_sh1_v1 l.17), (c) Dx,b = S8's DY,b; the approval 2026-11-08 00:05Z (one S9 record per N, asm9 copying the 15 existing entries byte for byte with alias_of, the 3 new Iht entries, C-SCOPE and C-COPY); P2-2's SH1 entries are not in this list (pk07 2026-11-08 00:08Z: kt_s9h does not need a certified SH1; the block was dropped at 00:08Z)",
+  "route": "item (v) of P2-17: the Ritz and Lemma A data per piece; the Ritz pencil (T, G) on the even block {psi-hat, e1, e3} = states {0, 1, 3}, t's source Iht,b and a's source Dx,b; no Ih (h is not needed for S_V and S_TB')",
+  "conventions": {
+    "vertex": "3*col + row (row 0 T, 1 M, 2 B); columns 0-indexed",
+    "horizontals": "1.0 between adjacent columns, rows T-T, M-M, B-B",
+    "column_types": {"vac": "T-M A_EX, M-B A_EX, T-B B_EX; A_EX = (3+sqrt(21))/6, B_EX = (3*sqrt(5)-sqrt(21))/12 (vacmod2)", "int": "T-M 1, M-B 1", "free": "T-M 1, M-B 1, no T-B"},
+    "cp": "[cp, a, col]: trial state a on column col; a = 0 the vacres polynomial p (q1, q2, q3) of vacres_K3_N*_sym_v1.json; a >= 1: S[0][a] + sum_beta S[beta][a] xi_beta over BASIS9 on that column, from ts_N*_z9sym_v1.json (as S8_ENTRY_LIST_v3)",
+    "xi": "[xi, TM, col]: xi_TM = J(1 - sigma_T . sigma_M) on column col (riglap xi factor, c9 = e_TM; as S8_ENTRY_LIST_v3)",
+    "xia": "[xia, [u, v, w]]: riglap3's xi factor ('xi', (u, v, w), 0, c9 = e_1), i.e. xi_uv = J(1 - sigma_u . sigma_v) on the pair (u, v); w only fills riglap3's (T, M, B) slot and no form of it is used (m3_entries_v3 'xia'; kt_sh1_v1's XI(u, v, w))",
+    "K": "3 for every entry (a_0..a_3 plus the certified bar, Lemma U)",
+    "J_REF": 300,
+    "trial_set": {"ts_N4": "ts_N4_J170_D_S_z9sym_v1.json:ea9d6c1bc72cdac5b6d55091766a908937c7ce2bf60257636824388ffe5b7b5d", "ts_N3": "ts_N3_S_z9sym_v1.json:a298db655d832c0685a9aba093dd123d372698fa2fb7905a15f442bb0e35f8e6", "vacres_N4": "vacres_K3_N4_sym_v1.json:b40859de2607f64cd127cb1834a04e9f33b3c2cbe4af9fe4f2bb80badaacd43e", "vacres_N3": "vacres_K3_N3_sym_v1.json:e5a9b49fde1896ff1d87de1d4a44571376eeeeb31b0ce4205faecdd2463115c0"},
+    "trial_set_field": "each record: trial_set = {ts: <name>:<full sha256>, vacres: <name>:<full sha256>} for its N (C-TRIAL), as the S8 records",
+    "copy": "an entry with copy_of is not computed: asm9 copies the item of copy_of.key from the S8 record of family copy_of.family (D: m3_s8v3_D_N<N>_J300_v1_8_1.json, N: m3_s8v3_N_N<N>_J300_v1_8_2.json) byte for byte, with alias_of = '<record file> <source key> <record sha256>'; its factors here equal S8_ENTRY_LIST_v3's for the source key",
+    "N": [3, 4]
+  },
+  "source_lists": {"S8_ENTRY_LIST_v3.json": "aa7cc0c938c23fcf4ba3510fdc0333055d3059b71a4147cc8f0de49c2b04cf00"},
+  "graphs": {
+    "D": {"columns": ["vac", "vac"], "pairs": [[0, 1], [1, 2], [0, 2], [3, 4], [4, 5], [3, 5]]},
+    "N": {"columns": ["vac", "int", "vac"], "pairs": [[0, 1], [1, 2], [0, 2], [6, 7], [7, 8], [6, 8], [3, 4]]},
+    "I9": {"columns": ["vac", "int", "vac"], "pairs": [[0, 1], [1, 2], [0, 2], [6, 7], [7, 8], [6, 8], [3, 6]]}
+  },
+  "graph_notes": {
+    "D": "S8_ENTRY_LIST_v3's D, for the copied G and Dx entries (not computed here)",
+    "N": "S8_ENTRY_LIST_v3's N, for the copied T entries (not computed here)",
+    "I9": "family I9: [vac|int|vac] with Iht's pairs, (3,6) the top bond next to phi_0; F = 16 (kt_sh1_v1's graph NIT)"
+  },
+  "blocks": {
+    "S9": "the 18 entries of item (v) per N: 15 copies (G x6, Dx x3, T x6) and 3 new (Iht x3); written to m3_s9_N<N>_J300_v1_8_3.json"
+  },
+  "counts": {
+    "S9": {"entries": 18, "copies": 15, "new": 3, "parity_zero": 0}
+  },
+  "entries": [
+    {"key": "G,0,0", "block": "S9", "graph": "D", "factors": [["cp", 0, 0], ["cp", 0, 1]], "K": 3, "parity_zero": false, "copy_of": {"family": "D", "key": "g,0,0"}},
+    {"key": "G,0,1", "block": "S9", "graph": "D", "factors": [["cp", 0, 0], ["cp", 1, 1]], "K": 3, "parity_zero": false, "copy_of": {"family": "D", "key": "g,0,1"}},
+    {"key": "G,0,3", "block": "S9", "graph": "D", "factors": [["cp", 0, 0], ["cp", 3, 1]], "K": 3, "parity_zero": false, "copy_of": {"family": "D", "key": "g,0,3"}},
+    {"key": "G,1,1", "block": "S9", "graph": "D", "factors": [["cp", 1, 0], ["cp", 1, 1]], "K": 3, "parity_zero": false, "copy_of": {"family": "D", "key": "g,1,1"}},
+    {"key": "G,1,3", "block": "S9", "graph": "D", "factors": [["cp", 1, 0], ["cp", 3, 1]], "K": 3, "parity_zero": false, "copy_of": {"family": "D", "key": "g,1,3"}},
+    {"key": "G,3,3", "block": "S9", "graph": "D", "factors": [["cp", 3, 0], ["cp", 3, 1]], "K": 3, "parity_zero": false, "copy_of": {"family": "D", "key": "g,3,3"}},
+    {"key": "T,0,0", "block": "S9", "graph": "N", "factors": [["cp", 0, 0], ["cp", 0, 2]], "K": 3, "parity_zero": false, "copy_of": {"family": "N", "key": "T,0,0"}},
+    {"key": "T,0,1", "block": "S9", "graph": "N", "factors": [["cp", 0, 0], ["cp", 1, 2]], "K": 3, "parity_zero": false, "copy_of": {"family": "N", "key": "T,0,1"}},
+    {"key": "T,0,3", "block": "S9", "graph": "N", "factors": [["cp", 0, 0], ["cp", 3, 2]], "K": 3, "parity_zero": false, "copy_of": {"family": "N", "key": "T,0,3"}},
+    {"key": "T,1,1", "block": "S9", "graph": "N", "factors": [["cp", 1, 0], ["cp", 1, 2]], "K": 3, "parity_zero": false, "copy_of": {"family": "N", "key": "T,1,1"}},
+    {"key": "T,1,3", "block": "S9", "graph": "N", "factors": [["cp", 1, 0], ["cp", 3, 2]], "K": 3, "parity_zero": false, "copy_of": {"family": "N", "key": "T,1,3"}},
+    {"key": "T,3,3", "block": "S9", "graph": "N", "factors": [["cp", 3, 0], ["cp", 3, 2]], "K": 3, "parity_zero": false, "copy_of": {"family": "N", "key": "T,3,3"}},
+    {"key": "Dx,0", "block": "S9", "graph": "D", "factors": [["cp", 0, 0], ["cp", 0, 1], ["xi", "TM", 1]], "K": 3, "parity_zero": false, "copy_of": {"family": "D", "key": "DY,0"}},
+    {"key": "Dx,1", "block": "S9", "graph": "D", "factors": [["cp", 1, 0], ["cp", 0, 1], ["xi", "TM", 1]], "K": 3, "parity_zero": false, "copy_of": {"family": "D", "key": "DY,1"}},
+    {"key": "Dx,3", "block": "S9", "graph": "D", "factors": [["cp", 3, 0], ["cp", 0, 1], ["xi", "TM", 1]], "K": 3, "parity_zero": false, "copy_of": {"family": "D", "key": "DY,3"}},
+    {"key": "Iht,0", "block": "S9", "graph": "I9", "factors": [["cp", 0, 0], ["xia", [3, 6, 7]], ["cp", 0, 2]], "K": 3, "parity_zero": false, "new": true},
+    {"key": "Iht,1", "block": "S9", "graph": "I9", "factors": [["cp", 1, 0], ["xia", [3, 6, 7]], ["cp", 0, 2]], "K": 3, "parity_zero": false, "new": true},
+    {"key": "Iht,3", "block": "S9", "graph": "I9", "factors": [["cp", 3, 0], ["xia", [3, 6, 7]], ["cp", 0, 2]], "K": 3, "parity_zero": false, "new": true}
+  ]
+}

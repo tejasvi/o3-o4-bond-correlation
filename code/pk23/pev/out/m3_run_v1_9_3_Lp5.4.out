@@ -1,0 +1,63 @@
+m3_run_v1_9_3 item Lp5.4 LIM 540; script sha256 2c81e6bc439d8fa8aa0f7cf782c6a3bad3f6fa1ea22610031d1ddde149b240b7; python 3.14.4
+STAGE-CPU C-HASH start 0.04 s
+C-HASH (9 modules, the kernel files, 34 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.12 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:4126e83e; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 8dcc4ab6, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v11: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=) -> PASS
+PLANT-CALLER (m3_bar_v11 with one E2_combine call's plan= removed) -> FIRES
+C-SERIES (no *_series( call in 9 modules, the kernel files and this script) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-330.000000000 +/- 2.94e-12] overlaps the layer's [-330.000000000 +/- 2.64e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU L prep piece 5 start 0.13 s
+C-HANDOFF (m3_run_v1_9_3_Lp4.4.json: producer record VERDICT lines exactly ['VERDICT VALID'], file sha256, END checksum, header) -> PASS
+C-CACHE-CHAIN (L prep piece 5: piece 4's hand-off, done False; memo m3_run_v1_9_3_memo_L_N4.jsonl: its first 5 lines have sha256 b6f7434e (recorded b6f7434e), 0 lines after them from 0 capped piece(s), each read back by ma_scalar_load) -> PASS
+PLANT-CACHE (the memo head against its recorded sha256 with the last digit changed) -> FIRES
+C-GRAPH-LIST (L: the columns ['vac', 'int', 'int', 'vac'] give V 12, 19 edges and F 18 (the list: [12, 19, 18]); pairs [(0, 1), (0, 2), (1, 2), (9, 10), (9, 11), (10, 11)] equal the list's) -> PASS
+PLANT-GRAPH-LIST (L: the pair list without its first pair) -> FIRES
+C-RULE (L: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 1.2e-15 (tol 1e-12)) -> PASS
+PLANT-RULE (L: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 12 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 1.8061304043278368, 1.804279362609194) -> PASS
+C-PREP-REF (L: m3ref_hl_v1_P16L.4.p5_z9sym.out PREPJSON of family P16L, N 4, J 300.0) -> PASS
+C-PREP-GRAPH (L: the prep graph has V 12, F 12 and pairs [] (the family graph: F 18); against the family graph, V, N, S_gauge and the 19 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo (C-4)) -> PASS
+PLANT-PREP-EDGE (L: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (L: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (L: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (L: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+PREP16-START L piece 5: 9 norms finished before, 5 memo lines (0 adopted from capped pieces), budget factor 1.25
+TABLE16-LOADED u vertex forms D 16: 3.59 s; shadow_max 4.556e-04
+TABLE16 u vertex forms D 16: 39.03 s (hand-off 682432f4)
+E2BLOCK u vertex forms D 16 1 of 1: 1014231409 pairs, 51.82 s
+E2-WIDTH u vertex forms D 16 u:t4 H1^2|H2|: 1014231409 pairs in 1 blocks, relative radius 7.226e-05
+NORM16 u:t4 H1^2|H2| p 2: 91.50 s
+E2BLOCK u vertex forms D 16 1 of 4: 1499939078 pairs, 76.17 s
+E2BLOCK u vertex forms D 16 2 of 4: 1499939078 pairs, 71.81 s
+E2BLOCK u vertex forms D 16 3 of 4: 1499939078 pairs, 73.87 s
+E2BLOCK u vertex forms D 16 4 of 4: 285916807 pairs, 12.85 s
+E2-WIDTH u vertex forms D 16 u:t5 H1^2 h3: 4785734041 pairs in 4 blocks, relative radius 4.271e-04
+NORM16 u:t5 H1^2 h3 p 2: 236.13 s
+FALLBACKS 0 (MAFallback recomputes in arb, INFO)
+PREP16 L piece 5: PARTIAL before E2 block 1 of 4 on u vertex forms D 16 (about 180 s); 11 norms finished, memo 10 lines (head sha256 332d4822); tables: u16_5985f9f4751469a5 finished 682432f4; adopted 0, moved aside 0, memo hits 0; largest E2 relative radius 4.271e-04 at u:t5 H1^2 h3, 0 over FALLBACK_REL; shadow_max u vertex forms D 16 4.556e-04
+HANDOFF m3_run_v1_9_3_Lp5.4.json 503bf517776a1df4afa5ef3144f75653428d23d838f74bb37b3e65d2aa419cce
+C-HANDOFF-RT (the hand-off decodes to exactly the values written) -> PASS
+PLANT-HANDOFF (body byte tampered in memory) -> FIRES
+PLANT-HANDOFF (header script sha tampered in memory) -> FIRES
+PLANT-HANDOFF (END checksum tampered in memory) -> FIRES
+PLANT-VERDICT (a producer record whose VERDICT line extends 'VERDICT VALID' must be refused) -> FIRES
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 329.57 s
+VERDICT VALID

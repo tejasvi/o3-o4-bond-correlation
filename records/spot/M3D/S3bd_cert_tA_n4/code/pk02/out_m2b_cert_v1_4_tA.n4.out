@@ -1,0 +1,38 @@
+m2b_cert_v1_4 sha256 354575ca569977eca7abe0ed98c39b2ae42602a9360f4c6cad448931ca4227ea ITEM=tA.n4 LIM=30 (RLIMIT_CPU soft 30, hard 35)
+C-HASH PASS (3 engine files, 2 trial-vacuum files, 2 kbar files, 5 validation records of the M-a layer)
+ENV: python-flint 0.9.0, numpy 2.5.3, python 3.14.4, ctx.prec 512
+FORMAT M2B_PIECE_v1 CERTIFIED
+KERNEL arbeng_c2b_v2.py 12c839a6dcde8028d61e88dad31ad3dc3bf0faae850e8f9065407e3ace092cb0 ctx.prec 512
+LAYER arbeng_ma_v1_3.py e8120bc183469caddd0d651f032b92206a564c51444bb824ede8a4cb389f1153 prec 512 validation 5ccbb6d006f5365f219eb6221b7e66b76e7e7799e977148df94f34b0c3d86216 a61d893e6424b9ea524d944e40f625c934de04a2faeaa741e3fd333e97f48817 d613fe804a030be397fefa46ed1424063f794400b7d9618e12db8af046e09d93 2ad13ec3cac14ef919f5e34fa19664f70eece05c3c3f208dcfec36a93cdd4473 b79a984d160cc2d5da787769cd5229ebb60aa2bb49d240e3d823f8a986c3deff
+C-IMPORT N=4: arbeng_c2b_v2 from /mnt/g2/release/root/code/pk02/arbeng_c2b_v2.py, arbeng_ma_v1_3 from /mnt/g2/release/root/code/pk02/arbeng_ma_v1_3.py, majfix_v1_1 from /mnt/g2/release/root/code/pk02/majfix_v1_1.py -> PASS
+BOUND N=4: a_m 6135428905104631294035961535529/20282409603651670423947251286016 a_e 29206669829258403248756220714025/81129638414606681695789005144064 a_pp 1163787714069855263078269343481/1267650600228229401496703205376 RHO_PP_HEX 0x1.ea93ad4bd8e58p-1 (a_pp >= sin^2(asin rho_m + delta) = 0.91806662960623806742) -> PASS
+C-TILT (a) N=4: c_m 0.59545911617622549 >= -log(1 - a)/(2a) = 0.595459116176, c_e 0.61984319809502719 >= -log(1 - a)/(2a) = 0.619843198095, c_pp 1.3625639128541667 >= -log(1 - a)/(2a) = 1.36256391285; Chernoff lambdas 0.3 0.45 0.6 0.45 > 0, tailX/ann lambdas >= 0.3 (LAW v1) -> PASS
+PLANT-TILT N=4: c_m (1 - 1e-9) passes the rate test: False; a lambda = 1e3 tilt certified positive definite: False -> FIRES
+HANDOFF N=4 vac tA: not written (a gate failed or the piece is incomplete)
+PLANT-NOWRITE N=4: the guarded writer with a failed gate opened 0 files -> FIRES
+C-RADV N=4: main chart (a_m, 4 a_m; a_e, 4 a_e) and annulus (a_m, 4 a_m; a_pp, 4 a_pp) vectors -> PASS; PLANT-RADV (today's AVt on the annulus) -> FIRES
+PLANT-TRADE-POS N=4: the expanded D2 (cross coefficient -2) given to the cap -> FIRES
+C-P0SUB N=4 tA: xibar (inner, l = 0..5) evaluated vs the direct expansion (l = 0: Q/2 + t cfac D2/8; l >= 1: today's entries): 0 mismatches -> PASS
+MAJFIX N=4 tA: pi0'' budget 1 (today's degree); cap calls 1, steps 171, atom splits 90
+C-MAJ-SAMPLE N=4 tA J=150: 1 cells x 503 points x 3 tau0 (seed 20261111), 0 failing; plant (today's xibar l0): 3 failing cells, 15 failures at the fixed points
+C-MAJ-SAMPLE N=4 tA: 0 failing cells -> PASS; PLANT-MAJ-SAMPLE -> FIRES
+MAJFIX N=4 tA: pi0'' budget 1 (today's degree); cap calls 2, steps 342, atom splits 180
+STAGE-CPU N=4 tA: tail polynomials ([7] terms, degree 1, Q degree 1) done at cpu 0.2 s
+C-SING N=4 A0 lam 0.3: 45 subsets kept (full rank; det balls identical to direct), 0 dropped (rank-deficient; det balls contain 0, largest radius 0.00e+00), all 45 allowed subsets covered; degree-4 tables with and without the rule overlap in 630 moments -> PASS
+PLANT-SING N=4: the rule with X0's column of W9 zeroed stops -> FIRES
+C-SING N=4 A1 lam 0.3: 45 subsets kept (full rank; det balls identical to direct), 0 dropped (rank-deficient; det balls contain 0, largest radius 0.00e+00), all 45 allowed subsets covered; degree-4 tables with and without the rule overlap in 630 moments -> PASS
+C-SING N=4 A2 lam 0.3: 45 subsets kept (full rank; det balls identical to direct), 0 dropped (rank-deficient; det balls contain 0, largest radius 0.00e+00), all 45 allowed subsets covered; degree-4 tables with and without the rule overlap in 630 moments -> PASS
+TAIL N=4 A lambda 0.3: sum over the three tables 5.139425523e-05 +- 3.5e-156 (rel 6.8e-152), root 7.168978674e-03 +- 2.5e-154 (rel 3.4e-152)
+C-SING N=4 A0 lam 0.45: 45 subsets kept (full rank; det balls identical to direct), 0 dropped (rank-deficient; det balls contain 0, largest radius 0.00e+00), all 45 allowed subsets covered; degree-4 tables with and without the rule overlap in 630 moments -> PASS
+C-SING N=4 A1 lam 0.45: 45 subsets kept (full rank; det balls identical to direct), 0 dropped (rank-deficient; det balls contain 0, largest radius 0.00e+00), all 45 allowed subsets covered; degree-4 tables with and without the rule overlap in 630 moments -> PASS
+C-SING N=4 A2 lam 0.45: 45 subsets kept (full rank; det balls identical to direct), 0 dropped (rank-deficient; det balls contain 0, largest radius 0.00e+00), all 45 allowed subsets covered; degree-4 tables with and without the rule overlap in 630 moments -> PASS
+TAIL N=4 A lambda 0.45: sum over the three tables 4.975109596e-08 +- 5.7e-159 (rel 1.2e-151), root 2.230495370e-04 +- 1.3e-155 (rel 5.8e-152)
+C-SING N=4 A0 lam 0.6: 45 subsets kept (full rank; det balls identical to direct), 0 dropped (rank-deficient; det balls contain 0, largest radius 0.00e+00), all 45 allowed subsets covered; degree-4 tables with and without the rule overlap in 630 moments -> PASS
+C-SING N=4 A1 lam 0.6: 45 subsets kept (full rank; det balls identical to direct), 0 dropped (rank-deficient; det balls contain 0, largest radius 0.00e+00), all 45 allowed subsets covered; degree-4 tables with and without the rule overlap in 630 moments -> PASS
+C-SING N=4 A2 lam 0.6: 45 subsets kept (full rank; det balls identical to direct), 0 dropped (rank-deficient; det balls contain 0, largest radius 0.00e+00), all 45 allowed subsets covered; degree-4 tables with and without the rule overlap in 630 moments -> PASS
+TAIL N=4 A lambda 0.6: sum over the three tables 1.705698698e-10 +- 4.0e-161 (rel 2.3e-151), root 1.306024004e-05 +- 1.5e-156 (rel 1.2e-151)
+C-TMONO N=4 tA: ann pi0pp (capped): 2 polynomials, 0 coefficients not certainly >= 0 -> PASS
+C-TILT (b) N=4: 9 positive-definiteness tests (tilt A0 lam 0.3, tilt A0 lam 0.45, tilt A0 lam 0.6, tilt A1 lam 0.3, tilt A1 lam 0.45, tilt A1 lam 0.6, tilt A2 lam 0.3, tilt A2 lam 0.45, tilt A2 lam 0.6), all certified: True; smallest leading minor lower end 8.984e+00 -> PASS
+HANDOFF N=4 vac tA: hand_m2b_cert_v1_4_tA.n4.txt sha256 3b963130e7f930e69fc923b3915549479c3a5a74dd05e442f7d8c2d2f5cac914 (1754 bytes, 13 rows; cpu 0.4 s)
+ITEM tA.n4 cpu 0.4 s, peak resident memory 57 MiB
+VERDICT VALID

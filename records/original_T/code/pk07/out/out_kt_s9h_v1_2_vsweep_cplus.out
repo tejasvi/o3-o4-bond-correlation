@@ -1,0 +1,13 @@
+kt_s9h_v1_2 sha256 848d737688040ca9408b9c06d39cde853132fbbe9b2461a48f5daa2bfa5b1bd9 ITEM=vsweep LIM=60 (RLIMIT_CPU soft 60, hard 65) TAG='cplus'
+C-HASH PASS (45 files; the 8 S_TB' files left unread in the vertical mode)
+C-BLOCK PASS (author slices by sha256)
+C-ENV start: PASS (numpy 2.5.3, mpmath 1.3.0, python 3.14.4)
+C-HASH M2B (certified mode; full sha256 of the bytes read here): the record pk02/M2B_KV_v1.txt, its asm output pk02/out/out_m2b_asm_v1.out and its reader pk02/m2b_reader_v1.py -> PASS
+C-M2B-LOCAL (the C1): the record's FORMAT = M2B_KV_v1 and VERDICT = VALID lines, its one CLAIM line holding the |g| form once; the asm output's exact VERDICT VALID and its RECORD line for M2B_KV_v1.txt -> PASS; PLANT-M2B-LOCAL: record VERDICT = VALID-PRECERT fires; record CLAIM without the |g| form fires; a second CLAIM line fires; asm output without its RECORD line fires
+C-TRIAL M2B (the C-TRIAL, v1_1 P-1): the record's PIN_TRIAL names TRIAL_SET's vacres vacres_K3_N4_sym_v1.json:b40859de and vacres_K3_N3_sym_v1.json:e5a9b49f once each and no other vacres -> PASS; PLANT-M2B-TRIAL (N4's vacres sha256 changed in a copy) -> FIRES
+PLANT-M2B-MOCK (the reader's loads on pk07's mock record with the certified asm output) -> FIRES
+C-FMT M2B (certified mode): LAW v1, J1 150, J0 170, J_MIN 300, CXI 0.6594, A_M and A_E the exact binary64 squares; the 19 keys per N (WT, DL lists of 3) and the 6 J = 300 values, finite decimals >= 0; the 12 global keys (KAPPA_B a lower end); sect. 3a's ends (the reader's) -> PASS
+C-VACMONO (LAW v1 terms nonincreasing in J for J >= 300, so the piece's left end bounds the piece): N=4 yes, N=3 yes -> PASS; PLANT-VACMONO (AE = 0.02) -> FIRES
+C-LAW300 (this file's mp.iv LAW v1 at J = 300 against the record's six values per N, each within 1e-09 relative): N=4 agree, N=3 agree -> PASS; PLANT-M2B-SWAP (N4's NP and D5 exchanged) -> FIRES
+INFO M2B N=4 at J = 300, LAW v1 upper end / vac_float (FLOAT): eps_r 0.865456, s 0.864158, eps_a 0.865456, eps_ds5 0.865456, eps_w 1.00727, eps_d 0.941451
+INFO M2B N=3 at J = 300, LAW v1 upper end / vac_float (FLOAT): eps_r 0.93856, s 0.937777, eps_a 0.93856, eps_ds5 0.93856, eps_w 1.08932, eps_d 1.01451

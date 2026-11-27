@@ -1,0 +1,12 @@
+# CERT_MASKS_release_N.tsv: recorded masks of the comparison with the certified outputs (kind, glob of the output path, regex, delta).
+# TIME and TAG: the matched text masked freely; COUNT: one integer group, exact delta (output minus certified); GPAIR: the original
+# digest that G wrote into a changed gate. The last row is the stray-output tag of the NE certifier (r1, r2, r3 in level order).
+kind	glob	regex	delta
+COUNT	records/S9i/run_pre.out	^C-HASH PASS \((\d+) files\)$	-2
+COUNT	records/S9i/run_final.out	^C-HASH PASS \((\d+) files\)$	-2
+TIME	records/hub_cover/run_N*.out	\bt(?:_in|_k|_p)?=[0-9]+(?:\.[0-9]+)?	0
+TAG	records/S9i/run_*.out	with tag r[0-9]+ \(the first free of r[0-9]+\.\.r[0-9]+(?: \(the fallback pool\))?;	0
+GPAIR	records/S8/run_final.out	^INPUTS ([0-9a-f]{64})$	973e9d68f8277f1623a7534410cfd9f8e61196a86fa37f821eda22e6257999fa
+GPAIR	records/S9i/run_*.out	^INPUTS ([0-9a-f]{64})$	82b8fffd531c5ad33492ad7856ab8891453bbfb0f4b1d6497c6b2a5b2ac3b0ee
+GPAIR	records/S9i/record.kv	^INPUTS = ([0-9a-f]{64})$	82b8fffd531c5ad33492ad7856ab8891453bbfb0f4b1d6497c6b2a5b2ac3b0ee
+TAG	code/pk22/w1/rc_cert/out/out_kt_s8h_rcc_v1_5_cert_*.out	with tag r[0-9]+ \(a stray output	0

@@ -1,0 +1,17 @@
+# PLANTS_MIDROW_release_N.tsv: planted-failure controls of the two middle-row runs, read by plants_midrow.py. Each row repeats the
+# run's command with the assembly program's own plant PLANT (kt_mr_assembly_v1_8_4.py, its fifth argument) and expects its console to
+# state 'PLANT <name>: FIRED'. The 11 plants that apply in CERTIFIED mode (the mode of both runs) and fire on their own gate. Three more
+# were tried (consoles kept): PROD and CSTAT test stand-in records only; OPN on nM2 makes the run fail through the margin rule (1 FAIL row),
+# not at G-POS, so by the program's rule it does not fire. Columns: id, run (RUNS_M2_release_N.tsv), plant, expected word.
+id	run	plant	expect
+P01	nM1	PIN	FIRED
+P02	nM1	COUNT	FIRED
+P03	nM1	UNIF	FIRED
+P04	nM1	SIGN	FIRED
+P05	nM1	DELTA	FIRED
+P06	nM1	ORIENT	FIRED
+P07	nM2	DUPKEY	FIRED
+P09	nM2	XSIGN	FIRED
+P10	nM2	FACTX	FIRED
+P12	nM2	TAILSIGN	FIRED
+P13	nM2	ENVR	FIRED

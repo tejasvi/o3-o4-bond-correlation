@@ -1,0 +1,10 @@
+# FROZEN_TO_SHIPPED_S0.tsv: every file of this folder whose bytes differ from the frozen file it comes from. The statements file
+# changes only prose (lines naming internal paths) and carries, for this release, a header sentence on finite simple graphs; the
+# AXIOMS file drops one clause naming an internal log; lakefile.toml holds a marked placeholder for the local Mathlib checkout,
+# and the build script reads its paths from environment variables. Every Lean module and the module list are byte-identical
+# to their frozen sources. Columns: shipped file, frozen sha256, shipped sha256, changed lines (of the frozen file), kind.
+shipped	frozen_sha256	shipped_sha256	changed_lines	kind
+leanfull/s0/AXIOMS_S0_v2_public.txt	12d9eacc668f925591c751b371226106761a534d9950f4b058a2b59ae4cf3611	950e16796af17e02dc4437d18f8f85be1376d7a5cbd3ae8bb1f7cc61849db49c	1	record prose (the clause naming an internal log removed)
+leanfull/s0/STATEMENTS_S0_v3_public.md	d092575ca6d87e9a772d85103ccd412f5cb681844687d81cb3e9406df9e142db	ca9400f9f64f07764523cd91808eb86d55d9648cb32230b87cf5c531d590ada9	11,12; header sentence inserted after l.1 (3 lines)	statement prose
+leanfull/s0/lakefile.toml	55d0f4b573231ee2b1b0ae6ecedc28e02f5d48e681b309c5eaba14c0294ab319	efc431d8212ebac7f415dc622bf59390a298ce9cceeab6d153bc645f3f235b6c	11	build file: the local Mathlib checkout path replaced by a marked placeholder
+leanfull/s0/scripts/build_tree_public.sh	d98d34f2098c9e6bac9cd32c3af52aeccb56a14afe0631e3e8ede03301f556d4	c1e29c811d722eaae6810a83a3cc1831e8f7249884460d0fad2964c4d9c31bbd	10,11,12	build script: local paths read from environment variables

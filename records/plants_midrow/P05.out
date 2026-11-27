@@ -1,0 +1,770 @@
+kt_mr_assembly_v1_8_4 (28a340e7b38b0f37a40b4eb2df4c0f03b58dedf0b80755a659c0157c1094a56c): RECDIR mr_engine/cert_m1_v4b_1.plant_P05 MODE CERTIFIED PLANT DELTA NMAX 10 PIECES all
+C-CORE OK: mr_core_v1_3 7fe1e2d077fe468343e5a7956553ed364266cf7fea3a0243fda5300b68323263; 7 blocks and 3 constants equal to the prototype eac5eb42dda72e5ab13879ab8d767cd13a07c053add3df1eee55b19fea3b648d
+C-IV OK: 3000 operations (add, sub, mul, inv, sqrt; negation, amax, hull, pow, division with 50-digit endpoints) enclose or equal the exact rational results
+G-PIN MR_SPECTRAL.kv 4a609ccf717c0aedd9504ee4db47e7c98a679bc25df2ca2a187b415011470937 OK (PRODUCER pk25, owner rule)
+G-PIN MR_INSERT.kv 46d3aeb5bd9f72cfc1ec8027711cd094e4f720862485562e6886fd3d442bfb7c OK (PRODUCER pk25, owner rule)
+G-PIN MR_EXACT.kv 3f4d413ba87b77afa9ffb7f3c45987f475d2a888e15dce4c8da776ba6720b99c OK (PRODUCER pk22, owner rule)
+G-PIN MR_CRUDEX.kv 3b967bda89ebe97a8d1fffc9ed4c8564d009e435a23b11b39af5b10c50b43241 OK (PRODUCER pk25, owner rule) (CRUDEX_FORM split)
+G-PIN MR_JOINT.kv b0331e560bd8fec7e5cdbefca83beb91651ed4f7820c145f205a26cd83b705db OK (PRODUCER pk22, owner rule)
+G-FACTX OK: 12229 x-coefficient rows inside their amplitudes with their floors (power 1) or equal to them (power 0); 6 rows with a Way B floor (last piece, h)
+C-ORIENT OK: c_x(-1) > 0 and c_y(-1) > 0 on every MR_SPECTRAL row; t and a v_x > 0, h, t and a v_y > 0 on every MR_INSERT row; 6988 exact ends checked against the sign of their bulk x amplitude; ORIENT_CHECK on MR_SPECTRAL, MR_INSERT and MR_EXACT with the grid's piece counts
+A0X ON: the vertical end at d' = 0 is exact (MR_EXACT a0 rows on every piece)
+G-UNIF OK: N = 4 843 pieces, N = 3 904 pieces; every record on the same grid with every row; last piece to inf; decimal fields finite, lo <= hi, single upper bounds >= 0, the spectral data positive
+XMODE UNFACTORED: the rows of v1_6 (MR_INPUT_KV_v4, CRUDEX_FORM split)
+ROUTE V ON: MR_EXACT carries Pe_hi (the exact end's unwindowed flip-even |P_e a|), and the m = 1 rest takes the least of |P_e a_L| N'_R and N'_L |P_e a_R| over the ends that give |P_e a| (the row 4376)
+SUMMARY N=4 n=6: to-do orbits 25; channel classes 22, PASS 0; least headroom 0.000 at h3-bb4 (piece 61); reference 1.636; same-bond orbits 2, least H_J 21.94; FAIL 22
+CLASS N=4 n=6 h1-a3     chan-exact d=-1 k=0 dp=2 m=1: L -5.335628e-04 at piece 116, H 0.768 FAIL G-DELTA
+CLASS N=4 n=6 h1-a4     chan-exact d=-1 k=1 dp=1 m=2: L -1.238846e-03 at piece 116, H 0.059 FAIL G-POS
+CLASS N=4 n=6 h1-a5     chan-exact d=-1 k=2 dp=0 m=3: L 3.240084e-06 at piece 61, H 18.888 FAIL G-DELTA
+CLASS N=4 n=6 h1-a6     chan-exact d=-1 k=3 dp=-1 m=4: L 1.223556e-07 at piece 116, H 2.356 FAIL G-DELTA
+CLASS N=4 n=6 h1-bb2    chan-exact d=-1 k=-1 dp=2 m=1: L -1.082216e-03 at piece 61, H 0.721 FAIL G-DELTA
+CLASS N=4 n=6 h1-bb3    chan-exact d=-1 k=0 dp=1 m=2: L -8.212606e-04 at piece 116, H 0.130 FAIL G-POS
+CLASS N=4 n=6 h1-bb4    chan-exact d=-1 k=1 dp=0 m=3: L -1.242940e-03 at piece 116, H 0.004 FAIL G-POS
+CLASS N=4 n=6 h1-bb5    chan-exact d=-1 k=2 dp=-1 m=4: L 1.223556e-07 at piece 116, H 2.356 FAIL G-DELTA
+CLASS N=4 n=6 h1-h3     chan-crude d=-1 k=0 dp=1 m=2: L -9.700979e-04 at piece 116, H 0.335 FAIL G-POS
+CLASS N=4 n=6 h1-h4     chan-exact d=-1 k=1 dp=0 m=3: L 1.915373e-05 at piece 61, H 10.622 FAIL G-DELTA
+CLASS N=4 n=6 h2-a4     chan-exact d=0 k=0 dp=1 m=1: L -2.698092e-02 at piece 61, H 0.067 FAIL G-POS
+CLASS N=4 n=6 h2-a5     chan-exact d=0 k=1 dp=0 m=2: L 8.084766e-05 at piece 61, H 18.600 FAIL G-DELTA
+CLASS N=4 n=6 h2-a6     chan-exact d=0 k=2 dp=-1 m=3: L 3.355995e-06 at piece 61, H 2.727 FAIL G-DELTA
+CLASS N=4 n=6 h2-bb3    chan-exact d=0 k=-1 dp=1 m=1: L -2.046881e-02 at piece 61, H 0.129 FAIL G-POS
+CLASS N=4 n=6 h2-bb4    chan-exact d=0 k=0 dp=0 m=2: L -2.739117e-02 at piece 61, H 0.005 FAIL G-POS
+CLASS N=4 n=6 h2-bb5    chan-exact d=0 k=1 dp=-1 m=3: L 3.355995e-06 at piece 61, H 2.727 FAIL G-DELTA
+CLASS N=4 n=6 h3-a5     chan-crude d=1 k=0 dp=0 m=1: L -1.698709e-03 at piece 116, H 0.537 FAIL G-POS
+CLASS N=4 n=6 h3-a6     chan-crude d=1 k=1 dp=-1 m=2: L -1.377533e-03 at piece 116, H 0.082 FAIL G-POS
+CLASS N=4 n=6 h3-bb4    chan-crude d=1 k=-1 dp=0 m=1: L -2.388783e+01 at piece 61, H 0.000 FAIL G-POS
+CLASS N=4 n=6 h3-bb5    chan-crude d=1 k=0 dp=-1 m=2: L -1.377533e-03 at piece 116, H 0.082 FAIL G-POS
+CLASS N=4 n=6 h4-a6     chan-crude d=2 k=0 dp=-1 m=1: L -1.875789e-03 at piece 61, H 0.599 FAIL G-DELTA
+CLASS N=4 n=6 h4-bb5    chan-crude d=2 k=-1 dp=-1 m=1: L -1.875789e-03 at piece 61, H 0.599 FAIL G-DELTA
+SUMMARY N=4 n=7: to-do orbits 37; channel classes 34, PASS 0; least headroom 0.000 at h3-bb5 (piece 61); reference 1.961; same-bond orbits 2, least H_J 22.82; FAIL 34
+CLASS N=4 n=7 h1-a3     chan-exact d=-1 k=0 dp=3 m=1: L 1.626206e-03 at piece 61, H 12.583 FAIL G-DELTA
+CLASS N=4 n=7 h1-a4     chan-exact d=-1 k=1 dp=2 m=2: L -6.061034e-06 at piece 61, H 0.927 FAIL G-DELTA
+CLASS N=4 n=7 h1-a5     chan-exact d=-1 k=2 dp=1 m=3: L -4.082508e-05 at piece 116, H 0.076 FAIL G-POS
+CLASS N=4 n=7 h1-a6     chan-exact d=-1 k=3 dp=0 m=4: L 1.424815e-07 at piece 61, H 22.220 FAIL G-DELTA
+CLASS N=4 n=7 h1-a7     chan-exact d=-1 k=4 dp=-1 m=5: L 6.445408e-09 at piece 116, H 3.286 FAIL G-DELTA
+CLASS N=4 n=7 h1-bb2    chan-exact d=-1 k=-1 dp=3 m=1: L 1.710928e-03 at piece 61, H 2.580 FAIL G-DELTA
+CLASS N=4 n=7 h1-bb3    chan-exact d=-1 k=0 dp=2 m=2: L 4.588396e-05 at piece 61, H 1.604 FAIL G-DELTA
+CLASS N=4 n=7 h1-bb4    chan-exact d=-1 k=1 dp=1 m=3: L -2.289599e-05 at piece 116, H 0.189 FAIL G-POS
+CLASS N=4 n=7 h1-bb5    chan-exact d=-1 k=2 dp=0 m=4: L -3.856338e-05 at piece 116, H 0.006 FAIL G-POS
+CLASS N=4 n=7 h1-bb6    chan-exact d=-1 k=3 dp=-1 m=5: L 6.445408e-09 at piece 116, H 3.286 FAIL G-DELTA
+CLASS N=4 n=7 h1-h3     chan-crude d=-1 k=0 dp=2 m=2: L 3.860865e-04 at piece 61, H 4.836 FAIL G-DELTA
+CLASS N=4 n=7 h1-h4     chan-crude d=-1 k=1 dp=1 m=3: L -2.687365e-05 at piece 116, H 0.442 FAIL G-POS
+CLASS N=4 n=7 h1-h5     chan-exact d=-1 k=2 dp=0 m=4: L 8.506701e-07 at piece 61, H 12.911 FAIL G-DELTA
+CLASS N=4 n=7 h2-a4     chan-exact d=0 k=0 dp=2 m=1: L -1.707457e-04 at piece 61, H 0.918 FAIL G-DELTA
+CLASS N=4 n=7 h2-a5     chan-exact d=0 k=1 dp=1 m=2: L -7.993905e-04 at piece 61, H 0.095 FAIL G-POS
+CLASS N=4 n=7 h2-a6     chan-exact d=0 k=2 dp=0 m=3: L 3.556110e-06 at piece 61, H 21.930 FAIL G-DELTA
+CLASS N=4 n=7 h2-a7     chan-exact d=0 k=3 dp=-1 m=4: L 1.677533e-07 at piece 61, H 3.648 FAIL G-DELTA
+CLASS N=4 n=7 h2-bb3    chan-exact d=0 k=-1 dp=2 m=1: L -7.527769e-04 at piece 61, H 0.802 FAIL G-DELTA
+CLASS N=4 n=7 h2-bb4    chan-exact d=0 k=0 dp=1 m=2: L -5.130591e-04 at piece 61, H 0.205 FAIL G-POS
+CLASS N=4 n=7 h2-bb5    chan-exact d=0 k=1 dp=0 m=3: L -7.943062e-04 at piece 61, H 0.007 FAIL G-POS
+CLASS N=4 n=7 h2-bb6    chan-exact d=0 k=2 dp=-1 m=4: L 1.677533e-07 at piece 61, H 3.648 FAIL G-DELTA
+CLASS N=4 n=7 h2-h4     chan-crude d=0 k=0 dp=1 m=2: L -6.051510e-04 at piece 61, H 0.467 FAIL G-POS
+CLASS N=4 n=7 h3-a5     chan-crude d=1 k=0 dp=1 m=1: L -6.468021e-01 at piece 61, H 0.003 FAIL G-POS
+CLASS N=4 n=7 h3-a6     chan-crude d=1 k=1 dp=0 m=2: L -4.705763e-05 at piece 116, H 0.646 FAIL G-POS
+CLASS N=4 n=7 h3-a7     chan-crude d=1 k=2 dp=-1 m=3: L -3.816043e-05 at piece 116, H 0.123 FAIL G-POS
+CLASS N=4 n=7 h3-bb4    chan-crude d=1 k=-1 dp=1 m=1: L -4.981043e-01 at piece 61, H 0.006 FAIL G-POS
+CLASS N=4 n=7 h3-bb5    chan-crude d=1 k=0 dp=0 m=2: L -6.600220e-01 at piece 61, H 0.000 FAIL G-POS
+CLASS N=4 n=7 h3-bb6    chan-crude d=1 k=1 dp=-1 m=3: L -3.816043e-05 at piece 116, H 0.123 FAIL G-POS
+CLASS N=4 n=7 h4-a6     chan-crude d=2 k=0 dp=0 m=1: L 1.655309e-03 at piece 61, H 6.314 FAIL G-DELTA
+CLASS N=4 n=7 h4-a7     chan-crude d=2 k=1 dp=-1 m=2: L 5.376867e-05 at piece 61, H 1.788 FAIL G-DELTA
+CLASS N=4 n=7 h4-bb5    chan-crude d=2 k=-1 dp=0 m=1: L -8.862258e-01 at piece 61, H 0.003 FAIL G-POS
+CLASS N=4 n=7 h4-bb6    chan-crude d=2 k=0 dp=-1 m=2: L 5.376867e-05 at piece 61, H 1.788 FAIL G-DELTA
+CLASS N=4 n=7 h5-a7     chan-crude d=3 k=0 dp=-1 m=1: L 1.075772e-03 at piece 61, H 1.625 FAIL G-DELTA
+CLASS N=4 n=7 h5-bb6    chan-crude d=3 k=-1 dp=-1 m=1: L 1.075772e-03 at piece 61, H 1.625 FAIL G-DELTA
+SUMMARY N=4 n=8: to-do orbits 52; channel classes 48, PASS 5; least headroom 0.000 at h1-bb6 (piece 61); reference 2.243; same-bond orbits 3, least H_J 22.95; FAIL 43
+CLASS N=4 n=8 h1-a4     chan-exact d=-1 k=1 dp=3 m=2: L -1.499337e-04 at piece 116, H 0.340 FAIL 
+CLASS N=4 n=8 h1-a5     chan-exact d=-1 k=2 dp=2 m=3: L -5.416406e-05 at piece 116, H 0.058 FAIL 
+CLASS N=4 n=8 h1-a6     chan-exact d=-1 k=3 dp=1 m=4: L -1.306908e-04 at piece 116, H 0.001 FAIL G-POS
+CLASS N=4 n=8 h1-a7     chan-exact d=-1 k=4 dp=0 m=5: L -6.886046e-07 at piece 116, H 0.009 FAIL 
+CLASS N=4 n=8 h1-a8     chan-exact d=-1 k=5 dp=-1 m=6: L -1.802605e-07 at piece 116, H 0.002 FAIL 
+CLASS N=4 n=8 h1-bb2    chan-exact d=-1 k=-1 dp=4 m=1: L -2.141484e-03 at piece 61, H 0.566 FAIL 
+CLASS N=4 n=8 h1-bb3    chan-exact d=-1 k=0 dp=3 m=2: L -4.574075e-04 at piece 61, H 0.210 FAIL 
+CLASS N=4 n=8 h1-bb4    chan-exact d=-1 k=1 dp=2 m=3: L -8.065328e-05 at piece 61, H 0.062 FAIL 
+CLASS N=4 n=8 h1-bb5    chan-exact d=-1 k=2 dp=1 m=4: L -4.420959e-05 at piece 61, H 0.005 FAIL G-POS
+CLASS N=4 n=8 h1-bb6    chan-exact d=-1 k=3 dp=0 m=5: L -2.496265e-04 at piece 61, H 0.000 FAIL G-POS
+CLASS N=4 n=8 h1-bb7    chan-exact d=-1 k=4 dp=-1 m=6: L -1.802605e-07 at piece 116, H 0.002 FAIL 
+CLASS N=4 n=8 h1-h4     chan-crude d=-1 k=1 dp=2 m=3: L -3.488294e-05 at piece 61, H 0.378 FAIL 
+CLASS N=4 n=8 h1-h5     chan-crude d=-1 k=2 dp=1 m=4: L -4.813435e-05 at piece 61, H 0.019 FAIL G-POS
+CLASS N=4 n=8 h1-h6     chan-exact d=-1 k=3 dp=0 m=5: L -9.286548e-07 at piece 61, H 0.042 FAIL 
+CLASS N=4 n=8 h2-a5     chan-exact d=0 k=1 dp=2 m=2: L -3.998931e-04 at piece 61, H 0.173 FAIL 
+CLASS N=4 n=8 h2-a6     chan-exact d=0 k=2 dp=1 m=3: L -9.855723e-04 at piece 61, H 0.004 FAIL G-POS
+CLASS N=4 n=8 h2-a7     chan-exact d=0 k=3 dp=0 m=4: L -4.978202e-06 at piece 61, H 0.032 FAIL 
+CLASS N=4 n=8 h2-a8     chan-exact d=0 k=4 dp=-1 m=5: L -1.305109e-06 at piece 116, H 0.008 FAIL 
+CLASS N=4 n=8 h2-bb3    chan-exact d=0 k=-1 dp=3 m=1: L -3.494883e-03 at piece 61, H 0.465 FAIL 
+CLASS N=4 n=8 h2-bb4    chan-exact d=0 k=0 dp=2 m=2: L -5.600107e-04 at piece 61, H 0.192 FAIL 
+CLASS N=4 n=8 h2-bb5    chan-exact d=0 k=1 dp=1 m=3: L -3.397367e-04 at piece 61, H 0.017 FAIL G-POS
+CLASS N=4 n=8 h2-bb6    chan-exact d=0 k=2 dp=0 m=4: L -1.875867e-03 at piece 61, H 0.000 FAIL G-POS
+CLASS N=4 n=8 h2-bb7    chan-exact d=0 k=3 dp=-1 m=5: L -1.305109e-06 at piece 116, H 0.008 FAIL 
+CLASS N=4 n=8 h2-h5     chan-crude d=0 k=1 dp=1 m=3: L -3.708550e-04 at piece 61, H 0.059 FAIL G-POS
+CLASS N=4 n=8 h3-a5     chan-crude d=1 k=0 dp=2 m=1: L -3.688409e-02 at piece 61, H 0.050 FAIL G-POS
+CLASS N=4 n=8 h3-a6     chan-crude d=1 k=1 dp=1 m=2: L -6.497340e-02 at piece 61, H 0.001 FAIL G-POS
+CLASS N=4 n=8 h3-a7     chan-crude d=1 k=2 dp=0 m=3: L -2.536658e-04 at piece 61, H 0.015 FAIL G-POS
+CLASS N=4 n=8 h3-a8     chan-crude d=1 k=3 dp=-1 m=4: L -6.530269e-05 at piece 61, H 0.004 FAIL G-POS
+CLASS N=4 n=8 h3-bb4    chan-crude d=1 k=-1 dp=2 m=1: L -4.826603e-02 at piece 61, H 0.060 FAIL G-POS
+CLASS N=4 n=8 h3-bb5    chan-crude d=1 k=0 dp=1 m=2: L -2.843962e-02 at piece 61, H 0.005 FAIL G-POS
+CLASS N=4 n=8 h3-bb6    chan-crude d=1 k=1 dp=0 m=3: L -1.091976e-01 at piece 61, H 0.000 FAIL G-POS
+CLASS N=4 n=8 h3-bb7    chan-crude d=1 k=2 dp=-1 m=4: L -6.530269e-05 at piece 61, H 0.004 FAIL G-POS
+CLASS N=4 n=8 h4-a6     chan-crude d=2 k=0 dp=1 m=1: L -7.599038e-02 at piece 61, H 0.025 FAIL G-POS
+CLASS N=4 n=8 h4-a7     chan-crude d=2 k=1 dp=0 m=2: L -2.044656e-04 at piece 61, H 0.296 FAIL 
+CLASS N=4 n=8 h4-a8     chan-crude d=2 k=2 dp=-1 m=3: L -6.778119e-05 at piece 61, H 0.073 FAIL 
+CLASS N=4 n=8 h4-bb5    chan-crude d=2 k=-1 dp=1 m=1: L -3.605891e-02 at piece 61, H 0.078 FAIL G-POS
+CLASS N=4 n=8 h4-bb6    chan-crude d=2 k=0 dp=0 m=2: L -1.246341e-01 at piece 61, H 0.001 FAIL G-POS
+CLASS N=4 n=8 h4-bb7    chan-crude d=2 k=1 dp=-1 m=3: L -6.778119e-05 at piece 61, H 0.073 FAIL 
+CLASS N=4 n=8 h5-a8     chan-crude d=3 k=1 dp=-1 m=2: L -3.575024e-04 at piece 61, H 0.254 FAIL 
+CLASS N=4 n=8 h5-bb6    chan-crude d=3 k=-1 dp=0 m=1: L -9.380818e-01 at piece 61, H 0.003 FAIL G-POS
+CLASS N=4 n=8 h5-bb7    chan-crude d=3 k=0 dp=-1 m=2: L -3.575024e-04 at piece 61, H 0.254 FAIL 
+CLASS N=4 n=8 h6-a8     chan-crude d=4 k=0 dp=-1 m=1: L -2.000903e-03 at piece 61, H 0.583 FAIL 
+CLASS N=4 n=8 h6-bb7    chan-crude d=4 k=-1 dp=-1 m=1: L -2.000903e-03 at piece 61, H 0.583 FAIL 
+SUMMARY N=4 n=9: to-do orbits 69; channel classes 65, PASS 20; least headroom 0.000 at h1-bb7 (piece 61); reference 2.388; same-bond orbits 3, least H_J 22.97; FAIL 45
+CLASS N=4 n=9 h1-a6     chan-exact d=-1 k=3 dp=2 m=4: L -7.549403e-07 at piece 61, H 0.163 FAIL 
+CLASS N=4 n=9 h1-a7     chan-exact d=-1 k=4 dp=1 m=5: L -2.055554e-06 at piece 61, H 0.003 FAIL G-POS
+CLASS N=4 n=9 h1-a8     chan-exact d=-1 k=5 dp=0 m=6: L -9.841938e-09 at piece 116, H 0.028 FAIL 
+CLASS N=4 n=9 h1-a9     chan-exact d=-1 k=6 dp=-1 m=7: L -2.636424e-09 at piece 116, H 0.007 FAIL 
+CLASS N=4 n=9 h1-bb4    chan-exact d=-1 k=1 dp=3 m=3: L -3.366951e-06 at piece 61, H 0.612 FAIL 
+CLASS N=4 n=9 h1-bb5    chan-exact d=-1 k=2 dp=2 m=4: L -1.072617e-06 at piece 61, H 0.178 FAIL 
+CLASS N=4 n=9 h1-bb6    chan-exact d=-1 k=3 dp=1 m=5: L -6.509512e-07 at piece 61, H 0.015 FAIL G-POS
+CLASS N=4 n=9 h1-bb7    chan-exact d=-1 k=4 dp=0 m=6: L -3.758787e-06 at piece 61, H 0.000 FAIL G-POS
+CLASS N=4 n=9 h1-bb8    chan-exact d=-1 k=5 dp=-1 m=7: L -2.636424e-09 at piece 116, H 0.007 FAIL 
+CLASS N=4 n=9 h1-h6     chan-crude d=-1 k=3 dp=1 m=5: L -7.036866e-07 at piece 61, H 0.054 FAIL G-POS
+CLASS N=4 n=9 h1-h7     chan-exact d=-1 k=4 dp=0 m=6: L -1.242352e-08 at piece 61, H 0.124 FAIL 
+CLASS N=4 n=9 h2-a6     chan-exact d=0 k=2 dp=2 m=3: L -5.254742e-06 at piece 61, H 0.410 FAIL 
+CLASS N=4 n=9 h2-a7     chan-exact d=0 k=3 dp=1 m=4: L -1.561279e-05 at piece 61, H 0.010 FAIL G-POS
+CLASS N=4 n=9 h2-a8     chan-exact d=0 k=4 dp=0 m=5: L -6.731052e-08 at piece 61, H 0.095 FAIL 
+CLASS N=4 n=9 h2-a9     chan-exact d=0 k=5 dp=-1 m=6: L -1.874743e-08 at piece 116, H 0.023 FAIL 
+CLASS N=4 n=9 h2-bb5    chan-exact d=0 k=1 dp=2 m=3: L -5.901398e-06 at piece 61, H 0.495 FAIL 
+CLASS N=4 n=9 h2-bb6    chan-exact d=0 k=2 dp=1 m=4: L -5.091435e-06 at piece 61, H 0.047 FAIL G-POS
+CLASS N=4 n=9 h2-bb7    chan-exact d=0 k=3 dp=0 m=5: L -2.820499e-05 at piece 61, H 0.000 FAIL G-POS
+CLASS N=4 n=9 h2-bb8    chan-exact d=0 k=4 dp=-1 m=6: L -1.874743e-08 at piece 116, H 0.023 FAIL 
+CLASS N=4 n=9 h2-h6     chan-crude d=0 k=2 dp=1 m=4: L -5.532147e-06 at piece 61, H 0.154 FAIL G-POS
+CLASS N=4 n=9 h3-a5     chan-crude d=1 k=0 dp=3 m=1: L -2.111286e-03 at piece 61, H 0.478 FAIL G-POS
+CLASS N=4 n=9 h3-a6     chan-crude d=1 k=1 dp=2 m=2: L -7.507760e-04 at piece 61, H 0.101 FAIL G-POS
+CLASS N=4 n=9 h3-a7     chan-crude d=1 k=2 dp=1 m=3: L -1.172854e-03 at piece 61, H 0.003 FAIL G-POS
+CLASS N=4 n=9 h3-a8     chan-crude d=1 k=3 dp=0 m=4: L -3.647738e-06 at piece 61, H 0.043 FAIL G-POS
+CLASS N=4 n=9 h3-a9     chan-crude d=1 k=4 dp=-1 m=5: L -9.549655e-07 at piece 61, H 0.010 FAIL G-POS
+CLASS N=4 n=9 h3-bb4    chan-crude d=1 k=-1 dp=3 m=1: L -8.089738e-03 at piece 61, H 0.274 FAIL G-POS
+CLASS N=4 n=9 h3-bb5    chan-crude d=1 k=0 dp=2 m=2: L -8.689368e-04 at piece 61, H 0.133 FAIL G-POS
+CLASS N=4 n=9 h3-bb6    chan-crude d=1 k=1 dp=1 m=3: L -5.718663e-04 at piece 61, H 0.010 FAIL G-POS
+CLASS N=4 n=9 h3-bb7    chan-crude d=1 k=2 dp=0 m=4: L -1.813904e-03 at piece 61, H 0.000 FAIL G-POS
+CLASS N=4 n=9 h3-bb8    chan-crude d=1 k=3 dp=-1 m=5: L -9.549655e-07 at piece 61, H 0.010 FAIL G-POS
+CLASS N=4 n=9 h3-h5     chan-crude d=1 k=0 dp=2 m=2: L -8.149630e-04 at piece 61, H 0.395 FAIL G-POS
+CLASS N=4 n=9 h4-a6     chan-crude d=2 k=0 dp=2 m=1: L -4.563549e-04 at piece 61, H 0.809 FAIL 
+CLASS N=4 n=9 h4-a7     chan-crude d=2 k=1 dp=1 m=2: L -1.438581e-03 at piece 61, H 0.055 FAIL G-POS
+CLASS N=4 n=9 h4-a8     chan-crude d=2 k=2 dp=0 m=3: L -7.189658e-07 at piece 61, H 0.839 FAIL 
+CLASS N=4 n=9 h4-a9     chan-crude d=2 k=3 dp=-1 m=4: L -8.616738e-07 at piece 61, H 0.212 FAIL 
+CLASS N=4 n=9 h4-bb5    chan-crude d=2 k=-1 dp=2 m=1: L -1.140059e-03 at piece 61, H 0.728 FAIL 
+CLASS N=4 n=9 h4-bb6    chan-crude d=2 k=0 dp=1 m=2: L -7.097150e-04 at piece 61, H 0.158 FAIL G-POS
+CLASS N=4 n=9 h4-bb7    chan-crude d=2 k=1 dp=0 m=3: L -2.128044e-03 at piece 61, H 0.003 FAIL G-POS
+CLASS N=4 n=9 h4-bb8    chan-crude d=2 k=2 dp=-1 m=4: L -8.616738e-07 at piece 61, H 0.212 FAIL 
+CLASS N=4 n=9 h5-a7     chan-crude d=3 k=0 dp=1 m=1: L -1.302900e-02 at piece 61, H 0.129 FAIL G-POS
+CLASS N=4 n=9 h5-a9     chan-crude d=3 k=2 dp=-1 m=3: L -2.097635e-06 at piece 61, H 0.717 FAIL 
+CLASS N=4 n=9 h5-bb6    chan-crude d=3 k=-1 dp=1 m=1: L -7.835997e-03 at piece 61, H 0.280 FAIL G-POS
+CLASS N=4 n=9 h5-bb7    chan-crude d=3 k=0 dp=0 m=2: L -1.745353e-02 at piece 61, H 0.008 FAIL G-POS
+CLASS N=4 n=9 h5-bb8    chan-crude d=3 k=1 dp=-1 m=3: L -2.097635e-06 at piece 61, H 0.717 FAIL 
+CLASS N=4 n=9 h6-bb7    chan-crude d=4 k=-1 dp=0 m=1: L -3.473634e-01 at piece 61, H 0.009 FAIL G-POS
+SUMMARY N=4 n=10: to-do orbits 89; channel classes 84, PASS 38; least headroom 0.000 at h1-bb8 (piece 61); reference 2.388; same-bond orbits 4, least H_J 22.97; FAIL 46
+CLASS N=4 n=10 h1-a10    chan-exact d=-1 k=7 dp=-1 m=8: L -5.345841e-11 at piece 116, H 0.014 FAIL 
+CLASS N=4 n=10 h1-a7     chan-exact d=-1 k=4 dp=2 m=5: L -1.459015e-08 at piece 61, H 0.305 FAIL 
+CLASS N=4 n=10 h1-a8     chan-exact d=-1 k=5 dp=1 m=6: L -6.504144e-08 at piece 61, H 0.004 FAIL G-POS
+CLASS N=4 n=10 h1-a9     chan-exact d=-1 k=6 dp=0 m=7: L -1.943527e-10 at piece 116, H 0.060 FAIL 
+CLASS N=4 n=10 h1-bb6    chan-exact d=-1 k=3 dp=2 m=5: L -1.883195e-08 at piece 61, H 0.349 FAIL 
+CLASS N=4 n=10 h1-bb7    chan-exact d=-1 k=4 dp=1 m=6: L -1.411522e-08 at piece 61, H 0.030 FAIL G-POS
+CLASS N=4 n=10 h1-bb8    chan-exact d=-1 k=5 dp=0 m=7: L -9.254047e-08 at piece 61, H 0.000 FAIL G-POS
+CLASS N=4 n=10 h1-bb9    chan-exact d=-1 k=6 dp=-1 m=8: L -5.345841e-11 at piece 116, H 0.014 FAIL 
+CLASS N=4 n=10 h1-h7     chan-crude d=-1 k=4 dp=1 m=6: L -1.447365e-08 at piece 61, H 0.108 FAIL G-POS
+CLASS N=4 n=10 h1-h8     chan-exact d=-1 k=5 dp=0 m=7: L -2.148154e-10 at piece 61, H 0.263 FAIL 
+CLASS N=4 n=10 h2-a10    chan-exact d=0 k=6 dp=-1 m=7: L -3.733253e-10 at piece 116, H 0.049 FAIL 
+CLASS N=4 n=10 h2-a7     chan-exact d=0 k=3 dp=2 m=4: L -8.746687e-08 at piece 61, H 0.646 FAIL 
+CLASS N=4 n=10 h2-a8     chan-exact d=0 k=4 dp=1 m=5: L -4.941445e-07 at piece 61, H 0.014 FAIL G-POS
+CLASS N=4 n=10 h2-a9     chan-exact d=0 k=5 dp=0 m=6: L -1.212664e-09 at piece 61, H 0.203 FAIL 
+CLASS N=4 n=10 h2-bb6    chan-exact d=0 k=2 dp=2 m=4: L -4.496635e-08 at piece 61, H 0.849 FAIL 
+CLASS N=4 n=10 h2-bb7    chan-exact d=0 k=3 dp=1 m=5: L -1.120721e-07 at piece 61, H 0.089 FAIL G-POS
+CLASS N=4 n=10 h2-bb8    chan-exact d=0 k=4 dp=0 m=6: L -6.966313e-07 at piece 61, H 0.001 FAIL G-POS
+CLASS N=4 n=10 h2-bb9    chan-exact d=0 k=5 dp=-1 m=7: L -3.733253e-10 at piece 116, H 0.049 FAIL 
+CLASS N=4 n=10 h2-h7     chan-crude d=0 k=3 dp=1 m=5: L -1.160604e-07 at piece 61, H 0.275 FAIL G-POS
+CLASS N=4 n=10 h3-a10    chan-crude d=1 k=5 dp=-1 m=6: L -1.964644e-08 at piece 61, H 0.022 FAIL G-POS
+CLASS N=4 n=10 h3-a5     chan-crude d=1 k=0 dp=4 m=1: L -6.773758e-04 at piece 61, H 0.740 FAIL G-POS
+CLASS N=4 n=10 h3-a6     chan-crude d=1 k=1 dp=3 m=2: L -5.015859e-05 at piece 61, H 0.627 FAIL G-POS
+CLASS N=4 n=10 h3-a7     chan-crude d=1 k=2 dp=2 m=3: L -1.874165e-05 at piece 61, H 0.164 FAIL G-POS
+CLASS N=4 n=10 h3-a8     chan-crude d=1 k=3 dp=1 m=4: L -2.881028e-05 at piece 61, H 0.006 FAIL G-POS
+CLASS N=4 n=10 h3-a9     chan-crude d=1 k=4 dp=0 m=5: L -7.454192e-08 at piece 61, H 0.087 FAIL G-POS
+CLASS N=4 n=10 h3-bb4    chan-crude d=1 k=-1 dp=4 m=1: L -5.273755e-03 at piece 61, H 0.367 FAIL G-POS
+CLASS N=4 n=10 h3-bb5    chan-crude d=1 k=0 dp=3 m=2: L -1.876593e-04 at piece 61, H 0.415 FAIL G-POS
+CLASS N=4 n=10 h3-bb6    chan-crude d=1 k=1 dp=2 m=3: L -2.091435e-05 at piece 61, H 0.217 FAIL G-POS
+CLASS N=4 n=10 h3-bb7    chan-crude d=1 k=2 dp=1 m=4: L -1.421248e-05 at piece 61, H 0.018 FAIL G-POS
+CLASS N=4 n=10 h3-bb8    chan-crude d=1 k=3 dp=0 m=5: L -4.153982e-05 at piece 61, H 0.000 FAIL G-POS
+CLASS N=4 n=10 h3-bb9    chan-crude d=1 k=4 dp=-1 m=6: L -1.964644e-08 at piece 61, H 0.022 FAIL G-POS
+CLASS N=4 n=10 h3-h5     chan-crude d=1 k=0 dp=3 m=2: L -2.198754e-04 at piece 61, H 0.708 FAIL G-POS
+CLASS N=4 n=10 h3-h6     chan-crude d=1 k=1 dp=2 m=3: L -2.059127e-05 at piece 61, H 0.530 FAIL G-POS
+CLASS N=4 n=10 h4-a10    chan-crude d=2 k=4 dp=-1 m=5: L -1.347974e-08 at piece 61, H 0.429 FAIL 
+CLASS N=4 n=10 h4-a7     chan-crude d=2 k=1 dp=2 m=2: L -2.781643e-06 at piece 61, H 0.968 FAIL 
+CLASS N=4 n=10 h4-a8     chan-crude d=2 k=2 dp=1 m=3: L -4.027351e-05 at piece 61, H 0.084 FAIL G-POS
+CLASS N=4 n=10 h4-bb7    chan-crude d=2 k=1 dp=1 m=3: L -1.802247e-05 at piece 61, H 0.244 FAIL G-POS
+CLASS N=4 n=10 h4-bb8    chan-crude d=2 k=2 dp=0 m=4: L -5.247177e-05 at piece 61, H 0.005 FAIL G-POS
+CLASS N=4 n=10 h4-bb9    chan-crude d=2 k=3 dp=-1 m=5: L -1.347974e-08 at piece 61, H 0.429 FAIL 
+CLASS N=4 n=10 h5-a8     chan-crude d=3 k=1 dp=1 m=2: L -3.645664e-04 at piece 61, H 0.188 FAIL G-POS
+CLASS N=4 n=10 h5-bb7    chan-crude d=3 k=0 dp=1 m=2: L -1.897082e-04 at piece 61, H 0.412 FAIL G-POS
+CLASS N=4 n=10 h5-bb8    chan-crude d=3 k=1 dp=0 m=3: L -4.432264e-04 at piece 61, H 0.013 FAIL G-POS
+CLASS N=4 n=10 h6-a8     chan-crude d=4 k=0 dp=1 m=1: L -8.641722e-03 at piece 61, H 0.183 FAIL G-POS
+CLASS N=4 n=10 h6-bb7    chan-crude d=4 k=-1 dp=1 m=1: L -6.147077e-03 at piece 61, H 0.332 FAIL G-POS
+CLASS N=4 n=10 h6-bb8    chan-crude d=4 k=0 dp=0 m=2: L -9.315773e-03 at piece 61, H 0.014 FAIL G-POS
+CLASS N=4 n=10 h7-bb8    chan-crude d=5 k=-1 dp=0 m=1: L -2.934154e-01 at piece 61, H 0.010 FAIL G-POS
+SUMMARY N=3 n=6: to-do orbits 25; channel classes 22, PASS 0; least headroom 0.000 at h3-bb4 (piece 0); reference 3.107; same-bond orbits 2, least H_J 37.15; FAIL 22
+CLASS N=3 n=6 h1-a3     chan-exact d=-1 k=0 dp=2 m=1: L 2.485612e-04 at piece 0, H 1.267 FAIL G-DELTA
+CLASS N=3 n=6 h1-a4     chan-exact d=-1 k=1 dp=1 m=2: L -4.446245e-04 at piece 116, H 0.104 FAIL G-POS
+CLASS N=3 n=6 h1-a5     chan-exact d=-1 k=2 dp=0 m=3: L 2.206773e-06 at piece 0, H 29.634 FAIL G-DELTA
+CLASS N=3 n=6 h1-a6     chan-exact d=-1 k=3 dp=-1 m=4: L 1.084672e-07 at piece 116, H 4.185 FAIL G-DELTA
+CLASS N=3 n=6 h1-bb2    chan-exact d=-1 k=-1 dp=2 m=1: L 3.499198e-04 at piece 0, H 1.230 FAIL G-DELTA
+CLASS N=3 n=6 h1-bb3    chan-exact d=-1 k=0 dp=1 m=2: L -2.450366e-04 at piece 116, H 0.251 FAIL G-POS
+CLASS N=3 n=6 h1-bb4    chan-exact d=-1 k=1 dp=0 m=3: L -3.852697e-04 at piece 116, H 0.009 FAIL G-POS
+CLASS N=3 n=6 h1-bb5    chan-exact d=-1 k=2 dp=-1 m=4: L 1.084672e-07 at piece 116, H 4.185 FAIL G-DELTA
+CLASS N=3 n=6 h1-h3     chan-crude d=-1 k=0 dp=1 m=2: L -2.466615e-04 at piece 116, H 0.571 FAIL G-POS
+CLASS N=3 n=6 h1-h4     chan-exact d=-1 k=1 dp=0 m=3: L 1.338102e-05 at piece 0, H 18.162 FAIL G-DELTA
+CLASS N=3 n=6 h2-a4     chan-exact d=0 k=0 dp=1 m=1: L -7.630583e-03 at piece 0, H 0.144 FAIL G-POS
+CLASS N=3 n=6 h2-a5     chan-exact d=0 k=1 dp=0 m=2: L 5.539918e-05 at piece 0, H 34.179 FAIL G-DELTA
+CLASS N=3 n=6 h2-a6     chan-exact d=0 k=2 dp=-1 m=3: L 2.939043e-06 at piece 0, H 5.845 FAIL G-DELTA
+CLASS N=3 n=6 h2-bb3    chan-exact d=0 k=-1 dp=1 m=1: L -5.113311e-03 at piece 0, H 0.285 FAIL G-POS
+CLASS N=3 n=6 h2-bb4    chan-exact d=0 k=0 dp=0 m=2: L -6.635468e-03 at piece 0, H 0.013 FAIL G-POS
+CLASS N=3 n=6 h2-bb5    chan-exact d=0 k=1 dp=-1 m=3: L 2.939043e-06 at piece 0, H 5.845 FAIL G-DELTA
+CLASS N=3 n=6 h3-a5     chan-crude d=1 k=0 dp=0 m=1: L -3.959708e-04 at piece 0, H 0.768 FAIL G-POS
+CLASS N=3 n=6 h3-a6     chan-crude d=1 k=1 dp=-1 m=2: L -3.280110e-04 at piece 116, H 0.200 FAIL G-POS
+CLASS N=3 n=6 h3-bb4    chan-crude d=1 k=-1 dp=0 m=1: L -4.432893e+00 at piece 0, H 0.000 FAIL G-POS
+CLASS N=3 n=6 h3-bb5    chan-crude d=1 k=0 dp=-1 m=2: L -3.280110e-04 at piece 116, H 0.200 FAIL G-POS
+CLASS N=3 n=6 h4-a6     chan-crude d=2 k=0 dp=-1 m=1: L 2.070118e-04 at piece 0, H 1.124 FAIL G-DELTA
+CLASS N=3 n=6 h4-bb5    chan-crude d=2 k=-1 dp=-1 m=1: L 2.070118e-04 at piece 0, H 1.124 FAIL G-DELTA
+SUMMARY N=3 n=7: to-do orbits 37; channel classes 34, PASS 0; least headroom 0.001 at h3-bb5 (piece 0); reference 3.637; same-bond orbits 2, least H_J 38.42; FAIL 34
+CLASS N=3 n=7 h1-a3     chan-exact d=-1 k=0 dp=3 m=1: L 1.121838e-03 at piece 0, H 20.053 FAIL G-DELTA
+CLASS N=3 n=7 h1-a4     chan-exact d=-1 k=1 dp=2 m=2: L 1.709434e-05 at piece 0, H 1.497 FAIL G-DELTA
+CLASS N=3 n=7 h1-a5     chan-exact d=-1 k=2 dp=1 m=3: L -1.360765e-05 at piece 116, H 0.142 FAIL G-POS
+CLASS N=3 n=7 h1-a6     chan-exact d=-1 k=3 dp=0 m=4: L 9.668639e-08 at piece 0, H 34.923 FAIL G-DELTA
+CLASS N=3 n=7 h1-a7     chan-exact d=-1 k=4 dp=-1 m=5: L 5.194479e-09 at piece 116, H 6.122 FAIL G-DELTA
+CLASS N=3 n=7 h1-bb2    chan-exact d=-1 k=-1 dp=3 m=1: L 1.338146e-03 at piece 0, H 3.505 FAIL G-DELTA
+CLASS N=3 n=7 h1-bb3    chan-exact d=-1 k=0 dp=2 m=2: L 5.289531e-05 at piece 0, H 2.843 FAIL G-DELTA
+CLASS N=3 n=7 h1-bb4    chan-exact d=-1 k=1 dp=1 m=3: L -6.596874e-06 at piece 116, H 0.351 FAIL G-POS
+CLASS N=3 n=7 h1-bb5    chan-exact d=-1 k=2 dp=0 m=4: L -1.159782e-05 at piece 116, H 0.013 FAIL G-POS
+CLASS N=3 n=7 h1-bb6    chan-exact d=-1 k=3 dp=-1 m=5: L 5.194479e-09 at piece 116, H 6.122 FAIL G-DELTA
+CLASS N=3 n=7 h1-h3     chan-crude d=-1 k=0 dp=2 m=2: L 2.910788e-04 at piece 0, H 9.295 FAIL G-DELTA
+CLASS N=3 n=7 h1-h4     chan-crude d=-1 k=1 dp=1 m=3: L -6.640621e-06 at piece 116, H 0.683 FAIL G-POS
+CLASS N=3 n=7 h1-h5     chan-exact d=-1 k=2 dp=0 m=4: L 5.887575e-07 at piece 0, H 21.725 FAIL G-DELTA
+CLASS N=3 n=7 h2-a4     chan-exact d=0 k=0 dp=2 m=1: L 4.869401e-04 at piece 0, H 1.609 FAIL G-DELTA
+CLASS N=3 n=7 h2-a5     chan-exact d=0 k=1 dp=1 m=2: L -2.218663e-04 at piece 0, H 0.202 FAIL G-POS
+CLASS N=3 n=7 h2-a6     chan-exact d=0 k=2 dp=0 m=3: L 2.424214e-06 at piece 0, H 39.469 FAIL G-DELTA
+CLASS N=3 n=7 h2-a7     chan-exact d=0 k=3 dp=-1 m=4: L 1.344645e-07 at piece 0, H 7.701 FAIL G-DELTA
+CLASS N=3 n=7 h2-bb3    chan-exact d=0 k=-1 dp=2 m=1: L 5.809797e-04 at piece 0, H 1.398 FAIL G-DELTA
+CLASS N=3 n=7 h2-bb4    chan-exact d=0 k=0 dp=1 m=2: L -1.156957e-04 at piece 0, H 0.434 FAIL G-POS
+CLASS N=3 n=7 h2-bb5    chan-exact d=0 k=1 dp=0 m=3: L -1.917798e-04 at piece 0, H 0.020 FAIL G-POS
+CLASS N=3 n=7 h2-bb6    chan-exact d=0 k=2 dp=-1 m=4: L 1.344645e-07 at piece 0, H 7.701 FAIL G-DELTA
+CLASS N=3 n=7 h2-h4     chan-crude d=0 k=0 dp=1 m=2: L -1.167932e-04 at piece 0, H 0.753 FAIL G-POS
+CLASS N=3 n=7 h3-a5     chan-crude d=1 k=0 dp=1 m=1: L -1.365812e-01 at piece 0, H 0.009 FAIL G-POS
+CLASS N=3 n=7 h3-a6     chan-crude d=1 k=1 dp=0 m=2: L -1.066033e-05 at piece 0, H 0.843 FAIL G-POS
+CLASS N=3 n=7 h3-a7     chan-crude d=1 k=2 dp=-1 m=3: L -8.830711e-06 at piece 116, H 0.288 FAIL G-POS
+CLASS N=3 n=7 h3-bb4    chan-crude d=1 k=-1 dp=1 m=1: L -9.310191e-02 at piece 0, H 0.022 FAIL G-POS
+CLASS N=3 n=7 h3-bb5    chan-crude d=1 k=0 dp=0 m=2: L -1.189359e-01 at piece 0, H 0.001 FAIL G-POS
+CLASS N=3 n=7 h3-bb6    chan-crude d=1 k=1 dp=-1 m=3: L -8.830711e-06 at piece 116, H 0.288 FAIL G-POS
+CLASS N=3 n=7 h4-a6     chan-crude d=2 k=0 dp=0 m=1: L 1.210693e-03 at piece 0, H 12.664 FAIL G-DELTA
+CLASS N=3 n=7 h4-a7     chan-crude d=2 k=1 dp=-1 m=2: L 6.177343e-05 at piece 0, H 4.105 FAIL G-DELTA
+CLASS N=3 n=7 h4-bb5    chan-crude d=2 k=-1 dp=0 m=1: L -1.900882e-01 at piece 0, H 0.011 FAIL G-POS
+CLASS N=3 n=7 h4-bb6    chan-crude d=2 k=0 dp=-1 m=2: L 6.177343e-05 at piece 0, H 4.105 FAIL G-DELTA
+CLASS N=3 n=7 h5-a7     chan-crude d=3 k=0 dp=-1 m=1: L 1.068253e-03 at piece 0, H 2.326 FAIL G-DELTA
+CLASS N=3 n=7 h5-bb6    chan-crude d=3 k=-1 dp=-1 m=1: L 1.068253e-03 at piece 0, H 2.326 FAIL G-DELTA
+SUMMARY N=3 n=8: to-do orbits 52; channel classes 48, PASS 5; least headroom 0.000 at h1-bb6 (piece 0); reference 4.064; same-bond orbits 3, least H_J 38.61; FAIL 43
+CLASS N=3 n=8 h1-a4     chan-exact d=-1 k=1 dp=3 m=2: L -2.921169e-05 at piece 0, H 0.638 FAIL 
+CLASS N=3 n=8 h1-a5     chan-exact d=-1 k=2 dp=2 m=3: L -1.582658e-05 at piece 0, H 0.124 FAIL 
+CLASS N=3 n=8 h1-a6     chan-exact d=-1 k=3 dp=1 m=4: L -3.332871e-05 at piece 0, H 0.003 FAIL G-POS
+CLASS N=3 n=8 h1-a7     chan-exact d=-1 k=4 dp=0 m=5: L -2.464041e-07 at piece 0, H 0.017 FAIL 
+CLASS N=3 n=8 h1-a8     chan-exact d=-1 k=5 dp=-1 m=6: L -6.319359e-08 at piece 116, H 0.004 FAIL 
+CLASS N=3 n=8 h1-bb2    chan-exact d=-1 k=-1 dp=4 m=1: L -3.455572e-05 at piece 0, H 0.982 FAIL 
+CLASS N=3 n=8 h1-bb3    chan-exact d=-1 k=0 dp=3 m=2: L -1.281030e-04 at piece 0, H 0.389 FAIL 
+CLASS N=3 n=8 h1-bb4    chan-exact d=-1 k=1 dp=2 m=3: L -2.704722e-05 at piece 0, H 0.116 FAIL 
+CLASS N=3 n=8 h1-bb5    chan-exact d=-1 k=2 dp=1 m=4: L -1.101759e-05 at piece 0, H 0.014 FAIL G-POS
+CLASS N=3 n=8 h1-bb6    chan-exact d=-1 k=3 dp=0 m=5: L -5.517813e-05 at piece 0, H 0.000 FAIL G-POS
+CLASS N=3 n=8 h1-bb7    chan-exact d=-1 k=4 dp=-1 m=6: L -6.319359e-08 at piece 116, H 0.004 FAIL 
+CLASS N=3 n=8 h1-h4     chan-crude d=-1 k=1 dp=2 m=3: L -4.771683e-06 at piece 0, H 0.749 FAIL 
+CLASS N=3 n=8 h1-h5     chan-crude d=-1 k=2 dp=1 m=4: L -9.398902e-06 at piece 0, H 0.062 FAIL G-POS
+CLASS N=3 n=8 h1-h6     chan-exact d=-1 k=3 dp=0 m=5: L -3.177817e-07 at piece 0, H 0.078 FAIL 
+CLASS N=3 n=8 h2-a5     chan-exact d=0 k=1 dp=2 m=2: L -9.941713e-05 at piece 0, H 0.361 FAIL 
+CLASS N=3 n=8 h2-a6     chan-exact d=0 k=2 dp=1 m=3: L -2.499147e-04 at piece 0, H 0.010 FAIL G-POS
+CLASS N=3 n=8 h2-a7     chan-exact d=0 k=3 dp=0 m=4: L -1.748258e-06 at piece 0, H 0.058 FAIL 
+CLASS N=3 n=8 h2-a8     chan-exact d=0 k=4 dp=-1 m=5: L -4.574060e-07 at piece 0, H 0.015 FAIL 
+CLASS N=3 n=8 h2-bb3    chan-exact d=0 k=-1 dp=3 m=1: L -4.461965e-04 at piece 0, H 0.820 FAIL 
+CLASS N=3 n=8 h2-bb4    chan-exact d=0 k=0 dp=2 m=2: L -1.556495e-04 at piece 0, H 0.363 FAIL 
+CLASS N=3 n=8 h2-bb5    chan-exact d=0 k=1 dp=1 m=3: L -8.342809e-05 at piece 0, H 0.044 FAIL G-POS
+CLASS N=3 n=8 h2-bb6    chan-exact d=0 k=2 dp=0 m=4: L -4.111023e-04 at piece 0, H 0.000 FAIL G-POS
+CLASS N=3 n=8 h2-bb7    chan-exact d=0 k=3 dp=-1 m=5: L -4.574060e-07 at piece 0, H 0.015 FAIL 
+CLASS N=3 n=8 h2-h5     chan-crude d=0 k=1 dp=1 m=3: L -7.147173e-05 at piece 0, H 0.178 FAIL G-POS
+CLASS N=3 n=8 h3-a5     chan-crude d=1 k=0 dp=2 m=1: L -6.863046e-03 at piece 0, H 0.158 FAIL G-POS
+CLASS N=3 n=8 h3-a6     chan-crude d=1 k=1 dp=1 m=2: L -1.018709e-02 at piece 0, H 0.005 FAIL G-POS
+CLASS N=3 n=8 h3-a7     chan-crude d=1 k=2 dp=0 m=3: L -5.012821e-05 at piece 0, H 0.047 FAIL G-POS
+CLASS N=3 n=8 h3-a8     chan-crude d=1 k=3 dp=-1 m=4: L -1.264360e-05 at piece 0, H 0.012 FAIL G-POS
+CLASS N=3 n=8 h3-bb4    chan-crude d=1 k=-1 dp=2 m=1: L -9.583961e-03 at piece 0, H 0.176 FAIL G-POS
+CLASS N=3 n=8 h3-bb5    chan-crude d=1 k=0 dp=1 m=2: L -4.263756e-03 at piece 0, H 0.020 FAIL G-POS
+CLASS N=3 n=8 h3-bb6    chan-crude d=1 k=1 dp=0 m=3: L -1.407551e-02 at piece 0, H 0.000 FAIL G-POS
+CLASS N=3 n=8 h3-bb7    chan-crude d=1 k=2 dp=-1 m=4: L -1.264360e-05 at piece 0, H 0.012 FAIL G-POS
+CLASS N=3 n=8 h4-a6     chan-crude d=2 k=0 dp=1 m=1: L -1.833516e-02 at piece 0, H 0.066 FAIL G-POS
+CLASS N=3 n=8 h4-a7     chan-crude d=2 k=1 dp=0 m=2: L -4.205315e-05 at piece 0, H 0.577 FAIL 
+CLASS N=3 n=8 h4-a8     chan-crude d=2 k=2 dp=-1 m=3: L -2.088794e-05 at piece 0, H 0.146 FAIL 
+CLASS N=3 n=8 h4-bb5    chan-crude d=2 k=-1 dp=1 m=1: L -8.100433e-03 at piece 0, H 0.202 FAIL G-POS
+CLASS N=3 n=8 h4-bb6    chan-crude d=2 k=0 dp=0 m=2: L -2.589056e-02 at piece 0, H 0.003 FAIL G-POS
+CLASS N=3 n=8 h4-bb7    chan-crude d=2 k=1 dp=-1 m=3: L -2.088794e-05 at piece 0, H 0.146 FAIL 
+CLASS N=3 n=8 h5-a8     chan-crude d=3 k=1 dp=-1 m=2: L -8.814402e-05 at piece 0, H 0.481 FAIL 
+CLASS N=3 n=8 h5-bb6    chan-crude d=3 k=-1 dp=0 m=1: L -2.268814e-01 at piece 0, H 0.009 FAIL G-POS
+CLASS N=3 n=8 h5-bb7    chan-crude d=3 k=0 dp=-1 m=2: L -8.814402e-05 at piece 0, H 0.481 FAIL 
+CLASS N=3 n=8 h6-a8     chan-crude d=4 k=0 dp=-1 m=1: L -1.910275e-05 at piece 0, H 0.990 FAIL 
+CLASS N=3 n=8 h6-bb7    chan-crude d=4 k=-1 dp=-1 m=1: L -1.910275e-05 at piece 0, H 0.990 FAIL 
+SUMMARY N=3 n=9: to-do orbits 69; channel classes 65, PASS 25; least headroom 0.000 at h1-bb7 (piece 0); reference 4.146; same-bond orbits 3, least H_J 38.64; FAIL 40
+CLASS N=3 n=9 h1-a6     chan-exact d=-1 k=3 dp=2 m=4: L -2.364098e-07 at piece 0, H 0.293 FAIL 
+CLASS N=3 n=9 h1-a7     chan-exact d=-1 k=4 dp=1 m=5: L -6.160178e-07 at piece 0, H 0.007 FAIL G-POS
+CLASS N=3 n=9 h1-a8     chan-exact d=-1 k=5 dp=0 m=6: L -4.057078e-09 at piece 0, H 0.045 FAIL 
+CLASS N=3 n=9 h1-a9     chan-exact d=-1 k=6 dp=-1 m=7: L -1.067113e-09 at piece 116, H 0.011 FAIL 
+CLASS N=3 n=9 h1-bb4    chan-exact d=-1 k=1 dp=3 m=3: L -1.446209e-07 at piece 0, H 0.961 FAIL 
+CLASS N=3 n=9 h1-bb5    chan-exact d=-1 k=2 dp=2 m=4: L -3.841607e-07 at piece 0, H 0.287 FAIL 
+CLASS N=3 n=9 h1-bb6    chan-exact d=-1 k=3 dp=1 m=5: L -1.875422e-07 at piece 0, H 0.035 FAIL G-POS
+CLASS N=3 n=9 h1-bb7    chan-exact d=-1 k=4 dp=0 m=6: L -9.775470e-07 at piece 0, H 0.000 FAIL G-POS
+CLASS N=3 n=9 h1-bb8    chan-exact d=-1 k=5 dp=-1 m=7: L -1.067113e-09 at piece 116, H 0.011 FAIL 
+CLASS N=3 n=9 h1-h6     chan-crude d=-1 k=3 dp=1 m=5: L -1.600107e-07 at piece 0, H 0.144 FAIL G-POS
+CLASS N=3 n=9 h1-h7     chan-exact d=-1 k=4 dp=0 m=6: L -4.686043e-09 at piece 0, H 0.200 FAIL 
+CLASS N=3 n=9 h2-a6     chan-exact d=0 k=2 dp=2 m=3: L -9.150873e-07 at piece 0, H 0.727 FAIL 
+CLASS N=3 n=9 h2-a7     chan-exact d=0 k=3 dp=1 m=4: L -4.627099e-06 at piece 0, H 0.023 FAIL G-POS
+CLASS N=3 n=9 h2-a8     chan-exact d=0 k=4 dp=0 m=5: L -2.661709e-08 at piece 0, H 0.151 FAIL 
+CLASS N=3 n=9 h2-a9     chan-exact d=0 k=5 dp=-1 m=6: L -7.575727e-09 at piece 0, H 0.037 FAIL 
+CLASS N=3 n=9 h2-bb5    chan-exact d=0 k=1 dp=2 m=3: L -8.413689e-07 at piece 0, H 0.822 FAIL 
+CLASS N=3 n=9 h2-bb6    chan-exact d=0 k=2 dp=1 m=4: L -1.432868e-06 at piece 0, H 0.105 FAIL G-POS
+CLASS N=3 n=9 h2-bb7    chan-exact d=0 k=3 dp=0 m=5: L -7.278113e-06 at piece 0, H 0.001 FAIL G-POS
+CLASS N=3 n=9 h2-bb8    chan-exact d=0 k=4 dp=-1 m=6: L -7.575727e-09 at piece 0, H 0.037 FAIL 
+CLASS N=3 n=9 h2-h6     chan-crude d=0 k=2 dp=1 m=4: L -1.230634e-06 at piece 0, H 0.354 FAIL G-POS
+CLASS N=3 n=9 h3-a5     chan-crude d=1 k=0 dp=3 m=1: L -4.673745e-04 at piece 0, H 0.734 FAIL G-POS
+CLASS N=3 n=9 h3-a6     chan-crude d=1 k=1 dp=2 m=2: L -1.504375e-04 at piece 0, H 0.272 FAIL G-POS
+CLASS N=3 n=9 h3-a7     chan-crude d=1 k=2 dp=1 m=3: L -2.102591e-04 at piece 0, H 0.012 FAIL G-POS
+CLASS N=3 n=9 h3-a8     chan-crude d=1 k=3 dp=0 m=4: L -8.436596e-07 at piece 0, H 0.114 FAIL G-POS
+CLASS N=3 n=9 h3-a9     chan-crude d=1 k=4 dp=-1 m=5: L -2.149163e-07 at piece 0, H 0.030 FAIL G-POS
+CLASS N=3 n=9 h3-bb4    chan-crude d=1 k=-1 dp=3 m=1: L -2.028797e-03 at piece 0, H 0.502 FAIL G-POS
+CLASS N=3 n=9 h3-bb5    chan-crude d=1 k=0 dp=2 m=2: L -1.779754e-04 at piece 0, H 0.334 FAIL G-POS
+CLASS N=3 n=9 h3-bb6    chan-crude d=1 k=1 dp=1 m=3: L -9.272163e-05 at piece 0, H 0.040 FAIL G-POS
+CLASS N=3 n=9 h3-bb7    chan-crude d=1 k=2 dp=0 m=4: L -2.706419e-04 at piece 0, H 0.001 FAIL G-POS
+CLASS N=3 n=9 h3-bb8    chan-crude d=1 k=3 dp=-1 m=5: L -2.149163e-07 at piece 0, H 0.030 FAIL G-POS
+CLASS N=3 n=9 h3-h5     chan-crude d=1 k=0 dp=2 m=2: L -1.491656e-04 at piece 0, H 0.705 FAIL G-POS
+CLASS N=3 n=9 h4-a7     chan-crude d=2 k=1 dp=1 m=2: L -3.790497e-04 at piece 0, H 0.129 FAIL G-POS
+CLASS N=3 n=9 h4-a9     chan-crude d=2 k=3 dp=-1 m=4: L -2.682470e-07 at piece 0, H 0.366 FAIL 
+CLASS N=3 n=9 h4-bb6    chan-crude d=2 k=0 dp=1 m=2: L -1.585187e-04 at piece 0, H 0.360 FAIL G-POS
+CLASS N=3 n=9 h4-bb7    chan-crude d=2 k=1 dp=0 m=3: L -4.955943e-04 at piece 0, H 0.008 FAIL G-POS
+CLASS N=3 n=9 h4-bb8    chan-crude d=2 k=2 dp=-1 m=4: L -2.682470e-07 at piece 0, H 0.366 FAIL 
+CLASS N=3 n=9 h5-a7     chan-crude d=3 k=0 dp=1 m=1: L -4.174753e-03 at piece 0, H 0.236 FAIL G-POS
+CLASS N=3 n=9 h5-bb6    chan-crude d=3 k=-1 dp=1 m=1: L -2.295966e-03 at piece 0, H 0.471 FAIL G-POS
+CLASS N=3 n=9 h5-bb7    chan-crude d=3 k=0 dp=0 m=2: L -4.738326e-03 at piece 0, H 0.018 FAIL G-POS
+CLASS N=3 n=9 h6-bb7    chan-crude d=4 k=-1 dp=0 m=1: L -1.012693e-01 at piece 0, H 0.020 FAIL G-POS
+SUMMARY N=3 n=10: to-do orbits 89; channel classes 84, PASS 41; least headroom 0.000 at h1-bb8 (piece 0); reference 4.147; same-bond orbits 4, least H_J 38.64; FAIL 43
+CLASS N=3 n=10 h1-a10    chan-exact d=-1 k=7 dp=-1 m=8: L -2.184296e-11 at piece 116, H 0.023 FAIL 
+CLASS N=3 n=10 h1-a7     chan-exact d=-1 k=4 dp=2 m=5: L -3.751914e-09 at piece 0, H 0.532 FAIL 
+CLASS N=3 n=10 h1-a8     chan-exact d=-1 k=5 dp=1 m=6: L -2.011001e-08 at piece 0, H 0.009 FAIL G-POS
+CLASS N=3 n=10 h1-a9     chan-exact d=-1 k=6 dp=0 m=7: L -7.976590e-11 at piece 0, H 0.094 FAIL 
+CLASS N=3 n=10 h1-bb6    chan-exact d=-1 k=3 dp=2 m=5: L -5.311333e-09 at piece 0, H 0.560 FAIL 
+CLASS N=3 n=10 h1-bb7    chan-exact d=-1 k=4 dp=1 m=6: L -3.947319e-09 at piece 0, H 0.069 FAIL G-POS
+CLASS N=3 n=10 h1-bb8    chan-exact d=-1 k=5 dp=0 m=7: L -2.612810e-08 at piece 0, H 0.000 FAIL G-POS
+CLASS N=3 n=10 h1-bb9    chan-exact d=-1 k=6 dp=-1 m=8: L -2.184296e-11 at piece 116, H 0.023 FAIL 
+CLASS N=3 n=10 h1-h7     chan-crude d=-1 k=4 dp=1 m=6: L -3.338773e-09 at piece 0, H 0.261 FAIL G-POS
+CLASS N=3 n=10 h1-h8     chan-exact d=-1 k=5 dp=0 m=7: L -7.108554e-11 at piece 0, H 0.418 FAIL 
+CLASS N=3 n=10 h2-a10    chan-exact d=0 k=6 dp=-1 m=7: L -1.506069e-10 at piece 0, H 0.078 FAIL 
+CLASS N=3 n=10 h2-a8     chan-exact d=0 k=4 dp=1 m=5: L -1.504951e-07 at piece 0, H 0.030 FAIL G-POS
+CLASS N=3 n=10 h2-a9     chan-exact d=0 k=5 dp=0 m=6: L -4.448055e-10 at piece 0, H 0.316 FAIL 
+CLASS N=3 n=10 h2-bb7    chan-exact d=0 k=3 dp=1 m=5: L -3.044739e-08 at piece 0, H 0.195 FAIL G-POS
+CLASS N=3 n=10 h2-bb8    chan-exact d=0 k=4 dp=0 m=6: L -1.944766e-07 at piece 0, H 0.002 FAIL G-POS
+CLASS N=3 n=10 h2-bb9    chan-exact d=0 k=5 dp=-1 m=7: L -1.506069e-10 at piece 0, H 0.078 FAIL 
+CLASS N=3 n=10 h2-h7     chan-crude d=0 k=3 dp=1 m=5: L -2.598197e-08 at piece 0, H 0.531 FAIL G-POS
+CLASS N=3 n=10 h3-a10    chan-crude d=1 k=5 dp=-1 m=6: L -4.478937e-09 at piece 0, H 0.062 FAIL G-POS
+CLASS N=3 n=10 h3-a5     chan-crude d=1 k=0 dp=4 m=1: L -1.518464e-04 at piece 0, H 0.895 FAIL G-POS
+CLASS N=3 n=10 h3-a6     chan-crude d=1 k=1 dp=3 m=2: L -1.096348e-05 at piece 0, H 0.837 FAIL G-POS
+CLASS N=3 n=10 h3-a7     chan-crude d=1 k=2 dp=2 m=3: L -3.703685e-06 at piece 0, H 0.398 FAIL G-POS
+CLASS N=3 n=10 h3-a8     chan-crude d=1 k=3 dp=1 m=4: L -5.336421e-06 at piece 0, H 0.020 FAIL G-POS
+CLASS N=3 n=10 h3-a9     chan-crude d=1 k=4 dp=0 m=5: L -1.749808e-08 at piece 0, H 0.213 FAIL G-POS
+CLASS N=3 n=10 h3-bb4    chan-crude d=1 k=-1 dp=4 m=1: L -1.396759e-03 at piece 0, H 0.594 FAIL G-POS
+CLASS N=3 n=10 h3-bb5    chan-crude d=1 k=0 dp=3 m=2: L -4.327690e-05 at piece 0, H 0.673 FAIL G-POS
+CLASS N=3 n=10 h3-bb6    chan-crude d=1 k=1 dp=2 m=3: L -4.181127e-06 at piece 0, H 0.482 FAIL G-POS
+CLASS N=3 n=10 h3-bb7    chan-crude d=1 k=2 dp=1 m=4: L -2.272932e-06 at piece 0, H 0.069 FAIL G-POS
+CLASS N=3 n=10 h3-bb8    chan-crude d=1 k=3 dp=0 m=5: L -6.432306e-06 at piece 0, H 0.001 FAIL G-POS
+CLASS N=3 n=10 h3-bb9    chan-crude d=1 k=4 dp=-1 m=6: L -4.478937e-09 at piece 0, H 0.062 FAIL G-POS
+CLASS N=3 n=10 h3-h5     chan-crude d=1 k=0 dp=3 m=2: L -5.003217e-05 at piece 0, H 0.877 FAIL G-POS
+CLASS N=3 n=10 h3-h6     chan-crude d=1 k=1 dp=2 m=3: L -3.651257e-06 at piece 0, H 0.810 FAIL G-POS
+CLASS N=3 n=10 h4-a10    chan-crude d=2 k=4 dp=-1 m=5: L -2.430279e-09 at piece 0, H 0.736 FAIL 
+CLASS N=3 n=10 h4-a8     chan-crude d=2 k=2 dp=1 m=3: L -1.083754e-05 at piece 0, H 0.185 FAIL G-POS
+CLASS N=3 n=10 h4-bb7    chan-crude d=2 k=1 dp=1 m=3: L -3.849447e-06 at piece 0, H 0.502 FAIL G-POS
+CLASS N=3 n=10 h4-bb8    chan-crude d=2 k=2 dp=0 m=4: L -1.271680e-05 at piece 0, H 0.013 FAIL G-POS
+CLASS N=3 n=10 h4-bb9    chan-crude d=2 k=3 dp=-1 m=5: L -2.430279e-09 at piece 0, H 0.736 FAIL 
+CLASS N=3 n=10 h5-a8     chan-crude d=3 k=1 dp=1 m=2: L -1.165820e-04 at piece 0, H 0.326 FAIL G-POS
+CLASS N=3 n=10 h5-bb7    chan-crude d=3 k=0 dp=1 m=2: L -5.108658e-05 at piece 0, H 0.636 FAIL G-POS
+CLASS N=3 n=10 h5-bb8    chan-crude d=3 k=1 dp=0 m=3: L -1.233628e-04 at piece 0, H 0.030 FAIL G-POS
+CLASS N=3 n=10 h6-a8     chan-crude d=4 k=0 dp=1 m=1: L -2.910628e-03 at piece 0, H 0.307 FAIL G-POS
+CLASS N=3 n=10 h6-bb7    chan-crude d=4 k=-1 dp=1 m=1: L -1.844092e-03 at piece 0, H 0.526 FAIL G-POS
+CLASS N=3 n=10 h6-bb8    chan-crude d=4 k=0 dp=0 m=2: L -2.686694e-03 at piece 0, H 0.032 FAIL G-POS
+CLASS N=3 n=10 h7-bb8    chan-crude d=5 k=-1 dp=0 m=1: L -8.742268e-02 at piece 0, H 0.023 FAIL G-POS
+FAIL REASONS: classes failing at G-POS 208, at G-DELTA 112, on the margin alone 164 (same-bond failures count as margin)
+WARN BLOCK: 370 rows with float headroom H < 2 (design target 2; not an acceptance rule)
+WARN N4_n08_h1-bb6 H 4.03161e-05 FAIL
+WARN N4_n08_h3-bb6 H 5.29725e-05 FAIL
+WARN N4_n09_h1-bb7 H 0.000116752 FAIL
+WARN N3_n08_h1-bb6 H 0.000121948 FAIL
+WARN N4_n06_h3-bb4 H 0.000127321 FAIL
+WARN N4_n08_h2-bb6 H 0.000133972 FAIL
+WARN N4_n09_h3-bb7 H 0.000139056 FAIL
+WARN N4_n07_h3-bb5 H 0.000200939 FAIL
+WARN N4_n10_h1-bb8 H 0.000206785 FAIL
+WARN N4_n10_h3-bb8 H 0.000264765 FAIL
+WARN N3_n08_h3-bb6 H 0.000275062 FAIL
+WARN N3_n09_h1-bb7 H 0.000299947 FAIL
+WARN N4_n09_h2-bb7 H 0.000388468 FAIL
+WARN N3_n08_h2-bb6 H 0.000408885 FAIL
+WARN N3_n06_h3-bb4 H 0.00045972 FAIL
+WARN N3_n10_h1-bb8 H 0.000489 FAIL
+WARN N3_n09_h3-bb7 H 0.000623253 FAIL
+WARN N4_n10_h2-bb8 H 0.000685687 FAIL
+WARN N3_n07_h3-bb5 H 0.000746551 FAIL
+WARN N3_n09_h2-bb7 H 0.00100598 FAIL
+WARN N4_n08_h4-bb6 H 0.00106338 FAIL
+WARN N4_n08_h1-a6 H 0.00112021 FAIL
+WARN N3_n10_h3-bb8 H 0.00114231 FAIL
+WARN N4_n08_h3-a6 H 0.00129548 FAIL
+WARN N3_n10_h2-bb8 H 0.00163977 FAIL
+WARN N4_n08_h1-a8 H 0.00223454 FAIL
+WARN N4_n08_h1-bb7 H 0.00223454 FAIL
+WARN N4_n09_h4-bb7 H 0.00271146 FAIL
+WARN N3_n08_h1-a6 H 0.00292657 FAIL
+WARN N4_n07_h3-a5 H 0.0029791 FAIL
+WARN N4_n09_h1-a7 H 0.00310119 FAIL
+WARN N4_n09_h3-a7 H 0.00312395 FAIL
+WARN N4_n08_h5-bb6 H 0.0032327 FAIL
+WARN N3_n08_h4-bb6 H 0.0034209 FAIL
+WARN N4_n07_h4-bb5 H 0.00342118 FAIL
+WARN N4_n08_h3-a8 H 0.00353948 FAIL
+WARN N4_n08_h3-bb7 H 0.00353948 FAIL
+WARN N4_n08_h2-a6 H 0.00370184 FAIL
+WARN N4_n06_h1-bb4 H 0.0042517 FAIL
+WARN N3_n08_h1-a8 H 0.00426173 FAIL
+WARN N3_n08_h1-bb7 H 0.00426173 FAIL
+WARN N4_n10_h1-a8 H 0.0042691 FAIL
+WARN N4_n08_h3-bb5 H 0.00465983 FAIL
+WARN N4_n10_h4-bb8 H 0.00478554 FAIL
+WARN N4_n06_h2-bb4 H 0.00480195 FAIL
+WARN N4_n08_h1-bb5 H 0.00521238 FAIL
+WARN N3_n08_h3-a6 H 0.00549573 FAIL
+WARN N4_n10_h3-a8 H 0.00553258 FAIL
+WARN N4_n07_h1-bb5 H 0.00596123 FAIL
+WARN N4_n07_h3-bb4 H 0.00609216 FAIL
+WARN N4_n09_h1-a9 H 0.00662828 FAIL
+WARN N4_n09_h1-bb8 H 0.00662828 FAIL
+WARN N3_n09_h1-a7 H 0.0068735 FAIL
+WARN N4_n07_h2-bb5 H 0.0072039 FAIL
+WARN N4_n09_h5-bb7 H 0.00754428 FAIL
+WARN N4_n08_h2-a8 H 0.00767134 FAIL
+WARN N4_n08_h2-bb7 H 0.00767134 FAIL
+WARN N3_n09_h4-bb7 H 0.00775497 FAIL
+WARN N4_n09_h6-bb7 H 0.00868244 FAIL
+WARN N3_n08_h5-bb6 H 0.00890784 FAIL
+WARN N3_n10_h1-a8 H 0.00915539 FAIL
+WARN N3_n06_h1-bb4 H 0.00915725 FAIL
+WARN N4_n08_h1-a7 H 0.0093488 FAIL
+WARN N3_n07_h3-a5 H 0.00936856 FAIL
+WARN N3_n08_h2-a6 H 0.00968644 FAIL
+WARN N4_n09_h3-bb6 H 0.0100512 FAIL
+WARN N4_n09_h2-a7 H 0.010125 FAIL
+WARN N4_n10_h7-bb8 H 0.0102624 FAIL
+WARN N4_n09_h3-a9 H 0.0104815 FAIL
+WARN N4_n09_h3-bb8 H 0.0104815 FAIL
+WARN N3_n07_h4-bb5 H 0.0106136 FAIL
+WARN N3_n09_h1-a9 H 0.0109208 FAIL
+WARN N3_n09_h1-bb8 H 0.0109208 FAIL
+WARN N3_n09_h3-a7 H 0.0115343 FAIL
+WARN N3_n08_h3-a8 H 0.0121186 FAIL
+WARN N3_n08_h3-bb7 H 0.0121186 FAIL
+WARN N4_n10_h5-bb8 H 0.0128857 FAIL
+WARN N3_n10_h4-bb8 H 0.0131008 FAIL
+WARN N3_n06_h2-bb4 H 0.0131664 FAIL
+WARN N3_n07_h1-bb5 H 0.0131978 FAIL
+WARN N3_n08_h1-bb5 H 0.0138715 FAIL
+WARN N4_n10_h2-a8 H 0.0138976 FAIL
+WARN N4_n10_h6-bb8 H 0.014042 FAIL
+WARN N4_n10_h1-a10 H 0.0141368 FAIL
+WARN N4_n10_h1-bb9 H 0.0141368 FAIL
+WARN N3_n08_h2-a8 H 0.0145105 FAIL
+WARN N3_n08_h2-bb7 H 0.0145105 FAIL
+WARN N4_n08_h3-a7 H 0.0145284 FAIL
+WARN N4_n09_h1-bb6 H 0.0152814 FAIL
+WARN N4_n08_h2-bb5 H 0.016743 FAIL
+WARN N3_n08_h1-a7 H 0.017301 FAIL
+WARN N4_n10_h3-bb7 H 0.017504 FAIL
+WARN N3_n09_h5-bb7 H 0.0184111 FAIL
+WARN N4_n08_h1-h5 H 0.0188642 FAIL
+WARN N3_n10_h3-a8 H 0.0196443 FAIL
+WARN N3_n07_h2-bb5 H 0.0197223 FAIL
+WARN N3_n09_h6-bb7 H 0.0197388 FAIL
+WARN N3_n08_h3-bb5 H 0.0204886 FAIL
+WARN N3_n07_h3-bb4 H 0.0215069 FAIL
+WARN N4_n10_h3-a10 H 0.0219603 FAIL
+WARN N4_n10_h3-bb9 H 0.0219603 FAIL
+WARN N3_n09_h2-a7 H 0.0225064 FAIL
+WARN N3_n10_h7-bb8 H 0.0227939 FAIL
+WARN N4_n09_h2-a9 H 0.0229139 FAIL
+WARN N4_n09_h2-bb8 H 0.0229139 FAIL
+WARN N3_n10_h1-a10 H 0.0229593 FAIL
+WARN N3_n10_h1-bb9 H 0.0229593 FAIL
+WARN N4_n08_h4-a6 H 0.0248063 FAIL
+WARN N4_n09_h1-a8 H 0.0279673 FAIL
+WARN N3_n10_h2-a8 H 0.0299294 FAIL
+WARN N4_n10_h1-bb7 H 0.0302651 FAIL
+WARN N3_n10_h5-bb8 H 0.0304425 FAIL
+WARN N3_n09_h3-a9 H 0.0304941 FAIL
+WARN N3_n09_h3-bb8 H 0.0304941 FAIL
+WARN N4_n08_h2-a7 H 0.0316082 FAIL
+WARN N3_n10_h6-bb8 H 0.0320201 FAIL
+WARN N3_n09_h1-bb6 H 0.0347638 FAIL
+WARN N3_n09_h2-a9 H 0.0373006 FAIL
+WARN N3_n09_h2-bb8 H 0.0373006 FAIL
+WARN N3_n09_h3-bb6 H 0.0402342 FAIL
+WARN N4_n08_h1-h6 H 0.0415037 FAIL
+WARN N4_n09_h3-a8 H 0.042795 FAIL
+WARN N3_n08_h2-bb5 H 0.04436 FAIL
+WARN N3_n09_h1-a8 H 0.0445268 FAIL
+WARN N4_n09_h2-bb6 H 0.0472109 FAIL
+WARN N3_n08_h3-a7 H 0.0474383 FAIL
+WARN N4_n10_h2-a10 H 0.0488125 FAIL
+WARN N4_n10_h2-bb9 H 0.0488125 FAIL
+WARN N4_n08_h3-a5 H 0.0497516 FAIL
+WARN N4_n09_h1-h6 H 0.0542427 FAIL
+WARN N4_n09_h4-a7 H 0.0553531 FAIL
+WARN N3_n08_h2-a7 H 0.0583849 FAIL
+WARN N4_n08_h1-a5 H 0.0584239 FAIL
+WARN N4_n06_h1-a4 H 0.0586509 FAIL
+WARN N4_n08_h2-h5 H 0.0586665 FAIL
+WARN N4_n08_h3-bb4 H 0.0595014 FAIL
+WARN N4_n10_h1-a9 H 0.0596995 FAIL
+WARN N3_n10_h3-a10 H 0.0617178 FAIL
+WARN N3_n10_h3-bb9 H 0.0617178 FAIL
+WARN N4_n08_h1-bb4 H 0.0617994 FAIL
+WARN N3_n08_h1-h5 H 0.0618312 FAIL
+WARN N3_n08_h4-a6 H 0.0658219 FAIL
+WARN N4_n06_h2-a4 H 0.0666142 FAIL
+WARN N3_n10_h3-bb7 H 0.0693621 FAIL
+WARN N3_n10_h1-bb7 H 0.0694016 FAIL
+WARN N4_n08_h4-a8 H 0.0727756 FAIL
+WARN N4_n08_h4-bb7 H 0.0727756 FAIL
+WARN N4_n07_h1-a5 H 0.0761162 FAIL
+WARN N3_n08_h1-h6 H 0.0780375 FAIL
+WARN N4_n08_h4-bb5 H 0.0780739 FAIL
+WARN N3_n10_h2-a10 H 0.0782916 FAIL
+WARN N3_n10_h2-bb9 H 0.0782916 FAIL
+WARN N4_n06_h3-a6 H 0.0815932 FAIL
+WARN N4_n06_h3-bb5 H 0.0815932 FAIL
+WARN N4_n10_h4-a8 H 0.0836429 FAIL
+WARN N4_n10_h3-a9 H 0.0870989 FAIL
+WARN N4_n10_h2-bb7 H 0.0893917 FAIL
+WARN N3_n10_h1-a9 H 0.0936312 FAIL
+WARN N4_n07_h2-a5 H 0.0950605 FAIL
+WARN N4_n09_h2-a8 H 0.0952459 FAIL
+WARN N4_n09_h3-a6 H 0.100857 FAIL
+WARN N3_n06_h1-a4 H 0.104018 FAIL
+WARN N3_n09_h2-bb6 H 0.10538 FAIL
+WARN N4_n10_h1-h7 H 0.108418 FAIL
+WARN N3_n09_h3-a8 H 0.114232 FAIL
+WARN N3_n08_h1-bb4 H 0.116212 FAIL
+WARN N4_n07_h3-a7 H 0.122615 FAIL
+WARN N4_n07_h3-bb6 H 0.122615 FAIL
+WARN N4_n09_h1-h7 H 0.123691 FAIL
+WARN N3_n08_h1-a5 H 0.124123 FAIL
+WARN N4_n09_h5-a7 H 0.129194 FAIL
+WARN N3_n09_h4-a7 H 0.12933 FAIL
+WARN N4_n06_h2-bb3 H 0.129386 FAIL
+WARN N4_n06_h1-bb3 H 0.12956 FAIL
+WARN N4_n09_h3-bb5 H 0.132885 FAIL
+WARN N3_n07_h1-a5 H 0.141815 FAIL
+WARN N3_n06_h2-a4 H 0.144313 FAIL
+WARN N3_n09_h1-h6 H 0.144365 FAIL
+WARN N3_n08_h4-a8 H 0.145594 FAIL
+WARN N3_n08_h4-bb7 H 0.145594 FAIL
+WARN N3_n09_h2-a8 H 0.15074 FAIL
+WARN N4_n09_h2-h6 H 0.154115 FAIL
+WARN N4_n09_h4-bb6 H 0.157991 FAIL
+WARN N3_n08_h3-a5 H 0.158292 FAIL
+WARN N4_n09_h1-a6 H 0.162533 FAIL
+WARN N4_n10_h3-a7 H 0.163848 FAIL
+WARN N4_n08_h2-a5 H 0.173432 FAIL
+WARN N3_n08_h3-bb4 H 0.175971 FAIL
+WARN N4_n09_h1-bb5 H 0.177628 FAIL
+WARN N3_n08_h2-h5 H 0.178019 FAIL
+WARN N4_n10_h6-a8 H 0.182795 FAIL
+WARN N3_n10_h4-a8 H 0.184623 FAIL
+WARN N4_n10_h5-a8 H 0.1878 FAIL
+WARN N4_n07_h1-bb4 H 0.188739 FAIL
+WARN N4_n08_h2-bb4 H 0.19154 FAIL
+WARN N3_n10_h2-bb7 H 0.194586 FAIL
+WARN N3_n09_h1-h7 H 0.200107 FAIL
+WARN N3_n06_h3-a6 H 0.200159 FAIL
+WARN N3_n06_h3-bb5 H 0.200159 FAIL
+WARN N3_n08_h4-bb5 H 0.201701 FAIL
+WARN N3_n07_h2-a5 H 0.201787 FAIL
+WARN N4_n10_h2-a9 H 0.203074 FAIL
+WARN N4_n07_h2-bb4 H 0.205442 FAIL
+WARN N4_n08_h1-bb3 H 0.210321 FAIL
+WARN N4_n09_h4-a9 H 0.212129 FAIL
+WARN N4_n09_h4-bb8 H 0.212129 FAIL
+WARN N3_n10_h3-a9 H 0.213215 FAIL
+WARN N4_n10_h3-bb6 H 0.217322 FAIL
+WARN N3_n09_h5-a7 H 0.236324 FAIL
+WARN N4_n10_h4-bb7 H 0.2437 FAIL
+WARN N3_n06_h1-bb3 H 0.25081 FAIL
+WARN N4_n08_h5-a8 H 0.25442 FAIL
+WARN N4_n08_h5-bb7 H 0.25442 FAIL
+WARN N3_n10_h1-h7 H 0.26058 FAIL
+WARN N4_n10_h1-h8 H 0.262532 FAIL
+WARN N3_n09_h3-a6 H 0.272153 FAIL
+WARN N4_n09_h3-bb4 H 0.274029 FAIL
+WARN N4_n10_h2-h7 H 0.274691 FAIL
+WARN N4_n09_h5-bb6 H 0.280421 FAIL
+WARN N3_n06_h2-bb3 H 0.285063 FAIL
+WARN N3_n09_h1-bb5 H 0.287488 FAIL
+WARN N3_n07_h3-a7 H 0.288224 FAIL
+WARN N3_n07_h3-bb6 H 0.288224 FAIL
+WARN N3_n09_h1-a6 H 0.292522 FAIL
+WARN N4_n08_h4-a7 H 0.295518 FAIL
+WARN N4_n10_h1-a7 H 0.304555 FAIL
+WARN N3_n10_h6-a8 H 0.30741 FAIL
+WARN N3_n10_h2-a9 H 0.316431 FAIL
+WARN N3_n10_h5-a8 H 0.325674 FAIL
+WARN N4_n10_h6-bb7 H 0.331896 FAIL
+WARN N3_n09_h3-bb5 H 0.333861 FAIL
+WARN N4_n06_h1-h3 H 0.334917 FAIL
+WARN N4_n08_h1-a4 H 0.339665 FAIL
+WARN N4_n10_h1-bb6 H 0.34917 FAIL
+WARN N3_n07_h1-bb4 H 0.35137 FAIL
+WARN N3_n09_h2-h6 H 0.354081 FAIL
+WARN N3_n09_h4-bb6 H 0.360087 FAIL
+WARN N3_n08_h2-a5 H 0.360501 FAIL
+WARN N3_n08_h2-bb4 H 0.363449 FAIL
+WARN N3_n09_h4-a9 H 0.366409 FAIL
+WARN N3_n09_h4-bb8 H 0.366409 FAIL
+WARN N4_n10_h3-bb4 H 0.366695 FAIL
+WARN N4_n08_h1-h4 H 0.378297 FAIL
+WARN N3_n08_h1-bb3 H 0.389133 FAIL
+WARN N4_n09_h3-h5 H 0.394979 FAIL
+WARN N3_n10_h3-a7 H 0.39829 FAIL
+WARN N4_n09_h2-a6 H 0.410496 FAIL
+WARN N4_n10_h5-bb7 H 0.412445 FAIL
+WARN N4_n10_h3-bb5 H 0.415071 FAIL
+WARN N3_n10_h1-h8 H 0.418178 FAIL
+WARN N4_n10_h4-a10 H 0.428753 FAIL
+WARN N4_n10_h4-bb9 H 0.428753 FAIL
+WARN N3_n07_h2-bb4 H 0.434397 FAIL
+WARN N4_n07_h1-h4 H 0.442004 FAIL
+WARN N4_n08_h2-bb3 H 0.465395 FAIL
+WARN N4_n07_h2-h4 H 0.466897 FAIL
+WARN N3_n09_h5-bb6 H 0.471301 FAIL
+WARN N4_n09_h3-a5 H 0.477707 FAIL
+WARN N3_n08_h5-a8 H 0.480937 FAIL
+WARN N3_n08_h5-bb7 H 0.480937 FAIL
+WARN N3_n10_h3-bb6 H 0.481808 FAIL
+WARN N4_n09_h2-bb5 H 0.495061 FAIL
+WARN N3_n09_h3-bb4 H 0.502191 FAIL
+WARN N3_n10_h4-bb7 H 0.502467 FAIL
+WARN N3_n10_h6-bb7 H 0.526037 FAIL
+WARN N4_n10_h3-h6 H 0.529803 FAIL
+WARN N3_n10_h2-h7 H 0.530872 FAIL
+WARN N3_n10_h1-a7 H 0.531719 FAIL
+WARN N4_n06_h3-a5 H 0.536974 FAIL
+WARN N3_n10_h1-bb6 H 0.559841 FAIL
+WARN N4_n08_h1-bb2 H 0.566066 FAIL
+WARN N3_n06_h1-h3 H 0.570759 FAIL
+WARN N3_n08_h4-a7 H 0.576686 FAIL
+WARN N4_n08_h6-a8 H 0.583001 FAIL
+WARN N4_n08_h6-bb7 H 0.583001 FAIL
+WARN N3_n10_h3-bb4 H 0.594369 FAIL
+WARN N4_n06_h4-a6 H 0.598607 FAIL
+WARN N4_n06_h4-bb5 H 0.598607 FAIL
+WARN N4_n09_h1-bb4 H 0.612085 FAIL
+WARN N4_n10_h3-a6 H 0.626713 FAIL
+WARN N3_n10_h5-bb7 H 0.635845 FAIL
+WARN N3_n08_h1-a4 H 0.63789 FAIL
+WARN N4_n07_h3-a6 H 0.645922 FAIL
+WARN N4_n10_h2-a7 H 0.645935 FAIL
+WARN N3_n10_h3-bb5 H 0.673324 FAIL
+WARN N3_n07_h1-h4 H 0.682704 FAIL
+WARN N3_n09_h3-h5 H 0.705029 FAIL
+WARN N4_n10_h3-h5 H 0.70758 FAIL
+WARN N4_n09_h5-a9 H 0.717211 FAIL
+WARN N4_n09_h5-bb8 H 0.717211 FAIL
+WARN N4_n06_h1-bb2 H 0.720774 FAIL
+WARN N3_n09_h2-a6 H 0.727462 FAIL
+WARN N4_n09_h4-bb5 H 0.728181 FAIL
+WARN N3_n09_h3-a5 H 0.734143 FAIL
+WARN N3_n10_h4-a10 H 0.735588 FAIL
+WARN N3_n10_h4-bb9 H 0.735588 FAIL
+WARN N4_n10_h3-a5 H 0.740312 FAIL
+WARN N3_n08_h1-h4 H 0.748689 FAIL
+WARN N3_n07_h2-h4 H 0.752531 FAIL
+WARN N4_n06_h1-a3 H 0.768368 FAIL
+WARN N3_n06_h3-a5 H 0.768471 FAIL
+WARN N4_n07_h2-bb3 H 0.80165 FAIL
+WARN N4_n09_h4-a6 H 0.808882 FAIL
+WARN N3_n10_h3-h6 H 0.80973 FAIL
+WARN N3_n08_h2-bb3 H 0.820467 FAIL
+WARN N3_n09_h2-bb5 H 0.82154 FAIL
+WARN N3_n10_h3-a6 H 0.836883 FAIL
+WARN N4_n09_h4-a8 H 0.838772 FAIL
+WARN N3_n07_h3-a6 H 0.843092 FAIL
+WARN N4_n10_h2-bb6 H 0.848744 FAIL
+WARN N3_n10_h3-h5 H 0.876939 FAIL
+WARN N3_n10_h3-a5 H 0.894731 FAIL
+WARN N4_n07_h2-a4 H 0.918491 FAIL
+WARN N4_n07_h1-a4 H 0.927067 FAIL
+WARN N3_n09_h1-bb4 H 0.960925 FAIL
+WARN N4_n10_h4-a7 H 0.968031 FAIL
+WARN N3_n08_h1-bb2 H 0.981879 FAIL
+WARN N3_n08_h6-a8 H 0.989909 FAIL
+WARN N3_n08_h6-bb7 H 0.989909 FAIL
+WARN N4_n09_h1-a5 H 1.00865 PASS
+WARN N4_n09_h1-h5 H 1.02502 PASS
+WARN N4_n08_h5-a7 H 1.05976 PASS
+WARN N4_n08_h2-a4 H 1.08229 PASS
+WARN N4_n08_h2-h4 H 1.08771 PASS
+WARN N3_n10_h2-a7 H 1.1018 PASS
+WARN N4_n08_h1-a3 H 1.10309 PASS
+WARN N4_n09_h2-bb3 H 1.11478 PASS
+WARN N3_n06_h4-a6 H 1.12419 FAIL
+WARN N3_n06_h4-bb5 H 1.12419 FAIL
+WARN N4_n10_h5-a7 H 1.16657 PASS
+WARN N3_n09_h5-a9 H 1.1715 PASS
+WARN N3_n09_h5-bb8 H 1.1715 PASS
+WARN N4_n10_h1-bb5 H 1.21516 PASS
+WARN N3_n06_h1-bb2 H 1.22984 FAIL
+WARN N3_n06_h1-a3 H 1.26664 FAIL
+WARN N4_n10_h2-bb3 H 1.27999 PASS
+WARN N4_n08_h1-h3 H 1.32263 PASS
+WARN N3_n09_h4-bb5 H 1.35795 PASS
+WARN N4_n10_h5-a10 H 1.3785 PASS
+WARN N4_n10_h5-bb9 H 1.3785 PASS
+WARN N3_n07_h2-bb3 H 1.39844 FAIL
+WARN N3_n10_h2-bb6 H 1.40648 PASS
+WARN N3_n09_h4-a8 H 1.41474 PASS
+WARN N4_n09_h7-a9 H 1.43925 PASS
+WARN N4_n09_h7-bb8 H 1.43925 PASS
+WARN N3_n09_h4-a6 H 1.44032 PASS
+WARN N4_n10_h5-bb6 H 1.4485 PASS
+WARN N3_n07_h1-a4 H 1.49741 FAIL
+WARN N4_n10_h4-bb6 H 1.50153 PASS
+WARN N4_n10_h4-a9 H 1.59748 PASS
+WARN N4_n07_h1-bb3 H 1.60421 FAIL
+WARN N3_n09_h1-a5 H 1.60683 PASS
+WARN N3_n07_h2-a4 H 1.60946 FAIL
+WARN N4_n07_h5-a7 H 1.62485 FAIL
+WARN N4_n07_h5-bb6 H 1.62485 FAIL
+WARN N3_n10_h4-a7 H 1.64817 PASS
+WARN N4_n09_h1-bb3 H 1.6574 PASS
+WARN N4_n10_h8-a10 H 1.66743 PASS
+WARN N4_n10_h8-bb9 H 1.66743 PASS
+WARN N4_n09_h6-a9 H 1.68683 PASS
+WARN N4_n09_h6-bb8 H 1.68683 PASS
+WARN N4_n09_h2-bb4 H 1.71306 PASS
+WARN N3_n09_h2-bb3 H 1.75574 PASS
+WARN N3_n09_h1-h5 H 1.76613 PASS
+WARN N4_n07_h4-a7 H 1.78812 FAIL
+WARN N4_n07_h4-bb6 H 1.78812 FAIL
+WARN N3_n10_h5-a7 H 1.85557 PASS
+WARN N3_n10_h1-bb5 H 1.86113 PASS
+WARN N4_n10_h1-h6 H 1.86684 PASS
+WARN N3_n08_h5-a7 H 1.94098 PASS
+WROTE 297ef83b mr_engine/plants/P05.kv (534 rows); FAIL rows 372; gate lines 0; WARN rows 370
+PLANT DELTA: FIRED on its own failure G-DELTA (classes failing at G-POS 208, at G-DELTA 112, on the margin alone 164; FAIL rows 372, gate lines 0)

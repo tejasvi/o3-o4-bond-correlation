@@ -1,0 +1,124 @@
+kt_s8f1_v1_1 sha256 8933412ebe2c32774e60deb7056a65c5faec588defd548708c6667f69fb68856 ITEM=n4 LIM=300 (RLIMIT_CPU soft 300, hard 305)
+C-HASH PASS (15 engine files, 4 inputs)
+C-SW3REF N=4 e=a0 f=b1 (n = 12): in-job c2 1.885936e-03 c3 8.692255e-03 vs printed 1.885936e-03 8.692255e-03 -> PASS
+C-SW3REF N=4 e=a0 f=a1 (n = 12): in-job c2 6.036637e-02 c3 2.968117e-02 vs printed 6.036637e-02 2.968117e-02 -> PASS
+GRAPH W3 N=4: 3 columns (free, vac), V 9, edges 13, F 15 (C-GRAPH PASS); deg E_j [0, 2, 4, 6]; Q-degree 4 (C-QCAP PASS); K 3, D 8 (0.0 s)
+ENGINE W3: amom2b F=15 D=8, a_k for 7 factor sets (1.4 s)
+PAIR same c1 m1 N=4 [W3]: Cov*J^2 a_k [0.060366367794772335, 0.029681173154859825, 0.02152006931066773, 0.014641835119942569] (K 3)
+  C-HARM a_0 6.036636779477e-02 vs (N-1)T^2/2 6.036636779477e-02 (T 0.2006096837, half) rel 2.1e-15 -> PASS; C-C3 a_1 2.968117315e-02 vs spin-wave c3 2.968117316e-02 (strip n = 16, c2 6.036636779e-02, rel 9.4e-13, tol 1e-09) rel 1.1e-11 (tol 1e-07) -> PASS
+PAIR flip c1 m1 N=4 [W3]: Cov*J^2 a_k [0.0018859358981782037, 0.008692254611410155, 0.010601179740679353, 0.01283834994065805] (K 3)
+  C-HARM a_0 1.885935898178e-03 vs (N-1)T^2/2 1.885935898178e-03 (T 0.0354582938, half) rel 3.1e-14 -> PASS; C-C3 a_1 8.692254611e-03 vs spin-wave c3 8.692254612e-03 (strip n = 16, c2 1.885935898e-03, rel 5.3e-12, tol 1e-09) rel 2.0e-11 (tol 1e-07) -> PASS
+GRAPH W4 N=4: 4 columns (free, vac), V 12, edges 18, F 19 (C-GRAPH PASS); deg E_j [0, 2, 4, 6]; Q-degree 4 (C-QCAP PASS); K 3, D 8 (0.1 s)
+ENGINE W4: amom2b F=19 D=8, a_k for 16 factor sets (12.6 s)
+PAIR same c2 m1 N=4 [W4]: Cov*J^2 a_k [0.0379731040972332, 0.028059389557285985, 0.02823897234633932, 0.033065074709198505] (K 3)
+  C-HARM a_0 3.797310409723e-02 vs (N-1)T^2/2 3.797310409723e-02 (T 0.1591081479, half) rel 5.5e-15 -> PASS; C-C3 a_1 2.805938956e-02 vs spin-wave c3 2.805938956e-02 (strip n = 17, c2 3.797310410e-02, rel 8.7e-13, tol 1e-09) rel 6.7e-12 (tol 1e-07) -> PASS
+PAIR flip c2 m1 N=4 [W4]: Cov*J^2 a_k [0.000676180148931782, 0.006674099203349576, 0.009348870796070996, 0.013084096474084511] (K 3)
+  C-HARM a_0 6.761801489318e-04 vs (N-1)T^2/2 6.761801489317e-04 (T 0.0212317396, half) rel 9.9e-14 -> PASS; C-C3 a_1 6.674099203e-03 vs spin-wave c3 6.674099203e-03 (strip n = 17, c2 6.761801489e-04, rel 6.5e-12, tol 1e-09) rel 7.0e-12 (tol 1e-07) -> PASS
+PAIR same c1 m2 N=4 [W4]: Cov*J^2 a_k [0.00582558440452563, 0.0056620738069197984, 0.006230414071999174, 0.007182642849655689] (K 3)
+  C-HARM a_0 5.825584404526e-03 vs (N-1)T^2/2 5.825584404526e-03 (T 0.0623195229, half) rel 1.5e-14 -> PASS; C-C3 a_1 5.662073807e-03 vs spin-wave c3 5.662073807e-03 (strip n = 17, c2 5.825584405e-03, rel 1.1e-12, tol 1e-09) rel 1.9e-11 (tol 1e-07) -> PASS
+PAIR flip c1 m2 N=4 [W4]: Cov*J^2 a_k [0.0011634689109878416, 0.001894211099430998, 0.002775229310854957, 0.0038398973305683107] (K 3)
+  C-HARM a_0 1.163468910988e-03 vs (N-1)T^2/2 1.163468910988e-03 (T 0.0278504208, half) rel 3.6e-14 -> PASS; C-C3 a_1 1.894211099e-03 vs spin-wave c3 1.894211099e-03 (strip n = 17, c2 1.163468911e-03, rel 2.4e-12, tol 1e-09) rel 7.0e-11 (tol 1e-07) -> PASS
+PAIR same c1 m1 W4 N=4 [W4]: Cov*J^2 a_k [0.060366367794772446, 0.02968117315485927, 0.021518681282758897, 0.014764695969155653] (K 3)
+  C-HARM a_0 6.036636779477e-02 vs (N-1)T^2/2 6.036636779477e-02 (T 0.2006096837, half) rel 2.3e-16 -> PASS; C-C3 a_1 2.968117315e-02 vs spin-wave c3 2.968117316e-02 (strip n = 16, c2 6.036636779e-02, rel 9.4e-13, tol 1e-09) rel 1.1e-11 (tol 1e-07) -> PASS
+PLANT-FREE: same c2 m1 a_0 with the free column made a vacuum column 3.5448117235e-02 vs 3.7973104097e-02 (rel 7.12e-02) -> FIRES
+PLANT-BOND: same (2, 3) with Y on the M-B bond: a_0 6.7618014893e-04 vs the same-type closed form 3.7973104097e-02 (the flip form gives 6.7618014893e-04) -> FIRES
+GRAPH B4 N=4: 4 columns (vac, vac), V 12, edges 19, F 21 (C-GRAPH PASS); deg E_j [0, 2, 4, 6]; Q-degree 6 (C-QCAP PASS); K 2, D 6 (0.1 s)
+ENGINE B4: amom2b F=21 D=6, a_k for 7 factor sets (3.5 s)
+PAIR bulk same m1 N=4 [B4]: Cov*J^2 a_k [0.03544811723479102, 0.02651822747539051, 0.026878619654591374] (K 2)
+  C-HARM a_0 3.544811723479e-02 vs (N-1)T^2/2 3.544811723479e-02 (T 0.1537272850, bulk) rel 2.7e-15 -> PASS; C-C3 a_1 2.651822748e-02 vs spin-wave c3 2.651822748e-02 (strip n = 30, c2 3.544811723e-02, rel 1.7e-12, tol 1e-09) rel 6.7e-12 (tol 1e-07) -> PASS
+PAIR bulk flip m1 N=4 [B4]: Cov*J^2 a_k [0.00043826152395642914, 0.006452645020042891, 0.009125718292680884] (K 2)
+  C-HARM a_0 4.382615239564e-04 vs (N-1)T^2/2 4.382615239564e-04 (T 0.0170931082, bulk) rel 1.1e-13 -> PASS; C-C3 a_1 6.452645020e-03 vs spin-wave c3 6.452645020e-03 (strip n = 30, c2 4.382615240e-04, rel 1.5e-11, tol 1e-09) rel 2.8e-11 (tol 1e-07) -> PASS
+GRAPH W5a N=4: 5 columns (free, vac), V 15, edges 23, F 22 (C-GRAPH PASS); deg E_j [0, 2, 4, 6]; Q-degree 4 (C-QCAP PASS); K 2, D 6 (0.1 s)
+ENGINE W5a: amom2b F=22 D=6, a_k for 13 factor sets (4.8 s)
+PAIR same c2 m2 N=4 [W5a]: Cov*J^2 a_k [0.0035765672270220428, 0.004531610865057212, 0.005914661471853544] (K 2)
+  C-HARM a_0 3.576567227022e-03 vs (N-1)T^2/2 3.576567227022e-03 (T 0.0488300947, half) rel 2.7e-14 -> PASS; C-C3 a_1 4.531610865e-03 vs spin-wave c3 4.531610865e-03 (strip n = 18, c2 3.576567227e-03, rel 1.1e-12, tol 1e-09) rel 2.4e-11 (tol 1e-07) -> PASS
+PAIR flip c2 m2 N=4 [W5a]: Cov*J^2 a_k [0.0006032210775248625, 0.0015136342078031217, 0.0025566617122337876] (K 2)
+  C-HARM a_0 6.032210775249e-04 vs (N-1)T^2/2 6.032210775248e-04 (T 0.0200536128, half) rel 1.8e-13 -> PASS; C-C3 a_1 1.513634208e-03 vs spin-wave c3 1.513634208e-03 (strip n = 18, c2 6.032210775e-04, rel 2.6e-12, tol 1e-09) rel 9.7e-11 (tol 1e-07) -> PASS
+PAIR same c1 m3 N=4 [W5a]: Cov*J^2 a_k [0.0006500828815727555, 0.0009003385366819217, 0.0011955729976831642] (K 2)
+  C-HARM a_0 6.500828815728e-04 vs (N-1)T^2/2 6.500828815725e-04 (T 0.0208179871, half) rel 3.4e-13 -> PASS; C-C3 a_1 9.003385367e-04 vs spin-wave c3 9.003385368e-04 (strip n = 18, c2 6.500828816e-04, rel 1.2e-12, tol 1e-09) rel 1.6e-10 (tol 1e-07) -> PASS
+PAIR flip c1 m3 N=4 [W5a]: Cov*J^2 a_k [0.0002784146128854692, 0.00043582081964882446, 0.0006491385835738078] (K 2)
+  C-HARM a_0 2.784146128855e-04 vs (N-1)T^2/2 2.784146128854e-04 (T 0.0136238666, half) rel 3.0e-13 -> PASS; C-C3 a_1 4.358208196e-04 vs spin-wave c3 4.358208196e-04 (strip n = 18, c2 2.784146129e-04, rel 1.9e-12, tol 1e-09) rel 1.9e-10 (tol 1e-07) -> PASS
+GRAPH W5b N=4: 5 columns (free, vac), V 15, edges 23, F 21 (C-GRAPH PASS); deg E_j [0, 2, 4, 6]; Q-degree 4 (C-QCAP PASS); K 2, D 6 (0.1 s)
+ENGINE W5b: amom2b F=21 D=6, a_k for 7 factor sets (3.4 s)
+PAIR flip c3 m1 N=4 [W5b]: Cov*J^2 a_k [0.00047315249209489707, 0.006487826072029357, 0.009159511524426234] (K 2)
+  C-HARM a_0 4.731524920949e-04 vs (N-1)T^2/2 4.731524920947e-04 (T 0.0177604897, half) rel 5.1e-13 -> PASS; C-C3 a_1 6.487826072e-03 vs spin-wave c3 6.487826072e-03 (strip n = 18, c2 4.731524921e-04, rel 7.3e-12, tol 1e-09) rel 6.8e-12 (tol 1e-07) -> PASS
+PAIR same c3 m1 N=4 [W5b]: Cov*J^2 a_k [0.03578163801737366, 0.026830975239648974, 0.027216759857108197] (K 2)
+  C-HARM a_0 3.578163801737e-02 vs (N-1)T^2/2 3.578163801737e-02 (T 0.1544487790, half) rel 3.9e-15 -> PASS; C-C3 a_1 2.683097524e-02 vs spin-wave c3 2.683097524e-02 (strip n = 18, c2 3.578163802e-02, rel 8.5e-13, tol 1e-09) rel 3.3e-12 (tol 1e-07) -> PASS
+GRAPH S2 N=4: 2 columns (free, free), V 6, edges 7, F 9 (C-GRAPH PASS); deg E_j [0, 2, 4, 6]; Q-degree 2 (C-QCAP PASS); K 3, D 8 (0.0 s)
+ENGINE S2: amom2b F=9 D=8, a_k for 7 factor sets (0.0 s)
+PAIR n2 same 1-2 N=4 [S2]: Cov*J^2 a_k [0.10666666666666691, 0.025777777777777865, -0.00016790123457459394, -0.03302438189299656] (K 3)
+  C-HARM a_0 1.066666666667e-01 vs (N-1)T^2/2 1.066666666667e-01 (T 0.2666666667, strip) rel 2.2e-15 -> PASS; C-C3 a_1 2.577777778e-02 vs spin-wave c3 2.577777778e-02 (strip n = 2, c2 1.066666667e-01, rel 1.3e-16, tol 1e-09) rel 6.2e-14 (tol 1e-09) -> PASS
+PAIR n2 flip 1-2 N=4 [S2]: Cov*J^2 a_k [0.006666666666666599, 0.006888888888888785, 0.007691358024695075, 0.008032186008209097] (K 3)
+  C-HARM a_0 6.666666666667e-03 vs (N-1)T^2/2 6.666666666667e-03 (T 0.0666666667, strip) rel 9.2e-15 -> PASS; C-C3 a_1 6.888888889e-03 vs spin-wave c3 6.888888889e-03 (strip n = 2, c2 6.666666667e-03, rel 9.2e-15, tol 1e-09) rel 1.3e-13 (tol 1e-09) -> PASS
+GRAPH S3 N=4: 3 columns (free, free), V 9, edges 12, F 14 (C-GRAPH PASS); deg E_j [0, 2, 4, 6]; Q-degree 2 (C-QCAP PASS); K 3, D 8 (0.0 s)
+ENGINE S3: amom2b F=14 D=8, a_k for 19 factor sets (0.9 s)
+PAIR n3 same 1-2 N=4 [S3]: Cov*J^2 a_k [0.06510416666666696, 0.031222873263887507, 0.02206590440535435, 0.014264327508272636] (K 3)
+  C-HARM a_0 6.510416666667e-02 vs (N-1)T^2/2 6.510416666667e-02 (T 0.2083333333, strip) rel 5.3e-15 -> PASS; C-C3 a_1 3.122287326e-02 vs spin-wave c3 3.122287326e-02 (strip n = 3, c2 6.510416667e-02, rel 2.1e-16, tol 1e-09) rel 1.1e-13 (tol 1e-09) -> PASS
+PAIR n3 flip 1-2 N=4 [S3]: Cov*J^2 a_k [0.0026041666666665186, 0.008436414930554914, 0.010191175672735933, 0.012518467726281693] (K 3)
+  C-HARM a_0 2.604166666667e-03 vs (N-1)T^2/2 2.604166666667e-03 (T 0.0416666667, strip) rel 5.4e-14 -> PASS; C-C3 a_1 8.436414931e-03 vs spin-wave c3 8.436414931e-03 (strip n = 3, c2 2.604166667e-03, rel 1.1e-14, tol 1e-09) rel 9.5e-13 (tol 1e-09) -> PASS
+PAIR n3 same 2-3 N=4 [S3]: Cov*J^2 a_k [0.06510416666666674, 0.031222873263886453, 0.022065904405371713, 0.014264327508270707] (K 3)
+  C-HARM a_0 6.510416666667e-02 vs (N-1)T^2/2 6.510416666667e-02 (T 0.2083333333, strip) rel 1.9e-15 -> PASS; C-C3 a_1 3.122287326e-02 vs spin-wave c3 3.122287326e-02 (strip n = 3, c2 6.510416667e-02, rel 2.1e-16, tol 1e-09) rel 2.2e-13 (tol 1e-09) -> PASS
+PAIR n3 flip 2-3 N=4 [S3]: Cov*J^2 a_k [0.0026041666666668517, 0.008436414930553832, 0.01019117567273873, 0.01251846772642724] (K 3)
+  C-HARM a_0 2.604166666667e-03 vs (N-1)T^2/2 2.604166666667e-03 (T 0.0416666667, strip) rel 7.4e-14 -> PASS; C-C3 a_1 8.436414931e-03 vs spin-wave c3 8.436414931e-03 (strip n = 3, c2 2.604166667e-03, rel 1.1e-14, tol 1e-09) rel 8.5e-13 (tol 1e-09) -> PASS
+PAIR n3 same 1-3 N=4 [S3]: Cov*J^2 a_k [0.010416666666666963, 0.006646050347222293, 0.005472819010449437, 0.004122636936416568] (K 3)
+  C-HARM a_0 1.041666666667e-02 vs (N-1)T^2/2 1.041666666667e-02 (T 0.0833333333, strip) rel 2.9e-14 -> PASS; C-C3 a_1 6.646050347e-03 vs spin-wave c3 6.646050347e-03 (strip n = 3, c2 1.041666667e-02, rel 8.0e-15, tol 1e-09) rel 2.2e-12 (tol 1e-09) -> PASS
+PAIR n3 flip 1-3 N=4 [S3]: Cov*J^2 a_k [0.0026041666666669627, 0.0018446180555578423, 0.0022210015190635285, 0.0026655020537647844] (K 3)
+  C-HARM a_0 2.604166666667e-03 vs (N-1)T^2/2 2.604166666667e-03 (T 0.0416666667, strip) rel 1.2e-13 -> PASS; C-C3 a_1 1.844618056e-03 vs spin-wave c3 1.844618056e-03 (strip n = 3, c2 2.604166667e-03, rel 3.0e-14, tol 1e-09) rel 5.5e-12 (tol 1e-09) -> PASS
+GRAPH S4 N=4: 4 columns (free, free), V 12, edges 17, F 19 (C-GRAPH PASS); deg E_j [0, 2, 4, 6]; Q-degree 2 (C-QCAP PASS); K 3, D 8 (0.1 s)
+ENGINE S4: amom2b F=19 D=8, a_k for 31 factor sets (12.8 s)
+PAIR n4 same 1-2 N=4 [S4]: Cov*J^2 a_k [0.06099790388745274, 0.030079025987841013, 0.021804471369675324, 0.014994997582289574] (K 3)
+  C-HARM a_0 6.099790388745e-02 vs (N-1)T^2/2 6.099790388745e-02 (T 0.2016563147, strip) rel 2.5e-15 -> PASS; C-C3 a_1 3.007902599e-02 vs spin-wave c3 3.007902599e-02 (strip n = 4, c2 6.099790389e-02, rel 6.8e-16, tol 1e-09) rel 1.6e-13 (tol 1e-09) -> PASS
+PAIR n4 flip 1-2 N=4 [S4]: Cov*J^2 a_k [0.001991692707328796, 0.008673556552903167, 0.01052308731103703, 0.01277276860223215] (K 3)
+  C-HARM a_0 1.991692707329e-03 vs (N-1)T^2/2 1.991692707329e-03 (T 0.0364389234, strip) rel 5.9e-14 -> PASS; C-C3 a_1 8.673556553e-03 vs spin-wave c3 8.673556553e-03 (strip n = 4, c2 1.991692707e-03, rel 2.8e-15, tol 1e-09) rel 7.6e-13 (tol 1e-09) -> PASS
+PAIR n4 same 2-3 N=4 [S4]: Cov*J^2 a_k [0.04074019778043525, 0.0296816671049705, 0.029625456574695508, 0.03444692006992042] (K 3)
+  C-HARM a_0 4.074019778044e-02 vs (N-1)T^2/2 4.074019778044e-02 (T 0.1648033126, strip) rel 4.4e-15 -> PASS; C-C3 a_1 2.968166710e-02 vs spin-wave c3 2.968166710e-02 (strip n = 4, c2 4.074019778e-02, rel 1.7e-15, tol 1e-09) rel 1.7e-14 (tol 1e-09) -> PASS
+PAIR n4 flip 2-3 N=4 [S4]: Cov*J^2 a_k [0.0009886449854042967, 0.006851025112628556, 0.009480648479095216, 0.013315837888769166] (K 3)
+  C-HARM a_0 9.886449854043e-04 vs (N-1)T^2/2 9.886449854044e-04 (T 0.0256728778, strip) rel 7.4e-14 -> PASS; C-C3 a_1 6.851025113e-03 vs spin-wave c3 6.851025113e-03 (strip n = 4, c2 9.886449854e-04, rel 3.8e-14, tol 1e-09) rel 3.2e-13 (tol 1e-09) -> PASS
+PAIR n4 same 1-3 N=4 [S4]: Cov*J^2 a_k [0.006339518794285071, 0.005973134777113809, 0.006463857114902299, 0.0073943831622760026] (K 3)
+  C-HARM a_0 6.339518794285e-03 vs (N-1)T^2/2 6.339518794285e-03 (T 0.0650103520, strip) rel 2.0e-14 -> PASS; C-C3 a_1 5.973134777e-03 vs spin-wave c3 5.973134777e-03 (strip n = 4, c2 6.339518794e-03, rel 2.6e-15, tol 1e-09) rel 9.5e-13 (tol 1e-09) -> PASS
+PAIR n4 flip 1-3 N=4 [S4]: Cov*J^2 a_k [0.0013705746949062014, 0.0019426523927367767, 0.0027479678997613666, 0.0037876719290315594] (K 3)
+  C-HARM a_0 1.370574694906e-03 vs (N-1)T^2/2 1.370574694906e-03 (T 0.0302277433, strip) rel 8.4e-14 -> PASS; C-C3 a_1 1.942652393e-03 vs spin-wave c3 1.942652393e-03 (strip n = 4, c2 1.370574695e-03, rel 3.3e-15, tol 1e-09) rel 2.9e-12 (tol 1e-09) -> PASS
+PAIR n4 same 1-4 N=4 [S4]: Cov*J^2 a_k [0.001189254529789352, 0.0011790620935217362, 0.001252063154119673, 0.001386567775545064] (K 3)
+  C-HARM a_0 1.189254529789e-03 vs (N-1)T^2/2 1.189254529789e-03 (T 0.0281573499, strip) rel 1.0e-13 -> PASS; C-C3 a_1 1.179062094e-03 vs spin-wave c3 1.179062094e-03 (strip n = 4, c2 1.189254530e-03, rel 8.5e-14, tol 1e-09) rel 1.3e-13 (tol 1e-09) -> PASS
+PAIR n4 flip 1-4 N=4 [S4]: Cov*J^2 a_k [0.0005681365173670905, 0.0005281702785597531, 0.0006004493786119572, 0.0007516882549207515] (K 3)
+  C-HARM a_0 5.681365173671e-04 vs (N-1)T^2/2 5.681365173669e-04 (T 0.0194616977, strip) rel 3.9e-13 -> PASS; C-C3 a_1 5.281702786e-04 vs spin-wave c3 5.281702786e-04 (strip n = 4, c2 5.681365174e-04, rel 4.4e-15, tol 1e-09) rel 9.7e-12 (tol 1e-09) -> PASS
+PAIR n4 same 3-4 N=4 [S4]: Cov*J^2 a_k [0.060997903887452964, 0.030079025987838348, 0.021804471369679335, 0.014994997582843943] (K 3)
+  C-HARM a_0 6.099790388745e-02 vs (N-1)T^2/2 6.099790388745e-02 (T 0.2016563147, strip) rel 1.1e-15 -> PASS; C-C3 a_1 3.007902599e-02 vs spin-wave c3 3.007902599e-02 (strip n = 4, c2 6.099790389e-02, rel 1.1e-15, tol 1e-09) rel 1.6e-13 (tol 1e-09) -> PASS
+PAIR n4 flip 3-4 N=4 [S4]: Cov*J^2 a_k [0.001991692707328907, 0.008673556552903028, 0.010523087311065563, 0.012772768603236048] (K 3)
+  C-HARM a_0 1.991692707329e-03 vs (N-1)T^2/2 1.991692707329e-03 (T 0.0364389234, strip) rel 1.1e-13 -> PASS; C-C3 a_1 8.673556553e-03 vs spin-wave c3 8.673556553e-03 (strip n = 4, c2 1.991692707e-03, rel 2.8e-15, tol 1e-09) rel 4.2e-13 (tol 1e-09) -> PASS
+C-WIN same (1, 2): W3 vs W4 a_0 rel 1.8e-15, a_1 rel 1.9e-14 -> PASS; a_2 difference -1.388e-06, a_3 difference 1.229e-04
+C-SYM n4 flip 3-4 vs n4 flip 1-2: largest relative difference over a_k 7.9e-11 -> PASS
+C-SYM n4 same 3-4 vs n4 same 1-2: largest relative difference over a_k 3.7e-11 -> PASS
+READ same c1 m1   N=4: Cov*J^2 at J = 300 6.046554e-02, 600 6.041590e-02, 1200 6.039112e-02, inf 6.036637e-02; min over t in (0, 1/300] 6.036637e-02 (at t = 0.000e+00); ratio to bulk m=1 at J=300 1.7015; |c_K t^K|/Cov at 300 9.0e-09
+READ flip c1 m1   N=4: Cov*J^2 at J = 300 1.915028e-03, 600 1.900452e-03, 1200 1.893187e-03, inf 1.885936e-03; min over t in (0, 1/300] 1.885936e-03 (at t = 0.000e+00); ratio to bulk m=1 at J=300 4.1643; |c_K t^K|/Cov at 300 2.5e-07
+READ same c2 m1   N=4: Cov*J^2 at J = 300 3.806695e-02, 600 3.801995e-02, 1200 3.799651e-02, inf 3.797310e-02; min over t in (0, 1/300] 3.797310e-02 (at t = 0.000e+00); ratio to bulk m=1 at J=300 1.0712; |c_K t^K|/Cov at 300 3.2e-08
+READ flip c2 m1   N=4: Cov*J^2 at J = 300 6.985315e-04, 600 6.873297e-04, 1200 6.817484e-04, inf 6.761801e-04; min over t in (0, 1/300] 6.761801e-04 (at t = 0.000e+00); ratio to bulk m=1 at J=300 1.5190; |c_K t^K|/Cov at 300 6.9e-07
+READ same c1 m2   N=4: Cov*J^2 at J = 300 5.844527e-03, 600 5.835039e-03, 1200 5.830307e-03, inf 5.825584e-03; min over t in (0, 1/300] 5.825584e-03 (at t = 0.000e+00); ratio to bulk m=2 at t=0 1.7670; |c_K t^K|/Cov at 300 4.6e-08
+READ flip c1 m2   N=4: Cov*J^2 at J = 300 1.169814e-03, 600 1.166634e-03, 1200 1.165049e-03, inf 1.163469e-03; min over t in (0, 1/300] 1.163469e-03 (at t = 0.000e+00); ratio to bulk m=2 at t=0 2.2997; |c_K t^K|/Cov at 300 1.2e-07
+READ same c2 m2   N=4: Cov*J^2 at J = 300 3.591738e-03, 600 3.584136e-03, 1200 3.580348e-03, inf 3.576567e-03; min over t in (0, 1/300] 3.576567e-03 (at t = 0.000e+00); ratio to bulk m=2 at t=0 1.0848; |c_K t^K|/Cov at 300 1.8e-05
+READ flip c2 m2   N=4: Cov*J^2 at J = 300 6.082949e-04, 600 6.057509e-04, 1200 6.044842e-04, inf 6.032211e-04; min over t in (0, 1/300] 6.032211e-04 (at t = 0.000e+00); ratio to bulk m=2 at t=0 1.1923; |c_K t^K|/Cov at 300 4.7e-05
+READ same c1 m3   N=4: Cov*J^2 at J = 300 6.530973e-04, 600 6.515868e-04, 1200 6.508340e-04, inf 6.500829e-04; min over t in (0, 1/300] 6.500829e-04 (at t = 0.000e+00); ratio to bulk m=3 at t=0 1.8186; |c_K t^K|/Cov at 300 2.0e-05
+READ flip c1 m3   N=4: Cov*J^2 at J = 300 2.798746e-04, 600 2.791428e-04, 1200 2.787782e-04, inf 2.784146e-04; min over t in (0, 1/300] 2.784146e-04 (at t = 0.000e+00); ratio to bulk m=3 at t=0 2.0630; |c_K t^K|/Cov at 300 2.6e-05
+READ flip c3 m1   N=4: Cov*J^2 at J = 300 4.948804e-04, 600 4.839910e-04, 1200 4.785654e-04, inf 4.731525e-04; min over t in (0, 1/300] 4.731525e-04 (at t = 0.000e+00); ratio to bulk m=1 at J=300 1.0761; |c_K t^K|/Cov at 300 2.1e-04
+READ same c3 m1   N=4: Cov*J^2 at J = 300 3.587138e-02, 600 3.582643e-02, 1200 3.580402e-02, inf 3.578164e-02; min over t in (0, 1/300] 3.578164e-02 (at t = 0.000e+00); ratio to bulk m=1 at J=300 1.0094; |c_K t^K|/Cov at 300 8.4e-06
+READ n2 same 1-2  N=4: Cov*J^2 at J = 300 1.067526e-01, 600 1.067096e-01, 1200 1.066881e-01, inf 1.066667e-01; min over t in (0, 1/300] 1.066667e-01 (at t = 0.000e+00); ratio to bulk m=1 at t=0 3.0091; |c_K t^K|/Cov at 300 1.1e-08
+READ n2 flip 1-2  N=4: Cov*J^2 at J = 300 6.689715e-03, 600 6.678170e-03, 1200 6.672413e-03, inf 6.666667e-03; min over t in (0, 1/300] 6.666667e-03 (at t = 0.000e+00); ratio to bulk m=1 at t=0 15.2116; |c_K t^K|/Cov at 300 4.4e-08
+READ n3 same 1-2  N=4: Cov*J^2 at J = 300 6.520849e-02, 600 6.515627e-02, 1200 6.513020e-02, inf 6.510417e-02; min over t in (0, 1/300] 6.510417e-02 (at t = 0.000e+00); ratio to bulk m=1 at t=0 1.8366; |c_K t^K|/Cov at 300 8.1e-09
+READ n3 flip 1-2  N=4: Cov*J^2 at J = 300 2.632402e-03, 600 2.618256e-03, 1200 2.611204e-03, inf 2.604167e-03; min over t in (0, 1/300] 2.604167e-03 (at t = 0.000e+00); ratio to bulk m=1 at t=0 5.9420; |c_K t^K|/Cov at 300 1.8e-07
+READ n3 same 2-3  N=4: Cov*J^2 at J = 300 6.520849e-02, 600 6.515627e-02, 1200 6.513020e-02, inf 6.510417e-02; min over t in (0, 1/300] 6.510417e-02 (at t = 0.000e+00); ratio to bulk m=1 at t=0 1.8366; |c_K t^K|/Cov at 300 8.1e-09
+READ n3 flip 2-3  N=4: Cov*J^2 at J = 300 2.632402e-03, 600 2.618256e-03, 1200 2.611204e-03, inf 2.604167e-03; min over t in (0, 1/300] 2.604167e-03 (at t = 0.000e+00); ratio to bulk m=1 at t=0 5.9420; |c_K t^K|/Cov at 300 1.8e-07
+READ n3 same 1-3  N=4: Cov*J^2 at J = 300 1.043888e-02, 600 1.042776e-02, 1200 1.042221e-02, inf 1.041667e-02; min over t in (0, 1/300] 1.041667e-02 (at t = 0.000e+00); ratio to bulk m=2 at t=0 3.1595; |c_K t^K|/Cov at 300 1.5e-08
+READ n3 flip 1-3  N=4: Cov*J^2 at J = 300 2.610340e-03, 600 2.607247e-03, 1200 2.605705e-03, inf 2.604167e-03; min over t in (0, 1/300] 2.604167e-03 (at t = 0.000e+00); ratio to bulk m=2 at t=0 5.1474; |c_K t^K|/Cov at 300 3.8e-08
+READ n4 same 1-2  N=4: Cov*J^2 at J = 300 6.109841e-02, 600 6.104810e-02, 1200 6.102298e-02, inf 6.099790e-02; min over t in (0, 1/300] 6.099790e-02 (at t = 0.000e+00); ratio to bulk m=1 at t=0 1.7208; |c_K t^K|/Cov at 300 9.1e-09
+READ n4 flip 1-2  N=4: Cov*J^2 at J = 300 2.020722e-03, 600 2.006178e-03, 1200 1.998928e-03, inf 1.991693e-03; min over t in (0, 1/300] 1.991693e-03 (at t = 0.000e+00); ratio to bulk m=1 at t=0 4.5445; |c_K t^K|/Cov at 300 2.3e-07
+READ n4 same 2-3  N=4: Cov*J^2 at J = 300 4.083947e-02, 600 4.078975e-02, 1200 4.076495e-02, inf 4.074020e-02; min over t in (0, 1/300] 4.074020e-02 (at t = 0.000e+00); ratio to bulk m=1 at t=0 1.1493; |c_K t^K|/Cov at 300 3.1e-08
+READ n4 flip 2-3  N=4: Cov*J^2 at J = 300 1.011588e-03, 600 1.000090e-03, 1200 9.943608e-04, inf 9.886450e-04; min over t in (0, 1/300] 9.886450e-04 (at t = 0.000e+00); ratio to bulk m=1 at t=0 2.2558; |c_K t^K|/Cov at 300 4.9e-07
+READ n4 same 1-3  N=4: Cov*J^2 at J = 300 6.359501e-03, 600 6.349492e-03, 1200 6.344501e-03, inf 6.339519e-03; min over t in (0, 1/300] 6.339519e-03 (at t = 0.000e+00); ratio to bulk m=2 at t=0 1.9228; |c_K t^K|/Cov at 300 4.3e-08
+READ n4 flip 1-3  N=4: Cov*J^2 at J = 300 1.377081e-03, 600 1.373820e-03, 1200 1.372195e-03, inf 1.370575e-03; min over t in (0, 1/300] 1.370575e-03 (at t = 0.000e+00); ratio to bulk m=2 at t=0 2.7091; |c_K t^K|/Cov at 300 1.0e-07
+READ n4 same 1-4  N=4: Cov*J^2 at J = 300 1.193199e-03, 600 1.191223e-03, 1200 1.190238e-03, inf 1.189255e-03; min over t in (0, 1/300] 1.189255e-03 (at t = 0.000e+00); ratio to bulk m=3 at t=0 3.3270; |c_K t^K|/Cov at 300 4.3e-08
+READ n4 flip 1-4  N=4: Cov*J^2 at J = 300 5.699038e-04, 600 5.690185e-04, 1200 5.685771e-04, inf 5.681365e-04; min over t in (0, 1/300] 5.681365e-04 (at t = 0.000e+00); ratio to bulk m=3 at t=0 4.2098; |c_K t^K|/Cov at 300 4.9e-08
+READ n4 same 3-4  N=4: Cov*J^2 at J = 300 6.109841e-02, 600 6.104810e-02, 1200 6.102298e-02, inf 6.099790e-02; min over t in (0, 1/300] 6.099790e-02 (at t = 0.000e+00); ratio to bulk m=1 at t=0 1.7208; |c_K t^K|/Cov at 300 9.1e-09
+READ n4 flip 3-4  N=4: Cov*J^2 at J = 300 2.020722e-03, 600 2.006178e-03, 1200 1.998928e-03, inf 1.991693e-03; min over t in (0, 1/300] 1.991693e-03 (at t = 0.000e+00); ratio to bulk m=1 at t=0 4.5445; |c_K t^K|/Cov at 300 2.3e-07
+KILL READING N=4: CLEAR: every pair has Cov*J^2 > 0 on (0, 1/300] (FLOAT, K-term series, psi-hat)
+ITEM n4 cpu 42.5 s, peak resident memory 607 MiB
+VERDICT VALID

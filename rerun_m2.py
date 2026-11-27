@@ -16,11 +16,15 @@ the packages the programs import. For each selected run of the run table RUNS_M2
    shipped file's checksum to the new file's;
 4. the new output is kept as <path>.rerun and the shipped copy is moved back, so later runs read the bytes their checksum pins name.
 It prints PASS or FAIL for each output, with the first differing lines, and the totals; the exit status is 1 if any output fails.
-usage: python3 -I -B rerun_m2.py [--runs ID,ID,...] [--levels FIRST-LAST]"""
+Before any run it checks, at full length, every input that a program or a run command of the package binds by a checksum prefix: each
+row of PREFIX_PINS_release_N.tsv names a file and the full sha256 of its shipped bytes, and a file that differs stops the driver with
+exit status 2 before anything runs. With --pins it makes this check alone (it also covers the programs that no run executes).
+usage: python3 -I -B rerun_m2.py [--runs ID,ID,...] [--levels FIRST-LAST] [--pins]"""
 import sys, os, re, json, hashlib, subprocess
 
 ROOT = '/mnt/g2/release/root'
 TABLE = os.path.join(ROOT, next(n for n in sorted(os.listdir(ROOT)) if n.startswith('RUNS_M2_release_') and n.endswith('.tsv')))
+PINS = os.path.join(ROOT, 'PREFIX_PINS_release_N.tsv')
 TIME_RX = [
     (re.compile(r'\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?Z'), '<TS>'),
     (re.compile(r'\[cpu\s+[0-9.]+s\]'), '[cpu <T>s]'),
@@ -100,9 +104,26 @@ def compare(new, old, pairs, rel):
     return bad
 
 
+def check_pins():
+    """every row of PREFIX_PINS: the bound file's sha256 against the full value of the row; returns the number of files and the misses."""
+    files, bad = {}, []
+    for ln in open(PINS, encoding='utf-8'):
+        if ln.startswith('#') or ln.startswith('binder\t') or not ln.strip():
+            continue
+        f = ln.rstrip('\n').split('\t')
+        files.setdefault(f[3], set()).add(f[5])
+    for p, want in sorted(files.items()):
+        q = os.path.join(ROOT, p)
+        got = sha(open(q, 'rb').read()) if os.path.isfile(q) else 'missing'
+        if want != {got}:
+            bad.append('%s: %s, the table gives %s' % (p, got, ','.join(sorted(want))))
+    return len(files), bad
+
+
 def main():
     args = sys.argv[1:]
     runs = levels = None
+    pins_only = False
     while args:
         k = args.pop(0)
         if k == '--runs':
@@ -110,8 +131,18 @@ def main():
         elif k == '--levels':
             lo, hi = args.pop(0).split('-')
             levels = (int(lo), int(hi))
+        elif k == '--pins':
+            pins_only = True
         else:
             sys.exit(__doc__)
+    nfiles, missed = check_pins()
+    print('PREFIX-PINS: %d files bound by a checksum prefix checked at full length, %d differ' % (nfiles, len(missed)), flush=True)
+    for x in missed[:20]:
+        print('  DIFFERS ' + x)
+    if missed:
+        sys.exit(2)
+    if pins_only:
+        sys.exit(0)
     rows = []
     for ln in open(TABLE):
         if ln.startswith('#') or ln.startswith('run\t') or not ln.strip():

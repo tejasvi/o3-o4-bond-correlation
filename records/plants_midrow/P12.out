@@ -1,0 +1,61 @@
+TAIL ARGUMENT 2:5: D0 2, M0 5, n0 = 2 D0 + M0 + 1 = 10
+kt_mr_assembly_v1_8_4 (28a340e7b38b0f37a40b4eb2df4c0f03b58dedf0b80755a659c0157c1094a56c): RECDIR mr_engine/cert_m2_m2cert_1.plant_P12 MODE CERTIFIED PLANT TAILSIGN NMAX 10 PIECES all
+C-CORE OK: mr_core_v1_3 7fe1e2d077fe468343e5a7956553ed364266cf7fea3a0243fda5300b68323263; 7 blocks and 3 constants equal to the prototype eac5eb42dda72e5ab13879ab8d767cd13a07c053add3df1eee55b19fea3b648d
+C-IV OK: 3000 operations (add, sub, mul, inv, sqrt; negation, amax, hull, pow, division with 50-digit endpoints) enclose or equal the exact rational results
+G-PIN MR_SPECTRAL.kv 4a609ccf717c0aedd9504ee4db47e7c98a679bc25df2ca2a187b415011470937 OK (PRODUCER pk25, owner rule)
+G-PIN MR_INSERT.kv 7cd0e457c0afb30cdbee65a8726947b12eb002e78b543febe25582b3ef00063a OK (PRODUCER pk25, owner rule)
+G-PIN MR_EXACT.kv d0e208ae505d2d015fb21df1be4e7a8100d60009cb55d33a2c9d6cb43411a971 OK (PRODUCER pk22, owner rule)
+G-PIN MR_CRUDEX.kv 6e4ff292d1ffb7530c08e582c2ea27f802be291d7e55aa3cd724c2d71ca2b61b OK (PRODUCER pk25, owner rule) (CRUDEX_FORM factored)
+G-PIN MR_JOINT.kv b0331e560bd8fec7e5cdbefca83beb91651ed4f7820c145f205a26cd83b705db OK (PRODUCER pk22, owner rule)
+G-FACTX OK: 12229 x-coefficient rows inside their amplitudes with their floors (power 1) or equal to them (power 0); 0 rows with a Way B floor (last piece, h); one envelope per piece with 0 < env_r < 1
+C-ORIENT OK: c_x(-1) > 0 and c_y(-1) > 0 on every MR_SPECTRAL row; t and a v_x > 0, h, t and a v_y > 0 on every MR_INSERT row; 6988 exact ends checked against the sign of their bulk x amplitude; ORIENT_CHECK on MR_SPECTRAL, MR_INSERT and MR_EXACT with the grid's piece counts
+A0X ON: the vertical end at d' = 0 is exact (MR_EXACT a0 rows on every piece)
+G-UNIF OK: N = 4 843 pieces, N = 3 904 pieces; every record on the same grid with every row; last piece to inf; decimal fields finite, lo <= hi, single upper bounds >= 0, the spectral data positive
+XMODE FACTORED: x signs read on the coefficient intervals (MR_INPUT_KV_v4, factored MR_CRUDEX, D_MAX 9)
+ROUTE V ON: MR_EXACT carries Pe_hi (the exact end's unwindowed flip-even |P_e a|), and the m = 1 rest takes the least of |P_e a_L| N'_R and N'_L |P_e a_R| over the ends that give |P_e a| (the row 4376)
+C-SIGN OK: 1747 pieces, e-hat(d) for d = 1..9 and the envelope at 10 against the modulus of h's coefficient
+SUMMARY N=4 n=6: to-do orbits 25; channel classes 22, PASS 22; least headroom 1.193 at h2-bb3 (piece 61); reference 1.636; same-bond orbits 2, least H_J 21.94; FAIL 0
+SUMMARY N=4 n=7: to-do orbits 37; channel classes 34, PASS 34; least headroom 1.294 at h2-bb3 (piece 61); reference 1.961; same-bond orbits 2, least H_J 22.82; FAIL 0
+SUMMARY N=4 n=8: to-do orbits 52; channel classes 48, PASS 48; least headroom 1.309 at h2-bb3 (piece 61); reference 2.243; same-bond orbits 3, least H_J 22.95; FAIL 0
+SUMMARY N=4 n=9: to-do orbits 69; channel classes 65, PASS 65; least headroom 1.312 at h2-bb3 (piece 61); reference 2.388; same-bond orbits 3, least H_J 22.97; FAIL 0
+SUMMARY N=4 n=10: to-do orbits 89; channel classes 84, PASS 84; least headroom 1.312 at h2-bb3 (piece 61); reference 2.388; same-bond orbits 4, least H_J 22.97; FAIL 0
+SUMMARY N=3 n=6: to-do orbits 25; channel classes 22, PASS 22; least headroom 1.946 at h2-bb3 (piece 0); reference 3.107; same-bond orbits 2, least H_J 37.15; FAIL 0
+SUMMARY N=3 n=7: to-do orbits 37; channel classes 34, PASS 34; least headroom 2.044 at h2-bb3 (piece 0); reference 3.637; same-bond orbits 2, least H_J 38.42; FAIL 0
+SUMMARY N=3 n=8: to-do orbits 52; channel classes 48, PASS 48; least headroom 2.058 at h2-bb3 (piece 0); reference 4.064; same-bond orbits 3, least H_J 38.61; FAIL 0
+SUMMARY N=3 n=9: to-do orbits 69; channel classes 65, PASS 65; least headroom 2.060 at h2-bb3 (piece 0); reference 4.146; same-bond orbits 3, least H_J 38.64; FAIL 0
+SUMMARY N=3 n=10: to-do orbits 89; channel classes 84, PASS 84; least headroom 2.061 at h2-bb3 (piece 0); reference 4.147; same-bond orbits 4, least H_J 38.64; FAIL 0
+FACTORED SIGN FALLBACK: 0 class-piece evaluations had no certified sign for the product of the two x coefficients, so X took v1_6's form there (the v1_7 N-2)
+FAIL REASONS: classes failing at G-POS 0, at G-DELTA 0, on the margin alone 0 (same-bond failures count as margin)
+TAIL N=4 D0 2 M0 5: envelope classes 77 per piece, FAIL 0, least L 1.412433e-07 at h-1-aD0+/m4 (piece 61); m-tail at M0: FAIL 0, least lower end 2.683512e-02 (pair h-a, piece 116), q_R <= 0.6360, q_T <= 0.4898; sign condition (c): FAIL on 1 pieces; Proposition J envelope orbits: FAIL 0, least L_J 6.822615e-02 (d_R 0, piece 116)
+C-TAILMONO OK N=4: 843 pieces; s_x, s_y, tau, rho_1 and env_r below 1; the envelope at D0 = 2 encloses the end at d = 2..14, 9 and 10 (A_y, A_x, N', |P_e a|, |S a|, e; for h also the coefficient and e)
+TAIL SUP N=4: sup over d >= D0 = 2 of e-hat(d) = max(rows 2..9, envelope at 10): least 1.294228e-02, largest 1.796039e-02 over the pieces; it enters h's envelope as the coefficient xc -+ sup and the x amplitude v_x -+ t_hi sup (the h end at every d >= D0)
+TAIL N=3 D0 2 M0 5: envelope classes 77 per piece, FAIL 0, least L 9.546982e-08 at h-1-aD0+/m4 (piece 0); m-tail at M0: FAIL 0, least lower end 2.191137e-02 (pair h-a, piece 116), q_R <= 0.6181, q_T <= 0.4894; sign condition (c): FAIL on 1 pieces; Proposition J envelope orbits: FAIL 0, least L_J 4.639669e-02 (d_R 0, piece 0)
+C-TAILMONO OK N=3: 904 pieces; s_x, s_y, tau, rho_1 and env_r below 1; the envelope at D0 = 2 encloses the end at d = 2..14, 9 and 10 (A_y, A_x, N', |P_e a|, |S a|, e; for h also the coefficient and e)
+TAIL SUP N=3: sup over d >= D0 = 2 of e-hat(d) = max(rows 2..9, envelope at 10): least 3.333847e-03, largest 5.089188e-03 over the pieces; it enters h's envelope as the coefficient xc -+ sup and the x amplitude v_x -+ t_hi sup (the h end at every d >= D0)
+TAIL REASONS: envelope classes failing 0, m-tail pairs failing 0, pieces failing the sign condition 2, Proposition J envelope orbits failing 0
+TAIL_VERDICT FAIL (TAIL = 2 5 10)
+WARN BLOCK: 21 rows with float headroom H < 2 (design target 2; not an acceptance rule)
+WARN N4_n06_h2-bb3 H 1.1929 PASS
+WARN N4_n07_h2-bb3 H 1.29446 PASS
+WARN N4_n08_h2-bb3 H 1.30941 PASS
+WARN N4_n09_h2-bb3 H 1.31158 PASS
+WARN N4_n10_h2-bb3 H 1.31189 PASS
+WARN N4_n06_h3-bb4 H 1.56799 PASS
+WARN N4_n06_h4-a6 H 1.66926 PASS
+WARN N4_n06_h4-bb5 H 1.66926 PASS
+WARN N4_n07_h5-a7 H 1.70599 PASS
+WARN N4_n07_h5-bb6 H 1.70599 PASS
+WARN N4_n08_h6-a8 H 1.71126 PASS
+WARN N4_n08_h6-bb7 H 1.71126 PASS
+WARN N4_n09_h7-a9 H 1.71203 PASS
+WARN N4_n09_h7-bb8 H 1.71203 PASS
+WARN N4_n10_h8-a10 H 1.71214 PASS
+WARN N4_n10_h8-bb9 H 1.71214 PASS
+WARN N4_n07_h4-bb5 H 1.76368 PASS
+WARN N4_n08_h5-bb6 H 1.79185 PASS
+WARN N4_n09_h6-bb7 H 1.79587 PASS
+WARN N4_n10_h7-bb8 H 1.79645 PASS
+WARN N3_n06_h2-bb3 H 1.94572 PASS
+WROTE 15891109 mr_engine/plants/P12.kv (534 rows); FAIL rows 0; gate lines 0; WARN rows 21
+WROTE TAIL 236a7788 mr_engine/plants/P12.kv.tail (1747 rows); TAIL_VERDICT FAIL
+PLANT TAILSIGN: FIRED on its own failure TAIL-SIGN (classes failing at G-POS 0, at G-DELTA 0, on the margin alone 0; FAIL rows 0, gate lines 0)

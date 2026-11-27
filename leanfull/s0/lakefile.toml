@@ -1,0 +1,25 @@
+# Stage S0 workspace. DOCUMENTATION ONLY: Lake is not run in this folder.
+# The read-only Mathlib checkout below has no .lake/lakefile.olean, so loading it as a Lake path dependency would
+# write one into the checkout. The builds call lean once per module with LEAN_PATH set to the checkout's eight
+# package build folders (scripts/build_tree.sh; the method of README_release_N.md section 3.2).
+name = "G2S0"
+version = "0.1.0"
+defaultTargets = ["G2S0"]
+
+[[require]]
+name = "mathlib"
+path = "MATHLIB_CHECKOUT/.lake/packages/mathlib"  # placeholder: a Mathlib checkout at the commit of the Lean pin
+
+[[lean_lib]]
+name = "G2Kernel"
+srcDir = "pkg/G2Kernel_Lb_p13/src"
+
+[[lean_lib]]
+name = "StripIII"
+srcDir = "pkg/StripIII_v2/src"
+globs = ["StripIII.+", "StripIIIM1.+", "StripIIIM2.+"]
+
+[[lean_lib]]
+name = "G2S0"
+srcDir = "src"
+globs = ["G2S0.+"]

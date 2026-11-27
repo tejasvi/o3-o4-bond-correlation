@@ -1,0 +1,45 @@
+C-PIN: export sha256 dc790d56 -> PASS
+model: a(HT) 0.667284  b(MB) 0.550934  g(D3) 0.062638  g(D4) 0.051860  g(D4M) -0.051860
+C-GEOM N4 D3: Cov 5.885247e-03 (export 5.885241e-03, rel 1.0e-06), E[X_c^2] 4.566912e-01 (export 4.566916e-01, rel 1.0e-06) -> PASS
+C-LOOP N4 D3: identity split 4.566911518993e-01 vs closed form 4.566911518993e-01 (rel 0.0e+00) -> PASS
+PLANT-LOOP N4 D3: without the 4-cycle term rel 1.1e-02 -> FIRED
+N4 D3 L0: |Q0 X u|^2 3.5789e-05 (2q 2.627e-05, 4q 9.515e-06, 0q 3.464e-05 = Cov^2 3.464e-05), pX^2 4.5666e-01, |Q0 X u| / pX 0.0089 -> C-CS PASS
+N4 D3 L1: |Q0 X u|^2 5.4264e-07 (2q 5.387e-07, 4q 3.934e-09, 0q 3.464e-05 = Cov^2 3.464e-05), pX^2 4.5666e-01, |Q0 X u| / pX 0.0011 -> C-CS PASS
+N4 D3 R0: |Q0 X u|^2 3.5789e-05 (2q 2.627e-05, 4q 9.515e-06, 0q 3.464e-05 = Cov^2 3.464e-05), pX^2 4.5666e-01, |Q0 X u| / pX 0.0089 -> C-CS PASS
+N4 D3 R1: |Q0 X u|^2 5.4264e-07 (2q 5.387e-07, 4q 3.934e-09, 0q 3.464e-05 = Cov^2 3.464e-05), pX^2 4.5666e-01, |Q0 X u| / pX 0.0011 -> C-CS PASS
+C-GEOM N4 D4: Cov 4.034192e-03 (export 4.034188e-03, rel 1.0e-06), E[X_c^2] 3.100771e-01 (export 3.100774e-01, rel 1.1e-06) -> PASS
+C-LOOP N4 D4: identity split 3.100770951968e-01 vs closed form 3.100770951968e-01 (rel 1.1e-14) -> PASS
+PLANT-LOOP N4 D4: without the 4-cycle term rel 9.6e-03 -> FIRED
+N4 D4 L0: |Q0 X u|^2 8.9925e-03 (2q 5.026e-04, 4q 8.490e-03, 0q 1.627e-05 = Cov^2 1.627e-05), pX^2 3.1006e-01, |Q0 X u| / pX 0.1703 -> C-CS PASS
+N4 D4 L1: |Q0 X u|^2 8.8263e-06 (2q 7.259e-06, 4q 1.567e-06, 0q 1.627e-05 = Cov^2 1.627e-05), pX^2 3.1006e-01, |Q0 X u| / pX 0.0053 -> C-CS PASS
+N4 D4 R0: |Q0 X u|^2 1.3023e-04 (2q 5.067e-05, 4q 7.956e-05, 0q 1.627e-05 = Cov^2 1.627e-05), pX^2 3.1006e-01, |Q0 X u| / pX 0.0205 -> C-CS PASS
+N4 D4 R1: |Q0 X u|^2 9.9737e-07 (2q 9.700e-07, 4q 2.733e-08, 0q 1.627e-05 = Cov^2 1.627e-05), pX^2 3.1006e-01, |Q0 X u| / pX 0.0018 -> C-CS PASS
+C-GEOM N4 D4M: Cov 4.034192e-03 (export 4.034188e-03, rel 1.0e-06), E[X_c^2] 3.100771e-01 (export 3.100774e-01, rel 1.1e-06) -> PASS
+C-LOOP N4 D4M: identity split 3.100770951968e-01 vs closed form 3.100770951968e-01 (rel 2.6e-15) -> PASS
+PLANT-LOOP N4 D4M: without the 4-cycle term rel 9.6e-03 -> FIRED
+N4 D4M L0: |Q0 X u|^2 1.3023e-04 (2q 5.067e-05, 4q 7.956e-05, 0q 1.627e-05 = Cov^2 1.627e-05), pX^2 3.1006e-01, |Q0 X u| / pX 0.0205 -> C-CS PASS
+N4 D4M L1: |Q0 X u|^2 9.9737e-07 (2q 9.700e-07, 4q 2.733e-08, 0q 1.627e-05 = Cov^2 1.627e-05), pX^2 3.1006e-01, |Q0 X u| / pX 0.0018 -> C-CS PASS
+N4 D4M R0: |Q0 X u|^2 8.9925e-03 (2q 5.026e-04, 4q 8.490e-03, 0q 1.627e-05 = Cov^2 1.627e-05), pX^2 3.1006e-01, |Q0 X u| / pX 0.1703 -> C-CS PASS
+N4 D4M R1: |Q0 X u|^2 8.8263e-06 (2q 7.259e-06, 4q 1.567e-06, 0q 1.627e-05 = Cov^2 1.627e-05), pX^2 3.1006e-01, |Q0 X u| / pX 0.0053 -> C-CS PASS
+C-GEOM N3 D3: Cov 3.923498e-03 (export 3.923494e-03, rel 1.0e-06), E[X_c^2] 2.053135e-01 (export 2.053137e-01, rel 1.1e-06) -> PASS
+C-LOOP N3 D3: identity split 2.053134535893e-01 vs closed form 2.053134535893e-01 (rel 0.0e+00) -> PASS
+PLANT-LOOP N3 D3: without the 4-cycle term rel 1.7e-02 -> FIRED
+N3 D3 L0: |Q0 X u|^2 2.2499e-05 (2q 1.752e-05, 4q 4.983e-06, 0q 1.539e-05 = Cov^2 1.539e-05), pX^2 2.0530e-01, |Q0 X u| / pX 0.0105 -> C-CS PASS
+N3 D3 L1: |Q0 X u|^2 3.6123e-07 (2q 3.591e-07, 4q 2.095e-09, 0q 1.539e-05 = Cov^2 1.539e-05), pX^2 2.0530e-01, |Q0 X u| / pX 0.0013 -> C-CS PASS
+N3 D3 R0: |Q0 X u|^2 2.2499e-05 (2q 1.752e-05, 4q 4.983e-06, 0q 1.539e-05 = Cov^2 1.539e-05), pX^2 2.0530e-01, |Q0 X u| / pX 0.0105 -> C-CS PASS
+N3 D3 R1: |Q0 X u|^2 3.6123e-07 (2q 3.591e-07, 4q 2.095e-09, 0q 1.539e-05 = Cov^2 1.539e-05), pX^2 2.0530e-01, |Q0 X u| / pX 0.0013 -> C-CS PASS
+C-GEOM N3 D4: Cov 2.689462e-03 (export 2.689459e-03, rel 1.0e-06), E[X_c^2] 1.391352e-01 (export 1.391353e-01, rel 1.2e-06) -> PASS
+C-LOOP N3 D4: identity split 1.391351644118e-01 vs closed form 1.391351644118e-01 (rel 1.6e-14) -> PASS
+PLANT-LOOP N3 D4: without the 4-cycle term rel 1.4e-02 -> FIRED
+N3 D4 L0: |Q0 X u|^2 4.2152e-03 (2q 3.351e-04, 4q 3.880e-03, 0q 7.233e-06 = Cov^2 7.233e-06), pX^2 1.3913e-01, |Q0 X u| / pX 0.1741 -> C-CS PASS
+N3 D4 L1: |Q0 X u|^2 5.6491e-06 (2q 4.840e-06, 4q 8.095e-07, 0q 7.233e-06 = Cov^2 7.233e-06), pX^2 1.3913e-01, |Q0 X u| / pX 0.0064 -> C-CS PASS
+N3 D4 R0: |Q0 X u|^2 7.3229e-05 (2q 3.378e-05, 4q 3.945e-05, 0q 7.233e-06 = Cov^2 7.233e-06), pX^2 1.3913e-01, |Q0 X u| / pX 0.0229 -> C-CS PASS
+N3 D4 R1: |Q0 X u|^2 6.6115e-07 (2q 6.467e-07, 4q 1.445e-08, 0q 7.233e-06 = Cov^2 7.233e-06), pX^2 1.3913e-01, |Q0 X u| / pX 0.0022 -> C-CS PASS
+C-GEOM N3 D4M: Cov 2.689462e-03 (export 2.689459e-03, rel 1.0e-06), E[X_c^2] 1.391352e-01 (export 1.391353e-01, rel 1.2e-06) -> PASS
+C-LOOP N3 D4M: identity split 1.391351644118e-01 vs closed form 1.391351644118e-01 (rel 4.0e-15) -> PASS
+PLANT-LOOP N3 D4M: without the 4-cycle term rel 1.4e-02 -> FIRED
+N3 D4M L0: |Q0 X u|^2 7.3229e-05 (2q 3.378e-05, 4q 3.945e-05, 0q 7.233e-06 = Cov^2 7.233e-06), pX^2 1.3913e-01, |Q0 X u| / pX 0.0229 -> C-CS PASS
+N3 D4M L1: |Q0 X u|^2 6.6115e-07 (2q 6.467e-07, 4q 1.445e-08, 0q 7.233e-06 = Cov^2 7.233e-06), pX^2 1.3913e-01, |Q0 X u| / pX 0.0022 -> C-CS PASS
+N3 D4M R0: |Q0 X u|^2 4.2152e-03 (2q 3.351e-04, 4q 3.880e-03, 0q 7.233e-06 = Cov^2 7.233e-06), pX^2 1.3913e-01, |Q0 X u| / pX 0.1741 -> C-CS PASS
+N3 D4M R1: |Q0 X u|^2 5.6491e-06 (2q 4.840e-06, 4q 8.095e-07, 0q 7.233e-06 = Cov^2 7.233e-06), pX^2 1.3913e-01, |Q0 X u| / pX 0.0064 -> C-CS PASS
+VERDICT VALID

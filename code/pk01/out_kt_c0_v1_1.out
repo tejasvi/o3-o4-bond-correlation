@@ -1,0 +1,47 @@
+kt_c0_v1_1 sha256 1558e0930d1659201681273aa99fd4846c0e0dbab900411585ca79d61f1b0b40 LIM=90 (RLIMIT_CPU soft 90, hard 95)
+C-HASH PASS (5 engine files, 4 inputs)
+N=3: series and conditional expectations 0.3 s; source sizes a:2/31 e1:28/209 e2:28/206 e3:28/209 h:7/77 psi:1/24 t:7/79
+N=3: B0 engine degree 8 (0.5 s)
+K-ORTH N=3: B0(e1,e1) - 1 -3.55e-15, B0(e3,e3) - 1 -1.54e-14, B0(e1,e3) 3.94e-16, B0(psi,psi) 1.000000000000 -> PASS
+N=3 psi: m0 = 1 0 0; |r0|_B0 0.00e+00 (max coef 0.00e+00); m1 = 0.3639110189 -2.036655079e-16 -5.655253662e-16; |r1|_B0 5.414685e-16; C = 5.414685e-16; X r0 max 0.0e+00, X-frac r1 4.0e-02; deg r1 2, 21 monomials
+N=3 e1 : m0 = -3.41585221486e-16 0.14589803375 -1.84374009539e-15; |r0|_B0 4.58e-14 (max coef 3.60e-13); m1 = -0.04597071866 0.08180100681 0.005576321726; |r1|_B0 8.381028e-03; C = 8.381028e-03; X r0 max 4.1e-17, X-frac r1 1.5e-12; deg r1 4, 209 monomials
+N=3 e3 : m0 = 1.20907862689e-15 -1.69015346582e-15 0.0435607626104; |r0|_B0 1.60e-13 (max coef 5.05e-12); m1 = 0.8696250405 0.07589431348 0.03530056274; |r1|_B0 3.563925e-03; C = 3.563925e-03; X r0 max 3.5e-17, X-frac r1 3.7e-11; deg r1 4, 209 monomials
+N=3 h  : m0 = 0.563564219528 7.11104132809e-17 0.0190114754278; |r0|_B0 7.64e-14 (max coef 2.28e-12); m1 = 0.2630627789 0.00280875615 0.01201903506; |r1|_B0 2.323693e-03; C = 2.323693e-03; X r0 max 2.8e-17, X-frac r1 3.1e-11; deg r1 4, 113 monomials
+N=3 t  : m0 = 0.667284257132 0.0326237921249 0.00475286885695 0.0176100315495; |r0|_B0 2.42e-14 (max coef 8.26e-13); m1 = 0.3012403642 0.02799212353 0.00543623633 0.01262914123; |r1|_B0 2.602659e-03; C = 2.602659e-03; X r0 max 2.1e-17, X-frac r1 1.3e-11; deg r1 4, 115 monomials
+N=3 a  : m0 = 0.550933633104 0.085410196625 0.068317088385; |r0|_B0 2.63e-13 (max coef 8.42e-12); m1 = 0.02583200756 0.01472838712 0.01479675597; |r1|_B0 3.393842e-03; C = 3.393842e-03; X r0 max 0.0e+00, X-frac r1 5.8e-11; deg r1 4, 79 monomials
+K-VAC N=3: |r1| 5.41e-16, m_psi1 0.3639110189 vs vacres m1 0.3639110189 -> PASS
+K-EIG N=3 e1: |r0| 4.58e-14, max coef 3.60e-13, m_diag 0.145898033750 vs lam0 0.145898033750, others 1.84e-15 -> PASS
+K-EIG N=3 e3: |r0| 1.60e-13, max coef 5.05e-12, m_diag 0.043560762610 vs lam0 0.043560762610, others 1.69e-15 -> PASS
+K-H0 N=3: |r0| 7.64e-14, psi coefficient 0.563564219528 vs exact 0.563564219528, e1 coefficient 7.11e-17 -> PASS
+K-T0 N=3: |r0| 2.42e-14, psi coefficient 0.667284257132 vs exact 0.667284257132, e1 coefficient 3.26e-02 -> PASS
+K-A0 N=3: |r0| 2.63e-13, psi coefficient 0.550933633104 vs exact 0.550933633104, e1 coefficient 8.54e-02 -> PASS
+K-INV N=3: largest relative X-coefficient over the 5 residuals with B0 norm > 1e-8: 5.83e-11 -> PASS
+PLANT-ODD N=3: |r0(e2)|_B0 7.9721e-02 (z0 = 0.079721) -> FIRES
+PLANT-DROP N=3: |r0(h)|_B0 against {psi, e1} 1.9011e-02 -> FIRES
+READ N=3: C_e1 8.381028e-03, C_e3 3.563925e-03, C_c 9.107315e-03, C_h 2.323693e-03, C_t 2.602659e-03, C_a 3.393842e-03; C_c*C_h 2.116260e-05
+READ N=3: R_lead(300) 3.170611e-06; / (0.125 B_N) = 0.0004; / (0.25 B_N) = 0.0002 -> PASS
+INFO N=3: R_lead/(0.25 B_N) at J = 170: 0.0003, 250: 0.0002, 1000: 0.0001
+N=4: series and conditional expectations 0.3 s; source sizes a:2/31 e1:28/207 e2:28/208 e3:28/210 h:7/78 psi:1/24 t:7/80
+N=4: B0 engine degree 8 (0.5 s)
+K-ORTH N=4: B0(e1,e1) - 1 -4.00e-15, B0(e3,e3) - 1 -3.22e-14, B0(e1,e3) 2.19e-15, B0(psi,psi) 1.000000000000 -> PASS
+N=4 psi: m0 = 1 0 0; |r0|_B0 0.00e+00 (max coef 0.00e+00); m1 = 0.4110342096 -4.583591951e-15 7.972350917e-16; |r1|_B0 7.749514e-16; C = 7.749514e-16; X r0 max 0.0e+00, X-frac r1 1.6e-02; deg r1 2, 21 monomials
+N=4 e1 : m0 = -7.47498974003e-17 0.14589803375 5.71906718746e-15; |r0|_B0 7.45e-14 (max coef 2.72e-12); m1 = 0.3610128067 0.1103850861 -0.009427256375; |r1|_B0 1.725787e-02; C = 1.725787e-02; X r0 max 3.3e-17, X-frac r1 6.1e-12; deg r1 4, 207 monomials
+N=4 e3 : m0 = 1.64313336897e-15 6.43203649363e-15 0.0435607626104; |r0|_B0 7.59e-14 (max coef 9.34e-13); m1 = 1.00894356 -0.1030966321 0.04881328156; |r1|_B0 5.151509e-03; C = 5.151509e-03; X r0 max 2.9e-17, X-frac r1 4.0e-12; deg r1 4, 210 monomials
+N=4 h  : m0 = 0.845346329292 -1.69192942389e-15 0.0232842070278; |r0|_B0 5.49e-14 (max coef 5.39e-13); m1 = 0.4226841033 -0.01032943637 0.02186907246; |r1|_B0 3.688304e-03; C = 3.688304e-03; X r0 max 2.8e-17, X-frac r1 3.6e-12; deg r1 4, 114 monomials
+N=4 t  : m0 = 1.0009263857 -0.0399558220903 0.00582105175695 0.0215677958252; |r0|_B0 3.71e-14 (max coef 1.00e-12); m1 = 0.4526758468 -0.05104094927 0.01057602533 0.02278844721; |r1|_B0 6.383699e-03; C = 6.383699e-03; X r0 max 2.1e-17, X-frac r1 6.0e-12; deg r1 4, 116 monomials
+N=4 a  : m0 = 0.826400449656 -0.104605700281 0.0836710036279; |r0|_B0 1.84e-13 (max coef 1.01e-12); m1 = 0.08106477272 -0.06163302065 0.04805163132; |r1|_B0 6.099212e-03; C = 6.099212e-03; X r0 max 0.0e+00, X-frac r1 2.0e-12; deg r1 4, 79 monomials
+K-VAC N=4: |r1| 7.75e-16, m_psi1 0.4110342096 vs vacres m1 0.4110342096 -> PASS
+K-EIG N=4 e1: |r0| 7.45e-14, max coef 2.72e-12, m_diag 0.145898033750 vs lam0 0.145898033750, others 5.72e-15 -> PASS
+K-EIG N=4 e3: |r0| 7.59e-14, max coef 9.34e-13, m_diag 0.043560762610 vs lam0 0.043560762610, others 6.43e-15 -> PASS
+K-H0 N=4: |r0| 5.49e-14, psi coefficient 0.845346329292 vs exact 0.845346329292, e1 coefficient -1.69e-15 -> PASS
+K-T0 N=4: |r0| 3.71e-14, psi coefficient 1.000926385698 vs exact 1.000926385698, e1 coefficient -4.00e-02 -> PASS
+K-A0 N=4: |r0| 1.84e-13, psi coefficient 0.826400449656 vs exact 0.826400449656, e1 coefficient -1.05e-01 -> PASS
+K-INV N=4: largest relative X-coefficient over the 5 residuals with B0 norm > 1e-8: 6.09e-12 -> PASS
+PLANT-ODD N=4: |r0(e2)|_B0 7.9721e-02 (z0 = 0.079721) -> FIRES
+PLANT-DROP N=4: |r0(h)|_B0 against {psi, e1} 2.3284e-02 -> FIRES
+READ N=4: C_e1 1.725787e-02, C_e3 5.151509e-03, C_c 1.801033e-02, C_h 3.688304e-03, C_t 6.383699e-03, C_a 6.099212e-03; C_c*C_h 6.642758e-05
+READ N=4: R_lead(300) 1.348974e-05; / (0.125 B_N) = 0.0006; / (0.25 B_N) = 0.0003 -> PASS
+INFO N=4: R_lead/(0.25 B_N) at J = 170: 0.0006, 250: 0.0004, 1000: 0.0001
+KR-C0: PASS at N = 3 and 4
+cpu 1.1 s
+VERDICT VALID

@@ -414,7 +414,7 @@ V22_S7 = ('pk07/kt_s67_cert_v2_2.py', 936, 1015, '7650b7ec726728f15603792a6d2f89
 V22_EXPORT = ('pk07/out/export_kt_s67_cert_v2_2_sweep.kv', '6fe9ab65f5207dc3658c98ff4f3696bd2db6aa784b0dec84b33881b2da579c34')
 SH1_OUT = {4: ('pk15/out/out_kt_sh1_v1_n4.out', '85bcd36eb029d17473e1f7bc49c5a6668bb739964b018d219ab5165deb57182f'),
            3: ('pk15/out/out_kt_sh1_v1_n3.out', 'be79b01afd9d714da6b0a6d27c9da3bc0fc540292f855db02bb8ad4aec8d9a1c')}
-SH1_CODE = 'b7757b7e681f86fc9ac339781d028ee0aa2a8b9999b986a36cfa590643ad742a'      # kt_sh1_v1.py, as both outputs' headers print it
+SH1_CODE = '9a97356e3c3c92c3e553f43418704ace812a3bd9552d3bfb2879ec456624e688'      # kt_sh1_v1.py, as both outputs' headers print it
 SH1_REF = ('pk07/sh1_entry_ref_v1.py', 'd393e4318001687e1bbe01588d97d15678003f2f014a4e10c0449d4be57f041a')
 SH1_NAMES = ('XBT', 'XTB', 'XTT', 'Geps', 'Gxbb,0,0', 'G00|DT', 'Gxt,0,0', 'Gxt,0,1', 'Gxt,0,3', 'Gxt,1,1', 'Gxt,1,3', 'Gxt,3,3',
              'Ihh,0', 'Ihh,1', 'Ihh,3', 'Iht,0', 'Iht,1', 'Iht,3', 'IhTt,0', 'IhTt,1', 'IhTt,3')
@@ -423,7 +423,7 @@ WIDTH_STEP = 10                                     # C-WIDTH's slack grid runs 
 # J_REF = 300 radii (pk01's kt_s9b_v2 outputs, header code sha pinned)
 S9B_OUT = {4: ('pk01/out_kt_s9b_v2_n4.out', 'e7ffff8b54188e7c114df47e4b44bf382877af2298092edeb018c6ecc35a27cd'),
            3: ('pk01/out_kt_s9b_v2_n3.out', '3c7b2d2e6d461674b11a2e0554f8ce2294de6c644b5922ee722a159a01659cbf')}
-S9B_CODE = '710ad713289dd232f2ea51414e99bcb75f8493ba76d664793f256e0b9bcfcbc7'      # kt_s9b_v2.py, as both outputs' headers print it
+S9B_CODE = '33dda53fe947d3116d1f4429d3a047908e6134b747df6c617e1f0211760bb598'      # kt_s9b_v2.py, as both outputs' headers print it
 S9B_NAMES = ('G,0,0', 'G,0,1', 'G,0,3', 'G,1,1', 'G,1,3', 'G,3,3', 'Ih,0', 'Ih,1', 'Ih,3')
 BLOCKS = {
     'm2u3': ('pk10/scripts/m2_unif3.py', 31, 130, 'e5ccf3b4d3504b7d2f599d465d6acbffe9e9f3aa381bb2df6dd3a33e3140a63e'),

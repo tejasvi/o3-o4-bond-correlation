@@ -1,0 +1,25 @@
+# FROZEN_TO_SHIPPED_S3.tsv: every file of this folder whose bytes differ from the frozen file it comes from. In the Lean
+# modules and the statements only comments or statement prose changed (lines naming the working teams or their folders
+# were reworded); no Lean statement or proof changed. The two statements files are composed of several frozen files, one row
+# each. Every other module is byte-identical to its frozen source. Columns: shipped file, frozen sha256, shipped sha256,
+# changed lines (of the frozen file), kind.
+# Each statements file also carries, for this release, a header sentence on finite simple graphs (no frozen source).
+shipped	frozen_sha256	shipped_sha256	changed_lines	kind
+leanfull/s3/src/G2S1/Zonal.lean	326cf3042a335d5e0cbfc52ac6ca4f650a445c8711bdf9743b18772032efdc94	5cbe46dca59711fd7100a16ea2d4c8bda7ec3522395f70bf24bdfabf8b4b38d0	3	Lean comment
+leanfull/s3/src/G2S1/Ladder.lean	db2384c316bd846f0f24ae2b164e6c538168b36162e606357e9660869dfc301a	a0dcedf48a2ac2902ccc6087834b05c24cbaa0e1af8ae7c02691afe163732af6	2	Lean comment
+leanfull/s3/src/G2S1/TopH16b.lean	26f41a423ba67064350ee4a63279eaf80bf6255507be008e85bff353f441a31c	303218b92a4d648144425129bc73f33f951ec01ce04e36b6972dfc4f5fe1f1fb	2,3	Lean comment
+leanfull/s3/src/G2S1/TopMergeH16.lean	9e49c4090e72efffe7340ea43efcf0a8b8cb80fd6645428455ba2b511616493a	d6b51b2a8efc7cec178267735b7f814d5a7fff18d8cce70066061a93af672868	2,3,5,77	Lean comment
+leanfull/s3/scripts/build_s3_public.sh	fbcbca5337bd5aaea047fb230772a6cef2d604a98d2f720d9f81b756682d3fa4	ed86e975a46ca6299062e6e593d352a175f30b1a735032f233cf57f822d278c6	2-9,20 (one line added after l.7)	build script: comment lines, the three home-folder paths read from environment variables, LEAN_PATH from S0_DIR
+leanfull/s3/STATEMENTS_S3_public.md <- STATEMENTS_S3.md	9e4c40522ee4dcc3941a9daeeea39c346b6a9e6317bfa096ef9f196204bb7ce5	85c27a624d4a2624ee5dd7b09bda9797e3c5628b2aa538d938cc2b3822797f6f	1,2	statement prose
+leanfull/s3/STATEMENTS_S3_public.md <- STATEMENTS_S3_v2.md	b4e3f1aefe49cb214b2f4654dc7ccfa960ca2a84af0d2b8fb6aa33544c5d38c3	85c27a624d4a2624ee5dd7b09bda9797e3c5628b2aa538d938cc2b3822797f6f	-	statement prose
+leanfull/s3/STATEMENTS_S3_public.md <- STATEMENTS_S3_v3.md	3812dbab6c48f5b70257c31c843228a3d25424227df1c4dd58eb6cb3495247de	85c27a624d4a2624ee5dd7b09bda9797e3c5628b2aa538d938cc2b3822797f6f	17	statement prose
+leanfull/s3/STATEMENTS_S3_public.md <- STATEMENTS_S3_v4.md	04d2319d5d2fe1506d95fdc09c38af4f369aa51f845b02cf23eecf610ac2c27f	85c27a624d4a2624ee5dd7b09bda9797e3c5628b2aa538d938cc2b3822797f6f	2	statement prose
+leanfull/s3/STATEMENTS_S3_public.md <- STATEMENTS_S3_v5.md	473b20d5f07552c42da71fc41ab01ec881e0ee0a7f019166077f826518cb2c4d	85c27a624d4a2624ee5dd7b09bda9797e3c5628b2aa538d938cc2b3822797f6f	-	statement prose
+leanfull/s3/STATEMENTS_S3_public.md <- STATEMENTS_S3_v6.md	fb5e860c410e4a5c5a8db5e84f3ec973918f33698eda804ee433e9d3c7f72e84	85c27a624d4a2624ee5dd7b09bda9797e3c5628b2aa538d938cc2b3822797f6f	5,20,25,37	statement prose
+leanfull/s3/STATEMENTS_S3_public.md <- STATEMENTS_S3_v7.md	598d24e18bb127de1e3152d908199004d9619ead4629afcba32b5f8fd5e3c804	85c27a624d4a2624ee5dd7b09bda9797e3c5628b2aa538d938cc2b3822797f6f	-	statement prose
+leanfull/s3/STATEMENTS_H16_public.md <- STATEMENTS_H16_v1.md	d96e7f25a22ef3fe2b22a465a6a6b3e97d2665c0712c4ec096fd85c8fdf747eb	311c5e7b8dbf6fe9b03ca24c3da481b5660588e70e2c99f5b86c52f03e91db76	3,44,45	statement prose
+leanfull/s3/STATEMENTS_H16_public.md <- STATEMENTS_H16_v2.md	5c64b6708023a076f3118134fb480063a351e2f752ad7668badfe5164409e639	311c5e7b8dbf6fe9b03ca24c3da481b5660588e70e2c99f5b86c52f03e91db76	3,22,23	statement prose
+leanfull/s3/STATEMENTS_H16_public.md <- STATEMENTS_A2B_v1.md l.1 and l.105-151	9fbccfb7d33847c2ae152e408747110cae30b579855b667ae0a2f4749be0d0f4	311c5e7b8dbf6fe9b03ca24c3da481b5660588e70e2c99f5b86c52f03e91db76	106,150,151	statement prose
+leanfull/s3/STATEMENTS_S3_public.md <- STATEMENTS_S3_v8.md	a7edb250022991efcc55ed10a392fa40dfe500678c477889170ee0633f6d75a0	85c27a624d4a2624ee5dd7b09bda9797e3c5628b2aa538d938cc2b3822797f6f	2	statement prose
+leanfull/s3/STATEMENTS_S3_public.md <- STATEMENTS_S3_v9.md	8de2d9f2540dae71a39e16c97ef86c58c00d5c602d288edb54fc68406a326f24	85c27a624d4a2624ee5dd7b09bda9797e3c5628b2aa538d938cc2b3822797f6f	-	statement prose (no line changed)
+leanfull/s3/STATEMENTS_S3_public.md <- closing note v10 (written for this release)	-	85c27a624d4a2624ee5dd7b09bda9797e3c5628b2aa538d938cc2b3822797f6f	-	statement prose (no frozen source)

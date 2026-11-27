@@ -1,0 +1,98 @@
+m3_run_v1_9_3 item Ha.3 LIM 120; script sha256 34abe3743035bd709e202eb4de2bdc752fef8a8abc6ebd5d0e4963050caa1dbb; python 3.14.4
+STAGE-CPU C-HASH start 0.04 s
+C-HASH (9 modules, the kernel files, 12 inputs) -> PASS
+PLANT-HASH (m3_scal_v2 against a sha with its last digit changed) -> FIRES
+C-IMPORT (generic names from their pinned files in /mnt/g2/release/root/code/pk03; kernel arbeng_ma_v1_4_1 and arb kernel arbeng_ma_stub_v1_1 from /mnt/g2/release/root/code/pk02) -> PASS
+STAGE-CPU C-VALIDATED start 0.14 s
+C-VALIDATED (layer arbeng_ma_v1_4_1:1f58ad80; 5 validation records with exactly ["VERDICT VALID"] and the close by sha256; TAG '') -> PASS
+PLANT-DENY (arbeng_ma_v1_1 placed in a copy of VALIDATED must still be refused the certified tag) -> FIRES
+C-VALREC-RUN (MANIFEST_KT_MA_VAL_v1_6_RUN.sha256: 73 files re-hashed against it, 12 validation outputs with exactly ["VERDICT VALID"]) -> PASS
+PLANT-MOCK (pk03's mock tmp/r16/mock_arbeng_v1_4.py, sha256 324ae7e7, offered as arbeng_ma_v1_4_1.py and under its own name, must be refused the certified tag) -> FIRES
+C-CALLER (m3_bar_v11: 3 kernel calls; every E2_combine passes plan= and fallback=False, every load_view an expected sha256, every MomTableU block=) -> PASS
+PLANT-CALLER (m3_bar_v11 with one E2_combine call's plan= removed) -> FIRES
+C-SERIES (no *_series( call in 9 modules, the kernel files and this script) -> PASS
+PLANT-SERIES (a planted *_series( call must be flagged) -> FIRES
+C-PREC (flint ctx.prec 512 = the layer's PREC 512) -> PASS
+PRECISION start: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10; env M-e probes PASS (round-to-nearest both signs; subnormals kept in python and numpy); numpy 2.5.3; arbeng_ma_v1_4_1; ctx.prec 512, ctx.cap 10; static check PASS (no series function, no ctx.cap assignment, no sequential numpy accumulation)
+C-CX (M3's own mp.iv <-> arb crossings: round trips contain their sources) -> PASS
+PLANT-CX (the unsigned to_man_exp form must lose -1/3) -> FIRES
+C-CX2 (asymmetric straddling and zero-end intervals [-0.25, 0.75], [-0.75, 0.25], [-0.5, 0]: iv -> arb holds both ends, arb -> iv holds the source) -> PASS
+PLANT-CX2 (the unsigned to_man_exp form of [-0.25, 0.75] must lose -0.25) -> FIRES
+PLANT-GUARD (an mp.iv value handed to either kernel converter must raise) -> FIRES
+C-FALLBACK-PATH (a forced MAFallback: the arb kernel's E2 [-128.000000000 +/- 1.14e-12] overlaps the layer's [-128.000000000 +/- 1.27e-11]) -> PASS
+PLANT-FALLBACK-ONLY (a ValueError in the layer's E2 must reach the caller) -> FIRES
+STAGE-CPU smoke H start 0.16 s
+C-PARITY-SET (the entries whose factors pass C-ODD on their own graph: ['h,2']; marked zero: ['h,2']; PARITY_ZERO ['h,2']) -> PASS
+PLANT-ODD (h,2 with S[1][2] + 1e-12: a factor is neither exactly even nor exactly odd: [None]) -> FIRES
+C-GRAPH-LIST (H: the columns ['vac', 'int', 'int', 'free'] give V 12, 18 edges and F 16 (the list: [12, 18, 16]); pairs [(0, 1), (0, 2), (1, 2), (3, 4)] equal the list's) -> PASS
+PLANT-GRAPH-LIST (H: the pair list without its first pair) -> FIRES
+C-RULE (H: the reference radii^2 = min(80 G_vv/300, 0.6) and rho'^2 = 0.7^2, G_vv the certified mids: max relative difference 8.1e-16 (tol 1e-12)) -> PASS
+PLANT-RULE (H: 80 and 0.6 times 1.01) -> FIRES
+PREP tilts: c certainly positive definite, p certainly positive definite
+C-TILT (a) 12 tilt rates rounded up from their mp.iv enclosures; (b) both tilts certainly positive definite (lowest pivots 1.5453758382672376, 1.543813959378917) -> PASS
+C-PREP-REF (H: m3ref_v1_14_P16H.3.p6_z9sym.out PREPJSON of family P16H, N 3, J 300.0) -> PASS
+C-PREP-GRAPH (H: the prep graph has V 12, F 12 and pairs [] (the family graph: F 16); against the family graph, V, N, S_gauge and the 18 edges with tags in order equal, and exactly (equal _mpi_ tuples) the 12 x 12 vertex block of Gam, 12 G_vv, log_tau, log_det_Lr, W_int's vertex columns and tilted()'s vertex Gam, G_vv and N at both rate vectors (C-1), and Pout, Pout_p, tree(), farbase and alpha_lo (C-4)) -> PASS
+PLANT-PREP-EDGE (H: the prep graph with its first edge ((0, 1), 'A') dropped, against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-TAG (H: the prep graph with its first edge's tag 'A' changed to 'B', against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-GAUGE (H: the prep graph with S_gauge [0], against the family graph: differs in inputs, C-1 values, C-4 values) -> FIRES
+PLANT-PREP-ULP (H: a copy of the prep graph's view with its vertex-block entry [0][1] moved up by one unit of each end's last bit (overlapping the original: True), against the family graph: differs in C-1 values) -> FIRES
+GDATA-CPU h,0: 0.95 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] D 6 caps {1: 6}: 1271 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] D 6 caps {1: 6}: 1.13 s
+UNIT h,0 ak: 1.15 s
+SMOKE h,0 ak ['1', '1.37426695316', '1.49706258342', '1.57083650166'] Dn 6 forms 15: 2.28 s
+PACK-PLAN h,0: 7 table requests; largest code range 7^15 (a_k)
+GDATA-CPU h,1: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 7 caps {1: 6}: 386 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13] D 7 caps {1: 6}: 0.91 s
+UNIT h,1 ak: 0.92 s
+SMOKE h,1 ak ['0.00310562001463', '-0.0499162352348', '-0.0149112440046', '0.0736337484374'] Dn 7 forms 13: 1.12 s
+PACK-PLAN h,1: 8 table requests; largest code range 8^13 (a_k)
+GDATA-CPU h,2: 0.02 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 7 caps {1: 6}: 1208 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 7 caps {1: 6}: 1.57 s
+UNIT h,2 ak: 4.02 s
+SMOKE h,2 ak ['0', '-8.72270698455e-41', '1.84597947348e-40', '-1.28760672957e-15'] Dn 7 forms 14: 4.22 s
+PACK-PLAN h,2: 1 table requests; largest code range 8^14 (a_k)
+GDATA-CPU h,3: 0.02 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] D 7 caps {1: 6}: 3260 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] D 7 caps {1: 6}: 2.73 s
+UNIT h,3 ak: 2.74 s
+SMOKE h,3 ak ['8.26583516762e-05', '0.911718067064', '1.5171083221', '1.85343787231'] Dn 7 forms 15: 2.95 s
+PACK-PLAN h,3: 8 table requests; largest code range 8^15 (a_k)
+GDATA-CPU hX,0: 0.01 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 7 caps {1: 6}: 5577 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 7 caps {1: 6}: 4.44 s
+UNIT hX,0 ak: 4.45 s
+SMOKE hX,0 ak ['0.552881329138', '0.844051880137', '1.00178391958', '1.13046858576'] Dn 7 forms 16: 4.65 s
+PACK-PLAN hX,0: 22 table requests; largest code range 8^16 (a_k)
+GDATA-CPU hX,1: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 8 caps {1: 6}: 2011 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15] D 8 caps {1: 6}: 4.03 s
+UNIT hX,1 ak: 4.04 s
+SMOKE hX,1 ak ['0.0885217576483', '0.0971497523156', '0.133066955267', '0.21044347308'] Dn 8 forms 14: 4.23 s
+PACK-PLAN hX,1: 24 table requests; largest code range 9^14 (a_k)
+GDATA-CPU hX,2: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15] D 8 caps {1: 6}: 4869 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15] D 8 caps {1: 6}: 7.48 s
+UNIT hX,2 ak: 7.49 s
+SMOKE hX,2 ak ['0.108949013481', '0.172045037938', '0.209413408293', '0.247783450856'] Dn 8 forms 15: 7.68 s
+PACK-PLAN hX,2: 24 table requests; largest code range 9^15 (a_k)
+GDATA-CPU hX,3: 0.00 s (group series, majorants and F_i)
+TABLE u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 8 caps {1: 6}: 11592 exact zeros
+TABLE-CPU u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] D 8 caps {1: 6}: 11.56 s
+UNIT hX,3 ak: 11.58 s
+SMOKE hX,3 ak ['0.068416911915', '0.676704864329', '1.18417017807', '1.57114554689'] Dn 8 forms 16: 11.77 s
+PACK-PLAN hX,3: 24 table requests; largest code range 9^16 (a_k)
+C-SMOKE-AK (the a_k of 8 H entries against m3ref_v1_14 P16H: largest |certified mid - float| / max(1, |float|) 6.73e-13 at h,1 a_3) -> PASS
+PLANT-SMOKE-AK (the largest difference plus 1e-6) -> FIRES
+GDATA-CPU hX,0 (planted): 0.01 s (group series, majorants and F_i)
+UNIT hX,0 (planted) ak: 0.01 s
+PLANT-SMOKE-PATH (hX,0 with its xi factor's c9 times 1 + 1e-6: largest difference 1.00e-06) -> FIRES
+C-PACK-PLAN (H: the bound of all 8 entries asks the kernel for 118 table requests, distinct within each entry; the largest code range (D + 1)^forms is 9^16 = 1.853e+15 (hX,3, a_k), below 9.0e+18; the largest lp-norm D is 16 (<= 64)) -> PASS
+PLANT-PACK-PLAN (a request of D 16 over 16 forms, 17^16 = 4.866e+19, must be refused, and the control D 14 over 16 forms, 15^16 = 6.568e+18, accepted) -> FIRES
+FALLBACKS 5 (MAFallback recomputes in arb, INFO): u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 7 caps {1: 6}: E2: M-a error 5.68e-12 of 8.88e-16; u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 7 caps {1: 6}: E2: M-a error 2.50e-11 of 8.88e-16; u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 7 caps {1: 6}: E2: M-a error 3.04e-07 of 7.11e-15; u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 7 caps {1: 6}: E2: M-a error 7.58e-09 of 7.11e-15; u forms [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14] D 7 caps {1: 6}: E2: M-a error 8.63e-11 of 5.33e-15
+PRECISION end: iv.dps 40 (iv.prec 136); flint ctx.prec 512, ctx.cap 10
+C-PREC-END (flint ctx.prec 512 at the end of the item; C-PREC checked the start) -> PASS
+STAGE-CPU total 39.63 s
+VERDICT VALID
